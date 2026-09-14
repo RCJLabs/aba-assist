@@ -16,26 +16,62 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # The `release` channel is what enforces "nothing unreviewed reaches users". Because it
-  # is an input to the same reusable workflow that PRs run, there is no separate
-  # production build path that could drift from the one being tested.
+  # Quality gate. This must always pass — it is the real signal about whether the code and
+  # content are sound.
   ci:
     uses: ./.github/workflows/ci.yml
     with:
-      channel: release
+      channel: pr
+
+  # Publication gate, kept separate and deliberately non-failing.
+  #
+  # Content that has not been through clinical review is an expected state, not a broken
+  # build: it means a human has not signed off yet. Failing the run for that would leave
+  # the repo permanently red, which is how people learn to stop reading CI. So this job
+  # reports readiness and the deploy simply does not happen until content is approved.
+  gate:
+    name: Release readiness
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - id: check
+        run: |
+          if npx tsx packages/content-build/src/cli.ts check --channel=release; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::All content is approved — publishing."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Content is not release-ready yet, so the site was not published. This is the review gate, not a build failure — see the log above for which entries still need sign-off."
+          fi
 
   deploy:
-    name: Deploy
-    needs: ci
+    name: Build and deploy
+    needs: [ci, gate]
+    if: needs.gate.outputs.ready == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          name: site
-          path: build
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      # Built in the release channel, not reusing the CI artifact: that one is a `pr`
+      # build and may contain in-review content. What gets published must be the strict
+      # build.
+      - run: npm run build
+        env:
+          ABA_CONTENT_CHANNEL: release
       - uses: actions/upload-pages-artifact@v4
         with:
           path: build

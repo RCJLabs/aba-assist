@@ -2,8 +2,9 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [main]
+  # Deliberately no `push` trigger for main: the deploy workflow calls this one, and a
+  # push trigger here would start a second run in the same concurrency group, so the two
+  # cancelled each other on every push.
   workflow_call:
     inputs:
       channel:
