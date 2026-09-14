@@ -9,7 +9,12 @@ const ROUTES = [
 	'/scenarios/learner-is-injuring-themselves',
 	'/help',
 	'/about',
-	'/settings'
+	'/settings',
+	'/exams',
+	'/exams/rbt-tco-3',
+	'/exams/bcba-tco-6',
+	'/study',
+	'/quiz'
 ];
 
 /*
@@ -45,6 +50,33 @@ test('search results state is accessible', async ({ page }) => {
 test('plain-language state is accessible', async ({ page }) => {
 	await page.goto('/glossary/negative-reinforcement');
 	await page.getByRole('button', { name: /plain language/i }).click();
+	await expectNoA11yViolations(page);
+});
+
+test('a flashcard mid-session, revealed, is accessible', async ({ page }) => {
+	await page.goto('/study');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await page.getByRole('button', { name: 'Show answer' }).click();
+	await expect(page.getByRole('group', { name: /How well did you know it/ })).toBeVisible();
+	await expectNoA11yViolations(page);
+});
+
+test('a quiz question and its feedback are accessible', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
+	await expectNoA11yViolations(page);
+	await page.getByRole('radio').first().check();
+	await page.getByRole('button', { name: 'Check answer' }).click();
+	await expect(page.getByRole('region', { name: 'Explanation' })).toBeVisible();
+	await expectNoA11yViolations(page);
+});
+
+test('the glossary with a filter applied is accessible', async ({ page }) => {
+	await page.goto('/glossary');
+	await page.getByLabel('Exam').selectOption('BCBA');
+	await page.getByLabel('Domain').selectOption('G');
 	await expectNoA11yViolations(page);
 });
 

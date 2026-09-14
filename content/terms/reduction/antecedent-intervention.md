@@ -32,6 +32,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [motivating-operation, differential-reinforcement-of-alternative-behavior]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: G.5 }
 citations:
   - sourceId: iwata-1982-1994
     useType: fact-reference

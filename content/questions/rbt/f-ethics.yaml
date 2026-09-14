@@ -1,0 +1,526 @@
+# RBT practice questions — area F, Ethics. All original.
+
+questions:
+  - id: rbt-f-confidentiality-in-public
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      At a grocery store a neighbor mentions seeing the technician at a particular
+      family's house, asks whether the technician works with their son, and asks how he is
+      doing. What is the most appropriate response?
+    options:
+      - id: a
+        text: Say that you cannot discuss whether anyone is a client or anything about services, and change the subject
+        isCorrect: true
+        rationale: >-
+          Confirming a service relationship is itself a disclosure. A clear, polite
+          refusal protects the family and complies with confidentiality standards.
+      - id: b
+        text: Confirm you work with the family but say you cannot share details
+        isCorrect: false
+        rationale: >-
+          Confirming the relationship discloses that the child receives services.
+      - id: c
+        text: Share only positive news since it will not embarrass anyone
+        isCorrect: false
+        rationale: >-
+          Positive information is still protected information.
+      - id: d
+        text: Ask the neighbor to keep it between the two of you
+        isCorrect: false
+        rationale: >-
+          Asking for secrecy means a disclosure has already been made.
+    explanation: >-
+      Confidentiality covers the fact of services, not just their content. The safest
+      response in any public setting is a friendly refusal to confirm or deny, and the
+      incident should be mentioned to the supervisor if it may recur.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [confidentiality, hipaa]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Confidentiality
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the ethics codes' standards, restated in our own
+        words; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-f-gift-from-family
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A client's parent offers a technician a $50 gift card as thanks. What should the
+      technician do?
+    options:
+      - id: a
+        text: Politely decline, explain that professional rules limit gifts, and tell the supervisor
+        isCorrect: true
+        rationale: >-
+          Gifts beyond a nominal value are restricted because they create multiple
+          relationships and conflicts of interest. Declining kindly and informing the
+          supervisor is the expected course.
+      - id: b
+        text: Accept it, since refusing would be rude
+        isCorrect: false
+        rationale: >-
+          Politeness does not override the ethics code, and a refusal can be made
+          graciously.
+      - id: c
+        text: Accept it and share it with the rest of the team
+        isCorrect: false
+        rationale: >-
+          Sharing the gift does not remove the problem of having accepted it.
+      - id: d
+        text: Accept it this once and ask the family not to do it again
+        isCorrect: false
+        rationale: >-
+          A single acceptance sets an expectation and already crosses the line.
+    explanation: >-
+      Both ethics codes restrict gifts from clients and families. The reasons are the
+      relationship, not the money: gifts blur the professional boundary and can be felt
+      as an obligation. Employers often have specific policies, and the supervisor should
+      always be told.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [dual-relationship, conflict-of-interest, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Gifts and multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-scope-modify-plan
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      Which activity is within the scope of practice of a behavior technician?
+    options:
+      - id: a
+        text: Implementing a behavior plan as written and collecting the data it specifies
+        isCorrect: true
+        rationale: >-
+          Technicians deliver services designed by their supervisor and record data;
+          that is the role.
+      - id: b
+        text: Writing a new behavior plan for a client
+        isCorrect: false
+        rationale: >-
+          Designing plans is the analyst's responsibility.
+      - id: c
+        text: Deciding to discontinue a program that seems ineffective
+        isCorrect: false
+        rationale: >-
+          Continuing, modifying or ending a program is a supervisory decision made from
+          data.
+      - id: d
+        text: Interpreting functional-analysis results for a family
+        isCorrect: false
+        rationale: >-
+          Assessment interpretation and communicating results are the analyst's role.
+    explanation: >-
+      Technicians practice under close supervision and implement rather than design.
+      Suggestions and observations are welcome and important, but decisions about
+      assessment and treatment belong to the supervising analyst.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [scope-of-practice, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Scope of practice
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-supervision-minimum
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A technician provided 80 hours of behavior-analytic services in a calendar month.
+      What is the minimum amount of supervision required for that month?
+    options:
+      - id: a
+        text: 4 hours, which is 5 percent of the service hours
+        isCorrect: true
+        rationale: >-
+          The requirement is at least 5 percent of the hours spent providing services each
+          calendar month; 5 percent of 80 is 4.
+      - id: b
+        text: 1 hour, regardless of hours worked
+        isCorrect: false
+        rationale: >-
+          The minimum is a percentage of service hours, not a fixed hour.
+      - id: c
+        text: 8 hours, which is 10 percent
+        isCorrect: false
+        rationale: >-
+          Ten percent is the concentrated-fieldwork figure for analyst trainees, not the
+          technician requirement.
+      - id: d
+        text: No minimum, as long as a supervisor is on record
+        isCorrect: false
+        rationale: >-
+          A supervisor on record is necessary but not sufficient; the monthly minimum
+          also applies.
+    explanation: >-
+      Ongoing supervision must be at least 5 percent of service hours each calendar
+      month, delivered through at least two real-time contacts, at least one of them
+      individual and at least one including observation with a client. See the RBT
+      credential page for the full requirements and the handbook version they came from.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision]
+    citations:
+      - sourceId: bacb-rbt-handbook-2026
+        useType: fact-reference
+        locator: Ongoing Supervision
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-social-media
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A technician wants to post on social media about a great session, without using
+      the learner's name. Which is the most appropriate choice?
+    options:
+      - id: a
+        text: Do not post about clients or sessions at all
+        isCorrect: true
+        rationale: >-
+          Even without a name, details of a session can identify a learner to people who
+          know them, and client information is not for public posting.
+      - id: b
+        text: Post but blur the learner's face in any photo
+        isCorrect: false
+        rationale: >-
+          A photo of a client, blurred or not, is client information used publicly
+          without consent.
+      - id: c
+        text: Post with the learner's first initial only
+        isCorrect: false
+        rationale: >-
+          Partial identifiers combined with context are often enough to identify a child.
+      - id: d
+        text: Post and delete it after a day
+        isCorrect: false
+        rationale: >-
+          Anything posted can be copied within seconds.
+    explanation: >-
+      Public statements, including social media, must not disclose client information.
+      Small details — a setting, a milestone, a date — can identify a learner to people
+      in their community. The reliable rule is not to post about clients.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [public-statement, confidentiality]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Confidentiality and public statements
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-supervision-lapse
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A technician realizes that for the past month they received no supervision because
+      their supervisor was on leave and nobody was assigned. What should they do?
+    options:
+      - id: a
+        text: Report the lapse to the certifying board and their organization, and arrange supervision going forward
+        isCorrect: true
+        rationale: >-
+          Supervision noncompliance must be self-reported, and practice cannot continue
+          without a supervisor on record.
+      - id: b
+        text: Say nothing and make up the hours next month
+        isCorrect: false
+        rationale: >-
+          Supervision is required each calendar month and cannot be back-filled, and
+          concealing a lapse is itself a violation.
+      - id: c
+        text: Continue working as usual since it was not their fault
+        isCorrect: false
+        rationale: >-
+          Fault does not change the requirement; the technician is responsible for
+          ensuring they are supervised.
+      - id: d
+        text: Wait for the supervisor to return and ask them to sign for the month
+        isCorrect: false
+        rationale: >-
+          Signing for supervision that did not happen is falsification.
+    explanation: >-
+      Technicians share responsibility for meeting supervision requirements at every
+      organization where they work. A lapse is self-reported to the board, addressed with
+      the employer, and cannot be made up retroactively.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, self-reporting]
+    citations:
+      - sourceId: bacb-rbt-handbook-2026
+        useType: fact-reference
+        locator: Non-practicing and Unsupervised RBTs; Self-Reporting
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-dignity-choice
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      Which practice best reflects treating a learner with dignity during a session?
+    options:
+      - id: a
+        text: Offering choices where the plan allows, using the learner's name, and speaking to them rather than about them in their presence
+        isCorrect: true
+        rationale: >-
+          Dignity is expressed in the ordinary details of interaction: choice, respectful
+          language, and not discussing the person as if they were not there.
+      - id: b
+        text: Completing every trial as quickly as possible to maximize data
+        isCorrect: false
+        rationale: >-
+          Speed is not a value in itself, and rushing removes the learner's opportunity
+          to respond and choose.
+      - id: c
+        text: Describing the learner's behavior to a colleague in front of the learner
+        isCorrect: false
+        rationale: >-
+          Talking about a person in their presence as though they cannot hear is
+          disrespectful.
+      - id: d
+        text: Using a nickname the family has not approved
+        isCorrect: false
+        rationale: >-
+          Names are the person's and their family's to choose.
+    explanation: >-
+      Dignity is a core principle of the ethics code and it shows up in small behaviors:
+      choices, respectful language, privacy, and attending to the learner's assent. It is
+      part of good practice, not separate from it.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [dignity, assent]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Dignity and respect
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-suspected-abuse
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A technician notices a pattern of unexplained injuries on a learner and the
+      learner appears afraid of a household member. The technician is not certain what
+      is happening. What is the appropriate action?
+    options:
+      - id: a
+        text: Make a report to the state's protective-services agency and inform the supervisor
+        isCorrect: true
+        rationale: >-
+          Reasonable suspicion is the reporting standard, the duty is personal, and the
+          report goes to the authorities as well as the supervisor.
+      - id: b
+        text: Wait until there is proof before doing anything
+        isCorrect: false
+        rationale: >-
+          Investigating is the agency's job; the reporter's duty begins at suspicion.
+      - id: c
+        text: Tell the supervisor and let them decide whether to report
+        isCorrect: false
+        rationale: >-
+          Informing a supervisor is important but does not by itself discharge a
+          mandated reporter's personal legal duty.
+      - id: d
+        text: Ask the household member about the injuries
+        isCorrect: false
+        rationale: >-
+          Confronting a suspected person can endanger the learner and is not the
+          technician's role.
+    explanation: >-
+      Most people who provide services to children are mandated reporters under state
+      law. The standard is reasonable suspicion, the duty cannot be delegated to an
+      employer, and good-faith reports are protected. Check your state's requirements
+      and your employer's procedure in advance.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [mandated-reporter, ethics-code]
+    citations:
+      - sourceId: capta
+        useType: fact-reference
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Legal obligations
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-babysitting-request
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A client's family asks the technician to babysit on weekends for pay. What is the
+      main ethical concern?
+    options:
+      - id: a
+        text: It creates a multiple relationship that can compromise professional judgment
+        isCorrect: true
+        rationale: >-
+          A second, personal or financial relationship with a client's family is a
+          multiple relationship, which the ethics codes require practitioners to avoid.
+      - id: b
+        text: Babysitting is not a behavior-analytic skill
+        isCorrect: false
+        rationale: >-
+          The skill involved is not the issue; the relationship is.
+      - id: c
+        text: The technician might be paid less than their usual rate
+        isCorrect: false
+        rationale: >-
+          Pay is not the ethical concern.
+      - id: d
+        text: Weekends are outside supervision hours
+        isCorrect: false
+        rationale: >-
+          Supervision covers service hours; the concern here is the dual role.
+    explanation: >-
+      Multiple relationships — being both a professional and a friend, employee,
+      babysitter or business partner to a client's family — make objective judgment
+      harder and create conflicts of interest. The request should be declined and the
+      supervisor told.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [dual-relationship, conflict-of-interest]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-competence-new-procedure
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A supervisor adds a procedure to a plan that the technician has never been trained
+      to run. What should the technician do before the next session?
+    options:
+      - id: a
+        text: Ask for training on the procedure, and not run it until competent
+        isCorrect: true
+        rationale: >-
+          Technicians deliver only procedures they have been trained to perform;
+          requesting training is the responsible action.
+      - id: b
+        text: Look it up online and do their best
+        isCorrect: false
+        rationale: >-
+          Self-teaching from unknown sources is not training, and running an unfamiliar
+          procedure risks harm and poor integrity.
+      - id: c
+        text: Run it anyway since the supervisor wrote it
+        isCorrect: false
+        rationale: >-
+          A supervisor's authorship does not make the technician competent to deliver it.
+      - id: d
+        text: Skip that part of the plan without telling anyone
+        isCorrect: false
+        rationale: >-
+          Silently omitting a procedure is an unauthorized change and a documentation
+          problem.
+    explanation: >-
+      Competence is built through training and supervised practice, typically with
+      behavioral skills training. A technician who is asked to run something new should
+      say so and get trained; supervisors expect and want that.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [scope-of-competence, behavioral-skills-training, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Competence
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-f-assent-withdrawal
+    credential: RBT
+    taskRef: { credential: RBT, code: F }
+    type: single-best-answer
+    stem: >-
+      A learner who cannot speak repeatedly pushes materials away, turns their body
+      from the technician and moves toward the door during a teaching program. Which
+      statement best describes how a technician should think about this?
+    options:
+      - id: a
+        text: The learner may be withdrawing assent, which is information to act on within the plan and report to the supervisor
+        isCorrect: true
+        rationale: >-
+          Assent is ongoing willingness, communicated in whatever way the learner can.
+          Signs of withdrawal are taken seriously, handled as the plan directs, and
+          reported.
+      - id: b
+        text: The behavior is noncompliance to be worked through
+        isCorrect: false
+        rationale: >-
+          Treating every refusal as noncompliance ignores what the learner is
+          communicating and can damage the relationship.
+      - id: c
+        text: Consent from the parent covers the session, so the learner's reaction does not matter
+        isCorrect: false
+        rationale: >-
+          Consent from a guardian and assent from the learner are different things, and
+          both matter.
+      - id: d
+        text: The technician should end services for the day without telling anyone
+        isCorrect: false
+        rationale: >-
+          Responding to assent withdrawal is done within the plan and reported, not
+          improvised.
+    explanation: >-
+      Assent is the learner's own ongoing agreement to participate, shown in behavior
+      when it cannot be spoken. The ethics code expects practitioners to attend to it.
+      A plan should say how to respond; the technician follows that and reports patterns.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [assent, dignity, informed-consent]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Assent and consent
+    attestation: *att
+    review: *rev
+    provenance: *prov

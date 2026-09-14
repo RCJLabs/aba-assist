@@ -20,7 +20,7 @@ test('the urgent page leads with emergency services and refuses to give procedur
 }) => {
 	await page.goto('/help');
 	await expect(page.getByText(/call 911 now/i)).toBeVisible();
-	await expect(page.getByText(/988/)).toBeVisible();
+	await expect(page.getByText(/988/).first()).toBeVisible();
 	await expect(
 		page.getByRole('heading', { name: /will not tell you what to do physically/i })
 	).toBeVisible();

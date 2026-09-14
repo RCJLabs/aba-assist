@@ -41,6 +41,11 @@ searchBoost: 1.4
 flashcard:
   mnemonic: >-
     An MO changes how much you want it. An SD tells you when you can get it.
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: B.15 }
+  - { credential: BCBA, code: B.16 }
+  - { credential: BCBA, code: G.5 }
 citations:
   - sourceId: michael-1982
     useType: fact-reference

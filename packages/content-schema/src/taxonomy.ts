@@ -9,9 +9,12 @@ import { Attestation, Credential, IsoDate, Provenance, Review, Slug } from './pr
  */
 export const TASK_CODE_PATTERN: Partial<Record<z.infer<typeof Credential>, RegExp>> = {
 	RBT: /^[A-F]-([1-9]|1[0-9])$/,
-	BCBA: /^[A-I]\.([1-9]|1[0-9])$/,
-	BCaBA: /^[A-I]\.([1-9]|1[0-9])$/
+	BCBA: /^[A-I]\.([1-9]|1[0-9]|2[0-9])$/,
+	BCaBA: /^[A-I]\.([1-9]|1[0-9]|2[0-9])$/
 };
+
+/** A bare domain letter, as opposed to a task code. */
+export const DOMAIN_LETTER = /^[A-I]$/;
 
 export const TaskCode = strictContent({
 	code: z.string().min(2).max(8),
@@ -24,11 +27,17 @@ export const TaskCode = strictContent({
 });
 
 export const Domain = strictContent({
-	letter: z.string().regex(/^[A-I]$/),
+	letter: z.string().regex(DOMAIN_LETTER),
 	/** Short factual domain name, e.g. "Data Collection and Graphing". */
 	name: z.string().min(3).max(80),
 	ourDescription: z.string().min(40).max(500),
 	examWeightPercent: z.number().min(0).max(100).nullable(),
+	/**
+	 * Scored questions drawn from this domain, as published in the credential handbook.
+	 * Null where the handbook was not available to check. Weights are rounded
+	 * percentages; the item counts are the exact figures behind them.
+	 */
+	examItems: z.number().int().nonnegative().nullable().default(null),
 	tasks: z.array(TaskCode).default([])
 });
 
@@ -116,6 +125,19 @@ export const ContentOutline = z
 			}
 		}
 
+		// Item counts are exact where weights are rounded, so they must add up precisely.
+		const items = o.domains.map((d) => d.examItems);
+		if (o.exam.scoredItems !== null && items.every((n): n is number => n !== null)) {
+			const sum = items.reduce((a, b) => a + b, 0);
+			if (sum !== o.exam.scoredItems) {
+				ctx.issues.push({
+					code: 'custom',
+					message: `${o.id}: per-domain exam items sum to ${sum} but scoredItems is ${o.exam.scoredItems}`,
+					input: o.id
+				});
+			}
+		}
+
 		if (new Set(o.domains.map((d) => d.letter)).size !== o.domains.length) {
 			ctx.issues.push({
 				code: 'custom',
@@ -126,9 +148,36 @@ export const ContentOutline = z
 	});
 export type ContentOutline = z.infer<typeof ContentOutline>;
 
-/** A pointer from a content item to a credential's task code. */
+/**
+ * A pointer from a content item to a credential's outline.
+ *
+ * `code` is either a task code ("C-3", "G.5") or a bare domain letter ("C"). The
+ * domain-level form exists because an outline's domain names and weights are verified
+ * facts long before every task code has been checked against the primary document — the
+ * RBT outline is exactly that case — and tagging content to a verified domain is
+ * strictly better than tagging it to nothing. The build validates each form against the
+ * outline: a task code must exist, a letter must name a domain.
+ */
 export const TaskRef = z.strictObject({
 	credential: Credential,
-	code: z.string().min(2).max(8)
+	code: z
+		.string()
+		.min(1)
+		.max(8)
+		.regex(/^[A-I](?:[-.]\d{1,2})?$/, 'a domain letter ("C") or a task code ("C-3", "G.5")')
 });
 export type TaskRef = z.infer<typeof TaskRef>;
+
+export function isDomainRef(code: string): boolean {
+	return DOMAIN_LETTER.test(code);
+}
+
+/** "BCBA:G.5" -> "G". "RBT:C" -> "C". */
+export function refDomainLetter(code: string): string {
+	return code.charAt(0);
+}
+
+/** Stable string form used in the client index: "RBT:C", "BCBA:G.5". */
+export function taskRefKey(ref: TaskRef): string {
+	return `${ref.credential}:${ref.code}`;
+}

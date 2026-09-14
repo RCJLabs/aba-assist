@@ -82,8 +82,13 @@
 	<dd>{termIndex.length}</dd>
 	<dt>Situations</dt>
 	<dd>{scenarios.length}</dd>
+	<dt>Practice questions</dt>
+	<dd>{contentVersion.counts.questions ?? 0}</dd>
 	<dt>Aligned to</dt>
-	<dd>RBT Test Content Outline (3rd ed.), effective 1 January 2026</dd>
+	<dd>
+		RBT Test Content Outline (3rd ed.), effective 1 January 2026; BCBA Test Content Outline
+		(6th ed.), effective 1 January 2025
+	</dd>
 </dl>
 
 <p class="note">

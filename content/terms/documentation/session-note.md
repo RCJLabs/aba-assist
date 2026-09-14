@@ -30,9 +30,11 @@ nonExamples:
       A note recording a conclusion about why a behavior happened, which is interpretation
       rather than observation and is not the technician's to make.
     setting: clinic
-contrastWith: []
+contrastWith: [incident-report]
 seeAlso: [operational-definition, scope-of-practice]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: E }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

@@ -32,6 +32,10 @@ nonExamples:
 contrastWith: []
 seeAlso: [naturalistic-teaching, prompt-fading, discriminative-stimulus]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: B.13 }
+  - { credential: BCBA, code: G.15 }
 citations:
   - sourceId: stokes-baer-1977
     useType: fact-reference

@@ -37,6 +37,10 @@ nonExamples:
 contrastWith: [positive-reinforcement, negative-reinforcement]
 seeAlso: [extinction, differential-reinforcement-of-alternative-behavior]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: B.5 }
+  - { credential: BCBA, code: G.17 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

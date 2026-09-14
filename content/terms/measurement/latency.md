@@ -28,9 +28,12 @@ nonExamples:
       The gap between two separate responses by the same learner. That is
       interresponse time.
     setting: clinic
-contrastWith: [duration]
+contrastWith: [duration, interresponse-time]
 seeAlso: [frequency-and-rate, discriminative-stimulus]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: BCBA, code: C.4 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

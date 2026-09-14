@@ -1,6 +1,14 @@
-import type { Term, TermIndexEntry } from '@aba/content-schema';
+import type {
+	ContentOutline,
+	CredentialFacts,
+	QuizQuestion,
+	Term,
+	TermIndexEntry
+} from '@aba/content-schema';
 import index from './generated/terms.index.json';
 import version from './generated/version.json';
+import taxonomy from './generated/taxonomy.json';
+import credentialData from './generated/credentials.json';
 
 export const termIndex = index as TermIndexEntry[];
 export const contentVersion = version as {
@@ -49,9 +57,11 @@ export async function loadTerm(id: string): Promise<Term | undefined> {
 	return bucket[id];
 }
 
-export function termsByCategory(): Map<string, TermIndexEntry[]> {
+export function termsByCategory(
+	entries: TermIndexEntry[] = termIndex
+): Map<string, TermIndexEntry[]> {
 	const map = new Map<string, TermIndexEntry[]>();
-	for (const t of termIndex) {
+	for (const t of entries) {
 		const list = map.get(t.c) ?? [];
 		list.push(t);
 		map.set(t.c, list);
@@ -74,3 +84,50 @@ export const CATEGORY_LABELS: Record<string, string> = {
 	documentation: 'Documentation',
 	'research-design': 'Research design'
 };
+
+export const CATEGORIES = Object.keys(CATEGORY_LABELS);
+
+// --------------------------------------------------------------- taxonomy
+
+/**
+ * The content outlines, keyed by id. Small enough (two documents) to import eagerly:
+ * the domain filter needs the domain list on every page that has the filter.
+ */
+export const outlines = taxonomy as unknown as Record<string, ContentOutline>;
+
+export function outlineForCredential(credential: string): ContentOutline | undefined {
+	return Object.values(outlines).find((o) => o.credential === credential);
+}
+
+export const CREDENTIAL_LABELS: Record<string, string> = {
+	RBT: 'Registered Behavior Technician',
+	BCaBA: 'Board Certified Assistant Behavior Analyst',
+	BCBA: 'Board Certified Behavior Analyst'
+};
+
+// ------------------------------------------------------------ credentials
+
+export const credentials = credentialData as unknown as Record<string, CredentialFacts>;
+
+// -------------------------------------------------------------- questions
+
+const questionBuckets = import.meta.glob<QuizQuestion[]>('./generated/questions.*.json');
+const questionCache = new Map<string, QuizQuestion[]>();
+
+/** Credentials that have a question bank in this build. */
+export const questionCredentials: string[] = Object.keys(questionBuckets)
+	.map((k) => /questions\.([A-Za-z]+)\.json$/.exec(k)?.[1])
+	.filter((x): x is string => !!x)
+	.sort();
+
+/** The bank for one exam, loaded when a session starts rather than at first paint. */
+export async function loadQuestions(credential: string): Promise<QuizQuestion[]> {
+	const cached = questionCache.get(credential);
+	if (cached) return cached;
+	const loader = questionBuckets[`./generated/questions.${credential}.json`];
+	if (!loader) return [];
+	const mod = (await loader()) as unknown as { default?: QuizQuestion[] } & QuizQuestion[];
+	const value = (mod.default ?? mod) as QuizQuestion[];
+	questionCache.set(credential, value);
+	return value;
+}

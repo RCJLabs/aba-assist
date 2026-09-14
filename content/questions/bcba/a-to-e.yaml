@@ -1,0 +1,1178 @@
+# BCBA practice questions — areas A through E. All original; nothing drawn from any
+# examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-a1-goals-of-science
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      A behavior analyst shows that turning a classroom's noncontingent attention
+      schedule on and off reliably changes a student's call-outs. Which goal of science
+      does this demonstration most directly achieve?
+    options:
+      - id: a
+        text: Control
+        isCorrect: true
+        rationale: >-
+          Producing a change in behavior by manipulating a variable is control, the
+          highest level of scientific understanding and the one experiments establish.
+      - id: b
+        text: Description
+        isCorrect: false
+        rationale: >-
+          Description is a systematic account of what is observed; it does not involve
+          manipulating anything.
+      - id: c
+        text: Prediction
+        isCorrect: false
+        rationale: >-
+          Prediction is knowing that one event tends to accompany another; it is what a
+          correlation supports, short of control.
+      - id: d
+        text: Replication
+        isCorrect: false
+        rationale: >-
+          Replication is a method for confirming findings, not one of the three goals.
+    explanation: >-
+      Science aims at description, prediction and control. A demonstrated functional
+      relation — behavior changes when and only when the variable is changed — achieves
+      control, which is why single-case designs are built around manipulation rather
+      than observation alone.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [functional-relation, experimental-control]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: bcba-a2-parsimony
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      Before concluding that a student refuses work because of a deep-seated fear of
+      failure, an analyst first checks whether refusals are simply followed by the task
+      being withdrawn. Which attitude of science is the analyst applying?
+    options:
+      - id: a
+        text: Parsimony
+        isCorrect: true
+        rationale: >-
+          Ruling out the simpler, environmental explanation before accepting a complex
+          inner one is the principle of parsimony.
+      - id: b
+        text: Determinism
+        isCorrect: false
+        rationale: >-
+          Determinism is the assumption that behavior has causes at all; it does not say
+          which causes to try first.
+      - id: c
+        text: Replication
+        isCorrect: false
+        rationale: >-
+          Replication concerns repeating a result, not choosing between explanations.
+      - id: d
+        text: Philosophic doubt
+        isCorrect: false
+        rationale: >-
+          Philosophic doubt is the readiness to revise conclusions; parsimony is about
+          the order in which explanations are considered.
+    explanation: >-
+      Parsimony directs the scientist to exhaust simple accounts before reaching for
+      complex or hypothetical ones. In practice it keeps analysis anchored to observable
+      contingencies, which are also the ones a plan can change.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [parsimony, philosophic-doubt, determinism]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-a3-private-events
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.3 }
+    type: single-best-answer
+    stem: >-
+      Which statement is most consistent with radical behaviorism's treatment of a
+      client's report that they feel anxious before sessions?
+    options:
+      - id: a
+        text: The feeling is a private event — behavior in its own right, with environmental causes worth analyzing — but it is not itself the cause of the avoidance
+        isCorrect: true
+        rationale: >-
+          Radical behaviorism includes private events as behavior subject to the same
+          principles and looks to the environment for the causes of both the feeling and
+          the public behavior.
+      - id: b
+        text: Feelings cannot be studied scientifically and should be ignored
+        isCorrect: false
+        rationale: >-
+          That is the methodological position, which radical behaviorism explicitly
+          rejected.
+      - id: c
+        text: The anxiety causes the avoidance, so treatment should target the anxiety directly
+        isCorrect: false
+        rationale: >-
+          Using one behavior to explain another, without reference to the environment,
+          is the mentalistic account radical behaviorism argues against.
+      - id: d
+        text: The report is unreliable and should be disregarded
+        isCorrect: false
+        rationale: >-
+          Verbal reports of private events are data, and behavior analysts take them
+          seriously while analyzing what controls them.
+    explanation: >-
+      Radical behaviorism does not deny thoughts and feelings; it treats them as private
+      behavior with the same kinds of causes as public behavior, and it declines to use
+      them as explanations in themselves. The analysis looks for the conditions that
+      produce both.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [radical-behaviorism, private-event, mentalism, methodological-behaviorism]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-a4-branches
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      A laboratory study examines how pigeons' response rates change under variable
+      schedules of reinforcement. Which branch of behavior analysis is this?
+    options:
+      - id: a
+        text: The experimental analysis of behavior
+        isCorrect: true
+        rationale: >-
+          Basic research on the principles of behavior under controlled conditions,
+          without concern for social significance, is the experimental analysis of
+          behavior.
+      - id: b
+        text: Applied behavior analysis
+        isCorrect: false
+        rationale: >-
+          Applied work addresses socially important behavior in people's lives.
+      - id: c
+        text: Behavior-analytic service delivery
+        isCorrect: false
+        rationale: >-
+          Service delivery is the practice of applying established procedures with
+          clients.
+      - id: d
+        text: Behaviorism
+        isCorrect: false
+        rationale: >-
+          Behaviorism is the philosophy of the science, not a research program.
+    explanation: >-
+      The field has a philosophy (behaviorism), a basic science (the experimental analysis
+      of behavior), an applied science (applied behavior analysis) and a practice
+      (service delivery). Knowing which is which clarifies what kind of evidence a claim
+      rests on.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs:
+      [experimental-analysis-of-behavior, applied-behavior-analysis, radical-behaviorism]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-a5-technological
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      A published intervention is described only as "a positive behavior support package
+      individualized to the student." Which dimension of applied behavior analysis does
+      this description fail?
+    options:
+      - id: a
+        text: Technological
+        isCorrect: true
+        rationale: >-
+          The technological dimension requires procedures to be described precisely
+          enough that a trained reader could replicate them. This description gives no
+          procedure at all.
+      - id: b
+        text: Applied
+        isCorrect: false
+        rationale: >-
+          Whether the target is socially important is a separate question from whether
+          the procedure is described.
+      - id: c
+        text: Effective
+        isCorrect: false
+        rationale: >-
+          Effectiveness concerns the size of the change produced, which cannot be judged
+          from the description alone.
+      - id: d
+        text: Generality
+        isCorrect: false
+        rationale: >-
+          Generality concerns whether the change lasts and spreads.
+    explanation: >-
+      Baer, Wolf and Risley's technological dimension is the requirement that procedures
+      be fully specified. A description that cannot be replicated fails it regardless of
+      the outcome, because nobody else can use it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [seven-dimensions-of-aba, applied-behavior-analysis]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-b16-mo-vs-sd
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.16 }
+    type: single-best-answer
+    stem: >-
+      A child who has been outside on a hot afternoon walks into the kitchen, sees a
+      parent standing by the fridge, and asks for juice. In this episode, which event is
+      best described as a motivating operation?
+    options:
+      - id: a
+        text: The hot afternoon outside
+        isCorrect: true
+        rationale: >-
+          Heat and exertion raise the value of a drink and make asking more likely; that
+          is a value-altering, behavior-altering effect — a motivating operation.
+      - id: b
+        text: The parent standing by the fridge
+        isCorrect: false
+        rationale: >-
+          The parent signals that a request can be granted; that is a discriminative
+          function, about availability rather than value.
+      - id: c
+        text: The child's request
+        isCorrect: false
+        rationale: >-
+          The request is the behavior, not an antecedent variable.
+      - id: d
+        text: The juice
+        isCorrect: false
+        rationale: >-
+          The juice is the reinforcer whose value the motivating operation altered.
+    explanation: >-
+      Motivating operations change how much a consequence is wanted; discriminative
+      stimuli signal whether it is available. The heat made juice valuable; the parent by
+      the fridge made asking likely to work. Both had to be present for the request.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [motivating-operation, discriminative-stimulus, establishing-operation]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-b8-vr-pattern
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.8 }
+    type: single-best-answer
+    stem: >-
+      Which schedule of reinforcement typically produces a high, steady rate of
+      responding with little or no post-reinforcement pause?
+    options:
+      - id: a
+        text: Variable ratio
+        isCorrect: true
+        rationale: >-
+          Because the number of responses required varies around an average, there is no
+          predictable point at which responding is pointless, so responding stays high
+          and steady.
+      - id: b
+        text: Fixed ratio
+        isCorrect: false
+        rationale: >-
+          Fixed-ratio schedules produce high rates but with a characteristic pause after
+          each reinforcer.
+      - id: c
+        text: Fixed interval
+        isCorrect: false
+        rationale: >-
+          Fixed-interval schedules produce a scallop: little responding early in the
+          interval and acceleration toward its end.
+      - id: d
+        text: Continuous reinforcement
+        isCorrect: false
+        rationale: >-
+          Continuous reinforcement establishes behavior quickly but is prone to
+          satiation and rapid extinction rather than steady high rates.
+    explanation: >-
+      Each simple schedule has a characteristic response pattern. Variable-ratio
+      schedules produce the highest, steadiest responding and the greatest resistance to
+      extinction, which is why they appear in both maintenance programming and gambling.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [variable-ratio-schedule, fixed-ratio-schedule, fixed-interval-schedule]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-b3-respondent-vs-operant
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      A child who was startled by a dog's bark now cries at the sight of any dog. Which
+      account best describes how the crying was acquired?
+    options:
+      - id: a
+        text: Respondent conditioning — the sight of a dog was paired with a startling event and now elicits the response
+        isCorrect: true
+        rationale: >-
+          A previously neutral stimulus acquired the ability to elicit a reflexive
+          response through pairing; the response is elicited by an antecedent, not
+          maintained by a consequence.
+      - id: b
+        text: Operant conditioning — crying was reinforced by attention from adults
+        isCorrect: false
+        rationale: >-
+          Nothing in the description involves a consequence that strengthened crying;
+          it involves a pairing that now elicits it.
+      - id: c
+        text: Rule-governed behavior — the child was told dogs are dangerous
+        isCorrect: false
+        rationale: >-
+          No rule was given; the response was acquired through direct pairing.
+      - id: d
+        text: Observational learning — the child saw another child cry at a dog
+        isCorrect: false
+        rationale: >-
+          The child's own startling experience, not a model, produced the change.
+    explanation: >-
+      Respondent conditioning produces elicited responses controlled by antecedent
+      stimuli through pairing. Operant behavior is controlled by consequences. Crying can
+      of course later acquire operant functions too, which is why the distinction
+      matters for assessment.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [respondent-conditioning, operant-conditioning]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-b22-matching-law
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.22 }
+    type: single-best-answer
+    stem: >-
+      A student's calling out is answered by the teacher about three times as often as
+      the student's hand raising. Calling out remains far more frequent than hand raising
+      despite a program to teach hand raising. Which principle best explains the
+      persistence of calling out?
+    options:
+      - id: a
+        text: The matching law — responding is allocated in proportion to the relative rate of reinforcement for each option
+        isCorrect: true
+        rationale: >-
+          When two behaviors are available and one is reinforced more richly, behavior
+          tracks the richer option. Hand raising will not compete until its reinforcement
+          matches or exceeds that of calling out.
+      - id: b
+        text: Behavioral contrast — reinforcing hand raising increased calling out elsewhere
+        isCorrect: false
+        rationale: >-
+          Contrast involves a change in one setting producing an opposite change in
+          another; here both behaviors are in the same setting.
+      - id: c
+        text: Spontaneous recovery of calling out
+        isCorrect: false
+        rationale: >-
+          Calling out was never extinguished; it has been continuously reinforced.
+      - id: d
+        text: Ratio strain on the hand-raising program
+        isCorrect: false
+        rationale: >-
+          Ratio strain is a breakdown from thinning too fast, not a matter of competing
+          reinforcement.
+    explanation: >-
+      Under concurrent schedules, response allocation matches relative reinforcement.
+      The practical implication is that a replacement behavior must be reinforced at
+      least as richly — in rate, quality, immediacy and effort — as the problem
+      behavior it competes with.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [matching-law, concurrent-schedule, differential-reinforcement-of-alternative-behavior]
+    citations:
+      - sourceId: herrnstein-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-b20-equivalence
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.20 }
+    type: single-best-answer
+    stem: >-
+      A learner is taught to select the printed word CAT when hearing the spoken word cat (A→B) and to
+      select a picture of a cat when shown the printed word CAT (B→C). Without further
+      teaching, the learner selects the picture of a cat on hearing the spoken word cat (A→C). Which
+      property of stimulus equivalence does the untrained A→C performance demonstrate?
+    options:
+      - id: a
+        text: Transitivity
+        isCorrect: true
+        rationale: >-
+          Deriving A→C from trained A→B and B→C is transitivity.
+      - id: b
+        text: Symmetry
+        isCorrect: false
+        rationale: >-
+          Symmetry would be the reversal of a trained relation, such as B→A.
+      - id: c
+        text: Reflexivity
+        isCorrect: false
+        rationale: >-
+          Reflexivity is matching a stimulus to itself.
+      - id: d
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization is responding to physically similar stimuli; the spoken word,
+          printed word and picture share no physical features.
+    explanation: >-
+      Equivalence is demonstrated by reflexivity (A→A), symmetry (B→A after A→B) and
+      transitivity (A→C after A→B and B→C). Teaching a few relations and testing for the
+      derived ones is the basis of equivalence-based instruction.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [stimulus-equivalence, matching-to-sample]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-c8-validity-reliability
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      Two observers agree 96% of the time on their partial-interval records of a
+      student's off-task behavior. The supervisor's actual concern is how much of the
+      class period the student spends off task. Which statement is most accurate?
+    options:
+      - id: a
+        text: The data are reliable but may not be valid for the question, because partial-interval recording overestimates duration
+        isCorrect: true
+        rationale: >-
+          High agreement shows consistency between observers, not that the measure
+          answers the question. Partial-interval data overstate time spent, so a duration
+          measure would be more valid here.
+      - id: b
+        text: High agreement proves the data are valid
+        isCorrect: false
+        rationale: >-
+          Two observers can agree perfectly on a measure that does not answer the
+          question being asked.
+      - id: c
+        text: The data are neither reliable nor valid
+        isCorrect: false
+        rationale: >-
+          96% agreement is strong evidence of reliability.
+      - id: d
+        text: Agreement should be raised to 100% before the data are used
+        isCorrect: false
+        rationale: >-
+          Perfect agreement is not required, and raising it would not address the
+          validity problem.
+    explanation: >-
+      Reliability is consistency; validity is whether the measure captures what you
+      actually want to know. Interobserver agreement speaks to the former only. Choosing
+      a measurement dimension that matches the question is what makes data valid.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [interobserver-agreement, partial-interval-recording, duration]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-c11-trend-in-baseline
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      A baseline for a behavior targeted for reduction shows a clear decreasing trend
+      across six sessions. The analyst is considering starting treatment. What is the
+      most appropriate decision?
+    options:
+      - id: a
+        text: Continue baseline until the trend stabilizes, because a decreasing baseline cannot show that treatment caused a further decrease
+        isCorrect: true
+        rationale: >-
+          A baseline already moving in the therapeutic direction predicts improvement
+          without treatment, so any post-treatment decrease would be uninterpretable.
+      - id: b
+        text: Start treatment immediately to take advantage of the momentum
+        isCorrect: false
+        rationale: >-
+          Starting now sacrifices the ability to attribute change to treatment.
+      - id: c
+        text: Start treatment because six sessions is always enough baseline
+        isCorrect: false
+        rationale: >-
+          Baseline length is determined by stability and trend, not by a fixed count.
+      - id: d
+        text: Abandon the target because the behavior is resolving on its own
+        isCorrect: false
+        rationale: >-
+          A short-term trend does not show the behavior will reach acceptable levels or
+          stay there; it shows the baseline is not yet ready.
+    explanation: >-
+      Visual analysis of baseline looks for stability and for trend direction. A baseline
+      trending toward the intended outcome is extended, if it is safe to do so, until the
+      trend flattens or reverses; otherwise the treatment effect cannot be separated from
+      the trend.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [baseline, trend, visual-analysis]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-c12-integrity-interpretation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.12 }
+    type: single-best-answer
+    stem: >-
+      A reduction plan shows no effect after four weeks. Integrity checks over the same
+      period show the plan's steps were implemented correctly 40% of the time. What is
+      the most defensible conclusion?
+    options:
+      - id: a
+        text: The plan has not yet been tested, because it was not delivered as designed
+        isCorrect: true
+        rationale: >-
+          Outcome data can only be attributed to a plan that was actually implemented.
+          At 40% integrity the intervention in effect was something else.
+      - id: b
+        text: The plan is ineffective and should be replaced
+        isCorrect: false
+        rationale: >-
+          Nothing about the plan's effectiveness can be concluded from four weeks of
+          largely incorrect implementation.
+      - id: c
+        text: The function of the behavior was misidentified
+        isCorrect: false
+        rationale: >-
+          The assessment may or may not be right; the integrity data do not bear on it
+          either way.
+      - id: d
+        text: Integrity data are irrelevant when outcomes are poor
+        isCorrect: false
+        rationale: >-
+          Integrity data are precisely what make poor outcomes interpretable.
+    explanation: >-
+      Treatment integrity measurement is how the independent variable is verified. When
+      integrity is low, the first decision is about implementation — retraining,
+      simplifying, or revising the plan — not about the plan's effectiveness.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [treatment-integrity, independent-variable, treatment-drift]
+    citations:
+      - sourceId: peterson-homer-wonderlich-1982
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-c6-mts-when
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      A teacher with 25 students wants to record a target student's on-task behavior
+      while continuing to teach. Which procedure best balances practicality and accuracy
+      for a behavior that occurs for long stretches?
+    options:
+      - id: a
+        text: Momentary time sampling with intervals of a few minutes
+        isCorrect: true
+        rationale: >-
+          Momentary time sampling requires only a glance at the end of each interval and
+          is reasonably accurate for behavior that occurs in extended bouts.
+      - id: b
+        text: Continuous duration recording with a stopwatch
+        isCorrect: false
+        rationale: >-
+          Timing every bout is the most accurate option but is not feasible for someone
+          teaching a class.
+      - id: c
+        text: Partial-interval recording with 10-second intervals
+        isCorrect: false
+        rationale: >-
+          Ten-second intervals demand continuous attention, and partial-interval
+          overestimates behavior that occurs in long bouts.
+      - id: d
+        text: Asking the student at the end of class how on task they were
+        isCorrect: false
+        rationale: >-
+          Self-report is an indirect measure and does not answer the question with
+          observational data.
+    explanation: >-
+      Measurement is selected for the dimension of interest, the constraints of the
+      setting and the bias each method carries. Momentary time sampling is the least
+      demanding for a working teacher and tends to estimate long-bout behavior well.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [momentary-time-sampling, discontinuous-measurement, partial-interval-recording]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-c1-operational-definition
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      Which definition of "aggression" is most adequate for data collection?
+    options:
+      - id: a
+        text: Any instance of the student's open hand or fist making forceful contact with another person's body
+        isCorrect: true
+        rationale: >-
+          It describes observable movement and its result, sets a boundary, and two
+          observers could apply it the same way.
+      - id: b
+        text: Any behavior that is hostile or intended to hurt someone
+        isCorrect: false
+        rationale: >-
+          Intent and hostility are inferences, not observations.
+      - id: c
+        text: Being aggressive toward peers or adults
+        isCorrect: false
+        rationale: >-
+          It restates the label without saying what the observer would see.
+      - id: d
+        text: Physical acts that upset other students
+        isCorrect: false
+        rationale: >-
+          It depends on other people's reactions, which vary from moment to moment.
+    explanation: >-
+      An operational definition is observable, complete and unambiguous: it says what
+      counts and, by implication, what does not. Definitions that lean on intent or on
+      others' reactions produce unreliable data.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, topography]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-d7-reversal-appropriate
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      For which of the following targets would a reversal design be LEAST appropriate?
+    negated: true
+    options:
+      - id: a
+        text: Teaching a child to read sight words
+        isCorrect: true
+        rationale: >-
+          A learned skill does not disappear when teaching is withdrawn, so there is no
+          reversal to observe. Multiple-baseline designs suit irreversible targets.
+      - id: b
+        text: Reducing out-of-seat behavior with noncontingent attention
+        isCorrect: false
+        rationale: >-
+          Behavior maintained by a consequence typically returns when the consequence is
+          withdrawn, which a reversal can show.
+      - id: c
+        text: Increasing a worker's productivity with a token system
+        isCorrect: false
+        rationale: >-
+          Productivity is likely to fall when tokens are withdrawn, making a reversal
+          feasible.
+      - id: d
+        text: Reducing talking-out with a group contingency
+        isCorrect: false
+        rationale: >-
+          Talking-out is likely to return when the contingency is removed.
+    explanation: >-
+      Reversal designs require behavior that will change back when treatment is
+      withdrawn. Skills, once learned, generally do not, and there are also cases where
+      withdrawing treatment would be unsafe or unethical. Those call for a multiple
+      baseline instead.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [reversal-design, multiple-baseline-design]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-d8-multiple-baseline-logic
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.8 }
+    type: single-best-answer
+    stem: >-
+      In a multiple baseline across three settings, the target behavior improves in
+      setting 1 when treatment starts there, and at the same time improves in settings 2
+      and 3, where treatment has not yet begun. What does this pattern suggest?
+    options:
+      - id: a
+        text: Experimental control has not been demonstrated; something other than the treatment may explain the change, or the effect generalized across settings
+        isCorrect: true
+        rationale: >-
+          The logic of the design depends on untreated baselines staying stable until
+          treatment reaches them. Simultaneous change weakens the demonstration.
+      - id: b
+        text: The treatment is unusually powerful
+        isCorrect: false
+        rationale: >-
+          It may be, but the design can no longer show that the treatment, rather than a
+          coincident event, produced the change.
+      - id: c
+        text: The design worked as intended
+        isCorrect: false
+        rationale: >-
+          The intended pattern is staggered change, one baseline at a time.
+      - id: d
+        text: Treatment should be withdrawn from setting 1
+        isCorrect: false
+        rationale: >-
+          A reversal is a different design and may not be appropriate; the issue is
+          interpreting what happened.
+    explanation: >-
+      A multiple baseline demonstrates control when each baseline changes only when its
+      treatment begins. Change in untreated baselines is a threat to that logic, whether
+      it comes from generalization or from an outside event, and it calls for caution in
+      interpretation.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [multiple-baseline-design, experimental-control, confounding-variable]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-d3-history-threat
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.3 }
+    type: single-best-answer
+    stem: >-
+      A student's disruptions drop sharply the week a new plan begins. That same week
+      a disruptive classmate transfers to another school. Which threat to internal
+      validity does the classmate's departure represent?
+    options:
+      - id: a
+        text: A confounding event coinciding with the treatment
+        isCorrect: true
+        rationale: >-
+          An outside event that occurs alongside the intervention and could account for
+          the change is a confound, sometimes called a history threat.
+      - id: b
+        text: Observer drift
+        isCorrect: false
+        rationale: >-
+          Observer drift is a change in how the behavior is scored, not an outside
+          event.
+      - id: c
+        text: Reactivity
+        isCorrect: false
+        rationale: >-
+          Reactivity is behavior change caused by being observed.
+      - id: d
+        text: Ratio strain
+        isCorrect: false
+        rationale: >-
+          Ratio strain is a schedule effect, not a validity threat.
+    explanation: >-
+      Internal validity is threatened by any variable that changes along with the
+      treatment. Single-case designs control such threats through replication — a
+      withdrawal, or staggered introduction across baselines — which an A-B comparison
+      cannot provide.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [confounding-variable, internal-validity, ab-design]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-d9-atd-use
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.9 }
+    type: single-best-answer
+    stem: >-
+      An analyst wants to compare two prompting procedures for the same learner and the
+      same skill within a few weeks. Which design is most suitable?
+    options:
+      - id: a
+        text: A multielement (alternating treatments) design
+        isCorrect: true
+        rationale: >-
+          Rapidly alternating the two procedures and comparing the separation between
+          their data paths is exactly what the multielement design does.
+      - id: b
+        text: A reversal design
+        isCorrect: false
+        rationale: >-
+          A reversal compares treatment with no treatment and would take longer; it is
+          not designed for comparing two active procedures.
+      - id: c
+        text: A changing criterion design
+        isCorrect: false
+        rationale: >-
+          A changing criterion steps a performance requirement; it does not compare
+          procedures.
+      - id: d
+        text: A multiple baseline across behaviors
+        isCorrect: false
+        rationale: >-
+          A multiple baseline demonstrates the effect of one intervention across targets;
+          it does not directly compare two.
+    explanation: >-
+      The multielement design alternates conditions quickly, often session by session,
+      and compares them by the separation of their data paths. It is the design for
+      comparing treatments and it underlies most functional analyses.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [multielement-design, changing-criterion-design]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-d4-baseline-logic
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.4 }
+    type: single-best-answer
+    stem: >-
+      In an A-B-A-B design, what is the role of the second A phase?
+    options:
+      - id: a
+        text: To verify the prediction made from the first baseline by showing behavior returns toward baseline levels when treatment is withdrawn
+        isCorrect: true
+        rationale: >-
+          Baseline logic involves prediction, verification and replication; the return
+          to baseline verifies that the first baseline's prediction still holds.
+      - id: b
+        text: To give the participant a rest from treatment
+        isCorrect: false
+        rationale: >-
+          The withdrawal serves the experimental logic, not participant comfort.
+      - id: c
+        text: To replicate the treatment effect
+        isCorrect: false
+        rationale: >-
+          Replication of the treatment effect is the role of the second B phase.
+      - id: d
+        text: To collect interobserver agreement data
+        isCorrect: false
+        rationale: >-
+          Agreement data are collected across all phases, not in one phase specifically.
+    explanation: >-
+      Single-case designs demonstrate control through baseline logic: the first baseline
+      predicts what would happen without treatment, the return to baseline verifies that
+      prediction, and the reintroduction of treatment replicates the effect.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [single-case-design, reversal-design, experimental-control, replication]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-e7-multiple-relationship
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.7 }
+    type: single-best-answer
+    stem: >-
+      A behavior analyst discovers that a new client's parent is also the analyst's
+      child's soccer coach. Which response best manages the situation?
+    options:
+      - id: a
+        text: Recognize the multiple relationship, discuss it openly, and arrange for another analyst to take the case if the relationship could affect judgment
+        isCorrect: true
+        rationale: >-
+          The code requires practitioners to identify and avoid or resolve multiple
+          relationships that could impair objectivity, with transparency about the
+          conflict.
+      - id: b
+        text: Continue without mentioning it, since soccer is unrelated to services
+        isCorrect: false
+        rationale: >-
+          Undisclosed overlapping relationships are exactly what the standards guard
+          against.
+      - id: c
+        text: Pull the analyst's child from the soccer team
+        isCorrect: false
+        rationale: >-
+          The analyst's family should not bear the cost; the professional relationship
+          is the one to manage.
+      - id: d
+        text: Offer the parent a discount on services to keep things friendly
+        isCorrect: false
+        rationale: >-
+          A financial favor adds a second conflict of interest.
+    explanation: >-
+      Multiple relationships are not always avoidable, especially in small communities.
+      The obligation is to recognize them, disclose them, and resolve them in the client's
+      interest — which may mean transferring the case.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [dual-relationship, conflict-of-interest, ethics-code]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-e3-competence
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      An analyst whose experience is entirely with young children in early intervention
+      is asked to take on an adult client with a severe feeding problem. Which action is
+      most consistent with the ethics code?
+    options:
+      - id: a
+        text: Obtain training and supervision from someone experienced in that area before providing services, or refer the client
+        isCorrect: true
+        rationale: >-
+          Practitioners work within their scope of competence and expand it only with
+          appropriate training and supervision; otherwise they refer.
+      - id: b
+        text: Accept the case because a BCBA is qualified to treat any behavior
+        isCorrect: false
+        rationale: >-
+          The credential defines scope of practice, not an individual's scope of
+          competence.
+      - id: c
+        text: Accept the case and read a textbook chapter on feeding
+        isCorrect: false
+        rationale: >-
+          Reading is a start, not competence, in an area with real risk of harm.
+      - id: d
+        text: Refuse and tell the family no one can help
+        isCorrect: false
+        rationale: >-
+          A referral to a competent provider is the appropriate alternative to accepting
+          the case.
+    explanation: >-
+      Scope of competence is personal and narrower than the credential's scope of
+      practice. Feeding disorders carry medical risk and require specific training; the
+      ethical routes are supervised skill development or referral.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-competence, scope-of-practice]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Competence
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-e5-testimonials
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.5 }
+    type: single-best-answer
+    stem: >-
+      A clinic wants to put quotes from satisfied families on its website. Which
+      practice is consistent with the ethics code?
+    options:
+      - id: a
+        text: Do not solicit testimonials from current clients; any testimonial used must be from a former client with informed consent and clear disclosure
+        isCorrect: true
+        rationale: >-
+          The code prohibits soliciting testimonials from current clients because of the
+          power imbalance, and it sets conditions on how others may be used.
+      - id: b
+        text: Ask current families to write reviews in exchange for a session discount
+        isCorrect: false
+        rationale: >-
+          Soliciting from current clients, and offering an incentive, both violate the
+          public-statement standards.
+      - id: c
+        text: Use quotes without names, so consent is not needed
+        isCorrect: false
+        rationale: >-
+          Anonymizing does not remove the consent requirement or the solicitation
+          problem.
+      - id: d
+        text: Write generic testimonials in-house and attribute them to families
+        isCorrect: false
+        rationale: >-
+          Fabricated statements are false public statements.
+    explanation: >-
+      Public statements must be truthful, must not exploit clients, and must respect
+      consent. Current clients cannot freely refuse a request from the people providing
+      their services, which is why solicitation from them is prohibited.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [public-statement, informed-consent]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Public statements and testimonials
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-e6-discontinuation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.6 }
+    type: single-best-answer
+    stem: >-
+      An analyst is leaving an agency in three weeks and carries a caseload of eight
+      clients. Which set of actions best meets the obligation to protect continuity of
+      services?
+    options:
+      - id: a
+        text: Notify clients and the agency promptly, document each client's current status and plan, and coordinate handover to a qualified provider
+        isCorrect: true
+        rationale: >-
+          Planned transition with notice, documentation and handover is what the code
+          requires when services change providers.
+      - id: b
+        text: Say nothing until the last day to avoid unsettling families
+        isCorrect: false
+        rationale: >-
+          Withholding notice removes the time needed for a safe transition.
+      - id: c
+        text: Take the client files to the new job to keep serving the families
+        isCorrect: false
+        rationale: >-
+          Records belong to the client and the agency; removing them is a confidentiality
+          and legal breach.
+      - id: d
+        text: Leave a note on each file and let the agency sort it out
+        isCorrect: false
+        rationale: >-
+          A note is not a transition plan and does not involve the families.
+    explanation: >-
+      The code treats abrupt departure without transition planning as a violation
+      serious enough to require self-reporting. Continuity of care means the client is
+      never left without services or without a plan for who provides them next.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [continuity-of-care, self-reporting]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Transitioning and discontinuing services
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: bcba-e9-cultural-humility
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.9 }
+    type: single-best-answer
+    stem: >-
+      Which behavior best reflects cultural humility during an initial assessment with
+      a family whose background differs from the analyst's?
+    options:
+      - id: a
+        text: Asking the family what daily routines, goals and interactions matter to them, and examining the analyst's own assumptions before proposing targets
+        isCorrect: true
+        rationale: >-
+          Cultural humility is an ongoing stance of learning from the family and
+          self-examination, rather than applying assumptions about their culture.
+      - id: b
+        text: Applying what the analyst read about the family's culture to predict their preferences
+        isCorrect: false
+        rationale: >-
+          General knowledge about a group is not knowledge about this family, and
+          applying it as a template is the assumption humility avoids.
+      - id: c
+        text: Treating every family the same way to be fair
+        isCorrect: false
+        rationale: >-
+          Uniform treatment ignores differences in values and context that affect what
+          goals and procedures fit.
+      - id: d
+        text: Avoiding any discussion of culture so as not to offend
+        isCorrect: false
+        rationale: >-
+          Silence leaves the analyst's assumptions unexamined and the family's values
+          unheard.
+    explanation: >-
+      Cultural humility differs from cultural competence in being a continuous practice
+      rather than a body of facts: learning from each family, noticing one's own biases,
+      and adjusting. Responsiveness is the concrete adaptation that follows.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [cultural-humility, cultural-responsiveness]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Cultural responsiveness
+    attestation: *att
+    review: *rev
+    provenance: *prov

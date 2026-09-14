@@ -1,0 +1,486 @@
+# RBT practice questions — area A, Data Collection and Graphing.
+#
+# Every question, option and rationale is original. Nothing here is drawn from any
+# examination, retired or otherwise. The `taskRef` is a domain letter because the RBT
+# outline's task codes have not yet been verified against the primary document.
+
+questions:
+  - id: rbt-a-rate-per-hour
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A technician counts 12 instances of a target behavior during a 40-minute session.
+      Which value should be recorded as the rate per hour?
+    options:
+      - id: a
+        text: '12 per hour'
+        isCorrect: false
+        rationale: >-
+          Twelve is the count for 40 minutes. Rate has to be converted to the time unit
+          asked for, and 40 minutes is not an hour.
+      - id: b
+        text: '18 per hour'
+        isCorrect: true
+        rationale: >-
+          Twelve in 40 minutes is 0.3 per minute, which is 18 per 60 minutes. Dividing
+          count by time and scaling to the unit is what makes sessions of different
+          lengths comparable.
+      - id: c
+        text: '8 per hour'
+        isCorrect: false
+        rationale: >-
+          This would be the result of scaling in the wrong direction. A rate per hour
+          from a 40-minute count must be larger than the count, not smaller.
+      - id: d
+        text: '0.3 per hour'
+        isCorrect: false
+        rationale: >-
+          0.3 is the rate per minute. It has to be multiplied by 60 to give a rate per
+          hour.
+    explanation: >-
+      Rate is count divided by observation time. Twelve responses in 40 minutes is 12/40
+      = 0.3 per minute, and 0.3 × 60 = 18 per hour. Reporting rate rather than raw count
+      is what lets a 40-minute session be compared with a 60-minute one.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [frequency-and-rate, count]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from standard measurement practice; no examination
+        material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-a-partial-interval-bias
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A learner's talking-out is recorded with 10-second partial-interval recording. The
+      learner talks out briefly once in most intervals. Compared with the true amount of
+      time spent talking out, the partial-interval data will most likely be:
+    options:
+      - id: a
+        text: An overestimate
+        isCorrect: true
+        rationale: >-
+          Partial-interval recording scores the whole interval if the behavior occurs at
+          any point in it, so a single brief response fills a 10-second interval and the
+          percentage of intervals overstates the time the behavior actually occupied.
+      - id: b
+        text: An underestimate
+        isCorrect: false
+        rationale: >-
+          Underestimation is the characteristic bias of whole-interval recording, which
+          requires the behavior to last the entire interval to be scored.
+      - id: c
+        text: Exactly accurate
+        isCorrect: false
+        rationale: >-
+          Any interval method is a sample and carries a known bias; only continuous
+          duration recording would capture the true time.
+      - id: d
+        text: Impossible to predict
+        isCorrect: false
+        rationale: >-
+          The direction of the bias is predictable from how the method scores an
+          interval, which is why the method is chosen deliberately.
+    explanation: >-
+      Partial-interval recording marks an interval as positive if the behavior occurred
+      at any point during it. Brief responses therefore count for whole intervals, and the
+      result tends to overestimate duration. It is chosen when the goal is to catch
+      behavior that should decrease, because an overestimate errs on the side of noticing.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [partial-interval-recording, whole-interval-recording, discontinuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-whole-interval-use
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A supervisor wants to increase the time a learner stays engaged with a puzzle and
+      asks for interval data that will not credit brief, fleeting engagement. Which
+      procedure best fits?
+    options:
+      - id: a
+        text: Whole-interval recording
+        isCorrect: true
+        rationale: >-
+          Whole-interval recording scores an interval only if the behavior lasted the
+          entire interval, so brief engagement is not credited. It suits behavior meant
+          to increase in duration.
+      - id: b
+        text: Partial-interval recording
+        isCorrect: false
+        rationale: >-
+          Partial-interval would credit an interval for even a second of engagement,
+          which is exactly what the supervisor wants to avoid.
+      - id: c
+        text: Frequency recording
+        isCorrect: false
+        rationale: >-
+          A count of how many times engagement started says nothing about how long it
+          lasted.
+      - id: d
+        text: Permanent-product recording
+        isCorrect: false
+        rationale: >-
+          Engagement leaves no lasting product to inspect afterward.
+    explanation: >-
+      Whole-interval recording tends to underestimate behavior, which is the safe
+      direction of error when a behavior is meant to increase: the learner is credited
+      only for sustained engagement. Partial-interval is the mirror image and suits
+      behavior meant to decrease.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [whole-interval-recording, partial-interval-recording]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-momentary-time-sampling
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      Every 5 minutes a timer sounds and the technician looks up and records whether the
+      learner is on task at that exact moment, then returns to teaching. Which procedure
+      is this?
+    options:
+      - id: a
+        text: Momentary time sampling
+        isCorrect: true
+        rationale: >-
+          Recording whether the behavior is occurring at the instant each interval ends,
+          and nothing in between, is momentary time sampling. It is the least demanding
+          method for someone who is also teaching.
+      - id: b
+        text: Whole-interval recording
+        isCorrect: false
+        rationale: >-
+          Whole-interval requires watching the entire interval to confirm the behavior
+          never stopped; this technician only looks at the end.
+      - id: c
+        text: Duration recording
+        isCorrect: false
+        rationale: >-
+          Duration recording times how long each episode lasts, which this procedure
+          does not do.
+      - id: d
+        text: Latency recording
+        isCorrect: false
+        rationale: >-
+          Latency measures the delay from an instruction to the start of a response,
+          which is not what is being recorded here.
+    explanation: >-
+      Momentary time sampling records only whether the behavior is occurring at the
+      moment each interval ends. Because the observer need not watch continuously, it is
+      practical for a technician who is teaching at the same time, at the cost of missing
+      whatever happens between checks.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [momentary-time-sampling, discontinuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-latency-vs-duration
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A plan asks the technician to record how long it takes a learner to begin putting
+      away toys after being told to clean up. Which dimension is being measured?
+    options:
+      - id: a
+        text: Latency
+        isCorrect: true
+        rationale: >-
+          The time from the instruction to the start of the response is latency.
+      - id: b
+        text: Duration
+        isCorrect: false
+        rationale: >-
+          Duration would be how long the clean-up lasted once it started, not how long
+          it took to begin.
+      - id: c
+        text: Interresponse time
+        isCorrect: false
+        rationale: >-
+          Interresponse time is the gap between two responses of the same kind, not the
+          gap between an instruction and a response.
+      - id: d
+        text: Rate
+        isCorrect: false
+        rationale: >-
+          Rate is count per unit of time; nothing is being counted here.
+    explanation: >-
+      Latency is the time between an antecedent — here, the instruction — and the
+      beginning of the response. Duration starts once the response begins. Confusing the
+      two is common because both are measured with a stopwatch.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [latency, duration, interresponse-time]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-ioa-purpose
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A second observer records the same session as the technician and the two records
+      are compared. What is the main purpose of this comparison?
+    options:
+      - id: a
+        text: To check whether the behavior definition is being applied consistently
+        isCorrect: true
+        rationale: >-
+          Interobserver agreement estimates whether two people using the same definition
+          get the same data. Low agreement points to a vague definition or observer drift.
+      - id: b
+        text: To find out whether the intervention is working
+        isCorrect: false
+        rationale: >-
+          Whether the intervention works is judged from the graph across conditions, not
+          from agreement between two observers on one session.
+      - id: c
+        text: To evaluate the technician's job performance
+        isCorrect: false
+        rationale: >-
+          Agreement is about the measurement system. A supervisor may use it in
+          feedback, but its purpose is data quality.
+      - id: d
+        text: To decide the learner's next target
+        isCorrect: false
+        rationale: >-
+          Target selection comes from assessment results, not from observer agreement.
+    explanation: >-
+      Interobserver agreement is a check on the believability of the data: if two
+      independent observers do not agree, the data cannot be trusted regardless of what
+      they show. It is calculated regularly, and a low score prompts retraining or a
+      clearer definition.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [interobserver-agreement, observer-drift, operational-definition]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-permanent-product
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      At the end of a work period the technician counts the number of completed math
+      problems on the learner's worksheet. Which measurement approach is this?
+    options:
+      - id: a
+        text: Permanent-product recording
+        isCorrect: true
+        rationale: >-
+          The completed problems are a lasting result of the behavior that can be
+          counted after the fact, which is the defining feature of a permanent product.
+      - id: b
+        text: Momentary time sampling
+        isCorrect: false
+        rationale: >-
+          Time sampling records whether behavior is occurring at set moments; nothing
+          here is being observed as it happens.
+      - id: c
+        text: Duration recording
+        isCorrect: false
+        rationale: >-
+          No timing of the behavior is involved.
+      - id: d
+        text: Partial-interval recording
+        isCorrect: false
+        rationale: >-
+          No intervals are being scored.
+    explanation: >-
+      Permanent-product measurement uses the lasting change a behavior leaves in the
+      environment. It frees the observer from watching continuously, but it is valid only
+      when the product could not have been produced some other way — for example, by
+      another student.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [permanent-product]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-reading-a-phase-line
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      On a line graph, a vertical dashed line separates the first eight sessions from the
+      sessions that follow, and the data points are not connected across it. What does the
+      dashed line most likely indicate?
+    options:
+      - id: a
+        text: A change in the condition, such as the start of treatment
+        isCorrect: true
+        rationale: >-
+          A vertical phase-change line marks the point where conditions changed. Points
+          are deliberately not connected across it so each condition can be read on its own.
+      - id: b
+        text: A day when the learner was absent
+        isCorrect: false
+        rationale: >-
+          Absences are usually shown by a gap in the data path, not by a vertical line
+          across the whole graph.
+      - id: c
+        text: The goal level for the behavior
+        isCorrect: false
+        rationale: >-
+          A goal or criterion level is drawn as a horizontal line, not a vertical one.
+      - id: d
+        text: An error in the graph
+        isCorrect: false
+        rationale: >-
+          The line is a standard convention, not a mistake.
+    explanation: >-
+      Phase-change lines are the standard way of marking a change in conditions on a
+      behavior graph. Reading them correctly is the first step in visual analysis,
+      because the whole question is whether the data look different on the two sides of
+      the line.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [phase-change-line, line-graph, visual-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-continuous-vs-discontinuous
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      Which of the following is an example of continuous measurement?
+    options:
+      - id: a
+        text: Tallying every request the learner makes during the session
+        isCorrect: true
+        rationale: >-
+          Recording every instance of the behavior for the whole session is continuous
+          measurement; count and rate are continuous measures.
+      - id: b
+        text: Noting at the end of each minute whether any requesting occurred
+        isCorrect: false
+        rationale: >-
+          Scoring intervals is discontinuous: it samples the behavior rather than
+          recording each instance.
+      - id: c
+        text: Checking whether the learner is requesting when a timer sounds
+        isCorrect: false
+        rationale: >-
+          That is momentary time sampling, a discontinuous method.
+      - id: d
+        text: Asking the parent how often the learner requested at home
+        isCorrect: false
+        rationale: >-
+          A caregiver's report is an indirect measure, not a direct one of either kind.
+    explanation: >-
+      Continuous measurement records every occurrence of the target behavior during the
+      observation. Discontinuous methods — interval recording and time sampling — record
+      only whether the behavior occurred in or at the end of intervals, trading accuracy
+      for practicality.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [continuous-measurement, discontinuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-trials-to-criterion
+    credential: RBT
+    taskRef: { credential: RBT, code: A }
+    type: single-best-answer
+    stem: >-
+      A supervisor wants to know how many teaching opportunities it takes a learner to
+      reach 90 percent correct on each new sight word, so that learning across words can
+      be compared. Which measure answers that question directly?
+    options:
+      - id: a
+        text: Trials to criterion
+        isCorrect: true
+        rationale: >-
+          Trials to criterion counts the opportunities needed to reach a set performance
+          standard, which is exactly what is being asked.
+      - id: b
+        text: Percentage correct per session
+        isCorrect: false
+        rationale: >-
+          Percentage correct describes accuracy on one day; it does not say how long
+          mastery took.
+      - id: c
+        text: Rate of correct responses
+        isCorrect: false
+        rationale: >-
+          Rate describes how fast responses come, not how many were needed to master
+          the word.
+      - id: d
+        text: Duration of each session
+        isCorrect: false
+        rationale: >-
+          Session length says nothing about learning.
+    explanation: >-
+      Trials to criterion is a measure of how quickly a skill is acquired. When it falls
+      across successive targets — the fourth word taking far fewer trials than the first
+      — it shows the learner is getting better at learning, which a per-session accuracy
+      score cannot show.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [trials-to-criterion, percentage]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

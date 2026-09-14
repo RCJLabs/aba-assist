@@ -35,6 +35,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [positive-reinforcement, motivating-operation]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: B }
+  - { credential: BCBA, code: F.4 }
 citations:
   - sourceId: deleon-iwata-1996
     useType: fact-reference

@@ -229,10 +229,21 @@ main {
 	}
 }
 
-/* Windows High Contrast: never rely on our own colours to convey meaning. */
+/*
+ * Windows High Contrast: never rely on our own colours to convey meaning.
+ *
+ * The system palette wins over every component's own button colours. Without the
+ * `!important`, a scoped `.primary { background: var(--accent) }` outranks this rule and
+ * paints our navy on the forced black canvas — 1.1:1 contrast, which axe rightly fails.
+ */
 @media (forced-colors: active) {
 	button,
 	.button,
+	a.button {
+		background: ButtonFace !important;
+		color: ButtonText !important;
+		border: 1px solid ButtonBorder !important;
+	}
 	.card {
 		border: 1px solid ButtonBorder;
 	}

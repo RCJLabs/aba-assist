@@ -28,7 +28,8 @@
 <p class="intro">
 	This page tells you who to contact and what to write down. It deliberately does not tell you
 	what to do physically, and that is not an omission — see
-	<a href="#why">why below</a>.
+	<a href="#why">why below</a>. For everyday situations that are not emergencies, see
+	<a href={resolve('/scenarios')}>Situations</a>.
 </p>
 
 {#each escalationScenarios as s (s.id)}

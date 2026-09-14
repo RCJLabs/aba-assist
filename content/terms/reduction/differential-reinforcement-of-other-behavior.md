@@ -30,9 +30,12 @@ nonExamples:
       Giving a reward on a fixed schedule regardless of what happened, which is not
       differential at all.
     setting: home
-contrastWith: [differential-reinforcement-of-alternative-behavior]
+contrastWith: [differential-reinforcement-of-alternative-behavior, noncontingent-reinforcement]
 seeAlso: [extinction, positive-reinforcement]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: G.2 }
 citations:
   - sourceId: iwata-1982-1994
     useType: fact-reference

@@ -9,6 +9,7 @@
 	import ReviewBanner from '$lib/components/ReviewBanner.svelte';
 	import UpdatePrompt from '$lib/components/UpdatePrompt.svelte';
 	import { settings } from '$lib/state/settings.svelte.js';
+	import { filters } from '$lib/state/filters.svelte.js';
 	import { pwa } from '$lib/state/pwa.svelte.js';
 
 	let { children } = $props();
@@ -16,6 +17,7 @@
 
 	onMount(() => {
 		settings.hydrate();
+		filters.hydrate();
 		void pwa.register();
 	});
 
@@ -37,9 +39,9 @@
 	});
 
 	/*
-	 * Four primary destinations, deliberately. A fifth does not fit at 320px without
-	 * shrinking labels below a comfortable reading size, so Settings lives in the header
-	 * and About is reached from Settings and from the home page.
+	 * Five primary destinations, with short labels so they fit at 320px (64px each, all
+	 * still above the 44px target). Settings lives in the header; Situations, Exams and
+	 * About are reached from the home page and from the Urgent page.
 	 *
 	 * Route ids, resolved in the template: `resolve` applies the base path itself, which
 	 * is why nothing in this app concatenates `base` by hand. That matters more than it
@@ -48,8 +50,9 @@
 	 */
 	const nav = [
 		{ id: '/', label: 'Search', urgent: false },
-		{ id: '/glossary', label: 'Glossary', urgent: false },
-		{ id: '/scenarios', label: 'Situations', urgent: false },
+		{ id: '/glossary', label: 'Terms', urgent: false },
+		{ id: '/study', label: 'Study', urgent: false },
+		{ id: '/quiz', label: 'Quiz', urgent: false },
 		{ id: '/help', label: 'Urgent', urgent: true }
 	] as const;
 
@@ -213,7 +216,7 @@
 		padding: 0.5rem 0.25rem;
 		text-decoration: none;
 		color: var(--text);
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 	}
 
 	/* Never colour alone: the current page is also marked with aria-current. */

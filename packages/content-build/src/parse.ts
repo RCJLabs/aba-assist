@@ -67,7 +67,10 @@ export async function parseYamlFile(
 	const file = toPosix(relative(root, path));
 	const raw = await readFile(path, 'utf8');
 	try {
-		return { data: parseYaml(raw), issues: [] };
+		// Anchors are how one attestation block is shared across a hundred outline tasks; the
+		// library's default alias ceiling (100) is a defence against untrusted input, which
+		// this is not.
+		return { data: parseYaml(raw, { maxAliasCount: 2000 }), issues: [] };
 	} catch (e) {
 		return { issues: [error('parse/yaml', `${(e as Error).message}`, file)] };
 	}

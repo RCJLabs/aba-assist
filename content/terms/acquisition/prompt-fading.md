@@ -35,6 +35,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [discriminative-stimulus, positive-reinforcement]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: G.8 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

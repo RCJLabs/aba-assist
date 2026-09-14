@@ -29,6 +29,9 @@ nonExamples:
 contrastWith: [latency]
 seeAlso: [frequency-and-rate]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: BCBA, code: C.4 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

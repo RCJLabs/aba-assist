@@ -34,9 +34,14 @@ nonExamples:
       A stimulus a learner has never encountered before, which cannot yet signal anything
       about reinforcement.
     setting: any
-contrastWith: [motivating-operation]
+contrastWith: [motivating-operation, s-delta]
 seeAlso: [prompt-fading, positive-reinforcement]
 searchBoost: 1.4
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: B.11 }
+  - { credential: BCBA, code: B.16 }
+  - { credential: BCBA, code: G.5 }
 citations:
   - sourceId: michael-1982
     useType: fact-reference

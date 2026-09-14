@@ -32,6 +32,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [scope-of-practice, session-note]
 searchBoost: 1.4
+taskRefs:
+  - { credential: RBT, code: F }
+  - { credential: BCBA, code: E.4 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

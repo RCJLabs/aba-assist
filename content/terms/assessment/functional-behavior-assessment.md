@@ -33,10 +33,14 @@ nonExamples:
       Finding out which snacks a learner prefers. That is a preference assessment and
       answers a different question.
     setting: clinic
-contrastWith: []
+contrastWith: [functional-analysis]
 seeAlso:
   [preference-assessment, extinction, differential-reinforcement-of-alternative-behavior]
 searchBoost: 1.4
+taskRefs:
+  - { credential: RBT, code: B }
+  - { credential: BCBA, code: F.5 }
+  - { credential: BCBA, code: F.6 }
 citations:
   - sourceId: hanley-iwata-mccord-2003
     useType: fact-reference

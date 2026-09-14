@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import ContentFilters from '$lib/components/ContentFilters.svelte';
 	import { termsByCategory, CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
+	import { filters } from '$lib/state/filters.svelte.js';
 
-	const grouped = termsByCategory();
-	const categories = [...grouped.keys()].sort((a, b) =>
-		(CATEGORY_LABELS[a] ?? a).localeCompare(CATEGORY_LABELS[b] ?? b)
+	const visible = $derived(termIndex.filter((t) => filters.matches(t)));
+	const grouped = $derived(termsByCategory(visible));
+	const categories = $derived(
+		[...grouped.keys()].sort((a, b) =>
+			(CATEGORY_LABELS[a] ?? a).localeCompare(CATEGORY_LABELS[b] ?? b)
+		)
 	);
 </script>
 
@@ -22,9 +27,29 @@
 	example, a non-example, and the sources it was written from.
 </p>
 
+<ContentFilters label="Filter the glossary" />
+
+<p class="count" aria-live="polite">
+	{#if filters.active}
+		Showing {visible.length} of {termIndex.length} terms
+		{#if filters.describe()}— {filters.describe()}{/if}
+	{:else}
+		All {termIndex.length} terms
+	{/if}
+</p>
+
+{#if visible.length === 0}
+	<p class="empty">
+		Nothing is tagged to that combination yet. Try a different domain or category, or
+		<button type="button" class="link" onclick={() => filters.clear()}
+			>clear the filters</button
+		>.
+	</p>
+{/if}
+
 {#each categories as c (c)}
 	<section id={c}>
-		<h2>{CATEGORY_LABELS[c] ?? c}</h2>
+		<h2>{CATEGORY_LABELS[c] ?? c} <span class="n">({grouped.get(c)?.length ?? 0})</span></h2>
 		<ul>
 			{#each grouped.get(c) ?? [] as t (t.i)}
 				<li>
@@ -48,6 +73,35 @@
 		margin-top: 2rem;
 		padding-bottom: 0.25rem;
 		border-bottom: 2px solid var(--border);
+	}
+
+	.n {
+		font-weight: 400;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	.count {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	.empty {
+		background: var(--surface);
+		padding: 0.75rem 1rem;
+		border-radius: var(--radius);
+	}
+
+	.link {
+		background: none;
+		border: none;
+		padding: 0;
+		min-height: 0;
+		min-width: 0;
+		color: var(--link);
+		text-decoration: underline;
+		cursor: pointer;
+		font: inherit;
 	}
 
 	ul {

@@ -34,6 +34,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [chaining, prompt-fading]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: G.12 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

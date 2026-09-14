@@ -33,9 +33,12 @@ nonExamples:
       Telling a parent what a behavior means or what should change in the plan, which is
       interpretation.
     setting: home
-contrastWith: []
+contrastWith: [scope-of-competence]
 seeAlso: [assent, session-note]
 searchBoost: 1.5
+taskRefs:
+  - { credential: RBT, code: F }
+  - { credential: BCBA, code: E.3 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

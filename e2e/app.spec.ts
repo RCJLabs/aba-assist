@@ -68,7 +68,7 @@ test('focus moves to main content after navigation', async ({ page }) => {
 	await page.goto('/');
 	await page
 		.getByRole('navigation', { name: 'Main' })
-		.getByRole('link', { name: 'Glossary' })
+		.getByRole('link', { name: 'Terms' })
 		.click();
 	await expect(page).toHaveURL(/\/glossary$/);
 	const focusedId = await page.evaluate(() => document.activeElement?.id);
@@ -98,7 +98,9 @@ test('search answers before the fuzzy index is ready', async ({ page }) => {
 
 	// Asserted while the index is still loading: the instant fallback must already have
 	// answered. This is the property that makes the search usable on a slow connection.
-	await expect(page.getByRole('link', { name: /Extinction/ })).toBeVisible({ timeout: 2000 });
+	await expect(page.getByRole('link', { name: /Extinction/ }).first()).toBeVisible({
+		timeout: 2000
+	});
 });
 
 test('one-handed mode can be turned on and persists across navigation', async ({ page }) => {
@@ -106,7 +108,10 @@ test('one-handed mode can be turned on and persists across navigation', async ({
 	await page.getByRole('checkbox', { name: /One-handed mode/ }).check();
 	await expect(page.locator('html')).toHaveAttribute('data-onehanded', 'true');
 
-	await page.getByRole('link', { name: 'Glossary', exact: true }).click();
+	await page
+		.getByRole('navigation', { name: 'Main' })
+		.getByRole('link', { name: 'Terms' })
+		.click();
 	await expect(page.locator('html')).toHaveAttribute('data-onehanded', 'true');
 });
 
@@ -144,7 +149,16 @@ test('the product name is consistent across the UI and the manifest', async ({ p
 	expect(manifest.name).toBe(NAME);
 	expect(manifest.short_name).toBe(NAME);
 
-	for (const route of ['/glossary', '/scenarios', '/help', '/about', '/settings']) {
+	for (const route of [
+		'/glossary',
+		'/scenarios',
+		'/help',
+		'/about',
+		'/settings',
+		'/study',
+		'/quiz',
+		'/exams'
+	]) {
 		await page.goto(route);
 		expect(await page.title()).toContain(NAME);
 	}

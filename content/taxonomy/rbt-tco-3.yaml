@@ -6,14 +6,16 @@
 #
 # `tasks` is deliberately EMPTY and `countsVerified` is false.
 #
-# Why: bacb.com was unreachable from the environment this content was drafted in, so the
-# per-domain task counts and the individual task codes could not be confirmed against the
-# primary document. Inventing plausible-looking task codes would be exactly the failure
-# mode that makes the existing apps in this space untrustworthy. They get filled in — with
-# our own summaries — once someone reads the source PDF. Until then the build will not
-# enforce a total it knows nobody has checked, and taskRefs are simply not validated.
+# What IS verified, from the RBT Handbook (06/2026) read on 2026-09-14: 43 tasks in six
+# content areas; 75 scored plus 10 unscored questions; 90 minutes; and the per-area
+# question counts and weights below. What is NOT verified is the individual task codes,
+# because the outline document itself has not been read. Inventing plausible-looking task
+# codes would be exactly the failure mode that makes the existing apps in this space
+# untrustworthy. Until the outline is read, content is tagged to these areas at the
+# domain level (taskRefs with a bare letter), which the build validates.
 #
-# VERIFY BEFORE M1 SIGN-OFF: https://www.bacb.com/test-content-outlines-for-bacb-certifications/
+# TO FILL IN: read the RBT Test Content Outline (3rd ed.) PDF, then add each task with an
+# original summary and flip countsVerified to true.
 
 id: rbt-tco-3
 credential: RBT
@@ -28,12 +30,13 @@ totalTasks: 43
 exam:
   scoredItems: 75
   unscoredItems: 10
-  minutes: null
+  minutes: 90
 
 domains:
   - letter: A
     name: Data Collection and Graphing
     examWeightPercent: 17
+    examItems: 13
     ourDescription: >-
       Recording what actually happened during a session and turning it into something a
       supervisor can read. Covers continuous and discontinuous measurement, recording
@@ -43,6 +46,7 @@ domains:
   - letter: B
     name: Behavior Assessment
     examWeightPercent: 11
+    examItems: 8
     ourDescription: >-
       The technician's part in finding out why a behaviour happens and what a learner
       prefers — assisting with preference assessments and functional assessment
@@ -52,6 +56,7 @@ domains:
   - letter: C
     name: Behavior Acquisition
     examWeightPercent: 25
+    examItems: 19
     ourDescription: >-
       Teaching new skills. The largest domain on the exam: teaching procedures, prompting
       and prompt fading, chaining, generalisation and maintenance, and running programmes
@@ -61,6 +66,7 @@ domains:
   - letter: D
     name: Behavior Reduction
     examWeightPercent: 19
+    examItems: 14
     ourDescription: >-
       Implementing the reduction side of a behaviour plan as written — antecedent
       strategies, differential reinforcement, and the technician's role in following a
@@ -70,6 +76,7 @@ domains:
   - letter: E
     name: Documentation and Reporting
     examWeightPercent: 13
+    examItems: 10
     ourDescription: >-
       Session notes, incident reporting, and communicating with the supervisor. Covers
       what belongs in a note, objective versus subjective language, and the legal and
@@ -79,6 +86,7 @@ domains:
   - letter: F
     name: Ethics
     examWeightPercent: 15
+    examItems: 11
     ourDescription: >-
       Scope of practice, supervision requirements, confidentiality, dual relationships,
       professional boundaries, and dignity. The number of ethics tasks doubled in this
@@ -91,7 +99,9 @@ review:
   authoredOn: '2026-09-14'
   reviewedBy: null
   reviewedOn: null
-  changeNote: Structural scaffolding only; task codes pending primary-source verification.
+  changeNote: >-
+    Areas, weights, item counts and exam format verified from the RBT Handbook (06/2026).
+    Task codes still pending a read of the outline document itself.
 
 provenance:
   license: CC-BY-SA-4.0

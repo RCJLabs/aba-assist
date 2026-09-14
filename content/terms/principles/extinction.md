@@ -35,9 +35,12 @@ nonExamples:
       Withholding reinforcement for a behavior nobody has assessed. Without knowing the
       function you cannot know what to withhold.
     setting: any
-contrastWith: [differential-reinforcement-of-alternative-behavior]
+contrastWith: [differential-reinforcement-of-alternative-behavior, planned-ignoring]
 seeAlso: [positive-reinforcement, negative-reinforcement]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: iwata-1982-1994
     useType: fact-reference

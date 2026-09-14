@@ -1,0 +1,467 @@
+# RBT practice questions — area E, Documentation and Reporting. All original.
+
+questions:
+  - id: rbt-e-objective-note
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      Which sentence belongs in a session note?
+    options:
+      - id: a
+        text: 'Cried for approximately 3 minutes after the tablet was removed at 10:15.'
+        isCorrect: true
+        rationale: >-
+          It describes what was observed, how long, and when, without interpretation.
+      - id: b
+        text: 'Had a meltdown because he was being manipulative about the tablet.'
+        isCorrect: false
+        rationale: >-
+          It labels the behavior and assigns a motive nobody observed.
+      - id: c
+        text: 'Was in a bad mood the whole session.'
+        isCorrect: false
+        rationale: >-
+          A mood judgment is not observable and gives the reader nothing measurable.
+      - id: d
+        text: 'Did great today!'
+        isCorrect: false
+        rationale: >-
+          A general evaluation contains no observation and cannot be checked.
+    explanation: >-
+      Session notes describe behavior in objective, observable terms with times and
+      amounts. They are clinical and often legal records, read by supervisors, funders and
+      sometimes courts. Interpretations and labels belong nowhere in them.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [objective-language, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Documentation responsibilities
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from documentation practice and the technician ethics
+        code; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-e-when-to-write-notes
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      When should a technician complete the session note and data for a session?
+    options:
+      - id: a
+        text: As soon as possible after the session, the same day, while details are accurate
+        isCorrect: true
+        rationale: >-
+          Prompt documentation is accurate documentation. Most employers and funders
+          require same-day notes, and memory degrades quickly.
+      - id: b
+        text: At the end of the week for all sessions together
+        isCorrect: false
+        rationale: >-
+          Details from several sessions blur together and the records become
+          reconstructions.
+      - id: c
+        text: Only when the supervisor asks for them
+        isCorrect: false
+        rationale: >-
+          Documentation is a routine requirement, not an on-request one.
+      - id: d
+        text: Before the session, based on the plan
+        isCorrect: false
+        rationale: >-
+          A note written before the session records what was planned, not what happened,
+          and is a false record.
+    explanation: >-
+      Data are recorded during the session and notes are completed immediately
+      afterward. Delayed notes are less accurate and, where billing depends on them, can
+      create compliance problems for the technician and the organization.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [session-note, data-sheet]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Documentation responsibilities
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-incident-report
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      During a session a learner trips and gets a small scrape on the knee. The learner
+      is fine and the session continues. What should the technician do about
+      documentation?
+    options:
+      - id: a
+        text: Complete the organization's incident report the same day and inform the supervisor and caregiver
+        isCorrect: true
+        rationale: >-
+          Any injury, however minor, is documented on an incident report and reported the
+          same day. Minor is not the technician's call to make.
+      - id: b
+        text: Mention it in the session note only
+        isCorrect: false
+        rationale: >-
+          A session note is not an incident report, and organizations require the
+          specific form for injuries.
+      - id: c
+        text: Nothing, because the injury was minor
+        isCorrect: false
+        rationale: >-
+          Undocumented injuries are a liability and an ethics problem, and a pattern of
+          small injuries is information the supervisor needs.
+      - id: d
+        text: Wait to see whether the caregiver notices
+        isCorrect: false
+        rationale: >-
+          Withholding information about an injury from a caregiver is a serious breach.
+    explanation: >-
+      Incident reports exist for exactly this: unusual events, including any injury, are
+      documented factually on the required form the same day and reported to the
+      supervisor and caregiver. The habit of reporting small things is what makes big
+      things get reported.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [incident-report, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Reporting responsibilities
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-missing-data
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      A technician forgot to record data for the last 15 minutes of a session but
+      remembers roughly what happened. What should they do?
+    options:
+      - id: a
+        text: Record only what was actually observed and recorded, mark the gap clearly, and tell the supervisor
+        isCorrect: true
+        rationale: >-
+          Data reconstructed from memory are indistinguishable from real data on a graph.
+          A marked gap is honest and interpretable.
+      - id: b
+        text: Fill in the numbers from memory
+        isCorrect: false
+        rationale: >-
+          Estimated data presented as recorded data are falsified records.
+      - id: c
+        text: Copy the previous session's data for that period
+        isCorrect: false
+        rationale: >-
+          That fabricates data and misrepresents the session.
+      - id: d
+        text: Leave it blank without comment
+        isCorrect: false
+        rationale: >-
+          An unexplained blank may be read as zero occurrences, which is also wrong.
+    explanation: >-
+      Missing data are a normal problem with an honest fix: mark the gap, explain it,
+      report it. Fabricated data are an integrity violation that can invalidate treatment
+      decisions and end a career.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [data-sheet, objective-language, treatment-integrity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Accurate documentation and honesty
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-report-to-supervisor-same-day
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      Which of the following should a technician report to the supervisor the same day
+      rather than waiting for the next scheduled supervision meeting?
+    options:
+      - id: a
+        text: A learner's problem behavior that is new, or clearly increasing in frequency or intensity
+        isCorrect: true
+        rationale: >-
+          Changes in a target behavior's pattern may mean the plan needs revision and
+          affect safety; they are reported promptly.
+      - id: b
+        text: That the learner mastered a target a day earlier than expected
+        isCorrect: false
+        rationale: >-
+          Good news is worth sharing, but it can wait for the regular contact.
+      - id: c
+        text: That the technician prefers a different data sheet layout
+        isCorrect: false
+        rationale: >-
+          A layout preference is a reasonable topic for a supervision meeting, not an
+          urgent report.
+      - id: d
+        text: That the learner chose a different reinforcer than usual
+        isCorrect: false
+        rationale: >-
+          Ordinary variation in preference is recorded on the data sheet and reviewed at
+          the regular contact.
+    explanation: >-
+      Same-day reporting is for anything that changes the clinical picture or affects
+      safety: new or escalating behavior, injuries, caregiver requests to change the plan,
+      and problems implementing the plan. Routine matters go to the regular supervision
+      contact.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, incident-report]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Reporting responsibilities
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-billing-accuracy
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      A session scheduled for two hours ends after 90 minutes because the family has to
+      leave. How should the technician document the session time?
+    options:
+      - id: a
+        text: Record the actual 90 minutes of service delivered
+        isCorrect: true
+        rationale: >-
+          Documentation must reflect the services actually provided; the schedule is not
+          the record.
+      - id: b
+        text: Record two hours because that was the scheduled time
+        isCorrect: false
+        rationale: >-
+          Billing for time not delivered is fraud, whatever the schedule said.
+      - id: c
+        text: Record two hours but note the early finish in the comments
+        isCorrect: false
+        rationale: >-
+          The recorded time is what gets billed; a comment does not make an inaccurate
+          entry accurate.
+      - id: d
+        text: Ask the family to sign for two hours since it was their choice to leave
+        isCorrect: false
+        rationale: >-
+          A caregiver signature does not make undelivered time billable.
+    explanation: >-
+      Session records are billing records. Recording time that was not delivered is
+      false billing, regardless of who caused the change, and it is reportable conduct
+      under the ethics code. Record what happened.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [session-note, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Accurate documentation and billing
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-communicating-with-caregivers
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      At the end of a session a caregiver asks how it went. Which response is most
+      appropriate for a technician?
+    options:
+      - id: a
+        text: Share brief, objective information about what was worked on and how the learner responded, within what the supervisor has approved
+        isCorrect: true
+        rationale: >-
+          Technicians communicate factually with caregivers within the limits their
+          supervisor sets, without interpretation or clinical recommendation.
+      - id: b
+        text: Explain what the technician thinks the behavior means and suggest changes at home
+        isCorrect: false
+        rationale: >-
+          Interpretation and recommendations are the supervisor's role.
+      - id: c
+        text: Decline to say anything because information is confidential
+        isCorrect: false
+        rationale: >-
+          The caregiver is entitled to information about their own child's services;
+          confidentiality protects against outsiders, not parents.
+      - id: d
+        text: Report that everything went well regardless of what happened
+        isCorrect: false
+        rationale: >-
+          Reassurance that is not accurate is not communication.
+    explanation: >-
+      Caregivers are part of the team and deserve accurate, respectful updates.
+      Technicians describe what happened in objective terms and route questions about why
+      and what next to the supervisor.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [collaboration, objective-language, scope-of-practice]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Communication with stakeholders
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-records-security
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      A technician needs to transport paper data sheets from a home session back to the
+      clinic. Which practice best protects the client's information?
+    options:
+      - id: a
+        text: Keep the sheets in a closed folder or bag, out of sight, and hand them in promptly
+        isCorrect: true
+        rationale: >-
+          Clinical records are secured from view and handed over without delay, following
+          the organization's policy.
+      - id: b
+        text: Photograph the sheets with a personal phone for backup
+        isCorrect: false
+        rationale: >-
+          A personal device is an unsecured copy of protected information.
+      - id: c
+        text: Leave the sheets in the car overnight and bring them in tomorrow
+        isCorrect: false
+        rationale: >-
+          A car is not a secure location and the delay adds risk.
+      - id: d
+        text: Post a photo of the data sheet to a staff group chat to save time
+        isCorrect: false
+        rationale: >-
+          Group messaging apps are not approved channels for client records.
+    explanation: >-
+      Data sheets and session notes are protected health information. They are kept out
+      of sight, transported securely, never copied to personal devices or unapproved
+      channels, and stored where the organization's policy says.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [confidentiality, hipaa, data-sheet]
+    citations:
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-procedural-integrity
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      A supervisor observes a session and scores which steps of the program the
+      technician performed correctly. What is being measured?
+    options:
+      - id: a
+        text: Treatment integrity — whether the program was delivered as written
+        isCorrect: true
+        rationale: >-
+          Scoring the correctness of implementation steps is treatment (procedural)
+          integrity measurement.
+      - id: b
+        text: Interobserver agreement on the learner's behavior
+        isCorrect: false
+        rationale: >-
+          Agreement compares two observers' records of the learner; this observation is
+          about the technician's delivery.
+      - id: c
+        text: The learner's rate of correct responding
+        isCorrect: false
+        rationale: >-
+          The learner's data are a separate measure from how well the program was run.
+      - id: d
+        text: Social validity
+        isCorrect: false
+        rationale: >-
+          Social validity is about whether the goals and methods are acceptable to the
+          people involved.
+    explanation: >-
+      Treatment integrity is the degree to which an intervention is implemented as
+      designed. Without it, outcome data cannot be interpreted: a plan that was not
+      delivered cannot be judged to have failed. Integrity checks are also the basis for
+      feedback and retraining.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [treatment-integrity, performance-feedback]
+    citations:
+      - sourceId: peterson-homer-wonderlich-1982
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-what-goes-in-note
+    credential: RBT
+    taskRef: { credential: RBT, code: E }
+    type: single-best-answer
+    stem: >-
+      Which element does NOT belong in a session note?
+    negated: true
+    options:
+      - id: a
+        text: The technician's guess about a medical cause of the learner's behavior
+        isCorrect: true
+        rationale: >-
+          Medical speculation is outside a technician's scope and does not belong in a
+          clinical record.
+      - id: b
+        text: The programs run and the learner's responses to them
+        isCorrect: false
+        rationale: >-
+          What was worked on and how the learner did is the core of the note.
+      - id: c
+        text: The start and end time of the session
+        isCorrect: false
+        rationale: >-
+          Times are required for the record and for billing.
+      - id: d
+        text: Any problem behavior that occurred, described objectively
+        isCorrect: false
+        rationale: >-
+          Objective descriptions of problem behavior are essential information for the
+          supervisor.
+    explanation: >-
+      A session note records what was done, when, and how the learner responded, in
+      observable terms. It does not contain speculation about causes, medical opinions or
+      recommendations, which are outside the technician's role.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [session-note, objective-language, scope-of-practice]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Documentation responsibilities
+    attestation: *att
+    review: *rev
+    provenance: *prov

@@ -6,5 +6,6 @@ export * from './term.js';
 export * from './scenario.js';
 export * from './ethics.js';
 export * from './quiz.js';
+export * from './credential.js';
 export * from './compiled.js';
 export * from './search-options.js';

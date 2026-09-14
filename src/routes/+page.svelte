@@ -1,10 +1,22 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { termIndex, CATEGORY_LABELS, contentVersion } from '$lib/content/load.js';
+	import ContentFilters from '$lib/components/ContentFilters.svelte';
+	import { termIndex, CATEGORY_LABELS, contentVersion, outlines } from '$lib/content/load.js';
+	import { scenarios } from '$lib/content/scenarios.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
+	import { filters } from '$lib/state/filters.svelte.js';
 	import { search } from '$lib/state/search.svelte.js';
 
-	const results = $derived(search.results);
+	const byId = new Map(termIndex.map((t) => [t.i, t]));
+
+	// Search results respect the same exam/domain/category filter as the glossary, so
+	// someone studying for one exam never sees terms that are not on it.
+	const results = $derived(
+		search.results.filter((r) => {
+			const entry = byId.get(r.id);
+			return !entry || filters.matches(entry);
+		})
+	);
 
 	let lastAnnounced = -1;
 	$effect(() => {
@@ -21,13 +33,18 @@
 		// count actually changes.
 		announcer.announce(`${n} ${n === 1 ? 'result' : 'results'} for ${q}`);
 	});
+
+	const outlineList = Object.values(outlines);
+	const questionCount = contentVersion.counts.questions ?? 0;
 </script>
 
 <svelte:head>
-	<title>ABA Assist — offline reference for behavior technicians</title>
+	<title
+		>ABA Assist — offline reference and study tool for behavior technicians and analysts</title
+	>
 	<meta
 		name="description"
-		content="A free, offline reference for behavior technicians, analysts, and paraeducators. Plain-language definitions with sources."
+		content="A free, offline reference and study tool for behavior technicians, analysts, and paraeducators. Plain-language definitions with sources, flashcards, practice questions, and situational guidance."
 	/>
 </svelte:head>
 
@@ -53,6 +70,13 @@
 	/>
 </form>
 
+<details class="filter-box" open={filters.active}>
+	<summary>
+		Filter{#if filters.active}: {filters.describe() || 'category'}{:else}: everything{/if}
+	</summary>
+	<ContentFilters label="Filter search results" />
+</details>
+
 {#if search.query.trim().length >= 2}
 	<p class="count">{results.length} {results.length === 1 ? 'result' : 'results'}</p>
 	{#if results.length > 0}
@@ -68,7 +92,8 @@
 		</ul>
 	{:else}
 		<p>
-			Nothing matched. The glossary is still small — this build has {termIndex.length} terms.
+			Nothing matched{#if filters.active}
+				with the current filter{/if}. This build has {termIndex.length} terms.
 			<a href="{resolve('/about')}#errata">Tell us what is missing.</a>
 		</p>
 	{/if}
@@ -82,9 +107,26 @@
 			<strong>Glossary</strong>
 			<span>{termIndex.length} terms, plain language and technical.</span>
 		</a>
+		<a class="tile" href={resolve('/study')}>
+			<strong>Flashcards</strong>
+			<span>Spaced repetition over any set of terms. Works offline.</span>
+		</a>
+		<a class="tile" href={resolve('/quiz')}>
+			<strong>Practice questions</strong>
+			<span>{questionCount} original questions with a rationale for every option.</span>
+		</a>
+		<a class="tile" href={resolve('/exams')}>
+			<strong>Exam outlines</strong>
+			<span
+				>{outlineList.map((o) => o.credential).join(' and ')}: domains, weights, tasks,
+				requirements.</span
+			>
+		</a>
 		<a class="tile" href={resolve('/scenarios')}>
 			<strong>Situations</strong>
-			<span>What the literature says, and when to ask your supervisor.</span>
+			<span
+				>{scenarios.length} situations: what the literature says, and when to ask your supervisor.</span
+			>
 		</a>
 	</nav>
 
@@ -98,7 +140,8 @@
 
 <p class="version">
 	Content version {contentVersion.contentVersion} · aligned to the RBT Test Content Outline (3rd
-	ed.), effective 1 January 2026
+	ed., effective 1 January 2026) and the BCBA Test Content Outline (6th ed., effective 1 January
+	2025)
 </p>
 
 <style>
@@ -120,6 +163,19 @@
 		border-radius: var(--radius);
 		background: var(--surface-raised);
 		color: var(--text);
+	}
+
+	.filter-box {
+		margin: 0.5rem 0 1rem;
+		font-size: 0.95rem;
+	}
+
+	.filter-box summary {
+		display: flex;
+		align-items: center;
+		min-height: var(--tap);
+		cursor: pointer;
+		color: var(--link);
 	}
 
 	.count {
@@ -162,6 +218,15 @@
 		display: grid;
 		gap: 0.75rem;
 		margin: 1.5rem 0;
+	}
+
+	@media (min-width: 36rem) {
+		.tiles {
+			grid-template-columns: 1fr 1fr;
+		}
+		.tile.stop {
+			grid-column: 1 / -1;
+		}
 	}
 
 	.tile {

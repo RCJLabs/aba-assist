@@ -182,3 +182,514 @@ sources:
     doi: 10.1177/108835760101600204
     rights: all-rights-reserved
     quotationAllowed: false
+
+  - id: bacb-bcba-tco-6
+    kind: standard
+    title: BCBA Test Content Outline (6th ed.)
+    organization: Behavior Analyst Certification Board
+    year: 2022
+    url: https://www.bacb.com/test-content-outlines-for-bacb-certifications/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Effective 2025-01-01. Nine domains, 104 tasks. The task codes, per-domain counts
+      and domain names were read directly from the document; every task summary in this
+      repo is our own restatement, and the document's wording is not reproduced.
+
+  - id: bacb-rbt-handbook-2026
+    kind: organization-publication
+    title: RBT Handbook
+    organization: Behavior Analyst Certification Board
+    year: 2026
+    url: https://www.bacb.com/rbt/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Version updated 06/2026. Source for eligibility, examination format, supervision,
+      recertification and professional-development facts. Facts only; no wording copied.
+
+  - id: bacb-bcba-handbook-2026
+    kind: organization-publication
+    title: Board Certified Behavior Analyst Handbook
+    organization: Behavior Analyst Certification Board
+    year: 2026
+    url: https://www.bacb.com/bcba/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Version updated 06/2026. Source for eligibility pathways, fieldwork, examination
+      format, continuing education and recertification facts. Facts only.
+
+  # ------------------------------------------------ primary literature, added for M1+
+  - id: skinner-1953
+    kind: book
+    title: Science and Human Behavior
+    authors: ['Skinner, B. F.']
+    year: 1953
+    publisher: Macmillan
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Foundational statement of operant principles, private events and radical behaviorism.
+
+  - id: skinner-1974
+    kind: book
+    title: About Behaviorism
+    authors: ['Skinner, B. F.']
+    year: 1974
+    publisher: Knopf
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: ferster-skinner-1957
+    kind: book
+    title: Schedules of Reinforcement
+    authors: ['Ferster, C. B.', 'Skinner, B. F.']
+    year: 1957
+    publisher: Appleton-Century-Crofts
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: The original catalogue of simple and compound schedules and their response patterns.
+
+  - id: wolf-1978
+    kind: journal-article
+    title: Social validity — the case for subjective measurement
+    authors: ['Wolf, M. M.']
+    year: 1978
+    doi: 10.1901/jaba.1978.11-203
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: johnston-pennypacker-2020
+    kind: book
+    title: Strategies and Tactics of Behavioral Research and Practice
+    authors: ['Johnston, J. M.', 'Pennypacker, H. S.', 'Green, G.']
+    edition: 4th
+    year: 2020
+    publisher: Routledge
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Measurement and single-case design reference. Consulted for facts only.
+
+  - id: kazdin-2011
+    kind: book
+    title: Single-Case Research Designs — Methods for Clinical and Applied Settings
+    authors: ['Kazdin, A. E.']
+    edition: 2nd
+    year: 2011
+    publisher: Oxford University Press
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: sidman-1960
+    kind: book
+    title: Tactics of Scientific Research
+    authors: ['Sidman, M.']
+    year: 1960
+    publisher: Basic Books
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Steady-state logic, replication and the case for single-subject methods.
+
+  - id: horner-baer-1978
+    kind: journal-article
+    title: Multiple-probe technique — a variation of the multiple baseline
+    authors: ['Horner, R. D.', 'Baer, D. M.']
+    year: 1978
+    doi: 10.1901/jaba.1978.11-189
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: hartmann-hall-1976
+    kind: journal-article
+    title: The changing criterion design
+    authors: ['Hartmann, D. P.', 'Hall, R. V.']
+    year: 1976
+    doi: 10.1901/jaba.1976.9-527
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: barlow-hayes-1979
+    kind: journal-article
+    title: Alternating treatments design — one strategy for comparing the effects of two treatments in a single subject
+    authors: ['Barlow, D. H.', 'Hayes, S. C.']
+    year: 1979
+    doi: 10.1901/jaba.1979.12-199
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: bijou-peterson-ault-1968
+    kind: journal-article
+    title: A method to integrate descriptive and experimental field studies at the level of data and empirical concepts
+    authors: ['Bijou, S. W.', 'Peterson, R. F.', 'Ault, M. H.']
+    year: 1968
+    doi: 10.1901/jaba.1968.1-175
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Origin of antecedent–behavior–consequence descriptive recording.
+
+  - id: touchette-1985
+    kind: journal-article
+    title: A scatter plot for identifying stimulus control of problem behavior
+    authors: ['Touchette, P. E.', 'MacDonald, R. F.', 'Langer, S. N.']
+    year: 1985
+    doi: 10.1901/jaba.1985.18-343
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: fisher-1992
+    kind: journal-article
+    title: A comparison of two approaches for identifying reinforcers for persons with severe and profound disabilities
+    authors:
+      [
+        'Fisher, W.',
+        'Piazza, C. C.',
+        'Bowman, L. G.',
+        'Hagopian, L. P.',
+        'Owens, J. C.',
+        'Slevin, I.'
+      ]
+    year: 1992
+    doi: 10.1901/jaba.1992.25-491
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Paired-stimulus (forced-choice) preference assessment.
+
+  - id: pace-1985
+    kind: journal-article
+    title: Assessment of stimulus preference and reinforcer value with profoundly retarded individuals
+    authors: ['Pace, G. M.', 'Ivancic, M. T.', 'Edwards, G. L.', 'Iwata, B. A.', 'Page, T. J.']
+    year: 1985
+    doi: 10.1901/jaba.1985.18-249
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Single-stimulus preference assessment. Title reflects the language of its era.
+
+  - id: roane-1998
+    kind: journal-article
+    title: Evaluation of a brief stimulus preference assessment
+    authors: ['Roane, H. S.', 'Vollmer, T. R.', 'Ringdahl, J. E.', 'Marcus, B. A.']
+    year: 1998
+    doi: 10.1901/jaba.1998.31-605
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Free-operant preference assessment.
+
+  - id: windsor-1994
+    kind: journal-article
+    title: Preference testing — a comparison of two presentation methods
+    authors: ['Windsor, J.', 'Piché, L. M.', 'Locke, P. A.']
+    year: 1994
+    doi: 10.1016/0891-4222(94)90030-2
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Multiple-stimulus with replacement.
+
+  - id: vollmer-iwata-1992
+    kind: journal-article
+    title: Differential reinforcement as treatment for behavior disorders — procedural and functional variations
+    authors: ['Vollmer, T. R.', 'Iwata, B. A.']
+    year: 1992
+    doi: 10.1016/0891-4222(92)90013-V
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: lerman-iwata-1996
+    kind: journal-article
+    title: Developing a technology for the use of operant extinction in clinical settings — an examination of basic and applied research
+    authors: ['Lerman, D. C.', 'Iwata, B. A.']
+    year: 1996
+    doi: 10.1901/jaba.1996.29-345
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: lerman-iwata-wallace-1999
+    kind: journal-article
+    title: Side effects of extinction — prevalence of bursting and aggression during the treatment of self-injurious behavior
+    authors: ['Lerman, D. C.', 'Iwata, B. A.', 'Wallace, M. D.']
+    year: 1999
+    doi: 10.1901/jaba.1999.32-1
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: mace-1988
+    kind: journal-article
+    title: Behavioral momentum in the treatment of noncompliance
+    authors:
+      [
+        'Mace, F. C.',
+        'Hock, M. L.',
+        'Lalli, J. S.',
+        'West, B. J.',
+        'Belfiore, P.',
+        'Pinter, E.',
+        'Brown, D. K.'
+      ]
+    year: 1988
+    doi: 10.1901/jaba.1988.21-123
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: High-probability request sequence.
+
+  - id: nevin-1992
+    kind: journal-article
+    title: An integrative model for the study of behavioral momentum
+    authors: ['Nevin, J. A.']
+    year: 1992
+    doi: 10.1901/jeab.1992.57-301
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: premack-1959
+    kind: journal-article
+    title: Toward empirical behavior laws — I. Positive reinforcement
+    authors: ['Premack, D.']
+    year: 1959
+    doi: 10.1037/h0040891
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: herrnstein-1961
+    kind: journal-article
+    title: Relative and absolute strength of response as a function of frequency of reinforcement
+    authors: ['Herrnstein, R. J.']
+    year: 1961
+    doi: 10.1901/jeab.1961.4-267
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: The matching law.
+
+  - id: sidman-1994
+    kind: book
+    title: Equivalence Relations and Behavior — A Research Story
+    authors: ['Sidman, M.']
+    year: 1994
+    publisher: Authors Cooperative
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: sundberg-michael-2001
+    kind: journal-article
+    title: The benefits of Skinner's analysis of verbal behavior for children with autism
+    authors: ['Sundberg, M. L.', 'Michael, J.']
+    year: 2001
+    doi: 10.1177/0145445501255003
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: michael-1993
+    kind: journal-article
+    title: Establishing operations
+    authors: ['Michael, J.']
+    year: 1993
+    doi: 10.1007/BF03392623
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: touchette-1971
+    kind: journal-article
+    title: Transfer of stimulus control — measuring the moment of transfer
+    authors: ['Touchette, P. E.']
+    year: 1971
+    doi: 10.1901/jeab.1971.15-347
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Progressive time delay.
+
+  - id: terrace-1963
+    kind: journal-article
+    title: Discrimination learning with and without "errors"
+    authors: ['Terrace, H. S.']
+    year: 1963
+    doi: 10.1901/jeab.1963.6-1
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Errorless learning.
+
+  - id: green-2001
+    kind: journal-article
+    title: Behavior analytic instruction for learners with autism — advances in stimulus control technology
+    authors: ['Green, G.']
+    year: 2001
+    doi: 10.1177/108835760101600203
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: macduff-krantz-mcclannahan-2001
+    kind: book
+    title: Prompts and prompt-fading strategies for people with autism (in Making a Difference)
+    authors: ['MacDuff, G. S.', 'Krantz, P. J.', 'McClannahan, L. E.']
+    year: 2001
+    publisher: Pro-Ed
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: hart-risley-1975
+    kind: journal-article
+    title: Incidental teaching of language in the preschool
+    authors: ['Hart, B.', 'Risley, T. R.']
+    year: 1975
+    doi: 10.1901/jaba.1975.8-411
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: foxx-azrin-1972
+    kind: journal-article
+    title: Restitution — a method of eliminating aggressive-disruptive behavior of retarded and brain damaged patients
+    authors: ['Foxx, R. M.', 'Azrin, N. H.']
+    year: 1972
+    doi: 10.1016/0005-7967(72)90045-4
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Overcorrection. Title reflects the language of its era.
+
+  - id: hagopian-1998
+    kind: journal-article
+    title: Effectiveness of functional communication training with and without extinction and punishment — a summary of 21 inpatient cases
+    authors:
+      ['Hagopian, L. P.', 'Fisher, W. W.', 'Sullivan, M. T.', 'Acquisto, J.', 'LeBlanc, L. A.']
+    year: 1998
+    doi: 10.1901/jaba.1998.31-211
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: vollmer-1993
+    kind: journal-article
+    title: The role of attention in the treatment of attention-maintained self-injurious behavior — noncontingent reinforcement and differential reinforcement of other behavior
+    authors:
+      ['Vollmer, T. R.', 'Iwata, B. A.', 'Zarcone, J. R.', 'Smith, R. G.', 'Mazaleski, J. L.']
+    year: 1993
+    doi: 10.1901/jaba.1993.26-9
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Noncontingent reinforcement as treatment.
+
+  - id: kazdin-1977-token
+    kind: book
+    title: The Token Economy — A Review and Evaluation
+    authors: ['Kazdin, A. E.']
+    year: 1977
+    publisher: Plenum
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: litow-pumroy-1975
+    kind: journal-article
+    title: A brief review of classroom group-oriented contingencies
+    authors: ['Litow, L.', 'Pumroy, D. K.']
+    year: 1975
+    doi: 10.1901/jaba.1975.8-341
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: parsons-rollyson-reid-2012
+    kind: journal-article
+    title: Evidence-based staff training — a guide for practitioners
+    authors: ['Parsons, M. B.', 'Rollyson, J. H.', 'Reid, D. H.']
+    year: 2012
+    doi: 10.1007/BF03391819
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Behavioral skills training. Published in Behavior Analysis in Practice.
+
+  - id: rosales-ruiz-baer-1997
+    kind: journal-article
+    title: Behavioral cusps — a developmental and pragmatic concept for behavior analysis
+    authors: ['Rosales-Ruiz, J.', 'Baer, D. M.']
+    year: 1997
+    doi: 10.1901/jaba.1997.30-533
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: koegel-koegel-1999
+    kind: journal-article
+    title: Pivotal response intervention I — overview of approach
+    authors: ['Koegel, L. K.', 'Koegel, R. L.', 'Harrower, J. K.', 'Carter, C. M.']
+    year: 1999
+    doi: 10.2511/rpsd.24.3.174
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: reynolds-1961
+    kind: journal-article
+    title: Behavioral contrast
+    authors: ['Reynolds, G. S.']
+    year: 1961
+    doi: 10.1901/jeab.1961.4-57
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: azrin-holz-1966
+    kind: book
+    title: Punishment (in Operant Behavior — Areas of Research and Application)
+    authors: ['Azrin, N. H.', 'Holz, W. C.']
+    year: 1966
+    publisher: Appleton-Century-Crofts
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: hanley-2014
+    kind: journal-article
+    title: Producing meaningful improvements in problem behavior of children with autism via synthesized analyses and treatments
+    authors: ['Hanley, G. P.', 'Jin, C. S.', 'Vanselow, N. R.', 'Hanratty, L. A.']
+    year: 2014
+    doi: 10.1002/jaba.106
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: kazdin-1979
+    kind: journal-article
+    title: Unobtrusive measures in behavioral assessment
+    authors: ['Kazdin, A. E.']
+    year: 1979
+    doi: 10.1901/jaba.1979.12-713
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Reactivity of measurement.
+
+  - id: peterson-homer-wonderlich-1982
+    kind: journal-article
+    title: The integrity of independent variables in behavior analysis
+    authors: ['Peterson, L.', 'Homer, A. L.', 'Wonderlich, S. A.']
+    year: 1982
+    doi: 10.1901/jaba.1982.15-477
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Treatment integrity.
+
+  - id: hipaa-privacy-rule
+    kind: regulation
+    title: HIPAA Privacy Rule, 45 CFR Parts 160 and 164
+    organization: U.S. Department of Health and Human Services
+    year: 2013
+    url: https://www.hhs.gov/hipaa/for-professionals/privacy/index.html
+    rights: public-domain
+    quotationAllowed: true
+    notes: Federal regulation; public domain.
+
+  - id: capta
+    kind: statute
+    title: Child Abuse Prevention and Treatment Act, 42 U.S.C. 5101 et seq.
+    organization: United States Congress
+    year: 2019
+    url: https://www.acf.hhs.gov/cb/law-regulation/child-abuse-prevention-and-treatment-act
+    rights: public-domain
+    quotationAllowed: true
+    notes: Federal statute framing state mandated-reporter laws; the state laws themselves govern.
+
+  - id: bacb-supervision-curriculum-2
+    kind: standard
+    title: Supervisor Training Curriculum Outline (2.0)
+    organization: Behavior Analyst Certification Board
+    year: 2018
+    url: https://www.bacb.com/supervision-requirements/
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: bacb-rbt-training-2026
+    kind: standard
+    title: RBT 2026 40-Hour Training Requirements and Curriculum Outline
+    organization: Behavior Analyst Certification Board
+    year: 2025
+    url: https://www.bacb.com/rbt/
+    rights: all-rights-reserved
+    quotationAllowed: false

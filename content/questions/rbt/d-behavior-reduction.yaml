@@ -1,0 +1,526 @@
+# RBT practice questions — area D, Behavior Reduction. All original.
+
+questions:
+  - id: rbt-d-dra-identify
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A plan says: reinforce the learner each time they tap a peer's shoulder to start
+      play, and do not respond when they pull the peer's hair to start play. Which
+      procedure is this?
+    options:
+      - id: a
+        text: Differential reinforcement of alternative behavior
+        isCorrect: true
+        rationale: >-
+          Reinforcing an acceptable behavior that serves the same function while
+          withholding reinforcement for the problem behavior is DRA.
+      - id: b
+        text: Differential reinforcement of other behavior
+        isCorrect: false
+        rationale: >-
+          DRO reinforces the absence of the problem behavior for a period; it does not
+          specify a particular alternative to reinforce.
+      - id: c
+        text: Noncontingent reinforcement
+        isCorrect: false
+        rationale: >-
+          Noncontingent reinforcement is delivered on a time schedule regardless of
+          behavior.
+      - id: d
+        text: Response cost
+        isCorrect: false
+        rationale: >-
+          Response cost removes an earned reinforcer after the problem behavior; nothing
+          is removed here.
+    explanation: >-
+      DRA strengthens a specific alternative that gets the learner the same outcome as the
+      problem behavior, while the problem behavior stops working. It is the procedure
+      behind functional communication training.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [differential-reinforcement-of-alternative-behavior, replacement-behavior]
+    citations:
+      - sourceId: vollmer-iwata-1992
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the differential-reinforcement and extinction
+        literature; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-d-dro-identify
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A plan says: deliver a token at the end of every 3-minute interval in which no
+      screaming occurred; if screaming occurs, restart the interval. Which procedure is
+      this?
+    options:
+      - id: a
+        text: Differential reinforcement of other behavior
+        isCorrect: true
+        rationale: >-
+          Reinforcement contingent on the absence of the target behavior during an
+          interval, with the interval reset after an occurrence, is DRO.
+      - id: b
+        text: Differential reinforcement of alternative behavior
+        isCorrect: false
+        rationale: >-
+          DRA names a specific alternative behavior to reinforce; this plan reinforces
+          any behavior other than screaming.
+      - id: c
+        text: Differential reinforcement of low rates
+        isCorrect: false
+        rationale: >-
+          DRL reinforces a reduced but non-zero rate; this plan requires zero occurrences
+          in the interval.
+      - id: d
+        text: Fixed-interval schedule
+        isCorrect: false
+        rationale: >-
+          A fixed-interval schedule reinforces the first response after the interval;
+          here reinforcement depends on the absence of a response.
+    explanation: >-
+      DRO delivers reinforcement when the problem behavior has not occurred for a set
+      period. The interval is chosen from baseline data so the learner can succeed, and
+      it is lengthened over time. Its weakness is that it does not teach what to do
+      instead.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [differential-reinforcement-of-other-behavior]
+    citations:
+      - sourceId: vollmer-iwata-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-dri-identify
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      To reduce a learner's hand-mouthing, the plan reinforces the learner for keeping
+      both hands on a toy. Why is keeping hands on a toy a good choice for this
+      procedure?
+    options:
+      - id: a
+        text: It cannot physically happen at the same time as hand-mouthing
+        isCorrect: true
+        rationale: >-
+          Choosing an alternative that is incompatible with the problem behavior is what
+          makes this differential reinforcement of incompatible behavior.
+      - id: b
+        text: It is the behavior the learner already does most
+        isCorrect: false
+        rationale: >-
+          The alternative is chosen for incompatibility, not for how frequent it already
+          is.
+      - id: c
+        text: It requires no reinforcement to maintain
+        isCorrect: false
+        rationale: >-
+          The whole procedure depends on reinforcing the alternative.
+      - id: d
+        text: It punishes the hand-mouthing
+        isCorrect: false
+        rationale: >-
+          Nothing is presented or removed after hand-mouthing; the procedure works
+          through reinforcement of the alternative.
+    explanation: >-
+      DRI is DRA with an alternative that cannot occur at the same time as the problem
+      behavior. While hands are on the toy, hand-mouthing is impossible, so strengthening
+      the one directly displaces the other.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [differential-reinforcement-of-incompatible-behavior]
+    citations:
+      - sourceId: vollmer-iwata-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-extinction-burst
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A plan puts attention-maintained whining on extinction. On the second day the
+      whining is louder and lasts longer than ever before. What should the technician
+      conclude?
+    options:
+      - id: a
+        text: This is an expected extinction burst, and the plan should be followed consistently
+        isCorrect: true
+        rationale: >-
+          A temporary increase in intensity or duration when reinforcement is first
+          withheld is a predictable effect of extinction, not a sign of failure.
+      - id: b
+        text: The plan is making the behavior worse and should be stopped
+        isCorrect: false
+        rationale: >-
+          Stopping at the peak — giving attention to the louder whining — reinforces the
+          more intense form and is the worst possible timing.
+      - id: c
+        text: Attention is not the function after all
+        isCorrect: false
+        rationale: >-
+          A burst is consistent with attention being the function; the behavior is
+          escalating because attention has been withheld.
+      - id: d
+        text: The learner should be given attention to calm down
+        isCorrect: false
+        rationale: >-
+          That would reinforce the escalated whining.
+    explanation: >-
+      An extinction burst is the temporary increase in a behavior when its reinforcer is
+      withheld. It is expected, it usually passes within days if the procedure is
+      consistent, and the plan should include what to do if it becomes unsafe. Report it
+      to the supervisor, and do not give in at the peak.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [extinction-burst, extinction, planned-ignoring]
+    citations:
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-ncr-identify
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A learner's shouting has been maintained by attention. The plan now has staff give
+      the learner brief attention every two minutes regardless of what the learner is
+      doing. Which procedure is this?
+    options:
+      - id: a
+        text: Noncontingent reinforcement
+        isCorrect: true
+        rationale: >-
+          Delivering the maintaining reinforcer on a time schedule, independent of
+          behavior, is noncontingent reinforcement. Free access reduces the motivation for
+          the behavior.
+      - id: b
+        text: Differential reinforcement of other behavior
+        isCorrect: false
+        rationale: >-
+          DRO requires the absence of the behavior during the interval; this schedule
+          delivers attention whether or not shouting occurred.
+      - id: c
+        text: Positive punishment
+        isCorrect: false
+        rationale: >-
+          Nothing is presented after shouting to reduce it.
+      - id: d
+        text: Time-out
+        isCorrect: false
+        rationale: >-
+          Access to reinforcement is being increased, not removed.
+    explanation: >-
+      Noncontingent reinforcement works as an abolishing operation: when attention is
+      freely available, shouting to get it loses its value. It is easy to implement, but
+      staff must avoid accidentally delivering the timed attention right after a shout.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [noncontingent-reinforcement, abolishing-operation]
+    citations:
+      - sourceId: vollmer-1993
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-high-p-sequence
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      Before asking a learner to put away toys, the technician quickly asks for a high
+      five, a clap and a touch-nose, praising each, then gives the clean-up instruction.
+      Which antecedent strategy is this?
+    options:
+      - id: a
+        text: High-probability request sequence
+        isCorrect: true
+        rationale: >-
+          A quick run of easy, reinforced requests immediately before a hard one uses
+          behavioral momentum to make compliance with the hard request more likely.
+      - id: b
+        text: Premack principle
+        isCorrect: false
+        rationale: >-
+          The Premack principle uses a preferred activity as a reward after the target
+          behavior; nothing is being offered afterward here.
+      - id: c
+        text: Response cost
+        isCorrect: false
+        rationale: >-
+          Nothing is being removed.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          No reinforcer is being withheld.
+    explanation: >-
+      The high-probability request sequence is an antecedent intervention: several
+      requests the learner reliably follows are delivered and reinforced in quick
+      succession right before a low-probability request. Compliance carries over.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [high-probability-request-sequence, behavioral-momentum, antecedent-intervention]
+    citations:
+      - sourceId: mace-1988
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-fct-function-match
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A functional assessment shows a learner's screaming ends difficult tasks. Which
+      replacement behavior is best matched to that function?
+    options:
+      - id: a
+        text: Asking for a break
+        isCorrect: true
+        rationale: >-
+          A break request produces the same outcome as screaming — a pause from the task
+          — through an acceptable behavior, which is what functional communication
+          training requires.
+      - id: b
+        text: Asking for a favorite snack
+        isCorrect: false
+        rationale: >-
+          A snack does not serve the escape function; the learner would still scream to
+          end tasks.
+      - id: c
+        text: Sitting quietly with hands folded
+        isCorrect: false
+        rationale: >-
+          Sitting quietly does not get the learner what screaming got them, so it will
+          not compete with it.
+      - id: d
+        text: Raising a hand for attention
+        isCorrect: false
+        rationale: >-
+          Attention is a different function from escape.
+    explanation: >-
+      A replacement behavior must serve the same function as the problem behavior. For
+      escape-maintained behavior the matched replacement is a request for a break or for
+      help, honored reliably while screaming no longer ends the task.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [functional-communication-training, replacement-behavior, function-of-behavior]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-timeout-escape
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A student is sent to sit in the hallway for two minutes each time they refuse to
+      do a worksheet. Refusals are increasing. What is the most likely explanation?
+    options:
+      - id: a
+        text: Removal from the task is reinforcing the refusals, because the behavior is maintained by escape
+        isCorrect: true
+        rationale: >-
+          Time-out only works when the setting is reinforcing. For escape-maintained
+          behavior, being removed from the task is the reinforcer, so the procedure
+          strengthens the behavior.
+      - id: b
+        text: Two minutes is too short to be effective
+        isCorrect: false
+        rationale: >-
+          Duration is not the issue when the removal itself is the reinforcer.
+      - id: c
+        text: The student enjoys the hallway
+        isCorrect: false
+        rationale: >-
+          The hallway need not be enjoyable; getting away from the worksheet is enough.
+      - id: d
+        text: The student does not understand the rule
+        isCorrect: false
+        rationale: >-
+          The increase in refusals shows the contingency is understood perfectly well.
+    explanation: >-
+      Time-out from positive reinforcement reduces behavior only when the learner loses
+      access to something they wanted. When the behavior is maintained by escape, removal
+      delivers the reinforcer. This is why function is assessed before a procedure is
+      chosen.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [time-out, negative-reinforcement, function-of-behavior]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-rbt-cannot-modify
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A technician thinks a learner's reduction plan would work better with a different
+      reinforcer and a shorter DRO interval. What is the appropriate action?
+    options:
+      - id: a
+        text: Continue the plan as written and bring the suggestion and data to the supervisor
+        isCorrect: true
+        rationale: >-
+          Technicians implement plans and contribute observations; modifying a plan is
+          the supervising analyst's responsibility.
+      - id: b
+        text: Make the change and see whether it helps
+        isCorrect: false
+        rationale: >-
+          An unauthorized change alters the intervention, makes the data uninterpretable
+          and is outside the technician's scope.
+      - id: c
+        text: Make the change but record data as though the original plan were in use
+        isCorrect: false
+        rationale: >-
+          That is both an unauthorized change and a falsified record.
+      - id: d
+        text: Stop running the plan until the supervisor agrees to the change
+        isCorrect: false
+        rationale: >-
+          Withholding a plan is itself a change, and the learner loses the intervention
+          in the meantime.
+    explanation: >-
+      Suggestions from technicians are valuable and supervisors want them. The route is
+      to keep running the plan as written and raise the idea with data. Changing a plan
+      unilaterally is a scope-of-practice violation regardless of how good the idea is.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-practice, behavior-intervention-plan, treatment-integrity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Scope of practice
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-planned-ignoring-limits
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      Planned ignoring is written into a plan for a learner whose silly noises are
+      maintained by laughter from adults. For which of the following would planned
+      ignoring NOT be an appropriate response?
+    negated: true
+    options:
+      - id: a
+        text: The learner starts a behavior that could hurt them or someone else
+        isCorrect: true
+        rationale: >-
+          Ignoring never applies to unsafe behavior. Safety procedures and the
+          supervisor take over, whatever the function.
+      - id: b
+        text: The learner makes a silly noise while an adult is nearby
+        isCorrect: false
+        rationale: >-
+          This is exactly the situation the plan addresses.
+      - id: c
+        text: The learner makes a louder silly noise on the second day
+        isCorrect: false
+        rationale: >-
+          A louder version early in extinction is an expected burst, and the plan still
+          applies.
+      - id: d
+        text: The learner makes the noise and then looks at the adult expectantly
+        isCorrect: false
+        rationale: >-
+          Looking for the reaction confirms the attention function; the plan still
+          applies.
+    explanation: >-
+      Planned ignoring is extinction for attention-maintained behavior. It is not a
+      general-purpose response to misbehavior: it does nothing for escape-maintained or
+      automatically reinforced behavior, and it is never the response to anything unsafe.
+      Plans should say what to do instead in those cases.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [planned-ignoring, extinction, function-of-behavior]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-response-cost
+    credential: RBT
+    taskRef: { credential: RBT, code: D }
+    type: single-best-answer
+    stem: >-
+      A learner loses one earned token each time they call out in class, and calling out
+      decreases. Which principle is at work?
+    options:
+      - id: a
+        text: Negative punishment
+        isCorrect: true
+        rationale: >-
+          Removing something the learner has — an earned token — after the behavior, with
+          the behavior decreasing, is negative punishment; the procedure is response cost.
+      - id: b
+        text: Positive punishment
+        isCorrect: false
+        rationale: >-
+          Nothing is added after the behavior.
+      - id: c
+        text: Negative reinforcement
+        isCorrect: false
+        rationale: >-
+          Negative reinforcement increases behavior by removing something; here the
+          behavior decreases.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Extinction withholds a reinforcer that used to follow the behavior; here an
+          earned reinforcer is actively taken away.
+    explanation: >-
+      Response cost is the loss of a set amount of a reinforcer already possessed,
+      contingent on a behavior. Because something is removed and the behavior decreases,
+      the principle is negative punishment.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [response-cost, negative-punishment]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

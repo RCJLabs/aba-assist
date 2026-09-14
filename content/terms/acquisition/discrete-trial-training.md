@@ -33,6 +33,9 @@ nonExamples:
 contrastWith: [naturalistic-teaching]
 seeAlso: [prompt-fading, positive-reinforcement]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: G.13 }
 citations:
   - sourceId: smith-2001-dtt
     useType: fact-reference

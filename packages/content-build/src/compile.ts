@@ -3,11 +3,17 @@ import { join } from 'node:path';
 import MiniSearch from 'minisearch';
 import {
 	ContentOutline,
+	CredentialFacts,
+	QuizFile,
 	Scenario,
 	SourceRegistry,
 	Term,
+	isDomainRef,
 	searchOptions,
+	taskRefKey,
+	type QuizQuestion,
 	type Source,
+	type TaskRef,
 	type TermIndexEntry
 } from '@aba/content-schema';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
@@ -39,6 +45,8 @@ function termProse(t: z_Term): string[] {
 
 type z_Term = ReturnType<typeof Term.parse>;
 type z_Scenario = ReturnType<typeof Scenario.parse>;
+type z_Outline = ReturnType<typeof ContentOutline.parse>;
+type z_Credential = ReturnType<typeof CredentialFacts.parse>;
 
 function scenarioProse(s: z_Scenario): string[] {
 	const base = [s.title, s.situation];
@@ -57,6 +65,10 @@ function scenarioProse(s: z_Scenario): string[] {
 		s.escalation.legalNote,
 		...s.escalation.documentation
 	];
+}
+
+function questionProse(q: QuizQuestion): string[] {
+	return [q.stem, q.explanation, ...q.options.flatMap((o) => [o.text, o.rationale])];
 }
 
 export async function compile(opts: CompileOptions): Promise<CompileResult> {
@@ -88,9 +100,13 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	}
 
 	// --------------------------------------------------------------- taxonomy
-	const outlines = new Map<string, ReturnType<typeof ContentOutline.parse>>();
+	const outlines = new Map<string, z_Outline>();
 	/** "RBT:C-3" -> true */
 	const taskCodes = new Set<string>();
+	/** "RBT:C" -> true */
+	const domainKeys = new Set<string>();
+	/** Credentials that have an outline at all. */
+	const outlinedCredentials = new Set<string>();
 	{
 		const dir = join(root, 'taxonomy');
 		for (const path of await discover(dir, ['.yaml', '.yml'])) {
@@ -108,11 +124,60 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			push(...sIssues);
 			if (!value) continue;
 			outlines.set(value.id, value);
+			outlinedCredentials.add(value.credential);
 			for (const d of value.domains) {
+				domainKeys.add(`${value.credential}:${d.letter}`);
 				for (const t of d.tasks) taskCodes.add(`${value.credential}:${t.code}`);
+			}
+			if (!sources.has(value.sourceId)) {
+				push(
+					error(
+						'refs/unknown-source',
+						`outline cites unknown source "${value.sourceId}"`,
+						file
+					)
+				);
+			}
+			push(...checkReviewStatus(value.review, channel, file));
+		}
+		for (const o of outlines.values()) {
+			if (o.subsetOf && !outlines.has(o.subsetOf)) {
+				push(error('refs/unresolved', `subsetOf points at unknown outline "${o.subsetOf}"`));
 			}
 		}
 	}
+
+	/**
+	 * A task ref is valid when its credential has an outline and the code names either a
+	 * domain in that outline or a verified task code. A ref to a credential with no
+	 * outline is an error rather than silently unvalidated: that is how a typo'd
+	 * credential would otherwise slip through.
+	 */
+	const checkTaskRefs = (refs: TaskRef[], file: string) => {
+		for (const r of refs) {
+			if (!outlinedCredentials.has(r.credential)) {
+				push(
+					error(
+						'refs/unknown-task-code',
+						`taskRef ${r.credential} ${r.code}: no outline is modelled for ${r.credential}`,
+						file
+					)
+				);
+				continue;
+			}
+			const key = taskRefKey(r);
+			const ok = isDomainRef(r.code) ? domainKeys.has(key) : taskCodes.has(key);
+			if (!ok) {
+				push(
+					error(
+						'refs/unknown-task-code',
+						`taskRef ${r.credential} ${r.code} is not in the ${r.credential} outline`,
+						file
+					)
+				);
+			}
+		}
+	};
 
 	// ------------------------------------------------------------------ terms
 	const terms: z_Term[] = [];
@@ -218,10 +283,98 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		}
 	}
 
+	// -------------------------------------------------------------- questions
+	const questions: QuizQuestion[] = [];
+	const questionFiles = new Map<string, string>();
+	{
+		const dir = join(root, 'questions');
+		for (const path of await discover(dir, ['.yaml', '.yml'])) {
+			const { data, issues: pIssues } = await parseYamlFile(root, path);
+			push(...pIssues);
+			if (data === undefined) continue;
+			inputHash.update(JSON.stringify(data));
+			const file = path.slice(root.length + 1);
+			const { value, issues: sIssues } = checkSchema(QuizFile, data, file, 'schema/question');
+			push(...sIssues);
+			if (!value) continue;
+
+			for (const q of value.questions) {
+				if (questionFiles.has(q.id)) {
+					push(
+						error(
+							'structure/duplicate-id',
+							`duplicate question id "${q.id}" (also in ${questionFiles.get(q.id)})`,
+							file
+						)
+					);
+				}
+				questionFiles.set(q.id, file);
+				questions.push(q);
+
+				push(...checkRights(q, questionProse(q), sources, file));
+				push(...checkReviewStatus(q.review, channel, file));
+				push(
+					...checkScenarioSafety({ kind: 'question' }, questionProse(q), file).filter(
+						(i) => i.rule === 'safety/clinical-decision-language'
+					)
+				);
+			}
+		}
+	}
+
+	// ------------------------------------------------------------ credentials
+	const credentials: z_Credential[] = [];
+	{
+		const dir = join(root, 'credentials');
+		for (const path of await discover(dir, ['.yaml', '.yml'])) {
+			const { data, issues: pIssues } = await parseYamlFile(root, path);
+			push(...pIssues);
+			if (data === undefined) continue;
+			inputHash.update(JSON.stringify(data));
+			const file = path.slice(root.length + 1);
+			const { value, issues: sIssues } = checkSchema(
+				CredentialFacts,
+				data,
+				file,
+				'schema/credential'
+			);
+			push(...sIssues);
+			if (!value) continue;
+			if (credentials.some((c) => c.id === value.id)) {
+				push(error('structure/duplicate-id', `duplicate credential id "${value.id}"`, file));
+			}
+			credentials.push(value);
+			if (!sources.has(value.handbookSourceId)) {
+				push(
+					error(
+						'refs/unknown-source',
+						`handbookSourceId "${value.handbookSourceId}" is not in the registry`,
+						file
+					)
+				);
+			}
+			if (value.outlineId && !outlines.has(value.outlineId)) {
+				push(
+					error(
+						'refs/unresolved',
+						`outlineId points at unknown outline "${value.outlineId}"`,
+						file
+					)
+				);
+			}
+			push(...checkReviewStatus(value.review, channel, file));
+			const prose = [
+				value.ourOverview,
+				...value.sections.flatMap((s) => [s.ourNote ?? '', ...s.items.map((i) => i.value)])
+			];
+			// No citations block here: the handbook itself is the single source, named by id.
+			push(...checkRights({}, prose, sources, file));
+		}
+	}
+
 	// ------------------------------------------------- referential integrity
 	{
 		const termIds = new Set(terms.map((t) => t.id));
-		const scenarioIds = new Set(scenarios.map((s) => s.id));
 		const retired = new Set(
 			[...terms, ...scenarios].filter((x) => x.review.status === 'retired').map((x) => x.id)
 		);
@@ -251,17 +404,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
 				}
 			}
-			for (const r of t.taskRefs) {
-				if (taskCodes.size > 0 && !taskCodes.has(`${r.credential}:${r.code}`)) {
-					push(
-						error(
-							'refs/unknown-task-code',
-							`taskRef ${r.credential} ${r.code} is not in the taxonomy`,
-							file
-						)
-					);
-				}
-			}
+			checkTaskRefs(t.taskRefs, file);
 			// contrastWith must be symmetric — a one-way "commonly confused with" is a bug.
 			for (const other of t.contrastWith) {
 				const o = terms.find((x) => x.id === other);
@@ -285,20 +428,35 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
 				}
 			}
-			for (const r of s.taskRefs) {
-				if (taskCodes.size > 0 && !taskCodes.has(`${r.credential}:${r.code}`)) {
-					push(
-						error(
-							'refs/unknown-task-code',
-							`taskRef ${r.credential} ${r.code} is not in the taxonomy`,
-							file
-						)
+			checkTaskRefs(s.taskRefs, file);
+		}
+
+		for (const q of questions) {
+			const file = questionFiles.get(q.id)!;
+			checkRefs(q.termRefs, termIds, 'term', file, 'termRefs');
+			for (const c of q.citations) {
+				if (!sources.has(c.sourceId)) {
+					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
+				}
+			}
+			checkTaskRefs([q.taskRef, ...q.secondaryTaskRefs], file);
+		}
+
+		// Outline tasks point at terms too, so the exam page can link each task to its
+		// vocabulary. Dangling links there would be invisible until someone tapped one.
+		for (const o of outlines.values()) {
+			for (const d of o.domains) {
+				for (const t of d.tasks) {
+					checkRefs(
+						t.termRefs,
+						termIds,
+						'term',
+						`taxonomy/${o.id}.yaml`,
+						`${t.code}.termRefs`
 					);
 				}
 			}
 		}
-
-		void scenarioIds;
 	}
 
 	push(
@@ -322,15 +480,17 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	 * keep search engines away. Unreviewed clinical content should not be discoverable by
 	 * someone searching for an ABA term, even while the author is reviewing it on a phone.
 	 */
-	const unreviewed = [...terms, ...scenarios].filter(
+	const unreviewed = [...terms, ...scenarios, ...questions, ...credentials].filter(
 		(x) => x.review.status !== 'approved'
 	).length;
 
 	const counts = {
 		terms: terms.length,
 		scenarios: scenarios.length,
+		questions: questions.length,
 		sources: sources.size,
 		outlines: outlines.size,
+		credentials: credentials.length,
 		unreviewed
 	};
 
@@ -346,7 +506,14 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		};
 	}
 
-	const assets = buildAssets(terms, scenarios, [...outlines.values()], contentVersion);
+	const assets = buildAssets(
+		terms,
+		scenarios,
+		questions,
+		[...outlines.values()],
+		credentials,
+		contentVersion
+	);
 
 	return { ok: true, channel, contentVersion, errors, warnings, counts, assets };
 }
@@ -354,7 +521,9 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 function buildAssets(
 	terms: z_Term[],
 	scenarios: z_Scenario[],
-	outlines: ReturnType<typeof ContentOutline.parse>[],
+	questions: QuizQuestion[],
+	outlines: z_Outline[],
+	credentials: z_Credential[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -366,7 +535,9 @@ function buildAssets(
 		a: t.aliases,
 		c: t.category,
 		g: t.definition.gloss,
-		b: t.searchBoost
+		b: t.searchBoost,
+		r: t.taskRefs.map(taskRefKey),
+		f: t.flashcard.enabled
 	}));
 	assets.push({
 		name: 'terms.index',
@@ -401,10 +572,36 @@ function buildAssets(
 		fetchedAtRuntime: false
 	});
 
+	// One bucket per exam: a candidate studying for one credential never downloads the
+	// other bank, and the quiz loads a bucket only when a session starts.
+	const byCredential = new Map<string, QuizQuestion[]>();
+	for (const q of questions) {
+		const list = byCredential.get(q.credential) ?? [];
+		list.push(q);
+		byCredential.set(q.credential, list);
+	}
+	for (const [credential, list] of [...byCredential].sort((a, b) =>
+		a[0].localeCompare(b[0])
+	)) {
+		assets.push({
+			name: `questions.${credential}`,
+			fileName: `${base}/questions.${credential}.json`,
+			source: JSON.stringify(list),
+			fetchedAtRuntime: false
+		});
+	}
+
 	assets.push({
 		name: 'taxonomy',
 		fileName: `${base}/taxonomy.json`,
 		source: JSON.stringify(Object.fromEntries(outlines.map((o) => [o.id, o]))),
+		fetchedAtRuntime: false
+	});
+
+	assets.push({
+		name: 'credentials',
+		fileName: `${base}/credentials.json`,
+		source: JSON.stringify(Object.fromEntries(credentials.map((c) => [c.id, c]))),
 		fetchedAtRuntime: false
 	});
 

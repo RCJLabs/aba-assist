@@ -37,6 +37,10 @@ nonExamples:
 contrastWith: [negative-reinforcement, punishment]
 seeAlso: [extinction, motivating-operation]
 searchBoost: 1.5
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: BCBA, code: B.4 }
+  - { credential: BCBA, code: G.1 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

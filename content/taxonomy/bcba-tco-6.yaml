@@ -1,0 +1,1037 @@
+# BCBA Test Content Outline (6th edition) — structural facts, with OUR OWN summaries.
+#
+# Verified against the document itself (read from the PDF on 2026-09-14): nine domains,
+# 104 tasks, per-domain task counts A5 B24 C12 D9 E12 F8 G19 H8 I7, exam weights, and the
+# per-domain question counts published in the BCBA Handbook (06/2026). Codes, counts and
+# names are facts. Every `ourSummary` and `plainSummary` below is written from scratch and
+# is deliberately NOT the document's wording — see OfficialTextGuard. Readers who need the
+# exact task statement are sent to the official document.
+#
+# A note on why the secondary sources disagreed with each other: several study guides
+# conflate the number of QUESTIONS per domain with the number of TASKS per domain. They
+# are different columns in different documents.
+
+id: bcba-tco-6
+credential: BCBA
+edition: '6th'
+effectiveDate: '2025-01-01'
+issuer: BACB
+sourceId: bacb-bcba-tco-6
+subsetOf: null
+countsVerified: true
+totalTasks: 104
+
+exam:
+  scoredItems: 175
+  unscoredItems: 10
+  minutes: 240
+
+domains:
+  - letter: A
+    name: Behaviorism and Philosophical Foundations
+    examWeightPercent: 5
+    examItems: 8
+    ourDescription: >-
+      What the science is for, what it assumes, and how applied behavior analysis sits
+      among the other branches of the field. Small on the exam but underneath everything
+      else: the attitudes of science are what make the rest of the outline coherent.
+    tasks:
+      - code: A.1
+        ourSummary: >-
+          State what a science is trying to accomplish — describing, predicting and
+          controlling its subject matter — and recognize each goal in behavior-analytic work.
+        plainSummary: Know the three things a science tries to do, and spot each one in practice.
+        keywords: [description, prediction, control, goals of science]
+        termRefs: [functional-relation]
+        attestation: &att
+          originalProse: true
+          noVerbatimSource: true
+          aiAssisted: true
+          consulted: >-
+            Task topic read from the official outline; summary written independently from
+            Skinner (1953) and Baer, Wolf and Risley (1968).
+      - code: A.2
+        ourSummary: >-
+          Explain the assumptions a behavior analyst works from — determinism, empiricism,
+          experimentation, replication, parsimony and philosophic doubt — and apply them.
+        plainSummary: Know the attitudes of science and how each one shows up in good practice.
+        keywords: [determinism, empiricism, parsimony, philosophic doubt, replication]
+        termRefs: [determinism, empiricism, parsimony, philosophic-doubt, replication]
+        attestation: *att
+      - code: A.3
+        ourSummary: >-
+          Describe radical behaviorism, including its treatment of private events as behavior,
+          and contrast it with mentalistic and methodological positions.
+        plainSummary: Explain radical behaviorism and how it differs from other views of behavior.
+        keywords: [radical behaviorism, private events, mentalism, methodological behaviorism]
+        termRefs: [radical-behaviorism, mentalism, private-event, explanatory-fiction]
+        attestation: *att
+      - code: A.4
+        ourSummary: >-
+          Distinguish the branches of the field from one another — the experimental analysis
+          of behavior, applied behavior analysis, service delivery, and behaviorism as
+          philosophy — by their goals and methods.
+        plainSummary: Tell the four branches of behavior analysis apart by what each one does.
+        keywords: [EAB, ABA, service delivery, philosophy, branches]
+        termRefs: [applied-behavior-analysis, experimental-analysis-of-behavior]
+        attestation: *att
+      - code: A.5
+        ourSummary: >-
+          Identify the defining dimensions of applied behavior analysis in a description of
+          practice, and judge whether a piece of work meets them.
+        plainSummary: Know the seven dimensions of ABA and check whether a program meets them.
+        keywords:
+          [
+            applied,
+            behavioral,
+            analytic,
+            technological,
+            conceptually systematic,
+            effective,
+            generality
+          ]
+        termRefs: [seven-dimensions-of-aba, applied-behavior-analysis]
+        attestation: *att
+
+  - letter: B
+    name: Concepts and Principles
+    examWeightPercent: 14
+    examItems: 24
+    ourDescription: >-
+      The basic vocabulary of the science, defined precisely: behavior and stimulus
+      classes, respondent and operant relations, reinforcement and punishment, schedules,
+      stimulus control, motivating operations, verbal behavior, and the derived and
+      emergent relations built on them. The largest domain by task count.
+    tasks:
+      - code: B.1
+        ourSummary: >-
+          Define behavior, response and response class, and identify each in an example.
+        plainSummary: Know what counts as behavior, a single response, and a class of responses.
+        keywords: [behavior, response, response class, dead-man test]
+        termRefs: [behavior, response-class]
+        attestation: *att
+      - code: B.2
+        ourSummary: >-
+          Define stimulus and stimulus class, including classes formed by physical
+          similarity, by temporal relation, and by function.
+        plainSummary: Know what a stimulus is and the ways stimuli get grouped into classes.
+        keywords: [stimulus, stimulus class, formal, temporal, functional]
+        termRefs: [stimulus, stimulus-class]
+        attestation: *att
+      - code: B.3
+        ourSummary: >-
+          Distinguish respondent from operant conditioning by what is learned and what
+          controls it, and identify each in an example.
+        plainSummary: Tell reflex-based learning from consequence-based learning.
+        keywords: [respondent, operant, conditioning, Pavlovian]
+        termRefs: [respondent-conditioning, operant-conditioning]
+        attestation: *att
+      - code: B.4
+        ourSummary: >-
+          Define positive and negative reinforcement by their operations and effects, and
+          identify each in an example.
+        plainSummary: Know both kinds of reinforcement and what makes them different.
+        keywords: [positive reinforcement, negative reinforcement, contingency]
+        termRefs: [positive-reinforcement, negative-reinforcement]
+        attestation: *att
+      - code: B.5
+        ourSummary: >-
+          Define positive and negative punishment by their operations and effects, and
+          identify each in an example.
+        plainSummary: Know both kinds of punishment and what makes them different.
+        keywords: [positive punishment, negative punishment]
+        termRefs: [punishment, positive-punishment, negative-punishment]
+        attestation: *att
+      - code: B.6
+        ourSummary: >-
+          Distinguish automatic from socially mediated consequences, for both reinforcement
+          and punishment.
+        plainSummary: Know when a consequence comes from the behavior itself and when another person delivers it.
+        keywords: [automatic reinforcement, socially mediated]
+        termRefs: [automatic-reinforcement, socially-mediated-reinforcement]
+        attestation: *att
+      - code: B.7
+        ourSummary: >-
+          Distinguish unconditioned, conditioned and generalized reinforcers, and unconditioned
+          and conditioned punishers, by how they acquired their function.
+        plainSummary: Know which consequences work from birth and which have to be learned.
+        keywords:
+          [
+            unconditioned reinforcer,
+            conditioned reinforcer,
+            generalized conditioned reinforcer,
+            conditioned punisher
+          ]
+        termRefs:
+          [
+            unconditioned-reinforcer,
+            conditioned-reinforcer,
+            generalized-conditioned-reinforcer
+          ]
+        attestation: *att
+      - code: B.8
+        ourSummary: >-
+          Identify the simple schedules of reinforcement — continuous, fixed and variable
+          ratio, fixed and variable interval — and the response patterns each produces.
+        plainSummary: Know the basic schedules of reinforcement and how behavior looks under each.
+        keywords: [CRF, FR, VR, FI, VI, schedule effects]
+        termRefs:
+          [
+            continuous-reinforcement,
+            fixed-ratio-schedule,
+            variable-ratio-schedule,
+            fixed-interval-schedule,
+            variable-interval-schedule
+          ]
+        attestation: *att
+      - code: B.9
+        ourSummary: >-
+          Identify compound schedules of reinforcement — concurrent, multiple, mixed,
+          chained, tandem and others — and what distinguishes them.
+        plainSummary: Know the schedules that combine two or more simple schedules.
+        keywords: [concurrent, multiple, mixed, chained, tandem, alternative, conjunctive]
+        termRefs: [compound-schedule, concurrent-schedule]
+        attestation: *att
+      - code: B.10
+        ourSummary: >-
+          Distinguish operant extinction from respondent extinction, and describe the effects
+          that accompany each.
+        plainSummary: Know what extinction means for operant and for respondent behavior.
+        keywords: [extinction, respondent extinction, extinction burst]
+        termRefs: [extinction, extinction-burst, spontaneous-recovery]
+        attestation: *att
+      - code: B.11
+        ourSummary: >-
+          Describe stimulus control and the conditions under which a stimulus acquires it.
+        plainSummary: Explain how a stimulus comes to control when a behavior happens.
+        keywords: [stimulus control, SD, S-delta]
+        termRefs: [stimulus-control, discriminative-stimulus, s-delta]
+        attestation: *att
+      - code: B.12
+        ourSummary: >-
+          Describe stimulus discrimination and the training that produces it.
+        plainSummary: Explain how a learner comes to respond differently to different stimuli.
+        keywords: [discrimination, discrimination training, differential reinforcement]
+        termRefs: [stimulus-discrimination, discrimination-training]
+        attestation: *att
+      - code: B.13
+        ourSummary: >-
+          Distinguish stimulus generalization from response generalization and identify
+          each in an example.
+        plainSummary: Know the difference between a skill spreading to new situations and spreading to new forms.
+        keywords: [stimulus generalization, response generalization]
+        termRefs: [stimulus-generalization, response-generalization, generalization]
+        attestation: *att
+      - code: B.14
+        ourSummary: >-
+          Describe maintenance of behavior change over time after intervention has ended.
+        plainSummary: Explain what it means for a skill to last after teaching stops.
+        keywords: [maintenance, durability]
+        termRefs: [maintenance]
+        attestation: *att
+      - code: B.15
+        ourSummary: >-
+          Define motivating operations, including establishing and abolishing operations and
+          their value-altering and behavior-altering effects.
+        plainSummary: Explain what changes how much a consequence is wanted right now.
+        keywords: [MO, EO, AO, value-altering, behavior-altering]
+        termRefs:
+          [
+            motivating-operation,
+            establishing-operation,
+            abolishing-operation,
+            deprivation,
+            satiation
+          ]
+        attestation: *att
+      - code: B.16
+        ourSummary: >-
+          Distinguish the motivational function of a stimulus from its discriminative
+          function, and identify which is operating in an example.
+        plainSummary: Tell the difference between a stimulus that changes wanting and one that signals availability.
+        keywords: [MO vs SD, motivational function, discriminative function]
+        termRefs: [motivating-operation, discriminative-stimulus]
+        attestation: *att
+      - code: B.17
+        ourSummary: >-
+          Distinguish rule-governed from contingency-shaped behavior and describe how each
+          is acquired and maintained.
+        plainSummary: Know the difference between behavior learned from instructions and behavior learned from consequences.
+        keywords: [rule-governed, contingency-shaped, rules]
+        termRefs: [rule-governed-behavior, contingency-shaped-behavior]
+        attestation: *att
+      - code: B.18
+        ourSummary: >-
+          Define the elementary verbal operants — mand, tact, echoic, intraverbal, textual,
+          transcription — and identify each by its controlling variables.
+        plainSummary: Know the basic verbal operants and what controls each one.
+        keywords: [mand, tact, echoic, intraverbal, textual, transcription, listener]
+        termRefs: [verbal-behavior, mand, tact, echoic, intraverbal, textual, transcription]
+        attestation: *att
+      - code: B.19
+        ourSummary: >-
+          Describe multiple control of verbal behavior, including convergent and divergent
+          control, and identify it in an example.
+        plainSummary: Explain what happens when more than one variable controls what someone says.
+        keywords: [multiple control, convergent, divergent]
+        termRefs: [multiple-control]
+        attestation: *att
+      - code: B.20
+        ourSummary: >-
+          Describe emergent relations and generative performance, including stimulus
+          equivalence, and identify untrained relations that follow from trained ones.
+        plainSummary: Explain how learners come to respond correctly to relations they were never taught.
+        keywords: [equivalence, reflexivity, symmetry, transitivity, emergent]
+        termRefs: [stimulus-equivalence]
+        attestation: *att
+      - code: B.21
+        ourSummary: >-
+          Describe behavioral momentum — persistence of responding under changed conditions —
+          and the variables that strengthen it.
+        plainSummary: Explain why behavior with a rich reinforcement history resists disruption.
+        keywords: [behavioral momentum, persistence, resistance to change]
+        termRefs: [behavioral-momentum]
+        attestation: *att
+      - code: B.22
+        ourSummary: >-
+          Describe the matching law — response allocation tracking relative reinforcement —
+          and apply it to choice between concurrently available alternatives.
+        plainSummary: Explain how people divide their behavior between options based on the payoff of each.
+        keywords: [matching law, choice, concurrent schedules, response allocation]
+        termRefs: [matching-law, concurrent-schedule]
+        attestation: *att
+      - code: B.23
+        ourSummary: >-
+          Distinguish imitation from observational learning and describe the conditions
+          under which each occurs.
+        plainSummary: Know the difference between copying a model right away and learning from watching.
+        keywords: [imitation, observational learning, modeling]
+        termRefs: [imitation, observational-learning]
+        attestation: *att
+      - code: B.24
+        ourSummary: >-
+          Describe how derived relational responding — relating stimuli by trained frames such
+          as sameness, comparison and opposition — accounts for generative language.
+        plainSummary: Explain how relating things in trained ways lets learners produce responses nobody taught.
+        keywords: [derived relations, relational frames, generativity]
+        termRefs: [stimulus-equivalence]
+        attestation: *att
+
+  - letter: C
+    name: Measurement, Data Display, and Interpretation
+    examWeightPercent: 12
+    examItems: 21
+    ourDescription: >-
+      Turning behavior into numbers you can trust and pictures you can read: defining
+      targets, choosing dimensions and procedures, judging validity and reliability,
+      graphing, and interpreting what a graph shows — including whether the intervention
+      was delivered as written.
+    tasks:
+      - code: C.1
+        ourSummary: >-
+          Write an operational definition of a target behavior that is observable, complete
+          and unambiguous, and evaluate a given definition against those standards.
+        plainSummary: Write a definition of a behavior that two people would score the same way.
+        keywords: [operational definition, observable, measurable]
+        termRefs: [operational-definition, topography]
+        attestation: *att
+      - code: C.2
+        ourSummary: >-
+          Distinguish direct, indirect and product measures of behavior and choose among them.
+        plainSummary: Know when to measure behavior as it happens, ask about it, or measure what it left behind.
+        keywords: [direct measurement, indirect measurement, permanent product]
+        termRefs: [permanent-product, indirect-assessment]
+        attestation: *att
+      - code: C.3
+        ourSummary: >-
+          Measure occurrence of behavior — count, frequency, rate, percentage, trials to
+          criterion — and select the right one for the question.
+        plainSummary: Know the ways to measure how often a behavior happens and when to use each.
+        keywords: [count, frequency, rate, percentage, trials to criterion]
+        termRefs: [frequency-and-rate, percentage, trials-to-criterion]
+        attestation: *att
+      - code: C.4
+        ourSummary: >-
+          Measure the temporal dimensions of behavior — duration, latency, interresponse
+          time — and select the right one for the question.
+        plainSummary: Know the ways to measure the timing of behavior and when to use each.
+        keywords: [duration, latency, IRT, interresponse time]
+        termRefs: [duration, latency, interresponse-time]
+        attestation: *att
+      - code: C.5
+        ourSummary: >-
+          Distinguish continuous from discontinuous measurement procedures and describe the
+          trade-offs between them.
+        plainSummary: Know the difference between recording every instance and sampling, and what each costs you.
+        keywords: [continuous measurement, discontinuous measurement, sampling]
+        termRefs: [continuous-measurement, discontinuous-measurement]
+        attestation: *att
+      - code: C.6
+        ourSummary: >-
+          Design and use interval-recording and time-sampling procedures — partial interval,
+          whole interval, momentary time sampling — and describe how each over- or
+          under-estimates behavior.
+        plainSummary: Set up interval and time-sampling recording and know how each one biases the estimate.
+        keywords: [partial interval, whole interval, momentary time sampling, PLACHECK]
+        termRefs:
+          [partial-interval-recording, whole-interval-recording, momentary-time-sampling]
+        attestation: *att
+      - code: C.7
+        ourSummary: >-
+          Evaluate measurement for efficiency and practicality in the setting where it will
+          actually be used, and adjust the procedure accordingly.
+        plainSummary: Choose measurement that the people in the room can actually do while working.
+        keywords: [efficiency, feasibility, measurement system design]
+        termRefs: [continuous-measurement]
+        attestation: *att
+      - code: C.8
+        ourSummary: >-
+          Evaluate the validity and reliability of a measurement system, including
+          interobserver agreement, and identify threats such as observer drift and reactivity.
+        plainSummary: Judge whether your data measure the right thing and would come out the same way twice.
+        keywords: [validity, reliability, accuracy, IOA, observer drift, reactivity]
+        termRefs: [interobserver-agreement, observer-drift, reactivity]
+        attestation: *att
+      - code: C.9
+        ourSummary: >-
+          Select a measurement system that fits the behavior's dimensions, the question being
+          asked and the setting's constraints.
+        plainSummary: Match the measurement method to the behavior and the question.
+        keywords: [selecting measurement, dimensions of behavior]
+        termRefs: [frequency-and-rate, duration]
+        attestation: *att
+      - code: C.10
+        ourSummary: >-
+          Construct graphs — line, bar, cumulative and others — that display data
+          accurately with correctly labeled axes, phases and condition changes.
+        plainSummary: Draw graphs that show the data honestly and are easy to read.
+        keywords: [line graph, bar graph, cumulative record, phase change line, axes]
+        termRefs: [line-graph, cumulative-record, bar-graph]
+        attestation: *att
+      - code: C.11
+        ourSummary: >-
+          Interpret graphed data by visual analysis — level, trend, variability and
+          immediacy of change within and across conditions.
+        plainSummary: Read a graph for level, trend and variability and say what changed.
+        keywords: [visual analysis, level, trend, variability, immediacy]
+        termRefs: [visual-analysis, baseline]
+        attestation: *att
+      - code: C.12
+        ourSummary: >-
+          Measure procedural integrity — the degree to which an intervention was delivered as
+          designed — and interpret the result alongside outcome data.
+        plainSummary: Check whether the plan was actually carried out the way it was written.
+        keywords: [procedural integrity, treatment integrity, fidelity]
+        termRefs: [treatment-integrity]
+        attestation: *att
+
+  - letter: D
+    name: Experimental Design
+    examWeightPercent: 7
+    examItems: 13
+    ourDescription: >-
+      How behavior analysts show that an intervention caused a change: dependent and
+      independent variables, validity and its threats, the single-case designs and their
+      logic, and how to read and critique data from them.
+    tasks:
+      - code: D.1
+        ourSummary: >-
+          Identify the dependent and independent variables in a study or intervention, and
+          state the relation between them.
+        plainSummary: Know which thing was changed on purpose and which thing was measured.
+        keywords: [dependent variable, independent variable]
+        termRefs: [dependent-variable, independent-variable]
+        attestation: *att
+      - code: D.2
+        ourSummary: >-
+          Distinguish internal from external validity and explain what each tells you about
+          a demonstration.
+        plainSummary: Know the difference between "it really caused the change" and "it would work elsewhere".
+        keywords: [internal validity, external validity]
+        termRefs: [internal-validity, external-validity]
+        attestation: *att
+      - code: D.3
+        ourSummary: >-
+          Identify threats to internal validity — confounds such as history, maturation,
+          reactivity and drift — and how a design controls for them.
+        plainSummary: Spot the other explanations for a change and know how designs rule them out.
+        keywords: [confound, threats to validity, history, maturation]
+        termRefs: [confounding-variable, internal-validity]
+        attestation: *att
+      - code: D.4
+        ourSummary: >-
+          Describe the defining features of single-case experimental designs, including
+          repeated measurement, baseline logic and within-subject replication.
+        plainSummary: Know what makes single-case designs work as experiments.
+        keywords: [single-case design, baseline logic, prediction, verification, replication]
+        termRefs: [single-case-design, baseline, replication]
+        attestation: *att
+      - code: D.5
+        ourSummary: >-
+          Distinguish single-case from group designs and explain the strengths and limits of
+          each for applied questions.
+        plainSummary: Know when a single-case design is the better tool and when a group design is.
+        keywords: [group design, single-case design, statistical inference]
+        termRefs: [single-case-design]
+        attestation: *att
+      - code: D.6
+        ourSummary: >-
+          Critique data from a single-case design: judge whether experimental control was
+          demonstrated and identify weaknesses in the demonstration.
+        plainSummary: Look at a single-case graph and say whether it really shows the treatment worked.
+        keywords: [experimental control, critique, visual analysis]
+        termRefs: [experimental-control, visual-analysis]
+        attestation: *att
+      - code: D.7
+        ourSummary: >-
+          Describe reversal and withdrawal designs and identify the conditions under which
+          they are and are not appropriate.
+        plainSummary: Know how A-B-A-B designs work and when you should not use one.
+        keywords: [reversal, withdrawal, ABAB, irreversibility]
+        termRefs: [reversal-design]
+        attestation: *att
+      - code: D.8
+        ourSummary: >-
+          Describe multiple-baseline and multiple-probe designs across behaviors, settings or
+          people, and the logic by which they demonstrate control.
+        plainSummary: Know how staggering the start of treatment across baselines shows it worked.
+        keywords: [multiple baseline, multiple probe, staggered]
+        termRefs: [multiple-baseline-design]
+        attestation: *att
+      - code: D.9
+        ourSummary: >-
+          Describe multielement, alternating-treatments, changing-criterion and comparative
+          or component or parametric analyses, and choose among designs for a given question.
+        plainSummary: Know the designs that compare treatments or step a criterion, and pick the right one.
+        keywords:
+          [
+            multielement,
+            alternating treatments,
+            changing criterion,
+            component analysis,
+            parametric analysis
+          ]
+        termRefs: [multielement-design, changing-criterion-design]
+        attestation: *att
+
+  - letter: E
+    name: Ethical and Professional Issues
+    examWeightPercent: 13
+    examItems: 22
+    ourDescription: >-
+      The core principles behind the Ethics Code and how they play out: competence,
+      confidentiality, public statements, ending or transferring services, multiple
+      relationships, working across cultures, examining one's own biases, and meeting
+      legal and regulatory requirements.
+    tasks:
+      - code: E.1
+        ourSummary: >-
+          Identify the core ethical principles of the profession and apply them to a
+          practice situation.
+        plainSummary: Know the core principles of the ethics code and use them to decide what to do.
+        keywords: [core principles, benefit others, dignity, integrity, competence]
+        termRefs: [ethics-code, dignity]
+        attestation: *att
+      - code: E.2
+        ourSummary: >-
+          Identify the risks of unethical behavior to clients, the profession and the
+          practitioner, and describe the accountability mechanisms that follow.
+        plainSummary: Know who gets hurt by unethical practice and what happens when it is reported.
+        keywords: [risk, harm, code enforcement, self-report]
+        termRefs: [ethics-code, self-reporting]
+        attestation: *att
+      - code: E.3
+        ourSummary: >-
+          Practice within the boundaries of one's competence, and describe how competence
+          is built and maintained through training, supervision and professional development.
+        plainSummary: Do only what you are trained to do, and keep learning.
+        keywords: [competence, scope of competence, professional development]
+        termRefs: [scope-of-competence, scope-of-practice]
+        attestation: *att
+      - code: E.4
+        ourSummary: >-
+          Protect confidentiality and privacy across records, conversations, technology and
+          public settings, within applicable law.
+        plainSummary: Keep client information private everywhere it could leak.
+        keywords: [confidentiality, privacy, records, HIPAA]
+        termRefs: [confidentiality, hipaa]
+        attestation: *att
+      - code: E.5
+        ourSummary: >-
+          Make truthful, non-misleading public statements, including on social media and in
+          advertising, and avoid using client information in them.
+        plainSummary: Be honest and careful in anything said publicly about services or clients.
+        keywords: [public statements, social media, advertising, testimonials]
+        termRefs: [public-statement]
+        attestation: *att
+      - code: E.6
+        ourSummary: >-
+          Discontinue or transition services responsibly, with planning, notice and
+          continuity of care.
+        plainSummary: End or hand over services in a way that does not leave the client stranded.
+        keywords: [discontinuation, transition, continuity of care]
+        termRefs: [continuity-of-care]
+        attestation: *att
+      - code: E.7
+        ourSummary: >-
+          Identify multiple relationships and conflicts of interest, and manage or avoid them.
+        plainSummary: Recognize when a second relationship with a client or supervisee is a problem.
+        keywords: [multiple relationships, dual relationships, conflict of interest, gifts]
+        termRefs: [dual-relationship, conflict-of-interest]
+        attestation: *att
+      - code: E.8
+        ourSummary: >-
+          Use effective interpersonal and communication skills with clients, caregivers,
+          colleagues and other professionals.
+        plainSummary: Communicate clearly and respectfully with everyone involved in a client's services.
+        keywords: [interpersonal skills, communication, collaboration]
+        termRefs: [collaboration]
+        attestation: *att
+      - code: E.9
+        ourSummary: >-
+          Practice cultural humility — an ongoing, self-examining stance toward other
+          people's identities and contexts.
+        plainSummary: Approach every family's culture as something to learn about, not assume.
+        keywords: [cultural humility]
+        termRefs: [cultural-humility]
+        attestation: *att
+      - code: E.10
+        ourSummary: >-
+          Deliver services in a culturally responsive way, adapting assessment, goals and
+          procedures to the client's values and context.
+        plainSummary: Fit services to the client's culture and values instead of the other way round.
+        keywords: [cultural responsiveness, contextual fit]
+        termRefs: [cultural-responsiveness, cultural-humility]
+        attestation: *att
+      - code: E.11
+        ourSummary: >-
+          Identify one's own biases and how they can affect assessment, treatment and
+          supervision decisions, and take steps to counter them.
+        plainSummary: Notice your own assumptions and stop them from steering decisions.
+        keywords: [bias, self-assessment, reflexivity]
+        termRefs: [cultural-humility]
+        attestation: *att
+      - code: E.12
+        ourSummary: >-
+          Comply with the legal, regulatory, licensing and funder requirements that apply to
+          behavior-analytic services, including mandated reporting.
+        plainSummary: Know the laws, rules and funder requirements that apply to your work.
+        keywords: [law, regulation, licensure, mandated reporter, funder requirements]
+        termRefs: [mandated-reporter, hipaa]
+        attestation: *att
+
+  - letter: F
+    name: Behavior Assessment
+    examWeightPercent: 13
+    examItems: 23
+    ourDescription: >-
+      Finding out what to work on and why: reviewing records, accounting for cultural
+      variables, assessing skills and preferences, running descriptive and experimental
+      functional assessments, and turning all of it into socially significant goals.
+    tasks:
+      - code: F.1
+        ourSummary: >-
+          Review existing records and available data before assessment, and identify what
+          they do and do not establish.
+        plainSummary: Read what is already known about the client before assessing anything new.
+        keywords: [records review, history, medical]
+        termRefs: [indirect-assessment]
+        attestation: *att
+      - code: F.2
+        ourSummary: >-
+          Identify and account for cultural and contextual variables that affect assessment
+          and the goals chosen from it.
+        plainSummary: Take the client's culture and setting into account during assessment.
+        keywords: [cultural variables, context, values]
+        termRefs: [cultural-responsiveness]
+        attestation: *att
+      - code: F.3
+        ourSummary: >-
+          Conduct assessments of current skills and deficits using direct observation and
+          criterion-referenced tools, and interpret them.
+        plainSummary: Find out what the client can already do and what they need to learn.
+        keywords: [skills assessment, criterion-referenced, curriculum assessment]
+        termRefs: [skills-assessment]
+        attestation: *att
+      - code: F.4
+        ourSummary: >-
+          Conduct preference assessments — single-stimulus, paired-stimulus, multiple-stimulus
+          and free-operant formats — and interpret the results.
+        plainSummary: Find out what the client prefers, using a method that fits them.
+        keywords: [preference assessment, MSWO, paired stimulus, free operant]
+        termRefs:
+          [
+            preference-assessment,
+            paired-stimulus-preference-assessment,
+            multiple-stimulus-without-replacement,
+            free-operant-preference-assessment
+          ]
+        attestation: *att
+      - code: F.5
+        ourSummary: >-
+          Conduct descriptive assessments — ABC recording, scatter plots, structured
+          observation — and interpret the correlations they reveal.
+        plainSummary: Watch behavior in its usual setting and record what comes before and after it.
+        keywords: [descriptive assessment, ABC recording, scatterplot]
+        termRefs: [descriptive-assessment, abc-recording, scatterplot]
+        attestation: *att
+      - code: F.6
+        ourSummary: >-
+          Conduct functional analyses, including variations such as brief, trial-based and
+          synthesized formats, and interpret the results.
+        plainSummary: Test what a behavior is for by arranging conditions and watching what happens.
+        keywords: [functional analysis, experimental analysis, synthesized]
+        termRefs: [functional-analysis, functional-behavior-assessment]
+        attestation: *att
+      - code: F.7
+        ourSummary: >-
+          Interpret referral information and assessment results to determine whether
+          behavior-analytic services are needed and what kind.
+        plainSummary: Decide from the assessment whether services are needed and what they should be.
+        keywords: [referral, need for services, medical necessity]
+        termRefs: [functional-behavior-assessment]
+        attestation: *att
+      - code: F.8
+        ourSummary: >-
+          Identify and prioritize socially significant goals from assessment results, weighing
+          risk, likely benefit, and the client's and caregivers' values.
+        plainSummary: Choose goals that matter to the client and put the most important ones first.
+        keywords: [social significance, prioritizing goals, social validity]
+        termRefs: [social-validity]
+        attestation: *att
+
+  - letter: G
+    name: Behavior-Change Procedures
+    examWeightPercent: 14
+    examItems: 25
+    ourDescription: >-
+      The procedures themselves: reinforcement in all its forms, differential and
+      time-based reinforcement, token economies, arranging motivating operations and
+      discriminative stimuli, teaching discriminations, prompting and fading, modeling,
+      shaping and chaining, group contingencies, programming for generalization and
+      maintenance, and punishment and its side effects.
+    tasks:
+      - code: G.1
+        ourSummary: >-
+          Design and implement positive and negative reinforcement procedures, including
+          selecting reinforcers and arranging schedules.
+        plainSummary: Set up reinforcement so a target behavior actually gets stronger.
+        keywords: [reinforcement procedures, reinforcer selection, schedules]
+        termRefs: [positive-reinforcement, negative-reinforcement]
+        attestation: *att
+      - code: G.2
+        ourSummary: >-
+          Design and implement differential reinforcement procedures — DRA, DRI, DRO, DRL,
+          DRH — and select among them for a given function and goal.
+        plainSummary: Reinforce some behavior and not other behavior, on purpose, to change what the learner does.
+        keywords: [DRA, DRI, DRO, DRL, DRH, differential reinforcement]
+        termRefs:
+          [
+            differential-reinforcement-of-alternative-behavior,
+            differential-reinforcement-of-other-behavior,
+            differential-reinforcement-of-incompatible-behavior,
+            differential-reinforcement-of-low-rates,
+            differential-reinforcement-of-high-rates
+          ]
+        attestation: *att
+      - code: G.3
+        ourSummary: >-
+          Design and implement time-based (noncontingent) reinforcement schedules and
+          describe their effects and risks.
+        plainSummary: Deliver reinforcement on a timer rather than after behavior, and know what that does.
+        keywords: [NCR, noncontingent reinforcement, time-based schedule, fixed-time]
+        termRefs: [noncontingent-reinforcement]
+        attestation: *att
+      - code: G.4
+        ourSummary: >-
+          Establish and use conditioned reinforcers, including token economies, and design
+          the exchange system that keeps tokens effective.
+        plainSummary: Make new things work as reinforcers, including tokens and points.
+        keywords: [conditioned reinforcer, token economy, pairing, backup reinforcer]
+        termRefs: [conditioned-reinforcer, token-economy, pairing]
+        attestation: *att
+      - code: G.5
+        ourSummary: >-
+          Arrange motivating operations and discriminative stimuli deliberately within a
+          procedure to make the target behavior more likely.
+        plainSummary: Set up wanting and signals so the behavior you are teaching is likely to happen.
+        keywords: [MO, SD, antecedent arrangement, capturing motivation]
+        termRefs: [motivating-operation, discriminative-stimulus, antecedent-intervention]
+        attestation: *att
+      - code: G.6
+        ourSummary: >-
+          Teach simple and conditional discriminations, including matching-to-sample and
+          listener responding, and sequence them appropriately.
+        plainSummary: Teach learners to respond to the right stimulus, including when it depends on a sample.
+        keywords: [simple discrimination, conditional discrimination, matching-to-sample]
+        termRefs: [discrimination-training, matching-to-sample, listener-responding]
+        attestation: *att
+      - code: G.7
+        ourSummary: >-
+          Use prompting procedures — errorless teaching, most-to-least, least-to-most —
+          and select a prompt hierarchy suited to the learner and the skill.
+        plainSummary: Help a learner respond correctly and choose the right kind of help.
+        keywords: [prompting, errorless, most-to-least, least-to-most, prompt hierarchy]
+        termRefs:
+          [
+            prompt,
+            prompt-hierarchy,
+            errorless-teaching,
+            most-to-least-prompting,
+            least-to-most-prompting
+          ]
+        attestation: *att
+      - code: G.8
+        ourSummary: >-
+          Fade prompts and transfer stimulus control — time delay, stimulus fading,
+          stimulus shaping — so the natural stimulus comes to control the response.
+        plainSummary: Remove help gradually so the learner responds on their own.
+        keywords: [prompt fading, time delay, stimulus fading, transfer of stimulus control]
+        termRefs: [prompt-fading, time-delay, stimulus-fading, transfer-of-stimulus-control]
+        attestation: *att
+      - code: G.9
+        ourSummary: >-
+          Use modeling and imitation training, including video modeling, to teach new behavior.
+        plainSummary: Teach by showing, and teach learners to copy a model.
+        keywords: [modeling, imitation training, video modeling]
+        termRefs: [modeling, imitation]
+        attestation: *att
+      - code: G.10
+        ourSummary: >-
+          Use instructions and rules to establish behavior, and describe when rule-governed
+          behavior is and is not a good route to a target.
+        plainSummary: Teach with instructions and rules, and know when that will not be enough.
+        keywords: [instructions, rules, rule-governed behavior]
+        termRefs: [rule-governed-behavior]
+        attestation: *att
+      - code: G.11
+        ourSummary: >-
+          Use shaping — differential reinforcement of successive approximations — to build
+          a response that does not yet occur.
+        plainSummary: Build a new behavior step by step by reinforcing closer and closer attempts.
+        keywords: [shaping, successive approximations]
+        termRefs: [shaping]
+        attestation: *att
+      - code: G.12
+        ourSummary: >-
+          Use chaining — forward, backward and total-task — built on a task analysis, and
+          select the format that fits the learner.
+        plainSummary: Teach a multi-step skill by linking the steps together.
+        keywords: [chaining, forward chaining, backward chaining, total task, task analysis]
+        termRefs:
+          [chaining, forward-chaining, backward-chaining, total-task-chaining, task-analysis]
+        attestation: *att
+      - code: G.13
+        ourSummary: >-
+          Distinguish trial-based from free-operant arrangements and select between
+          discrete-trial, naturalistic and other teaching formats.
+        plainSummary: Know when to teach in structured trials and when to teach in the flow of activity.
+        keywords: [discrete trial, free operant, naturalistic teaching, incidental teaching]
+        termRefs: [discrete-trial-training, naturalistic-teaching, incidental-teaching]
+        attestation: *att
+      - code: G.14
+        ourSummary: >-
+          Design group contingencies — independent, dependent and interdependent — and
+          weigh their benefits against their risks.
+        plainSummary: Set up contingencies that apply to a group, and know the pitfalls.
+        keywords: [group contingency, independent, dependent, interdependent]
+        termRefs: [group-contingency]
+        attestation: *att
+      - code: G.15
+        ourSummary: >-
+          Program for generalization — training sufficient exemplars, common stimuli, loose
+          training, natural contingencies — rather than expecting it to happen on its own.
+        plainSummary: Plan for skills to carry over to new people, places and materials.
+        keywords: [generalization, multiple exemplars, common stimuli, train loosely]
+        termRefs: [generalization, multiple-exemplar-training, teaching-loosely]
+        attestation: *att
+      - code: G.16
+        ourSummary: >-
+          Program for maintenance, including thinning reinforcement schedules and shifting
+          to naturally occurring reinforcers.
+        plainSummary: Make sure skills last by thinning reinforcement and handing over to natural rewards.
+        keywords: [maintenance, schedule thinning, natural reinforcers]
+        termRefs: [maintenance, schedule-thinning]
+        attestation: *att
+      - code: G.17
+        ourSummary: >-
+          Describe positive and negative punishment procedures — time-out, response cost,
+          overcorrection — and the conditions and safeguards under which they may be used.
+        plainSummary: Know the punishment procedures, when they are considered, and the safeguards required.
+        keywords: [time-out, response cost, overcorrection, punishment procedures]
+        termRefs:
+          [time-out, response-cost, overcorrection, positive-punishment, negative-punishment]
+        attestation: *att
+      - code: G.18
+        ourSummary: >-
+          Identify the emotional and elicited side effects of behavior-change procedures,
+          including extinction and punishment, and plan to minimize them.
+        plainSummary: Anticipate the emotional fallout of procedures and reduce it.
+        keywords: [side effects, emotional responding, elicited behavior, extinction burst]
+        termRefs: [extinction-burst, punishment]
+        attestation: *att
+      - code: G.19
+        ourSummary: >-
+          Use procedures that produce emergent and derived relations, such as equivalence-based
+          instruction, to teach efficiently.
+        plainSummary: Teach so that learners pick up relations you never directly trained.
+        keywords: [equivalence-based instruction, emergent relations, derived]
+        termRefs: [stimulus-equivalence]
+        attestation: *att
+
+  - letter: H
+    name: Selecting and Implementing Interventions
+    examWeightPercent: 11
+    examItems: 20
+    ourDescription: >-
+      Putting a plan together and keeping it honest: measurable goals, choosing
+      interventions on evidence and fit, preferring socially valid alternatives, limiting
+      unwanted effects, guarding against relapse, and using integrity and outcome data to
+      decide what to change.
+    tasks:
+      - code: H.1
+        ourSummary: >-
+          Write measurable, socially valid goals with clear criteria for mastery and
+          conditions for performance.
+        plainSummary: Write goals that say exactly what success looks like and how it will be measured.
+        keywords: [goals, mastery criteria, measurable objectives]
+        termRefs: [operational-definition, social-validity]
+        attestation: *att
+      - code: H.2
+        ourSummary: >-
+          Select interventions based on assessment results, the evidence base, client
+          preference, and contextual fit with the setting and the people implementing them.
+        plainSummary: Pick treatments that the evidence supports, the client prefers, and the setting can deliver.
+        keywords: [intervention selection, evidence-based practice, preference, contextual fit]
+        termRefs: [evidence-based-practice, functional-behavior-assessment]
+        attestation: *att
+      - code: H.3
+        ourSummary: >-
+          Prefer socially valid, function-based alternatives — such as functional
+          communication — that serve the same purpose as the problem behavior.
+        plainSummary: Replace a problem behavior with something that works just as well for the learner.
+        keywords: [replacement behavior, functional communication training, socially valid]
+        termRefs: [functional-communication-training, replacement-behavior]
+        attestation: *att
+      - code: H.4
+        ourSummary: >-
+          Anticipate and mitigate the unwanted effects of interventions on the client and
+          others, including the risks of restrictive procedures.
+        plainSummary: Plan for what could go wrong with a treatment and reduce the harm.
+        keywords: [side effects, risk, restrictive procedures, least restrictive]
+        termRefs: [least-restrictive-alternative]
+        attestation: *att
+      - code: H.5
+        ourSummary: >-
+          Identify the conditions that produce relapse — renewal, resurgence, reinstatement —
+          and design against them.
+        plainSummary: Know why treated behavior comes back and how to make that less likely.
+        keywords: [relapse, resurgence, renewal, reinstatement]
+        termRefs: [resurgence, spontaneous-recovery]
+        attestation: *att
+      - code: H.6
+        ourSummary: >-
+          Use procedural-integrity data to decide whether to retrain implementers, simplify
+          the plan, or revise it.
+        plainSummary: When a plan is not being followed, decide whether to fix the training or the plan.
+        keywords: [procedural integrity, treatment drift, retraining]
+        termRefs: [treatment-integrity, treatment-drift]
+        attestation: *att
+      - code: H.7
+        ourSummary: >-
+          Use outcome data to decide whether to continue, modify or discontinue an intervention.
+        plainSummary: Let the data decide whether a treatment keeps going, changes or stops.
+        keywords: [data-based decisions, effectiveness, modification]
+        termRefs: [visual-analysis, baseline]
+        attestation: *att
+      - code: H.8
+        ourSummary: >-
+          Collaborate with caregivers, other professionals and the client in planning and
+          delivering interventions.
+        plainSummary: Work with families and other professionals rather than around them.
+        keywords: [collaboration, caregivers, interprofessional]
+        termRefs: [collaboration]
+        attestation: *att
+
+  - letter: I
+    name: Personnel Supervision and Management
+    examWeightPercent: 11
+    examItems: 19
+    ourDescription: >-
+      Being responsible for other people's work: why supervision matters, building the
+      supervisory relationship, equity in supervision, setting goals for supervisees, using
+      performance-management procedures, diagnosing performance problems by function, and
+      making supervisory decisions from data.
+    tasks:
+      - code: I.1
+        ourSummary: >-
+          State the benefits of effective supervision and the costs of poor supervision for
+          clients, supervisees and organizations.
+        plainSummary: Know why good supervision matters and what bad supervision costs.
+        keywords: [supervision, benefits, risks]
+        termRefs: [supervision]
+        attestation: *att
+      - code: I.2
+        ourSummary: >-
+          Establish and maintain effective supervisory relationships, including contracts,
+          expectations and the delivery of feedback.
+        plainSummary: Set up supervision with clear agreements and give useful feedback.
+        keywords: [supervision contract, expectations, feedback, rapport]
+        termRefs: [supervision, performance-feedback]
+        attestation: *att
+      - code: I.3
+        ourSummary: >-
+          Supervise equitably and with cultural responsiveness, recognizing how power and
+          identity affect the supervisory relationship.
+        plainSummary: Treat supervisees fairly and take their backgrounds into account.
+        keywords: [equity, cultural responsiveness, power]
+        termRefs: [cultural-humility, supervision]
+        attestation: *att
+      - code: I.4
+        ourSummary: >-
+          Set measurable, individualized goals for supervisees based on assessed skills and
+          the requirements of their role.
+        plainSummary: Give each supervisee clear goals matched to what they still need to learn.
+        keywords: [supervisee goals, skills assessment, competency]
+        termRefs: [competency-assessment, supervision]
+        attestation: *att
+      - code: I.5
+        ourSummary: >-
+          Use performance-management procedures — behavioral skills training, feedback,
+          performance monitoring, incentives — to train and maintain staff performance.
+        plainSummary: Train staff with practice and feedback, and keep their performance up over time.
+        keywords: [behavioral skills training, BST, feedback, performance management]
+        termRefs: [behavioral-skills-training, performance-feedback]
+        attestation: *att
+      - code: I.6
+        ourSummary: >-
+          Diagnose staff performance problems by their function — skill deficit, missing
+          antecedents, competing contingencies — before choosing a remedy.
+        plainSummary: Work out why a staff member is not performing before deciding how to fix it.
+        keywords: [performance diagnostics, can't-do vs won't-do, function of performance]
+        termRefs: [performance-diagnostic]
+        attestation: *att
+      - code: I.7
+        ourSummary: >-
+          Evaluate supervision itself with data — supervisee performance, client outcomes,
+          fidelity — and adjust supervisory practice accordingly.
+        plainSummary: Check with data whether your supervision is working, and change it if not.
+        keywords: [supervision evaluation, data-based supervision]
+        termRefs: [supervision, treatment-integrity]
+        attestation: *att
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-14'
+  reviewedBy: null
+  reviewedOn: null
+  changeNote: >-
+    Codes, counts, weights and item counts verified against the official outline and the
+    06/2026 handbook. Summaries are original and await review.
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-14'

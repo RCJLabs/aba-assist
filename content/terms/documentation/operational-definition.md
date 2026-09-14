@@ -32,6 +32,10 @@ nonExamples:
 contrastWith: []
 seeAlso: [interobserver-agreement, frequency-and-rate]
 searchBoost: 1.4
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: RBT, code: E }
+  - { credential: BCBA, code: C.1 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

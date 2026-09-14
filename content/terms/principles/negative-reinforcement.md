@@ -42,6 +42,11 @@ searchBoost: 1.5
 flashcard:
   mnemonic: >-
     Negative means subtract, not bad. Reinforcement always means the behavior went up.
+taskRefs:
+  - { credential: RBT, code: C }
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: B.4 }
+  - { credential: BCBA, code: G.1 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

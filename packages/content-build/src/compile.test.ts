@@ -338,3 +338,230 @@ describe('editorial gate', () => {
 		expect(rules(r)).toContain('editorial/plain-language-too-hard');
 	});
 });
+
+describe('outline references', () => {
+	const outline = `
+id: rbt-tco-3
+credential: RBT
+edition: '3rd'
+effectiveDate: '2026-01-01'
+issuer: BACB
+sourceId: open-source-doc
+countsVerified: false
+totalTasks: 43
+exam: { scoredItems: 75, unscoredItems: 10, minutes: 90 }
+domains:
+  - letter: C
+    name: Behavior Acquisition
+    examWeightPercent: 100
+    examItems: 75
+    ourDescription: Teaching new skills, prompting and fading, and running programs as written every time.
+    tasks:
+      - code: C-1
+        ourSummary: Run a teaching program the way it is written, including its prompting procedure.
+        plainSummary: Run the program as written.
+        attestation:
+          originalProse: true
+          noVerbatimSource: true
+          consulted: Task topic from the outline; summary written independently.
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
+`;
+
+	it('accepts a domain-level ref and a verified task-level ref', async () => {
+		const r = await build({
+			'taxonomy/rbt-tco-3.yaml': outline,
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					taskRefs: [
+						{ credential: 'RBT', code: 'C' },
+						{ credential: 'RBT', code: 'C-1' }
+					]
+				})
+			)
+		});
+		expect(r.errors).toEqual([]);
+		const index = JSON.parse(r.assets.find((a) => a.name === 'terms.index')!.source) as {
+			r: string[];
+		}[];
+		expect(index[0]!.r).toEqual(['RBT:C', 'RBT:C-1']);
+	});
+
+	it('REJECTS a task code that is not in the outline, and a domain that does not exist', async () => {
+		const r = await build({
+			'taxonomy/rbt-tco-3.yaml': outline,
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					taskRefs: [
+						{ credential: 'RBT', code: 'C-9' },
+						{ credential: 'RBT', code: 'D' }
+					]
+				})
+			)
+		});
+		expect(rules(r).filter((x) => x === 'refs/unknown-task-code')).toHaveLength(2);
+	});
+
+	it('REJECTS a ref to a credential with no modelled outline', async () => {
+		const r = await build({
+			'taxonomy/rbt-tco-3.yaml': outline,
+			'terms/principles/sample-term.md': frontmatter(
+				term({ taskRefs: [{ credential: 'BCBA', code: 'A.1' }] })
+			)
+		});
+		expect(rules(r)).toContain('refs/unknown-task-code');
+	});
+
+	it('REJECTS per-domain item counts that do not add up to the scored total', async () => {
+		const r = await build({
+			'taxonomy/rbt-tco-3.yaml': outline.replace('examItems: 75', 'examItems: 60')
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/taxonomy'))).toBe(true);
+	});
+});
+
+describe('questions', () => {
+	const outline = `
+id: rbt-tco-3
+credential: RBT
+edition: '3rd'
+effectiveDate: '2026-01-01'
+issuer: BACB
+sourceId: open-source-doc
+exam: { scoredItems: null, unscoredItems: null, minutes: null }
+totalTasks: null
+domains:
+  - letter: A
+    name: Data Collection and Graphing
+    examWeightPercent: null
+    ourDescription: Recording what happened during a session and putting it on a graph so change is visible.
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
+`;
+
+	function question(overrides: Record<string, unknown> = {}) {
+		return {
+			id: 'q-1',
+			credential: 'RBT',
+			taskRef: { credential: 'RBT', code: 'A' },
+			type: 'single-best-answer',
+			stem: 'A technician counts 12 responses in 30 minutes. What is the rate per hour?',
+			options: [
+				{
+					id: 'a',
+					text: '24 per hour',
+					isCorrect: true,
+					rationale: 'Twelve in half an hour is 24 in an hour.'
+				},
+				{
+					id: 'b',
+					text: '12 per hour',
+					isCorrect: false,
+					rationale: 'That is the count, not the rate per hour.'
+				},
+				{
+					id: 'c',
+					text: '6 per hour',
+					isCorrect: false,
+					rationale: 'That scales in the wrong direction.'
+				}
+			],
+			explanation:
+				'Rate is count divided by time, scaled to the unit asked for. Twelve in 30 minutes is 24 per hour.',
+			cognitiveLevel: 'application',
+			difficulty: 2,
+			termRefs: ['sample-term'],
+			citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+			attestation,
+			review,
+			provenance,
+			...overrides
+		};
+	}
+
+	const files = (q: Record<string, unknown>) => ({
+		'taxonomy/rbt-tco-3.yaml': outline,
+		'terms/principles/sample-term.md': frontmatter(term()),
+		'questions/rbt/a.yaml': JSON.stringify({ questions: [q] })
+	});
+
+	it('loads a well-formed question, counts it, and emits a per-exam bucket', async () => {
+		const r = await build(files(question()));
+		expect(r.errors).toEqual([]);
+		expect(r.counts.questions).toBe(1);
+		expect(r.counts.unreviewed).toBe(2);
+		expect(r.assets.map((a) => a.name)).toContain('questions.RBT');
+	});
+
+	it('REJECTS a question filed under one exam but referencing another', async () => {
+		const r = await build(files(question({ taskRef: { credential: 'BCBA', code: 'A.1' } })));
+		expect(rules(r).some((x) => x.startsWith('schema/question'))).toBe(true);
+	});
+
+	it('REJECTS a stem that contradicts its negated flag', async () => {
+		const r = await build(
+			files(
+				question({ stem: 'Which of the following is NOT a measure of rate?', negated: false })
+			)
+		);
+		expect(rules(r).some((x) => x.startsWith('schema/question'))).toBe(true);
+	});
+
+	it('REJECTS an unresolved term reference from a question', async () => {
+		const r = await build(files(question({ termRefs: ['no-such-term'] })));
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS clinical-decision language in a question', async () => {
+		const r = await build(
+			files(
+				question({
+					explanation:
+						'The technician should suggest the family ask about a higher dosage of the medication before changing the plan.'
+				})
+			)
+		);
+		expect(rules(r)).toContain('safety/clinical-decision-language');
+	});
+});
+
+describe('credential facts', () => {
+	const facts = (extra = '') => `
+id: rbt
+credential: RBT
+label: Registered Behavior Technician
+issuer: BACB
+handbookSourceId: open-source-doc
+handbookVersion: '06/2026'
+officialUrl: https://example.org/handbook
+ourOverview: A paraprofessional certification maintained through supervision and, from 2027, professional development.
+sections:
+  - id: exam
+    title: The examination
+    items:
+      - { label: Questions, value: '85 in total, 75 of them scored.' }
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
+${extra}`;
+
+	it('loads credential facts and emits them', async () => {
+		const r = await build({ 'credentials/rbt.yaml': facts() });
+		expect(r.errors).toEqual([]);
+		expect(r.counts.credentials).toBe(1);
+		expect(r.assets.map((a) => a.name)).toContain('credentials');
+	});
+
+	it('REJECTS credential facts that try to carry the handbook text', async () => {
+		const r = await build({
+			'credentials/rbt.yaml': facts('officialText: Some text lifted from the handbook.')
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/credential'))).toBe(true);
+	});
+
+	it('REJECTS credential facts with no official link', async () => {
+		const r = await build({
+			'credentials/rbt.yaml': facts().replace('officialUrl: https://example.org/handbook', '')
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/credential'))).toBe(true);
+	});
+});

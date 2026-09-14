@@ -38,6 +38,16 @@ export const QuizQuestion = strictContent({
 }).check((ctx) => {
 	const q = ctx.value;
 
+	// A question is filed under one exam; its primary task ref must belong to that exam,
+	// or the domain filters in the quiz would show it under the wrong credential.
+	if (q.taskRef.credential !== q.credential) {
+		ctx.issues.push({
+			code: 'custom',
+			message: `${q.id}: credential is ${q.credential} but taskRef is for ${q.taskRef.credential}`,
+			input: q.id
+		});
+	}
+
 	const correct = q.options.filter((o) => o.isCorrect).length;
 	const ok = q.type === 'multi-select' ? correct >= 2 : correct === 1;
 	if (!ok) {

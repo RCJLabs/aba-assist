@@ -43,7 +43,10 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/scenarios', /Situations/],
 		['/help', /urgent/i],
 		['/settings', /Settings/],
-		['/about', /About this app/]
+		['/about', /About this app/],
+		['/study', /Flashcards/],
+		['/quiz', /Practice questions/],
+		['/exams', /Exams and certifications/]
 	];
 
 	for (const [path, heading] of routes) {
@@ -71,6 +74,27 @@ test('a deep link to a term page works offline and shows that term', async ({
 	await page.goto('/scenarios/learner-is-injuring-themselves');
 	await expect(page.getByText(/Stop and escalate/i)).toBeVisible();
 
+	// The outline pages are precached: they are two documents, not hundreds.
+	await page.goto('/exams/bcba-tco-6');
+	await expect(page.locator('.task')).toHaveCount(104);
+
+	await context.setOffline(false);
+});
+
+test('flashcards and the quiz work with no network', async ({ page, context }) => {
+	expect(await installServiceWorker(page)).toBe('active');
+	await context.setOffline(true);
+
+	await page.goto('/study');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await page.getByRole('button', { name: 'Show answer' }).click();
+	await expect(page.getByRole('group', { name: /How well did you know it/ })).toBeVisible();
+
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
+
 	await context.setOffline(false);
 });
 
@@ -80,7 +104,7 @@ test('search still works offline', async ({ page, context }) => {
 
 	await page.goto('/');
 	await page.getByLabel('Search terms').fill('extinction');
-	await expect(page.getByRole('link', { name: /Extinction/ })).toBeVisible();
+	await expect(page.getByRole('link', { name: /Extinction/ }).first()).toBeVisible();
 
 	// The fuzzy index is precached too, so it must still take over with no network.
 	await expect(page.locator('form[role="search"]')).toHaveAttribute(

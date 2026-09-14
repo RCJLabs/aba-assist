@@ -33,6 +33,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [partial-interval-recording, whole-interval-recording]
 searchBoost: 1.1
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: BCBA, code: C.6 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

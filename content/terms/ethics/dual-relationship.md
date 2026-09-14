@@ -31,9 +31,12 @@ nonExamples:
       Working with two learners in the same class, which is a normal caseload rather than
       a conflict.
     setting: school
-contrastWith: []
+contrastWith: [conflict-of-interest]
 seeAlso: [scope-of-practice, confidentiality]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: F }
+  - { credential: BCBA, code: E.7 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

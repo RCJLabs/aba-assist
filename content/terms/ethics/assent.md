@@ -36,6 +36,9 @@ nonExamples:
 contrastWith: []
 seeAlso: [negative-reinforcement]
 searchBoost: 1.4
+taskRefs:
+  - { credential: RBT, code: F }
+  - { credential: BCBA, code: E.1 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

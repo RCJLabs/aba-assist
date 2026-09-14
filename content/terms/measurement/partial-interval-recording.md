@@ -40,6 +40,9 @@ flashcard:
   mnemonic: >-
     Partial over-reports. Whole under-reports. Pick the one whose error points away from
     the behavior you care about.
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: BCBA, code: C.6 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

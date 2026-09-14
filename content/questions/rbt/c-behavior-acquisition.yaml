@@ -1,0 +1,605 @@
+# RBT practice questions — area C, Behavior Acquisition. All original.
+
+questions:
+  - id: rbt-c-dtt-components
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      In discrete-trial teaching, what typically follows the learner's response to the
+      instruction?
+    options:
+      - id: a
+        text: A consequence — reinforcement for a correct response or the program's error-correction step — and then a brief pause before the next trial
+        isCorrect: true
+        rationale: >-
+          Each trial has a clear beginning, a response, a consequence and an inter-trial
+          interval before the next instruction.
+      - id: b
+        text: The same instruction repeated until the learner answers correctly
+        isCorrect: false
+        rationale: >-
+          Repeating the instruction without a consequence blurs the trial and teaches
+          the learner that the first instruction does not count.
+      - id: c
+        text: A five-minute break regardless of the response
+        isCorrect: false
+        rationale: >-
+          A long break after every trial is neither a consequence tied to the response
+          nor a typical inter-trial interval.
+      - id: d
+        text: Immediate movement to a different program
+        isCorrect: false
+        rationale: >-
+          Switching programs is not part of the trial structure.
+    explanation: >-
+      A discrete trial has a discriminative stimulus, an optional prompt, a response, a
+      consequence and an inter-trial interval. The consequence differs for correct and
+      incorrect responses as the program specifies, and the short pause keeps trials
+      distinct.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [discrete-trial-training, error-correction]
+    citations:
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the teaching-procedure literature; no examination
+        material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-c-net-example
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A learner reaches toward a bin of blocks on a shelf. The technician holds the bin,
+      waits, prompts "blocks," and hands over the bin when the learner says it. Which
+      teaching approach is this?
+    options:
+      - id: a
+        text: Naturalistic teaching in the learner's own moment of motivation
+        isCorrect: true
+        rationale: >-
+          The learner's interest set up the teaching opportunity, and the natural
+          consequence — getting the blocks — is the reinforcer. That is incidental or
+          naturalistic teaching.
+      - id: b
+        text: Discrete-trial teaching at the table
+        isCorrect: false
+        rationale: >-
+          Discrete-trial teaching is initiated by the technician with a planned
+          instruction, usually with contrived reinforcers.
+      - id: c
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping reinforces successive approximations of a new response form; here a
+          known response is being occasioned and reinforced.
+      - id: d
+        text: Time-out
+        isCorrect: false
+        rationale: >-
+          Nothing is being removed; the learner gains access to what they wanted.
+    explanation: >-
+      Naturalistic teaching uses the learner's own initiation and the natural reinforcer.
+      Because the learner wants the item, motivation is built in, and because the
+      teaching happens in the real context, generalization is easier.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [naturalistic-teaching, incidental-teaching, mand]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-prompt-hierarchy-order
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A program uses least-to-most prompting with the levels verbal, gestural, model and
+      physical. The learner does not respond to the instruction within the response
+      window. What should the technician do next?
+    options:
+      - id: a
+        text: Deliver the verbal prompt and wait the response window again
+        isCorrect: true
+        rationale: >-
+          Least-to-most starts at the least intrusive level and moves up one level at a
+          time only as needed.
+      - id: b
+        text: Deliver the physical prompt to make sure the response occurs
+        isCorrect: false
+        rationale: >-
+          Jumping to the most intrusive prompt is most-to-least, not least-to-most, and
+          it gives more help than the procedure allows.
+      - id: c
+        text: Repeat the instruction more loudly
+        isCorrect: false
+        rationale: >-
+          A repeated instruction is a new trial, not a prompt level.
+      - id: d
+        text: End the trial and score it as incorrect
+        isCorrect: false
+        rationale: >-
+          The procedure calls for prompting after no response, not for ending the trial.
+    explanation: >-
+      In least-to-most prompting the learner first gets a chance to respond
+      independently, then increasingly intrusive prompts are added one level at a time
+      within the trial. The technician follows the levels in the order the program lists.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [least-to-most-prompting, prompt-hierarchy]
+    citations:
+      - sourceId: macduff-krantz-mcclannahan-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-most-to-least-when
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A supervisor chooses most-to-least prompting for a learner who is starting a
+      completely new skill and makes many errors. What is the main advantage of that
+      choice?
+    options:
+      - id: a
+        text: It keeps errors low while the skill is first being learned
+        isCorrect: true
+        rationale: >-
+          Starting with enough help to guarantee a correct response and fading from
+          there prevents the learner from practicing errors.
+      - id: b
+        text: It gives the least possible help from the first trial
+        isCorrect: false
+        rationale: >-
+          That describes least-to-most prompting.
+      - id: c
+        text: It removes the need for prompt fading
+        isCorrect: false
+        rationale: >-
+          Fading is built into the procedure; the prompts are reduced across trials as
+          the learner succeeds.
+      - id: d
+        text: It allows the learner to make errors and learn from them
+        isCorrect: false
+        rationale: >-
+          Allowing errors is the opposite of the reason this procedure is chosen.
+    explanation: >-
+      Most-to-least prompting begins with the level of help needed for success and fades
+      downward, which is close to errorless. It suits new skills and learners who make
+      many errors, at the cost of sometimes giving more help than necessary.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [most-to-least-prompting, errorless-teaching]
+    citations:
+      - sourceId: macduff-krantz-mcclannahan-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-time-delay
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A program says the technician should show a picture and immediately say its name
+      for the first few sessions, then wait two seconds before saying it, then four
+      seconds. Which prompt-fading procedure is this?
+    options:
+      - id: a
+        text: Progressive time delay
+        isCorrect: true
+        rationale: >-
+          Delivering the prompt immediately at first and then inserting a growing delay
+          before it is progressive time delay.
+      - id: b
+        text: Stimulus fading
+        isCorrect: false
+        rationale: >-
+          Stimulus fading changes a feature of the materials, such as size or color; here
+          the timing of a verbal prompt changes.
+      - id: c
+        text: Least-to-most prompting
+        isCorrect: false
+        rationale: >-
+          Least-to-most adds prompt levels within a trial; it does not manipulate the
+          delay before a single prompt.
+      - id: d
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping changes the criterion for reinforcement, not the timing of a prompt.
+    explanation: >-
+      Time delay fades a prompt by waiting longer before giving it, so the learner has
+      a chance to respond to the natural cue first. Responses that come before the prompt
+      show that stimulus control has transferred.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [time-delay, prompt-fading, transfer-of-stimulus-control]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-shaping-example
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A learner currently says "ba" for ball. The plan reinforces "ba," then only "bal,"
+      then only "ball." Which procedure is this?
+    options:
+      - id: a
+        text: Shaping
+        isCorrect: true
+        rationale: >-
+          Reinforcing closer and closer approximations of the final form, while no longer
+          reinforcing earlier forms, is shaping.
+      - id: b
+        text: Chaining
+        isCorrect: false
+        rationale: >-
+          Chaining links separate steps of a sequence; here one response is being refined.
+      - id: c
+        text: Discrimination training
+        isCorrect: false
+        rationale: >-
+          Discrimination training teaches responding to one stimulus and not others; the
+          stimulus here does not change.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Earlier approximations do stop being reinforced, but the goal and the whole
+          procedure is building a new form, which is shaping.
+    explanation: >-
+      Shaping uses differential reinforcement of successive approximations: each step
+      closer to the target form is reinforced and the previous step is no longer
+      reinforced. It builds responses that do not yet occur in their final form.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [shaping]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-backward-chaining
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      When teaching a learner to put on a jacket, the technician does every step except
+      zipping it closed, which the learner does and is praised for. Once that is
+      mastered, the learner also does the step before it. Which chaining method is this?
+    options:
+      - id: a
+        text: Backward chaining
+        isCorrect: true
+        rationale: >-
+          Teaching the final step first and working toward the beginning is backward
+          chaining; the learner always completes the task and contacts the natural end.
+      - id: b
+        text: Forward chaining
+        isCorrect: false
+        rationale: >-
+          Forward chaining teaches the first step first.
+      - id: c
+        text: Total-task chaining
+        isCorrect: false
+        rationale: >-
+          Total-task has the learner attempt every step on every trial with help as
+          needed.
+      - id: d
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping refines the form of a single response; chaining links steps.
+    explanation: >-
+      Backward chaining begins with the last step of the task analysis. The learner
+      performs that step and finishes the task, then progressively earlier steps are
+      added. It is often chosen when finishing the task is itself reinforcing.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [backward-chaining, chaining, task-analysis]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-generalization-strategy
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A learner can label a cup only when shown the blue cup used in teaching. Which
+      change to teaching is most likely to help the skill generalize?
+    options:
+      - id: a
+        text: Teach with many different cups, in different places, with different people
+        isCorrect: true
+        rationale: >-
+          Multiple-exemplar training exposes the learner to the range of stimuli the
+          skill must work with, so responding is not tied to one object.
+      - id: b
+        text: Run more trials with the blue cup
+        isCorrect: false
+        rationale: >-
+          More practice with the same stimulus strengthens control by that stimulus
+          alone.
+      - id: c
+        text: Stop reinforcing correct labels of the blue cup
+        isCorrect: false
+        rationale: >-
+          Extinction of the correct response does nothing to extend it to new cups.
+      - id: d
+        text: Wait for the skill to generalize on its own
+        isCorrect: false
+        rationale: >-
+          Generalization has to be planned for; hoping is the strategy that reliably
+          fails.
+    explanation: >-
+      Stokes and Baer's most dependable strategy for generalization is to train with
+      sufficient examples — varied stimuli, settings and people — so that the relevant
+      features, not the incidental ones, control the response.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [multiple-exemplar-training, stimulus-generalization, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-token-economy-backup
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A learner earns stars for completing tasks but never gets to trade them for
+      anything. Over two weeks the stars stop having any effect. What is the most likely
+      explanation?
+    options:
+      - id: a
+        text: Tokens work only because they can be exchanged for backup reinforcers
+        isCorrect: true
+        rationale: >-
+          A token is a conditioned reinforcer whose value comes from the exchange. With
+          no backup reinforcers the pairing breaks down and the tokens lose their effect.
+      - id: b
+        text: The learner does not like stars
+        isCorrect: false
+        rationale: >-
+          Tokens are not meant to be liked for themselves; their value is borrowed from
+          what they buy.
+      - id: c
+        text: Too many stars were delivered
+        isCorrect: false
+        rationale: >-
+          The amount is not the issue when nothing can be exchanged.
+      - id: d
+        text: The tasks were too easy
+        isCorrect: false
+        rationale: >-
+          Task difficulty does not explain why the tokens themselves stopped working.
+    explanation: >-
+      In a token economy the tokens are generalized conditioned reinforcers. They keep
+      their value only through regular exchange for backup reinforcers. A system without
+      exchange is a system without reinforcement.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [token-economy, conditioned-reinforcer, generalized-conditioned-reinforcer]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-thinning-too-fast
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A program moves from reinforcing every correct response to reinforcing every tenth
+      correct response in a single session, and the learner stops responding. Which term
+      best describes what happened?
+    options:
+      - id: a
+        text: Ratio strain from thinning the schedule too quickly
+        isCorrect: true
+        rationale: >-
+          A large, sudden increase in the response requirement produces a breakdown in
+          responding known as ratio strain.
+      - id: b
+        text: Satiation
+        isCorrect: false
+        rationale: >-
+          Satiation comes from too much access to the reinforcer, not too little.
+      - id: c
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery is the return of an extinguished behavior, not the
+          collapse of a reinforced one.
+      - id: d
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization concerns responding to new stimuli, not the schedule of
+          reinforcement.
+    explanation: >-
+      Schedules are thinned gradually so behavior continues under leaner reinforcement.
+      Thinning too fast produces ratio strain — pausing, erratic responding or stopping
+      altogether. The pace of thinning is set by the data, and a collapse means backing up.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [schedule-thinning, intermittent-reinforcement, fixed-ratio-schedule]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-mand-identify
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A thirsty learner signs "drink" and is given water. Which verbal operant is this?
+    options:
+      - id: a
+        text: Mand
+        isCorrect: true
+        rationale: >-
+          A response driven by wanting and reinforced by getting the specific thing
+          requested is a mand.
+      - id: b
+        text: Tact
+        isCorrect: false
+        rationale: >-
+          A tact is evoked by something present in the environment and is reinforced
+          socially, not by the item itself.
+      - id: c
+        text: Echoic
+        isCorrect: false
+        rationale: >-
+          Nobody modeled the sign for the learner to copy.
+      - id: d
+        text: Intraverbal
+        isCorrect: false
+        rationale: >-
+          No verbal stimulus from another person set the occasion for the sign.
+    explanation: >-
+      The mand is controlled by a motivating operation and reinforced by the specific
+      consequence it specifies. It is usually the first verbal operant taught because it
+      benefits the learner directly and replaces problem behavior that served the same
+      purpose.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [mand, tact, verbal-behavior]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-stimulus-control-established
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      A learner claps when the technician says "clap" and does not clap when the
+      technician says "wave." Which statement best describes this?
+    options:
+      - id: a
+        text: The instruction has stimulus control over clapping
+        isCorrect: true
+        rationale: >-
+          Clapping occurs in the presence of one instruction and not the other, which is
+          what it means for a stimulus to control a response.
+      - id: b
+        text: Clapping is under automatic reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing here concerns what maintains clapping; it concerns what occasions it.
+      - id: c
+        text: The learner has not yet learned to clap
+        isCorrect: false
+        rationale: >-
+          The learner claps reliably when asked; the skill is present and discriminated.
+      - id: d
+        text: The behavior has generalized to all instructions
+        isCorrect: false
+        rationale: >-
+          Clapping to every instruction would be a failure of discrimination, the
+          opposite of what is described.
+    explanation: >-
+      Stimulus control means a response is more likely in the presence of a particular
+      stimulus because of a history of reinforcement in its presence. Responding to
+      "clap" but not to "wave" shows a discrimination has been established.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [stimulus-control, stimulus-discrimination, discriminative-stimulus]
+    citations:
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-task-analysis-purpose
+    credential: RBT
+    taskRef: { credential: RBT, code: C }
+    type: single-best-answer
+    stem: >-
+      Before teaching hand washing, the supervisor writes out each separate step in
+      order — turn on the tap, wet hands, apply soap, and so on. What is this document?
+    options:
+      - id: a
+        text: A task analysis
+        isCorrect: true
+        rationale: >-
+          Breaking a complex skill into an ordered sequence of teachable steps is a task
+          analysis, and it is the basis for any chaining procedure.
+      - id: b
+        text: A functional analysis
+        isCorrect: false
+        rationale: >-
+          A functional analysis identifies what maintains a problem behavior; it has
+          nothing to do with listing skill steps.
+      - id: c
+        text: A preference assessment
+        isCorrect: false
+        rationale: >-
+          A preference assessment identifies potential reinforcers.
+      - id: d
+        text: A behavior intervention plan
+        isCorrect: false
+        rationale: >-
+          A behavior plan addresses a target behavior and its function; a task analysis
+          is one component that might appear inside a skill program.
+    explanation: >-
+      A task analysis lists the component steps of a complex skill in the order they are
+      performed. It is used to teach the skill through chaining and to record which steps
+      the learner completes independently.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [task-analysis, chaining]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

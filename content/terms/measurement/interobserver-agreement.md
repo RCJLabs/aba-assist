@@ -30,9 +30,12 @@ nonExamples:
       One person recording the same session twice from memory, which measures that
       person's consistency rather than agreement.
     setting: any
-contrastWith: []
+contrastWith: [treatment-integrity]
 seeAlso: [frequency-and-rate, partial-interval-recording]
 searchBoost: 1.2
+taskRefs:
+  - { credential: RBT, code: A }
+  - { credential: BCBA, code: C.8 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

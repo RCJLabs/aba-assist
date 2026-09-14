@@ -34,9 +34,18 @@ nonExamples:
       Reinforcing a new response while the old behavior still works just as well and just
       as quickly. Without a difference in payoff there is nothing differential about it.
     setting: home
-contrastWith: [extinction, differential-reinforcement-of-other-behavior]
+contrastWith:
+  [
+    extinction,
+    differential-reinforcement-of-other-behavior,
+    differential-reinforcement-of-incompatible-behavior,
+    functional-communication-training
+  ]
 seeAlso: [negative-reinforcement, positive-reinforcement]
 searchBoost: 1.3
+taskRefs:
+  - { credential: RBT, code: D }
+  - { credential: BCBA, code: G.2 }
 citations:
   - sourceId: carr-durand-1985
     useType: fact-reference

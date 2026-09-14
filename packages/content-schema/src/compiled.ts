@@ -15,7 +15,11 @@ export const TermIndexEntry = z.strictObject({
 	a: z.array(z.string()), // aliases
 	c: TermCategory, // category
 	g: z.string(), // gloss
-	b: z.number() // search boost
+	b: z.number(), // search boost
+	/** Outline refs as "RBT:C" or "BCBA:G.5" — what the exam and domain filters key on. */
+	r: z.array(z.string()),
+	/** Whether the term opts into flashcards. */
+	f: z.boolean()
 });
 export type TermIndexEntry = z.infer<typeof TermIndexEntry>;
 

@@ -1,0 +1,482 @@
+# RBT practice questions — area B, Behavior Assessment. All original.
+
+questions:
+  - id: rbt-b-mswo-procedure
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A technician lays out five items, lets the learner pick one, removes the chosen
+      item, rearranges the remaining four, and repeats until all items have been chosen.
+      Which preference assessment is this?
+    options:
+      - id: a
+        text: Multiple-stimulus without replacement
+        isCorrect: true
+        rationale: >-
+          Removing each chosen item and re-presenting the rest is the defining feature of
+          the without-replacement format. The order of selection gives the ranking.
+      - id: b
+        text: Multiple-stimulus with replacement
+        isCorrect: false
+        rationale: >-
+          In the with-replacement format the chosen item is returned to the array and the
+          unchosen items are swapped out.
+      - id: c
+        text: Paired-stimulus
+        isCorrect: false
+        rationale: >-
+          Paired-stimulus presents items two at a time, not as an array of five.
+      - id: d
+        text: Free-operant observation
+        isCorrect: false
+        rationale: >-
+          Free-operant assessment gives free access to everything at once and times
+          engagement; nothing is chosen or removed.
+    explanation: >-
+      Multiple-stimulus without replacement presents an array, removes each selected item
+      and re-presents the remainder. It is fast, gives a full ranking, and is widely used
+      before sessions to choose the day's reinforcers.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs:
+      [
+        multiple-stimulus-without-replacement,
+        multiple-stimulus-with-replacement,
+        preference-assessment
+      ]
+    citations:
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the preference-assessment and functional-assessment
+        literature; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-14'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-14'
+
+  - id: rbt-b-paired-stimulus-count
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      In a paired-stimulus preference assessment with four items, how are the items
+      ranked at the end?
+    options:
+      - id: a
+        text: By how many times each item was chosen across all of its pairings
+        isCorrect: true
+        rationale: >-
+          Every item is paired with every other item, and the number of times each was
+          selected produces the ranking.
+      - id: b
+        text: By how long the learner played with each item
+        isCorrect: false
+        rationale: >-
+          Engagement time is the measure in a free-operant assessment, not a
+          paired-stimulus one.
+      - id: c
+        text: By the order in which items were removed from the array
+        isCorrect: false
+        rationale: >-
+          Selection order is how a multiple-stimulus-without-replacement assessment ranks
+          items.
+      - id: d
+        text: By the caregiver's report of what the learner likes
+        isCorrect: false
+        rationale: >-
+          Caregiver report is an indirect method and is not part of a paired-stimulus
+          assessment.
+    explanation: >-
+      The paired-stimulus format presents every possible pair and records the choice in
+      each. Items are ranked by selection count. It is thorough and produces a clear
+      hierarchy, at the cost of taking longer than array-based formats.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [paired-stimulus-preference-assessment]
+    citations:
+      - sourceId: fisher-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-free-operant-when
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A learner becomes very upset whenever an item is taken away from them. Which
+      preference-assessment format avoids removing items during the assessment?
+    options:
+      - id: a
+        text: Free-operant observation
+        isCorrect: true
+        rationale: >-
+          In a free-operant assessment the learner has free access to everything and the
+          observer times engagement; nothing is taken away.
+      - id: b
+        text: Multiple-stimulus without replacement
+        isCorrect: false
+        rationale: >-
+          This format removes each chosen item, which is exactly what provokes this
+          learner.
+      - id: c
+        text: Paired-stimulus
+        isCorrect: false
+        rationale: >-
+          Each pair ends with the items being taken back before the next pair is
+          presented.
+      - id: d
+        text: Single-stimulus
+        isCorrect: false
+        rationale: >-
+          Each item is presented and then removed before the next one.
+    explanation: >-
+      Free-operant preference assessment measures how long a learner engages with each of
+      several freely available items. Because nothing is removed, it suits learners for
+      whom removal triggers problem behavior, and it is quick and low in demands.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [free-operant-preference-assessment, preference-assessment]
+    citations:
+      - sourceId: roane-1998
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-abc-what-to-record
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A technician is asked to collect ABC data on a learner's screaming. For each
+      occurrence, which set of information should be recorded?
+    options:
+      - id: a
+        text: What happened just before, what the learner did, and what happened just after
+        isCorrect: true
+        rationale: >-
+          ABC recording captures the antecedent, the behavior and the consequence for
+          each occurrence, in the setting where it happened.
+      - id: b
+        text: The technician's opinion of why the learner screamed
+        isCorrect: false
+        rationale: >-
+          ABC data are observations, not interpretations. The supervisor draws conclusions
+          from the pattern across many entries.
+      - id: c
+        text: Only how many times screaming occurred
+        isCorrect: false
+        rationale: >-
+          A count says nothing about the events around the behavior, which is the point
+          of ABC recording.
+      - id: d
+        text: The learner's mood at the start of the day
+        isCorrect: false
+        rationale: >-
+          A general mood rating is not an antecedent to a specific occurrence and is not
+          objective.
+    explanation: >-
+      ABC recording is a descriptive-assessment method: for each occurrence the observer
+      writes down the antecedent, the behavior and the consequence. Over many entries the
+      pattern of antecedents and consequences suggests a function, which the supervisor
+      may then test.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [abc-recording, descriptive-assessment, three-term-contingency]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-fa-vs-descriptive
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      What distinguishes a functional analysis from ABC recording?
+    options:
+      - id: a
+        text: A functional analysis deliberately arranges conditions to test what maintains the behavior
+        isCorrect: true
+        rationale: >-
+          In a functional analysis, antecedents and consequences are manipulated across
+          conditions so the behavior's function can be demonstrated rather than inferred.
+      - id: b
+        text: ABC recording is more accurate than a functional analysis
+        isCorrect: false
+        rationale: >-
+          ABC data show correlations only; a functional analysis is the method that
+          demonstrates function.
+      - id: c
+        text: A functional analysis is done by the technician alone
+        isCorrect: false
+        rationale: >-
+          Functional analyses are designed and interpreted by the supervising analyst;
+          technicians may assist by running conditions as instructed.
+      - id: d
+        text: ABC recording requires a clinic setting
+        isCorrect: false
+        rationale: >-
+          ABC recording is done in the natural setting where the behavior occurs.
+    explanation: >-
+      Descriptive methods such as ABC recording observe the behavior under natural
+      conditions and reveal patterns. A functional analysis changes conditions on purpose
+      — attention, demands, tangibles, alone — and compares the behavior across them. Only
+      the experimental method demonstrates a function.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [functional-analysis, descriptive-assessment, abc-recording]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-rbt-role-in-fa
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A supervisor is conducting a functional analysis and asks the technician to run
+      the attention condition. Which describes the technician's role appropriately?
+    options:
+      - id: a
+        text: Run the condition exactly as the supervisor specified and record the data
+        isCorrect: true
+        rationale: >-
+          Technicians assist with assessments by implementing procedures as designed and
+          collecting data; the design and interpretation belong to the analyst.
+      - id: b
+        text: Decide which conditions to run based on what seems most likely
+        isCorrect: false
+        rationale: >-
+          Choosing conditions is part of designing the analysis, which is outside the
+          technician's scope.
+      - id: c
+        text: Stop the condition early if the behavior does not appear
+        isCorrect: false
+        rationale: >-
+          Session length is part of the design. Ending early changes the comparison
+          across conditions.
+      - id: d
+        text: Interpret the results and tell the family the function
+        isCorrect: false
+        rationale: >-
+          Interpreting assessment results and communicating them is the analyst's role.
+    explanation: >-
+      The technician's part in behavior assessment is assisting: running procedures as
+      written and collecting accurate data. Designing the assessment, deciding when it is
+      complete and interpreting it are supervisory tasks.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [functional-analysis, scope-of-practice]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Scope of practice
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-identify-function-escape
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A learner's crying begins when a worksheet is placed on the table and stops as soon
+      as the worksheet is removed. Across many observations the same pattern holds. Which
+      function is most consistent with this pattern?
+    options:
+      - id: a
+        text: Escape from demands
+        isCorrect: true
+        rationale: >-
+          The behavior starts when a task is presented and ends when it is removed; the
+          removal of the demand is the likely maintaining consequence.
+      - id: b
+        text: Access to attention
+        isCorrect: false
+        rationale: >-
+          Nothing in the pattern involves attention being delivered after the crying.
+      - id: c
+        text: Access to a tangible item
+        isCorrect: false
+        rationale: >-
+          No item is delivered after the behavior.
+      - id: d
+        text: Automatic reinforcement
+        isCorrect: false
+        rationale: >-
+          Automatically maintained behavior happens regardless of what others do; this
+          behavior tracks the presence and removal of a demand.
+    explanation: >-
+      When a behavior reliably begins with a demand and ends with its removal, escape is
+      the most consistent hypothesis. A technician can notice and record this pattern;
+      confirming it, and deciding what to do about it, is the supervisor's job.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [function-of-behavior, negative-reinforcement]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-indirect-assessment
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A supervisor interviews a parent using a structured questionnaire about when the
+      learner's aggression is most likely. Which type of assessment is this?
+    options:
+      - id: a
+        text: Indirect assessment
+        isCorrect: true
+        rationale: >-
+          Interviews, checklists and rating scales completed by people who know the
+          learner are indirect methods: they gather reports about behavior rather than
+          observations of it.
+      - id: b
+        text: Descriptive assessment
+        isCorrect: false
+        rationale: >-
+          Descriptive assessment involves direct observation of the behavior in its
+          natural setting.
+      - id: c
+        text: Functional analysis
+        isCorrect: false
+        rationale: >-
+          A functional analysis arranges and compares conditions experimentally.
+      - id: d
+        text: Preference assessment
+        isCorrect: false
+        rationale: >-
+          Preference assessments identify potential reinforcers, not the variables
+          maintaining problem behavior.
+    explanation: >-
+      Indirect assessment gathers information from informants — caregivers, teachers,
+      records. It is fast and useful for planning, but its results are reports, so they
+      are treated as hypotheses to be checked by direct observation or experiment.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [indirect-assessment, functional-behavior-assessment]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-preference-not-reinforcer
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A preference assessment ranks bubbles as the learner's top item. During teaching,
+      delivering bubbles after correct responses produces no increase in correct
+      responding. Which statement is most accurate?
+    options:
+      - id: a
+        text: Preference does not guarantee reinforcement; whether bubbles reinforce is shown only by their effect on behavior
+        isCorrect: true
+        rationale: >-
+          Preference assessments predict reinforcers; a reinforcer assessment, or the
+          teaching data themselves, tests whether the item actually strengthens behavior.
+      - id: b
+        text: The preference assessment must have been run incorrectly
+        isCorrect: false
+        rationale: >-
+          A correctly run preference assessment can still identify an item that does not
+          function as a reinforcer under the conditions of teaching.
+      - id: c
+        text: Bubbles should be delivered more often to make them work
+        isCorrect: false
+        rationale: >-
+          Delivering an ineffective item more often does not make it effective and may
+          produce satiation.
+      - id: d
+        text: The learner does not really like bubbles
+        isCorrect: false
+        rationale: >-
+          Liking and reinforcing are different things; the learner may genuinely prefer
+          bubbles without working for them in this context.
+    explanation: >-
+      A reinforcer is defined by its effect on behavior. Preference assessments identify
+      likely candidates; only an effect on responding confirms one. When a preferred item
+      fails to reinforce, the technician reports it and the supervisor adjusts.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [reinforcer-assessment, preference-assessment, reinforcer]
+    citations:
+      - sourceId: fisher-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-skills-assessment-purpose
+    credential: RBT
+    taskRef: { credential: RBT, code: B }
+    type: single-best-answer
+    stem: >-
+      A technician helps the supervisor run a series of probes to find out which
+      matching, imitation and requesting skills a new learner already has. What is the
+      main purpose of this assessment?
+    options:
+      - id: a
+        text: To identify which skills to teach and in what order
+        isCorrect: true
+        rationale: >-
+          Skills assessments map what the learner can do against a set of criteria so
+          that teaching targets can be chosen.
+      - id: b
+        text: To identify why the learner engages in problem behavior
+        isCorrect: false
+        rationale: >-
+          That is the purpose of a functional assessment.
+      - id: c
+        text: To rank the learner's preferred items
+        isCorrect: false
+        rationale: >-
+          That is a preference assessment.
+      - id: d
+        text: To compare the learner with other children the same age
+        isCorrect: false
+        rationale: >-
+          Skills assessments used in programming are criterion-referenced, not
+          comparisons with other children.
+    explanation: >-
+      A skills assessment identifies present skills and gaps across areas such as
+      communication, play and self-care. Its output is a set of teaching targets. It is
+      separate from functional assessment, which addresses problem behavior.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [skills-assessment]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
