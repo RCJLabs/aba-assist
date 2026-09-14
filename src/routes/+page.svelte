@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>ABA Help — offline reference for behavior technicians</title>
+	<title>ABA Assist — offline reference for behavior technicians</title>
 	<meta
 		name="description"
 		content="A free, offline reference for behavior technicians, analysts, and paraeducators. Plain-language definitions with sources."

@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Glossary — ABA Help</title>
+	<title>Glossary — ABA Assist</title>
 	<meta
 		name="description"
 		content="Plain-language and technical definitions of applied behavior analysis terms, each with an example, a non-example, and its sources."

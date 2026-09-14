@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Something urgent is happening — ABA Help</title>
+	<title>Something urgent is happening — ABA Assist</title>
 	<meta
 		name="description"
 		content="Who to contact and what to document when a situation is unsafe. This page does not give procedures."

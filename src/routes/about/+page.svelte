@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>About this app — ABA Help</title>
+	<title>About this app — ABA Assist</title>
 	<meta
 		name="description"
 		content="What this app is, what it deliberately does not do, and how to report an error."
@@ -18,7 +18,7 @@
 <section class="callout">
 	<h2>This is not clinical advice</h2>
 	<p>
-		ABA Help is an educational reference. It is not a medical device, it does not diagnose,
+		ABA Assist is an educational reference. It is not a medical device, it does not diagnose,
 		treat, cure, or prevent any condition, and it is not a substitute for supervision. The
 		behavior plan written for a specific person, and the analyst supervising their services,
 		decide what applies to that person.

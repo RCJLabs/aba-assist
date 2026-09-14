@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>{s.title} — ABA Help</title>
+	<title>{s.title} — ABA Assist</title>
 	<meta name="description" content={s.situation.slice(0, 155)} />
 </svelte:head>
 

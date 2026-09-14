@@ -27,10 +27,10 @@
 </script>
 
 <svelte:head>
-	<title>Settings — ABA Help</title>
+	<title>Settings — ABA Assist</title>
 	<meta
 		name="description"
-		content="Display, reading and accessibility settings for ABA Help."
+		content="Display, reading and accessibility settings for ABA Assist."
 	/>
 </svelte:head>
 

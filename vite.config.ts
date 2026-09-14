@@ -38,8 +38,8 @@ export default defineConfig({
 				spa: true
 			},
 			manifest: {
-				name: 'ABA Help',
-				short_name: 'ABA Help',
+				name: 'ABA Assist',
+				short_name: 'ABA Assist',
 				description:
 					'Free, offline reference and study tool for behavior technicians, analysts, and paraeducators.',
 				theme_color: '#1b3a5c',

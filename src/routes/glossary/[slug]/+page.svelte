@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>{term.term} — ABA Help</title>
+	<title>{term.term} — ABA Assist</title>
 	<meta name="description" content={term.definition.gloss} />
 </svelte:head>
 

@@ -125,3 +125,27 @@ test('theme choice persists across a reload', async ({ page }) => {
 	await page.reload();
 	await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });
+
+test('the product name is consistent across the UI and the manifest', async ({ page }) => {
+	// The name appears in the wordmark, every page title, and the web manifest, which is
+	// what labels the icon on a home screen. A partial rename leaves the installed app
+	// called one thing and the site another, and nothing else would catch it.
+	const NAME = 'ABA Assist';
+
+	await page.goto('/');
+	await expect(page.getByRole('banner').getByRole('link', { name: NAME })).toBeVisible();
+	await expect(page).toHaveTitle(new RegExp(NAME));
+
+	const manifest = await page.evaluate(async () => {
+		const link = document.querySelector<HTMLLinkElement>('link[rel=manifest]');
+		if (!link) throw new Error('no manifest link — the app would not be installable');
+		return (await (await fetch(link.href)).json()) as { name: string; short_name: string };
+	});
+	expect(manifest.name).toBe(NAME);
+	expect(manifest.short_name).toBe(NAME);
+
+	for (const route of ['/glossary', '/scenarios', '/help', '/about', '/settings']) {
+		await page.goto(route);
+		expect(await page.title()).toContain(NAME);
+	}
+});

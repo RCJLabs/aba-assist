@@ -1,4 +1,4 @@
-# ABA Help
+# ABA Assist
 
 A free, offline-first reference and study app for people working in Applied Behavior
 Analysis — behavior technicians, BCBAs and BCaBAs, paraeducators, and certification

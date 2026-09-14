@@ -62,7 +62,7 @@
 <ReviewBanner />
 
 <header>
-	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Help</a>
+	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Assist</a>
 	<div class="header-actions">
 		<button
 			type="button"

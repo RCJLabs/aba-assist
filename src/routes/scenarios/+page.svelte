@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Situations — ABA Help</title>
+	<title>Situations — ABA Assist</title>
 	<meta
 		name="description"
 		content="What the literature describes for common situations, and when to bring something to your supervisor."
