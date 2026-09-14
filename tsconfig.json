@@ -1,0 +1,27 @@
+{
+  "extends": "./.svelte-kit/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022"
+  }
+  /*
+   * Deliberately no `include`/`exclude`.
+   *
+   * SvelteKit generates `.svelte-kit/tsconfig.json` with an `include` list that pulls in
+   * `non-ambient.d.ts` — the file that declares the real route-id union behind
+   * `$app/types`. Overriding `include` here replaces that list rather than adding to it,
+   * which silently drops those declarations: `resolve('/glossary')` then fails to narrow
+   * and TypeScript demands a params argument for every route.
+   *
+   * Extra directories are added via `kit.typescript.config` in svelte.config.js instead.
+   */
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ABA Help">
+  <rect width="64" height="64" rx="12" fill="#1b3a5c"/>
+  <path d="M14 46 L24 18 L34 46" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 37 H30" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M42 24 V46" stroke="#9cc6f2" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="42" cy="17" r="3.5" fill="#9cc6f2"/>
+</svg>

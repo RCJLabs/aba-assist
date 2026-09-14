@@ -1,0 +1,95 @@
+import { expect, test } from '@playwright/test';
+import { expectNoA11yViolations } from './utils/a11y';
+
+const ROUTES = [
+	'/',
+	'/glossary',
+	'/glossary/negative-reinforcement',
+	'/scenarios',
+	'/scenarios/learner-is-injuring-themselves',
+	'/help',
+	'/about'
+];
+
+/*
+ * The matrix: route × theme × width. States matter as much as initial paint, so the
+ * search-with-results and plain-language-on states are scanned too.
+ */
+for (const route of ROUTES) {
+	test(`${route} has no axe violations (light)`, async ({ page }) => {
+		await page.goto(route);
+		await expectNoA11yViolations(page);
+	});
+
+	test(`${route} has no axe violations (dark)`, async ({ page }) => {
+		await page.emulateMedia({ colorScheme: 'dark' });
+		await page.goto(route);
+		await expectNoA11yViolations(page);
+	});
+
+	test(`${route} has no axe violations at 320px`, async ({ page }) => {
+		await page.setViewportSize({ width: 320, height: 720 });
+		await page.goto(route);
+		await expectNoA11yViolations(page);
+	});
+}
+
+test('search results state is accessible', async ({ page }) => {
+	await page.goto('/');
+	await page.getByLabel('Search terms').fill('reinforcement');
+	await expect(page.getByRole('link', { name: /Negative Reinforcement/ })).toBeVisible();
+	await expectNoA11yViolations(page);
+});
+
+test('plain-language state is accessible', async ({ page }) => {
+	await page.goto('/glossary/negative-reinforcement');
+	await page.getByRole('button', { name: /plain language/i }).click();
+	await expectNoA11yViolations(page);
+});
+
+test('every route has a unique, non-empty title', async ({ page }) => {
+	// SvelteKit announces document.title to screen readers on client-side navigation, so a
+	// missing or duplicated title is an accessibility bug, not just an SEO one.
+	const titles = new Map<string, string>();
+	for (const route of ROUTES) {
+		await page.goto(route);
+		const title = await page.title();
+		expect(title.trim(), `${route} has an empty title`).not.toBe('');
+		for (const [other, seen] of titles) {
+			expect(title, `${route} duplicates the title of ${other}`).not.toBe(seen);
+		}
+		titles.set(route, title);
+	}
+});
+
+test('no horizontal scrolling at 320px', async ({ page }) => {
+	// WCAG 1.4.10 Reflow.
+	await page.setViewportSize({ width: 320, height: 720 });
+	for (const route of ROUTES) {
+		await page.goto(route);
+		const overflow = await page.evaluate(
+			() => document.documentElement.scrollWidth - document.documentElement.clientWidth
+		);
+		expect(overflow, `${route} scrolls horizontally at 320px`).toBeLessThanOrEqual(1);
+	}
+});
+
+test('interactive targets meet the 24px minimum', async ({ page }) => {
+	// WCAG 2.2 2.5.8. The app targets 44px; this asserts the standard's floor so a
+	// regression is caught even if a component opts out of the shared sizing.
+	await page.goto('/');
+	const small = await page.evaluate(() => {
+		const out: string[] = [];
+		for (const el of document.querySelectorAll('a, button, input, select, summary')) {
+			const r = el.getBoundingClientRect();
+			if (r.width === 0 && r.height === 0) continue; // visually hidden (e.g. skip link)
+			if (r.width < 24 || r.height < 24) {
+				out.push(
+					`${el.tagName}.${el.className} ${Math.round(r.width)}x${Math.round(r.height)}`
+				);
+			}
+		}
+		return out;
+	});
+	expect(small).toEqual([]);
+});

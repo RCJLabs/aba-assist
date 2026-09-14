@@ -1,0 +1,184 @@
+<script lang="ts">
+	import '../app.css';
+	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
+	import LiveRegion from '$lib/a11y/LiveRegion.svelte';
+	import SkipLink from '$lib/a11y/SkipLink.svelte';
+	import { settings } from '$lib/state/settings.svelte.js';
+
+	let { children } = $props();
+	let main: HTMLElement | undefined = $state();
+
+	onMount(() => settings.hydrate());
+
+	afterNavigate(({ type }) => {
+		// `enter` is the first render, not a navigation: the reader has not gone anywhere,
+		// so taking focus there would steal it and scroll the header out of view. `popstate`
+		// is back/forward, where scroll restoration should own the scroll position.
+		//
+		// For real navigations, SvelteKit already announces document.title in its own live
+		// region; moving focus to <main> is what puts a screen-reader user at the start of
+		// the new content instead of stranding them where the previous page left them.
+		// `preventScroll` keeps that from fighting SvelteKit's own scroll handling.
+		if (type === 'enter' || type === 'popstate') return;
+		// `main` is the scroll container and persists across navigations, so its scroll
+		// position has to be reset explicitly — SvelteKit's scroll handling targets the
+		// window, which never scrolls in this layout.
+		if (main) main.scrollTop = 0;
+		main?.focus({ preventScroll: true });
+	});
+
+	/*
+	 * `resolve` applies the base path itself, which is why no route in this app
+	 * concatenates `base` by hand. That matters more than it looks: the base path is the
+	 * one setting that has to change if this is ever served from somewhere other than an
+	 * origin root, and hand-built hrefs are exactly what breaks when it does.
+	 */
+	const nav = [
+		{ id: '/glossary', label: 'Glossary', urgent: false },
+		{ id: '/scenarios', label: 'Situations', urgent: false },
+		{ id: '/help', label: 'Urgent', urgent: true },
+		{ id: '/about', label: 'About', urgent: false }
+	] as const;
+
+	const isCurrent = (href: string) =>
+		page.url.pathname === href || page.url.pathname.startsWith(href + '/');
+</script>
+
+<SkipLink />
+
+<header>
+	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Help</a>
+	<button
+		type="button"
+		onclick={() => settings.toggleTheme()}
+		aria-label="Theme: {settings.theme}. Activate to change."
+	>
+		{settings.theme === 'dark' ? 'Dark' : settings.theme === 'light' ? 'Light' : 'Auto'}
+	</button>
+</header>
+
+<main id="main" bind:this={main} tabindex="-1">
+	<div class="page">
+		{@render children()}
+	</div>
+</main>
+
+<!--
+	Bottom navigation, always. Primary controls belong in the thumb zone: this app is used
+	standing up, mid-session, often with one hand already occupied.
+-->
+<nav aria-label="Main">
+	<ul>
+		{#each nav as item (item.id)}
+			<li>
+				<a
+					href={resolve(item.id)}
+					aria-current={isCurrent(resolve(item.id)) ? 'page' : undefined}
+					class:urgent={item.urgent}
+				>
+					{item.label}
+				</a>
+			</li>
+		{/each}
+	</ul>
+</nav>
+
+<LiveRegion />
+
+<style>
+	header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.5rem 1rem;
+		border-bottom: 1px solid var(--border);
+		background: var(--surface);
+	}
+
+	.wordmark {
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: var(--text);
+		text-decoration: none;
+		min-height: var(--tap);
+		display: flex;
+		align-items: center;
+	}
+
+	/*
+	 * The scroll container. Header and nav are siblings in the body flex column, so they
+	 * frame this rather than floating over it.
+	 *
+	 * Note the centring: `margin: 0 auto` on a scroll container would centre the scroll
+	 * box itself and leave the scrollbar inset, so the element fills the width and an
+	 * inner wrapper does the centring instead.
+	 */
+	main {
+		flex: 1 1 auto;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+
+	.page {
+		max-width: var(--maxw);
+		margin-inline: auto;
+		padding: 1rem 1rem calc(2rem + var(--actionbar-h));
+	}
+
+	main:focus {
+		outline: none;
+	}
+
+	nav {
+		flex: 0 0 auto;
+		background: var(--surface);
+		border-top: 1px solid var(--border);
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+
+	header {
+		flex: 0 0 auto;
+	}
+
+	nav ul {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		max-width: var(--maxw);
+		margin-inline: auto;
+	}
+
+	nav li {
+		flex: 1;
+	}
+
+	nav a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: var(--tap);
+		padding: 0.5rem 0.25rem;
+		text-decoration: none;
+		color: var(--text);
+		font-size: 0.95rem;
+	}
+
+	/* Never colour alone: the current page is also marked with aria-current. */
+	nav a[aria-current='page'] {
+		font-weight: 700;
+		box-shadow: inset 0 3px 0 var(--accent);
+	}
+
+	nav a.urgent {
+		color: var(--stop-text);
+	}
+
+	:global([data-theme='dark']) nav a.urgent {
+		color: var(--stop-border);
+	}
+</style>

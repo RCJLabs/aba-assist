@@ -1,0 +1,148 @@
+import { z } from 'zod';
+import { strictContent } from './guards.js';
+import { Citations } from './source.js';
+import { Attestation, Credential, Provenance, Review, Setting, Slug } from './primitives.js';
+import { TaskRef } from './taxonomy.js';
+
+/**
+ * Situations where this app must refuse to instruct.
+ *
+ * Physical management is a certified, hands-on competency (Safety-Care, CPI, PRO-ACT),
+ * not readable knowledge. The U.S. Department of Education's position is that restraint
+ * and seclusion should never be used absent imminent danger of serious physical harm,
+ * and ABAI's position statement opposes unnecessary restrictive intervention. An app
+ * cannot assess imminent danger, cannot know the client's behaviour plan, and cannot
+ * confirm the reader has been trained — so it must not describe procedure at all.
+ */
+export const RiskFlag = z.enum([
+	'restraint',
+	'seclusion',
+	'self-injury',
+	'medical-emergency',
+	'suspected-abuse',
+	'aggression-with-injury',
+	'elopement-into-danger',
+	'suicidal-ideation',
+	'medication-question',
+	'property-destruction-danger',
+	'weapon'
+]);
+export type RiskFlag = z.infer<typeof RiskFlag>;
+
+export const EscalationContact = z.enum([
+	'supervising-bcba',
+	'site-supervisor',
+	'parent-guardian',
+	'school-administrator',
+	'nurse-or-medical',
+	'emergency-services-911',
+	'crisis-line-988',
+	'child-protective-services',
+	'adult-protective-services',
+	'agency-safety-officer'
+]);
+export type EscalationContact = z.infer<typeof EscalationContact>;
+
+/** Contacts that MUST appear for a given risk flag. Enforced below. */
+export const REQUIRED_CONTACTS: Partial<Record<RiskFlag, readonly EscalationContact[]>> = {
+	'medical-emergency': ['emergency-services-911'],
+	'suicidal-ideation': ['crisis-line-988'],
+	weapon: ['emergency-services-911']
+};
+
+export const EscalationBlock = z
+	.strictObject({
+		stopAndEscalate: z.literal(true),
+		contacts: z.array(EscalationContact).min(1),
+		/** Generic safety framing only — "ensure immediate physical safety". No technique. */
+		immediateSafetyNote: z.string().min(20).max(400),
+		mandatedReporterNote: z.string().max(400).nullable().default(null),
+		documentation: z.array(z.string().min(10)).min(1),
+		legalNote: z.string().min(20).max(400),
+		/** The real, jurisdiction- and employer-specific rules always win. */
+		consultYourPolicy: z.literal(true)
+	})
+	.check((ctx) => {
+		if (!ctx.value.contacts.includes('supervising-bcba')) {
+			ctx.issues.push({
+				code: 'custom',
+				message: 'every escalation block must route to the supervising BCBA',
+				input: ctx.value.contacts
+			});
+		}
+	});
+
+const ScenarioBase = {
+	id: Slug,
+	title: z.string().min(5).max(120),
+	situation: z.string().min(40).max(1200),
+	setting: Setting,
+	audience: z.array(Credential).min(1),
+	tags: z.array(Slug).default([]),
+	termRefs: z.array(Slug).default([]),
+	taskRefs: z.array(TaskRef).default([]),
+	ethicsRefs: z.array(Slug).default([]),
+	citations: Citations,
+	attestation: Attestation,
+	review: Review,
+	provenance: Provenance
+} as const;
+
+/**
+ * THE SAFETY GUARD.
+ *
+ * A discriminated union whose members have different SHAPES, not just different
+ * validation rules. `escalation-only` has no `steps` key anywhere in its schema, and
+ * both members are strict — so writing procedural instruction into a restraint,
+ * self-injury, or suspected-abuse scenario is a PARSE ERROR ("Unrecognized key: steps"),
+ * not something a reviewer has to catch.
+ *
+ * Conversely `guidance` requires `riskFlags` to be empty, so a high-risk scenario cannot
+ * masquerade as ordinary guidance. The build additionally runs a risk lexicon over
+ * `guidance` prose to catch the author who simply forgot the flag.
+ */
+export const Scenario = z.discriminatedUnion('kind', [
+	strictContent({
+		...ScenarioBase,
+		kind: z.literal('guidance'),
+		riskFlags: z.array(RiskFlag).max(0).default([]),
+		steps: z
+			.array(
+				z.strictObject({
+					text: z.string().min(10).max(300),
+					rationale: z.string().max(300).optional()
+				})
+			)
+			.min(2)
+			.max(8),
+		whatNotToDo: z.array(z.string().min(10)).min(1),
+		whenToEscalate: z.array(z.string().min(10)).min(1)
+	}),
+	strictContent({
+		...ScenarioBase,
+		kind: z.literal('escalation-only'),
+		riskFlags: z.array(RiskFlag).min(1),
+		escalation: EscalationBlock
+		// Deliberately absent: `steps`, `whatNotToDo`. There is no procedure to give.
+	})
+]);
+export type Scenario = z.infer<typeof Scenario>;
+
+/**
+ * Risk language. If any of this appears in a `guidance` scenario the build fails and
+ * tells the author to convert it to `escalation-only`. This is the backstop for a
+ * missing `riskFlags` entry.
+ */
+export const RISK_LEXICON =
+	/\b(restrain\w*|seclusion|seclude\w*|time-?out room|self-?injur\w*|SIB|head-?bang\w*|bleed\w*|seizure|unconscious|abuse|bruise|welt|choking|choke|swallow\w*|weapon|knife|gun|911|988|suicid\w*|overdose|strangl\w*)\b/i;
+
+/**
+ * Procedural verbs that must never appear in escalation content. An escalation card
+ * says who to call and what to document — never how to physically manage a person.
+ */
+export const RESTRICTED_PROCEDURE_LEXICON =
+	/\b(block|blocking|hold (?:them|him|her|the client)|holding|restrain\w*|apply pressure|guide (?:them|him|her)|physically (?:manage|intervene|redirect)|pin|wrap|escort|prone|supine|grab|pull|takedown|floor hold)\b/i;
+
+/** Language that would place the app in a clinician's role. */
+export const CLINICAL_DECISION_LEXICON =
+	/\b(diagnose|diagnosis of|prescrib\w*|dosage|titrat\w*|\d+\s?mg)\b/i;

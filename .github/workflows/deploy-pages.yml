@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a deploy mid-flight: a half-published Pages site is worse than a slow one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # The `release` channel is what enforces "nothing unreviewed reaches users". Because it
+  # is an input to the same reusable workflow that PRs run, there is no separate
+  # production build path that could drift from the one being tested.
+  ci:
+    uses: ./.github/workflows/ci.yml
+    with:
+      channel: release
+
+  deploy:
+    name: Deploy
+    needs: ci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build
+      - id: deployment
+        uses: actions/deploy-pages@v4

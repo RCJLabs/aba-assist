@@ -1,0 +1,144 @@
+# Bibliography.
+#
+# `rights` and `quotationAllowed` are the load-bearing fields. The build refuses any
+# citation with useType "quotation" against a source where quotationAllowed is false, so
+# the rights posture is enforced by machinery rather than by remembering.
+#
+# Note that the textbooks are the HIGHER-risk sources, not the certifying board's
+# documents: glossary definitions are short works where copying one sentence copies a
+# large proportion of the whole, and close paraphrase still infringes. Everything here is
+# cited as a pointer; all prose in this app is written from scratch.
+
+sources:
+  # ---------------------------------------------------------------- primary literature
+  - id: baer-wolf-risley-1968
+    kind: journal-article
+    title: Some current dimensions of applied behavior analysis
+    authors: ['Baer, D. M.', 'Wolf, M. M.', 'Risley, T. R.']
+    year: 1968
+    doi: 10.1901/jaba.1968.1-91
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      The canonical statement of the seven dimensions. Cite and paraphrase; do not
+      reproduce. Widely available through PMC but not openly licensed.
+
+  - id: michael-1982
+    kind: journal-article
+    title: Distinguishing between discriminative and motivational functions of stimuli
+    authors: ['Michael, J.']
+    year: 1982
+    doi: 10.1901/jeab.1982.37-149
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Origin of the establishing-operation concept.
+
+  - id: laraway-2003
+    kind: journal-article
+    title: Motivating operations and terms to describe them — some further refinements
+    authors: ['Laraway, S.', 'Snycerski, S.', 'Michael, J.', 'Poling, A.']
+    year: 2003
+    doi: 10.1901/jaba.2003.36-407
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Establishes the modern MO/EO/AO terminology used throughout the field.
+
+  - id: iwata-1982-1994
+    kind: journal-article
+    title: Toward a functional analysis of self-injury
+    authors:
+      ['Iwata, B. A.', 'Dorsey, M. F.', 'Slifer, K. J.', 'Bauman, K. E.', 'Richman, G. S.']
+    year: 1994
+    doi: 10.1901/jaba.1994.27-197
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Originally published 1982; reprinted in JABA 1994. The basis of functional analysis.
+
+  - id: skinner-1957
+    kind: book
+    title: Verbal Behavior
+    authors: ['Skinner, B. F.']
+    year: 1957
+    publisher: Appleton-Century-Crofts
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: carr-durand-1985
+    kind: journal-article
+    title: Reducing behavior problems through functional communication training
+    authors: ['Carr, E. G.', 'Durand, V. M.']
+    year: 1985
+    doi: 10.1901/jaba.1985.18-111
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  # --------------------------------------------------------------- textbooks (high risk)
+  - id: cooper-heron-heward-2020
+    kind: book
+    title: Applied Behavior Analysis
+    authors: ['Cooper, J. O.', 'Heron, T. E.', 'Heward, W. L.']
+    edition: 3rd
+    year: 2020
+    publisher: Pearson Education
+    isbn: '9780134752556'
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Listed so it can be acknowledged as the field's standard reference, NOT as a
+      drafting source. Its glossary must never be copied, excerpted, or closely
+      paraphrased. Write from primary literature instead.
+
+  # ---------------------------------------------------- certification body publications
+  - id: bacb-rbt-tco-3
+    kind: standard
+    title: RBT Test Content Outline (3rd ed.)
+    organization: Behavior Analyst Certification Board
+    year: 2023
+    url: https://www.bacb.com/test-content-outlines-for-bacb-certifications/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Effective 2026-01-01. Domain names, task codes, counts and exam weights are facts
+      and are modelled freely. The document's wording is not reproduced — we link to it.
+
+  - id: bacb-ethics-code-2022
+    kind: standard
+    title: Ethics Code for Behavior Analysts
+    organization: Behavior Analyst Certification Board
+    year: 2020
+    url: https://www.bacb.com/ethics-information/ethics-codes/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Effective 2022-01-01. Applies to BCBA and BCaBA certificants.
+
+  - id: bacb-rbt-ethics-code-2
+    kind: standard
+    title: RBT Ethics Code (2.0)
+    organization: Behavior Analyst Certification Board
+    year: 2021
+    url: https://www.bacb.com/ethics-information/ethics-codes/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Effective 2022-01-01.
+
+  # ------------------------------------------------------- public domain / open licence
+  - id: usdoe-restraint-seclusion
+    kind: organization-publication
+    title: Restraint and Seclusion — Resource Document
+    organization: U.S. Department of Education
+    year: 2012
+    url: https://www.ed.gov/laws-and-policy/key-policy-letters/secretarys-letter-restraint-and-seclusion
+    rights: public-domain
+    quotationAllowed: true
+    notes: >-
+      Authored by federal employees in the course of duty, so public domain under
+      17 U.S.C. 105. Quotation is permitted; attribution is still good practice.
+
+  - id: abai-restraint-position-2010
+    kind: organization-publication
+    title: Statement on Restraint and Seclusion
+    organization: Association for Behavior Analysis International
+    year: 2010
+    url: https://www.abainternational.org/about-us/policies-and-positions/restraint-and-seclusion,-2010.aspx
+    rights: all-rights-reserved
+    quotationAllowed: false

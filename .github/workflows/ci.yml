@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+    inputs:
+      channel:
+        type: string
+        default: pr
+        description: Content channel. `release` additionally rejects `in-review` items.
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ABA_CONTENT_CHANNEL: ${{ inputs.channel || 'pr' }}
+
+jobs:
+  # Deliberately first and on its own: the content gate runs in seconds, so a PR with an
+  # unreviewed, uncited, or unsafe entry fails in under a minute instead of after a full
+  # browser matrix.
+  content:
+    name: Content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - name: Validate content
+        run: npx tsx packages/content-build/src/cli.ts check --channel=$ABA_CONTENT_CHANNEL --format=github
+
+  quality:
+    name: Lint, types, unit tests
+    runs-on: ubuntu-latest
+    needs: content
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npx prettier --check .
+      - run: npx eslint .
+      - run: npx svelte-check --tsconfig ./tsconfig.json
+      - run: npx vitest run
+
+  e2e:
+    name: E2E and accessibility
+    runs-on: ubuntu-latest
+    needs: content
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      # Covers chromium, a mobile viewport, the axe sweep across every route in light,
+      # dark and 320px, and a forced-colors pass.
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    needs: content
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: build
+          retention-days: 7

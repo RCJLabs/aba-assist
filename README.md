@@ -1,0 +1,138 @@
+# ABA Help
+
+A free, offline-first reference and study app for people working in Applied Behavior
+Analysis — behavior technicians, BCBAs and BCaBAs, paraeducators, and certification
+candidates.
+
+**Status: M0 (foundation).** The content pipeline, safety and copyright guards, app shell,
+and CI are in place, with a small seed glossary. The full plan lives in the project notes;
+this README covers how to work in the repo.
+
+---
+
+## What this app deliberately does not do
+
+These are designed features, not omissions, and several are enforced by the build:
+
+- **No instruction on restraint, seclusion, or physical management.** That is a certified,
+  hands-on competency governed by an employer's policy and by state law. An app cannot know
+  whether a reader has been trained, what a person's plan authorizes, or what a
+  jurisdiction permits.
+- **No individualized clinical recommendations.** Technicians implement plans under
+  supervision; they do not design, modify, or interpret them.
+- **No client data, ever.** There is no field anywhere in the data model capable of holding
+  a person's name.
+- **No verbatim text from certifying bodies or textbooks.** Domain names, task codes, and
+  exam weights are facts and are used as such; all explanatory prose is written from
+  scratch and cited.
+
+Not affiliated with, endorsed by, or sponsored by any certifying body.
+
+---
+
+## Getting started
+
+```bash
+npm install          # also builds the workspace packages and runs svelte-kit sync
+npm run dev          # dev server; content recompiles on change
+npm run build        # production build — fails unless all content is `approved`
+npm run preview      # serve the built site
+```
+
+### Everyday commands
+
+| Command            | What it does                                               |
+| ------------------ | ---------------------------------------------------------- |
+| `npm run content`  | Run the content compiler (`check` / `build`, `--channel=`) |
+| `npm run check`    | `svelte-check` type checking                               |
+| `npm run lint`     | Prettier + ESLint                                          |
+| `npm test`         | Unit tests (schemas, guards, compiler)                     |
+| `npm run test:e2e` | Playwright, including the axe accessibility sweep          |
+
+---
+
+## How content works
+
+Content is authored as files in `content/`, not in a CMS. Review is therefore a pull
+request: you read a diff, not a web form.
+
+```
+content/
+  _registry/sources.yaml   bibliography, with per-source rights and quotation permissions
+  taxonomy/*.yaml          credential domains and task codes (facts only)
+  terms/<category>/*.md    glossary entries
+  scenarios/<kind>/*.md    situational guidance and escalation cards
+```
+
+`packages/content-build` validates everything and compiles it to JSON plus a prebuilt
+search index. It runs as a **Vite plugin**, inside `buildStart` — not as a `prebuild`
+script, because a script is bypassable (`npx vite build`, an IDE task, a pipeline change)
+and a bypassable gate is not a gate.
+
+### Review channels
+
+| Channel   | Allows                      | Used by            |
+| --------- | --------------------------- | ------------------ |
+| `dev`     | anything, including `draft` | local authoring    |
+| `pr`      | rejects `draft`             | pull-request CI    |
+| `release` | **only `approved`**         | production deploys |
+
+`npm run build` defaults to `release`, so a production build cannot contain unreviewed
+content. An item approved by its own author is rejected too — review has to be independent.
+
+### The two structural guards
+
+Both make the wrong thing impossible to express, rather than something a reviewer has to
+notice:
+
+1. **Copyright.** Every content schema spreads in `OfficialTextGuard`, where
+   `officialText` and `officialTitle` are typed `z.null()`. Writing verbatim source text
+   into a content file is a parse error. Schemas are strict, so a stray `officialText2:`
+   fails too. Rights live on the _source_, so the same machinery covers textbooks — the
+   higher-risk case — not just certifying-body documents.
+
+2. **Safety.** Scenarios are a discriminated union whose members have different _shapes_.
+   `kind: 'escalation-only'` has no `steps` field anywhere in its schema, so writing
+   procedural instruction into a restraint, self-injury, or suspected-abuse scenario is a
+   parse error. A risk lexicon over `guidance` prose catches the author who forgot the
+   flag, and escalation completeness is checked by rule (medical emergency ⇒ 911;
+   suspected abuse ⇒ protective services plus a mandated-reporter note; and so on).
+
+`packages/*/src/*.test.ts` assert that each of these guards actually _rejects_ — a guard
+never observed to fail is a comment, not a guard.
+
+---
+
+## Accessibility
+
+Target is WCAG 2.2 AA, and the axe sweep runs over every route in light, dark, 320px, and
+forced-colors, with zero tolerance and no baseline file. Automated checks catch perhaps a
+third of real problems, so each milestone also gets a manual screen-reader pass.
+
+Notable choices:
+
+- **App-shell layout** — `main` is the scroll container, so the header and bottom nav never
+  overlay content. A sticky bar over a scrolling document permanently covers whatever is
+  beneath it, which makes those links genuinely un-tappable.
+- **Bottom navigation** — primary controls in the thumb zone, because this is used standing
+  up, mid-session, often one-handed.
+- **Plain-language gloss on every term**, with a readability gate in the build.
+- **Taps before gestures** — any swipe affordance must have a single-pointer equivalent.
+
+---
+
+## Deployment
+
+Static output to GitHub Pages. Two things to know:
+
+- **The site must be served from an origin root** (a custom domain, or a user/org Pages
+  site). Android verifies a Trusted Web Activity through
+  `https://<origin>/.well-known/assetlinks.json`, which a _project_ Pages site
+  (`user.github.io/aba-help/`) cannot serve. `static/.nojekyll` is required too, or Jekyll
+  silently hides the dot-directory and the file 404s.
+- Pages from a **private** repo requires a paid GitHub plan.
+
+## License
+
+Code is MIT (see `LICENSE`). Content carries its own per-item license field; entries
+authored here are CC-BY-SA-4.0 unless marked otherwise.

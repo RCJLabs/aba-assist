@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" data-theme="system" data-onehanded="false" data-hand="right">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#1b3a5c" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+		<script>
+			// The only use of localStorage in the app, and a deliberate one: settings live
+			// in IndexedDB, which is async, so a mirror is needed to set the theme before
+			// first paint. Without this the app flashes light before switching to dark.
+			try {
+				var s = JSON.parse(localStorage.getItem('aba-help:display') || '{}');
+				var r = document.documentElement;
+				if (s.theme) r.dataset.theme = s.theme;
+				if (s.oneHanded) r.dataset.onehanded = String(s.oneHanded);
+				if (s.hand) r.dataset.hand = s.hand;
+				if (s.fontScale) r.style.setProperty('--font-scale', String(s.fontScale));
+			} catch (e) {
+				// Private mode, blocked storage, or a corrupt value — defaults are fine.
+			}
+		</script>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

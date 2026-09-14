@@ -1,0 +1,100 @@
+# RBT Test Content Outline (3rd edition) — structural facts only.
+#
+# Domain names and exam weights are FACTS and are corroborated across multiple
+# independent sources. They are modelled here freely; the certifying board's wording for
+# what each task says is not reproduced anywhere in this repo (see OfficialTextGuard).
+#
+# `tasks` is deliberately EMPTY and `countsVerified` is false.
+#
+# Why: bacb.com was unreachable from the environment this content was drafted in, so the
+# per-domain task counts and the individual task codes could not be confirmed against the
+# primary document. Inventing plausible-looking task codes would be exactly the failure
+# mode that makes the existing apps in this space untrustworthy. They get filled in — with
+# our own summaries — once someone reads the source PDF. Until then the build will not
+# enforce a total it knows nobody has checked, and taskRefs are simply not validated.
+#
+# VERIFY BEFORE M1 SIGN-OFF: https://www.bacb.com/test-content-outlines-for-bacb-certifications/
+
+id: rbt-tco-3
+credential: RBT
+edition: '3rd'
+effectiveDate: '2026-01-01'
+issuer: BACB
+sourceId: bacb-rbt-tco-3
+subsetOf: null
+countsVerified: false
+totalTasks: 43
+
+exam:
+  scoredItems: 75
+  unscoredItems: 10
+  minutes: null
+
+domains:
+  - letter: A
+    name: Data Collection and Graphing
+    examWeightPercent: 17
+    ourDescription: >-
+      Recording what actually happened during a session and turning it into something a
+      supervisor can read. Covers continuous and discontinuous measurement, recording
+      accuracy, and putting data on a graph so change over time is visible.
+    tasks: []
+
+  - letter: B
+    name: Behavior Assessment
+    examWeightPercent: 11
+    ourDescription: >-
+      The technician's part in finding out why a behaviour happens and what a learner
+      prefers — assisting with preference assessments and functional assessment
+      procedures that a supervisor designs and interprets.
+    tasks: []
+
+  - letter: C
+    name: Behavior Acquisition
+    examWeightPercent: 25
+    ourDescription: >-
+      Teaching new skills. The largest domain on the exam: teaching procedures, prompting
+      and prompt fading, chaining, generalisation and maintenance, and running programmes
+      the way they are written.
+    tasks: []
+
+  - letter: D
+    name: Behavior Reduction
+    examWeightPercent: 19
+    ourDescription: >-
+      Implementing the reduction side of a behaviour plan as written — antecedent
+      strategies, differential reinforcement, and the technician's role in following a
+      plan they did not design and may not modify.
+    tasks: []
+
+  - letter: E
+    name: Documentation and Reporting
+    examWeightPercent: 13
+    ourDescription: >-
+      Session notes, incident reporting, and communicating with the supervisor. Covers
+      what belongs in a note, objective versus subjective language, and the legal and
+      billing consequences of vague documentation.
+    tasks: []
+
+  - letter: F
+    name: Ethics
+    examWeightPercent: 15
+    ourDescription: >-
+      Scope of practice, supervision requirements, confidentiality, dual relationships,
+      professional boundaries, and dignity. The number of ethics tasks doubled in this
+      edition relative to the 2nd.
+    tasks: []
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-14'
+  reviewedBy: null
+  reviewedOn: null
+  changeNote: Structural scaffolding only; task codes pending primary-source verification.
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-14'
