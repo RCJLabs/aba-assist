@@ -36,11 +36,16 @@
 	 * one setting that has to change if this is ever served from somewhere other than an
 	 * origin root, and hand-built hrefs are exactly what breaks when it does.
 	 */
+	/*
+	 * Four primary destinations, deliberately. A fifth does not fit at 320px without
+	 * shrinking labels below a comfortable reading size, so Settings lives in the header
+	 * and About is reached from Settings and from the home page.
+	 */
 	const nav = [
+		{ id: '/', label: 'Search', urgent: false },
 		{ id: '/glossary', label: 'Glossary', urgent: false },
 		{ id: '/scenarios', label: 'Situations', urgent: false },
-		{ id: '/help', label: 'Urgent', urgent: true },
-		{ id: '/about', label: 'About', urgent: false }
+		{ id: '/help', label: 'Urgent', urgent: true }
 	] as const;
 
 	const isCurrent = (href: string) =>
@@ -51,13 +56,23 @@
 
 <header>
 	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Help</a>
-	<button
-		type="button"
-		onclick={() => settings.toggleTheme()}
-		aria-label="Theme: {settings.theme}. Activate to change."
-	>
-		{settings.theme === 'dark' ? 'Dark' : settings.theme === 'light' ? 'Light' : 'Auto'}
-	</button>
+	<div class="header-actions">
+		<button
+			type="button"
+			class="theme"
+			onclick={() => settings.toggleTheme()}
+			aria-label="Theme: {settings.theme}. Activate to change."
+		>
+			{settings.theme === 'dark' ? 'Dark' : settings.theme === 'light' ? 'Light' : 'Auto'}
+		</button>
+		<a
+			class="settings-link"
+			href={resolve('/settings')}
+			aria-current={page.url.pathname === resolve('/settings') ? 'page' : undefined}
+		>
+			Settings
+		</a>
+	</div>
 </header>
 
 <main id="main" bind:this={main} tabindex="-1">
@@ -107,6 +122,30 @@
 		min-height: var(--tap);
 		display: flex;
 		align-items: center;
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.theme {
+		padding: 0.5rem 0.7rem;
+	}
+
+	.settings-link {
+		display: flex;
+		align-items: center;
+		min-height: var(--tap);
+		padding: 0.5rem 0.7rem;
+		border-radius: var(--radius);
+		text-decoration: none;
+		color: var(--link);
+	}
+
+	.settings-link[aria-current='page'] {
+		font-weight: 700;
 	}
 
 	/*

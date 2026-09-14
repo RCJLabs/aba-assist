@@ -26,7 +26,12 @@ export interface EmittedAsset {
 	/** Path within the client bundle, e.g. "data/ab12cd/terms.index.json". */
 	fileName: string;
 	source: string;
-	precache: boolean;
+	/**
+	 * True only for assets the app fetches over the network at runtime (gated Pro packs).
+	 * Free content is imported as a module and ships as a hashed bundle chunk, so emitting
+	 * it as a standalone file too would duplicate the entire corpus in the precache.
+	 */
+	fetchedAtRuntime: boolean;
 }
 
 export interface CompileResult {

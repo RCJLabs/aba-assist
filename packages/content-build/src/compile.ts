@@ -361,7 +361,7 @@ function buildAssets(
 		name: 'terms.index',
 		fileName: `${base}/terms.index.json`,
 		source: JSON.stringify(index),
-		precache: true
+		fetchedAtRuntime: false
 	});
 
 	// Category buckets: one representation serves both client-side navigation and the
@@ -379,7 +379,7 @@ function buildAssets(
 			name: `terms.${category}`,
 			fileName: `${base}/terms.${category}.json`,
 			source: JSON.stringify(record),
-			precache: true
+			fetchedAtRuntime: false
 		});
 	}
 
@@ -387,14 +387,14 @@ function buildAssets(
 		name: 'scenarios',
 		fileName: `${base}/scenarios.json`,
 		source: JSON.stringify(Object.fromEntries(scenarios.map((s) => [s.id, s]))),
-		precache: true
+		fetchedAtRuntime: false
 	});
 
 	assets.push({
 		name: 'taxonomy',
 		fileName: `${base}/taxonomy.json`,
 		source: JSON.stringify(Object.fromEntries(outlines.map((o) => [o.id, o]))),
-		precache: true
+		fetchedAtRuntime: false
 	});
 
 	// Prebuild the search index so the client never pays indexing cost at startup.
@@ -414,7 +414,7 @@ function buildAssets(
 		name: 'search-index',
 		fileName: `${base}/search-index.json`,
 		source: JSON.stringify(mini),
-		precache: true
+		fetchedAtRuntime: false
 	});
 
 	const manifest = {
@@ -427,7 +427,7 @@ function buildAssets(
 					url: `/${a.fileName}`,
 					sha256: sha256(a.source),
 					bytes: Buffer.byteLength(a.source),
-					precache: a.precache
+					fetchedAtRuntime: a.fetchedAtRuntime
 				}
 			])
 		)
@@ -436,7 +436,7 @@ function buildAssets(
 		name: 'manifest',
 		fileName: `${base}/manifest.json`,
 		source: JSON.stringify(manifest, null, 2),
-		precache: true
+		fetchedAtRuntime: false
 	});
 
 	return assets;

@@ -8,7 +8,8 @@ const ROUTES = [
 	'/scenarios',
 	'/scenarios/learner-is-injuring-themselves',
 	'/help',
-	'/about'
+	'/about',
+	'/settings'
 ];
 
 /*

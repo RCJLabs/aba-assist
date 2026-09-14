@@ -2,36 +2,24 @@
 	import { resolve } from '$app/paths';
 	import { termIndex, CATEGORY_LABELS, contentVersion } from '$lib/content/load.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
+	import { search } from '$lib/state/search.svelte.js';
 
-	let query = $state('');
-
-	/**
-	 * Tier one of the search design: an instant substring filter over the lightweight
-	 * index, which is already loaded. Typing never blocks on a network fetch or on parsing
-	 * a search index. The fuzzy MiniSearch index loads on search intent in M1 and replaces
-	 * this transparently.
-	 */
-	const results = $derived.by(() => {
-		const q = query.trim().toLowerCase();
-		if (q.length < 2) return [];
-		return termIndex
-			.filter(
-				(t) =>
-					t.t.toLowerCase().includes(q) ||
-					t.g.toLowerCase().includes(q) ||
-					t.a.some((a) => a.toLowerCase().includes(q))
-			)
-			.sort((a, b) => b.b - a.b || a.t.localeCompare(b.t))
-			.slice(0, 25);
-	});
+	const results = $derived(search.results);
 
 	let lastAnnounced = -1;
 	$effect(() => {
 		const n = results.length;
-		if (query.trim().length < 2) return;
+		const q = search.query.trim();
+		if (q.length < 2) {
+			lastAnnounced = -1;
+			return;
+		}
 		if (n === lastAnnounced) return;
 		lastAnnounced = n;
-		announcer.announce(`${n} ${n === 1 ? 'result' : 'results'} for ${query.trim()}`);
+		// Debounced by the reader's own typing rather than a timer: announcing on every
+		// keystroke would make a screen reader unusable, so this only speaks when the
+		// count actually changes.
+		announcer.announce(`${n} ${n === 1 ? 'result' : 'results'} for ${q}`);
 	});
 </script>
 
@@ -45,27 +33,35 @@
 
 <h1>Look something up</h1>
 
-<form role="search" onsubmit={(e) => e.preventDefault()}>
+<!--
+	`data-search-status` reflects which tier is answering: `idle`/`loading` means the
+	instant substring fallback, `ready` means the fuzzy index has taken over. It is not
+	shown to readers — swapping results silently is the point — but it makes the handover
+	observable, so tests can wait for it deterministically instead of racing a timeout.
+-->
+<form role="search" data-search-status={search.status} onsubmit={(e) => e.preventDefault()}>
 	<label for="q">Search terms</label>
 	<input
 		id="q"
 		type="search"
-		bind:value={query}
+		bind:value={search.query}
 		placeholder="reinforcement, MO, partial interval…"
 		autocomplete="off"
 		enterkeyhint="search"
+		onfocus={() => search.warm()}
+		oninput={() => search.warm()}
 	/>
 </form>
 
-{#if query.trim().length >= 2}
+{#if search.query.trim().length >= 2}
 	<p class="count">{results.length} {results.length === 1 ? 'result' : 'results'}</p>
 	{#if results.length > 0}
 		<ul class="results">
-			{#each results as r (r.i)}
+			{#each results as r (r.id)}
 				<li>
-					<a href={resolve('/glossary/[slug]', { slug: r.i })}>
-						<span class="term">{r.t}</span>
-						<span class="gloss">{r.g}</span>
+					<a href={resolve('/glossary/[slug]', { slug: r.id })}>
+						<span class="term">{r.term}</span>
+						<span class="gloss">{r.gloss}</span>
 					</a>
 				</li>
 			{/each}

@@ -23,8 +23,8 @@ export const AssetEntry = z.strictObject({
 	url: z.string(),
 	sha256: z.string(),
 	bytes: z.number().int().nonnegative(),
-	/** Drives the service-worker precache include list. */
-	precache: z.boolean()
+	/** True only for assets fetched over the network at runtime (gated Pro packs). */
+	fetchedAtRuntime: z.boolean()
 });
 
 export const ContentManifest = z.strictObject({

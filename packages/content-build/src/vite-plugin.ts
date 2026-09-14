@@ -65,7 +65,21 @@ export function abaContent(options: AbaContentOptions = {}): Plugin {
 			// Client bundle only — emitting into the SSR bundle would duplicate every asset.
 			const envName = this.environment?.name;
 			if (envName && envName !== 'client') return;
+
+			/*
+			 * Only assets marked `fetchedAtRuntime` are emitted as standalone files.
+			 *
+			 * Everything else is already in the bundle: the app imports the compiled JSON
+			 * from `src/lib/content/generated`, so Vite emits it as hashed, precached,
+			 * lazily-importable chunks. Emitting the same content again here would ship the
+			 * entire corpus twice and precache both copies — which is exactly what the first
+			 * version of this plugin did.
+			 *
+			 * The mechanism stays because gated Pro packs genuinely do need to be standalone
+			 * fetchable files rather than bundle chunks.
+			 */
 			for (const a of result?.assets ?? []) {
+				if (!a.fetchedAtRuntime) continue;
 				this.emitFile({ type: 'asset', fileName: a.fileName, source: a.source });
 			}
 		},
