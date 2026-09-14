@@ -6,12 +6,18 @@
 	import { page } from '$app/state';
 	import LiveRegion from '$lib/a11y/LiveRegion.svelte';
 	import SkipLink from '$lib/a11y/SkipLink.svelte';
+	import ReviewBanner from '$lib/components/ReviewBanner.svelte';
+	import UpdatePrompt from '$lib/components/UpdatePrompt.svelte';
 	import { settings } from '$lib/state/settings.svelte.js';
+	import { pwa } from '$lib/state/pwa.svelte.js';
 
 	let { children } = $props();
 	let main: HTMLElement | undefined = $state();
 
-	onMount(() => settings.hydrate());
+	onMount(() => {
+		settings.hydrate();
+		void pwa.register();
+	});
 
 	afterNavigate(({ type }) => {
 		// `enter` is the first render, not a navigation: the reader has not gone anywhere,
@@ -31,15 +37,14 @@
 	});
 
 	/*
-	 * `resolve` applies the base path itself, which is why no route in this app
-	 * concatenates `base` by hand. That matters more than it looks: the base path is the
-	 * one setting that has to change if this is ever served from somewhere other than an
-	 * origin root, and hand-built hrefs are exactly what breaks when it does.
-	 */
-	/*
 	 * Four primary destinations, deliberately. A fifth does not fit at 320px without
 	 * shrinking labels below a comfortable reading size, so Settings lives in the header
 	 * and About is reached from Settings and from the home page.
+	 *
+	 * Route ids, resolved in the template: `resolve` applies the base path itself, which
+	 * is why nothing in this app concatenates `base` by hand. That matters more than it
+	 * looks — the base path differs between an origin root and a project site, and
+	 * hand-built hrefs are exactly what breaks when it changes.
 	 */
 	const nav = [
 		{ id: '/', label: 'Search', urgent: false },
@@ -53,6 +58,8 @@
 </script>
 
 <SkipLink />
+
+<ReviewBanner />
 
 <header>
 	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Help</a>
@@ -100,6 +107,8 @@
 		{/each}
 	</ul>
 </nav>
+
+<UpdatePrompt />
 
 <LiveRegion />
 

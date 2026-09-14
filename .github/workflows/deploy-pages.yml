@@ -15,6 +15,16 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  # This repo publishes to a GitHub Pages *project* site, so the app is served from a
+  # subdirectory and every URL needs that prefix.
+  #
+  # When a custom domain is added: set this to an empty string and add `static/CNAME`.
+  # It must be empty for the Play Store build — Android verifies a Trusted Web Activity
+  # via `/.well-known/assetlinks.json` at the ORIGIN ROOT, which a project site cannot
+  # serve. See the README.
+  ABA_BASE_PATH: /aba-help
+
 jobs:
   # Quality gate. This must always pass — it is the real signal about whether the code and
   # content are sound.
@@ -26,14 +36,15 @@ jobs:
   # Publication gate, kept separate and deliberately non-failing.
   #
   # Content that has not been through clinical review is an expected state, not a broken
-  # build: it means a human has not signed off yet. Failing the run for that would leave
-  # the repo permanently red, which is how people learn to stop reading CI. So this job
-  # reports readiness and the deploy simply does not happen until content is approved.
+  # build. The site still publishes so it can be reviewed on a real device — reviewing
+  # content is hard to do any other way — but it publishes as a clearly-marked preview:
+  # the app shows a persistent banner and robots.txt disallows indexing until every entry
+  # is approved. Both of those are driven by the content itself, not by this workflow.
   gate:
     name: Release readiness
     runs-on: ubuntu-latest
     outputs:
-      ready: ${{ steps.check.outputs.ready }}
+      channel: ${{ steps.check.outputs.channel }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -44,17 +55,16 @@ jobs:
       - id: check
         run: |
           if npx tsx packages/content-build/src/cli.ts check --channel=release; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::All content is approved — publishing."
+            echo "channel=release" >> "$GITHUB_OUTPUT"
+            echo "::notice::All content is approved — publishing a release build."
           else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Content is not release-ready yet, so the site was not published. This is the review gate, not a build failure — see the log above for which entries still need sign-off."
+            echo "channel=pr" >> "$GITHUB_OUTPUT"
+            echo "::notice::Publishing a PREVIEW build: some entries have not completed clinical review. The app shows a review banner and robots.txt disallows indexing until they are approved. This is the review gate, not a build failure."
           fi
 
   deploy:
     name: Build and deploy
     needs: [ci, gate]
-    if: needs.gate.outputs.ready == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -66,12 +76,33 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
-      # Built in the release channel, not reusing the CI artifact: that one is a `pr`
-      # build and may contain in-review content. What gets published must be the strict
-      # build.
+      # Built here rather than reusing the CI artifact: that one is built without the base
+      # path, so every asset URL in it would 404 on a project site.
       - run: npm run build
         env:
-          ABA_CONTENT_CHANNEL: release
+          ABA_CONTENT_CHANNEL: ${{ needs.gate.outputs.channel }}
+      # The most common way to ship a broken PWA is an install-blocking manifest, which is
+      # invisible until someone tries to install it on a phone.
+      - name: Check the build is installable
+        run: |
+          set -e
+          test -f build/manifest.webmanifest || { echo "::error::no web manifest"; exit 1; }
+          test -f build/sw.js || { echo "::error::no service worker"; exit 1; }
+          test -f build/200.html || { echo "::error::no SPA fallback — offline deep links will break"; exit 1; }
+          for icon in icon-192 icon-512 maskable-512; do
+            test -f "build/icons/$icon.png" || { echo "::error::missing icons/$icon.png"; exit 1; }
+          done
+          grep -q '"/aba-help/200.html"' build/sw.js \
+            || { echo "::error::navigation fallback is not the SPA shell"; exit 1; }
+          grep -q '{url:"200.html"' build/sw.js \
+            || { echo "::error::SPA fallback is missing from the precache — offline deep links will break"; exit 1; }
+          node -e "
+            const m = require('./build/manifest.webmanifest');
+            if (m.start_url !== '${ABA_BASE_PATH}/') throw new Error('start_url is ' + m.start_url);
+            if (m.scope !== '${ABA_BASE_PATH}/') throw new Error('scope is ' + m.scope);
+            if (!m.icons.some(i => i.purpose === 'maskable')) throw new Error('no maskable icon');
+            console.log('manifest OK', m.start_url, m.scope, m.icons.length + ' icons');
+          "
       - uses: actions/upload-pages-artifact@v4
         with:
           path: build

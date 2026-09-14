@@ -5,6 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#1b3a5c" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="%sveltekit.assets%/icons/apple-touch-icon.png" />
+		<!-- Declared here rather than left to the PWA plugin, which does not inject it into
+		     SvelteKit's app.html. Without this link the browser never offers to install. -->
+		<link rel="manifest" href="%sveltekit.assets%/manifest.webmanifest" />
 		<script>
 			// The only use of localStorage in the app, and a deliberate one: settings live
 			// in IndexedDB, which is async, so a mirror is needed to set the theme before

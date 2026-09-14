@@ -3,6 +3,10 @@ import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 import { defineConfig } from 'vite';
 import { abaContent } from '@aba/content-build/vite-plugin';
 
+// Mirrors `paths.base` in svelte.config.js. Kept in sync through the same env var rather
+// than duplicated, because a mismatch between the two silently breaks offline navigation.
+const BASE_PATH = process.env.ABA_BASE_PATH ?? '';
+
 export default defineConfig({
 	plugins: [
 		// Runs first, inside buildStart. An invalid content tree aborts the build itself,
@@ -14,6 +18,25 @@ export default defineConfig({
 
 		SvelteKitPWA({
 			registerType: 'prompt',
+			kit: {
+				/*
+				 * Required, not optional. The static adapter writes the fallback page after
+				 * the PWA plugin has already generated the service worker, so without this
+				 * the plugin never sees it and `200.html` is missing from the precache —
+				 * while `navigateFallback` still points at it. The handler then fails on
+				 * every offline navigation it is supposed to rescue, which looks exactly
+				 * like "offline is broken" rather than "one file is missing".
+				 */
+				adapterFallback: '200.html',
+				/*
+				 * Not "this app is a SPA" — every route here is prerendered. This is the
+				 * plugin's switch for actually putting the adapter fallback into the
+				 * precache manifest (it derives the revision from `_app/version.json`,
+				 * which is precached). Without it `adapterFallback` only names the file and
+				 * never caches it.
+				 */
+				spa: true
+			},
 			manifest: {
 				name: 'ABA Help',
 				short_name: 'ABA Help',
@@ -23,7 +46,10 @@ export default defineConfig({
 				background_color: '#ffffff',
 				display: 'standalone',
 				orientation: 'any',
-				start_url: '/',
+				// `start_url` and `scope` are deliberately not set: the plugin derives them
+				// from SvelteKit's base path. Hardcoding "/" breaks installation from a
+				// project site served under a subdirectory, because the scope would not
+				// contain the app.
 				icons: [
 					{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
 					{ src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -52,8 +78,22 @@ export default defineConfig({
 					'prerendered/pages/ethics/**',
 					'**/*.map'
 				],
-				navigateFallback: '/',
-				navigateFallbackDenylist: [/^\/v1\//, /^\/\.well-known\//],
+				/*
+				 * Must carry the base path. Workbox resolves this against the precache, and
+				 * the precached shell is `<base>/` — a bare '/' matches nothing when the app
+				 * is served from a subdirectory, so every offline navigation to a page that
+				 * is not itself precached fails. That is precisely the term pages, which are
+				 * excluded above on purpose, so the symptom is "offline works until you open
+				 * a bookmarked term".
+				 */
+				navigateFallback: `${BASE_PATH}/200.html`,
+				navigateFallbackDenylist: [
+					/^\/v1\//,
+					/\/\.well-known\//,
+					// Never answer a missing asset with the app shell: it turns a 404 into a
+					// confusing HTML response with a 200.
+					/\.[a-z0-9]+$/i
+				],
 				cleanupOutdatedCaches: true,
 				// Never swap content mid-session: a service-worker takeover during a review
 				// session would discard in-flight scheduling state. The app prompts instead.

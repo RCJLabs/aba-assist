@@ -30,7 +30,16 @@ export default defineConfig({
 	},
 
 	webServer: {
-		command: 'npx vite preview --port 4173 --strictPort',
+		/*
+		 * Served the way GitHub Pages serves it, not with `vite preview`.
+		 *
+		 * The service worker precaches extensionless URLs (`glossary`, not
+		 * `glossary.html`). Pages resolves those with a 200; a generic static server
+		 * answers 301, and Workbox treats a redirect during precaching as a failure — so
+		 * the worker never activates and offline silently does not work. Testing against
+		 * routing that differs from production is how that stayed invisible.
+		 */
+		command: 'node scripts/serve-pages.mjs --dir build --port 4173',
 		port: 4173,
 		reuseExistingServer: !process.env.CI,
 		timeout: 120_000

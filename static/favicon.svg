@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ABA Help">
   <rect width="64" height="64" rx="12" fill="#1b3a5c"/>
-  <path d="M14 46 L24 18 L34 46" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M18 37 H30" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-  <path d="M42 24 V46" stroke="#9cc6f2" stroke-width="5" stroke-linecap="round"/>
-  <circle cx="42" cy="17" r="3.5" fill="#9cc6f2"/>
+  <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 41 L32 12 L46 41"/>
+    <path d="M24 32 H40"/>
+  </g>
+  <polyline points="17,54 27,51 37,53 47,47" fill="none" stroke="#9cc6f2" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#9cc6f2">
+    <circle cx="17" cy="54" r="2.5"/><circle cx="27" cy="51" r="2.5"/>
+    <circle cx="37" cy="53" r="2.5"/><circle cx="47" cy="47" r="2.5"/>
+  </g>
 </svg>

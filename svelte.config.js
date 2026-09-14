@@ -22,9 +22,20 @@ const config = {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			// No SPA fallback: every route is prerendered. The service worker handles
-			// offline navigation for term pages that are deliberately not precached.
-			fallback: undefined,
+			/*
+			 * A SPA fallback shell, even though every route is prerendered.
+			 *
+			 * It exists for offline navigation. Term and scenario pages are deliberately
+			 * kept out of the precache (hundreds of near-duplicate HTML files), so the
+			 * service worker answers those navigations from a fallback instead. Pointing
+			 * that at the prerendered home page does not work: it carries the home route's
+			 * own data payload, so SvelteKit hydrates it as the home page regardless of the
+			 * URL — offline, every bookmarked term silently opened the search screen.
+			 *
+			 * This shell has no route baked in, so the client router renders whatever URL
+			 * was actually requested.
+			 */
+			fallback: '200.html',
 			precompress: false,
 			strict: true
 		}),

@@ -316,11 +316,22 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	const warnings = issues.filter((i) => i.severity === 'warning');
 	const contentVersion = inputHash.digest('hex').slice(0, 12);
 
+	/*
+	 * `unreviewed` is surfaced to the app, which uses it to decide whether the whole site
+	 * is still a preview: it drives the site-wide review banner and tells robots.txt to
+	 * keep search engines away. Unreviewed clinical content should not be discoverable by
+	 * someone searching for an ABA term, even while the author is reviewing it on a phone.
+	 */
+	const unreviewed = [...terms, ...scenarios].filter(
+		(x) => x.review.status !== 'approved'
+	).length;
+
 	const counts = {
 		terms: terms.length,
 		scenarios: scenarios.length,
 		sources: sources.size,
-		outlines: outlines.size
+		outlines: outlines.size,
+		unreviewed
 	};
 
 	if (errors.length > 0 || opts.emit === false) {
