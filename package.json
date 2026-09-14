@@ -15,7 +15,7 @@
     "dev": "vite dev",
     "build": "npm run build:packages && vite build",
     "preview": "vite preview",
-    "prepare": "npm run build:packages && svelte-kit sync",
+    "prepare": "npm run build:packages && npm run content:build && svelte-kit sync",
     "content": "tsx packages/content-build/src/cli.ts",
     "content:check": "tsx packages/content-build/src/cli.ts check --channel=pr",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -25,7 +25,7 @@
     "test:unit": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "content:build": "tsx packages/content-build/src/cli.ts build --channel=pr",
+    "content:build": "tsx packages/content-build/src/cli.ts build --channel=${ABA_CONTENT_CHANNEL:-dev}",
     "build:packages": "npm run build -w @aba/content-schema && npm run build -w @aba/content-build"
   },
   "devDependencies": {
