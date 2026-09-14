@@ -142,3 +142,43 @@ sources:
     url: https://www.abainternational.org/about-us/policies-and-positions/restraint-and-seclusion,-2010.aspx
     rights: all-rights-reserved
     quotationAllowed: false
+
+  - id: stokes-baer-1977
+    kind: journal-article
+    title: An implicit technology of generalization
+    authors: ['Stokes, T. F.', 'Baer, D. M.']
+    year: 1977
+    doi: 10.1901/jaba.1977.10-349
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: The primary source for programming generalization rather than hoping for it.
+
+  - id: hanley-iwata-mccord-2003
+    kind: journal-article
+    title: Functional analysis of problem behavior — a review
+    authors: ['Hanley, G. P.', 'Iwata, B. A.', 'McCord, B. E.']
+    year: 2003
+    doi: 10.1901/jaba.2003.36-147
+    rights: all-rights-reserved
+    quotationAllowed: false
+
+  - id: deleon-iwata-1996
+    kind: journal-article
+    title: >-
+      Evaluation of a multiple-stimulus presentation format for assessing reinforcer
+      preferences
+    authors: ['DeLeon, I. G.', 'Iwata, B. A.']
+    year: 1996
+    doi: 10.1901/jaba.1996.29-519
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Origin of the MSWO preference-assessment format.
+
+  - id: smith-2001-dtt
+    kind: journal-article
+    title: Discrete trial training in the treatment of autism
+    authors: ['Smith, T.']
+    year: 2001
+    doi: 10.1177/108835760101600204
+    rights: all-rights-reserved
+    quotationAllowed: false

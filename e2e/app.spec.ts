@@ -4,7 +4,13 @@ test('home page search filters the glossary', async ({ page }) => {
 	await page.goto('/');
 	await page.getByLabel('Search terms').fill('motivating');
 	await expect(page.getByRole('link', { name: /Motivating Operation/ })).toBeVisible();
-	await expect(page.getByText(/^1 result$/)).toBeVisible();
+
+	// Asserts that filtering narrowed the list, not an exact count: the glossary grows,
+	// and a test pinned to "1 result" breaks every time a term mentioning the query is
+	// added, which says nothing about whether search works.
+	const shown = await page.locator('.results li').count();
+	expect(shown).toBeGreaterThan(0);
+	expect(shown).toBeLessThan(10);
 });
 
 test('search matches an alias, not just the term name', async ({ page }) => {

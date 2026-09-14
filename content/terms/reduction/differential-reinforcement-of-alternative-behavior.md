@@ -34,7 +34,7 @@ nonExamples:
       Reinforcing a new response while the old behavior still works just as well and just
       as quickly. Without a difference in payoff there is nothing differential about it.
     setting: home
-contrastWith: [extinction]
+contrastWith: [extinction, differential-reinforcement-of-other-behavior]
 seeAlso: [negative-reinforcement, positive-reinforcement]
 searchBoost: 1.3
 citations:
