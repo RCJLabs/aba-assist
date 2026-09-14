@@ -3,12 +3,11 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { CATEGORY_LABELS } from '$lib/content/load.js';
+	import { errataUrl } from '$lib/config.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const term = $derived(data.term);
-
-	const ERRATA = 'https://github.com/RCJLabs/aba-help/issues/new?labels=content-error&title=';
 
 	function togglePlain() {
 		settings.set('plainLanguage', !settings.plainLanguage);
@@ -125,9 +124,9 @@
 	</section>
 
 	<p class="errata">
-		<a href="{ERRATA}{encodeURIComponent(`Content error: ${term.term}`)}" rel="noopener">
-			Something wrong here? Report it.
-		</a>
+		<!-- An external GitHub URL, not an app route: resolve() does not apply. -->
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href={errataUrl(term.term)} rel="noopener"> Something wrong here? Report it. </a>
 	</p>
 </article>
 

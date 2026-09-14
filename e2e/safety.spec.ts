@@ -69,5 +69,5 @@ test('every term page shows its sources', async ({ page }) => {
 test('every term page offers a working errata link', async ({ page }) => {
 	await page.goto('/glossary/extinction');
 	const link = page.getByRole('link', { name: /report it/i });
-	await expect(link).toHaveAttribute('href', /github\.com\/RCJLabs\/aba-help\/issues\/new/);
+	await expect(link).toHaveAttribute('href', /github\.com\/RCJLabs\/aba-assist\/issues\/new/);
 });

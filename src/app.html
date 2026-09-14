@@ -14,7 +14,7 @@
 			// in IndexedDB, which is async, so a mirror is needed to set the theme before
 			// first paint. Without this the app flashes light before switching to dark.
 			try {
-				var s = JSON.parse(localStorage.getItem('aba-help:display') || '{}');
+				var s = JSON.parse(localStorage.getItem('aba-assist:display') || '{}');
 				var r = document.documentElement;
 				if (s.theme) r.dataset.theme = s.theme;
 				if (s.oneHanded) r.dataset.onehanded = String(s.oneHanded);

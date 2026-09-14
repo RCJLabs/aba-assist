@@ -19,11 +19,14 @@ env:
   # This repo publishes to a GitHub Pages *project* site, so the app is served from a
   # subdirectory and every URL needs that prefix.
   #
+  # Derived from the repo name rather than hardcoded: the repo was renamed once already,
+  # and a stale literal here 404s every asset on the deployed site while CI stays green.
+  #
   # When a custom domain is added: set this to an empty string and add `static/CNAME`.
   # It must be empty for the Play Store build — Android verifies a Trusted Web Activity
   # via `/.well-known/assetlinks.json` at the ORIGIN ROOT, which a project site cannot
   # serve. See the README.
-  ABA_BASE_PATH: /aba-help
+  ABA_BASE_PATH: /${{ github.event.repository.name }}
 
 jobs:
   # Quality gate. This must always pass — it is the real signal about whether the code and
@@ -92,12 +95,14 @@ jobs:
           for icon in icon-192 icon-512 maskable-512; do
             test -f "build/icons/$icon.png" || { echo "::error::missing icons/$icon.png"; exit 1; }
           done
-          grep -q '"/aba-help/200.html"' build/sw.js \
+          grep -q "\"${ABA_BASE_PATH}/200.html\"" build/sw.js \
             || { echo "::error::navigation fallback is not the SPA shell"; exit 1; }
           grep -q '{url:"200.html"' build/sw.js \
             || { echo "::error::SPA fallback is missing from the precache — offline deep links will break"; exit 1; }
+          # Read and parse, not require(): Node treats a .webmanifest extension as
+          # JavaScript and throws on the first colon.
           node -e "
-            const m = require('./build/manifest.webmanifest');
+            const m = JSON.parse(require('fs').readFileSync('./build/manifest.webmanifest', 'utf8'));
             if (m.start_url !== '${ABA_BASE_PATH}/') throw new Error('start_url is ' + m.start_url);
             if (m.scope !== '${ABA_BASE_PATH}/') throw new Error('scope is ' + m.scope);
             if (!m.icons.some(i => i.purpose === 'maskable')) throw new Error('no maskable icon');

@@ -128,7 +128,7 @@ Static output to GitHub Pages. Two things to know:
 - **The site must be served from an origin root** (a custom domain, or a user/org Pages
   site). Android verifies a Trusted Web Activity through
   `https://<origin>/.well-known/assetlinks.json`, which a _project_ Pages site
-  (`user.github.io/aba-help/`) cannot serve. `static/.nojekyll` is required too, or Jekyll
+  (`user.github.io/aba-assist/`) cannot serve. `static/.nojekyll` is required too, or Jekyll
   silently hides the dot-directory and the file 404s.
 - Pages from a **private** repo requires a paid GitHub plan.
 

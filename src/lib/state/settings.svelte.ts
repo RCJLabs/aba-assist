@@ -3,7 +3,7 @@ import { browser } from '$app/environment';
 export type Theme = 'system' | 'light' | 'dark';
 export type Hand = 'left' | 'right';
 
-const DISPLAY_KEY = 'aba-help:display';
+const DISPLAY_KEY = 'aba-assist:display';
 
 type DisplaySettingKey = 'theme' | 'oneHanded' | 'hand' | 'fontScale' | 'plainLanguage';
 

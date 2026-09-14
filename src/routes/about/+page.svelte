@@ -2,7 +2,7 @@
 	import { contentVersion, termIndex } from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
 
-	const REPO = 'https://github.com/RCJLabs/aba-help';
+	import { REPO_URL } from '$lib/config.js';
 </script>
 
 <svelte:head>
@@ -65,7 +65,9 @@
 	tracked publicly, so you can see what was reported and what was done about it.
 </p>
 <p>
-	<a class="button" href="{REPO}/issues/new?labels=content-error" rel="noopener">
+	<!-- An external GitHub URL, not an app route: resolve() does not apply. -->
+	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+	<a class="button" href="{REPO_URL}/issues/new?labels=content-error" rel="noopener">
 		Report a content error
 	</a>
 </p>
