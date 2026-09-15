@@ -11,6 +11,7 @@
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { quiz, type QuizMode } from '$lib/state/quiz.svelte.js';
+	import { formatClock, type SimulationPlan } from '$lib/quiz/simulation.js';
 
 	const termName = new Map(termIndex.map((t) => [t.i, t.t]));
 
@@ -53,6 +54,36 @@
 	}
 
 	const pct = (c: number, t: number) => (t === 0 ? 0 : Math.round((100 * c) / t));
+
+	// What a simulation would look like for the selected exam, recomputed when it changes.
+	let plan = $state<SimulationPlan | null>(null);
+	$effect(() => {
+		const credential = quiz.credential;
+		void credential;
+		void quiz.previewPlan().then((p) => (plan = p));
+	});
+
+	/*
+	 * The countdown is announced at thresholds, never on every tick.
+	 *
+	 * A live region that updates each second is unusable with a screen reader, and one
+	 * that never speaks leaves a blind candidate with no idea how long is left. Half an
+	 * hour, ten minutes, five and one are the points where people actually change what
+	 * they are doing.
+	 */
+	$effect(() => {
+		quiz.onWarning = (seconds) => {
+			const label =
+				seconds >= 60 ? `${Math.round(seconds / 60)} minutes` : `${seconds} seconds`;
+			announcer.announce(`${label} remaining.`, 'assertive');
+		};
+		return () => {
+			quiz.onWarning = null;
+		};
+	});
+
+	const remaining = $derived(quiz.secondsRemaining);
+	const lowOnTime = $derived(quiz.plan !== null && remaining <= 300);
 </script>
 
 <svelte:head>
@@ -92,7 +123,7 @@
 			</select>
 		</div>
 
-		<div class="field">
+		<div class="field" hidden={quiz.mode === 'simulation'}>
 			<label for="quiz-domain">Content area</label>
 			<select
 				id="quiz-domain"
@@ -106,7 +137,7 @@
 			</select>
 		</div>
 
-		<div class="field">
+		<div class="field" hidden={quiz.mode === 'simulation'}>
 			<label for="quiz-count">Number of questions</label>
 			<select
 				id="quiz-count"
@@ -143,7 +174,63 @@
 				/>
 				<span>At the end, like the exam</span>
 			</label>
+			{#if plan}
+				<label class="option">
+					<input
+						type="radio"
+						name="mode"
+						value="simulation"
+						checked={quiz.mode === 'simulation'}
+						onchange={() => quiz.configure({ mode: 'simulation' as QuizMode })}
+					/>
+					<span>Full exam simulation, against the clock</span>
+				</label>
+			{/if}
 		</fieldset>
+
+		{#if quiz.mode === 'simulation' && plan}
+			<div class="plan" role="note">
+				<h2>What this run is</h2>
+				<dl>
+					<div>
+						<dt>Questions</dt>
+						<dd>{plan.questions}</dd>
+					</div>
+					<div>
+						<dt>Time</dt>
+						<dd>{plan.minutes} min</dd>
+					</div>
+					<div>
+						<dt>Per question</dt>
+						<dd>{plan.secondsPerQuestion}s</dd>
+					</div>
+				</dl>
+				{#if plan.isFullLength}
+					<p>
+						Full length: {plan.fullLength.totalItems} questions in {plan.fullLength.minutes}
+						minutes, every area, weighted like the exam.
+					</p>
+				{:else}
+					<!--
+						Said plainly rather than buried. Padding a short bank by repeating
+						questions would make the number above a lie, and inventing questions to
+						fill the gap is exactly how the incumbent apps earned their reviews.
+					-->
+					<p>
+						<strong>This is not full length.</strong> The real paper is
+						{plan.fullLength.totalItems} questions in {plan.fullLength.minutes} minutes. This build
+						has {plan.questions}
+						{quiz.credential} questions written, so the run is {plan.shortfall} short — but it keeps
+						the exam's pace of {plan.secondsPerQuestion} seconds a question, which is the part worth
+						rehearsing.
+					</p>
+				{/if}
+				<p class="muted">
+					No feedback until the end, no going back once time is up, and the clock runs from
+					your device's time — leaving the page does not pause it.
+				</p>
+			</div>
+		{/if}
 
 		<p class="muted" aria-live="polite">
 			{quiz.available}
@@ -160,7 +247,11 @@
 			class="primary"
 			disabled={quiz.status === 'loading' || quiz.available === 0}
 		>
-			{quiz.status === 'loading' ? 'Loading…' : 'Start'}
+			{quiz.status === 'loading'
+				? 'Loading…'
+				: quiz.mode === 'simulation'
+					? 'Start the clock'
+					: 'Start'}
 		</button>
 	</form>
 {:else if (quiz.status === 'question' || quiz.status === 'feedback') && item}
@@ -171,9 +262,27 @@
 			submit();
 		}}
 	>
+		{#if quiz.plan}
+			<div class="exambar" class:low={lowOnTime}>
+				<!--
+					`role="timer"` with aria-live off: the visible clock updates every second,
+					which a screen reader must not read aloud. Thresholds are announced instead.
+				-->
+				<span class="clock" role="timer" aria-live="off">
+					<span class="visually-hidden">Time remaining</span>
+					{formatClock(remaining)}
+				</span>
+				<span class="counts">
+					{quiz.answeredCount} answered · {quiz.progress.n} of {quiz.progress.total}
+					{#if quiz.flaggedCount > 0}· {quiz.flaggedCount} flagged{/if}
+				</span>
+			</div>
+		{/if}
+
 		<p class="progress">
-			Question {quiz.progress.n} of {quiz.progress.total} · {item.q.taskRef.credential}
-			{item.q.taskRef.code}
+			Question {quiz.progress.n} of {quiz.progress.total}{#if !quiz.plan}
+				· {item.q.taskRef.credential}
+				{item.q.taskRef.code}{/if}
 		</p>
 
 		{#if item.q.negated}
@@ -228,11 +337,57 @@
 		</fieldset>
 
 		{#if quiz.status === 'question'}
-			<button type="submit" class="primary" disabled={quiz.selected.length === 0}>
-				{quiz.mode === 'test' && quiz.index + 1 >= quiz.items.length
-					? 'Finish'
-					: 'Check answer'}
-			</button>
+			<div class="actions">
+				<button type="submit" class="primary" disabled={quiz.selected.length === 0}>
+					{(quiz.mode === 'test' || quiz.mode === 'simulation') &&
+					quiz.index + 1 >= quiz.items.length
+						? 'Finish'
+						: quiz.plan
+							? 'Answer and continue'
+							: 'Check answer'}
+				</button>
+				{#if quiz.plan}
+					<!-- What the real exam gives you: leave it, mark it, come back. -->
+					<button
+						type="button"
+						onclick={() => quiz.toggleFlag()}
+						aria-pressed={!!quiz.flagged[item.q.id]}
+					>
+						{quiz.flagged[item.q.id] ? 'Unflag' : 'Flag for review'}
+					</button>
+					<button type="button" onclick={() => quiz.skip()}>Skip</button>
+				{/if}
+			</div>
+
+			{#if quiz.plan}
+				<nav class="navigator" aria-label="Questions">
+					<ol>
+						{#each quiz.items as it, i (it.q.id)}
+							<li>
+								<button
+									type="button"
+									class="jump"
+									data-state={it.correct !== null
+										? 'answered'
+										: quiz.flagged[it.q.id]
+											? 'flagged'
+											: 'unanswered'}
+									aria-current={i === quiz.index ? 'true' : undefined}
+									onclick={() => quiz.goTo(i)}
+								>
+									<span class="visually-hidden">
+										Question {i + 1},
+										{it.correct !== null ? 'answered' : 'not answered'}{quiz.flagged[it.q.id]
+											? ', flagged'
+											: ''}
+									</span>
+									<span aria-hidden="true">{i + 1}{quiz.flagged[it.q.id] ? '*' : ''}</span>
+								</button>
+							</li>
+						{/each}
+					</ol>
+				</nav>
+			{/if}
 		{:else}
 			<div class="explanation" role="region" aria-label="Explanation">
 				<p class="verdict">{item.correct ? 'Correct.' : 'Not correct.'}</p>
@@ -253,7 +408,14 @@
 			</button>
 		{/if}
 
-		<p><button type="button" onclick={() => quiz.reset()}>Quit</button></p>
+		<p>
+			<button type="button" onclick={() => quiz.reset()}>
+				{quiz.plan ? 'Abandon this run' : 'Quit'}
+			</button>
+			{#if quiz.plan}
+				<button type="button" onclick={() => quiz.finish()}>Finish early</button>
+			{/if}
+		</p>
 	</form>
 {:else if quiz.status === 'done' && quiz.results}
 	<section class="results" aria-labelledby="results-heading">
@@ -263,6 +425,20 @@
 				quiz.results.total
 			)}%)
 		</h2>
+		{#if quiz.ranOutOfTime}
+			<p class="warn" role="note">
+				<strong>Time ran out.</strong> Questions you did not reach are counted wrong, which is what
+				happens on the day. Pace is a skill worth practising separately from content.
+			</p>
+		{/if}
+		{#if quiz.plan}
+			<p class="muted">
+				{quiz.plan.questions} questions in {quiz.plan.minutes} minutes, at the exam's pace of
+				{quiz.plan.secondsPerQuestion} seconds a question.{#if !quiz.plan.isFullLength}
+					The real paper is {quiz.plan.fullLength.totalItems} questions in {quiz.plan
+						.fullLength.minutes} minutes.{/if}
+			</p>
+		{/if}
 		<p class="muted">
 			A practice score is not a prediction of an exam result; the real exam draws from a much
 			larger bank. Use the areas below to decide what to study next.
@@ -379,6 +555,92 @@
 		padding: 0;
 		margin-bottom: 0.5rem;
 	}
+	.plan {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.75rem 1rem;
+		background: var(--surface-raised);
+		margin-bottom: 1rem;
+	}
+	.plan h2 {
+		font-size: 1rem;
+		margin: 0 0 0.5rem;
+	}
+	.plan dl {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin: 0 0 0.5rem;
+	}
+	.plan dt {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+	.plan dd {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+	.exambar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1rem;
+		align-items: baseline;
+		justify-content: space-between;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.5rem 0.75rem;
+		background: var(--surface);
+		margin-bottom: 0.75rem;
+	}
+	/* Never colour alone: the clock itself is the signal, and the label says so. */
+	.exambar.low {
+		border-color: var(--stop-border);
+	}
+	.exambar.low .clock {
+		color: var(--stop-text);
+	}
+	.clock {
+		font-size: 1.35rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+	}
+	.counts {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.navigator ol {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+		margin: 0.75rem 0 0;
+		padding: 0;
+	}
+	.jump {
+		min-width: var(--tap);
+		min-height: var(--tap);
+		font-variant-numeric: tabular-nums;
+	}
+	.jump[data-state='answered'] {
+		background: var(--accent);
+		color: var(--accent-text);
+	}
+	.jump[data-state='flagged'] {
+		border-color: var(--caution-border);
+		background: var(--caution-bg);
+		color: var(--caution-text);
+	}
+	.jump[aria-current='true'] {
+		outline: 3px solid var(--focus);
+		outline-offset: 1px;
+	}
+
 	.mode {
 		gap: 0.4rem;
 	}

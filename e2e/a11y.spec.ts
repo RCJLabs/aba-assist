@@ -140,3 +140,14 @@ test('interactive targets meet the 24px minimum', async ({ page }) => {
 	});
 	expect(small).toEqual([]);
 });
+
+test('a simulation in progress, with its clock and navigator, is accessible', async ({
+	page
+}) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+	await page.getByRole('button', { name: 'Start the clock' }).click();
+	await page.getByRole('button', { name: 'Flag for review' }).click();
+	await expect(page.getByRole('timer')).toBeVisible();
+	await expectNoA11yViolations(page);
+});

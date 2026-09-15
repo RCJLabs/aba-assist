@@ -2,8 +2,19 @@ import { browser } from '$app/environment';
 import type { QuizQuestion } from '@aba/content-schema';
 import { loadQuestions, outlineForCredential } from '$lib/content/load.js';
 import { putAttempt } from '$lib/db/index.js';
+import {
+	crossedWarning,
+	examFormat,
+	planSimulation,
+	secondsLeft,
+	type SimulationPlan
+} from '$lib/quiz/simulation.js';
 
-export type QuizMode = 'practice' | 'test';
+/**
+ * `simulation` is `test` with a clock and the exam's own shape: every domain, weighted,
+ * as many questions as the bank can supply, at the real seconds per question.
+ */
+export type QuizMode = 'practice' | 'test' | 'simulation';
 export type QuizStatus = 'setup' | 'loading' | 'question' | 'feedback' | 'done' | 'empty';
 
 export interface SessionItem {
@@ -55,12 +66,47 @@ class Quiz {
 	results = $state<QuizResults | null>(null);
 	available = $state(0);
 
+	/** Set only in simulation mode. */
+	plan = $state<SimulationPlan | null>(null);
+	deadlineAt = $state(0);
+	now = $state(0);
+	/** True when the clock, not the reader, ended the run. */
+	ranOutOfTime = $state(false);
+	/** Questions the reader marked to come back to, as the real exam allows. */
+	flagged = $state<Record<string, boolean>>({});
+	private ticker: ReturnType<typeof setInterval> | null = null;
+	private lastRemaining = Infinity;
+	/** Set by the page, so a threshold can be spoken without this module importing the UI. */
+	onWarning: ((secondsRemaining: number) => void) | null = null;
+
 	get current(): SessionItem | null {
 		return this.items[this.index] ?? null;
 	}
 
 	get progress(): { n: number; total: number } {
 		return { n: Math.min(this.index + 1, this.items.length), total: this.items.length };
+	}
+
+	get secondsRemaining(): number {
+		return this.deadlineAt === 0 ? 0 : secondsLeft(this.deadlineAt, this.now);
+	}
+
+	get answeredCount(): number {
+		return this.items.filter((it) => it.correct !== null).length;
+	}
+
+	get flaggedCount(): number {
+		return Object.values(this.flagged).filter(Boolean).length;
+	}
+
+	/** What a simulation would look like right now, given what is in the bank. */
+	async previewPlan(): Promise<SimulationPlan | null> {
+		if (!browser) return null;
+		const outline = outlineForCredential(this.credential);
+		const format = outline ? examFormat(outline) : null;
+		if (!format) return null;
+		const bank = await loadQuestions(this.credential);
+		return planSimulation(format, bank.length);
 	}
 
 	configure(next: {
@@ -92,6 +138,24 @@ class Quiz {
 
 	async start(): Promise<void> {
 		this.status = 'loading';
+		this.stopClock();
+		this.ranOutOfTime = false;
+		this.flagged = {};
+
+		if (this.mode === 'simulation') {
+			// The real paper covers every domain and does not let you pick a length, so
+			// neither does this.
+			this.domain = 'all';
+			this.plan = await this.previewPlan();
+			if (!this.plan) {
+				this.status = 'empty';
+				return;
+			}
+			this.count = this.plan.questions;
+		} else {
+			this.plan = null;
+		}
+
 		const bank = await loadQuestions(this.credential);
 		const pool = this.pool(bank);
 		if (pool.length === 0) {
@@ -109,6 +173,55 @@ class Quiz {
 		this.selected = [];
 		this.results = null;
 		this.startedAt = Date.now();
+		this.status = 'question';
+		if (this.plan) this.startClock(this.plan.minutes);
+	}
+
+	/*
+	 * The clock is a deadline, not a countdown that gets decremented.
+	 *
+	 * Everything derives from `Date.now()` against a fixed end time, so backgrounding the
+	 * tab, sleeping the phone or throttling the interval cannot buy anybody extra time —
+	 * which is the property that makes this worth calling a simulation at all. The
+	 * interval only exists to re-render.
+	 */
+	private startClock(minutes: number): void {
+		this.now = Date.now();
+		this.deadlineAt = this.now + minutes * 60_000;
+		this.lastRemaining = minutes * 60;
+		this.ticker = setInterval(() => this.tick(), 1000);
+	}
+
+	private tick(): void {
+		this.now = Date.now();
+		const remaining = this.secondsRemaining;
+		const threshold = crossedWarning(this.lastRemaining, remaining);
+		this.lastRemaining = remaining;
+		if (threshold !== null) this.onWarning?.(threshold);
+		if (remaining <= 0) {
+			this.ranOutOfTime = true;
+			void this.finish();
+		}
+	}
+
+	private stopClock(): void {
+		if (this.ticker !== null) clearInterval(this.ticker);
+		this.ticker = null;
+		this.deadlineAt = 0;
+		this.lastRemaining = Infinity;
+	}
+
+	toggleFlag(): void {
+		const item = this.current;
+		if (!item) return;
+		this.flagged = { ...this.flagged, [item.q.id]: !this.flagged[item.q.id] };
+	}
+
+	/** Jump straight to a question, for the review pass a real exam allows. */
+	goTo(index: number): void {
+		if (index < 0 || index >= this.items.length) return;
+		this.index = index;
+		this.selected = this.items[index]?.selected ?? [];
 		this.status = 'question';
 	}
 
@@ -188,6 +301,12 @@ class Quiz {
 		}
 	}
 
+	/** Leave it unanswered and move on, which on the real paper is a wrong answer. */
+	skip(): void {
+		if (this.status !== 'question') return;
+		void this.next();
+	}
+
 	async next(): Promise<void> {
 		this.selected = [];
 		if (this.index + 1 >= this.items.length) {
@@ -199,6 +318,8 @@ class Quiz {
 	}
 
 	async finish(): Promise<void> {
+		if (this.status === 'done') return;
+		this.stopClock();
 		const outline = outlineForCredential(this.credential);
 		const perDomain: QuizResults['perDomain'] = {};
 		let correct = 0;
@@ -245,11 +366,15 @@ class Quiz {
 	}
 
 	reset(): void {
+		this.stopClock();
 		this.status = 'setup';
 		this.items = [];
 		this.index = 0;
 		this.selected = [];
 		this.results = null;
+		this.plan = null;
+		this.flagged = {};
+		this.ranOutOfTime = false;
 	}
 }
 

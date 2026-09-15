@@ -71,3 +71,84 @@ test('a negated question is flagged before the reader answers it', async ({ page
 	}
 	expect(seen).toBe(1);
 });
+
+/**
+ * The exam simulator.
+ *
+ * The valuable thing it rehearses is pace, not question count — finding out on the day
+ * that the technician paper gives you a little over a minute per question is the problem
+ * it exists to solve. Which is also why it has to be honest about being short: this build
+ * has fewer questions written than the real paper has items, and padding by repeating
+ * them would make the number on screen a lie.
+ */
+test('the simulator states the exam pace, and admits when it is not full length', async ({
+	page
+}) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+
+	const plan = page.locator('.plan');
+	await expect(plan).toContainText('63.5s');
+	// The technician paper: 85 questions in 90 minutes.
+	await expect(plan).toContainText('85 questions in 90 minutes');
+	await expect(plan).toContainText('This is not full length.');
+
+	// Picking an area or a length is not offered, because the real exam does not offer it.
+	await expect(page.getByLabel('Content area')).toBeHidden();
+	await expect(page.getByLabel('Number of questions')).toBeHidden();
+});
+
+test('the clock runs, and the run can be finished early', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+	await page.getByRole('button', { name: 'Start the clock' }).click();
+
+	const clock = page.getByRole('timer');
+	await expect(clock).toBeVisible();
+	const first = (await clock.innerText()).trim();
+
+	// It counts down from the device clock rather than from a decremented number.
+	await expect(async () => {
+		expect((await clock.innerText()).trim()).not.toBe(first);
+	}).toPass({ timeout: 5000 });
+
+	await page.getByRole('button', { name: 'Finish early' }).click();
+	await expect(page.getByRole('heading', { name: /of \d+ correct/ })).toBeVisible();
+	await expect(page.locator('.results')).toContainText("at the exam's pace");
+});
+
+test('a simulation lets you flag a question and come back to it', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+	await page.getByRole('button', { name: 'Start the clock' }).click();
+
+	await page.getByRole('button', { name: 'Flag for review' }).click();
+	await expect(page.locator('.exambar')).toContainText('1 flagged');
+
+	await page.getByRole('button', { name: 'Skip' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 2 of');
+
+	// The navigator says what each question's state is in words, not only by colour.
+	const navigator = page.getByRole('navigation', { name: 'Questions' });
+	await expect(
+		navigator.getByRole('button', { name: /Question 1, not answered, flagged/ })
+	).toBeVisible();
+
+	await navigator.getByRole('button', { name: /^Question 1,/ }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of');
+	await expect(page.getByRole('button', { name: 'Unflag' })).toBeVisible();
+});
+
+test('a simulation withholds every rationale until the end', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+	await page.getByRole('button', { name: 'Start the clock' }).click();
+
+	await page.locator('.options input').first().check();
+	await page.getByRole('button', { name: 'Answer and continue' }).click();
+
+	// No verdict, no explanation — straight to the next question, like the real paper.
+	await expect(page.locator('.explanation')).toHaveCount(0);
+	await expect(page.locator('.progress')).toContainText('Question 2 of');
+	await expect(page.locator('.exambar')).toContainText('1 answered');
+});

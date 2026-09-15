@@ -97,6 +97,18 @@
 	box-sizing: border-box;
 }
 
+/*
+ * `hidden` has to win.
+ *
+ * The UA stylesheet's `[hidden] { display: none }` sits below every author rule, so any
+ * component that sets `display` on an element — `.field { display: grid }` is enough —
+ * silently cancels it, and the attribute becomes decoration. The failure is invisible
+ * until something that should be hidden is on screen.
+ */
+[hidden] {
+	display: none !important;
+}
+
 html {
 	font-size: calc(100% * var(--font-scale));
 }
