@@ -1,12 +1,20 @@
 import type MiniSearchType from 'minisearch';
-import { searchOptions } from '@aba/content-schema';
-import { termIndex } from '$lib/content/load.js';
+import { searchOptions, type SearchKind } from '@aba/content-schema';
+import { CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
 
 export interface SearchHit {
 	id: string;
-	term: string;
-	category: string;
+	kind: SearchKind;
+	title: string;
+	/** Short badge: "Principles", "Situation", "Ethics", "RBT exam task". */
+	label: string;
 	gloss: string;
+	/** Term category, for the category filter. Null for every other kind. */
+	category: string | null;
+	/** Outline refs as "RBT:C.2", for the exam and domain filters. */
+	refs: string[];
+	/** Owning document, where the hit is not its own page. An outline id, for a task. */
+	parent: string | null;
 	/** True while the fuzzy index is still loading and results come from the fallback. */
 	approximate: boolean;
 }
@@ -20,15 +28,18 @@ const MAX_HITS = 25;
  * Search, in three tiers.
  *
  * 1. **Idle** — nothing loaded. Typing is answered immediately by a substring scan over
- *    the lightweight index, which is already in memory. This matters more than it sounds:
+ *    the glossary index, which is already in memory. This matters more than it sounds:
  *    for an RBT, looking something up often happens in unpaid time between sessions, so a
  *    search box that blocks on a network fetch or on parsing an index simply will not be
- *    used.
+ *    used. This tier sees glossary terms only — the full index is four hundred rows and
+ *    shipping it on every page load to cover the first few hundred milliseconds would cost
+ *    every reader more than it saves.
  * 2. **Loading** — the MiniSearch module and the prebuilt index are fetched on search
  *    intent (focus or first keystroke), not at first paint. `loadJSAsync` deserialises in
  *    batches so a low-end phone does not drop frames.
- * 3. **Ready** — fuzzy, prefix and alias-aware ranking takes over. Results swap in
- *    silently; the reader only notices that matches got better.
+ * 3. **Ready** — fuzzy, prefix and alias-aware ranking over *everything*: terms,
+ *    situations, ethics topics, practice guides and exam tasks. Results swap in silently;
+ *    the reader only notices that matches got better and that there are more of them.
  */
 class Search {
 	query = $state('');
@@ -88,10 +99,14 @@ class Search {
 				.search(q)
 				.slice(0, MAX_HITS)
 				.map((r) => ({
-					id: String(r.id),
-					term: String(r.t),
-					category: String(r.c),
+					id: String(r.i),
+					kind: r.k as SearchKind,
+					title: String(r.t),
+					label: String(r.l),
 					gloss: String(r.g),
+					category: typeof r.c === 'string' ? r.c : null,
+					refs: Array.isArray(r.r) ? (r.r as string[]) : [],
+					parent: typeof r.p === 'string' ? r.p : null,
 					approximate: false
 				}));
 		}
@@ -99,7 +114,7 @@ class Search {
 		return this.#fallback(q);
 	}
 
-	/** Substring scan over the already-loaded index. Ordered by the authored boost. */
+	/** Substring scan over the glossary index. Ordered by the authored boost. */
 	#fallback(query: string): SearchHit[] {
 		const q = query.toLowerCase();
 		return termIndex
@@ -113,9 +128,13 @@ class Search {
 			.slice(0, MAX_HITS)
 			.map((t) => ({
 				id: t.i,
-				term: t.t,
-				category: t.c,
+				kind: 'term' as const,
+				title: t.t,
+				label: CATEGORY_LABELS[t.c] ?? t.c,
 				gloss: t.g,
+				category: t.c,
+				refs: t.r,
+				parent: null,
 				approximate: true
 			}));
 	}

@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import MiniSearch from 'minisearch';
 import {
+	CATEGORY_LABELS,
 	ContentOutline,
 	CredentialFacts,
 	EthicsCode,
@@ -18,6 +19,7 @@ import {
 	type Source,
 	type TaskRef,
 	type PracticeGuide as z_PracticeGuide,
+	type SearchIndexEntry,
 	type TermIndexEntry
 } from '@aba/content-schema';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
@@ -914,19 +916,128 @@ function buildAssets(
 		fetchedAtRuntime: false
 	});
 
+	/*
+	 * Everything searchable, of every kind.
+	 *
+	 * The home screen is a search box, so this is the app's primary interface and what it
+	 * covers decides what the app appears to contain. Indexing only the glossary meant a
+	 * technician typing "gift" got a definition and not the ethics topic that answers the
+	 * question they were actually asking.
+	 *
+	 * `b` is the ranking weight. Kind weights scale the author's own boost so that the
+	 * thing most likely to be an answer wins a tie: a definition or an obligation beats a
+	 * task statement, which is a pointer into an outline rather than a reading.
+	 */
+	const KIND_WEIGHT = {
+		term: 1,
+		'ethics-topic': 1,
+		scenario: 0.95,
+		'practice-guide': 0.9,
+		task: 0.55
+	} as const;
+
+	const searchDocs: (SearchIndexEntry & { body: string })[] = [];
+
+	for (const t of terms) {
+		searchDocs.push({
+			i: t.id,
+			k: 'term',
+			t: t.term,
+			a: t.aliases,
+			l: CATEGORY_LABELS[t.category],
+			g: t.definition.gloss,
+			c: t.category,
+			b: t.searchBoost * KIND_WEIGHT.term,
+			r: t.taskRefs.map(taskRefKey),
+			p: null,
+			body: `${t.definition.technical} ${t.definition.plain}`
+		});
+	}
+
+	for (const sc of scenarios) {
+		searchDocs.push({
+			i: sc.id,
+			k: 'scenario',
+			t: sc.title,
+			/*
+			 * Risk flags as aliases, which is where the crisis vocabulary lives.
+			 *
+			 * Somebody reaching for this app mid-incident types "restraint", "seclusion",
+			 * "elopement" — the flag names themselves — not the sentence the card is titled
+			 * with. Hyphens are split as well as kept, so "self-injury" and "self injury"
+			 * both land.
+			 */
+			a: sc.riskFlags.flatMap((f) => [f, f.replace(/-/g, ' ')]),
+			l: sc.kind === 'escalation-only' ? 'Stop and escalate' : 'Situation',
+			g: sc.situation.slice(0, 160),
+			c: null,
+			b: KIND_WEIGHT.scenario,
+			r: sc.taskRefs.map(taskRefKey),
+			p: null,
+			// The same prose the rights check reads, so there is one definition of what a
+			// scenario says and the index cannot drift from it.
+			body: scenarioProse(sc).join(' ')
+		});
+	}
+
+	for (const t of ethicsTopics) {
+		searchDocs.push({
+			i: t.id,
+			k: 'ethics-topic',
+			t: t.ourLabel,
+			a: [],
+			l: 'Ethics',
+			g: t.gloss,
+			c: null,
+			b: KIND_WEIGHT['ethics-topic'],
+			r: t.taskRefs.map(taskRefKey),
+			p: null,
+			body: topicProse(t).join(' ')
+		});
+	}
+
+	for (const g of guides) {
+		searchDocs.push({
+			i: g.id,
+			k: 'practice-guide',
+			t: g.title,
+			a: [],
+			l: 'Practice guide',
+			g: g.gloss,
+			c: null,
+			b: KIND_WEIGHT['practice-guide'],
+			r: g.taskRefs.map(taskRefKey),
+			p: null,
+			body: guideProse(g).join(' ')
+		});
+	}
+
+	// Exam tasks. Searchable because people arrive knowing a code — "what is C.5" — far
+	// more often than they arrive knowing what it is called.
+	for (const o of outlines) {
+		for (const d of o.domains) {
+			for (const task of d.tasks) {
+				searchDocs.push({
+					i: `${o.id}-${task.code.toLowerCase().replace(/\./g, '-')}`,
+					k: 'task',
+					t: task.code,
+					a: [task.code],
+					l: `${o.credential} exam task`,
+					g: task.plainSummary,
+					c: null,
+					b: KIND_WEIGHT.task,
+					r: [`${o.credential}:${task.code}`],
+					p: o.id,
+					body: `${task.ourSummary} ${task.plainSummary} ${task.keywords.join(' ')}`
+				});
+			}
+		}
+	}
+
 	// Prebuild the search index so the client never pays indexing cost at startup.
 	const mini = new MiniSearch(searchOptions());
-	mini.addAll(
-		terms.map((t) => ({
-			i: t.id,
-			t: t.term,
-			c: t.category,
-			g: t.definition.gloss,
-			aliases: t.aliases.join(' '),
-			technical: t.definition.technical,
-			plain: t.definition.plain
-		}))
-	);
+	// MiniSearch needs one id space, and a term and a situation can share a slug.
+	mini.addAll(searchDocs.map((d) => ({ ...d, id: `${d.k}:${d.i}` })));
 	assets.push({
 		name: 'search-index',
 		fileName: `${base}/search-index.json`,

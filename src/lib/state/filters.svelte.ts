@@ -90,6 +90,24 @@ class Filters {
 		return refs.some((r) => r.slice(prefix.length).charAt(0) === this.domain);
 	}
 
+	/**
+	 * The same test for a search hit of any kind.
+	 *
+	 * Category is a glossary concept, so narrowing to one hides every other kind rather
+	 * than letting them through a filter that cannot apply to them — a reader who asked
+	 * for Measurement terms did not ask to also see ethics topics.
+	 */
+	matchesHit(hit: { kind: string; category: string | null; refs: string[] }): boolean {
+		if (this.category !== 'all' && hit.category !== this.category) return false;
+		const cred = this.refCredential;
+		if (!cred) return true;
+		const prefix = `${cred}:`;
+		const refs = hit.refs.filter((r) => r.startsWith(prefix));
+		if (refs.length === 0) return false;
+		if (this.domain === 'all') return true;
+		return refs.some((r) => r.slice(prefix.length).charAt(0) === this.domain);
+	}
+
 	/** Same test for anything that carries task refs (questions, scenarios). */
 	matchesRefs(refs: { credential: string; code: string }[]): boolean {
 		const cred = this.refCredential;

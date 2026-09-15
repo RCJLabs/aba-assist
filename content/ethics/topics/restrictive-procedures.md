@@ -17,9 +17,13 @@ ourSummary: >-
   components, anything that removes access, and anything involving physical contact all
   sit at the restrictive end. Whether they may be used at all is governed by the person's
   written plan, your employer's policy, your certified training and state law, in that
-  combination. This app does not describe how to carry out physical procedures, because
-  physical management is a certified hands-on competency assessed in person, not something
-  anyone should learn from a screen.
+  combination. Restraint and seclusion sit at the far end of this and are governed
+  separately again: federal guidance is that they should never be used absent imminent
+  danger of serious physical harm. This app does not describe how to carry out restraint,
+  seclusion or any other physical procedure, because physical management is a certified
+  hands-on competency assessed in person, not something anyone should learn from a screen.
+  If something is happening right now, the urgent page is the right destination, not this
+  one.
 plainSummary: >-
   Try the gentlest thing that is likely to work first. Stronger procedures need extra
   approval, training and oversight. Some are governed by law, not by preference.
@@ -33,6 +37,8 @@ commonPitfalls:
   - Assuming a supervisor's authorship means a procedure is lawful in your setting.
   - Treating a plan as permission to improvise something similar in a crisis.
   - Running a component you have read about but never been trained to perform.
+  - Searching for how to restrain or seclude somebody rather than calling for the help
+    your employer's crisis protocol names.
 ifYouAreUnsure: >-
   Do not proceed. Ask your supervisor what the plan actually authorises and what your
   employer's policy requires, and get trained before you are alone with someone whose plan
@@ -74,6 +80,9 @@ review:
   authoredOn: '2026-09-15'
   reviewedBy: null
   reviewedOn: null
+  changeNote: >-
+    Now names restraint and seclusion, which a reader in a crisis is far likelier to type
+    than the word restrictive.
 provenance:
   license: CC-BY-SA-4.0
   tier: free

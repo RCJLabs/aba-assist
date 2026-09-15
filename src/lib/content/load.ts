@@ -1,3 +1,7 @@
+import {
+	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
+	CATEGORY_ORDER
+} from '@aba/content-schema';
 import type {
 	ContentOutline,
 	CredentialFacts,
@@ -76,22 +80,16 @@ export function termsByCategory(
 	return map;
 }
 
-export const CATEGORY_LABELS: Record<string, string> = {
-	philosophy: 'Philosophy',
-	principles: 'Principles',
-	measurement: 'Measurement',
-	graphing: 'Graphing',
-	assessment: 'Assessment',
-	acquisition: 'Skill acquisition',
-	reduction: 'Behavior reduction',
-	'verbal-behavior': 'Verbal behavior',
-	ethics: 'Ethics',
-	supervision: 'Supervision',
-	documentation: 'Documentation',
-	'research-design': 'Research design'
-};
+/**
+ * Widened to a string key on purpose.
+ *
+ * The schema keeps the map exhaustive over `TermCategory`, which is what stops a category
+ * being added without a label. Callers here index it with a category that arrived as data
+ * — from the index, from a filter, from a URL — and should not each have to narrow it.
+ */
+export const CATEGORY_LABELS: Record<string, string> = SCHEMA_CATEGORY_LABELS;
 
-export const CATEGORIES = Object.keys(CATEGORY_LABELS);
+export const CATEGORIES: string[] = [...CATEGORY_ORDER];
 
 // --------------------------------------------------------------- taxonomy
 

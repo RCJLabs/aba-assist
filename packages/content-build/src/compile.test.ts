@@ -568,6 +568,130 @@ ${extra}`;
 	});
 });
 
+describe('the search index', () => {
+	/*
+	 * The home screen is a search box, so what this index covers decides what the app
+	 * appears to contain. It covered only the glossary for a long time, which meant a
+	 * technician typing "gift" got a definition and never the ethics topic that answers
+	 * the question they were actually asking, and typing "self injury" got nothing.
+	 */
+	function storedDocs(r: Awaited<ReturnType<typeof compile>>) {
+		const asset = r.assets.find((a) => a.name === 'search-index');
+		const mini = JSON.parse(asset!.source) as {
+			documentCount: number;
+			storedFields: Record<string, Record<string, unknown>>;
+		};
+		return Object.values(mini.storedFields);
+	}
+
+	const guidance = {
+		id: 'a-reinforcer-stops-working',
+		kind: 'guidance',
+		title: 'The reinforcer stops working mid-session',
+		situation:
+			'The item that was working at the start of the session no longer seems to be worth anything to the learner.',
+		setting: 'clinic',
+		audience: ['RBT'],
+		riskFlags: [],
+		steps: [
+			{
+				text: 'Offer a choice from the items the plan lists, and record which one is taken.',
+				rationale: 'Preference moves within a session, and the plan usually anticipates that.'
+			},
+			{
+				text: 'Note how long the item held attention, and tell your supervisor the pattern.',
+				rationale: 'A reinforcer that fades within a session is information the plan needs.'
+			}
+		],
+		whatNotToDo: ['Do not introduce something the plan does not name.'],
+		whenToEscalate: [
+			'Tell your supervisor if nothing on the list is working across sessions.'
+		],
+		termRefs: [],
+		citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+		attestation,
+		review,
+		provenance
+	};
+
+	const escalation = {
+		id: 'someone-is-hurt',
+		kind: 'escalation-only',
+		title: 'Somebody has been hurt',
+		situation:
+			'An incident has happened during a session and somebody — the learner, you, or another person — has been injured.',
+		setting: 'clinic',
+		audience: ['RBT'],
+		riskFlags: ['self-injury', 'medical-emergency'],
+		escalation: {
+			stopAndEscalate: true,
+			contacts: ['supervising-bcba', 'emergency-services-911'],
+			immediateSafetyNote:
+				'Make sure everybody is physically safe, and get the help your organisation protocol names.',
+			mandatedReporterNote: null,
+			documentation: ['Write down what happened and when, as soon as it is safe to do so.'],
+			legalNote: 'Your employer and your state decide what has to happen next.',
+			consultYourPolicy: true
+		},
+		termRefs: [],
+		citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+		attestation,
+		review,
+		provenance
+	};
+
+	it('indexes every kind, not only the glossary', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'scenarios/guidance/a-reinforcer-stops-working.md': frontmatter(guidance),
+			'scenarios/escalation/someone-is-hurt.md': frontmatter(escalation)
+		});
+		expect(r.errors).toEqual([]);
+		const kinds = storedDocs(r).map((d) => d.k);
+		expect(new Set(kinds)).toEqual(new Set(['term', 'scenario']));
+		expect(storedDocs(r)).toHaveLength(3);
+	});
+
+	it('labels a crisis card differently from ordinary guidance', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'scenarios/guidance/a-reinforcer-stops-working.md': frontmatter(guidance),
+			'scenarios/escalation/someone-is-hurt.md': frontmatter(escalation)
+		});
+		const docs = storedDocs(r);
+		expect(docs.find((d) => d.i === 'someone-is-hurt')!.l).toBe('Stop and escalate');
+		expect(docs.find((d) => d.i === 'a-reinforcer-stops-working')!.l).toBe('Situation');
+	});
+
+	it('stores what a row needs to render and filter, and nothing more', async () => {
+		const r = await build({ 'terms/principles/sample-term.md': frontmatter(term()) });
+		const doc = storedDocs(r)[0]!;
+		expect(Object.keys(doc).sort()).toEqual(['b', 'c', 'g', 'i', 'k', 'l', 'p', 'r', 't']);
+		// Never the body. This index is parsed on a phone, and the corpus does not belong
+		// in it twice.
+		expect(JSON.stringify(doc)).not.toContain('precise statement of the concept');
+	});
+
+	it('ranks a definition above an exam task', async () => {
+		// A task statement is a pointer into an outline rather than a reading, so it must
+		// not outrank the entry that explains the same word.
+		const r = await build({ 'terms/principles/sample-term.md': frontmatter(term()) });
+		expect(Number(storedDocs(r)[0]!.b)).toBeGreaterThan(0.55);
+	});
+
+	it('carries the category for terms and null for everything else', async () => {
+		// The category filter is a glossary concept; a situation has no category to match,
+		// which is what stops one leaking through a narrowed filter.
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'scenarios/guidance/a-reinforcer-stops-working.md': frontmatter(guidance)
+		});
+		const docs = storedDocs(r);
+		expect(docs.find((d) => d.k === 'term')!.c).toBe('principles');
+		expect(docs.find((d) => d.k === 'scenario')!.c).toBeNull();
+	});
+});
+
 describe('practice guides', () => {
 	const base = {
 		title: 'What a session note has to carry',

@@ -163,3 +163,75 @@ test('the product name is consistent across the UI and the manifest', async ({ p
 		expect(await page.title()).toContain(NAME);
 	}
 });
+
+/**
+ * Search covers every kind of content.
+ *
+ * The home screen is a search box, so what the index covers decides what the app appears
+ * to contain. These are the queries somebody actually types — a question, not a term —
+ * and every one of them returned nothing but glossary entries until the index grew past
+ * the glossary.
+ */
+test('search finds situations, ethics topics, guides and exam tasks', async ({ page }) => {
+	await page.goto('/');
+	const box = page.getByLabel('Search terms');
+
+	await box.fill('gift');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+
+	const results = page.locator('.results li');
+	// The situation and the ethics topic both answer this, and neither is a definition.
+	await expect(results.filter({ hasText: 'Gifts, meals and favours' })).toHaveCount(1);
+	await expect(
+		results.filter({ has: page.locator('[data-kind="scenario"]') })
+	).not.toHaveCount(0);
+
+	// Each row says what kind of thing it is, in words.
+	await expect(results.first().locator('.kind')).toBeVisible();
+});
+
+test('search answers a question phrased the way an incident is', async ({ page }) => {
+	await page.goto('/');
+	await page.getByLabel('Search terms').fill('bit me');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+
+	// The escalation card, badged as one, above anything else.
+	const first = page.locator('.results li').first();
+	await expect(first.locator('.kind')).toHaveText('Stop and escalate');
+	await first.locator('a').click();
+	await expect(page).toHaveURL(/\/scenarios\//);
+});
+
+test('a search hit links to the right page for its kind', async ({ page }) => {
+	await page.goto('/');
+	await page.getByLabel('Search terms').fill('gifts meals');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+
+	await page
+		.locator('.results li')
+		.filter({ hasText: 'Gifts, meals and favours' })
+		.locator('a')
+		.click();
+	await expect(page).toHaveURL(/\/ethics\/gifts\/?$/);
+	await expect(page.getByRole('heading', { level: 1 })).toContainText('Gifts');
+});
+
+test('the category filter narrows to the glossary, since only terms have one', async ({
+	page
+}) => {
+	await page.goto('/');
+	await page.getByLabel('Search terms').fill('gift');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+	await expect(page.locator('.results li').filter({ hasText: 'Gifts, meals' })).toHaveCount(1);
+
+	await page.locator('details.filter-box summary').click();
+	await page
+		.getByRole('group', { name: 'Filter search results' })
+		.getByLabel('Category', { exact: true })
+		.selectOption('ethics');
+
+	// A reader who asked for Measurement terms did not ask to also see ethics topics, so
+	// narrowing by category hides every kind that cannot have one.
+	await expect(page.locator('.results li').filter({ hasText: 'Gifts, meals' })).toHaveCount(0);
+	await expect(page.locator('[data-kind="term"]').first()).toBeVisible();
+});

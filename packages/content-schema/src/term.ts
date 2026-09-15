@@ -20,6 +20,28 @@ export const TermCategory = z.enum([
 ]);
 export type TermCategory = z.infer<typeof TermCategory>;
 
+/**
+ * Human labels for the categories, here rather than in the app because the build needs
+ * them too — the search index carries a rendered label on every row, and two copies of
+ * this map would drift the moment a category was renamed.
+ */
+export const CATEGORY_LABELS: Record<TermCategory, string> = {
+	philosophy: 'Philosophy',
+	principles: 'Principles',
+	measurement: 'Measurement',
+	graphing: 'Graphing',
+	assessment: 'Assessment',
+	acquisition: 'Skill acquisition',
+	reduction: 'Behavior reduction',
+	'verbal-behavior': 'Verbal behavior',
+	ethics: 'Ethics',
+	supervision: 'Supervision',
+	documentation: 'Documentation',
+	'research-design': 'Research design'
+};
+
+export const CATEGORY_ORDER = Object.keys(CATEGORY_LABELS) as TermCategory[];
+
 const Example = z.strictObject({
 	text: z.string().min(15).max(400),
 	setting: Setting.default('any'),

@@ -5,18 +5,34 @@
 	import { scenarios } from '$lib/content/scenarios.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
-	import { search } from '$lib/state/search.svelte.js';
-
-	const byId = new Map(termIndex.map((t) => [t.i, t]));
+	import { search, type SearchHit } from '$lib/state/search.svelte.js';
 
 	// Search results respect the same exam/domain/category filter as the glossary, so
-	// someone studying for one exam never sees terms that are not on it.
-	const results = $derived(
-		search.results.filter((r) => {
-			const entry = byId.get(r.id);
-			return !entry || filters.matches(entry);
-		})
-	);
+	// someone studying for one exam never sees content that is not on it.
+	const results = $derived(search.results.filter((r) => filters.matchesHit(r)));
+
+	/**
+	 * Where a hit goes.
+	 *
+	 * Route ids resolved here rather than paths stored in the index: the base path differs
+	 * between an origin root and a project site, and a href built by hand is exactly what
+	 * breaks when it changes. A practice guide and an exam task are sections of a page
+	 * rather than pages, so they get a fragment.
+	 */
+	function hrefFor(r: SearchHit): string {
+		switch (r.kind) {
+			case 'scenario':
+				return resolve('/scenarios/[slug]', { slug: r.id });
+			case 'ethics-topic':
+				return resolve('/ethics/[slug]', { slug: r.id });
+			case 'practice-guide':
+				return resolve('/tools/notes');
+			case 'task':
+				return r.parent ? resolve('/exams/[id]', { id: r.parent }) : resolve('/exams');
+			default:
+				return resolve('/glossary/[slug]', { slug: r.id });
+		}
+	}
 
 	let lastAnnounced = -1;
 	$effect(() => {
@@ -81,10 +97,15 @@
 	<p class="count">{results.length} {results.length === 1 ? 'result' : 'results'}</p>
 	{#if results.length > 0}
 		<ul class="results">
-			{#each results as r (r.id)}
+			{#each results as r (r.kind + ':' + r.id)}
 				<li>
-					<a href={resolve('/glossary/[slug]', { slug: r.id })}>
-						<span class="term">{r.term}</span>
+					<!-- Resolved above; the linter cannot see through the helper. -->
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+					<a href={hrefFor(r)}>
+						<span class="term">
+							{r.title}
+							<span class="kind" data-kind={r.kind}>{r.label}</span>
+						</span>
 						<span class="gloss">{r.gloss}</span>
 					</a>
 				</li>
@@ -93,7 +114,8 @@
 	{:else}
 		<p>
 			Nothing matched{#if filters.active}
-				with the current filter{/if}. This build has {termIndex.length} terms.
+				with the current filter{/if}. This build has {termIndex.length} terms, {scenarios.length}
+			situations and the ethics reference.
 			<a href="{resolve('/about')}#errata">Tell us what is missing.</a>
 		</p>
 	{/if}
@@ -189,6 +211,26 @@
 	.count {
 		color: var(--text-muted);
 		font-size: 0.9rem;
+	}
+
+	.kind {
+		display: inline-block;
+		margin-left: 0.5rem;
+		font-size: 0.7rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		vertical-align: middle;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 0.05rem 0.45rem;
+		color: var(--text-muted);
+	}
+	/* Never colour alone: the badge is a word first. */
+	.kind[data-kind='scenario'],
+	.kind[data-kind='ethics-topic'] {
+		border-color: var(--accent);
+		color: var(--accent);
 	}
 
 	.results,
