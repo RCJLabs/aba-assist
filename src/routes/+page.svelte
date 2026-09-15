@@ -279,6 +279,10 @@
 
 	<h2>Study for the exam</h2>
 	<nav aria-label="Study" class="tiles">
+		<a class="tile" href={resolve('/drills')}>
+			<strong>Calculation drills</strong>
+			<span>Rate, percentage and the agreement methods, on fresh numbers every time.</span>
+		</a>
 		<a class="tile" href={resolve('/plan')}>
 			<strong>What to study next</strong>
 			<span>Your practice history, read as a plan rather than a score.</span>
