@@ -308,6 +308,10 @@
 
 	<h2>On the job</h2>
 	<nav aria-label="On the job" class="tiles">
+		<a class="tile" href={resolve('/session')}>
+			<strong>Session mode</strong>
+			<span>The interval cue, the note checklist and a lookup, on one screen.</span>
+		</a>
 		<a class="tile" href={resolve('/tools')}>
 			<strong>Supervision and development</strong>
 			<span>

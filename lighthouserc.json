@@ -7,6 +7,7 @@
         "http://localhost:4180/",
         "http://localhost:4180/glossary",
         "http://localhost:4180/abbreviations",
+        "http://localhost:4180/session",
         "http://localhost:4180/glossary/motivating-operation",
         "http://localhost:4180/scenarios/learner-pushes-materials-away",
         "http://localhost:4180/tools",

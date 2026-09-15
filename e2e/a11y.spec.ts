@@ -26,6 +26,7 @@ const ROUTES = [
 	'/tools/development',
 	'/tools/notes',
 	'/tools/timer',
+	'/session',
 	'/tools/fieldwork',
 	'/graphs',
 	'/review',

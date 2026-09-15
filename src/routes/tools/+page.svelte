@@ -190,6 +190,14 @@
 			{/if}
 		</article>
 		<article class="card">
+			<h2><a href={resolve('/session')}>Session mode</a></h2>
+			<p>
+				The interval cue, what the note has to carry, and a definition lookup on one screen —
+				so checking a word mid-session does not stop the clock or lose the tally.
+			</p>
+			<p class="now">Nothing to set up, and nothing is saved.</p>
+		</article>
+		<article class="card">
 			<h2><a href={resolve('/tools/timer')}>Interval timer</a></h2>
 			<p>
 				A repeating cue for partial interval, whole interval and momentary time sampling, with
