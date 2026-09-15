@@ -31,6 +31,14 @@ async function drill(page: Page, domain: string, n: number): Promise<void> {
 	await expect(
 		page.getByRole('heading', { name: new RegExp(`of ${n} correct`) })
 	).toBeVisible();
+	/*
+	 * Wait for the run to reach storage before navigating.
+	 *
+	 * The results are rendered without waiting for the write, deliberately, so leaving the
+	 * page the instant the score appears can abort the transaction with the document. That
+	 * is a real thing a reader can do; here it made the plan read back an empty history.
+	 */
+	await expect(page.locator('.results')).not.toHaveAttribute('data-attempt', 'pending');
 }
 
 test('with no history it says so rather than showing an empty score', async ({ page }) => {
@@ -80,6 +88,21 @@ test('quiz results offer the plan rather than leaving a table of percentages', a
 	await expect(link).toBeVisible();
 	await link.click();
 	await expect(page.getByRole('heading', { level: 1 })).toHaveText('What to study next');
+});
+
+test('a finished run reaches storage, and survives leaving the page', async ({ page }) => {
+	/*
+	 * The regression. The results used to render before the write was started, so a full
+	 * navigation off the results screen could tear the document down with the transaction
+	 * still open and lose the run outright — the reader saw a score the app never kept.
+	 */
+	await drill(page, 'A', 5);
+	await expect(page.locator('.results')).toHaveAttribute('data-attempt', 'saved');
+
+	// A fresh document, not a client-side navigation: this is what loses an aborted write.
+	await openPlan(page);
+	await expect(page.locator('.areas li')).not.toHaveCount(0);
+	await expect(page.locator('.summary')).toContainText('5');
 });
 
 test('the plan is accessible', async ({ page }) => {

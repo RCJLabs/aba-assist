@@ -66,6 +66,16 @@ class Quiz {
 	results = $state<QuizResults | null>(null);
 	available = $state(0);
 
+	/**
+	 * Whether the finished run has reached storage.
+	 *
+	 * The results render without waiting for this on purpose — a reader whose storage is
+	 * unavailable should still see how they did. But the results screen offers a link to
+	 * the study plan, and the plan reads this run back, so something has to say when the
+	 * write has settled rather than leaving it to luck.
+	 */
+	saved = $state<'idle' | 'pending' | 'saved' | 'unavailable'>('idle');
+
 	/** Set only in simulation mode. */
 	plan = $state<SimulationPlan | null>(null);
 	deadlineAt = $state(0);
@@ -320,6 +330,7 @@ class Quiz {
 	async finish(): Promise<void> {
 		if (this.status === 'done') return;
 		this.stopClock();
+		this.saved = 'pending';
 		const outline = outlineForCredential(this.credential);
 		const perDomain: QuizResults['perDomain'] = {};
 		let correct = 0;
@@ -335,34 +346,43 @@ class Quiz {
 			}
 			perDomain[letter] = row;
 		}
-		this.results = {
+		const missed = this.items.filter((it) => !it.correct);
+
+		/*
+		 * Started before the results are rendered, not after.
+		 *
+		 * Writing afterwards left a window where navigating straight off the results screen
+		 * tore the document down with the transaction still open, and the run was lost
+		 * entirely — the reader saw their score and the app never recorded it. Starting the
+		 * write first narrows that window to as little as this code can make it, and the
+		 * results still do not wait on it.
+		 */
+		const saving = putAttempt({
+			id: `${this.startedAt}-${Math.random().toString(36).slice(2, 8)}`,
+			credential: this.credential,
+			domain: this.domain,
+			startedAt: this.startedAt,
+			finishedAt: Date.now(),
 			total: this.items.length,
 			correct,
-			perDomain,
-			missed: this.items.filter((it) => !it.correct)
-		};
+			perDomain: Object.fromEntries(
+				Object.entries(perDomain).map(([k, v]) => [k, { total: v.total, correct: v.correct }])
+			),
+			missed: missed.map((m) => m.q.id)
+		}).then(
+			() => {
+				this.saved = 'saved';
+			},
+			() => {
+				// Storage unavailable; the results are still on screen.
+				this.saved = 'unavailable';
+			}
+		);
+
+		this.results = { total: this.items.length, correct, perDomain, missed };
 		this.status = 'done';
 
-		try {
-			await putAttempt({
-				id: `${this.startedAt}-${Math.random().toString(36).slice(2, 8)}`,
-				credential: this.credential,
-				domain: this.domain,
-				startedAt: this.startedAt,
-				finishedAt: Date.now(),
-				total: this.items.length,
-				correct,
-				perDomain: Object.fromEntries(
-					Object.entries(perDomain).map(([k, v]) => [
-						k,
-						{ total: v.total, correct: v.correct }
-					])
-				),
-				missed: this.results.missed.map((m) => m.q.id)
-			});
-		} catch {
-			// Storage unavailable; the results are still on screen.
-		}
+		await saving;
 	}
 
 	reset(): void {
@@ -372,6 +392,7 @@ class Quiz {
 		this.index = 0;
 		this.selected = [];
 		this.results = null;
+		this.saved = 'idle';
 		this.plan = null;
 		this.flagged = {};
 		this.ranOutOfTime = false;

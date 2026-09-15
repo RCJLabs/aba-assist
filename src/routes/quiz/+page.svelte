@@ -414,7 +414,7 @@
 		</p>
 	</form>
 {:else if quiz.status === 'done' && quiz.results}
-	<section class="results" aria-labelledby="results-heading">
+	<section class="results" aria-labelledby="results-heading" data-attempt={quiz.saved}>
 		<h2 id="results-heading">
 			{quiz.results.correct} of {quiz.results.total} correct ({pct(
 				quiz.results.correct,

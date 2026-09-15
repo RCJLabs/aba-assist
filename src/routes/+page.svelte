@@ -87,7 +87,7 @@
 		announcer.announce(
 			value === 'all'
 				? 'Showing everything'
-				: `Showing ${MODES.find((m) => m.value === value)?.label ?? value} content`
+				: `Showing ${MODES.find((m) => m.value === value)?.full ?? value} content`
 		);
 	}
 
