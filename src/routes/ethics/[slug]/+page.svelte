@@ -86,8 +86,12 @@
 				<li>
 					<strong>{c.shortName}</strong>
 					<span>Section {c.section} — {c.sectionLabel}</span>
-					{#if c.standardNumbers.length > 0}
-						<span class="std">Standards {c.standardNumbers.join(', ')}</span>
+					{#if c.standards.length > 0}
+						<ul class="stds">
+							{#each c.standards as s (s.number)}
+								<li><span class="num">{s.number}</span> {s.ourLabel}</li>
+							{/each}
+						</ul>
 					{:else}
 						<span class="std">
 							Standard numbers not listed — this app has not verified them against the code.
@@ -172,6 +176,26 @@
 </article>
 
 <style>
+	.stds {
+		list-style: none;
+		margin: 0.4rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 0.3rem;
+	}
+	.stds li {
+		display: flex;
+		gap: 0.5rem;
+		align-items: baseline;
+		font-size: 0.95rem;
+	}
+	.stds .num {
+		font-variant-numeric: tabular-nums;
+		font-weight: 600;
+		color: var(--text-muted);
+		flex: 0 0 auto;
+	}
+
 	.crumbs {
 		font-size: 0.9rem;
 	}

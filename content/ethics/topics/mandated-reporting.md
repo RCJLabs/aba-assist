@@ -4,8 +4,12 @@ ourLabel: Reporting suspected abuse or neglect
 gloss: Suspicion is the standard, and the duty is yours personally
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.01', '2.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.01']
 ourSummary: >-
   In most US states, people who provide services to children or vulnerable adults are
   mandated reporters, and both codes require you to comply with the legal obligations that

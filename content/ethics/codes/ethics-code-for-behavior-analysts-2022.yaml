@@ -1,12 +1,14 @@
-# Ethics Code for Behavior Analysts — structure and our own summaries.
+# Ethics Code for Behavior Analysts — structure, numbering and our own summaries.
 #
-# What is verified: effective 2022-01-01, binds BCBA and BCaBA certificants and
-# applicants, and is built on four core principles across six sections (BCBA Handbook,
-# 06/2026, "Ethics and Self-Reporting", p. 45).
+# Verified against the code document itself (08/2024 update, read 2026-09-15): effective
+# 2022-01-01, binds BCBA and BCaBA certificants and applicants, four core principles, six
+# sections, 85 standards numbered 1.01-1.16, 2.01-2.19, 3.01-3.16, 4.01-4.12, 5.01-5.11
+# and 6.01-6.11.
 #
-# What is NOT verified: the individual standard numbers. `standardsVerified: false`, so
-# the build rejects any topic that cites one. The section scopes below are our own
-# description of what each section covers; the code's own headings are not reproduced.
+# Section and standard headings are the rights-holder's text, so every `ourLabel` here is
+# our own wording for what the standard requires. The numbers are facts and citation
+# locators, which is the whole reason a reference tool can be useful about a code it is
+# not allowed to reproduce.
 
 id: ethics-code-for-behavior-analysts-2022
 issuer: BACB
@@ -15,8 +17,8 @@ effectiveDate: '2022-01-01'
 appliesTo: [BCBA, BCaBA]
 sourceId: bacb-ethics-code-2022
 officialUrl: https://www.bacb.com/ethics-information/ethics-codes/
-totalStandards: null
-standardsVerified: false
+totalStandards: 85
+standardsVerified: true
 
 ourOverview: >-
   The conduct rules for certified analysts and assistant analysts. It is longer and more
@@ -35,8 +37,8 @@ corePrinciples:
       behind choosing effective procedures, minimising risk, and putting the client's
       interests above the organisation's convenience or your own.
     sourceNote: >-
-      One of the four core principles stated in the BCBA Handbook (06/2026), p. 45, and
-      corroborated by the RBT test content outline's parallel list.
+      Stated in the Core Principles section of the code document itself, and echoed in the
+      introduction to the RBT Ethics Code (2.0).
   - number: 2
     ourLabel: Treat others with compassion, dignity and respect
     ourSummary: >-
@@ -44,7 +46,7 @@ corePrinciples:
       right to privacy — clients and supervisees alike. This principle drives assent,
       choice, cultural responsiveness, non-discrimination, and the rule against
       exploiting a relationship where you hold the power.
-    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+    sourceNote: Stated in the Core Principles section of the code document itself.
   - number: 3
     ourLabel: Behave with integrity
     ourSummary: >-
@@ -52,7 +54,7 @@ corePrinciples:
       that bind you, and hold yourself accountable when you fall short. It covers honest
       billing and documentation, honest public statements, and correcting your own errors
       rather than concealing them.
-    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+    sourceNote: Stated in the Core Principles section of the code document itself.
   - number: 4
     ourLabel: Ensure your competence
     ourSummary: >-
@@ -60,7 +62,7 @@ corePrinciples:
       and keep that current through continuing education and consultation. The credential
       defines what you may do; competence defines what you should. Where the two differ,
       competence wins.
-    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+    sourceNote: Stated in the Core Principles section of the code document itself.
 
 sections:
   - number: '1'
@@ -71,6 +73,114 @@ sections:
       competence current, cultural responsiveness, non-discrimination and non-harassment,
       handling multiple relationships and gifts, and self-reporting certain events to the
       certifying board.
+    standards:
+      - number: '1.01'
+        ourLabel: Be truthful, and build a setting where others can be
+        ourSummary: >-
+          Give accurate information to everyone entitled to it — the certifying board,
+          licensure boards, funders, clients, families and supervisees — and do not arrange
+          work in a way that pushes anyone into fraud, illegality or a code breach. Correct
+          an untruthful or inaccurate submission as soon as you notice it.
+      - number: '1.02'
+        ourLabel: Follow the law and your professional requirements
+        ourSummary: >-
+          The requirements that bind you are cumulative: the law, your licensure board, the
+          certifying board, and your employer. Where they differ, the strictest applicable
+          one usually governs what you may do.
+      - number: '1.03'
+        ourLabel: Be accountable for your work
+        ourSummary: >-
+          Follow through on what you commit to, and when something goes wrong or a
+          commitment cannot be met, address it directly — the client's interest first, then
+          everyone else's. Accountability here means acting, not merely acknowledging.
+      - number: '1.04'
+        ourLabel: Define your role in writing before you start
+        ourSummary: >-
+          Services begin after your professional role has been defined and documented in
+          writing with the relevant parties. An undefined role is how people end up
+          answering for work they never agreed to take on.
+      - number: '1.05'
+        ourLabel: Practise inside your scope of competence
+        ourSummary: >-
+          Work in a new area — a population, a procedure — only after documented study,
+          training, supervised experience, consultation or co-treatment with someone
+          already competent in it. Where that is not realistic, refer or transition the
+          case instead.
+      - number: '1.06'
+        ourLabel: Keep your competence current
+        ourSummary: >-
+          Competence decays. Maintain and extend it deliberately through the literature,
+          conferences, workshops, coursework, coaching, consultation, supervision or
+          mentorship, and by keeping the credentials your work depends on.
+      - number: '1.07'
+        ourLabel: Build cultural responsiveness, in yourself and in the people you supervise
+        ourSummary: >-
+          Pursue training that builds knowledge and skill around diversity, and evaluate
+          honestly both your own biases and your ability to meet the needs of people whose
+          background and circumstances differ from yours. The standard extends the same
+          evaluation to your supervisees and trainees.
+      - number: '1.08'
+        ourLabel: Do not discriminate
+        ourSummary: >-
+          Behave equitably and inclusively toward everyone, whatever their age, disability,
+          ethnicity, gender identity or expression, immigration status, relationship
+          status, national origin, race, religion, sexual orientation or income, and
+          whatever else the law protects.
+      - number: '1.09'
+        ourLabel: Do not harass
+        ourSummary: >-
+          Harassing or hostile behaviour toward anyone is a breach in its own right,
+          independent of whether the target is a client, a colleague or someone you
+          supervise.
+      - number: '1.10'
+        ourLabel: Stay aware of your own biases and difficulties
+        ourSummary: >-
+          Health conditions, legal trouble, money worries and relationship strain can all
+          interfere with professional work. Stay aware of that, take real steps to resolve
+          the interference so the work is not compromised, and document both what you did
+          and how it turned out.
+      - number: '1.11'
+        ourLabel: Avoid multiple relationships, and manage the ones you cannot avoid
+        ourSummary: >-
+          Avoid stacking professional, personal or family roles with clients and
+          colleagues, tell the people affected why that matters, and keep watching for one
+          forming. If one arises, resolve it; if it cannot be resolved immediately, build
+          safeguards, plan the exit, and document everything and its outcome.
+      - number: '1.12'
+        ourLabel: Keep gifts under ten dollars, and say so up front
+        ourSummary: >-
+          Do not give or accept gifts worth more than ten US dollars to or from clients,
+          the people around them, supervisees or trainees, and make that limit known at the
+          start of the relationship. A gift passes only as an infrequent thank-you that
+          leaves nobody better off financially; recurring or accumulating gifts can breach
+          the standard even at small amounts.
+      - number: '1.13'
+        ourLabel: Do not coerce or exploit anyone you hold power over
+        ourSummary: >-
+          Evaluative and supervisory authority is power, and using it to pressure or take
+          advantage of someone is a breach whether or not anything else about the
+          relationship looks improper.
+      - number: '1.14'
+        ourLabel: No romantic or sexual relationships inside professional ones
+        ourSummary: >-
+          Not with current clients, the people around them, supervisees or trainees. Not
+          with former clients or their families for at least two years after the
+          professional relationship ends. Not with former supervisees or trainees until
+          both parties can document that it is finished. And you do not take on a past
+          partner as a supervisee until at least six months have passed.
+      - number: '1.15'
+        ourLabel: Respond to requests and meet deadlines
+        ourSummary: >-
+          Make real efforts to answer information requests and meet the deadlines of
+          clients, families, supervisees, the certifying board, licensure boards and
+          funders, and to satisfy practice requirements such as attestations and background
+          checks.
+      - number: '1.16'
+        ourLabel: Know what you are required to self-report
+        ourSummary: >-
+          Stay current on the self-reporting requirements of every entity that regulates
+          you — the certifying board, licensure boards, funders — and comply with them.
+          Not knowing is not a defence.
   - number: '2'
     ourLabel: Your conduct in practice
     ourSummary: >-
@@ -79,6 +189,138 @@ sections:
       clients and caregivers, collaborating with other providers, considering medical
       needs, and selecting, describing, monitoring and adjusting assessments and
       interventions on the evidence.
+    standards:
+      - number: '2.01'
+        ourLabel: Provide treatment that actually works
+        ourSummary: >-
+          Put clients' rights and needs first, and deliver services that are behaviourally
+          coherent, grounded in scientific evidence, and designed to get results while
+          protecting everyone involved from harm. Non-behavioural services require the
+          education, training and credentials that those services demand.
+      - number: '2.02'
+        ourLabel: Do it on time
+        ourSummary: >-
+          Timeliness is an ethics standard, not an administrative preference. Services and
+          the paperwork that surrounds them both fall under it, because a report that
+          arrives late can cost someone their funding.
+      - number: '2.03'
+        ourLabel: Protect confidential information
+        ourSummary: >-
+          Take real steps to keep information about clients, families, supervisees,
+          trainees and research participants confidential, and to prevent accidental
+          disclosure. The scope covers sessions including recorded and remote ones, all
+          documentation and data, and every form of communication.
+      - number: '2.04'
+        ourLabel: Disclose confidential information only on specific grounds
+        ourSummary: >-
+          Share it only with informed consent, to protect someone from harm, to resolve a
+          contractual issue, to prevent a crime likely to cause serious harm, or when the
+          law or a court compels it. Even then, share only what the purpose actually
+          requires.
+      - number: '2.05'
+        ourLabel: Store, retain and destroy records properly
+        ourSummary: >-
+          Know and follow every applicable rule about storing, transporting, retaining and
+          destroying records, physical and electronic. Destroy physical records only where
+          that is permitted after making electronic copies or summaries. When you leave an
+          organisation, these duties stay with the organisation.
+      - number: '2.06'
+        ourLabel: Bill and report accurately
+        ourSummary: >-
+          Identify what you actually did, and include everything required on reports,
+          bills, invoices, reimbursement requests and receipts. Do not deliver or bill
+          non-behavioural services under a behavioural authorisation. Discovered
+          inaccuracies get disclosed, corrected promptly, and documented.
+      - number: '2.07'
+        ourLabel: Handle fees honestly
+        ourSummary: >-
+          Set and communicate fees in line with the law, and do not misrepresent them.
+          Where you are not the one responsible for fees, tell whoever is what the
+          requirements are, work to resolve any conflict or inaccuracy, and document what
+          you did.
+      - number: '2.08'
+        ourLabel: Communicate in language people actually understand
+        ourSummary: >-
+          Check that you have been understood, not just that you have spoken. Before
+          services begin, describe the scope and the conditions under which services end.
+          Explain assessment and intervention procedures before running them and the
+          results once they exist, and provide current credentials on request.
+      - number: '2.09'
+        ourLabel: Involve clients and the people around them
+        ourSummary: >-
+          Throughout the relationship, not just at intake: in choosing goals, in selecting
+          and designing assessments and interventions, and in reviewing progress as it
+          comes in.
+      - number: '2.10'
+        ourLabel: Collaborate with colleagues, including outside your profession
+        ourSummary: >-
+          Work with colleagues in your field and in others in the client's interest.
+          Compromise where you can, put the client's interest first where you cannot, and
+          document what you did and how it resolved.
+      - number: '2.11'
+        ourLabel: Obtain informed consent, and assent where it applies
+        ourSummary: >-
+          Know when consent is required — before assessments and interventions begin, when
+          you substantially change an intervention, when records or confidential
+          information move — and take responsibility for explaining it, obtaining it,
+          obtaining it again when required, and documenting it. Assent from the client is
+          part of this standard.
+      - number: '2.12'
+        ourLabel: Rule out medical causes
+        ourSummary: >-
+          Where there is any reasonable chance that a referred behaviour is influenced by
+          medical or biological variables, make sure those needs are assessed and
+          addressed. Document referrals to a medical professional, and follow up
+          afterwards.
+      - number: '2.13'
+        ourLabel: Choose assessments on the evidence, and write up what you found
+        ourSummary: >-
+          Select and design assessments that are behaviourally coherent, evidence-based and
+          suited to this client's needs, context and resources, chosen to maximise benefit
+          and minimise risk. Summarise the procedures and the results in writing.
+      - number: '2.14'
+        ourLabel: Choose interventions on the evidence, and prefer reinforcement
+        ourSummary: >-
+          Interventions should be behaviourally coherent, evidence-based, driven by
+          assessment results, built on positive reinforcement first, and fitted to the
+          client's needs, context and resources. Weigh risks, benefits, side effects,
+          preference, feasibility and cost, aim for results that survive outside the
+          teaching setting, and write the procedures down.
+      - number: '2.15'
+        ourLabel: Minimise the risk your intervention creates
+        ourSummary: >-
+          Design and run interventions, consequences included, so the risk of harm stays
+          low. Recommend a restrictive or punishment-based procedure only after less
+          intrusive means have demonstrably failed, or where an existing team has judged
+          the behaviour more dangerous than the procedure. Follow any required review
+          process, keep evaluating whether it is working, and modify or stop it promptly if
+          it is not.
+      - number: '2.16'
+        ourLabel: Describe an intervention in writing before you start it
+        ourSummary: >-
+          Set out the objectives, the procedures, the expected timelines and the review
+          schedule in writing first, then explain them and the conditions needed to run
+          them properly to the people involved. Modifications and new interventions get the
+          same explanation, and consent again where it applies.
+      - number: '2.17'
+        ourLabel: Collect data properly, and use them
+        ourSummary: >-
+          Make sure the measurement procedures fit and are implemented correctly, then
+          graph, summarise and actually use the data to decide whether to continue, change
+          or end a service. Data nobody looks at are not measurement.
+      - number: '2.18'
+        ourLabel: Keep evaluating whether the intervention is working
+        ourSummary: >-
+          Monitor continually, and when the data say the outcomes are not arriving,
+          investigate and take corrective action. Where another professional's concurrent
+          services appear to be undermining the intervention, raise it with them directly.
+      - number: '2.19'
+        ourLabel: Address conditions that are blocking service delivery
+        ourSummary: >-
+          Identify environmental conditions getting in the way — other people's behaviour,
+          hazards to the client or staff, disruption — and remove or reduce them, adapt the
+          intervention, or bring in help from another professional. Document the
+          conditions, what you did, and the outcome.
   - number: '3'
     ourLabel: What you owe clients and stakeholders
     ourSummary: >-
@@ -86,6 +328,114 @@ sections:
       cases, service and financial agreements, third-party contracts and the conflicts
       they create, advocating for the services a person actually needs, and handing over
       or ending services without leaving anyone stranded.
+    standards:
+      - number: '3.01'
+        ourLabel: Act in the client's interest, and know your reporting duties
+        ourSummary: >-
+          Support clients' rights, maximise benefit, do no harm. This is also where
+          mandated reporting sits: know the laws that apply where you practise and comply
+          with them.
+      - number: '3.02'
+        ourLabel: Work out who the stakeholders are, and what you owe each
+        ourSummary: >-
+          Identify everyone invested in the service — a parent, a teacher, a principal, a
+          funder — and work out what your obligations to each of them actually are. Write
+          those obligations down and tell them at the start.
+      - number: '3.03'
+        ourLabel: Accept only the clients you can competently serve
+        ourSummary: >-
+          Inside your scope of competence and inside your real resources, case supervision
+          time and staffing included. When you are told to take a case that fails either
+          test, raise it, work to resolve it, and document what happened.
+      - number: '3.04'
+        ourLabel: Sign a service agreement before services start
+        ourSummary: >-
+          The agreement names everyone's responsibilities, the scope of services, your
+          obligations under the code, and how somebody can complain about you and to whom.
+          Update it when circumstances change, and get the update reviewed and signed too.
+      - number: '3.05'
+        ourLabel: Document the money before you begin
+        ourSummary: >-
+          Agree and document compensation and billing with clients, stakeholders and
+          funders before services start, and revisit it when funding changes. Pro bono and
+          bartered work still needs a specific service agreement.
+      - number: '3.06'
+        ourLabel: Consult and refer where the client needs it
+        ourSummary: >-
+          Arrange consultation with, and referrals to, other providers when that serves the
+          client — with informed consent, and inside whatever laws, contracts and
+          organisational policies apply.
+      - number: '3.07'
+        ourLabel: Get third-party contracts straight before services begin
+        ourSummary: >-
+          When a third party such as a school district or agency contracts you to serve a
+          client, clarify your relationship with each party and assess the conflicts before
+          you start. The contract should cover everyone's responsibilities, the scope, how
+          the information will be used, your code obligations, and the limits on
+          confidentiality.
+      - number: '3.08'
+        ourLabel: Under a third-party contract, the client still comes first
+        ourSummary: >-
+          If the paying party asks for something that contradicts your recommendations,
+          falls outside your competence, or would create a multiple relationship, resolve
+          it in the client's interest. Where it cannot be resolved, get training or
+          consultation, transition the client out carefully, or refer them. Document it.
+      - number: '3.09'
+        ourLabel: Tell the family what third-party services involve
+        ourSummary: >-
+          When a third party requests services for a minor or for someone without the legal
+          right to decide for themselves, make sure the parent or legally authorised
+          representative knows why services are being provided, what they cover, and that
+          they may have copies of all documentation and data. Consent requirements apply
+          whoever asked for the service.
+      - number: '3.10'
+        ourLabel: Explain the limits of confidentiality early
+        ourSummary: >-
+          Say at the start of the relationship where confidentiality stops, and say it
+          again whenever a disclosure becomes required. People consent to something
+          different when they know the limits in advance.
+      - number: '3.11'
+        ourLabel: Document your professional activity properly
+        ourSummary: >-
+          Keep detailed, high-quality records throughout the relationship, so that you or
+          somebody else can carry the work on, so that you can be held accountable, and so
+          that the applicable legal and funder requirements are met. Records should be good
+          enough to hand over on short notice.
+      - number: '3.12'
+        ourLabel: Advocate for the services a person actually needs
+        ourSummary: >-
+          Educate clients and the people around them about evidence-based assessment and
+          intervention, and argue for the amount and level of service and oversight the
+          goals genuinely require — including when that is inconvenient.
+      - number: '3.13'
+        ourLabel: Refer on need, and disclose your interests
+        ourSummary: >-
+          Base referrals on what the client needs, and offer more than one provider where
+          you can. Disclose any relationship you have with a potential provider and any fee
+          or incentive attached. Document the referral, the relationship and the money, and
+          follow up.
+      - number: '3.14'
+        ourLabel: Keep services continuous through interruptions
+        ourSummary: >-
+          Plan for both the interruptions you can see coming, such as relocation or leave,
+          and the ones you cannot, such as illness or a funding collapse. Service
+          agreements should carry a general plan for this, and when an interruption hits,
+          tell everyone what you are doing about it.
+      - number: '3.15'
+        ourLabel: Discontinue services deliberately, not by drift
+        ourSummary: >-
+          The service agreement should say when services end. Consider ending them when
+          goals are met, when the client is not benefiting, when you or your staff face
+          harmful conditions that cannot be resolved, when the client or family asks, when
+          the people around the client will not implement the plan despite real support, or
+          when funding stops. Provide a written discharge plan and document every step.
+      - number: '3.16'
+        ourLabel: Hand a client over without dropping them
+        ourSummary: >-
+          Say in the service agreement when a transition to another analyst can happen.
+          Manage it with a written plan naming target dates, activities and who is
+          responsible, review that plan as you go, and collaborate with the other providers
+          to keep disruption down.
   - number: '4'
     ourLabel: What you owe supervisees and trainees
     ourSummary: >-
@@ -94,6 +444,81 @@ sections:
       you can genuinely oversee, training with feedback and direct observation,
       documenting it, delegating only what a supervisee is competent to do, evaluating
       whether your supervision is working, and ending it responsibly.
+    standards:
+      - number: '4.01'
+        ourLabel: Meet every supervision requirement that applies
+        ourSummary: >-
+          Know and follow the supervisory rules that bind you — the certifying board's,
+          your licensure board's, your funder's and your organisation's — including the
+          ones about how supervision happens, in person or by video, individually or in a
+          group.
+      - number: '4.02'
+        ourLabel: Supervise only where you are competent to supervise
+        ourSummary: >-
+          Supervision is its own skill set, not a by-product of clinical seniority. Acquire
+          it before you supervise, and keep improving it through professional development.
+      - number: '4.03'
+        ourLabel: Take on only as many supervisees as you can genuinely oversee
+        ourSummary: >-
+          Weigh your client demands, your existing caseload and your time before adding
+          anyone, and comply with any volume rules that apply. When you conclude you have
+          hit your limit, document that self-assessment and tell your employer.
+      - number: '4.04'
+        ourLabel: You are accountable for your supervisees' professional work
+        ourSummary: >-
+          For your own supervisory practice, and for what your supervisees and trainees do
+          within the supervisory relationship — client services, supervision, training,
+          research and public statements alike.
+      - number: '4.05'
+        ourLabel: Keep supervision documentation accurate and for seven years
+        ourSummary: >-
+          Create, update, store and dispose of supervision records under every applicable
+          rule, confidentiality included. Make sure your records and your supervisees'
+          records are accurate and complete, keep them in a state that allows oversight to
+          transfer, and retain them for at least seven years — and tell your supervisees to
+          do the same.
+      - number: '4.06'
+        ourLabel: Supervise with evidence-based, individualised procedures
+        ourSummary: >-
+          Deliver supervision and training the way you would deliver any other behavioural
+          service: evidence-based procedures, positive reinforcement at the centre, and
+          fitted to this supervisee and their circumstances.
+      - number: '4.07'
+        ourLabel: Make diversity part of supervision, not an add-on
+        ourSummary: >-
+          Actively bring topics of diversity into supervision and training — age,
+          disability, ethnicity, gender identity and expression, immigration status,
+          relationship status, national origin, race, religion, sexual orientation, income.
+      - number: '4.08'
+        ourLabel: Monitor performance with data, and give feedback in time
+        ourSummary: >-
+          Collect and document ongoing performance data through observation and structured
+          evaluation. Give praise and corrective feedback promptly, document the formal
+          feedback, and when performance problems appear, build an improvement plan with
+          real procedures and evaluate whether it works.
+      - number: '4.09'
+        ourLabel: Delegate only what a supervisee can competently do
+        ourSummary: >-
+          Confirm the competence before you hand the task over, and confirm that the
+          delegation is allowed by the rules that apply to you both.
+      - number: '4.10'
+        ourLabel: Evaluate whether your supervision is working
+        ourSummary: >-
+          Use feedback from others and the outcomes of both clients and supervisees to
+          judge your own supervisory practice, document those self-evaluations, and change
+          what you do when they say to.
+      - number: '4.11'
+        ourLabel: Keep supervision continuous through interruptions
+        ourSummary: >-
+          Minimise breaks in supervision, plan for the foreseeable ones such as leave and
+          the unforeseeable ones such as illness, and tell everyone affected what you are
+          doing to keep it going.
+      - number: '4.12'
+        ourLabel: End supervision with a plan
+        ourSummary: >-
+          Whatever the reason for ending it, work with everyone involved on a plan that
+          limits the damage to the supervisee or trainee — whose accrued hours and career
+          timeline may depend on it — and document what you did and how it turned out.
   - number: '5'
     ourLabel: What you say in public
     ourSummary: >-
@@ -101,6 +526,79 @@ sections:
       social media: they must be truthful, must not misrepresent the profession or your
       credentials, must protect the confidentiality of the people you serve, and must not
       solicit testimonials from the clients currently depending on you.
+    standards:
+      - number: '5.01'
+        ourLabel: Protect people's rights in everything you say publicly
+        ourSummary: >-
+          Public statements can harm clients, families, supervisees and trainees. Take
+          steps to protect all of their rights, and where those interests compete, the
+          client's come first.
+      - number: '5.02'
+        ourLabel: Keep confidentiality in public statements
+        ourSummary: >-
+          Protect the confidentiality of clients, supervisees and trainees in everything
+          you publish or present, except where disclosure is allowed, and make real efforts
+          to prevent identifying details slipping out by accident.
+      - number: '5.03'
+        ourLabel: Make public statements that are true and not misleading
+        ourSummary: >-
+          Statements about your work, or the work of people you are affiliated with, must
+          be truthful and must not mislead or exaggerate by what they say, imply or leave
+          out, and should rest on existing research and a behavioural account. Do not give
+          advice about a specific client's needs in a public forum.
+      - number: '5.04'
+        ourLabel: You are responsible for statements others make about your work
+        ourSummary: >-
+          Including ones you did not write, from employers, marketers, clients and others.
+          Make reasonable efforts to stop deceptive claims about your services or products,
+          correct them when you learn of them, and document what you did.
+      - number: '5.05'
+        ourLabel: Respect intellectual property
+        ourSummary: >-
+          Know and follow intellectual-property law, get permission where materials are
+          trademarked, copyrighted or otherwise someone else's, and attribute properly. Do
+          not obtain or disclose proprietary information unlawfully, however it reached you.
+      - number: '5.06'
+        ourLabel: Do not advertise non-behavioural services as behavioural
+        ourSummary: >-
+          Where you offer non-behavioural services, distinguish them clearly from your
+          behavioural work and your certification, and carry the disclaimer the code
+          specifies alongside every such intervention. If your employer breaches this,
+          make reasonable efforts to fix it and document them.
+      - number: '5.07'
+        ourLabel: Do not solicit testimonials from current clients
+        ourSummary: >-
+          Asking someone who currently depends on you for a promotional testimonial carries
+          implicit coercion, so the code prohibits it for advertising aimed at winning new
+          clients. Unsolicited reviews you cannot control are different, but you should not
+          use or share them either.
+      - number: '5.08'
+        ourLabel: Handle former clients' testimonials carefully
+        ourSummary: >-
+          Remember that a former client may return to services. A solicited testimonial
+          must be labelled as solicited, must state the relationship accurately, and must
+          comply with privacy law. Tell the person where and how it will appear, what
+          risks disclosure carries, and that they can withdraw it at any time.
+      - number: '5.09'
+        ourLabel: Non-advertising uses of testimonials are treated differently
+        ourSummary: >-
+          Testimonials from current or former clients may be used for purposes other than
+          advertising — fundraising, grant applications, explaining the field — where the
+          law allows it.
+      - number: '5.10'
+        ourLabel: Treat professional and personal accounts differently online
+        ourSummary: >-
+          Know the privacy risks of social media and websites. Never publish client
+          information or content on a personal account. On a professional account, obtain
+          consent first, add a disclaimer that consent was obtained and that the content
+          must not be reused, publish in a way that limits resharing, and monitor your
+          accounts for misuse.
+      - number: '5.11'
+        ourLabel: Get consent before sharing digital content about a client
+        ourSummary: >-
+          Confirm confidentiality, obtain informed consent before sharing, and use the
+          content only for the audience and purpose it was consented to. Every shared piece
+          of media carries a statement that consent was obtained.
   - number: '6'
     ourLabel: How you conduct research
     ourSummary: >-
@@ -108,6 +606,77 @@ sections:
       confidentiality for participants, competence to conduct the work, managing conflicts
       of interest, crediting contributions honestly, avoiding plagiarism, and retaining
       and reporting data accurately.
+    standards:
+      - number: '6.01'
+        ourLabel: Follow the law and the rules governing research
+        ourSummary: >-
+          Plan and run research within applicable law and regulation, and within the
+          requirements of the organisations and institutions that govern research activity
+          where you work.
+      - number: '6.02'
+        ourLabel: Get formal review before you start
+        ourSummary: >-
+          Research is conducted only after a formal research review committee has approved
+          it — whether the research stands alone or happens inside service delivery.
+      - number: '6.03'
+        ourLabel: Inside service delivery, the client's welfare comes first
+        ourSummary: >-
+          Arrange research within a service so that client services and client welfare take
+          priority, and meet the ethics requirements for both service delivery and research
+          at once. Where services are offered as an incentive to participate, spell out
+          what they are and what risks and limits attach.
+      - number: '6.04'
+        ourLabel: Obtain informed consent, and assent where relevant
+        ourSummary: >-
+          Under the conditions the review committee sets. If you realise that data gathered
+          during ordinary service delivery might be published, get consent for that use
+          before disseminating, say plainly that services will not change either way, and
+          make withdrawal possible at any time without penalty.
+      - number: '6.05'
+        ourLabel: Protect participants' confidentiality
+        ourSummary: >-
+          Prioritise it except where it genuinely cannot be maintained, and take real steps
+          — disguising or removing identifying information — to prevent accidental
+          disclosure both while running the study and while disseminating it.
+      - number: '6.06'
+        ourLabel: Be competent to do the research you are doing
+        ourSummary: >-
+          Conduct research independently only after you have completed research under a
+          supervisor in a defined relationship. You and your assistants perform only the
+          activities you are trained for; otherwise get the training or collaborate with
+          someone competent. You are responsible for the ethical conduct of everyone on
+          the project.
+      - number: '6.07'
+        ourLabel: Identify and disclose conflicts of interest
+        ourSummary: >-
+          Personal, financial, organisational and service-related conflicts all count, and
+          the standard covers your editorial and publication activity as well as the
+          research itself. Identify them, disclose them, address them.
+      - number: '6.08'
+        ourLabel: Credit contributions accurately
+        ourSummary: >-
+          Authorship and acknowledgements should reflect what people actually contributed
+          scientifically or professionally, regardless of whether they are a professor or a
+          student.
+      - number: '6.09'
+        ourLabel: Do not plagiarise
+        ourSummary: >-
+          Do not present any part of someone else's work or data as your own, and republish
+          your own previously published data or text only with proper disclosure.
+      - number: '6.10'
+        ourLabel: Store and retain research records properly
+        ourSummary: >-
+          Follow every applicable rule for storing, transporting, retaining and destroying
+          research documentation, keep identifying records for the longest required period,
+          and destroy physical records only after making deidentified copies or summaries
+          and only where that is permitted.
+      - number: '6.11'
+        ourLabel: Do not fabricate, falsify or selectively report
+        ourSummary: >-
+          Do not invent data or falsify results anywhere. Design and describe the work so
+          it is hard to misread, correct published errors through the publisher's process,
+          and present data in full where possible — where it is not, explain what was left
+          out and why.
 
 review:
   status: in-review
@@ -116,11 +685,11 @@ review:
   reviewedBy: null
   reviewedOn: null
   changeNote: >-
-    Structure and core principles verified from the BCBA Handbook; section scopes are our
-    own description. Individual standard numbers deliberately not modelled.
+    Rewritten from the code document itself; all 85 standards now modelled with our own
+    labels and summaries.
 
 provenance:
   license: CC-BY-SA-4.0
   tier: free
-  version: 1
+  version: 2
   updated: '2026-09-15'

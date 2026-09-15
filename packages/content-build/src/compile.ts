@@ -422,7 +422,11 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 					[
 						value.ourOverview,
 						...value.corePrinciples.flatMap((x) => [x.ourLabel, x.ourSummary, x.sourceNote]),
-						...value.sections.flatMap((x) => [x.ourLabel, x.ourSummary])
+						...value.sections.flatMap((x) => [
+							x.ourLabel,
+							x.ourSummary,
+							...x.standards.flatMap((st) => [st.ourLabel, st.ourSummary])
+						])
 					],
 					sources,
 					file
@@ -499,6 +503,9 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 						)
 					);
 				}
+				const known = new Set(
+					code.sections.flatMap((s) => s.standards.map((st) => st.number))
+				);
 				for (const n of ref.standardNumbers) {
 					if (!n.startsWith(ref.section + '.')) {
 						push(
@@ -508,6 +515,12 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 								file
 							)
 						);
+						continue;
+					}
+					// A number that looks right but is not in the code is the failure mode this
+					// whole flag exists to prevent, arriving as a typo instead of a guess.
+					if (code.standardsVerified && !known.has(n)) {
+						push(error('refs/unresolved', `${ref.codeId} has no standard ${n}`, file));
 					}
 				}
 			}

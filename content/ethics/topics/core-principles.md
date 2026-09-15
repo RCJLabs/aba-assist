@@ -4,8 +4,12 @@ ourLabel: The principles underneath everything else
 gloss: The four ideas the rest of the code follows from
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.01', '1.02', '1.06']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.01', '1.03', '1.05', '1.06']
 ourSummary: >-
   Both codes are built on the same handful of principles: benefit the people you serve
   and avoid harming them; treat them with compassion, dignity and respect; act with

@@ -4,8 +4,15 @@ ourLabel: Only doing what you have been trained to do
 gloss: Your credential says what you may do; training says what you should
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.03', '1.05', '1.06']
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.04']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.04', '1.05', '1.06']
 ourSummary: >-
   Both codes draw a line between what your certification permits and what you personally
   can do well. The second is always narrower, and it is the one that governs. For a

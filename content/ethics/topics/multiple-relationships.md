@@ -4,8 +4,12 @@ ourLabel: Second relationships with the people you serve
 gloss: When being more than one thing to someone becomes a problem
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.04', '1.10', '1.12']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.11', '1.13', '1.14']
 ourSummary: >-
   A multiple relationship is any second connection with a client, a family or a supervisee
   on top of the professional one: friend, employee, babysitter, business partner, romantic

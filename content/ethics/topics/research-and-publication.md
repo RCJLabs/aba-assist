@@ -4,7 +4,9 @@ ourLabel: Research and publication
 gloss: Consent, competence, credit and honest data
 appliesTo: [BCaBA, BCBA]
 sectionRefs:
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '6' }
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '6'
+    standardNumbers: ['6.01', '6.02', '6.03', '6.04', '6.05', '6.07', '6.08', '6.09', '6.11']
 ourSummary: >-
   The analyst code devotes a whole section to research, and it applies more often than
   people expect: evaluating a procedure with your own clients and writing it up is

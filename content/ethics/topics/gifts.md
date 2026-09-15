@@ -4,8 +4,12 @@ ourLabel: Gifts, meals and favours
 gloss: Why a small thank-you is a bigger problem than it looks
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.10', '1.11']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.11', '1.12']
 ourSummary: >-
   Both codes place limits on giving and receiving gifts with the people you serve, and the
   technician outline makes adhering to those limits its own task. The reason is not that

@@ -4,8 +4,15 @@ ourLabel: When to stop and get help
 gloss: The situations where the answer is a person, not a procedure
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.01', '2.06', '2.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.18', '2.19']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.01']
 ourSummary: >-
   Some situations are outside what any reference can answer: someone is in danger, a
   person is injured, a learner leaves toward traffic or water, a medical emergency, a

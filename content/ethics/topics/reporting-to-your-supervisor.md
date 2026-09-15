@@ -4,7 +4,12 @@ ourLabel: What to report, and how fast
 gloss: Same-day things, and things that can wait for the next contact
 appliesTo: [RBT]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.06', '1.09', '1.10']
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.02', '2.06', '2.07']
 ourSummary: >-
   Three of the four documentation tasks on the technician exam are about communication
   rather than paperwork: passing on what the team raises, asking for clinical direction,

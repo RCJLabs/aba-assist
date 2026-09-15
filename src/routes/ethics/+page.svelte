@@ -93,6 +93,24 @@
 					{group.section.ourLabel}
 				</h4>
 				<p class="secsum">{group.section.ourSummary}</p>
+				{#if group.section.standards.length > 0}
+					<details class="stds">
+						<summary>
+							All {group.section.standards.length} standards in section {group.section.number}
+						</summary>
+						<dl>
+							{#each group.section.standards as st (st.number)}
+								<div>
+									<dt>{st.number}</dt>
+									<dd>
+										<strong>{st.ourLabel}</strong>
+										<span>{st.ourSummary}</span>
+									</dd>
+								</div>
+							{/each}
+						</dl>
+					</details>
+				{/if}
 				{#if group.topics.length > 0}
 					<ul class="topics">
 						{#each group.topics as t (t.id)}
@@ -124,6 +142,12 @@
 				checked against the code document, so this app does not print them rather than risk citing
 				one wrongly.
 			</p>
+		{:else}
+			<p class="checked" role="note">
+				Every standard number above was read from the code document itself. The wording is ours
+				— the code's own wording belongs to its publisher, and this app links to it rather than
+				copying it.
+			</p>
 		{/if}
 	</section>
 {/each}
@@ -134,6 +158,56 @@
 </p>
 
 <style>
+	.stds {
+		margin: 0.5rem 0 0.75rem;
+	}
+	.stds summary {
+		cursor: pointer;
+		font-size: 0.95rem;
+		color: var(--text-muted);
+		padding: 0.5rem 0;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
+	.stds dl {
+		margin: 0.25rem 0 0;
+		display: grid;
+		gap: 0.6rem;
+	}
+	.stds div {
+		display: grid;
+		grid-template-columns: 3.2rem 1fr;
+		gap: 0.5rem;
+		align-items: baseline;
+	}
+	.stds dt {
+		font-variant-numeric: tabular-nums;
+		font-weight: 600;
+		color: var(--text-muted);
+	}
+	.stds dd {
+		margin: 0;
+	}
+	.stds dd strong {
+		display: block;
+	}
+	.stds dd span {
+		font-size: 0.95rem;
+		color: var(--text-muted);
+	}
+	.checked {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		margin-top: 0.5rem;
+	}
+	@media (max-width: 480px) {
+		.stds div {
+			grid-template-columns: 1fr;
+			gap: 0.15rem;
+		}
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

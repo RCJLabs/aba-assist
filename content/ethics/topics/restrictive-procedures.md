@@ -4,8 +4,12 @@ ourLabel: Restrictive procedures and the least restrictive option
 gloss: Gentlest thing likely to work, with safeguards on the rest
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.05']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.14', '2.15']
 ourSummary: >-
   The rule is to use the least intrusive intervention likely to be effective, and to reach
   for more restrictive ones only after reinforcement-based options have been tried or

@@ -4,8 +4,18 @@ ourLabel: Writing it down honestly
 gloss: Notes and data are clinical, legal and billing records at once
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.02']
+  - codeId: rbt-ethics-code-2-0
+    section: '3'
+    standardNumbers: ['3.02']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.06', '2.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.11']
 ourSummary: >-
   What you write is used to make clinical decisions, to justify payment, and sometimes in
   legal proceedings. All three uses require the same thing: that it describes what

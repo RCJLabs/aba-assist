@@ -596,6 +596,34 @@ review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-15' }
 provenance: { license: CC-BY-SA-4.0, updated: '2026-09-15' }
 ${extra}`;
 
+	/*
+	 * The same code with its numbering checked. Once the flag is true the schema insists
+	 * the standards are actually listed and that they reconcile with `totalStandards`, so
+	 * "verified" cannot be a claim made in isolation from the data.
+	 */
+	const verifiedCode = () =>
+		code()
+			.replace('standardsVerified: false', 'standardsVerified: true')
+			.replace('totalStandards: 29', 'totalStandards: 2')
+			.replace(
+				`  - number: '2'
+    ourLabel: How you deliver services`,
+				`    standards:
+      - number: '1.12'
+        ourLabel: Keep gifts small, occasional and one-off
+        ourSummary: Do not give or accept gifts worth more than a nominal amount with the people you serve.
+  - number: '2'
+    ourLabel: How you deliver services`
+			)
+			.replace(
+				`review: { status: in-review`,
+				`    standards:
+      - number: '2.03'
+        ourLabel: Stay professional during every work activity
+        ourSummary: The standard covers training and supervision as much as it covers sessions with a learner.
+review: { status: in-review`
+			);
+
 	function topic(overrides: Record<string, unknown> = {}) {
 		return {
 			id: 'gifts',
@@ -670,10 +698,7 @@ ${extra}`;
 		expect(rules(r)).toContain('refs/unverified-standard');
 
 		const ok = await build({
-			'ethics/codes/rbt-ethics-code-2-0.yaml': code().replace(
-				'standardsVerified: false',
-				'standardsVerified: true'
-			),
+			'ethics/codes/rbt-ethics-code-2-0.yaml': verifiedCode(),
 			'ethics/topics/gifts.md': frontmatter(
 				topic({
 					sectionRefs: [
@@ -687,10 +712,7 @@ ${extra}`;
 
 	it('REJECTS a standard number that does not belong to its section', async () => {
 		const r = await build({
-			'ethics/codes/rbt-ethics-code-2-0.yaml': code().replace(
-				'standardsVerified: false',
-				'standardsVerified: true'
-			),
+			'ethics/codes/rbt-ethics-code-2-0.yaml': verifiedCode(),
 			'ethics/topics/gifts.md': frontmatter(
 				topic({
 					sectionRefs: [
@@ -700,6 +722,55 @@ ${extra}`;
 			)
 		});
 		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS a standard number the code does not actually list', async () => {
+		const r = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': verifiedCode(),
+			'ethics/topics/gifts.md': frontmatter(
+				topic({
+					sectionRefs: [
+						{ codeId: 'rbt-ethics-code-2-0', section: '1', standardNumbers: ['1.99'] }
+					]
+				})
+			)
+		});
+		// A typo in a citation is the same failure as a guess, arriving by a different route.
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS a code that lists standards while calling its numbering unverified', async () => {
+		const r = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': verifiedCode().replace(
+				'standardsVerified: true',
+				'standardsVerified: false'
+			),
+			'ethics/topics/gifts.md': frontmatter(topic())
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/ethics-code'))).toBe(true);
+	});
+
+	it('REJECTS a code that claims verification but lists no standards', async () => {
+		const r = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': code().replace(
+				'standardsVerified: false',
+				'standardsVerified: true'
+			),
+			'ethics/topics/gifts.md': frontmatter(topic())
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/ethics-code'))).toBe(true);
+	});
+
+	it('REJECTS a code whose standards do not add up to its stated total', async () => {
+		const r = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': verifiedCode().replace(
+				'totalStandards: 2',
+				'totalStandards: 29'
+			),
+			'ethics/topics/gifts.md': frontmatter(topic())
+		});
+		// The count is the cheapest possible check that a section did not lose an entry.
+		expect(rules(r).some((x) => x.startsWith('schema/ethics-code'))).toBe(true);
 	});
 
 	it('REJECTS a topic claiming a credential none of its codes bind', async () => {

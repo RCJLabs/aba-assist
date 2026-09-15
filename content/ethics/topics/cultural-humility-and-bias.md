@@ -4,8 +4,15 @@ ourLabel: Culture, bias, and fitting services to a family
 gloss: An ongoing habit, not a course you finish
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.07', '1.08', '1.09']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.07', '1.08', '1.10']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '4'
+    standardNumbers: ['4.07']
 ourSummary: >-
   Two connected obligations. Cultural humility is the stance: keep examining your own
   assumptions, notice where your background differs from the family's, and learn about

@@ -29,7 +29,19 @@ export const load: PageLoad = ({ params }) => {
 			sectionLabel:
 				code?.sections.find((s) => s.number === ref.section)?.ourLabel ??
 				`Section ${ref.section}`,
-			standardNumbers: ref.standardNumbers
+			/*
+			 * The numbers resolved to what we say they mean. A bare "Standards 1.11, 1.12"
+			 * is a citation the reader has to go elsewhere to use; the label is the part
+			 * that answers their question on this page. The build has already proved every
+			 * one of these numbers exists in the code, so the lookup cannot come up empty.
+			 */
+			standards: ref.standardNumbers.map((number) => ({
+				number,
+				ourLabel:
+					code?.sections
+						.find((s) => s.number === ref.section)
+						?.standards.find((st) => st.number === number)?.ourLabel ?? null
+			}))
 		};
 	});
 

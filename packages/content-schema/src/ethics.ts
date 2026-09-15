@@ -27,6 +27,22 @@ const CorePrinciple = z.strictObject({
 });
 
 /**
+ * One numbered standard within a section.
+ *
+ * The NUMBER is a fact and a citation locator — "1.12" is how the whole profession refers
+ * to the gift rule, and a reference tool that cannot say it is not much use. Everything
+ * else here is ours. The code's own heading for a standard is its text too, which is why
+ * `officialTitle` is null by construction and `ourLabel` is a label we wrote.
+ */
+const CodeStandard = z.strictObject({
+	number: z.string().regex(/^\d+\.\d{2}$/, 'standard numbers look like "2.01"'),
+	ourLabel: z.string().min(3).max(80),
+	ourSummary: z.string().min(30).max(600),
+	...OfficialTextGuard
+});
+export type CodeStandard = z.infer<typeof CodeStandard>;
+
+/**
  * One numbered section of a code.
  *
  * The section NUMBER is a fact — a citation locator. The section's heading is the
@@ -37,6 +53,8 @@ const CodeSection = z.strictObject({
 	number: z.string().regex(/^\d+$/),
 	ourLabel: z.string().min(3).max(80),
 	ourSummary: z.string().min(30).max(600),
+	/** Empty until the code's numbering has been checked against the document itself. */
+	standards: z.array(CodeStandard).default([]),
 	...OfficialTextGuard
 });
 
@@ -87,6 +105,59 @@ export const EthicsCode = strictContent({
 			input: c.id
 		});
 	}
+
+	/*
+	 * The flag and the data have to agree, in both directions.
+	 *
+	 * Listing standards while `standardsVerified` is false would put numbers in front of a
+	 * reader that nobody checked — the exact failure this flag exists to prevent. Claiming
+	 * verification while listing none is the same lie told the other way. And once the
+	 * numbering IS verified, the count has to reconcile: a section quietly missing a
+	 * standard is how a reference silently stops being complete.
+	 */
+	const all = c.sections.flatMap((s) => s.standards);
+	if (!c.standardsVerified && all.length > 0) {
+		ctx.issues.push({
+			code: 'custom',
+			message: `${c.id}: lists standard numbers while standardsVerified is false`,
+			input: c.id
+		});
+	}
+	if (c.standardsVerified) {
+		if (all.length === 0) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${c.id}: standardsVerified is true but no standards are listed`,
+				input: c.id
+			});
+		}
+		if (c.totalStandards !== null && all.length !== c.totalStandards) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${c.id}: lists ${all.length} standards but totalStandards is ${c.totalStandards}`,
+				input: c.id
+			});
+		}
+		const numbers = all.map((s) => s.number);
+		if (new Set(numbers).size !== numbers.length) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${c.id}: duplicate standard numbers`,
+				input: c.id
+			});
+		}
+		for (const section of c.sections) {
+			for (const std of section.standards) {
+				if (!std.number.startsWith(`${section.number}.`)) {
+					ctx.issues.push({
+						code: 'custom',
+						message: `${c.id}: standard ${std.number} is listed under section ${section.number}`,
+						input: c.id
+					});
+				}
+			}
+		}
+	}
 });
 export type EthicsCode = z.infer<typeof EthicsCode>;
 
@@ -96,8 +167,9 @@ export const SectionRef = z.strictObject({
 	section: z.string().regex(/^\d+$/),
 	/**
 	 * Standard numbers this topic covers, e.g. ["2.03", "2.04"]. Only permitted once the
-	 * code's `standardsVerified` is true; the build rejects them otherwise, so an
-	 * unverified guess cannot reach a reader looking like a citation.
+	 * code's `standardsVerified` is true, and then only if the code actually lists that
+	 * number — so neither an unverified guess nor a typo can reach a reader looking like
+	 * a citation.
 	 */
 	standardNumbers: z
 		.array(z.string().regex(/^\d+\.\d{2}$/, 'standard numbers look like "2.01"'))

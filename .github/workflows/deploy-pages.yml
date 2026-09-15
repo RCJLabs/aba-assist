@@ -15,19 +15,6 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-env:
-  # This repo publishes to a GitHub Pages *project* site, so the app is served from a
-  # subdirectory and every URL needs that prefix.
-  #
-  # Derived from the repo name rather than hardcoded: the repo was renamed once already,
-  # and a stale literal here 404s every asset on the deployed site while CI stays green.
-  #
-  # When a custom domain is added: set this to an empty string and add `static/CNAME`.
-  # It must be empty for the Play Store build — Android verifies a Trusted Web Activity
-  # via `/.well-known/assetlinks.json` at the ORIGIN ROOT, which a project site cannot
-  # serve. See the README.
-  ABA_BASE_PATH: /${{ github.event.repository.name }}
-
 jobs:
   # Quality gate. This must always pass — it is the real signal about whether the code and
   # content are sound.
@@ -79,6 +66,33 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
+      # The base path and the custom domain are one decision, so they are derived from one
+      # file rather than set in two places.
+      #
+      # Without `static/CNAME` this is a Pages *project* site: the app is served from a
+      # subdirectory and every URL needs that prefix, derived from the repo name rather
+      # than hardcoded because the repo has been renamed once already and a stale literal
+      # here 404s every asset while CI stays green.
+      #
+      # With `static/CNAME` the app owns an origin, so the prefix is empty. That is also
+      # the requirement for the Play Store build: Android verifies a Trusted Web Activity
+      # against `/.well-known/assetlinks.json` at the ORIGIN ROOT, which a project site
+      # cannot serve at all.
+      #
+      # Getting these two out of step does not fail the build — it silently breaks the
+      # service worker scope and every cached URL. Hence one source of truth.
+      - name: Resolve the base path
+        run: |
+          set -e
+          if [ -f static/CNAME ]; then
+            domain="$(tr -d '[:space:]' < static/CNAME)"
+            test -n "$domain" || { echo "::error::static/CNAME is empty"; exit 1; }
+            echo "ABA_BASE_PATH=" >> "$GITHUB_ENV"
+            echo "::notice::Custom domain $domain — serving from the origin root."
+          else
+            echo "ABA_BASE_PATH=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
+            echo "::notice::Project site — serving from /${{ github.event.repository.name }}."
+          fi
       # Built here rather than reusing the CI artifact: that one is built without the base
       # path, so every asset URL in it would 404 on a project site.
       - run: npm run build
@@ -108,6 +122,21 @@ jobs:
             if (!m.icons.some(i => i.purpose === 'maskable')) throw new Error('no maskable icon');
             console.log('manifest OK', m.start_url, m.scope, m.icons.length + ' icons');
           "
+      # A custom domain is what makes a Trusted Web Activity possible, and an unfilled
+      # asset-links file is how a TWA ships with the browser URL bar visible. Not an error
+      # — the web app is fine without it — but it should never be a surprise.
+      - name: Check the asset links
+        run: |
+          set -e
+          if [ -f build/CNAME ]; then
+            test -f build/.well-known/assetlinks.json \
+              || { echo "::error::custom domain but no .well-known/assetlinks.json"; exit 1; }
+            test -f build/.nojekyll \
+              || { echo "::error::no .nojekyll — Pages will hide .well-known/ and asset links will 404"; exit 1; }
+            if [ "$(tr -d '[:space:]' < build/.well-known/assetlinks.json)" = "[]" ]; then
+              echo "::warning::assetlinks.json is still empty. Fill it with the SHA-256 fingerprint of the key that signs the AAB before shipping the TWA, or the app installs with a URL bar."
+            fi
+          fi
       - uses: actions/upload-pages-artifact@v4
         with:
           path: build

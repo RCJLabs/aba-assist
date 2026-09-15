@@ -4,8 +4,18 @@ ourLabel: How you work with the people around you
 gloss: Taking feedback, listening, asking, collaborating
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.02']
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.03']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.03', '1.15']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.08', '2.10']
 ourSummary: >-
   The technician outline treats interpersonal skill as an ethics task, not a soft extra,
   and it names the components: accepting feedback, listening actively, seeking input, and

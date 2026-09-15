@@ -4,7 +4,12 @@ ourLabel: Money, funders and conflicts of interest
 gloss: When someone else's interests could bend your judgement
 appliesTo: [BCaBA, BCBA]
 sectionRefs:
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '3' }
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.11', '1.12', '1.13']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.05', '3.07', '3.08', '3.13']
 ourSummary: >-
   A conflict of interest exists whenever something you stand to gain could sway — or
   reasonably appear to sway — your professional judgement. In practice most of them are

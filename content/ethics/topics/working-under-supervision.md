@@ -4,7 +4,12 @@ ourLabel: Practising only while you are properly supervised
 gloss: Supervision is a condition of practising, not an add-on
 appliesTo: [RBT]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '3' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.03', '1.04']
+  - codeId: rbt-ethics-code-2-0
+    section: '3'
+    standardNumbers: ['3.01']
 ourSummary: >-
   A technician may practise only while a qualified supervisor is on record with the
   certifying board and the required supervision is actually happening: at least 5% of the

@@ -4,8 +4,15 @@ ourLabel: Raising a concern about someone else
 gloss: Talk to them first where you safely can; escalate where you cannot
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.01']
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.06', '2.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.01', '1.02']
 ourSummary: >-
   When you see something that concerns you, the usual expectation is to address it
   directly with the person where doing so is appropriate and safe, then through your

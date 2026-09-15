@@ -4,8 +4,12 @@ ourLabel: What you say publicly about your work
 gloss: Honest, and never at a client's expense
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '1' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '5' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.08', '2.09']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '5'
+    standardNumbers: ['5.01', '5.02', '5.03', '5.10', '5.11']
 ourSummary: >-
   Anything you communicate to the public about your professional activities is covered:
   advertising, a website, a conference talk, a comment to a reporter, and — the one that

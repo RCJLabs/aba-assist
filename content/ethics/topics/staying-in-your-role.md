@@ -4,7 +4,12 @@ ourLabel: Staying inside the technician role
 gloss: Implement the plan; do not design, change or interpret it
 appliesTo: [RBT]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '1'
+    standardNumbers: ['1.03', '1.05', '1.06']
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.04', '2.06']
 ourSummary: >-
   A technician delivers behaviour-analytic services designed by a supervisor who remains
   responsible for that work. That single fact decides most day-to-day ethics questions.

@@ -4,8 +4,15 @@ ourLabel: Dignity, choice and assent
 gloss: The learner is a person, and their willingness counts
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.01', '2.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.01', '2.09', '2.11']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.01']
 ourSummary: >-
   Dignity is one of the core principles, and it lives in ordinary details: speaking to
   someone rather than about them in their presence, protecting their privacy in front of

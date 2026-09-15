@@ -109,7 +109,10 @@ sources:
     url: https://www.bacb.com/ethics-information/ethics-codes/
     rights: all-rights-reserved
     quotationAllowed: false
-    notes: Effective 2022-01-01. Applies to BCBA and BCaBA certificants.
+    notes: >-
+      Effective 2022-01-01. Applies to BCBA and BCaBA certificants. Document read at the
+      08/2024 update on 2026-09-15: four core principles, six sections, 85 standards
+      numbered 1.01-1.16, 2.01-2.19, 3.01-3.16, 4.01-4.12, 5.01-5.11 and 6.01-6.11.
 
   - id: bacb-rbt-ethics-code-2
     kind: standard
@@ -119,7 +122,10 @@ sources:
     url: https://www.bacb.com/ethics-information/ethics-codes/
     rights: all-rights-reserved
     quotationAllowed: false
-    notes: Effective 2022-01-01.
+    notes: >-
+      Effective 2022-01-01. Applies to RBT certificants and applicants. Document read at
+      the 08/2024 update on 2026-09-15: three sections, 29 standards numbered 1.01-1.12,
+      2.01-2.10 and 3.01-3.07, sharing the analyst code's four core principles.
 
   # ------------------------------------------------------- public domain / open licence
   - id: usdoe-restraint-seclusion

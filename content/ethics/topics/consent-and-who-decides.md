@@ -4,8 +4,12 @@ ourLabel: Consent, and who gets to decide
 gloss: Who signs, who agrees in the moment, and what they were told
 appliesTo: [BCaBA, BCBA]
 sectionRefs:
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '3' }
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.08', '2.11', '2.16']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.04', '3.09', '3.10']
 ourSummary: >-
   Informed consent means the client or their legal representative agreed to assessment or
   treatment after being told, in language they understand, what will happen, why, what the

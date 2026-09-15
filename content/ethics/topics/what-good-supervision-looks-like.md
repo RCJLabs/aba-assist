@@ -4,8 +4,12 @@ ourLabel: What supervision should actually consist of
 gloss: Being shown, practising, getting feedback, being observed
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '3' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '4' }
+  - codeId: rbt-ethics-code-2-0
+    section: '3'
+    standardNumbers: ['3.01']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '4'
+    standardNumbers: ['4.01', '4.03', '4.04', '4.06', '4.08', '4.10']
 ourSummary: >-
   Supervision that works has a recognisable shape: the supervisor explains the skill,
   demonstrates it, has you practise it, and gives specific feedback, repeating the

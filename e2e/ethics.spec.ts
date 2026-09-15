@@ -1,10 +1,20 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+/**
+ * One code's block on the index. Anchored on its own heading rather than on its text,
+ * because each code's prose can legitimately name the other one.
+ */
+function codeBlock(page: Page, shortName: string) {
+	return page
+		.locator('.code')
+		.filter({ has: page.getByRole('heading', { level: 2, name: shortName, exact: true }) });
+}
 
 /*
  * The ethics reference is the part of this app most likely to be read by someone who is
- * worried, so these tests check the honesty machinery as much as the navigation: it must
- * say plainly that it has not verified standard numbers, and it must always offer the
- * real code.
+ * worried, so these tests check the honesty machinery as much as the navigation: every
+ * standard number on screen has to be one that was read from the code document, the
+ * wording has to be ours, and the real code has to be one link away.
  */
 
 test('the ethics index lists both codes, their principles and their sections', async ({
@@ -18,10 +28,8 @@ test('the ethics index lists both codes, their principles and their sections', a
 	).toBeVisible();
 
 	// Verified structure: three sections for the technician code, six for the analyst code.
-	const rbtCode = page.locator('.code').filter({ hasText: 'RBT Ethics Code' });
-	const analystCode = page
-		.locator('.code')
-		.filter({ hasText: 'Ethics Code for Behavior Analysts' });
+	const rbtCode = codeBlock(page, 'RBT Ethics Code (2.0)');
+	const analystCode = codeBlock(page, 'Ethics Code for Behavior Analysts');
 	await expect(rbtCode.locator('.sec')).toHaveCount(3);
 	await expect(analystCode.locator('.sec')).toHaveCount(6);
 
@@ -31,13 +39,26 @@ test('the ethics index lists both codes, their principles and their sections', a
 	await expect(official.first()).toHaveAttribute('href', /bacb\.com/);
 });
 
-test('the index says plainly that standard numbers are not verified', async ({ page }) => {
+test('the index lists every standard of both codes, in our own words', async ({ page }) => {
 	await page.goto('/ethics');
-	const notices = page.getByText(/Standard numbers are not listed/);
-	await expect(notices.first()).toBeVisible();
-	await expect(notices).toHaveCount(2);
-	// And no standard-number citation is printed anywhere.
-	await expect(page.getByText(/Standards \d+\.\d\d/)).toHaveCount(0);
+
+	// Nothing claims an unverified number any more, and both codes say what was checked.
+	await expect(page.getByText(/Standard numbers are not listed/)).toHaveCount(0);
+	await expect(page.getByText(/read from the code document itself/)).toHaveCount(2);
+
+	const rbtCode = codeBlock(page, 'RBT Ethics Code (2.0)');
+	const analystCode = codeBlock(page, 'Ethics Code for Behavior Analysts');
+
+	// 29 standards across three sections, and 85 across six — the counts in the documents.
+	await expect(rbtCode.locator('.stds dl div')).toHaveCount(29);
+	await expect(analystCode.locator('.stds dl div')).toHaveCount(85);
+
+	// Collapsed by default, so 114 standards do not bury the topics somebody came for.
+	const first = rbtCode.locator('details.stds').first();
+	await expect(first.locator('dl')).toBeHidden();
+	await first.locator('summary').click();
+	await expect(first.locator('dl')).toBeVisible();
+	await expect(first).toContainText('1.11');
 });
 
 test('the credential switcher narrows the topics on offer', async ({ page }) => {
@@ -70,9 +91,13 @@ test('a topic page carries the obligation, the pitfalls, and where to go when un
 	// Every topic routes an unresolved question to a person, not to this app.
 	await expect(page.locator('.unsure')).toContainText(/supervisor|policy/i);
 
-	// It names the section it sits under and refuses to invent a standard number.
+	// It names the section it sits under and the standards it covers, each with the label
+	// we wrote for it rather than the code's own heading.
 	await expect(page.locator('.codes')).toContainText('Section 1');
-	await expect(page.locator('.codes')).toContainText('Standard numbers not listed');
+	await expect(page.locator('.codes')).toContainText('1.11');
+	await expect(page.locator('.codes')).toContainText('1.12');
+	await expect(page.locator('.codes')).not.toContainText('Standard numbers not listed');
+	await expect(page.locator('.codes .stds li').first()).toContainText(/[a-z]{4}/);
 
 	await expect(page.getByRole('link', { name: /Report it/ })).toHaveAttribute(
 		'href',

@@ -4,7 +4,12 @@ ourLabel: Choosing goals worth working on
 gloss: Socially significant, wanted by the person, and worth the cost
 appliesTo: [BCaBA, BCBA]
 sectionRefs:
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.09', '2.13', '2.14']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.12']
 ourSummary: >-
   Selecting what to work on is an ethical act before it is a technical one. The test is
   social significance: does changing this behaviour improve the person's life, in their

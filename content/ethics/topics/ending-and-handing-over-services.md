@@ -4,8 +4,12 @@ ourLabel: Ending services without leaving anyone stranded
 gloss: Notice, documentation, and a real handover
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '3' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.02', '2.06']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.14', '3.15', '3.16']
 ourSummary: >-
   Services end for many reasons — goals met, a family moves, funding stops, a practitioner
   leaves — and the obligation is the same in each: plan it, give notice, document where

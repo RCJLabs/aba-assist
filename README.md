@@ -159,6 +159,39 @@ Static output to GitHub Pages. Two things to know:
   silently hides the dot-directory and the file 404s.
 - Pages from a **private** repo requires a paid GitHub plan.
 
+### The base path is one decision, kept in one file
+
+`static/CNAME` decides everything downstream. The deploy workflow reads it and sets
+`ABA_BASE_PATH` from it: present means the app owns an origin and the prefix is empty;
+absent means a project site served from `/<repo>/`. The prefix in turn determines the
+service-worker scope, the PWA scope, and every precached URL — so the two must never
+disagree, and the only way to keep that true is to derive one from the other.
+
+**Changing it invalidates every cached URL for existing installs.** Settle it before the
+service worker reaches anyone who matters.
+
+### Moving to `aba.rcjlabs.com`
+
+The root domain serves something else, and a subdomain is its own origin — which is all
+Android's asset-links check needs. In order:
+
+1. **In Squarespace DNS**, add a CNAME record: host `aba`, value `rcjlabs.github.io.`
+   (trailing dot). Not an A record, and not a forwarding rule — a redirect is a different
+   origin and breaks TWA verification.
+2. Wait until `dig +short aba.rcjlabs.com` returns the `github.io` name.
+3. Commit `static/CNAME` containing `aba.rcjlabs.com`, then set the same domain under
+   **Settings → Pages → Custom domain** and tick **Enforce HTTPS** once the certificate
+   is issued (usually minutes; occasionally an hour).
+
+Do those in that order. Committing `CNAME` before DNS resolves takes the live site down:
+Pages starts redirecting `rcjlabs.github.io/aba-assist/` to a hostname that does not yet
+answer.
+
+Once it is live, `/.well-known/assetlinks.json` is served from the origin root. It ships
+as an empty array until there is an app signing key; fill it with the SHA-256 fingerprint
+of the key that actually signs the AAB before the TWA ships, or the app installs with the
+browser URL bar visible. The deploy workflow warns while it is still empty.
+
 ## License
 
 Code is MIT (see `LICENSE`). Content carries its own per-item license field; entries

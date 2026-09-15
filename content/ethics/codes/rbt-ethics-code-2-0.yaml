@@ -1,16 +1,14 @@
-# RBT Ethics Code (2.0) — structure and our own summaries.
+# RBT Ethics Code (2.0) — structure, numbering and our own summaries.
 #
-# What is verified: the code took effect 2022-01-01, it binds RBT certificants and
-# applicants, and it contains 29 standards across 3 sections (RBT Handbook, 06/2026,
-# "Ethics and Self-Reporting", p. 23). The three core principles below are the ones the
-# RBT Test Content Outline (3rd ed.) names at task F.1.
+# Verified against the code document itself (08/2024 update, read 2026-09-15): effective
+# 2022-01-01, binds RBT certificants and applicants, three sections, 29 standards numbered
+# 1.01-1.12, 2.01-2.10 and 3.01-3.07. The document also states that technicians share the
+# four core principles of the Ethics Code for Behavior Analysts, which is why there are
+# four below rather than the three the test content outline happens to name.
 #
-# What is NOT verified: the individual standard numbers. `standardsVerified: false`, so
-# the build will reject any topic that tries to cite one. Fill that in — and the numbers
-# with it — once someone has read the code document itself.
-#
-# Section headings are the rights-holder's text, so `ourLabel` below is our own wording
-# for what each section covers, not the code's heading.
+# Section and standard headings are the rights-holder's text, so every `ourLabel` here is
+# our own wording for what the standard requires, not the code's heading. The numbers are
+# facts and citation locators: "1.11" is how this profession refers to the gift rule.
 
 id: rbt-ethics-code-2-0
 issuer: BACB
@@ -20,7 +18,7 @@ appliesTo: [RBT]
 sourceId: bacb-rbt-ethics-code-2
 officialUrl: https://www.bacb.com/ethics-information/ethics-codes/
 totalStandards: 29
-standardsVerified: false
+standardsVerified: true
 
 ourOverview: >-
   The conduct rules every behaviour technician agrees to when they certify, and every
@@ -28,7 +26,8 @@ ourOverview: >-
   code because the role is narrower: a technician delivers services designed by someone
   else, under supervision, and most of the code follows from that. Breaking it is
   enforced through a complaint process that can end a certification, and some breaches
-  must be self-reported. Your supervisor is your first stop for anything unclear.
+  must be self-reported within 30 days. Your supervisor is your first stop for anything
+  unclear, and the code says so in as many words.
 
 corePrinciples:
   - number: 1
@@ -38,7 +37,9 @@ corePrinciples:
       could harm someone you weigh that first. In a technician's day this usually shows up
       as running the plan as written, raising concerns early, and refusing to improvise on
       a person whose plan you did not design.
-    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+    sourceNote: >-
+      Named in the introduction to the RBT Ethics Code (2.0), which points technicians to
+      the analyst code for the fuller description.
   - number: 2
     ourLabel: Treat people with compassion, dignity and respect
     ourSummary: >-
@@ -46,14 +47,28 @@ corePrinciples:
       choices where the plan allows, protect their privacy in front of others, and pay
       attention when they signal that they have had enough. This principle is why assent
       matters even where a guardian has given consent.
-    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+    sourceNote: >-
+      Named in the introduction to the RBT Ethics Code (2.0), which points technicians to
+      the analyst code for the fuller description.
   - number: 3
     ourLabel: Act with integrity
     ourSummary: >-
       Be honest in what you record, what you bill, what you claim about your credentials,
       and what you tell your supervisor — including when you got something wrong. Most
       serious ethics cases in this field start as a small inaccuracy that nobody corrected.
-    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+    sourceNote: >-
+      Named in the introduction to the RBT Ethics Code (2.0), which points technicians to
+      the analyst code for the fuller description.
+  - number: 4
+    ourLabel: Make sure you are competent for what you are asked to do
+    ourSummary: >-
+      Competence here is not a feeling of readiness; it is something your supervisor has
+      observed and confirmed for the specific procedure and the specific learner. When you
+      are handed something outside it, the principle asks you to say so rather than to try
+      your best and hope.
+    sourceNote: >-
+      Named in the introduction to the RBT Ethics Code (2.0), which points technicians to
+      the analyst code for the fuller description.
 
 sections:
   - number: '1'
@@ -61,20 +76,214 @@ sections:
     ourSummary: >-
       Your general conduct as a certificant: being truthful, following the law and your
       employer's rules, staying inside your role and your training, avoiding relationships
-      that compromise your judgement, and reporting certain things about yourself to the
-      certifying board.
+      that compromise your judgement, and noticing when something about your own situation
+      is affecting your work. Twelve standards.
+    standards:
+      - number: '1.01'
+        ourLabel: Be honest, and do not lead others into dishonesty
+        ourSummary: >-
+          Tell the truth at work, and do not create situations that push anyone else into
+          fraudulent, illegal or unethical behaviour. Follow the law and the rules of the
+          people you answer to: the certifying board, your employer and your supervisor.
+      - number: '1.02'
+        ourLabel: Behave professionally and own your commitments
+        ourSummary: >-
+          Conduct yourself professionally and take responsibility for what you do. Follow
+          through on the work and contracts you agree to, and when you cannot meet a
+          commitment, work it out with your supervisor in the client's interest rather
+          than quietly letting it slide.
+      - number: '1.03'
+        ourLabel: Practise only in a defined role, under close supervision
+        ourSummary: >-
+          Your certification lets you provide services inside a role somebody has defined,
+          with ongoing close supervision. It is not a licence to work independently, and
+          work outside a defined role is not covered by it.
+      - number: '1.04'
+        ourLabel: Never be your supervisor's employer
+        ourSummary: >-
+          You cannot employ the person who supervises your technician work; the power sits
+          the wrong way round for supervision to mean anything. Technicians accruing
+          fieldwork toward a future analyst credential may contract separately for those
+          supervision hours.
+      - number: '1.05'
+        ourLabel: Do not overstate your qualifications
+        ourSummary: >-
+          No false, misleading or exaggerated claims about your credentials or about what
+          your services are. When an employer or supervisor asks, hand over a current and
+          accurate set of what you actually hold.
+      - number: '1.06'
+        ourLabel: Work only where your supervisor has confirmed you are competent
+        ourSummary: >-
+          You provide a service after your supervisor has confirmed you can do it, and you
+          keep checking that with them as the work changes. If you are asked to do
+          something past your certification or your competence, say so immediately to your
+          supervisor or someone appropriate at work, and write the conversation down.
+      - number: '1.07'
+        ourLabel: Work on being culturally responsive, with your supervisor
+        ourSummary: >-
+          Look honestly at your own biases and at your ability to work well with people
+          whose age, disability, background, identity or circumstances differ from yours,
+          and get the training you need for it under your supervisor's direction.
+      - number: '1.08'
+        ourLabel: Do not harass or discriminate
+        ourSummary: >-
+          Treat clients, coworkers and everyone else equitably and inclusively, whatever
+          their age, disability, ethnicity, gender identity or expression, immigration
+          status, relationship status, national origin, race, religion, sexual orientation
+          or income — and whatever else the law protects.
+      - number: '1.09'
+        ourLabel: Notice when your own situation is affecting your work
+        ourSummary: >-
+          Personal biases and personal difficulties — health, legal, financial,
+          relationships — can quietly degrade the service you deliver. When they might,
+          take a concrete step: make a plan, tell your supervisor, step back from client
+          work until it is sorted. Then document what you did.
+      - number: '1.10'
+        ourLabel: Avoid mixing roles with clients, coworkers and supervisors
+        ourSummary: >-
+          A multiple relationship is two roles stacked on one person — technician and
+          friend, technician and family member, technician and employer. Avoid them. If one
+          develops anyway, tell your supervisor immediately, work to untangle it, and write
+          down what you did. If the tangle involves your supervisor, take it above them.
+      - number: '1.11'
+        ourLabel: Keep gifts small, occasional and one-off
+        ourSummary: >-
+          Do not give or accept gifts worth more than ten US dollars to or from clients,
+          the people around them, or your supervisor. A gift is acceptable only as an
+          occasional thank-you that leaves nobody financially better off; repeated or
+          accumulating gifts can breach the standard even when each one is small. A
+          stricter employer policy wins.
+      - number: '1.12'
+        ourLabel: No romantic or sexual relationships inside the professional ones
+        ourSummary: >-
+          Not with current clients, the people around them, or your supervisor. Not with
+          former clients or their families for at least two years after the professional
+          relationship ends. Not with a former supervisor until both parties can document
+          that the professional relationship is finished. And you do not take supervision
+          from a past partner until at least six months have passed.
+
   - number: '2'
     ourLabel: How you deliver services
     ourSummary: >-
-      Your obligations while actually working with people: following the behaviour plan,
-      protecting confidential information, documenting accurately and on time, treating
-      clients with dignity, and communicating with the people around a learner.
+      Your obligations while actually working with people: following the plan and your
+      supervisor's direction, protecting confidential information, documenting accurately,
+      acting when a learner's rights or safety are at risk, and keeping questions flowing
+      to the person qualified to answer them. Ten standards.
+    standards:
+      - number: '2.01'
+        ourLabel: Do no harm, and know your mandated-reporting duties
+        ourSummary: >-
+          Work in your client's best interest and avoid harming them. Know what your
+          jurisdiction requires you to report, and comply with it — reporting duties are
+          triggered by reasonable suspicion, not by proof.
+      - number: '2.02'
+        ourLabel: Follow the plan, and record what actually happened
+        ourSummary: >-
+          Do what your supervisor directs, implement the procedures as written, and
+          complete every piece of required documentation accurately — session data and
+          billing records alike.
+      - number: '2.03'
+        ourLabel: Stay professional during every work activity
+        ourSummary: >-
+          The standard covers training and supervision as much as it covers sessions. When
+          a supervisor gives you feedback, act on it: performance feedback is part of the
+          job, not a judgement about you.
+      - number: '2.04'
+        ourLabel: Do not use unfamiliar procedures or work with unfamiliar populations
+        ourSummary: >-
+          Not until you have been trained properly for them. An intervention you have read
+          about, or a client group you have never supported, is training your employer owes
+          you before the session, not something to work out during it.
+      - number: '2.05'
+        ourLabel: Restrictive and punishment-based procedures need a written plan first
+        ourSummary: >-
+          You implement one only when it is written into a documented behaviour-change plan
+          and only after your supervisor has verified you are competent to run it. Both
+          conditions, every time.
+      - number: '2.06'
+        ourLabel: Send questions and concerns to your supervisor
+        ourSummary: >-
+          Yours and other people's. When a caregiver or a coworker asks you something about
+          the services you deliver that goes beyond describing your own role, the answer is
+          a route to your supervisor rather than your own best guess.
+      - number: '2.07'
+        ourLabel: Act when a client's rights or safety are at risk
+        ourSummary: >-
+          If you become aware that a client's legal rights are being violated, or that they
+          are at risk of harm, take action: tell your supervisor, follow your
+          organisation's policy, and document it. Some situations require contacting an
+          outside authority as well.
+      - number: '2.08'
+        ourLabel: Protect confidentiality and privacy
+        ourSummary: >-
+          Follow every confidentiality requirement that applies to you — the certifying
+          board's, your employer's and the law's — and handle client information and
+          records as confidential by default, including in the workplace.
+      - number: '2.09'
+        ourLabel: Never put identifying client information online
+        ourSummary: >-
+          No photos, no video, no written details about a client on social media or any
+          website. This standard has no consent exception for technicians; the decision is
+          not yours to make.
+      - number: '2.10'
+        ourLabel: Discuss client information only where you are directed to
+        ourSummary: >-
+          Talk about confidential client information under your supervisor's direction, or
+          where the law allows it for a valid reason such as protecting someone from harm.
+          In everyday work communication, include only the information the message actually
+          needs.
+
   - number: '3'
     ourLabel: What you owe the board and your supervisor
     ourSummary: >-
-      Keeping your certification honest: maintaining the required supervision, keeping your
-      records and contact details current, being truthful with the certifying board, and
-      not cheating or helping anyone cheat on an examination or competency assessment.
+      Keeping your certification honest: maintaining and documenting supervision, being
+      truthful with the certifying board, not cheating, self-reporting the events that
+      have to be reported, respecting intellectual property, and keeping your own record
+      current. Seven standards.
+    standards:
+      - number: '3.01'
+        ourLabel: Meet the supervision and audit requirements
+        ourSummary: >-
+          Comply with what the certifying board and your supervisor require of you,
+          including the amount of supervision, the documentation of it, and any audit you
+          are selected for.
+      - number: '3.02'
+        ourLabel: Be accurate with the board and with your supervisor
+        ourSummary: >-
+          If you realise you submitted something inaccurate to the certifying board,
+          contact them immediately to fix it. If it went to your supervisor or employer,
+          correct it with them and work out whether the board needs to hear about it too.
+      - number: '3.03'
+        ourLabel: Do not cheat, and do not help anyone else cheat
+        ourSummary: >-
+          On competency assessments and on examinations. Follow the rules of the board and
+          its testing centres, including the ones about falsifying information and about
+          collecting, using or passing on examination content.
+      - number: '3.04'
+        ourLabel: Self-report the events that have to be reported, within 30 days
+        ourSummary: >-
+          The clock starts at the event or at the moment you learn of it. Reportable events
+          include legal charges and what follows them, investigations naming you,
+          disciplinary action by an employer or agency, and physical, mental or
+          substance-related conditions that could affect your ability to work safely.
+      - number: '3.05'
+        ourLabel: Do not misuse anyone's intellectual property
+        ourSummary: >-
+          That covers the certifying board's — certification titles and examination content
+          — and other people's, including your employer's proprietary materials.
+      - number: '3.06'
+        ourLabel: Share board notices with your supervisor immediately
+        ourSummary: >-
+          If you are named in an alleged-violation notice or receive a required action from
+          the certifying board, hand the document to your supervisor straight away and work
+          through the response together.
+      - number: '3.07'
+        ourLabel: Keep your own record current, and report status changes within a day
+        ourSummary: >-
+          Check your board account regularly — monthly is the example the code gives — so
+          your name, email and address stay correct. If your certification status changes,
+          tell your supervisor within 24 hours and comply with what that status means for
+          practising, billing and using the title.
 
 review:
   status: in-review
@@ -83,11 +292,11 @@ review:
   reviewedBy: null
   reviewedOn: null
   changeNote: >-
-    Structure and counts verified from the RBT Handbook; core principles from the RBT test
-    content outline. Individual standard numbers deliberately not modelled.
+    Rewritten from the code document itself; all 29 standards now modelled with our own
+    labels and summaries, and the four core principles corrected.
 
 provenance:
   license: CC-BY-SA-4.0
   tier: free
-  version: 1
+  version: 2
   updated: '2026-09-15'

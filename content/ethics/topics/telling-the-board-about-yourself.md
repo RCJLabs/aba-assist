@@ -4,8 +4,12 @@ ourLabel: Self-reporting to the certifying board
 gloss: What you must report about your own conduct, and when
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '3' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '1' }
+  - codeId: rbt-ethics-code-2-0
+    section: '3'
+    standardNumbers: ['3.02', '3.04', '3.06', '3.07']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '1'
+    standardNumbers: ['1.15', '1.16']
 ourSummary: >-
   Certificants must tell the board about certain events concerning themselves, generally
   within 30 days of becoming aware of them. The categories are broadly: violations of the

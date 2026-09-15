@@ -4,8 +4,15 @@ ourLabel: Keeping client information private
 gloss: What you may collect, store, share — and what you may not say
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
-  - { codeId: rbt-ethics-code-2-0, section: '2' }
-  - { codeId: ethics-code-for-behavior-analysts-2022, section: '2' }
+  - codeId: rbt-ethics-code-2-0
+    section: '2'
+    standardNumbers: ['2.08', '2.09', '2.10']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '2'
+    standardNumbers: ['2.03', '2.04', '2.05']
+  - codeId: ethics-code-for-behavior-analysts-2022
+    section: '3'
+    standardNumbers: ['3.10', '3.11']
 ourSummary: >-
   Confidentiality covers more than files. It covers the fact that someone is a client at
   all, what you say in a waiting room or a car park, what is visible on a screen or a
