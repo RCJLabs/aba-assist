@@ -88,6 +88,14 @@ test('every route has a unique, non-empty title', async ({ page }) => {
 	const titles = new Map<string, string>();
 	for (const route of ROUTES) {
 		await page.goto(route);
+		/*
+		 * Wait for a title rather than sampling one. Term and ethics topic pages are
+		 * deliberately kept out of the precache, so once the service worker is active it
+		 * answers them from the SPA fallback — and that shell carries no <title> of its own
+		 * until hydration sets it. Sampling immediately made this test depend on how far
+		 * down the route list the worker happened to activate.
+		 */
+		await expect(page).toHaveTitle(/\S/);
 		const title = await page.title();
 		expect(title.trim(), `${route} has an empty title`).not.toBe('');
 		for (const [other, seen] of titles) {
