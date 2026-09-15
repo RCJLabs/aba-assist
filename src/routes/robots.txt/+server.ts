@@ -26,7 +26,13 @@ export const GET: RequestHandler = () => {
 				'Disallow: /',
 				''
 			].join('\n')
-		: ['User-agent: *', 'Allow: /', ''].join('\n');
+		: [
+				'User-agent: *',
+				'Allow: /',
+				'# The reviewer queue is a maintenance tool, not a page for readers.',
+				'Disallow: /review',
+				''
+			].join('\n');
 
 	return new Response(body, {
 		headers: { 'content-type': 'text/plain; charset=utf-8' }

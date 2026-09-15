@@ -144,6 +144,18 @@
 	</p>
 </section>
 
+<section>
+	<h2>Reviewing this app's content</h2>
+	<p>
+		Every entry here is written first and checked afterwards, and nothing is treated as
+		finished until a person who did not write it says so. If that person is you, the review
+		queue shows one entry at a time and exports your decisions as a file.
+	</p>
+	<p>
+		<a href={resolve('/review')}>Open the content review queue</a>
+	</p>
+</section>
+
 <style>
 	h1 {
 		font-size: 1.5rem;

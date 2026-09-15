@@ -489,7 +489,9 @@ provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 		const r = await build(files(question()));
 		expect(r.errors).toEqual([]);
 		expect(r.counts.questions).toBe(1);
-		expect(r.counts.unreviewed).toBe(2);
+		// The term, the question and the taxonomy outline. Outlines count too: an unreviewed
+		// exam blueprint is exactly the sort of thing nobody should find in a search engine.
+		expect(r.counts.unreviewed).toBe(3);
 		expect(r.assets.map((a) => a.name)).toContain('questions.RBT');
 	});
 

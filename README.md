@@ -41,13 +41,14 @@ npm run preview      # serve the built site
 
 ### Everyday commands
 
-| Command            | What it does                                               |
-| ------------------ | ---------------------------------------------------------- |
-| `npm run content`  | Run the content compiler (`check` / `build`, `--channel=`) |
-| `npm run check`    | `svelte-check` type checking                               |
-| `npm run lint`     | Prettier + ESLint                                          |
-| `npm test`         | Unit tests (schemas, guards, compiler)                     |
-| `npm run test:e2e` | Playwright, including the axe accessibility sweep          |
+| Command                        | What it does                                               |
+| ------------------------------ | ---------------------------------------------------------- |
+| `npm run content`              | Run the content compiler (`check` / `build`, `--channel=`) |
+| `npm run content:apply-review` | Apply a reviewer's exported decisions to the content files |
+| `npm run check`                | `svelte-check` type checking                               |
+| `npm run lint`                 | Prettier + ESLint                                          |
+| `npm test`                     | Unit tests (schemas, guards, compiler)                     |
+| `npm run test:e2e`             | Playwright, including the axe accessibility sweep          |
 
 ---
 
@@ -79,6 +80,32 @@ and a bypassable gate is not a gate.
 
 `npm run build` defaults to `release`, so a production build cannot contain unreviewed
 content. An item approved by its own author is rejected too — review has to be independent.
+
+### Doing the review
+
+Review is the one step in this project that cannot be automated away, so it has a tool of
+its own. `/review` in the running app is a queue: one entry at a time, every field it
+carries plus the author's account of what it was written from, and two buttons. Decisions
+are kept in IndexedDB on the device and never sent anywhere — a decision only means
+something once it is in git.
+
+When a pass is done, the page exports the decisions as JSON, and:
+
+```sh
+npm run content:apply-review -- --file=aba-assist-review-2026-09-15.json --dry-run
+npm run content:apply-review -- --file=aba-assist-review-2026-09-15.json
+```
+
+That rewrites the `review:` block of each decided item — `approved` with your reviewer id
+and the date, or `needs-update` with your note — and nothing else in the file. The diff is
+the record, and it is small enough to read. Three things it refuses to do: sign an
+approval as the item's author, record a flag with no note saying what is wrong, or apply
+half a pass (any error and nothing is written at all).
+
+One wrinkle worth knowing about: question files share a single `review:` block across a
+whole file by YAML anchor. The moment one question in that file is decided differently
+from its neighbours the anchor is no longer true, so the tool writes every block in that
+file out in full. That is why an approval of one question can show up as a large diff.
 
 ### The two structural guards
 

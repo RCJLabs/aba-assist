@@ -661,7 +661,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...questions,
 		...credentials,
 		...ethicsCodes,
-		...ethicsTopics
+		...ethicsTopics,
+		...outlines.values()
 	].filter((x) => x.review.status !== 'approved').length;
 
 	const counts = {

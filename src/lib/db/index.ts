@@ -1,6 +1,6 @@
 /**
  * Local storage for everything the reader does: flashcard scheduling, review history,
- * quiz attempts. IndexedDB, through `idb`.
+ * quiz attempts, and content-review decisions. IndexedDB, through `idb`.
  *
  * Rules that keep this layer safe:
  *
@@ -31,6 +31,26 @@ export interface QuizAttempt {
 	missed: string[];
 }
 
+/**
+ * One reviewer's verdict on one content item.
+ *
+ * Kept on the device rather than sent anywhere: there is no backend, and a verdict is
+ * only meaningful once it reaches the content files in git. The review page exports
+ * these, and `apply-review` writes them into the frontmatter.
+ */
+export interface ReviewDecision {
+	/** Content id — a term slug, a question id, an outline id. */
+	id: string;
+	kind: ReviewableKind;
+	decision: 'approved' | 'needs-change';
+	/** Required for `needs-change`: what is wrong. */
+	note: string;
+	decidedAt: number;
+}
+
+export type ReviewableKind =
+	'term' | 'scenario' | 'question' | 'ethics-topic' | 'ethics-code' | 'credential' | 'outline';
+
 interface AbaDB extends DBSchema {
 	cards: {
 		key: string;
@@ -47,11 +67,18 @@ interface AbaDB extends DBSchema {
 		value: QuizAttempt;
 		indexes: { 'by-finished': number };
 	};
+	reviewDecisions: {
+		key: string;
+		value: ReviewDecision;
+		indexes: { 'by-kind': string };
+	};
 }
+
+type StoreName = 'cards' | 'reviewLog' | 'quizAttempts' | 'reviewDecisions';
 
 type Migration = (
 	db: IDBPDatabase<AbaDB>,
-	tx: IDBPTransaction<AbaDB, ('cards' | 'reviewLog' | 'quizAttempts')[], 'versionchange'>
+	tx: IDBPTransaction<AbaDB, StoreName[], 'versionchange'>
 ) => void;
 
 const MIGRATIONS: Migration[] = [
@@ -66,6 +93,12 @@ const MIGRATIONS: Migration[] = [
 
 		const attempts = db.createObjectStore('quizAttempts', { keyPath: 'id' });
 		attempts.createIndex('by-finished', 'finishedAt');
+	},
+
+	// v2 — content-review decisions, for the reviewer working through the queue.
+	(db) => {
+		const decisions = db.createObjectStore('reviewDecisions', { keyPath: 'id' });
+		decisions.createIndex('by-kind', 'kind');
 	}
 ];
 
@@ -135,6 +168,28 @@ export async function deleteCards(ids: string[]): Promise<void> {
 	await tx.done;
 }
 
+// ------------------------------------------------------- review decisions
+
+export async function getDecisions(): Promise<ReviewDecision[]> {
+	const db = await openAbaDB();
+	return db.getAll('reviewDecisions');
+}
+
+export async function putDecision(decision: ReviewDecision): Promise<void> {
+	const db = await openAbaDB();
+	await db.put('reviewDecisions', decision);
+}
+
+export async function clearDecision(id: string): Promise<void> {
+	const db = await openAbaDB();
+	await db.delete('reviewDecisions', id);
+}
+
+export async function clearDecisions(): Promise<void> {
+	const db = await openAbaDB();
+	await db.clear('reviewDecisions');
+}
+
 // ---------------------------------------------------------------- attempts
 
 export async function putAttempt(attempt: QuizAttempt): Promise<void> {
@@ -165,12 +220,14 @@ export async function exportAll(): Promise<{
 	cards: CardRecord[];
 	reviewLog: ReviewRecord[];
 	quizAttempts: QuizAttempt[];
+	reviewDecisions: ReviewDecision[];
 }> {
 	const db = await openAbaDB();
-	const [cards, reviewLog, quizAttempts] = await Promise.all([
+	const [cards, reviewLog, quizAttempts, reviewDecisions] = await Promise.all([
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
-		db.getAll('quizAttempts')
+		db.getAll('quizAttempts'),
+		db.getAll('reviewDecisions')
 	]);
 	return {
 		version: DB_VERSION,
@@ -181,17 +238,22 @@ export async function exportAll(): Promise<{
 			void id;
 			return rest;
 		}),
-		quizAttempts
+		quizAttempts,
+		reviewDecisions
 	};
 }
 
 export async function clearAll(): Promise<void> {
 	const db = await openAbaDB();
-	const tx = db.transaction(['cards', 'reviewLog', 'quizAttempts'], 'readwrite');
+	const tx = db.transaction(
+		['cards', 'reviewLog', 'quizAttempts', 'reviewDecisions'],
+		'readwrite'
+	);
 	await Promise.all([
 		tx.objectStore('cards').clear(),
 		tx.objectStore('reviewLog').clear(),
-		tx.objectStore('quizAttempts').clear()
+		tx.objectStore('quizAttempts').clear(),
+		tx.objectStore('reviewDecisions').clear()
 	]);
 	await tx.done;
 }

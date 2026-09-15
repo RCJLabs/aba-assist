@@ -76,6 +76,9 @@ export default defineConfig({
 					'prerendered/pages/glossary/**',
 					'prerendered/pages/scenarios/**',
 					'prerendered/pages/ethics/**',
+					// A maintenance tool for one person, which pulls the whole corpus when
+					// opened. Nobody should be paying for it in their offline cache.
+					'prerendered/pages/review.html',
 					'**/*.map'
 				],
 				/*
