@@ -2,12 +2,8 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import {
-		CREDENTIAL_LABELS,
-		outlineForCredential,
-		questionCredentials,
-		termIndex
-	} from '$lib/content/load.js';
+	import { outlineForCredential, questionCredentials, termIndex } from '$lib/content/load.js';
+	import { CREDENTIAL_LABELS } from '$lib/content/corpus.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { quiz, type QuizMode } from '$lib/state/quiz.svelte.js';

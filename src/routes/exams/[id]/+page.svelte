@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { CREDENTIAL_LABELS } from '$lib/content/load.js';
+	import { CREDENTIAL_LABELS } from '$lib/content/corpus.js';
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { filters, type CredentialFilter } from '$lib/state/filters.svelte.js';
 	import { errataUrl } from '$lib/config.js';

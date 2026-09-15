@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { graphById, graphList, termIndex } from '$lib/content/load.js';
+import { termIndex } from '$lib/content/load.js';
+import { graphById, graphList } from '$lib/content/corpus.js';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const entries: EntryGenerator = () => graphList.map((g) => ({ slug: g.id }));

@@ -27,13 +27,15 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "content:build": "tsx packages/content-build/src/cli.ts build --channel=${ABA_CONTENT_CHANNEL:-dev}",
-    "build:packages": "npm run build -w @aba/content-schema && npm run build -w @aba/content-build"
+    "build:packages": "npm run build -w @aba/content-schema && npm run build -w @aba/content-build",
+    "test:perf": "lhci autorun"
   },
   "devDependencies": {
     "@aba/content-build": "*",
     "@aba/content-schema": "*",
     "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.63.0",
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.70.3",

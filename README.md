@@ -348,6 +348,53 @@ one that did not. The supervisee-code rule is enforced here too: a backup carryi
 where a code belongs has that row rejected, because the guard that keeps this app out of
 HIPAA has to hold at every door, not only the form.
 
+## Performance budgets, and what measuring first turned up
+
+The build plan makes Lighthouse budgets a gate on every milestone and they were never
+wired. Wiring them found three things, and only one of them was the app's fault.
+
+**The test server was lying.** `serve-pages.mjs` exists because GitHub Pages resolves
+extensionless URLs with a 200 where a generic server sends a 301, which breaks
+service-worker precaching. It did not, however, gzip — and Pages does. The first audit
+therefore blamed the app for 497 KB production never sends. It compresses now, which also
+makes every Playwright run measure something closer to what a reader gets.
+
+**The home page shipped the whole corpus to render two numbers.** It imported `scenarios`
+and `graphList` for their `.length`, and importing anything at all from `load.ts` pulled
+the ethics codes, every topic, the graphs, the practice guides and the credential facts,
+because they all sat in the same eagerly-imported module. The counts now come from the
+compiled manifest, and the corpora moved to `corpus.ts` — the split is by load shape
+rather than by subject, so `load.ts` holds what every page needs and `corpus.ts` holds
+what particular pages need.
+
+**Zod was in the browser bundle.** The schema package's barrel builds every schema at
+module scope, so one named import of `CATEGORY_LABELS` or `searchOptions` dragged the
+whole validation library in — a hundred kilobytes of parser shipped to render a category
+heading. `@aba/content-schema/runtime` is the Zod-free half: categories, the safety
+lexicons, the MiniSearch options. Nothing in it may import Zod, and the script budget is
+what catches it if something does.
+
+Together: the home page went from 669 KB of script to 77 KB, first contentful paint from
+5.0 s to 1.7 s on the emulated mid-tier phone, and Performance from 0.68 to 0.98.
+
+`npm run test:perf` runs it locally; CI runs it on every push. The budgets are in
+`lighthouse-budgets.json` and the assertions in `lighthouserc.json`, both set from
+measured margins rather than aspiration — roughly 40% headroom on the worst route, which
+is enough that ordinary noise does not fail a build and small enough to notice a
+regression.
+
+Two audits are deliberately off. `is-crawlable` fails because a preview build's
+`robots.txt` disallows everything, which is correct and flips on its own once review
+completes. `unused-javascript` fires on route-split code that another route needs.
+
+**Installability moved out of Lighthouse.** Lighthouse 12 removed the PWA category and
+every manifest and service-worker audit with it, so the plan's "PWA installable" gate had
+nothing left to assert against. It now lives in `e2e/installable.spec.ts`, checking
+Chrome's actual criteria: a named manifest, a display mode that opens outside the browser,
+icons at 192 and 512 with a maskable one, every icon actually fetchable, a start URL
+inside the scope, and a service worker that takes control rather than merely installing. A
+gate that silently stopped being checked is worse than one nobody wrote down.
+
 ## Accessibility
 
 Target is WCAG 2.2 AA, and the axe sweep runs over every route in light, dark, 320px, and

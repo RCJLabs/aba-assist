@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { CREDENTIAL_LABELS, credentials, outlines } from '$lib/content/load.js';
+	import { outlines } from '$lib/content/load.js';
+	import { CREDENTIAL_LABELS, credentials } from '$lib/content/corpus.js';
 
 	const list = Object.values(outlines).sort((a, b) =>
 		a.credential.localeCompare(b.credential)

@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { credentials } from '$lib/content/load.js';
+import { credentials } from '$lib/content/corpus.js';
 import {
 	getAll,
 	put,

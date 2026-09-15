@@ -2,16 +2,18 @@ import { resolve } from '$app/paths';
 import type { ReviewableKind } from '$lib/db/index.js';
 import {
 	CATEGORIES,
-	credentials,
-	ethicsCodes,
-	ethicsTopicList,
-	graphList,
 	loadQuestions,
-	practiceGuideList,
 	loadTermBucket,
 	outlines,
 	questionCredentials
 } from './load.js';
+import {
+	credentials,
+	ethicsCodes,
+	ethicsTopicList,
+	graphList,
+	practiceGuideList
+} from './corpus.js';
 import { scenarios } from './scenarios.js';
 
 /**

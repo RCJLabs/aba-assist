@@ -1,10 +1,6 @@
 import { error } from '@sveltejs/kit';
-import {
-	ethicsCodes,
-	ethicsTopicById,
-	ethicsTopicList,
-	termIndex
-} from '$lib/content/load.js';
+import { termIndex } from '$lib/content/load.js';
+import { ethicsCodes, ethicsTopicById, ethicsTopicList } from '$lib/content/corpus.js';
 import { scenarioById } from '$lib/content/scenarios.js';
 import type { EntryGenerator, PageLoad } from './$types';
 

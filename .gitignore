@@ -9,5 +9,6 @@ src/lib/content/generated/
 !.env.example
 test-results/
 playwright-report/
+.lighthouseci/
 .DS_Store
 *.log

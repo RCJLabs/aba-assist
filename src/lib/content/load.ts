@@ -1,26 +1,11 @@
 import {
 	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
 	CATEGORY_ORDER
-} from '@aba/content-schema';
-import type {
-	ContentOutline,
-	CredentialFacts,
-	EthicsCode,
-	EthicsTopic,
-	GraphDoc,
-	PracticeGuide,
-	QuizQuestion,
-	Term,
-	TermIndexEntry
-} from '@aba/content-schema';
+} from '@aba/content-schema/runtime';
+import type { ContentOutline, QuizQuestion, Term, TermIndexEntry } from '@aba/content-schema';
 import index from './generated/terms.index.json';
 import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
-import credentialData from './generated/credentials.json';
-import ethicsCodeData from './generated/ethics-codes.json';
-import ethicsTopicData from './generated/ethics-topics.json';
-import practiceGuideData from './generated/practice-guides.json';
-import graphData from './generated/graphs.json';
 
 export const termIndex = index as TermIndexEntry[];
 export const contentVersion = version as {
@@ -103,79 +88,6 @@ export const outlines = taxonomy as unknown as Record<string, ContentOutline>;
 
 export function outlineForCredential(credential: string): ContentOutline | undefined {
 	return Object.values(outlines).find((o) => o.credential === credential);
-}
-
-export const CREDENTIAL_LABELS: Record<string, string> = {
-	RBT: 'Registered Behavior Technician',
-	BCaBA: 'Board Certified Assistant Behavior Analyst',
-	BCBA: 'Board Certified Behavior Analyst'
-};
-
-// -------------------------------------------------------- practice guides
-
-/**
- * The documentation aids. Two small documents opened together, so they ship in the main
- * chunk rather than as a lazy import — the whole file is smaller than one term page.
- */
-export const practiceGuides = practiceGuideData as unknown as Record<string, PracticeGuide>;
-
-export const practiceGuideList: PracticeGuide[] = Object.values(practiceGuides);
-
-export function practiceGuideById(id: string): PracticeGuide | undefined {
-	return practiceGuides[id];
-}
-
-// ----------------------------------------------------------------- graphs
-
-/**
- * The graphs, eager like the practice guides: six documents of a few kilobytes each,
- * and the index page renders every one of them as a thumbnail.
- */
-export const graphs = graphData as unknown as Record<string, GraphDoc>;
-
-export const graphList: GraphDoc[] = Object.values(graphs);
-
-export function graphById(id: string): GraphDoc | undefined {
-	return graphs[id];
-}
-
-// ------------------------------------------------------------ credentials
-
-export const credentials = credentialData as unknown as Record<string, CredentialFacts>;
-
-// ------------------------------------------------------------------ ethics
-
-/**
- * The ethics reference, imported eagerly. Both codes and all topics together are a few
- * tens of kilobytes — smaller than one category of the glossary — and someone reading one
- * ethics topic almost always reads another, so there is nothing to gain from splitting it.
- */
-export const ethicsCodes = ethicsCodeData as unknown as Record<string, EthicsCode>;
-export const ethicsTopics = ethicsTopicData as unknown as Record<string, EthicsTopic>;
-
-export const ethicsTopicList: EthicsTopic[] = Object.values(ethicsTopics);
-
-export function ethicsTopicById(id: string): EthicsTopic | undefined {
-	return ethicsTopics[id];
-}
-
-/** Topics that bind a given credential, in the order they are authored under each code. */
-export function topicsForCredential(credential: string | null): EthicsTopic[] {
-	if (!credential) return ethicsTopicList;
-	return ethicsTopicList.filter((t) => t.appliesTo.includes(credential as never));
-}
-
-/** Topics grouped by the section they sit under, for one code. */
-export function topicsBySection(codeId: string, credential: string | null) {
-	const code = ethicsCodes[codeId];
-	if (!code) return [];
-	const pool = topicsForCredential(credential);
-	return code.sections.map((section) => ({
-		section,
-		topics: pool.filter((t) =>
-			t.sectionRefs.some((r) => r.codeId === codeId && r.section === section.number)
-		)
-	}));
 }
 
 // -------------------------------------------------------------- questions

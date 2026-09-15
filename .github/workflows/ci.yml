@@ -83,6 +83,33 @@ jobs:
           path: playwright-report/
           retention-days: 7
 
+  lighthouse:
+    name: Performance and budgets
+    runs-on: ubuntu-latest
+    needs: content
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # Audited against `serve-pages.mjs` rather than a generic static server: it
+      # resolves extensionless URLs and gzips text the way Pages does, and a run against
+      # a server that does neither blamed the app for half a megabyte production never
+      # sends.
+      # Chrome stable is preinstalled on the GitHub runner image, so chrome-launcher
+      # finds it without help; the sandbox flags it needs live in lighthouserc.json.
+      - name: Lighthouse
+        run: npx lhci autorun
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse
+          path: .lighthouseci/
+          retention-days: 7
+
   build:
     name: Build site
     runs-on: ubuntu-latest

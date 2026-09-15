@@ -10,44 +10,13 @@ import {
 	Slug
 } from './primitives.js';
 import { TaskRef } from './taxonomy.js';
+import { CATEGORY_LABELS, CATEGORY_ORDER, CATEGORY_VALUES } from './categories.js';
 
-export const TermCategory = z.enum([
-	'philosophy',
-	'principles',
-	'measurement',
-	'graphing',
-	'assessment',
-	'acquisition',
-	'reduction',
-	'verbal-behavior',
-	'ethics',
-	'supervision',
-	'documentation',
-	'research-design'
-]);
+export const TermCategory = z.enum(CATEGORY_VALUES);
 export type TermCategory = z.infer<typeof TermCategory>;
 
-/**
- * Human labels for the categories, here rather than in the app because the build needs
- * them too — the search index carries a rendered label on every row, and two copies of
- * this map would drift the moment a category was renamed.
- */
-export const CATEGORY_LABELS: Record<TermCategory, string> = {
-	philosophy: 'Philosophy',
-	principles: 'Principles',
-	measurement: 'Measurement',
-	graphing: 'Graphing',
-	assessment: 'Assessment',
-	acquisition: 'Skill acquisition',
-	reduction: 'Behavior reduction',
-	'verbal-behavior': 'Verbal behavior',
-	ethics: 'Ethics',
-	supervision: 'Supervision',
-	documentation: 'Documentation',
-	'research-design': 'Research design'
-};
-
-export const CATEGORY_ORDER = Object.keys(CATEGORY_LABELS) as TermCategory[];
+// Re-exported so anything importing the schema barrel keeps working unchanged.
+export { CATEGORY_LABELS, CATEGORY_ORDER, CATEGORY_VALUES };
 
 const Example = z.strictObject({
 	text: z.string().min(15).max(400),

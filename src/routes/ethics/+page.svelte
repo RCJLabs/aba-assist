@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ethicsCodes, topicsBySection, topicsForCredential } from '$lib/content/load.js';
+	import { ethicsCodes, topicsBySection, topicsForCredential } from '$lib/content/corpus.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 
 	// The ethics reference is organised by code, because that is what binds a given

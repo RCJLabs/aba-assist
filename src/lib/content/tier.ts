@@ -11,7 +11,7 @@
  * restraint moves it into the read-everything tier on the next build, with no action from
  * the author — which is the only version of this that stays true.
  */
-import { CLINICAL_DECISION_LEXICON, RISK_LEXICON } from '@aba/content-schema';
+import { CLINICAL_DECISION_LEXICON, RISK_LEXICON } from '@aba/content-schema/runtime';
 import type { ReviewItem } from './reviewable.js';
 
 export type ReviewTier = 'A' | 'B' | 'C';

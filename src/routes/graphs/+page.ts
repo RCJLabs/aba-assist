@@ -1,4 +1,4 @@
-import { graphList } from '$lib/content/load.js';
+import { graphList } from '$lib/content/corpus.js';
 import type { PageLoad } from './$types';
 
 export const prerender = true;

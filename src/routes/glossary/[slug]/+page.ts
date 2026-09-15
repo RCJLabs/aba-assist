@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { graphList, loadTerm, termIndex } from '$lib/content/load.js';
+import { loadTerm, termIndex } from '$lib/content/load.js';
+import { graphList } from '$lib/content/corpus.js';
 import type { EntryGenerator, PageLoad } from './$types';
 
 /** One prerendered, indexable page per term. */

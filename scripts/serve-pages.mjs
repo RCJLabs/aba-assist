@@ -18,6 +18,8 @@ import { createServer } from 'node:http';
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
+import { createGzip } from 'node:zlib';
+import { pipeline } from 'node:stream';
 
 const arg = (name, fallback) => {
 	const i = process.argv.indexOf(`--${name}`);
@@ -42,6 +44,24 @@ const TYPES = {
 	'.woff2': 'font/woff2',
 	'.map': 'application/json; charset=utf-8'
 };
+
+/**
+ * Types GitHub Pages compresses. Serving these uncompressed is not a neutral
+ * simplification: it roughly quadruples what a performance audit thinks the app costs,
+ * and the first run of Lighthouse against this server blamed the app for half a megabyte
+ * that production never sends.
+ */
+const COMPRESSIBLE = new Set([
+	'.html',
+	'.js',
+	'.mjs',
+	'.css',
+	'.json',
+	'.webmanifest',
+	'.svg',
+	'.txt',
+	'.map'
+]);
 
 async function firstExisting(candidates) {
 	for (const c of candidates) {
@@ -83,12 +103,22 @@ const server = createServer(async (req, res) => {
 		return;
 	}
 
+	const ext = extname(file);
+	const gzip = COMPRESSIBLE.has(ext) && /\bgzip\b/.test(req.headers['accept-encoding'] ?? '');
+
 	res.writeHead(200, {
-		'content-type': TYPES[extname(file)] ?? 'application/octet-stream',
+		'content-type': TYPES[ext] ?? 'application/octet-stream',
 		// Service workers must not be served from a stale cache.
-		'cache-control': file.endsWith('sw.js') ? 'no-cache' : 'public, max-age=0'
+		'cache-control': file.endsWith('sw.js') ? 'no-cache' : 'public, max-age=0',
+		vary: 'Accept-Encoding',
+		...(gzip ? { 'content-encoding': 'gzip' } : {})
 	});
-	createReadStream(file).pipe(res);
+	const stream = createReadStream(file);
+	if (gzip) {
+		pipeline(stream, createGzip(), res, () => {});
+	} else {
+		stream.pipe(res);
+	}
 });
 
 server.listen(port, () => {

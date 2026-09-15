@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { practiceGuideList, termIndex } from '$lib/content/load.js';
+	import { termIndex } from '$lib/content/load.js';
+	import { practiceGuideList } from '$lib/content/corpus.js';
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 

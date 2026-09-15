@@ -128,23 +128,17 @@ export const Scenario = z.discriminatedUnion('kind', [
 ]);
 export type Scenario = z.infer<typeof Scenario>;
 
-/**
- * Risk language. If any of this appears in a `guidance` scenario the build fails and
- * tells the author to convert it to `escalation-only`. This is the backstop for a
- * missing `riskFlags` entry.
- */
-export const RISK_LEXICON =
-	/\b(restrain\w*|seclusion|seclude\w*|time-?out room|self-?injur\w*|SIB|head-?bang\w*|bleed\w*|seizure|unconscious|abuse|bruise|welt|choking|choke|swallow\w*|weapon|knife|gun|911|988|suicid\w*|overdose|strangl\w*)\b/i;
+// The lexicons live in a Zod-free module so the app can import them without pulling the
+// whole validation library into the browser bundle. Re-exported here so the schema
+// barrel still carries them.
+export {
+	RISK_LEXICON,
+	RESTRICTED_PROCEDURE_LEXICON,
+	CLINICAL_DECISION_LEXICON
+} from './lexicons.js';
 
 /**
- * Procedural verbs that must never appear in escalation content. An escalation card
- * says who to call and what to document — never how to physically manage a person.
- */
-export const RESTRICTED_PROCEDURE_LEXICON =
-	/\b(block|blocking|hold (?:them|him|her|the client)|holding|restrain\w*|apply pressure|guide (?:them|him|her)|physically (?:manage|intervene|redirect)|pin|wrap|escort|prone|supine|grab|pull|takedown|floor hold)\b/i;
-
-/**
- * The one narrowing of the rule above, and why it is safe.
+ * The one narrowing of the restricted-procedure rule, and why it is safe.
  *
  * A card whose entire purpose is to refuse has to be able to say what it is refusing.
  * "You have been told to restrain a learner" is the reader's situation, not a technique,
@@ -156,12 +150,11 @@ export const RESTRICTED_PROCEDURE_LEXICON =
  * Everything else in the lexicon stays banned everywhere, and all of it — these two
  * included — stays banned inside the escalation block, which is where the app speaks
  * rather than where it repeats what happened to the reader.
+ *
+ * Build-side only, which is why it stays here beside the schema rather than moving to the
+ * Zod-free module the app imports.
  */
 export const NAMEABLE_WITH_FLAG: Partial<Record<RiskFlag, RegExp>> = {
 	restraint: /^restrain\w*$/i,
 	seclusion: /^(?:seclusion|seclude\w*)$/i
 };
-
-/** Language that would place the app in a clinician's role. */
-export const CLINICAL_DECISION_LEXICON =
-	/\b(diagnose|diagnosis of|prescrib\w*|dosage|titrat\w*|\d+\s?mg)\b/i;

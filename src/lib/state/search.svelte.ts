@@ -1,5 +1,6 @@
 import type MiniSearchType from 'minisearch';
-import { searchOptions, type SearchKind } from '@aba/content-schema';
+import { searchOptions } from '@aba/content-schema/runtime';
+import type { SearchKind } from '@aba/content-schema';
 import { CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
 
 export interface SearchHit {

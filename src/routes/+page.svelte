@@ -1,14 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
-	import {
-		termIndex,
-		CATEGORY_LABELS,
-		contentVersion,
-		graphList,
-		outlines
-	} from '$lib/content/load.js';
-	import { scenarios } from '$lib/content/scenarios.js';
+	import { termIndex, CATEGORY_LABELS, contentVersion, outlines } from '$lib/content/load.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { search, type SearchHit } from '$lib/state/search.svelte.js';
@@ -59,7 +52,17 @@
 	});
 
 	const outlineList = Object.values(outlines);
-	const questionCount = contentVersion.counts.questions ?? 0;
+	/*
+	 * Counts from the compiled manifest rather than from the corpora.
+	 *
+	 * Importing `scenarios` and `graphList` to render two numbers pulled every situation,
+	 * every graph and everything they transitively reach into the bundle the home page
+	 * loads — half a megabyte of script to say "36". The build already counts these.
+	 */
+	const counts = contentVersion.counts;
+	const questionCount = counts.questions ?? 0;
+	const scenarioCount = counts.scenarios ?? 0;
+	const graphCount = counts.graphs ?? 0;
 </script>
 
 <svelte:head>
@@ -122,7 +125,7 @@
 	{:else}
 		<p>
 			Nothing matched{#if filters.active}
-				with the current filter{/if}. This build has {termIndex.length} terms, {scenarios.length}
+				with the current filter{/if}. This build has {termIndex.length} terms, {scenarioCount}
 			situations and the ethics reference.
 			<a href="{resolve('/about')}#errata">Tell us what is missing.</a>
 		</p>
@@ -163,13 +166,13 @@
 		<a class="tile" href={resolve('/graphs')}>
 			<strong>Reading graphs</strong>
 			<span
-				>{graphList.length} worked graphs: level, trend, variability and what a design shows.</span
+				>{graphCount} worked graphs: level, trend, variability and what a design shows.</span
 			>
 		</a>
 		<a class="tile" href={resolve('/scenarios')}>
 			<strong>Situations</strong>
 			<span
-				>{scenarios.length} situations: what the literature says, and when to ask your supervisor.</span
+				>{scenarioCount} situations: what the literature says, and when to ask your supervisor.</span
 			>
 		</a>
 	</nav>

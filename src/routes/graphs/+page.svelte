@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import Graph from '$lib/components/Graph.svelte';
-	import { graphById } from '$lib/content/load.js';
+	import { graphById } from '$lib/content/corpus.js';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();

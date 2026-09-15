@@ -10,7 +10,7 @@ import {
 	xPix,
 	yPix
 } from './scale.js';
-import { graphById, graphList } from '$lib/content/load.js';
+import { graphById, graphList } from '$lib/content/corpus.js';
 
 const X = { label: 'Session', from: 1, to: 6, tickEvery: 1, unit: 'session' };
 const Y = { label: 'Count', from: 0, to: 10, tickEvery: 2, unit: 'response' };

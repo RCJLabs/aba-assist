@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { credentials, outlines, termIndex } from '$lib/content/load.js';
+import { outlines, termIndex } from '$lib/content/load.js';
+import { credentials } from '$lib/content/corpus.js';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const entries: EntryGenerator = () => Object.keys(outlines).map((id) => ({ id }));
