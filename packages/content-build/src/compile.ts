@@ -29,6 +29,7 @@ import type { CompileOptions, CompileResult, EmittedAsset, Issue } from './types
 import { error } from './types.js';
 import {
 	checkDuplicateProse,
+	checkExamCoverage,
 	checkPlainLanguage,
 	checkReviewStatus,
 	checkRights,
@@ -794,6 +795,14 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 				}
 			}
 		}
+	}
+
+	/*
+	 * Can the bank fill the paper it simulates? Warnings only, and they are the ratchet:
+	 * the threshold in `checkExamCoverage` goes up as the bank grows.
+	 */
+	for (const o of outlines.values()) {
+		push(...checkExamCoverage(o, questions, `taxonomy/${o.id}.yaml`));
 	}
 
 	push(

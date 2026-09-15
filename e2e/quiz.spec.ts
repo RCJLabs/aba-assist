@@ -81,7 +81,7 @@ test('a negated question is flagged before the reader answers it', async ({ page
  * has fewer questions written than the real paper has items, and padding by repeating
  * them would make the number on screen a lie.
  */
-test('the simulator states the exam pace, and admits when it is not full length', async ({
+test('the simulator runs the technician paper at full length and at its real pace', async ({
 	page
 }) => {
 	await page.goto('/quiz');
@@ -89,9 +89,11 @@ test('the simulator states the exam pace, and admits when it is not full length'
 
 	const plan = page.locator('.plan');
 	await expect(plan).toContainText('63.5s');
-	// The technician paper: 85 questions in 90 minutes.
+	// The technician paper: 85 questions in 90 minutes. The bank can now fill it, so the
+	// page must say so rather than carrying the shortfall notice it used to.
 	await expect(plan).toContainText('85 questions in 90 minutes');
-	await expect(plan).toContainText('This is not full length.');
+	await expect(plan).toContainText('every area, weighted like the exam');
+	await expect(plan).not.toContainText('This is not full length.');
 
 	// Picking an area or a length is not offered, because the real exam does not offer it.
 	await expect(page.getByLabel('Content area')).toBeHidden();

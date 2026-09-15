@@ -130,6 +130,24 @@ never observed to fail is a comment, not a guard.
 
 ---
 
+## The question bank has to be able to fill the paper it simulates
+
+The simulator was built to refuse to pad a thin bank by repeating items, so a short bank
+never produced a wrong number on screen — it produced a shorter paper and said so. That is
+honest, and it is also not the product: the technician exam is 85 items and the bank held
+65, so the headline feature quietly was not the thing it said it was.
+
+Coverage is now checked at build time (`checkExamCoverage`) and held by a test. The build
+warns per area when the bank cannot fill one full paper, and warns for any task on the
+outline that no question cites. The test in `src/lib/quiz/blueprint.test.ts` is the
+ratchet: it fails if the technician bank cannot run a full-length paper, if any area drops
+below 1.4× the items that area contributes to one paper, or if any of the 43 tasks has no
+question. Raise `RBT_MIN_RATIO` as the bank grows and the build gets harder to pass, which
+is the only mechanism that reliably stops content rot.
+
+The BCBA bank is still far short and the build says so on every run — that is a backlog
+being named rather than a defect being hidden.
+
 ## The one place a safety guard had to be narrowed, and why
 
 The scenario schema forbids procedural language inside an escalation card: physical

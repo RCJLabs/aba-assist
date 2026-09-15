@@ -480,3 +480,141 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
+
+  - id: rbt-b-mswo-next-step
+    credential: RBT
+    taskRef: { credential: RBT, code: B.1 }
+    type: single-best-answer
+    stem: >-
+      A program specifies a multiple-stimulus-without-replacement preference
+      assessment. The learner selects the first item. What happens next?
+    options:
+      - id: a
+        text: 'All items are returned to the array and the trial repeats'
+        isCorrect: false
+        rationale: >-
+          Returning every item describes multiple stimulus with replacement, which
+          is a different procedure and produces a different ranking.
+      - id: b
+        text: 'The selected item is removed and the remaining items are presented again'
+        isCorrect: true
+        rationale: >-
+          Without replacement means the chosen item does not return, so the
+          procedure produces a ranked hierarchy rather than repeated selection of
+          one favourite.
+      - id: c
+        text: 'The session ends and the selection is recorded as the preferred item'
+        isCorrect: false
+        rationale: >-
+          Ending after one selection identifies a single item and gives no
+          information about the rest of the array.
+      - id: d
+        text: 'The item is paired with each remaining item in turn'
+        isCorrect: false
+        rationale: >-
+          That is a paired-stimulus assessment, which presents two items at a
+          time.
+    explanation: >-
+      Multiple stimulus without replacement removes each selected item, so the learner
+      works down the array and the result is a ranking. With replacement, one strongly
+      preferred item can be chosen every trial and the rest are never sampled.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        multiple-stimulus-without-replacement,
+        multiple-stimulus-with-replacement,
+        paired-stimulus-preference-assessment,
+        preference-assessment
+      ]
+    citations:
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary preference- and functional-
+        assessment literature; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-b-abc-what-technician-records
+    credential: RBT
+    taskRef: { credential: RBT, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      A technician is asked to complete ABC recording for a week. Which entry is
+      written the way the procedure requires?
+    options:
+      - id: a
+        text: 'Antecedent — wanted attention. Behaviour — acting out. Consequence — got what he wanted.'
+        isCorrect: false
+        rationale: >-
+          Every column here is an interpretation rather than an observation, and
+          none of it could be verified by somebody else watching.
+      - id: b
+        text: 'Antecedent — instruction to put the tablet away. Behaviour — pushed it off the table. Consequence — adult retrieved it and stepped away.'
+        isCorrect: true
+        rationale: >-
+          Each column describes what an observer could see and hear, with no claim
+          about why. That is what makes the record usable for identifying a
+          pattern.
+      - id: c
+        text: 'Antecedent — frustration building. Behaviour — meltdown. Consequence — calmed down.'
+        isCorrect: false
+        rationale: >-
+          "Building", "meltdown" and "calmed down" are all inferences, and
+          different recorders would apply them differently.
+      - id: d
+        text: 'Antecedent — none. Behaviour — aggression. Consequence — none.'
+        isCorrect: false
+        rationale: >-
+          Recording nothing in two of three columns loses the information the
+          procedure exists to capture.
+    explanation: >-
+      ABC recording is a descriptive assessment: it records what was observed before,
+      during and after, in terms somebody else could verify. Interpreting the pattern
+      is the analyst’s job, and interpretation written into the columns makes that job
+      harder rather than easier.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        abc-recording,
+        descriptive-assessment,
+        objective-language,
+        functional-behavior-assessment,
+        operational-definition
+      ]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary preference- and functional-
+        assessment literature; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'

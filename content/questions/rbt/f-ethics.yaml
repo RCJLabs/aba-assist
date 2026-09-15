@@ -524,3 +524,522 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
+
+  - id: rbt-f-trained-and-assessed
+    credential: RBT
+    taskRef: { credential: RBT, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      A technician is asked to run a procedure that appears in another learner’s plan
+      but that they have never been shown. What does the ethics code require?
+    options:
+      - id: a
+        text: 'Run it, since it is written in a plan'
+        isCorrect: false
+        rationale: >-
+          A written plan authorises the procedure for that learner; it does not
+          establish that this technician has been trained to deliver it.
+      - id: b
+        text: 'Say that they have not been trained on it and ask to be trained before running it'
+        isCorrect: true
+        rationale: >-
+          The code limits delivery to procedures the technician has been trained
+          on and has demonstrated they can perform. Saying so is the correct
+          professional response.
+      - id: c
+        text: 'Watch a video of the procedure and then run it'
+        isCorrect: false
+        rationale: >-
+          Watching is not the standard. Training normally includes being shown,
+          practising and receiving feedback until performance meets criterion.
+      - id: d
+        text: 'Ask the caregiver whether they are comfortable with it'
+        isCorrect: false
+        rationale: >-
+          The family’s comfort does not establish competence, and the decision is
+          not theirs to make.
+    explanation: >-
+      Competence is established by training and demonstrated performance, not by a
+      procedure being written down somewhere. Declining until trained is not
+      obstruction, and it protects the learner from a procedure delivered badly.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-competence, behavioral-skills-training, supervision, scope-of-practice]
+    ethicsRefs: [competence-before-you-practise, staying-in-your-role]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-new-procedure-partial-training
+    credential: RBT
+    taskRef: { credential: RBT, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      A technician has been shown a new procedure once and does not feel confident
+      running it unsupervised. Which response fits the code best?
+    options:
+      - id: a
+        text: 'Run it and hope accuracy improves with practice'
+        isCorrect: false
+        rationale: >-
+          Practising a procedure incorrectly builds an inaccurate performance and
+          produces data that misdescribe what the learner actually received.
+      - id: b
+        text: 'Ask for practice with feedback until performance is reliable, and say where they are up to'
+        isCorrect: true
+        rationale: >-
+          Behavioural skills training — instruction, modelling, rehearsal and
+          feedback — is the standard, and reporting your own current level is part
+          of working under supervision.
+      - id: c
+        text: 'Refuse to work with that learner at all'
+        isCorrect: false
+        rationale: >-
+          Declining the whole assignment is a larger step than the situation
+          needs, and the procedure is one part of the session.
+      - id: d
+        text: 'Ask another technician to run it instead without telling the supervisor'
+        isCorrect: false
+        rationale: >-
+          Reassigning work informally hides a training need from the person
+          responsible for addressing it.
+    explanation: >-
+      Being partly trained is an ordinary state and the answer is to say so.
+      Behavioural skills training exists because being told about a procedure does not
+      reliably produce competent performance of it, and rehearsal with feedback does.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [behavioral-skills-training, scope-of-competence, performance-feedback, supervision]
+    ethicsRefs: [competence-before-you-practise, working-under-supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-what-supervision-includes
+    credential: RBT
+    taskRef: { credential: RBT, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      Which description best matches what ongoing supervision is expected to consist
+      of?
+    options:
+      - id: a
+        text: 'A monthly conversation about how sessions are going'
+        isCorrect: false
+        rationale: >-
+          Conversation alone omits the observation and the feedback on actual
+          performance that supervision is built around.
+      - id: b
+        text: 'Observation of work with a client, feedback on performance, and practice of skills'
+        isCorrect: true
+        rationale: >-
+          Supervision is performance-based: the supervisor watches the technician
+          work, gives feedback on what they saw, and builds skills through
+          practice.
+      - id: c
+        text: 'A written quiz completed each month'
+        isCorrect: false
+        rationale: >-
+          A quiz tests knowledge rather than performance, and the requirement is
+          about what the technician does with a client.
+      - id: d
+        text: 'Reviewing session notes without meeting'
+        isCorrect: false
+        rationale: >-
+          Reviewing paperwork is useful but is not real-time contact and does not
+          include observation of the technician working.
+    explanation: >-
+      Supervision is meant to change what happens in sessions, which is why it
+      involves being watched with a client and receiving feedback rather than only
+      discussing cases. A technician who is only ever talked to is not being
+      supervised in the sense the requirement means.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [supervision, performance-feedback, behavioral-skills-training, competency-assessment]
+    ethicsRefs: [what-good-supervision-looks-like, working-under-supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-supervision-not-happening
+    credential: RBT
+    taskRef: { credential: RBT, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      A technician’s supervision contacts have consisted only of brief phone calls
+      with no observation for three months. What should they do?
+    options:
+      - id: a
+        text: 'Nothing, since contacts did take place'
+        isCorrect: false
+        rationale: >-
+          Contacts happening is not the same as the requirement being met, and
+          observation is a specified part of it.
+      - id: b
+        text: 'Raise it with the supervisor in writing and, if it continues, with the organisation'
+        isCorrect: true
+        rationale: >-
+          The technician has an obligation to practise under supervision that
+          meets the requirement, and raising a shortfall is part of that rather
+          than a complaint about a person.
+      - id: c
+        text: 'Record the contacts as observed so the paperwork is complete'
+        isCorrect: false
+        rationale: >-
+          Recording supervision that did not happen the way it is recorded is
+          falsifying a document, which is a far more serious matter than the
+          shortfall itself.
+      - id: d
+        text: 'Stop practising immediately without telling anybody'
+        isCorrect: false
+        rationale: >-
+          Withdrawing without notice leaves learners without a technician and does
+          not address the problem with anyone who can fix it.
+    explanation: >-
+      Both the technician and the supervisor carry obligations here. A shortfall
+      raised in writing is a problem being managed; one left unraised becomes the
+      technician’s problem at recertification, when the application asks them
+      directly.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, self-reporting, scope-of-practice]
+    ethicsRefs:
+      [working-under-supervision, raising-an-ethics-concern, honest-documentation-and-billing]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-gift-limits
+    credential: RBT
+    taskRef: { credential: RBT, code: F.8 }
+    type: single-best-answer
+    stem: >-
+      At the end of a long placement a family offers a technician a gift card worth a
+      substantial amount. What does the code direct?
+    options:
+      - id: a
+        text: 'Accept it, because refusing would be rude'
+        isCorrect: false
+        rationale: >-
+          Politeness does not resolve it. Gifts of substantial value create an
+          obligation that can affect professional judgement, which is why they are
+          limited.
+      - id: b
+        text: 'Decline it, explain the rule warmly, and tell the supervisor it was offered'
+        isCorrect: true
+        rationale: >-
+          Gifts of more than nominal value are restricted. Declining kindly,
+          giving the reason once, and reporting it is the complete response.
+      - id: c
+        text: 'Accept it and share it with colleagues'
+        isCorrect: false
+        rationale: >-
+          Sharing it does not change that it was accepted, nor the relationship it
+          creates with the family.
+      - id: d
+        text: 'Accept it if the organisation never finds out'
+        isCorrect: false
+        rationale: >-
+          Concealment converts a boundary question into a dishonesty question and
+          makes the situation considerably worse.
+    explanation: >-
+      Both codes limit giving and accepting gifts to items of nominal value, because
+      gifts create obligations that sit awkwardly with professional judgement. The
+      practical answer is a warm, consistent, brief refusal and a note to the
+      supervisor, which also protects the technician.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [dual-relationship, conflict-of-interest, professional-development-unit]
+    ethicsRefs: [gifts, conflicts-of-interest-and-money, multiple-relationships]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-feedback-response
+    credential: RBT
+    taskRef: { credential: RBT, code: F.9 }
+    type: single-best-answer
+    stem: >-
+      A supervisor gives a technician corrective feedback about how they delivered
+      prompts. The technician disagrees. Which response best fits what the role
+      requires?
+    options:
+      - id: a
+        text: 'Implement the feedback and raise the disagreement in the same conversation'
+        isCorrect: true
+        rationale: >-
+          Taking feedback and being able to discuss it are both named parts of the
+          role. Doing the first while doing the second is how a disagreement stays
+          professional and gets resolved.
+      - id: b
+        text: 'Implement it silently and say nothing'
+        isCorrect: false
+        rationale: >-
+          Compliance without discussion hides information the supervisor needs and
+          leaves the technician running something they believe is wrong.
+      - id: c
+        text: 'Continue as before, since they have more contact with the learner'
+        isCorrect: false
+        rationale: >-
+          Contact time does not transfer the responsibility for the procedure,
+          which remains the supervisor’s.
+      - id: d
+        text: 'Ask a colleague which of the two is right'
+        isCorrect: false
+        rationale: >-
+          A third technician cannot settle a question about a programme neither of
+          them is responsible for.
+    explanation: >-
+      Receiving feedback, asking questions and working through a disagreement are
+      interpersonal skills the code names explicitly. The thing the role does not
+      permit is deciding unilaterally to keep running something the supervisor has
+      asked to be changed.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [performance-feedback, supervision, collaboration, scope-of-practice]
+    ethicsRefs: [professional-and-interpersonal-skills, working-under-supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-cultural-adaptation
+    credential: RBT
+    taskRef: { credential: RBT, code: F.10 }
+    type: single-best-answer
+    stem: >-
+      A caregiver explains that a mealtime routine in the programme conflicts with how
+      their family eats. What is the appropriate response from the technician?
+    options:
+      - id: a
+        text: 'Explain that the programme is evidence-based and continue as written'
+        isCorrect: false
+        rationale: >-
+          Citing evidence does not answer the objection, and a programme a family
+          will not run at home is not going to work whatever its evidence base.
+      - id: b
+        text: 'Record what the caregiver said and pass it to the supervising analyst promptly'
+        isCorrect: true
+        rationale: >-
+          The family’s values are part of what the goal and the procedure have to
+          fit. Relaying it is the technician’s part; adapting the programme is the
+          analyst’s.
+      - id: c
+        text: 'Change the routine to match the family’s preference'
+        isCorrect: false
+        rationale: >-
+          Changing a procedure is a programme change, however reasonable the
+          reason.
+      - id: d
+        text: 'Ask the family to follow the programme at home and their own routine elsewhere'
+        isCorrect: false
+        rationale: >-
+          Asking a family to set aside their own practice in their own home is not
+          an adaptation, and it is not the technician’s request to make.
+    explanation: >-
+      Cultural responsiveness means the assessment, the goals and the procedures fit
+      the people who have to live with them. A technician’s role is to notice the
+      mismatch and get it to the analyst quickly, with the family’s own words rather
+      than a summary of them.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [cultural-responsiveness, cultural-humility, social-validity, collaboration, assent]
+    ethicsRefs:
+      [cultural-humility-and-bias, choosing-goals-that-matter, consent-and-who-decides]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-f-assumptions-about-family
+    credential: RBT
+    taskRef: { credential: RBT, code: F.10 }
+    type: single-best-answer
+    stem: >-
+      A technician notices they have been assuming a family is uninterested because
+      they rarely attend caregiver training sessions. What does cultural humility ask
+      of them here?
+    options:
+      - id: a
+        text: 'Examine the assumption and consider what else could explain the pattern'
+        isCorrect: true
+        rationale: >-
+          Cultural humility is an ongoing self-examining stance. Shift work,
+          transport, other children and previous experiences of services all
+          produce the same attendance pattern as disinterest.
+      - id: b
+        text: 'Record the family as non-compliant in the session note'
+        isCorrect: false
+        rationale: >-
+          "Non-compliant" is a conclusion about the family rather than an
+          observation, and writing it into the record makes the assumption
+          durable.
+      - id: c
+        text: 'Reduce the number of goals because the family will not participate'
+        isCorrect: false
+        rationale: >-
+          Changing goals is a programme decision, and here it would be made on the
+          basis of an untested assumption.
+      - id: d
+        text: 'Raise it directly with the family as a concern about their commitment'
+        isCorrect: false
+        rationale: >-
+          That confronts a family with a judgement rather than asking what would
+          make participation possible.
+    explanation: >-
+      The stance the code describes is directed at oneself: noticing an assumption,
+      holding it loosely, and finding out. What looks like disinterest is frequently a
+      scheduling problem, a transport problem, or a history of services that did not
+      listen.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [cultural-humility, cultural-responsiveness, objective-language, collaboration]
+    ethicsRefs: [cultural-humility-and-bias, professional-and-interpersonal-skills]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and the analyst
+        ethics code; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'

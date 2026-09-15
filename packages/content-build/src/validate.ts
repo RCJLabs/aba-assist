@@ -335,3 +335,66 @@ export function checkDuplicateProse(
 	}
 	return issues;
 }
+
+/**
+ * Whether the question bank can actually run the exam it claims to simulate.
+ *
+ * The simulator already refuses to pad a short bank by repeating items, so a thin bank
+ * does not produce a wrong number on screen — it produces a shorter paper than the real
+ * one, which is honest but is not the product. This makes the gap visible at build time
+ * instead of leaving it to be noticed by somebody sitting a 65-item "85-item" exam.
+ *
+ * Warnings rather than errors, deliberately: the gap is a content backlog, not a defect
+ * to block a build on. `MIN_BANK_RATIO` is the ratchet — raise it as the bank grows and
+ * the build gets harder to pass, which is the only mechanism that reliably stops content
+ * rot.
+ */
+export const MIN_BANK_RATIO = 1;
+
+export interface BlueprintDomain {
+	letter: string;
+	name: string;
+	examItems: number | null;
+	tasks: { code: string }[];
+}
+
+export function checkExamCoverage(
+	outline: { id: string; credential: string; domains: BlueprintDomain[] },
+	questions: { credential: string; taskRef: { code: string } }[],
+	file: string
+): Issue[] {
+	const issues: Issue[] = [];
+	const mine = questions.filter((q) => q.credential === outline.credential);
+	if (mine.length === 0) return issues;
+
+	const perDomain = new Map<string, number>();
+	const perTask = new Map<string, number>();
+	for (const q of mine) {
+		const letter = q.taskRef.code[0] ?? '';
+		perDomain.set(letter, (perDomain.get(letter) ?? 0) + 1);
+		perTask.set(q.taskRef.code, (perTask.get(q.taskRef.code) ?? 0) + 1);
+	}
+
+	for (const d of outline.domains) {
+		if (d.examItems === null) continue;
+		const want = Math.ceil(d.examItems * MIN_BANK_RATIO);
+		const got = perDomain.get(d.letter) ?? 0;
+		if (got < want) {
+			issues.push(
+				warning(
+					'coverage/blueprint-short',
+					`${outline.credential} area ${d.letter} (${d.name}) has ${got} question(s); one full paper needs ${d.examItems}. The simulator will run short rather than repeat items.`,
+					file
+				)
+			);
+		}
+		// A task nobody wrote a question for is a hole a reader cannot see and cannot
+		// study around, which matters most in the areas the outline recently expanded.
+		for (const t of d.tasks) {
+			if ((perTask.get(t.code) ?? 0) === 0) {
+				issues.push(warning('coverage/task-unexamined', `no question cites ${t.code}`, file));
+			}
+		}
+	}
+	return issues;
+}

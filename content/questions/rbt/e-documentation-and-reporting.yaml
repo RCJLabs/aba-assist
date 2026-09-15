@@ -465,3 +465,383 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
+
+  - id: rbt-e-report-illness-same-day
+    credential: RBT
+    taskRef: { credential: RBT, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      A caregiver mentions the learner slept badly and has a cold. The session goes
+      ahead and the data are noticeably worse than usual. What should the technician
+      record?
+    options:
+      - id: a
+        text: 'Only the data, since illness is not part of the programme'
+        isCorrect: false
+        rationale: >-
+          Data without the context that explains them invite the wrong conclusion,
+          and the analyst has no way to recover the context later.
+      - id: b
+        text: 'The data, plus a factual note that the caregiver reported poor sleep and a cold'
+        isCorrect: true
+        rationale: >-
+          Variables outside the programme that could affect responding are part of
+          what the technician is expected to record and pass on.
+      - id: c
+        text: 'An estimate of what the data would have been if the learner were well'
+        isCorrect: false
+        rationale: >-
+          Adjusted data are invented data. They look like real data on a graph and
+          cannot be told apart from it afterwards.
+      - id: d
+        text: 'A note that the learner was unmotivated'
+        isCorrect: false
+        rationale: >-
+          "Unmotivated" is an interpretation. What the caregiver reported and what
+          was observed are the record.
+    explanation: >-
+      Setting events — illness, sleep, a change at home, a different room — frequently
+      account for a session that does not look like the others. Recording them
+      factually is what lets a supervisor read the data correctly, and it takes one
+      line.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [setting-event, session-note, objective-language, data-sheet]
+    ethicsRefs: [reporting-to-your-supervisor, honest-documentation-and-billing]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-e-pass-on-caregiver-report
+    credential: RBT
+    taskRef: { credential: RBT, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      At the door a caregiver tells a technician that the learner has started refusing
+      to get on the school bus. What is the technician’s responsibility?
+    options:
+      - id: a
+        text: 'Advise the caregiver on how to handle the bus refusal'
+        isCorrect: false
+        rationale: >-
+          Advising on a situation outside the programme is a clinical
+          recommendation and outside the technician’s role.
+      - id: b
+        text: 'Pass the report to the supervising analyst promptly and record what was said'
+        isCorrect: true
+        rationale: >-
+          Relaying what caregivers and other team members raise is a named part of
+          the role. The analyst decides whether it changes anything.
+      - id: c
+        text: 'Add the bus to the session programme'
+        isCorrect: false
+        rationale: >-
+          Adding a target is a programme change, which the analyst makes.
+      - id: d
+        text: 'Note it only if it happens again'
+        isCorrect: false
+        rationale: >-
+          Waiting for a second report delays information the analyst may need now,
+          and the detail is already fading.
+    explanation: >-
+      The technician sees and hears things nobody else on the team does. Passing them
+      on promptly and factually is the mechanism by which that information reaches the
+      person who can act on it, and it is explicitly part of the role rather than a
+      courtesy.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [collaboration, session-note, scope-of-practice]
+    ethicsRefs: [reporting-to-your-supervisor, staying-in-your-role]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-e-note-objective-phrasing
+    credential: RBT
+    taskRef: { credential: RBT, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      Which sentence belongs in a session note as written?
+    options:
+      - id: a
+        text: '"The learner was in a bad mood all session."'
+        isCorrect: false
+        rationale: >-
+          Mood is not observable and cannot be verified. It also tells the next
+          reader nothing they can act on.
+      - id: b
+        text: 'The learner completed 4 of 10 trials independently and left the table three times.'
+        isCorrect: true
+        rationale: >-
+          Both statements are counts of things an observer could verify, which is
+          what makes a note useful to somebody who was not there.
+      - id: c
+        text: '"The learner clearly did not want to be there."'
+        isCorrect: false
+        rationale: >-
+          This attributes an intention. What was observed — leaving, refusing,
+          turning away — is the part that belongs in the record.
+      - id: d
+        text: '"Session went well overall."'
+        isCorrect: false
+        rationale: >-
+          A summary judgement with nothing behind it cannot be checked, compared
+          with last week, or used by anyone.
+    explanation: >-
+      A session note is a clinical record and usually a billing record. Anything in it
+      should be something another person could have observed and counted, because that
+      is the standard both a supervisor and an auditor read it against.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [session-note, objective-language, operational-definition]
+    ethicsRefs: [honest-documentation-and-billing]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-e-when-to-ask-supervisor
+    credential: RBT
+    taskRef: { credential: RBT, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      Mid-session a technician realises the written programme does not cover a
+      situation that has arisen. Nobody is in danger. What is the appropriate course?
+    options:
+      - id: a
+        text: 'Choose the procedure that seems closest and run it'
+        isCorrect: false
+        rationale: >-
+          Selecting a procedure is a clinical decision. Running an unwritten one
+          also produces data that do not describe the programme.
+      - id: b
+        text: 'Continue with what is written, contact the supervisor through the usual route, and record the question'
+        isCorrect: true
+        rationale: >-
+          Running the written programme is never the wrong answer, and the
+          question reaches the person whose decision it is with a record that it
+          was raised at the time.
+      - id: c
+        text: 'Ask the caregiver what they would prefer'
+        isCorrect: false
+        rationale: >-
+          That places a clinical decision on the family, who have not been asked
+          to make it and are not positioned to.
+      - id: d
+        text: 'End the session immediately'
+        isCorrect: false
+        rationale: >-
+          Ending is a large step for a situation with no danger in it, and it
+          costs the session’s data for no benefit.
+    explanation: >-
+      Asking for direction promptly and through the agreed route is a named part of
+      the role. The default while waiting is the written programme, because an
+      improvised procedure changes both what the learner experiences and what the data
+      mean.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, scope-of-practice, treatment-integrity, behavior-intervention-plan]
+    ethicsRefs: [working-under-supervision, staying-in-your-role]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-e-incident-report-timing
+    credential: RBT
+    taskRef: { credential: RBT, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      A learner is scratched during a session and the skin is not broken. The
+      technician plans to mention it at supervision next week. What is wrong with that
+      plan?
+    options:
+      - id: a
+        text: 'Nothing, since the injury was minor'
+        isCorrect: false
+        rationale: >-
+          Severity is not what determines reporting. Timeliness is, and minor
+          injuries are exactly the ones that go unreported until a pattern is
+          invisible.
+      - id: b
+        text: 'Injuries are reported the same day, whatever their severity'
+        isCorrect: true
+        rationale: >-
+          Same-day reporting is the standard professional expectation, and it is
+          also what makes an accurate record possible while the detail is fresh.
+      - id: c
+        text: 'It should be recorded but not reported'
+        isCorrect: false
+        rationale: >-
+          Recording without reporting leaves the information somewhere nobody is
+          looking at until the next review.
+      - id: d
+        text: 'The caregiver should decide whether to report it'
+        isCorrect: false
+        rationale: >-
+          Reporting to the supervisor is the technician’s obligation and is not
+          delegated to the family.
+    explanation: >-
+      Any injury connected with a session goes to the supervising analyst the same
+      day, minor or not, alongside whatever incident form the employer requires.
+      Waiting loses detail and hides patterns that only become visible when several
+      small events are read together.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [incident-report, session-note, objective-language]
+    ethicsRefs: [reporting-to-your-supervisor, when-to-stop-and-escalate]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-e-data-belongs-to-record
+    credential: RBT
+    taskRef: { credential: RBT, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      A technician keeps personal shorthand notes on their phone during sessions and
+      writes the formal note later from them. What is the main risk?
+    options:
+      - id: a
+        text: 'The formal note may take longer to write'
+        isCorrect: false
+        rationale: >-
+          Time to write is a practical matter and not the risk that matters here.
+      - id: b
+        text: 'Identifiable information may be held somewhere outside the record system’s protections'
+        isCorrect: true
+        rationale: >-
+          Anything identifying a client belongs in the system the employer secures
+          and retains. A personal device is outside those controls and outside the
+          retention rules.
+      - id: c
+        text: 'The shorthand may be hard to read later'
+        isCorrect: false
+        rationale: >-
+          Legibility is a real annoyance but a much smaller problem than where the
+          information is being stored.
+      - id: d
+        text: 'The supervisor may want to see the shorthand'
+        isCorrect: false
+        rationale: >-
+          A supervisor asking to see working notes is ordinary and is not a risk.
+    explanation: >-
+      Client information is governed wherever it is written down, including a phone.
+      Employers set which systems may hold it and for how long, and a personal device
+      is almost never one of them. Using the employer’s system from the start avoids
+      the problem rather than managing it.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [confidentiality, hipaa, session-note, data-sheet]
+    ethicsRefs: [confidentiality-and-records]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the technician ethics code and standard
+        documentation practice; no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'

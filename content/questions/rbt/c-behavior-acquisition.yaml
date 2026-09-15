@@ -603,3 +603,1146 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
+
+  - id: rbt-c-conditioned-reinforcer-history
+    credential: RBT
+    taskRef: { credential: RBT, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      A token board is introduced. At first the tokens have no effect on the learner’s
+      responding. After two weeks of tokens being exchanged for preferred items,
+      responding increases when tokens are delivered. What best explains the change?
+    options:
+      - id: a
+        text: 'The tokens became reinforcing through pairing with established reinforcers'
+        isCorrect: true
+        rationale: >-
+          A conditioned reinforcer works because of a learning history. Repeated
+          exchange for items that already function as reinforcers is that history.
+      - id: b
+        text: 'The tokens satisfied a biological need'
+        isCorrect: false
+        rationale: >-
+          That describes an unconditioned reinforcer, which works without any
+          learning history. A plastic token has no such property.
+      - id: c
+        text: 'The learner became more motivated in general'
+        isCorrect: false
+        rationale: >-
+          Nothing changed about deprivation or the value of anything else. The
+          specific change is that tokens now do something they did not do before.
+      - id: d
+        text: 'The instructions were clearer in the second week'
+        isCorrect: false
+        rationale: >-
+          Instruction quality was not what changed. The tokens themselves acquired
+          an effect they did not have at the outset.
+    explanation: >-
+      Unconditioned reinforcers work without a learning history; conditioned
+      reinforcers acquire their effect through pairing with things that already
+      reinforce. A token is the standard example, and the two weeks of exchange are
+      the history that made it one.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        conditioned-reinforcer,
+        unconditioned-reinforcer,
+        token-economy,
+        pairing,
+        generalized-conditioned-reinforcer
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-generalized-conditioned-reinforcer
+    credential: RBT
+    taskRef: { credential: RBT, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      Why is a token exchangeable for a choice of several items usually more durable
+      than a token exchangeable for one specific snack?
+    options:
+      - id: a
+        text: 'It takes longer to deliver'
+        isCorrect: false
+        rationale: >-
+          Delivery time is not what maintains the effect, and a slower reinforcer
+          is generally worse rather than better.
+      - id: b
+        text: 'Its effect does not depend on the learner being deprived of one particular thing'
+        isCorrect: true
+        rationale: >-
+          A generalized conditioned reinforcer is backed by several reinforcers,
+          so satiation on any one of them does not remove its value.
+      - id: c
+        text: 'It is easier for the technician to count'
+        isCorrect: false
+        rationale: >-
+          Counting convenience is a practical matter and has no bearing on why the
+          token keeps working.
+      - id: d
+        text: 'It has been paired with punishment'
+        isCorrect: false
+        rationale: >-
+          Pairing with punishment would make it aversive rather than reinforcing.
+    explanation: >-
+      A generalized conditioned reinforcer is one backed by many different
+      reinforcers, which is why money works. Satiation on any single backup does not
+      undermine it, so its effect survives across sessions and across motivating
+      conditions.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        generalized-conditioned-reinforcer,
+        conditioned-reinforcer,
+        token-economy,
+        satiation,
+        motivating-operation
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-acquisition-vs-maintenance
+    credential: RBT
+    taskRef: { credential: RBT, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      A learner reliably names twenty pictures taught six months ago and is currently
+      being taught five new ones. Which describes the correct arrangement?
+    options:
+      - id: a
+        text: 'All twenty-five targets should be run as acquisition trials each session'
+        isCorrect: false
+        rationale: >-
+          Running mastered targets as acquisition wastes teaching time and gives
+          the learner mostly-easy trials, which tells nobody anything new.
+      - id: b
+        text: 'The five new targets are acquisition; the twenty mastered ones need periodic maintenance checks'
+        isCorrect: true
+        rationale: >-
+          Acquisition teaches what the learner cannot yet do. Maintenance confirms
+          that what was learned is still there, which is a different purpose and a
+          much lighter schedule.
+      - id: c
+        text: 'The twenty mastered targets can be dropped entirely'
+        isCorrect: false
+        rationale: >-
+          Skills that are never revisited can be lost. Maintenance exists
+          precisely because mastery at one point does not guarantee mastery later.
+      - id: d
+        text: 'Maintenance means teaching the same targets again from scratch'
+        isCorrect: false
+        rationale: >-
+          Maintenance is a check on retained responding, not a repeat of the
+          teaching sequence.
+    explanation: >-
+      Acquisition and maintenance answer different questions: can the learner do this
+      yet, and does the learner still do it. Confusing them either wastes teaching
+      time on mastered targets or quietly loses skills nobody has looked at in months.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [maintenance, discrete-trial-training, trials-to-criterion, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-maintenance-schedule-thinning
+    credential: RBT
+    taskRef: { credential: RBT, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      A skill has just met its mastery criterion under continuous reinforcement. What
+      change most supports it holding up outside teaching sessions?
+    options:
+      - id: a
+        text: 'Increase the number of teaching trials per session'
+        isCorrect: false
+        rationale: >-
+          More acquisition trials on a mastered skill adds practice the learner
+          does not need and does not address whether it holds up where
+          reinforcement is sparse.
+      - id: b
+        text: 'Thin reinforcement gradually toward the schedule the natural setting provides'
+        isCorrect: true
+        rationale: >-
+          Continuous reinforcement is a teaching arrangement. Ordinary settings
+          reinforce intermittently, so thinning is what closes the gap between the
+          two.
+      - id: c
+        text: 'Stop reinforcing the skill immediately'
+        isCorrect: false
+        rationale: >-
+          Abrupt removal is extinction rather than thinning, and responding
+          typically falls away rather than persisting.
+      - id: d
+        text: 'Change the instruction so it is harder to understand'
+        isCorrect: false
+        rationale: >-
+          Making the instruction unclear tests something other than the skill and
+          would reduce responding for the wrong reason.
+    explanation: >-
+      Skills taught under continuous reinforcement often disappear where reinforcement
+      is thin, which is most places. Gradual thinning toward a schedule resembling the
+      natural environment is the standard approach to maintenance, and it happens
+      after mastery rather than during acquisition.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        maintenance,
+        schedule-thinning,
+        continuous-reinforcement,
+        intermittent-reinforcement,
+        generalization
+      ]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-prompt-hierarchy-least-to-most
+    credential: RBT
+    taskRef: { credential: RBT, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      A program specifies least-to-most prompting for a hand-washing step. The learner
+      does not begin within five seconds of the instruction. What comes next?
+    options:
+      - id: a
+        text: 'Deliver the most intrusive prompt available'
+        isCorrect: false
+        rationale: >-
+          That is most-to-least, a different arrangement. Starting at the most
+          intrusive level removes the chance to respond with less help.
+      - id: b
+        text: 'Deliver the next level of assistance in the written hierarchy'
+        isCorrect: true
+        rationale: >-
+          Least-to-most works up the hierarchy one level at a time, giving the
+          learner the opportunity to respond with the smallest amount of help that
+          works.
+      - id: c
+        text: 'Repeat the instruction more loudly'
+        isCorrect: false
+        rationale: >-
+          Volume is not a prompt level and changing it introduces a variable the
+          program did not specify.
+      - id: d
+        text: 'End the trial and record no response'
+        isCorrect: false
+        rationale: >-
+          The procedure specifies what to do when the learner does not initiate,
+          and ending the trial skips the teaching the hierarchy exists to deliver.
+    explanation: >-
+      Least-to-most gives the learner the chance to respond independently first and
+      adds assistance only as needed, which limits how much prompting the response
+      comes to depend on. Which hierarchy is used, and at what intervals, is set by
+      the written program.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [least-to-most-prompting, prompt-hierarchy, prompt, most-to-least-prompting]
+    citations:
+      - sourceId: macduff-krantz-mcclannahan-2001
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-prompt-dependence
+    credential: RBT
+    taskRef: { credential: RBT, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      A learner completes a task correctly every time but only after a physical
+      prompt, and never before it. What does this pattern most likely indicate?
+    options:
+      - id: a
+        text: 'The skill has been mastered'
+        isCorrect: false
+        rationale: >-
+          Mastery means responding without the prompt. Perfect accuracy that is
+          entirely prompt-dependent is not mastery of the target response.
+      - id: b
+        text: 'Stimulus control has transferred to the prompt rather than to the natural cue'
+        isCorrect: true
+        rationale: >-
+          The prompt is now what occasions the response. Transfer-of-control
+          procedures exist exactly for this situation.
+      - id: c
+        text: 'The reinforcer is too strong'
+        isCorrect: false
+        rationale: >-
+          Reinforcer strength does not determine which stimulus occasions
+          responding.
+      - id: d
+        text: 'The task analysis has too few steps'
+        isCorrect: false
+        rationale: >-
+          Step size affects how teachable each step is, not whether control sits
+          with the prompt or the natural cue.
+    explanation: >-
+      The goal is responding under the natural discriminative stimulus, not under the
+      prompt. Reliable responding that only ever follows the prompt means control has
+      landed in the wrong place, and the written plan’s fading or delay procedure is
+      what moves it.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        prompt-fading,
+        transfer-of-stimulus-control,
+        discriminative-stimulus,
+        time-delay,
+        prompt-hierarchy
+      ]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-errorless-rationale
+    credential: RBT
+    taskRef: { credential: RBT, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      A program uses errorless teaching for a new discrimination. What is the main
+      reason for arranging teaching so that errors are unlikely?
+    options:
+      - id: a
+        text: 'It makes sessions shorter'
+        isCorrect: false
+        rationale: >-
+          Session length is not the point, and errorless arrangements often
+          require more careful setup rather than less.
+      - id: b
+        text: 'Repeated errors can become part of the learner’s pattern of responding and are hard to undo'
+        isCorrect: true
+        rationale: >-
+          Errors that are practised get stronger. Arranging teaching so the
+          correct response occurs from the start avoids building a competing
+          history.
+      - id: c
+        text: 'It removes the need for reinforcement'
+        isCorrect: false
+        rationale: >-
+          Errorless arrangements still reinforce correct responding; what they
+          change is how likely an error is.
+      - id: d
+        text: 'It guarantees generalization'
+        isCorrect: false
+        rationale: >-
+          Generalization has to be programmed separately. Nothing about errorless
+          teaching produces it on its own.
+    explanation: >-
+      Errorless teaching front-loads assistance so the correct response occurs from
+      the first trial, then fades it. The rationale is that practised errors persist
+      and that the frustration of repeated failure is itself a cost worth avoiding.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        errorless-teaching,
+        stimulus-fading,
+        discrimination-training,
+        prompt-fading,
+        error-correction
+      ]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-shaping-criterion-moves
+    credential: RBT
+    taskRef: { credential: RBT, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      A learner is being shaped to say a word and currently produces the first sound
+      reliably. The program says to reinforce closer approximations. What should the
+      technician do next?
+    options:
+      - id: a
+        text: 'Continue reinforcing the first sound until the whole word appears'
+        isCorrect: false
+        rationale: >-
+          Reinforcing the current level indefinitely maintains it rather than
+          moving it. Shaping requires the criterion to advance.
+      - id: b
+        text: 'Reinforce responses closer to the target and stop reinforcing the previous approximation'
+        isCorrect: true
+        rationale: >-
+          Shaping works by differential reinforcement of successive
+          approximations: the criterion moves and the earlier form stops being
+          reinforced.
+      - id: c
+        text: 'Reinforce every vocalisation the learner makes'
+        isCorrect: false
+        rationale: >-
+          Reinforcing everything removes the differential part, and the response
+          drifts rather than approaching the target.
+      - id: d
+        text: 'Withhold reinforcement entirely until the full word occurs'
+        isCorrect: false
+        rationale: >-
+          Waiting for the terminal response is not shaping. If the learner could
+          produce it, shaping would not be needed.
+    explanation: >-
+      Shaping is differential reinforcement of successive approximations. Both halves
+      matter: reinforcing the closer form and no longer reinforcing the earlier one.
+      How quickly the criterion moves is set by the program and by the learner’s
+      responding.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [shaping, differential-reinforcement-of-alternative-behavior, extinction, reinforcer]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-chaining-backward
+    credential: RBT
+    taskRef: { credential: RBT, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      A task analysis for making toast has six steps. The program specifies backward
+      chaining. Which step does the learner perform independently first?
+    options:
+      - id: a
+        text: 'The first step'
+        isCorrect: false
+        rationale: >-
+          That is forward chaining, which starts at the beginning of the sequence.
+      - id: b
+        text: 'The last step'
+        isCorrect: true
+        rationale: >-
+          Backward chaining teaches the final step first, so every trial ends with
+          the learner completing the chain and contacting the natural reinforcer.
+      - id: c
+        text: 'Whichever step is easiest'
+        isCorrect: false
+        rationale: >-
+          That is neither forward nor backward chaining. The order in a chaining
+          procedure follows the sequence rather than difficulty.
+      - id: d
+        text: 'All six steps at once'
+        isCorrect: false
+        rationale: >-
+          That is total-task presentation, a third arrangement the program did not
+          specify.
+    explanation: >-
+      Backward chaining teaches the last step first and works backward, so every trial
+      finishes with the learner completing the chain. Forward chaining starts at the
+      beginning; total task runs the whole sequence each time with prompting where
+      needed.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [backward-chaining, forward-chaining, total-task-chaining, chaining, task-analysis]
+    citations:
+      - sourceId: cooper-heron-heward-2020
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from standard chaining practice, anchored in the
+        primary literature; no textbook wording and no examination material
+        consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-task-analysis-step-size
+    credential: RBT
+    taskRef: { credential: RBT, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      A learner consistently fails one step of a written task analysis while
+      completing the rest. What is the most appropriate thing for the technician to
+      do?
+    options:
+      - id: a
+        text: 'Break that step into smaller steps'
+        isCorrect: false
+        rationale: >-
+          Changing the task analysis is a programme change. It may well be the
+          right answer, but it is the analyst’s to make.
+      - id: b
+        text: 'Record the pattern and report it to the supervisor'
+        isCorrect: true
+        rationale: >-
+          The technician’s job is to run the written analysis and report what the
+          data show. A single failing step is exactly the observation an analyst
+          needs.
+      - id: c
+        text: 'Skip the step and complete the rest of the chain'
+        isCorrect: false
+        rationale: >-
+          Skipping a step changes the chain being taught and produces data that do
+          not describe the programme as written.
+      - id: d
+        text: 'Complete that step for the learner every time without recording it'
+        isCorrect: false
+        rationale: >-
+          Providing unrecorded assistance makes the data say the learner performed
+          a step they did not, which is worse than the original problem.
+    explanation: >-
+      A step that consistently fails usually means it is too large or needs a
+      different prompt, and both are revisions to the written task analysis. Noticing
+      and reporting it is within the technician’s role; rewriting it is not.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [task-analysis, chaining, treatment-integrity, scope-of-practice]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-trial-structure-order
+    credential: RBT
+    taskRef: { credential: RBT, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Which sequence describes a discrete trial as programs usually specify it?
+    options:
+      - id: a
+        text: 'Instruction, response, consequence, brief pause before the next trial'
+        isCorrect: true
+        rationale: >-
+          A discrete trial has a clear beginning and end: an antecedent, the
+          learner’s response, a programmed consequence, and a short interval
+          separating it from the next.
+      - id: b
+        text: 'Continuous teaching with no separation between opportunities'
+        isCorrect: false
+        rationale: >-
+          That is closer to naturalistic teaching in the flow of activity, not the
+          discrete structure the question describes.
+      - id: c
+        text: 'Consequence, instruction, response'
+        isCorrect: false
+        rationale: >-
+          A consequence follows a response. Delivering it first would make it an
+          antecedent event rather than a consequence.
+      - id: d
+        text: 'Instruction repeated until the learner responds correctly'
+        isCorrect: false
+        rationale: >-
+          Repeating an instruction with no programmed consequence or inter-trial
+          interval is not a trial structure, and repeated instructions weaken the
+          instruction’s control.
+    explanation: >-
+      The structure of a discrete trial — antecedent, response, consequence, inter-
+      trial interval — is what makes each opportunity countable and each trial
+      comparable to the last. The inter-trial interval is a real component, not dead
+      time.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs:
+      [
+        discrete-trial-training,
+        three-term-contingency,
+        discriminative-stimulus,
+        naturalistic-teaching
+      ]
+    citations:
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-net-vs-dtt-choice
+    credential: RBT
+    taskRef: { credential: RBT, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      A program calls for naturalistic teaching of requesting. The learner reaches
+      toward a container they cannot open. What does the arrangement ask the
+      technician to do?
+    options:
+      - id: a
+        text: 'Move to a table and run ten massed trials on requesting'
+        isCorrect: false
+        rationale: >-
+          That converts a naturalistic opportunity into a discrete trial
+          arrangement the programme did not call for.
+      - id: b
+        text: 'Use the learner’s own interest in the container as the teaching opportunity'
+        isCorrect: true
+        rationale: >-
+          Naturalistic teaching follows the learner’s motivation and teaches in
+          the moment it occurs, which is what makes the reinforcer directly
+          relevant.
+      - id: c
+        text: 'Wait until the learner stops reaching, then present an unrelated instruction'
+        isCorrect: false
+        rationale: >-
+          Waiting out the motivation discards the opportunity the arrangement is
+          built around.
+      - id: d
+        text: 'Give the container to the learner without any teaching'
+        isCorrect: false
+        rationale: >-
+          Delivering the item with no opportunity to respond removes the teaching
+          trial entirely.
+    explanation: >-
+      Naturalistic teaching uses what the learner is already motivated by, so the
+      consequence for responding is the thing they wanted rather than an arbitrary
+      reinforcer. Which arrangement to use, and when, is specified by the written
+      programme.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [naturalistic-teaching, incidental-teaching, motivating-operation, mand]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-generalization-programmed
+    credential: RBT
+    taskRef: { credential: RBT, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      A learner greets the technician reliably in the therapy room but not at home or
+      with other staff. What does the program most likely need to arrange?
+    options:
+      - id: a
+        text: 'More trials in the therapy room'
+        isCorrect: false
+        rationale: >-
+          Additional practice in the setting where the skill already occurs does
+          not address the settings where it does not.
+      - id: b
+        text: 'Teaching across several people, settings and materials'
+        isCorrect: true
+        rationale: >-
+          Generalization is programmed, not assumed. Training with multiple
+          exemplars across people and settings is the standard way to produce it.
+      - id: c
+        text: 'A stronger reinforcer in the therapy room'
+        isCorrect: false
+        rationale: >-
+          A stronger reinforcer in one setting makes responding there more likely,
+          which is the opposite of what is needed.
+      - id: d
+        text: 'Waiting for the skill to transfer on its own'
+        isCorrect: false
+        rationale: >-
+          Skills taught in one narrow context frequently do not transfer without
+          being programmed to.
+    explanation: >-
+      Generalization has to be built into teaching rather than hoped for afterwards.
+      Multiple exemplars, varied settings and people, and teaching loosely are the
+      usual tactics, and they are written into the programme rather than improvised.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        generalization,
+        multiple-exemplar-training,
+        stimulus-generalization,
+        teaching-loosely,
+        maintenance
+      ]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-token-exchange-rules
+    credential: RBT
+    taskRef: { credential: RBT, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      A token economy specifies that five tokens are exchanged for a five-minute
+      break. A learner has four tokens and asks to exchange now. What should the
+      technician do?
+    options:
+      - id: a
+        text: 'Allow the exchange to avoid escalation'
+        isCorrect: false
+        rationale: >-
+          Changing the exchange rule in the moment teaches that the rule moves
+          under pressure, which makes the system less effective for everyone using
+          it.
+      - id: b
+        text: 'Run the system as written and provide the opportunity to earn the fifth token'
+        isCorrect: true
+        rationale: >-
+          The exchange rate is part of the written programme. Running it as
+          specified keeps both the contingency and the data intact.
+      - id: c
+        text: 'Remove a token as a consequence for asking'
+        isCorrect: false
+        rationale: >-
+          Response cost is a punishment component that must be authorised in the
+          written plan. Improvising it is outside the technician’s role.
+      - id: d
+        text: 'Give the break without any tokens'
+        isCorrect: false
+        rationale: >-
+          Delivering the backup reinforcer non-contingently undoes the contingency
+          the token system depends on.
+    explanation: >-
+      A token economy works because the rules are consistent: what earns a token, what
+      tokens buy, and at what rate. Changing any of those in the moment is a programme
+      change, and both the clinical effect and the data depend on it not happening.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        token-economy,
+        response-cost,
+        conditioned-reinforcer,
+        treatment-integrity,
+        scope-of-practice
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-reinforcer-vs-preferred
+    credential: RBT
+    taskRef: { credential: RBT, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      A preference assessment identifies a toy as highly preferred. The toy is
+      delivered after each correct response for a week, and correct responding does
+      not increase. What is the most accurate conclusion?
+    options:
+      - id: a
+        text: 'The toy is not currently functioning as a reinforcer for that response'
+        isCorrect: true
+        rationale: >-
+          A reinforcer is defined by its effect on behaviour. High preference
+          predicts reinforcer value but does not guarantee it, and responding is
+          the test.
+      - id: b
+        text: 'The learner is being deliberately uncooperative'
+        isCorrect: false
+        rationale: >-
+          Attributing the result to intent explains nothing and is not something
+          the data can show.
+      - id: c
+        text: 'The preference assessment was run incorrectly'
+        isCorrect: false
+        rationale: >-
+          Possible, but preference and reinforcer effect are different things even
+          when the assessment is run perfectly.
+      - id: d
+        text: 'The response is too easy'
+        isCorrect: false
+        rationale: >-
+          An easy response would be more likely to increase, not less, if the
+          consequence were reinforcing it.
+    explanation: >-
+      Preference assessments predict; they do not define. Something is a reinforcer
+      only if delivering it makes the behaviour more likely, and a preferred item that
+      does not do so needs a reinforcer assessment rather than another week of trying.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        reinforcer,
+        preference-assessment,
+        reinforcer-assessment,
+        positive-reinforcement,
+        motivating-operation
+      ]
+    citations:
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-negative-reinforcement-teaching
+    credential: RBT
+    taskRef: { credential: RBT, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      A program teaches a learner to hand over a break card, after which the demand is
+      removed for two minutes. Requesting a break increases. What process is operating
+      on the card-handing response?
+    options:
+      - id: a
+        text: 'Positive reinforcement'
+        isCorrect: false
+        rationale: >-
+          Nothing is added following the response. What changes is that the demand
+          is taken away.
+      - id: b
+        text: 'Negative reinforcement'
+        isCorrect: true
+        rationale: >-
+          The response is followed by removal of the demand and the response
+          increases. Removal plus an increase is negative reinforcement.
+      - id: c
+        text: 'Positive punishment'
+        isCorrect: false
+        rationale: >-
+          Punishment would mean the response became less likely. It increased.
+      - id: d
+        text: 'Extinction'
+        isCorrect: false
+        rationale: >-
+          Extinction is withholding the maintaining consequence. Here the
+          consequence is being delivered reliably.
+    explanation: >-
+      Negative reinforcement is defined by removal of something followed by an
+      increase in the response. The word "negative" describes the removal, not whether
+      the arrangement is undesirable — a break card taught this way is one of the most
+      common replacement behaviours in the field.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        negative-reinforcement,
+        positive-reinforcement,
+        functional-communication-training,
+        replacement-behavior,
+        extinction
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+
+  - id: rbt-c-discrimination-sd-sdelta
+    credential: RBT
+    taskRef: { credential: RBT, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      During discrimination training, a learner is reinforced for touching a red card
+      and not reinforced for touching a blue one. After training, the learner touches
+      red and not blue. What role does the blue card now serve?
+    options:
+      - id: a
+        text: 'A discriminative stimulus for responding'
+        isCorrect: false
+        rationale: >-
+          The red card is the discriminative stimulus for the reinforced response.
+          Blue signals the opposite.
+      - id: b
+        text: 'A stimulus in the presence of which the response is not reinforced'
+        isCorrect: true
+        rationale: >-
+          That is an S-delta: a condition signalling that responding will not
+          produce reinforcement, so responding under it declines.
+      - id: c
+        text: 'A conditioned reinforcer'
+        isCorrect: false
+        rationale: >-
+          Nothing has paired the blue card with reinforcement; the arrangement is
+          designed to do the reverse.
+      - id: d
+        text: 'A motivating operation'
+        isCorrect: false
+        rationale: >-
+          A motivating operation alters the value of a consequence. The blue card
+          signals availability, which is a different function.
+    explanation: >-
+      Discrimination training produces differential responding across two conditions:
+      the discriminative stimulus signals reinforcement is available for that
+      response, and the S-delta signals it is not. Both are needed for the
+      discrimination to form.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        discriminative-stimulus,
+        s-delta,
+        discrimination-training,
+        stimulus-control,
+        stimulus-discrimination
+      ]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation:
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behaviour-acquisition literature;
+        no examination material consulted.
+    review:
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance:
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
