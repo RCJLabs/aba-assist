@@ -12,6 +12,14 @@
 :root {
 	--font-scale: 1;
 
+	/*
+	 * Declared here so every theme has one, and so `data-theme="system"` inherits it and
+	 * then picks up `dark` from the media query below along with the tokens. The UA's own
+	 * chrome — form controls, scrollbars — has to agree with our palette or a select
+	 * renders white-on-white in dark mode.
+	 */
+	color-scheme: light;
+
 	--bg: #ffffff;
 	--surface: #f5f7fa;
 	--surface-raised: #ffffff;
@@ -35,20 +43,8 @@
 
 	--radius: 10px;
 	--tap: 44px; /* WCAG 2.2 floor is 24px; this app is used one-handed, in a hurry. */
-	/*
-	 * The bottom nav is `position: sticky`, so it floats over content while the page
-	 * scrolls. Content must reserve its height or the nav silently covers the last
-	 * ~50px of every page — which axe reports as partially obscured touch targets
-	 * (2.5.8) and which would clip focus rings (2.4.11).
-	 */
-	--nav-h: calc(3.5rem + env(safe-area-inset-bottom));
 	--actionbar-h: 0px;
 	--maxw: 44rem;
-}
-
-:root[data-theme='dark'],
-:root[data-theme='system'] {
-	color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -120,6 +116,12 @@ html {
  */
 html {
 	height: 100%;
+	/*
+	 * The bar's own surface. If the visible area is ever taller than the shell — a
+	 * browser hiding its URL bar, a viewport the shell rounded down from — the strip
+	 * below the nav reads as the bar continuing rather than as a gap underneath it.
+	 */
+	background: var(--surface);
 }
 
 body {
@@ -138,9 +140,32 @@ body {
 
 	display: flex;
 	flex-direction: column;
-	/* dvh so mobile browser chrome appearing and disappearing does not clip the nav. */
-	height: 100dvh;
-	overflow-y: hidden;
+
+	/*
+	 * `svh`, not `dvh` — and this is the whole reason the bottom nav stays on screen.
+	 *
+	 * `dvh` tracks retractable browser UI, which is right for a document and wrong for an
+	 * app shell: it can resolve taller than the area actually visible. A standalone window
+	 * measured around the system navigation bar does it, and so does a repaint of the
+	 * browser's own bars — which is what a theme toggle triggers. When that happens the
+	 * last flex item is pushed past the bottom edge, and since this body is the shell
+	 * rather than the scroller, past the bottom edge means gone, not merely off-screen.
+	 * The last flex item is the primary navigation.
+	 *
+	 * `svh` is the viewport at its smallest, so the shell is never taller than what is on
+	 * screen. `vh` first for anything that does not know the unit.
+	 */
+	height: 100vh;
+	height: 100svh;
+
+	/*
+	 * A floor under all of the above. If the shell still ends up taller than the viewport
+	 * — an unusual font scale, a banner that wrapped to another line, a browser that
+	 * disagrees with every assumption here — the nav must be reachable by scrolling
+	 * rather than lost. `main` sets `overscroll-behavior: contain`, so this never absorbs
+	 * a scroll that belonged to the content.
+	 */
+	overflow-y: auto;
 }
 
 /* 2.4.7 / 2.4.13: a focus indicator that is visible against every surface. */

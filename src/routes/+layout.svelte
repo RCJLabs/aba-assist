@@ -184,8 +184,18 @@
 		outline: none;
 	}
 
+	/*
+	 * A flex sibling of `main`, not a layer over it: a bar that floats over the content
+	 * covers mid-page links at every scroll position, which axe reports as partially
+	 * obscured targets under 2.5.8. Sticky on top of that is belt and braces — it only
+	 * does anything in the case where the body has had to become scrollable, and there
+	 * a bar pinned to the bottom beats a bar that scrolled away.
+	 */
 	nav {
 		flex: 0 0 auto;
+		position: sticky;
+		bottom: 0;
+		z-index: 2;
 		background: var(--surface);
 		border-top: 1px solid var(--border);
 		padding-bottom: env(safe-area-inset-bottom);
