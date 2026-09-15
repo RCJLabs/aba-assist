@@ -31,7 +31,7 @@ contrastWith: [functional-behavior-assessment, descriptive-assessment]
 seeAlso: [function-of-behavior, multielement-design]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.6 }
 citations:
   - sourceId: iwata-1982-1994

@@ -27,7 +27,8 @@ nonExamples:
 contrastWith: [dual-relationship]
 seeAlso: [ethics-code]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.7 }
+  - { credential: RBT, code: F.8 }
   - { credential: BCBA, code: E.7 }
 citations:
   - sourceId: bacb-ethics-code-2022

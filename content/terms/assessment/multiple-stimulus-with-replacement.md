@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [multiple-stimulus-without-replacement]
 seeAlso: [preference-assessment]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.1 }
   - { credential: BCBA, code: F.4 }
 citations:
   - sourceId: windsor-1994

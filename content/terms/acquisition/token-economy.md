@@ -26,7 +26,7 @@ nonExamples:
 seeAlso: [generalized-conditioned-reinforcer, conditioned-reinforcer, response-cost]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.11 }
   - { credential: BCBA, code: G.4 }
 citations:
   - sourceId: kazdin-1977-token

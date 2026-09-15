@@ -25,6 +25,7 @@ nonExamples:
     setting: clinic
 seeAlso: [treatment-integrity, observer-drift]
 taskRefs:
+  - { credential: RBT, code: A.8 }
   - { credential: BCBA, code: H.6 }
 citations:
   - sourceId: peterson-homer-wonderlich-1982

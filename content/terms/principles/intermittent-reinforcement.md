@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [continuous-reinforcement]
 seeAlso: [variable-ratio-schedule, variable-interval-schedule, schedule-thinning]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.1 }
   - { credential: BCBA, code: B.8 }
 citations:
   - sourceId: ferster-skinner-1957

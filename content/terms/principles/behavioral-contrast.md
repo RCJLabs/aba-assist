@@ -24,6 +24,7 @@ nonExamples:
     setting: any
 seeAlso: [extinction-burst, generalization]
 taskRefs:
+  - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: G.18 }
 citations:
   - sourceId: reynolds-1961

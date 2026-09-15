@@ -41,7 +41,7 @@ flashcard:
     Partial over-reports. Whole under-reports. Pick the one whose error points away from
     the behavior you care about.
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.2 }
   - { credential: BCBA, code: C.6 }
 citations:
   - sourceId: baer-wolf-risley-1968

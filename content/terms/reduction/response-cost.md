@@ -25,7 +25,8 @@ nonExamples:
 contrastWith: [time-out]
 seeAlso: [negative-punishment, token-economy]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: C.11 }
+  - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: G.17 }
 citations:
   - sourceId: kazdin-1977-token

@@ -27,6 +27,7 @@ nonExamples:
 contrastWith: [escape-extinction]
 seeAlso: [extinction, automatic-reinforcement]
 taskRefs:
+  - { credential: RBT, code: D.4 }
   - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: lerman-iwata-1996

@@ -46,7 +46,8 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/about', /About this app/],
 		['/study', /Flashcards/],
 		['/quiz', /Practice questions/],
-		['/exams', /Exams and certifications/]
+		['/exams', /Exams and certifications/],
+		['/ethics', /Ethics/]
 	];
 
 	for (const [path, heading] of routes) {
@@ -77,6 +78,11 @@ test('a deep link to a term page works offline and shows that term', async ({
 	// The outline pages are precached: they are two documents, not hundreds.
 	await page.goto('/exams/bcba-tco-6');
 	await expect(page.locator('.task')).toHaveCount(104);
+
+	// Ethics topic pages are excluded from the precache like term pages, so this
+	// exercises the navigation fallback rendering from the precached JSON.
+	await page.goto('/ethics/gifts');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Gifts/);
 
 	await context.setOffline(false);
 });

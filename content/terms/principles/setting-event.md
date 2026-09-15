@@ -25,7 +25,8 @@ nonExamples:
     setting: any
 seeAlso: [motivating-operation, antecedent-intervention, abc-recording]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: D.2 }
+  - { credential: RBT, code: E.3 }
   - { credential: BCBA, code: B.15 }
 citations:
   - sourceId: bijou-peterson-ault-1968

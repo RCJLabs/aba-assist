@@ -25,7 +25,7 @@ nonExamples:
     setting: clinic
 seeAlso: [intermittent-reinforcement, maintenance, continuous-reinforcement]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.9 }
   - { credential: BCBA, code: G.16 }
 citations:
   - sourceId: ferster-skinner-1957

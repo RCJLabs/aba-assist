@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [functional-analysis, indirect-assessment]
 seeAlso: [abc-recording, scatterplot, functional-behavior-assessment]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.5 }
 citations:
   - sourceId: bijou-peterson-ault-1968

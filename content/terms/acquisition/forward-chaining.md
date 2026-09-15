@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [backward-chaining, total-task-chaining]
 seeAlso: [chaining, task-analysis]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.5 }
   - { credential: BCBA, code: G.12 }
 citations:
   - sourceId: skinner-1953

@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [errorless-teaching]
 seeAlso: [discrete-trial-training, prompt]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.3 }
   - { credential: BCBA, code: G.7 }
 citations:
   - sourceId: smith-2001-dtt

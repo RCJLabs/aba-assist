@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [variable-interval-schedule, fixed-ratio-schedule]
 seeAlso: [noncontingent-reinforcement]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.1 }
   - { credential: BCBA, code: B.8 }
 citations:
   - sourceId: ferster-skinner-1957

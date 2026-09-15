@@ -27,6 +27,8 @@ nonExamples:
     setting: any
 seeAlso: [supervision, behavioral-skills-training, treatment-integrity]
 taskRefs:
+  - { credential: RBT, code: F.4 }
+  - { credential: RBT, code: F.9 }
   - { credential: BCBA, code: I.2 }
   - { credential: BCBA, code: I.5 }
 citations:

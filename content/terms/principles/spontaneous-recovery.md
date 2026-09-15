@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [extinction-burst]
 seeAlso: [extinction, resurgence]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: lerman-iwata-1996

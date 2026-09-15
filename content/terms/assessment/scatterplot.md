@@ -24,7 +24,7 @@ nonExamples:
     setting: school
 seeAlso: [descriptive-assessment, abc-recording, setting-event]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.5 }
 citations:
   - sourceId: touchette-1985

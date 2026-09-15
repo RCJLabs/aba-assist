@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [extinction]
 seeAlso: [time-out, function-of-behavior]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.4 }
   - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: lerman-iwata-1996

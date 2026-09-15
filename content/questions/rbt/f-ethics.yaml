@@ -3,7 +3,7 @@
 questions:
   - id: rbt-f-confidentiality-in-public
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.5 }
     type: single-best-answer
     stem: >-
       At a grocery store a neighbor mentions seeing the technician at a particular
@@ -63,7 +63,7 @@ questions:
 
   - id: rbt-f-gift-from-family
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.7 }
     type: single-best-answer
     stem: >-
       A client's parent offers a technician a $50 gift card as thanks. What should the
@@ -110,7 +110,7 @@ questions:
 
   - id: rbt-f-scope-modify-plan
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.3 }
     type: single-best-answer
     stem: >-
       Which activity is within the scope of practice of a behavior technician?
@@ -201,7 +201,7 @@ questions:
 
   - id: rbt-f-social-media
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.6 }
     type: single-best-answer
     stem: >-
       A technician wants to post on social media about a great session, without using
@@ -246,7 +246,7 @@ questions:
 
   - id: rbt-f-supervision-lapse
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.3 }
     type: single-best-answer
     stem: >-
       A technician realizes that for the past month they received no supervision because
@@ -292,7 +292,7 @@ questions:
 
   - id: rbt-f-dignity-choice
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.1 }
     type: single-best-answer
     stem: >-
       Which practice best reflects treating a learner with dignity during a session?
@@ -478,7 +478,7 @@ questions:
 
   - id: rbt-f-assent-withdrawal
     credential: RBT
-    taskRef: { credential: RBT, code: F }
+    taskRef: { credential: RBT, code: F.1 }
     type: single-best-answer
     stem: >-
       A learner who cannot speak repeatedly pushes materials away, turns their body

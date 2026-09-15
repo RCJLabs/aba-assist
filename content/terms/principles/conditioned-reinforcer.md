@@ -25,7 +25,8 @@ nonExamples:
 contrastWith: [unconditioned-reinforcer]
 seeAlso: [generalized-conditioned-reinforcer, token-economy, pairing]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.11 }
+  - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: B.7 }
   - { credential: BCBA, code: G.4 }
 citations:

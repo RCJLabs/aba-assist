@@ -39,7 +39,7 @@ contrastWith: [differential-reinforcement-of-alternative-behavior, planned-ignor
 seeAlso: [positive-reinforcement, negative-reinforcement]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.4 }
   - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: iwata-1982-1994

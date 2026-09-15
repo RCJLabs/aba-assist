@@ -34,7 +34,7 @@ contrastWith: [treatment-integrity]
 seeAlso: [frequency-and-rate, partial-interval-recording]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.8 }
   - { credential: BCBA, code: C.8 }
 citations:
   - sourceId: baer-wolf-risley-1968

@@ -25,7 +25,7 @@ nonExamples:
     setting: clinic
 seeAlso: [prompt-fading, time-delay, stimulus-control]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.8 }
 citations:
   - sourceId: touchette-1971

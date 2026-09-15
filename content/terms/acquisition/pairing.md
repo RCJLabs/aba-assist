@@ -26,7 +26,7 @@ nonExamples:
     setting: clinic
 seeAlso: [conditioned-reinforcer, motivating-operation]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: G.4 }
 citations:
   - sourceId: sundberg-michael-2001

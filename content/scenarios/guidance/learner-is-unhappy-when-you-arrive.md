@@ -39,8 +39,8 @@ whenToEscalate:
     specific change, or if the plan has no pairing procedure.
 termRefs: [pairing, conditioned-reinforcer, negative-reinforcement, assent]
 taskRefs:
-  - { credential: RBT, code: C }
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: C.2 }
+  - { credential: RBT, code: F.1 }
   - { credential: BCBA, code: G.4 }
 tags: [pairing, rapport, assent]
 citations:

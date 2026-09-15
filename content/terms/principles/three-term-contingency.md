@@ -27,8 +27,7 @@ nonExamples:
 seeAlso: [operant-conditioning, abc-recording, discriminative-stimulus]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: B }
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.3 }
   - { credential: BCBA, code: B.3 }
 citations:
   - sourceId: skinner-1953

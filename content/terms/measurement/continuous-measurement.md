@@ -28,7 +28,7 @@ contrastWith: [discontinuous-measurement]
 seeAlso: [frequency-and-rate, duration, latency]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.1 }
   - { credential: BCBA, code: C.5 }
 citations:
   - sourceId: johnston-pennypacker-2020

@@ -40,7 +40,7 @@ whenToEscalate:
     sessions, or if the plan's supports are not being used consistently by others.
 termRefs: [antecedent-intervention, negative-reinforcement, latency, setting-event]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: G.5 }
 tags: [transitions, antecedents, session-management]
 citations:

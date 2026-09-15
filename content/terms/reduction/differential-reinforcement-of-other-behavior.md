@@ -34,7 +34,7 @@ contrastWith: [differential-reinforcement-of-alternative-behavior, noncontingent
 seeAlso: [extinction, positive-reinforcement]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: G.2 }
 citations:
   - sourceId: iwata-1982-1994

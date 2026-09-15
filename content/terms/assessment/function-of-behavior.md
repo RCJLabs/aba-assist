@@ -36,7 +36,8 @@ seeAlso:
   ]
 searchBoost: 1.5
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
+  - { credential: RBT, code: D.1 }
   - { credential: BCBA, code: B.6 }
   - { credential: BCBA, code: F.6 }
 citations:

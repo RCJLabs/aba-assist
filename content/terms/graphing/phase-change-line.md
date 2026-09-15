@@ -25,7 +25,7 @@ nonExamples:
     setting: any
 seeAlso: [line-graph, baseline]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.4 }
   - { credential: BCBA, code: C.10 }
 citations:
   - sourceId: johnston-pennypacker-2020

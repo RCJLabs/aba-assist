@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [most-to-least-prompting]
 seeAlso: [prompt-hierarchy, prompt-fading]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.7 }
 citations:
   - sourceId: macduff-krantz-mcclannahan-2001

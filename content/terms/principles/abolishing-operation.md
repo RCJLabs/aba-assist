@@ -28,7 +28,7 @@ nonExamples:
 contrastWith: [establishing-operation]
 seeAlso: [motivating-operation, satiation, noncontingent-reinforcement]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: B.15 }
 citations:
   - sourceId: laraway-2003

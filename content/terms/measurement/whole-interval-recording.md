@@ -37,7 +37,7 @@ contrastWith: [partial-interval-recording]
 seeAlso: []
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.2 }
   - { credential: BCBA, code: C.6 }
 citations:
   - sourceId: baer-wolf-risley-1968

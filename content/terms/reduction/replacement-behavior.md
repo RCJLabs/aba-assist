@@ -29,7 +29,7 @@ seeAlso:
     function-of-behavior
   ]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: H.3 }
 citations:
   - sourceId: carr-durand-1985

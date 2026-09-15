@@ -29,7 +29,11 @@ seeAlso:
   [performance-feedback, behavioral-skills-training, competency-assessment, scope-of-practice]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: E.1 }
+  - { credential: RBT, code: E.2 }
+  - { credential: RBT, code: F.3 }
+  - { credential: RBT, code: F.4 }
+  - { credential: RBT, code: F.9 }
   - { credential: BCBA, code: I.1 }
   - { credential: BCBA, code: I.2 }
 citations:

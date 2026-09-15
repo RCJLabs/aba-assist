@@ -38,7 +38,7 @@ contrastWith: [motivating-operation, s-delta]
 seeAlso: [prompt-fading, positive-reinforcement]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.11 }
   - { credential: BCBA, code: B.16 }
   - { credential: BCBA, code: G.5 }

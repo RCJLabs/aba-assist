@@ -28,7 +28,8 @@ contrastWith: [interobserver-agreement]
 seeAlso: [treatment-drift, independent-variable, performance-feedback]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: A.8 }
+  - { credential: RBT, code: E.2 }
   - { credential: BCBA, code: C.12 }
   - { credential: BCBA, code: H.6 }
 citations:

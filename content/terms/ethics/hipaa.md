@@ -29,7 +29,8 @@ nonExamples:
     setting: school
 seeAlso: [confidentiality, ethics-code]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: E.4 }
+  - { credential: RBT, code: F.5 }
   - { credential: BCBA, code: E.4 }
   - { credential: BCBA, code: E.12 }
 citations:

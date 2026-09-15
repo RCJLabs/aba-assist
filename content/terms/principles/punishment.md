@@ -38,7 +38,8 @@ contrastWith: [positive-reinforcement, negative-reinforcement]
 seeAlso: [extinction, differential-reinforcement-of-alternative-behavior]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.5 }
+  - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: B.5 }
   - { credential: BCBA, code: G.17 }
 citations:

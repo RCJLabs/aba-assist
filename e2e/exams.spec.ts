@@ -29,11 +29,20 @@ test('the BCBA outline page shows all nine areas and every task with a link to a
 	await expect(page).toHaveURL(/\/glossary\//);
 });
 
-test('the RBT outline page is honest about the unverified task list', async ({ page }) => {
+test('the RBT outline page lists all 43 verified tasks', async ({ page }) => {
 	await page.goto('/exams/rbt-tco-3');
 	await expect(page.locator('.domains > li')).toHaveCount(6);
-	await expect(page.getByText(/Task list pending/)).toBeVisible();
-	await expect(page.locator('.task')).toHaveCount(0);
+	await expect(page.getByText(/Task list pending/)).toHaveCount(0);
+	await expect(page.locator('.task')).toHaveCount(43);
+
+	// Per-domain counts straight from the outline document.
+	await expect(page.locator('#domain-A .task')).toHaveCount(8);
+	await expect(page.locator('#domain-C .task')).toHaveCount(11);
+	await expect(page.locator('#domain-F .task')).toHaveCount(10);
+
+	// Codes use the document's own dot notation.
+	await expect(page.locator('#domain-F .task .code').first()).toHaveText('F.1');
+
 	// Terms are still reachable through the area they are tagged to.
 	await page
 		.locator('summary', { hasText: /glossary terms in this area/ })

@@ -23,7 +23,7 @@ nonExamples:
     setting: clinic
 seeAlso: [verbal-behavior, discrimination-training, matching-to-sample]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.18 }
   - { credential: BCBA, code: G.6 }
 citations:

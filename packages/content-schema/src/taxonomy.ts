@@ -8,7 +8,8 @@ import { Attestation, Credential, IsoDate, Provenance, Review, Slug } from './pr
  * rights-holder's wording for what each code says; see `ourSummary`.
  */
 export const TASK_CODE_PATTERN: Partial<Record<z.infer<typeof Credential>, RegExp>> = {
-	RBT: /^[A-F]-([1-9]|1[0-9])$/,
+	// Dot notation, as the outline itself uses: A.1, C.11, F.10.
+	RBT: /^[A-F]\.([1-9]|1[0-9])$/,
 	BCBA: /^[A-I]\.([1-9]|1[0-9]|2[0-9])$/,
 	BCaBA: /^[A-I]\.([1-9]|1[0-9]|2[0-9])$/
 };

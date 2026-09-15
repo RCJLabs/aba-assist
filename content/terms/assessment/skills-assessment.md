@@ -26,7 +26,7 @@ nonExamples:
     setting: clinic
 seeAlso: [indirect-assessment, task-analysis]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.2 }
   - { credential: BCBA, code: F.3 }
 citations:
   - sourceId: johnston-pennypacker-2020

@@ -44,7 +44,7 @@ contrastWith:
 seeAlso: [negative-reinforcement, positive-reinforcement]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: G.2 }
 citations:
   - sourceId: carr-durand-1985

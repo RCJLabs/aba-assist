@@ -38,7 +38,7 @@ whenToEscalate:
     program has no transfer procedure written for it.
 termRefs: [echoic, intraverbal, mand, transfer-of-stimulus-control, prompt-fading]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: B.18 }
   - { credential: BCBA, code: G.8 }
 tags: [verbal-behavior, echoic, prompting]

@@ -40,7 +40,7 @@ whenToEscalate:
     gift you could not politely refuse in the moment.
 termRefs: [dual-relationship, conflict-of-interest, ethics-code]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.7 }
   - { credential: BCBA, code: E.7 }
 tags: [ethics, boundaries, caregivers]
 citations:

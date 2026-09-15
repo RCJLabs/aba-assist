@@ -26,8 +26,9 @@ nonExamples:
     setting: any
 seeAlso: [session-note, continuous-measurement, confidentiality]
 taskRefs:
-  - { credential: RBT, code: A }
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: A.4 }
+  - { credential: RBT, code: E.4 }
+  - { credential: RBT, code: F.5 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

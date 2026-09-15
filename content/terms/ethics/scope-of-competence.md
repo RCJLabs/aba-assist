@@ -27,7 +27,8 @@ nonExamples:
 contrastWith: [scope-of-practice]
 seeAlso: [supervision, ethics-code]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: E.2 }
+  - { credential: RBT, code: F.2 }
   - { credential: BCBA, code: E.3 }
 citations:
   - sourceId: bacb-ethics-code-2022

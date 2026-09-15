@@ -1,0 +1,93 @@
+# RBT Ethics Code (2.0) — structure and our own summaries.
+#
+# What is verified: the code took effect 2022-01-01, it binds RBT certificants and
+# applicants, and it contains 29 standards across 3 sections (RBT Handbook, 06/2026,
+# "Ethics and Self-Reporting", p. 23). The three core principles below are the ones the
+# RBT Test Content Outline (3rd ed.) names at task F.1.
+#
+# What is NOT verified: the individual standard numbers. `standardsVerified: false`, so
+# the build will reject any topic that tries to cite one. Fill that in — and the numbers
+# with it — once someone has read the code document itself.
+#
+# Section headings are the rights-holder's text, so `ourLabel` below is our own wording
+# for what each section covers, not the code's heading.
+
+id: rbt-ethics-code-2-0
+issuer: BACB
+shortName: RBT Ethics Code (2.0)
+effectiveDate: '2022-01-01'
+appliesTo: [RBT]
+sourceId: bacb-rbt-ethics-code-2
+officialUrl: https://www.bacb.com/ethics-information/ethics-codes/
+totalStandards: 29
+standardsVerified: false
+
+ourOverview: >-
+  The conduct rules every behaviour technician agrees to when they certify, and every
+  applicant agrees to before they do. It is shorter and more concrete than the analyst
+  code because the role is narrower: a technician delivers services designed by someone
+  else, under supervision, and most of the code follows from that. Breaking it is
+  enforced through a complaint process that can end a certification, and some breaches
+  must be self-reported. Your supervisor is your first stop for anything unclear.
+
+corePrinciples:
+  - number: 1
+    ourLabel: Do good, and avoid doing harm
+    ourSummary: >-
+      Everything you do with a learner should leave them better off, and where a choice
+      could harm someone you weigh that first. In a technician's day this usually shows up
+      as running the plan as written, raising concerns early, and refusing to improvise on
+      a person whose plan you did not design.
+    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+  - number: 2
+    ourLabel: Treat people with compassion, dignity and respect
+    ourSummary: >-
+      The learner is a person, not a case. Speak to them rather than about them, offer
+      choices where the plan allows, protect their privacy in front of others, and pay
+      attention when they signal that they have had enough. This principle is why assent
+      matters even where a guardian has given consent.
+    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+  - number: 3
+    ourLabel: Act with integrity
+    ourSummary: >-
+      Be honest in what you record, what you bill, what you claim about your credentials,
+      and what you tell your supervisor — including when you got something wrong. Most
+      serious ethics cases in this field start as a small inaccuracy that nobody corrected.
+    sourceNote: Named in the RBT Test Content Outline (3rd ed.) at task F.1.
+
+sections:
+  - number: '1'
+    ourLabel: How you conduct yourself
+    ourSummary: >-
+      Your general conduct as a certificant: being truthful, following the law and your
+      employer's rules, staying inside your role and your training, avoiding relationships
+      that compromise your judgement, and reporting certain things about yourself to the
+      certifying board.
+  - number: '2'
+    ourLabel: How you deliver services
+    ourSummary: >-
+      Your obligations while actually working with people: following the behaviour plan,
+      protecting confidential information, documenting accurately and on time, treating
+      clients with dignity, and communicating with the people around a learner.
+  - number: '3'
+    ourLabel: What you owe the board and your supervisor
+    ourSummary: >-
+      Keeping your certification honest: maintaining the required supervision, keeping your
+      records and contact details current, being truthful with the certifying board, and
+      not cheating or helping anyone cheat on an examination or competency assessment.
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+  changeNote: >-
+    Structure and counts verified from the RBT Handbook; core principles from the RBT test
+    content outline. Individual standard numbers deliberately not modelled.
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

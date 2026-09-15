@@ -26,7 +26,7 @@ nonExamples:
     setting: clinic
 seeAlso: [stimulus-discrimination, matching-to-sample, listener-responding, s-delta]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.12 }
   - { credential: BCBA, code: G.6 }
 citations:

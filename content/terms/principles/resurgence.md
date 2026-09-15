@@ -26,6 +26,7 @@ nonExamples:
     setting: any
 seeAlso: [extinction-burst, spontaneous-recovery, functional-communication-training]
 taskRefs:
+  - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: H.5 }
 citations:
   - sourceId: lerman-iwata-1996

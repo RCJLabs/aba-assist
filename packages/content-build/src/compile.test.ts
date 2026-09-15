@@ -357,7 +357,7 @@ domains:
     examItems: 75
     ourDescription: Teaching new skills, prompting and fading, and running programs as written every time.
     tasks:
-      - code: C-1
+      - code: C.1
         ourSummary: Run a teaching program the way it is written, including its prompting procedure.
         plainSummary: Run the program as written.
         attestation:
@@ -375,7 +375,7 @@ provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 				term({
 					taskRefs: [
 						{ credential: 'RBT', code: 'C' },
-						{ credential: 'RBT', code: 'C-1' }
+						{ credential: 'RBT', code: 'C.1' }
 					]
 				})
 			)
@@ -384,7 +384,7 @@ provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 		const index = JSON.parse(r.assets.find((a) => a.name === 'terms.index')!.source) as {
 			r: string[];
 		}[];
-		expect(index[0]!.r).toEqual(['RBT:C', 'RBT:C-1']);
+		expect(index[0]!.r).toEqual(['RBT:C', 'RBT:C.1']);
 	});
 
 	it('REJECTS a task code that is not in the outline, and a domain that does not exist', async () => {
@@ -393,7 +393,7 @@ provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 			'terms/principles/sample-term.md': frontmatter(
 				term({
 					taskRefs: [
-						{ credential: 'RBT', code: 'C-9' },
+						{ credential: 'RBT', code: 'C.9' },
 						{ credential: 'RBT', code: 'D' }
 					]
 				})
@@ -563,5 +563,169 @@ ${extra}`;
 			'credentials/rbt.yaml': facts().replace('officialUrl: https://example.org/handbook', '')
 		});
 		expect(rules(r).some((x) => x.startsWith('schema/credential'))).toBe(true);
+	});
+});
+
+describe('ethics reference', () => {
+	const code = (extra = '') => `
+id: rbt-ethics-code-2-0
+issuer: BACB
+shortName: RBT Ethics Code (2.0)
+effectiveDate: '2022-01-01'
+appliesTo: [RBT]
+sourceId: open-source-doc
+officialUrl: https://example.org/codes
+totalStandards: 29
+standardsVerified: false
+ourOverview: The conduct rules every behaviour technician agrees to when they certify, and applicants before them.
+corePrinciples:
+  - number: 1
+    ourLabel: Do good, and avoid doing harm
+    ourSummary: Everything you do with a learner should leave them better off, and you weigh possible harm first.
+    sourceNote: Named in the test content outline at task F.1.
+sections:
+  - number: '1'
+    ourLabel: How you conduct yourself
+    ourSummary: Your general conduct as a certificant, including staying inside your role and your training.
+  - number: '2'
+    ourLabel: How you deliver services
+    ourSummary: Your obligations while working with people, including following the plan and protecting information.
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-15' }
+provenance: { license: CC-BY-SA-4.0, updated: '2026-09-15' }
+${extra}`;
+
+	function topic(overrides: Record<string, unknown> = {}) {
+		return {
+			id: 'gifts',
+			ourLabel: 'Gifts, meals and favours',
+			gloss: 'Why a small thank-you is a bigger problem than it looks',
+			appliesTo: ['RBT'],
+			sectionRefs: [{ codeId: 'rbt-ethics-code-2-0', section: '1' }],
+			ourSummary:
+				'Both codes place limits on giving and receiving gifts with the people you serve, because a gift changes a working relationship and creates an obligation running the wrong way.',
+			plainSummary:
+				'Gifts change a working relationship, even small ones. Know the rule before it happens, and tell your supervisor.',
+			whatThisLooksLike: [
+				'Knowing your organisation gift rule before a holiday arrives.',
+				'Thanking a family warmly and explaining the limits you work under.'
+			],
+			commonPitfalls: ['Accepting just this once, which sets an expectation for next time.'],
+			ifYouAreUnsure:
+				'Do not accept it in the moment; say you will check the policy and come back to them.',
+			citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+			attestation,
+			review,
+			provenance,
+			...overrides
+		};
+	}
+
+	const files = (t: Record<string, unknown>, extra = '') => ({
+		'ethics/codes/rbt-ethics-code-2-0.yaml': code(extra),
+		'ethics/topics/gifts.md': frontmatter(t)
+	});
+
+	it('loads a code and a topic, counts them, and emits both assets', async () => {
+		const r = await build(files(topic()));
+		expect(r.errors).toEqual([]);
+		expect(r.counts.ethicsTopics).toBe(1);
+		expect(r.assets.map((a) => a.name)).toContain('ethics-codes');
+		expect(r.assets.map((a) => a.name)).toContain('ethics-topics');
+	});
+
+	it('REJECTS a topic filed under a section the code does not have', async () => {
+		const r = await build(
+			files(topic({ sectionRefs: [{ codeId: 'rbt-ethics-code-2-0', section: '9' }] }))
+		);
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS a standard number while the code says its numbering is unverified', async () => {
+		const r = await build(
+			files(
+				topic({
+					sectionRefs: [
+						{ codeId: 'rbt-ethics-code-2-0', section: '1', standardNumbers: ['1.12'] }
+					]
+				})
+			)
+		);
+		expect(rules(r)).toContain('refs/unverified-standard');
+	});
+
+	it('ACCEPTS a standard number once the code is marked verified', async () => {
+		const r = await build(
+			files(
+				topic({
+					sectionRefs: [
+						{ codeId: 'rbt-ethics-code-2-0', section: '1', standardNumbers: ['1.12'] }
+					]
+				}),
+				'\n'
+			)
+		);
+		// Still rejected: the fixture above did not flip the flag.
+		expect(rules(r)).toContain('refs/unverified-standard');
+
+		const ok = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': code().replace(
+				'standardsVerified: false',
+				'standardsVerified: true'
+			),
+			'ethics/topics/gifts.md': frontmatter(
+				topic({
+					sectionRefs: [
+						{ codeId: 'rbt-ethics-code-2-0', section: '1', standardNumbers: ['1.12'] }
+					]
+				})
+			)
+		});
+		expect(ok.errors).toEqual([]);
+	});
+
+	it('REJECTS a standard number that does not belong to its section', async () => {
+		const r = await build({
+			'ethics/codes/rbt-ethics-code-2-0.yaml': code().replace(
+				'standardsVerified: false',
+				'standardsVerified: true'
+			),
+			'ethics/topics/gifts.md': frontmatter(
+				topic({
+					sectionRefs: [
+						{ codeId: 'rbt-ethics-code-2-0', section: '1', standardNumbers: ['2.03'] }
+					]
+				})
+			)
+		});
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS a topic claiming a credential none of its codes bind', async () => {
+		const r = await build(files(topic({ appliesTo: ['BCBA'] })));
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('REJECTS a code that carries the rights-holder text', async () => {
+		const r = await build(
+			files(topic(), 'officialText: Verbatim wording lifted from the code document.')
+		);
+		expect(rules(r).some((x) => x.startsWith('schema/ethics-code'))).toBe(true);
+	});
+
+	it('REJECTS a topic whose plain summary is not actually plain', async () => {
+		const r = await build(
+			files(
+				topic({
+					plainSummary:
+						'Contingent acceptance of remuneration from stakeholders precipitates reciprocal obligations that compromise the objectivity requisite to clinical determinations.'
+				})
+			)
+		);
+		expect(rules(r)).toContain('editorial/plain-language-too-hard');
+	});
+
+	it('REJECTS a topic that lists itself as related', async () => {
+		const r = await build(files(topic({ relatedTopics: ['gifts'] })));
+		expect(rules(r)).toContain('refs/unresolved');
 	});
 });

@@ -48,7 +48,7 @@ whenToEscalate:
     prompt levels are for this program.
 termRefs: [prompt, prompt-hierarchy, transfer-of-stimulus-control, discrete-trial-training]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.7 }
 tags: [prompting, teaching, session-management]
 citations:

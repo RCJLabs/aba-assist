@@ -35,7 +35,8 @@ contrastWith: [conflict-of-interest]
 seeAlso: [scope-of-practice, confidentiality]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.7 }
+  - { credential: RBT, code: F.8 }
   - { credential: BCBA, code: E.7 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2

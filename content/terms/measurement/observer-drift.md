@@ -24,7 +24,7 @@ nonExamples:
     setting: school
 seeAlso: [interobserver-agreement, reactivity, operational-definition]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.8 }
   - { credential: BCBA, code: C.8 }
 citations:
   - sourceId: johnston-pennypacker-2020

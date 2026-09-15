@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [descriptive-assessment]
 seeAlso: [functional-behavior-assessment, skills-assessment]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.2 }
   - { credential: BCBA, code: C.2 }
   - { credential: BCBA, code: F.1 }
 citations:

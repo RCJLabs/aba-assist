@@ -3,7 +3,7 @@
 questions:
   - id: rbt-c-dtt-components
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.3 }
     type: single-best-answer
     stem: >-
       In discrete-trial teaching, what typically follows the learner's response to the
@@ -64,7 +64,7 @@ questions:
 
   - id: rbt-c-net-example
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.4 }
     type: single-best-answer
     stem: >-
       A learner reaches toward a bin of blocks on a shelf. The technician holds the bin,
@@ -111,7 +111,7 @@ questions:
 
   - id: rbt-c-prompt-hierarchy-order
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.7 }
     type: single-best-answer
     stem: >-
       A program uses least-to-most prompting with the levels verbal, gestural, model and
@@ -156,7 +156,7 @@ questions:
 
   - id: rbt-c-most-to-least-when
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.7 }
     type: single-best-answer
     stem: >-
       A supervisor chooses most-to-least prompting for a learner who is starting a
@@ -201,7 +201,7 @@ questions:
 
   - id: rbt-c-time-delay
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.7 }
     type: single-best-answer
     stem: >-
       A program says the technician should show a picture and immediately say its name
@@ -247,7 +247,7 @@ questions:
 
   - id: rbt-c-shaping-example
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.10 }
     type: single-best-answer
     stem: >-
       A learner currently says "ba" for ball. The plan reinforces "ba," then only "bal,"
@@ -292,7 +292,7 @@ questions:
 
   - id: rbt-c-backward-chaining
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.5 }
     type: single-best-answer
     stem: >-
       When teaching a learner to put on a jacket, the technician does every step except
@@ -337,7 +337,7 @@ questions:
 
   - id: rbt-c-generalization-strategy
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.8 }
     type: single-best-answer
     stem: >-
       A learner can label a cup only when shown the blue cup used in teaching. Which
@@ -382,7 +382,7 @@ questions:
 
   - id: rbt-c-token-economy-backup
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.11 }
     type: single-best-answer
     stem: >-
       A learner earns stars for completing tasks but never gets to trade them for
@@ -427,7 +427,7 @@ questions:
 
   - id: rbt-c-thinning-too-fast
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.1 }
     type: single-best-answer
     stem: >-
       A program moves from reinforcing every correct response to reinforcing every tenth
@@ -473,7 +473,7 @@ questions:
 
   - id: rbt-c-mand-identify
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.4 }
     type: single-best-answer
     stem: >-
       A thirsty learner signs "drink" and is given water. Which verbal operant is this?
@@ -517,7 +517,7 @@ questions:
 
   - id: rbt-c-stimulus-control-established
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.6 }
     type: single-best-answer
     stem: >-
       A learner claps when the technician says "clap" and does not clap when the
@@ -561,7 +561,7 @@ questions:
 
   - id: rbt-c-task-analysis-purpose
     credential: RBT
-    taskRef: { credential: RBT, code: C }
+    taskRef: { credential: RBT, code: C.5 }
     type: single-best-answer
     stem: >-
       Before teaching hand washing, the supervisor writes out each separate step in

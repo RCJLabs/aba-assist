@@ -52,6 +52,7 @@
 	<a class="button" href={resolve('/study')} onclick={() => studyThis('all')}
 		>Flashcards for this exam</a
 	>
+	<a class="button" href={resolve('/ethics')}>Ethics reference</a>
 	<button
 		type="button"
 		onclick={() => settings.set('plainLanguage', !settings.plainLanguage)}

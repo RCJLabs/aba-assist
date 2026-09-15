@@ -23,7 +23,7 @@ nonExamples:
 contrastWith: [stimulus-generalization]
 seeAlso: [generalization, response-class]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.8 }
   - { credential: BCBA, code: B.13 }
 citations:
   - sourceId: stokes-baer-1977

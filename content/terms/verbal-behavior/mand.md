@@ -27,7 +27,7 @@ contrastWith: [tact]
 seeAlso: [verbal-behavior, motivating-operation, functional-communication-training]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.4 }
   - { credential: BCBA, code: B.18 }
 citations:
   - sourceId: skinner-1957

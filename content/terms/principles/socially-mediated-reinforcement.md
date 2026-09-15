@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [automatic-reinforcement]
 seeAlso: [function-of-behavior]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: D.1 }
   - { credential: BCBA, code: B.6 }
 citations:
   - sourceId: iwata-1982-1994

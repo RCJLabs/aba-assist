@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [function-of-behavior]
 seeAlso: [operational-definition, response-class]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.5 }
   - { credential: BCBA, code: C.1 }
 citations:
   - sourceId: johnston-pennypacker-2020

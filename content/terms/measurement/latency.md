@@ -32,7 +32,7 @@ contrastWith: [duration, interresponse-time]
 seeAlso: [frequency-and-rate, discriminative-stimulus]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.1 }
   - { credential: BCBA, code: C.4 }
 citations:
   - sourceId: baer-wolf-risley-1968

@@ -115,6 +115,10 @@
 			<strong>Practice questions</strong>
 			<span>{questionCount} original questions with a rationale for every option.</span>
 		</a>
+		<a class="tile" href={resolve('/ethics')}>
+			<strong>Ethics</strong>
+			<span>Both codes in plain language: what each obligation means in practice.</span>
+		</a>
 		<a class="tile" href={resolve('/exams')}>
 			<strong>Exam outlines</strong>
 			<span

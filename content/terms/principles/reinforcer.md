@@ -26,7 +26,7 @@ nonExamples:
 seeAlso: [positive-reinforcement, conditioned-reinforcer, preference-assessment]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.1 }
   - { credential: BCBA, code: B.4 }
 citations:
   - sourceId: skinner-1953

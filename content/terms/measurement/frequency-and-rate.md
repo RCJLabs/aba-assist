@@ -31,7 +31,8 @@ contrastWith: [percentage]
 seeAlso: [duration, latency, partial-interval-recording]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.1 }
+  - { credential: RBT, code: A.6 }
   - { credential: BCBA, code: C.3 }
 citations:
   - sourceId: baer-wolf-risley-1968

@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [latency]
 seeAlso: [differential-reinforcement-of-low-rates, duration]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.1 }
   - { credential: BCBA, code: C.4 }
 citations:
   - sourceId: johnston-pennypacker-2020

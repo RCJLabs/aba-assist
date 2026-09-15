@@ -30,7 +30,8 @@ contrastWith: [latency]
 seeAlso: [frequency-and-rate]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.1 }
+  - { credential: RBT, code: A.6 }
   - { credential: BCBA, code: C.4 }
 citations:
   - sourceId: baer-wolf-risley-1968

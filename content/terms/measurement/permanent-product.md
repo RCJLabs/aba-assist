@@ -24,7 +24,7 @@ nonExamples:
     setting: school
 seeAlso: [continuous-measurement]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.3 }
   - { credential: BCBA, code: C.2 }
 citations:
   - sourceId: johnston-pennypacker-2020

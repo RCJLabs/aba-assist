@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [negative-punishment]
 seeAlso: [punishment, overcorrection]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: B.5 }
   - { credential: BCBA, code: G.17 }
 citations:

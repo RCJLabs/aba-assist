@@ -28,7 +28,7 @@ nonExamples:
 seeAlso: [descriptive-assessment, three-term-contingency, scatterplot]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.5 }
 citations:
   - sourceId: bijou-peterson-ault-1968

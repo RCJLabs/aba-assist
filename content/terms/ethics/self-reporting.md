@@ -27,7 +27,7 @@ nonExamples:
     setting: any
 seeAlso: [ethics-code, supervision]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.3 }
   - { credential: BCBA, code: E.2 }
 citations:
   - sourceId: bacb-rbt-handbook-2026

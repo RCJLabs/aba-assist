@@ -33,7 +33,9 @@ contrastWith: []
 seeAlso: [scope-of-practice, session-note]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: E.4 }
+  - { credential: RBT, code: F.5 }
+  - { credential: RBT, code: F.6 }
   - { credential: BCBA, code: E.4 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2

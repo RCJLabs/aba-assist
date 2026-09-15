@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [sensory-extinction]
 seeAlso: [extinction, negative-reinforcement, extinction-burst]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.4 }
   - { credential: BCBA, code: B.10 }
 citations:
   - sourceId: iwata-1982-1994

@@ -27,7 +27,8 @@ nonExamples:
     setting: any
 seeAlso: [ethics-code, informed-consent]
 taskRefs:
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: E.1 }
+  - { credential: RBT, code: F.9 }
   - { credential: BCBA, code: E.8 }
   - { credential: BCBA, code: H.8 }
 citations:

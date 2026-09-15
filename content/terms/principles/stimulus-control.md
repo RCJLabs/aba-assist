@@ -26,7 +26,7 @@ seeAlso:
   [discriminative-stimulus, s-delta, stimulus-discrimination, transfer-of-stimulus-control]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.11 }
 citations:
   - sourceId: skinner-1953

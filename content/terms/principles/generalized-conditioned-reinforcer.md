@@ -24,6 +24,8 @@ nonExamples:
     setting: clinic
 seeAlso: [conditioned-reinforcer, token-economy]
 taskRefs:
+  - { credential: RBT, code: C.11 }
+  - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: B.7 }
   - { credential: BCBA, code: G.4 }
 citations:

@@ -26,7 +26,8 @@ nonExamples:
     setting: clinic
 seeAlso: [assent, ethics-code, social-validity]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.1 }
+  - { credential: RBT, code: F.10 }
   - { credential: BCBA, code: E.1 }
 citations:
   - sourceId: bacb-ethics-code-2022

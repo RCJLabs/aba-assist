@@ -28,7 +28,8 @@ nonExamples:
 seeAlso: [performance-feedback, modeling, supervision]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.2 }
+  - { credential: RBT, code: F.4 }
   - { credential: BCBA, code: I.5 }
 citations:
   - sourceId: parsons-rollyson-reid-2012

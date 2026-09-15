@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [response-cost]
 seeAlso: [negative-punishment, planned-ignoring, least-restrictive-alternative]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: G.17 }
 citations:
   - sourceId: azrin-holz-1966

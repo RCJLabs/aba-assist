@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [premack-principle]
 seeAlso: [behavioral-momentum, antecedent-intervention]
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: G.5 }
 citations:
   - sourceId: mace-1988

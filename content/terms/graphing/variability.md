@@ -23,7 +23,7 @@ nonExamples:
     setting: any
 seeAlso: [visual-analysis, level, trend]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.7 }
   - { credential: BCBA, code: C.11 }
 citations:
   - sourceId: kazdin-2011

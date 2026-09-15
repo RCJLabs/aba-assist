@@ -26,7 +26,7 @@ nonExamples:
     setting: any
 seeAlso: [confidentiality, ethics-code]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.6 }
   - { credential: BCBA, code: E.5 }
 citations:
   - sourceId: bacb-ethics-code-2022

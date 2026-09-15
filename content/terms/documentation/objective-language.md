@@ -27,7 +27,9 @@ nonExamples:
 seeAlso: [session-note, operational-definition, incident-report]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: A.5 }
+  - { credential: RBT, code: E.3 }
+  - { credential: RBT, code: E.4 }
   - { credential: BCBA, code: C.1 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2

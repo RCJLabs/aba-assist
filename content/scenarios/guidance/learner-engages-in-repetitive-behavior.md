@@ -41,7 +41,7 @@ whenToEscalate:
     learning, or is starting to cause any physical wear.
 termRefs: [automatic-reinforcement, function-of-behavior, dignity, sensory-extinction]
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: RBT, code: F }
   - { credential: BCBA, code: B.6 }
 tags: [stereotypy, automatic-reinforcement, dignity]

@@ -38,7 +38,7 @@ contrastWith: [negative-reinforcement, punishment]
 seeAlso: [extinction, motivating-operation]
 searchBoost: 1.5
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.1 }
   - { credential: BCBA, code: B.4 }
   - { credential: BCBA, code: G.1 }
 citations:

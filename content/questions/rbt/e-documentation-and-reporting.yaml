@@ -60,7 +60,7 @@ questions:
 
   - id: rbt-e-when-to-write-notes
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.4 }
     type: single-best-answer
     stem: >-
       When should a technician complete the session note and data for a session?
@@ -105,7 +105,7 @@ questions:
 
   - id: rbt-e-incident-report
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.3 }
     type: single-best-answer
     stem: >-
       During a session a learner trips and gets a small scrape on the knee. The learner
@@ -153,7 +153,7 @@ questions:
 
   - id: rbt-e-missing-data
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.4 }
     type: single-best-answer
     stem: >-
       A technician forgot to record data for the last 15 minutes of a session but
@@ -289,7 +289,7 @@ questions:
 
   - id: rbt-e-communicating-with-caregivers
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.1 }
     type: single-best-answer
     stem: >-
       At the end of a session a caregiver asks how it went. Which response is most
@@ -334,7 +334,7 @@ questions:
 
   - id: rbt-e-records-security
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.4 }
     type: single-best-answer
     stem: >-
       A technician needs to transport paper data sheets from a home session back to the
@@ -377,7 +377,7 @@ questions:
 
   - id: rbt-e-procedural-integrity
     credential: RBT
-    taskRef: { credential: RBT, code: E }
+    taskRef: { credential: RBT, code: E.2 }
     type: single-best-answer
     stem: >-
       A supervisor observes a session and scores which steps of the program the

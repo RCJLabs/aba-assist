@@ -30,7 +30,7 @@ contrastWith: [differential-reinforcement-of-other-behavior]
 seeAlso: [abolishing-operation, fixed-interval-schedule, antecedent-intervention]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: G.3 }
 citations:
   - sourceId: vollmer-1993

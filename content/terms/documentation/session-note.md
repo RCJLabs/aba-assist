@@ -34,7 +34,9 @@ contrastWith: [incident-report]
 seeAlso: [operational-definition, scope-of-practice]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: E.3 }
+  - { credential: RBT, code: E.4 }
+  - { credential: RBT, code: F.5 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

@@ -14,7 +14,9 @@ const ROUTES = [
 	'/exams/rbt-tco-3',
 	'/exams/bcba-tco-6',
 	'/study',
-	'/quiz'
+	'/quiz',
+	'/ethics',
+	'/ethics/gifts'
 ];
 
 /*

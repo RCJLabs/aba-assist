@@ -27,7 +27,7 @@ nonExamples:
     setting: school
 seeAlso: [discrimination-training, stimulus-equivalence]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: G.6 }
 citations:
   - sourceId: sidman-1994

@@ -26,7 +26,7 @@ nonExamples:
     setting: home
 seeAlso: [prompt, most-to-least-prompting, least-to-most-prompting]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.7 }
 citations:
   - sourceId: macduff-krantz-mcclannahan-2001

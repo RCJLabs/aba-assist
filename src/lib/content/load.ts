@@ -1,6 +1,8 @@
 import type {
 	ContentOutline,
 	CredentialFacts,
+	EthicsCode,
+	EthicsTopic,
 	QuizQuestion,
 	Term,
 	TermIndexEntry
@@ -9,6 +11,8 @@ import index from './generated/terms.index.json';
 import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
 import credentialData from './generated/credentials.json';
+import ethicsCodeData from './generated/ethics-codes.json';
+import ethicsTopicData from './generated/ethics-topics.json';
 
 export const termIndex = index as TermIndexEntry[];
 export const contentVersion = version as {
@@ -108,6 +112,41 @@ export const CREDENTIAL_LABELS: Record<string, string> = {
 // ------------------------------------------------------------ credentials
 
 export const credentials = credentialData as unknown as Record<string, CredentialFacts>;
+
+// ------------------------------------------------------------------ ethics
+
+/**
+ * The ethics reference, imported eagerly. Both codes and all topics together are a few
+ * tens of kilobytes — smaller than one category of the glossary — and someone reading one
+ * ethics topic almost always reads another, so there is nothing to gain from splitting it.
+ */
+export const ethicsCodes = ethicsCodeData as unknown as Record<string, EthicsCode>;
+export const ethicsTopics = ethicsTopicData as unknown as Record<string, EthicsTopic>;
+
+export const ethicsTopicList: EthicsTopic[] = Object.values(ethicsTopics);
+
+export function ethicsTopicById(id: string): EthicsTopic | undefined {
+	return ethicsTopics[id];
+}
+
+/** Topics that bind a given credential, in the order they are authored under each code. */
+export function topicsForCredential(credential: string | null): EthicsTopic[] {
+	if (!credential) return ethicsTopicList;
+	return ethicsTopicList.filter((t) => t.appliesTo.includes(credential as never));
+}
+
+/** Topics grouped by the section they sit under, for one code. */
+export function topicsBySection(codeId: string, credential: string | null) {
+	const code = ethicsCodes[codeId];
+	if (!code) return [];
+	const pool = topicsForCredential(credential);
+	return code.sections.map((section) => ({
+		section,
+		topics: pool.filter((t) =>
+			t.sectionRefs.some((r) => r.codeId === codeId && r.section === section.number)
+		)
+	}));
+}
 
 // -------------------------------------------------------------- questions
 

@@ -25,7 +25,7 @@ nonExamples:
     setting: clinic
 seeAlso: [generalization, stimulus-generalization, teaching-loosely]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.8 }
   - { credential: BCBA, code: G.15 }
 citations:
   - sourceId: stokes-baer-1977

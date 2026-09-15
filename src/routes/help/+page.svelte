@@ -29,7 +29,8 @@
 	This page tells you who to contact and what to write down. It deliberately does not tell you
 	what to do physically, and that is not an omission — see
 	<a href="#why">why below</a>. For everyday situations that are not emergencies, see
-	<a href={resolve('/scenarios')}>Situations</a>.
+	<a href={resolve('/scenarios')}>Situations</a>; for what the codes require of you, see
+	<a href={resolve('/ethics')}>Ethics</a>.
 </p>
 
 {#each escalationScenarios as s (s.id)}

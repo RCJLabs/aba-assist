@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [cultural-responsiveness]
 seeAlso: [ethics-code, dignity]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.10 }
   - { credential: BCBA, code: E.9 }
   - { credential: BCBA, code: E.11 }
   - { credential: BCBA, code: I.3 }

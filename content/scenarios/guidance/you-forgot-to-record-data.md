@@ -39,7 +39,7 @@ whenToEscalate:
 termRefs: [data-sheet, objective-language, session-note, treatment-integrity]
 taskRefs:
   - { credential: RBT, code: A }
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: E.4 }
   - { credential: BCBA, code: C.7 }
 tags: [documentation, data, integrity]
 citations:

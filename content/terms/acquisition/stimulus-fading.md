@@ -26,7 +26,7 @@ nonExamples:
 contrastWith: [time-delay]
 seeAlso: [prompt-fading, prompt]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.8 }
 citations:
   - sourceId: terrace-1963

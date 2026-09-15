@@ -27,7 +27,7 @@ nonExamples:
 seeAlso: [level, trend, variability, baseline, line-graph]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.7 }
   - { credential: BCBA, code: C.11 }
   - { credential: BCBA, code: D.6 }
 citations:

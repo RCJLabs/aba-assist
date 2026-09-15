@@ -38,7 +38,7 @@ seeAlso:
   [preference-assessment, extinction, differential-reinforcement-of-alternative-behavior]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: B }
+  - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.5 }
   - { credential: BCBA, code: F.6 }
 citations:

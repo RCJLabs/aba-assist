@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [discriminative-stimulus]
 seeAlso: [stimulus-control, stimulus-discrimination]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.11 }
 citations:
   - sourceId: skinner-1953

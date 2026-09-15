@@ -1,0 +1,126 @@
+# Ethics Code for Behavior Analysts — structure and our own summaries.
+#
+# What is verified: effective 2022-01-01, binds BCBA and BCaBA certificants and
+# applicants, and is built on four core principles across six sections (BCBA Handbook,
+# 06/2026, "Ethics and Self-Reporting", p. 45).
+#
+# What is NOT verified: the individual standard numbers. `standardsVerified: false`, so
+# the build rejects any topic that cites one. The section scopes below are our own
+# description of what each section covers; the code's own headings are not reproduced.
+
+id: ethics-code-for-behavior-analysts-2022
+issuer: BACB
+shortName: Ethics Code for Behavior Analysts
+effectiveDate: '2022-01-01'
+appliesTo: [BCBA, BCaBA]
+sourceId: bacb-ethics-code-2022
+officialUrl: https://www.bacb.com/ethics-information/ethics-codes/
+totalStandards: null
+standardsVerified: false
+
+ourOverview: >-
+  The conduct rules for certified analysts and assistant analysts. It is longer and more
+  demanding than the technician code because analysts decide things: what to assess, what
+  to treat, how, with whom, and when to stop. It also governs how you supervise other
+  people, what you say publicly, and how you conduct research. Analysts who supervise are
+  expected to review it — and the technician code where it applies — with the people they
+  supervise, so a technician's ethics questions usually end up here.
+
+corePrinciples:
+  - number: 1
+    ourLabel: Benefit others
+    ourSummary: >-
+      Work for the good of clients, stakeholders, supervisees, research participants and
+      society, and protect their welfare and rights. In practice this is the principle
+      behind choosing effective procedures, minimising risk, and putting the client's
+      interests above the organisation's convenience or your own.
+    sourceNote: >-
+      One of the four core principles stated in the BCBA Handbook (06/2026), p. 45, and
+      corroborated by the RBT test content outline's parallel list.
+  - number: 2
+    ourLabel: Treat others with compassion, dignity and respect
+    ourSummary: >-
+      Treat everyone you work with as a person with their own preferences, culture and
+      right to privacy — clients and supervisees alike. This principle drives assent,
+      choice, cultural responsiveness, non-discrimination, and the rule against
+      exploiting a relationship where you hold the power.
+    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+  - number: 3
+    ourLabel: Behave with integrity
+    ourSummary: >-
+      Be truthful, keep your commitments, follow the legal and professional obligations
+      that bind you, and hold yourself accountable when you fall short. It covers honest
+      billing and documentation, honest public statements, and correcting your own errors
+      rather than concealing them.
+    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+  - number: 4
+    ourLabel: Ensure your competence
+    ourSummary: >-
+      Practise only within what your training and supervised experience actually cover,
+      and keep that current through continuing education and consultation. The credential
+      defines what you may do; competence defines what you should. Where the two differ,
+      competence wins.
+    sourceNote: One of the four core principles stated in the BCBA Handbook (06/2026), p. 45.
+
+sections:
+  - number: '1'
+    ourLabel: Your conduct as a professional
+    ourSummary: >-
+      Who you are on the job regardless of who the client is: truthfulness,
+      accountability, staying within your role and your competence, keeping that
+      competence current, cultural responsiveness, non-discrimination and non-harassment,
+      handling multiple relationships and gifts, and self-reporting certain events to the
+      certifying board.
+  - number: '2'
+    ourLabel: Your conduct in practice
+    ourSummary: >-
+      The work itself: providing effective treatment, protecting and documenting
+      confidential information, billing accurately, obtaining informed consent, involving
+      clients and caregivers, collaborating with other providers, considering medical
+      needs, and selecting, describing, monitoring and adjusting assessments and
+      interventions on the evidence.
+  - number: '3'
+    ourLabel: What you owe clients and stakeholders
+    ourSummary: >-
+      The relationship around the service: who the client is, accepting and referring
+      cases, service and financial agreements, third-party contracts and the conflicts
+      they create, advocating for the services a person actually needs, and handing over
+      or ending services without leaving anyone stranded.
+  - number: '4'
+    ourLabel: What you owe supervisees and trainees
+    ourSummary: >-
+      Supervision as a professional activity in its own right: meeting the supervision
+      requirements, being competent to supervise, taking on only as many supervisees as
+      you can genuinely oversee, training with feedback and direct observation,
+      documenting it, delegating only what a supervisee is competent to do, evaluating
+      whether your supervision is working, and ending it responsibly.
+  - number: '5'
+    ourLabel: What you say in public
+    ourSummary: >-
+      Public statements of every kind — advertising, websites, presentations, media and
+      social media: they must be truthful, must not misrepresent the profession or your
+      credentials, must protect the confidentiality of the people you serve, and must not
+      solicit testimonials from the clients currently depending on you.
+  - number: '6'
+    ourLabel: How you conduct research
+    ourSummary: >-
+      Research obligations: following applicable law and review requirements, consent and
+      confidentiality for participants, competence to conduct the work, managing conflicts
+      of interest, crediting contributions honestly, avoiding plagiarism, and retaining
+      and reporting data accurately.
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+  changeNote: >-
+    Structure and core principles verified from the BCBA Handbook; section scopes are our
+    own description. Individual standard numbers deliberately not modelled.
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

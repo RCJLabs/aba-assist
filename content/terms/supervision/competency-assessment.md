@@ -31,7 +31,8 @@ nonExamples:
     setting: any
 seeAlso: [supervision, behavioral-skills-training]
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.2 }
+  - { credential: RBT, code: F.4 }
   - { credential: BCBA, code: I.4 }
 citations:
   - sourceId: bacb-rbt-handbook-2026

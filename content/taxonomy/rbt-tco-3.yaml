@@ -1,21 +1,16 @@
-# RBT Test Content Outline (3rd edition) — structural facts only.
+# RBT Test Content Outline (3rd edition) — structural facts, with OUR OWN summaries.
 #
-# Domain names and exam weights are FACTS and are corroborated across multiple
-# independent sources. They are modelled here freely; the certifying board's wording for
-# what each task says is not reproduced anywhere in this repo (see OfficialTextGuard).
+# Verified against the outline document itself (updated 09/2024, read 2026-09-15) and the
+# RBT Handbook (06/2026): 43 tasks in 6 domains, per-domain question counts and weights as
+# below, 75 scored plus 10 unscored questions, 90 minutes. Task codes use the document's
+# own dot notation (A.1, F.10).
 #
-# `tasks` is deliberately EMPTY and `countsVerified` is false.
+# Every `ourSummary` and `plainSummary` is written from scratch. The outline's wording for
+# what each task says is NOT reproduced here — see OfficialTextGuard — and readers who need
+# the exact task statement are sent to the official document.
 #
-# What IS verified, from the RBT Handbook (06/2026) read on 2026-09-14: 43 tasks in six
-# content areas; 75 scored plus 10 unscored questions; 90 minutes; and the per-area
-# question counts and weights below. What is NOT verified is the individual task codes,
-# because the outline document itself has not been read. Inventing plausible-looking task
-# codes would be exactly the failure mode that makes the existing apps in this space
-# untrustworthy. Until the outline is read, content is tagged to these areas at the
-# domain level (taskRefs with a bare letter), which the build validates.
-#
-# TO FILL IN: read the RBT Test Content Outline (3rd ed.) PDF, then add each task with an
-# original summary and flip countsVerified to true.
+# The ethics domain doubled from 5 tasks in the 2nd edition to 10 here, which is the single
+# biggest change in this edition and the reason the ethics reference exists.
 
 id: rbt-tco-3
 credential: RBT
@@ -24,7 +19,7 @@ effectiveDate: '2026-01-01'
 issuer: BACB
 sourceId: bacb-rbt-tco-3
 subsetOf: null
-countsVerified: false
+countsVerified: true
 totalTasks: 43
 
 exam:
@@ -41,7 +36,85 @@ domains:
       Recording what actually happened during a session and turning it into something a
       supervisor can read. Covers continuous and discontinuous measurement, recording
       accuracy, and putting data on a graph so change over time is visible.
-    tasks: []
+    tasks:
+      - code: A.1
+        ourSummary: >-
+          Record every occurrence of a behaviour as the program specifies, using count,
+          rate, duration, latency or the gap between responses.
+        plainSummary: Measure every time the behaviour happens, and how long or how fast.
+        keywords: [frequency, rate, duration, latency, interresponse time, continuous]
+        termRefs:
+          [continuous-measurement, frequency-and-rate, duration, latency, interresponse-time]
+        attestation: &att
+          originalProse: true
+          noVerbatimSource: true
+          aiAssisted: true
+          consulted: >-
+            Task topic read from the official outline; the summary is our own restatement,
+            written without reproducing the document's wording.
+      - code: A.2
+        ourSummary: >-
+          Run sampling procedures that check for the behaviour during or at the end of set
+          intervals rather than recording every instance.
+        plainSummary: Check for the behaviour at set times instead of counting every one.
+        keywords: [partial interval, whole interval, momentary time sampling, discontinuous]
+        termRefs:
+          [
+            discontinuous-measurement,
+            partial-interval-recording,
+            whole-interval-recording,
+            momentary-time-sampling
+          ]
+        attestation: *att
+      - code: A.3
+        ourSummary: >-
+          Measure a behaviour by counting the lasting result it left behind rather than by
+          watching it happen.
+        plainSummary: Count what the behaviour left behind, like finished worksheets.
+        keywords: [permanent product, outcome recording]
+        termRefs: [permanent-product]
+        attestation: *att
+      - code: A.4
+        ourSummary: >-
+          Transfer session data into the recording system and keep the learner's graphs
+          current so the supervisor can read them.
+        plainSummary: Enter your data and keep the graphs up to date.
+        keywords: [data entry, graphing, updating graphs]
+        termRefs: [line-graph, data-sheet, phase-change-line]
+        attestation: *att
+      - code: A.5
+        ourSummary: >-
+          State what a behaviour and the situation around it look like in terms two people
+          could observe and score the same way.
+        plainSummary: Describe behaviour so anyone watching would score it the same.
+        keywords: [operational definition, observable, measurable]
+        termRefs: [operational-definition, topography, objective-language]
+        attestation: *att
+      - code: A.6
+        ourSummary: >-
+          Turn raw session data into the summary the program asks for, such as a rate, an
+          average duration or a percentage.
+        plainSummary: Do the maths on your data — rate, average, percentage.
+        keywords: [rate, mean duration, percentage, summarising data]
+        termRefs: [frequency-and-rate, percentage, count, duration]
+        attestation: *att
+      - code: A.7
+        ourSummary: >-
+          Read a graph for the direction the data are heading, and say whether the behaviour
+          is rising, falling or flat.
+        plainSummary: Look at a graph and say which way the behaviour is going.
+        keywords: [trend, visual analysis, level, variability]
+        termRefs: [trend, visual-analysis, level, variability]
+        attestation: *att
+      - code: A.8
+        ourSummary: >-
+          Explain what goes wrong when data are inaccurate or a procedure is not run as
+          written: decisions get made on a picture that is not real.
+        plainSummary: Know why bad data and not following the plan lead to bad decisions.
+        keywords: [reliability, procedural fidelity, treatment integrity, IOA]
+        termRefs:
+          [interobserver-agreement, treatment-integrity, observer-drift, treatment-drift]
+        attestation: *att
 
   - letter: B
     name: Behavior Assessment
@@ -51,7 +124,48 @@ domains:
       The technician's part in finding out why a behaviour happens and what a learner
       prefers — assisting with preference assessments and functional assessment
       procedures that a supervisor designs and interprets.
-    tasks: []
+    tasks:
+      - code: B.1
+        ourSummary: >-
+          Run preference assessments in the format the program names, and record what the
+          learner chose so reinforcers can be selected from evidence.
+        plainSummary: Find out what the learner prefers, using the method the plan names.
+        keywords:
+          [preference assessment, MSWO, MSW, paired stimulus, free operant, single stimulus]
+        termRefs:
+          [
+            preference-assessment,
+            multiple-stimulus-without-replacement,
+            multiple-stimulus-with-replacement,
+            paired-stimulus-preference-assessment,
+            free-operant-preference-assessment,
+            single-stimulus-preference-assessment
+          ]
+        attestation: *att
+      - code: B.2
+        ourSummary: >-
+          Assist with assessments of what a learner can and cannot yet do across skill
+          areas, running the parts the supervisor assigns.
+        plainSummary: Help find out which skills the learner already has.
+        keywords: [skills assessment, curriculum-based, developmental, social skills]
+        termRefs: [skills-assessment, indirect-assessment]
+        attestation: *att
+      - code: B.3
+        ourSummary: >-
+          Assist with the parts of a functional assessment a technician may run, including
+          descriptive recording and conditions of a functional analysis.
+        plainSummary: Help with the assessments that work out why a behaviour happens.
+        keywords: [functional assessment, descriptive assessment, functional analysis, ABC]
+        termRefs:
+          [
+            functional-behavior-assessment,
+            descriptive-assessment,
+            functional-analysis,
+            abc-recording,
+            scatterplot,
+            function-of-behavior
+          ]
+        attestation: *att
 
   - letter: C
     name: Behavior Acquisition
@@ -61,7 +175,148 @@ domains:
       Teaching new skills. The largest domain on the exam: teaching procedures, prompting
       and prompt fading, chaining, generalisation and maintenance, and running programmes
       the way they are written.
-    tasks: []
+    tasks:
+      - code: C.1
+        ourSummary: >-
+          Deliver positive and negative reinforcement the way the program specifies — right
+          away, only for the target response, and on the schedule and size written down.
+        plainSummary: Give reinforcement exactly as the plan says — timing, amount, schedule.
+        keywords:
+          [positive reinforcement, negative reinforcement, schedules, magnitude, contingent]
+        termRefs:
+          [
+            positive-reinforcement,
+            negative-reinforcement,
+            reinforcer,
+            continuous-reinforcement,
+            intermittent-reinforcement,
+            fixed-ratio-schedule,
+            variable-ratio-schedule,
+            fixed-interval-schedule,
+            variable-interval-schedule
+          ]
+        attestation: *att
+      - code: C.2
+        ourSummary: >-
+          Build and use reinforcers that only work because of a learning history, by pairing
+          them with things that already reinforce.
+        plainSummary: Make new things work as rewards by pairing them with known rewards.
+        keywords: [conditioned reinforcer, pairing, generalized conditioned reinforcer]
+        termRefs:
+          [
+            conditioned-reinforcer,
+            generalized-conditioned-reinforcer,
+            pairing,
+            unconditioned-reinforcer
+          ]
+        attestation: *att
+      - code: C.3
+        ourSummary: >-
+          Run structured teaching trials with a clear instruction, a response, a planned
+          consequence and a pause before the next trial.
+        plainSummary: Run structured teaching trials the way the program sets them out.
+        keywords: [discrete trial, DTT, error correction, inter-trial interval]
+        termRefs: [discrete-trial-training, error-correction, three-term-contingency]
+        attestation: *att
+      - code: C.4
+        ourSummary: >-
+          Teach in the flow of ordinary activity, using what the learner is already
+          interested in and the consequence that naturally follows.
+        plainSummary: Teach during play and daily routines, using what the learner wants.
+        keywords: [naturalistic teaching, incidental teaching, NET, natural environment]
+        termRefs: [naturalistic-teaching, incidental-teaching, mand, motivating-operation]
+        attestation: *att
+      - code: C.5
+        ourSummary: >-
+          Teach a multi-step skill from its written step list, linking steps forward, from
+          the last step back, or with every step attempted each time.
+        plainSummary: Teach step-by-step skills using the written list of steps.
+        keywords: [chaining, forward, backward, total task, task analysis]
+        termRefs:
+          [chaining, task-analysis, forward-chaining, backward-chaining, total-task-chaining]
+        attestation: *att
+      - code: C.6
+        ourSummary: >-
+          Teach a learner to respond to the right stimulus and not to others, by reinforcing
+          in its presence and withholding in its absence.
+        plainSummary: Teach the learner to respond to the right thing and not the others.
+        keywords: [discrimination training, SD, S-delta, conditional discrimination]
+        termRefs:
+          [
+            discrimination-training,
+            discriminative-stimulus,
+            s-delta,
+            stimulus-control,
+            stimulus-discrimination,
+            matching-to-sample,
+            listener-responding
+          ]
+        attestation: *att
+      - code: C.7
+        ourSummary: >-
+          Use the prompts the program names — on the learner or on the materials — and fade
+          them on the schedule written, so the natural cue takes over.
+        plainSummary: Give the help the plan names, then remove it the way the plan says.
+        keywords:
+          [prompt, errorless, least-to-most, most-to-least, stimulus fading, time delay]
+        termRefs:
+          [
+            prompt,
+            prompt-hierarchy,
+            prompt-fading,
+            errorless-teaching,
+            least-to-most-prompting,
+            most-to-least-prompting,
+            stimulus-fading,
+            time-delay,
+            transfer-of-stimulus-control
+          ]
+        attestation: *att
+      - code: C.8
+        ourSummary: >-
+          Run the steps that make a skill work beyond the teaching setting — across people,
+          places and materials — as the program directs.
+        plainSummary: Practise the skill with different people, places and materials.
+        keywords: [generalization, multiple exemplars, across settings, teaching loosely]
+        termRefs:
+          [
+            generalization,
+            stimulus-generalization,
+            response-generalization,
+            multiple-exemplar-training,
+            teaching-loosely
+          ]
+        attestation: *att
+      - code: C.9
+        ourSummary: >-
+          Tell apart teaching a skill the learner does not yet have from keeping a mastered
+          skill going, and run each as written.
+        plainSummary: Know the difference between teaching a new skill and keeping an old one.
+        keywords: [maintenance, acquisition, schedule thinning, mastery]
+        termRefs: [maintenance, schedule-thinning, generalization]
+        attestation: *att
+      - code: C.10
+        ourSummary: >-
+          Reinforce closer and closer versions of a target response, moving the criterion as
+          the program specifies, to build a behaviour that does not yet occur.
+        plainSummary: Build a new behaviour by rewarding closer and closer attempts.
+        keywords: [shaping, successive approximations, differential reinforcement]
+        termRefs: [shaping]
+        attestation: *att
+      - code: C.11
+        ourSummary: >-
+          Run a points or tokens system as written: what earns a token, what tokens buy, and
+          when the exchange happens.
+        plainSummary: Run a token or points system the way it is written.
+        keywords: [token economy, tokens, backup reinforcers, exchange]
+        termRefs:
+          [
+            token-economy,
+            generalized-conditioned-reinforcer,
+            conditioned-reinforcer,
+            response-cost
+          ]
+        attestation: *att
 
   - letter: D
     name: Behavior Reduction
@@ -69,9 +324,104 @@ domains:
     examItems: 14
     ourDescription: >-
       Implementing the reduction side of a behaviour plan as written — antecedent
-      strategies, differential reinforcement, and the technician's role in following a
-      plan they did not design and may not modify.
-    tasks: []
+      strategies, differential reinforcement, extinction, and the technician's role in
+      following a plan they did not design and may not modify.
+    tasks:
+      - code: D.1
+        ourSummary: >-
+          Recognise the usual reasons a behaviour keeps happening: attention, escape,
+          access to something, or a consequence the behaviour produces by itself.
+        plainSummary: Know the four common reasons behaviour keeps happening.
+        keywords: [function, attention, escape, tangible, automatic]
+        termRefs:
+          [
+            function-of-behavior,
+            automatic-reinforcement,
+            socially-mediated-reinforcement,
+            negative-reinforcement
+          ]
+        attestation: *att
+      - code: D.2
+        ourSummary: >-
+          Run the strategies that change what happens before a behaviour — free access,
+          easy requests first, or reducing demands — as the plan specifies.
+        plainSummary: Run the "before it happens" strategies the plan sets out.
+        keywords: [antecedent intervention, NCR, high-probability sequence, demand fading]
+        termRefs:
+          [
+            antecedent-intervention,
+            noncontingent-reinforcement,
+            high-probability-request-sequence,
+            motivating-operation,
+            abolishing-operation,
+            setting-event
+          ]
+        attestation: *att
+      - code: D.3
+        ourSummary: >-
+          Reinforce the behaviour the plan names — an alternative, an incompatible one, the
+          absence of the target, or a lower rate — and withhold for the target.
+        plainSummary: Reward the behaviour the plan names instead of the problem behaviour.
+        keywords: [DRO, DRA, DRI, DRL, FCT, differential reinforcement]
+        termRefs:
+          [
+            differential-reinforcement-of-alternative-behavior,
+            differential-reinforcement-of-other-behavior,
+            differential-reinforcement-of-incompatible-behavior,
+            differential-reinforcement-of-low-rates,
+            functional-communication-training,
+            replacement-behavior
+          ]
+        attestation: *att
+      - code: D.4
+        ourSummary: >-
+          Withhold the consequence that has been maintaining a behaviour, exactly as the
+          plan specifies and consistently every time.
+        plainSummary: Stop the behaviour from working, the way the plan says, every time.
+        keywords: [extinction, planned ignoring, escape extinction, sensory extinction]
+        termRefs: [extinction, planned-ignoring, escape-extinction, sensory-extinction]
+        attestation: *att
+      - code: D.5
+        ourSummary: >-
+          Deliver the punishment-based components a plan authorises, such as time away from
+          reinforcement, only as written and only where permitted.
+        plainSummary: Run any punishment steps only exactly as the plan authorises them.
+        keywords: [punishment, time-out, response cost, restrictive procedures]
+        termRefs:
+          [
+            punishment,
+            positive-punishment,
+            negative-punishment,
+            time-out,
+            response-cost,
+            least-restrictive-alternative
+          ]
+        attestation: *att
+      - code: D.6
+        ourSummary: >-
+          Describe the side effects that come with extinction and with punishment — bursts,
+          new forms of the behaviour, old behaviour returning, and emotional reactions.
+        plainSummary: Know what else happens when extinction or punishment is used.
+        keywords:
+          [
+            extinction burst,
+            response variation,
+            resurgence,
+            emotional responding,
+            escape,
+            avoidance
+          ]
+        termRefs:
+          [extinction-burst, spontaneous-recovery, resurgence, behavioral-contrast, punishment]
+        attestation: *att
+      - code: D.7
+        ourSummary: >-
+          Follow the crisis procedure the learner's plan and the employer set out, including
+          who to contact and what to record afterwards.
+        plainSummary: Follow your site's crisis procedure and report it afterwards.
+        keywords: [crisis, emergency, incident report, escalation]
+        termRefs: [incident-report, scope-of-practice, mandated-reporter]
+        attestation: *att
 
   - letter: E
     name: Documentation and Reporting
@@ -81,7 +431,39 @@ domains:
       Session notes, incident reporting, and communicating with the supervisor. Covers
       what belongs in a note, objective versus subjective language, and the legal and
       billing consequences of vague documentation.
-    tasks: []
+    tasks:
+      - code: E.1
+        ourSummary: >-
+          Pass on what caregivers, teachers and other team members raise to the supervisor
+          promptly, rather than answering it yourself or letting it wait.
+        plainSummary: Tell your supervisor promptly what the family or teachers raise.
+        keywords: [communication, caregivers, intervention team, timely]
+        termRefs: [collaboration, scope-of-practice, supervision]
+        attestation: *att
+      - code: E.2
+        ourSummary: >-
+          Ask the supervisor for clinical direction when you need it, promptly and through
+          the route your organisation uses, and say what is most urgent.
+        plainSummary: Ask your supervisor for direction quickly, through the right channel.
+        keywords: [clinical direction, chain of command, training needs, data irregularities]
+        termRefs: [supervision, scope-of-practice, scope-of-competence, treatment-integrity]
+        attestation: *att
+      - code: E.3
+        ourSummary: >-
+          Record and report the things outside the program that could be affecting progress,
+          such as illness, a medication change or a change in routine.
+        plainSummary: Report anything that might be affecting the learner, like illness.
+        keywords: [variables affecting progress, illness, medication, schedule change]
+        termRefs: [setting-event, session-note, incident-report, objective-language]
+        attestation: *att
+      - code: E.4
+        ourSummary: >-
+          Write up what happened in the session factually, within the legal, funder and
+          employer rules that apply to the record.
+        plainSummary: Write what actually happened, in the form your workplace requires.
+        keywords: [session note, objective, legal, regulatory, workplace requirements]
+        termRefs: [session-note, objective-language, data-sheet, confidentiality, hipaa]
+        attestation: *att
 
   - letter: F
     name: Ethics
@@ -90,21 +472,114 @@ domains:
     ourDescription: >-
       Scope of practice, supervision requirements, confidentiality, dual relationships,
       professional boundaries, and dignity. The number of ethics tasks doubled in this
-      edition relative to the 2nd.
-    tasks: []
+      edition relative to the 2nd, from five to ten.
+    tasks:
+      - code: F.1
+        ourSummary: >-
+          Recognise the principles the technician ethics code is built on — benefiting
+          others, treating people with compassion, dignity and respect, and acting with
+          integrity — and use them to decide what to do.
+        plainSummary: Know the core principles behind the code and use them to decide.
+        keywords: [core principles, benefit others, dignity, integrity, compassion]
+        termRefs: [ethics-code, dignity, assent]
+        attestation: *att
+      - code: F.2
+        ourSummary: >-
+          Deliver only the procedures you have been trained on and shown you can perform,
+          and say so when something is new to you.
+        plainSummary: Only do what you have been trained and checked on.
+        keywords: [competence, training, competency assessment]
+        termRefs:
+          [
+            scope-of-competence,
+            behavioral-skills-training,
+            competency-assessment,
+            scope-of-practice
+          ]
+        attestation: *att
+      - code: F.3
+        ourSummary: >-
+          Practise only while a qualified supervisor is on record for you and the required
+          amount and structure of supervision is actually happening.
+        plainSummary: Only practise while you really are being supervised as required.
+        keywords: [ongoing supervision, supervisor requirements, 5 percent, inactive]
+        termRefs: [supervision, self-reporting, scope-of-practice]
+        attestation: *att
+      - code: F.4
+        ourSummary: >-
+          Recognise what good supervision consists of — being shown, practising, getting
+          feedback, and being observed with a client — and take part in it.
+        plainSummary: Know what good supervision looks like and take part in it.
+        keywords: [BST, modelling, rehearsal, feedback, observation]
+        termRefs:
+          [
+            behavioral-skills-training,
+            performance-feedback,
+            supervision,
+            competency-assessment
+          ]
+        attestation: *att
+      - code: F.5
+        ourSummary: >-
+          Follow the rules for collecting, using, storing, protecting and sharing client
+          information, in every setting and on every device.
+        plainSummary: Keep client information private, everywhere and on every device.
+        keywords: [confidentiality, privacy, records, HIPAA, disclosure]
+        termRefs: [confidentiality, hipaa, data-sheet, session-note]
+        attestation: *att
+      - code: F.6
+        ourSummary: >-
+          Follow the rules for anything you say publicly about your work, including social
+          media, and never misstate your credentials or what services achieve.
+        plainSummary: Be careful and honest in anything you post or say publicly.
+        keywords: [public statements, social media, credentials, misrepresentation]
+        termRefs: [public-statement, confidentiality, ethics-code]
+        attestation: *att
+      - code: F.7
+        ourSummary: >-
+          Recognise the kinds of second relationship that create a conflict, the harm they
+          risk, and what to do when one cannot be avoided.
+        plainSummary: Spot second relationships that cause problems and handle them.
+        keywords: [multiple relationships, dual relationships, conflict of interest]
+        termRefs: [dual-relationship, conflict-of-interest, ethics-code]
+        attestation: *att
+      - code: F.8
+        ourSummary: >-
+          Follow the code's limits on giving and accepting gifts with the people you work
+          with and their families.
+        plainSummary: Follow the rules about gifts to and from families.
+        keywords: [gifts, nominal value, boundaries]
+        termRefs: [conflict-of-interest, dual-relationship]
+        attestation: *att
+      - code: F.9
+        ourSummary: >-
+          Use the interpersonal skills the role needs — taking feedback, listening, asking
+          for input and working with others — when acting in the technician role.
+        plainSummary: Take feedback well, listen, ask, and work with the team.
+        keywords: [interpersonal skills, feedback, active listening, collaboration]
+        termRefs: [collaboration, performance-feedback, supervision]
+        attestation: *att
+      - code: F.10
+        ourSummary: >-
+          Keep examining your own assumptions and adapt how you work to the learner's and
+          family's culture, in services and in professional relationships.
+        plainSummary: Keep checking your own assumptions and fit services to the family.
+        keywords: [cultural humility, cultural responsiveness, personal bias]
+        termRefs: [cultural-humility, cultural-responsiveness, dignity]
+        attestation: *att
 
 review:
   status: in-review
   authoredBy: claude
-  authoredOn: '2026-09-14'
+  authoredOn: '2026-09-15'
   reviewedBy: null
   reviewedOn: null
   changeNote: >-
-    Areas, weights, item counts and exam format verified from the RBT Handbook (06/2026).
-    Task codes still pending a read of the outline document itself.
+    All 43 task codes filled in from the outline document (updated 09/2024), with original
+    summaries. Domains, weights, item counts and exam format verified.
 
 provenance:
   license: CC-BY-SA-4.0
   tier: free
-  version: 1
-  updated: '2026-09-14'
+  version: 2
+  updated: '2026-09-15'

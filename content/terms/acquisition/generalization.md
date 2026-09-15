@@ -33,7 +33,8 @@ contrastWith: []
 seeAlso: [naturalistic-teaching, prompt-fading, discriminative-stimulus]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.8 }
+  - { credential: RBT, code: C.9 }
   - { credential: BCBA, code: B.13 }
   - { credential: BCBA, code: G.15 }
 citations:

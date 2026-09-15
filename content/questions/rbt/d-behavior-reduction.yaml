@@ -3,7 +3,7 @@
 questions:
   - id: rbt-d-dra-identify
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
       A plan says: reinforce the learner each time they tap a peer's shoulder to start
@@ -65,7 +65,7 @@ questions:
 
   - id: rbt-d-dro-identify
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
       A plan says: deliver a token at the end of every 3-minute interval in which no
@@ -113,7 +113,7 @@ questions:
 
   - id: rbt-d-dri-identify
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
       To reduce a learner's hand-mouthing, the plan reinforces the learner for keeping
@@ -159,7 +159,7 @@ questions:
 
   - id: rbt-d-extinction-burst
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.4 }
     type: single-best-answer
     stem: >-
       A plan puts attention-maintained whining on extinction. On the second day the
@@ -206,7 +206,7 @@ questions:
 
   - id: rbt-d-ncr-identify
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.2 }
     type: single-best-answer
     stem: >-
       A learner's shouting has been maintained by attention. The plan now has staff give
@@ -252,7 +252,7 @@ questions:
 
   - id: rbt-d-high-p-sequence
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.2 }
     type: single-best-answer
     stem: >-
       Before asking a learner to put away toys, the technician quickly asks for a high
@@ -297,7 +297,7 @@ questions:
 
   - id: rbt-d-fct-function-match
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
       A functional assessment shows a learner's screaming ends difficult tasks. Which
@@ -343,7 +343,7 @@ questions:
 
   - id: rbt-d-timeout-escape
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.1 }
     type: single-best-answer
     stem: >-
       A student is sent to sit in the hallway for two minutes each time they refuse to
@@ -388,7 +388,7 @@ questions:
 
   - id: rbt-d-rbt-cannot-modify
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.7 }
     type: single-best-answer
     stem: >-
       A technician thinks a learner's reduction plan would work better with a different
@@ -434,7 +434,7 @@ questions:
 
   - id: rbt-d-planned-ignoring-limits
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.4 }
     type: single-best-answer
     stem: >-
       Planned ignoring is written into a plan for a learner whose silly noises are
@@ -482,7 +482,7 @@ questions:
 
   - id: rbt-d-response-cost
     credential: RBT
-    taskRef: { credential: RBT, code: D }
+    taskRef: { credential: RBT, code: D.5 }
     type: single-best-answer
     stem: >-
       A learner loses one earned token each time they call out in class, and calling out

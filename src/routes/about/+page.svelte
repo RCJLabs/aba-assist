@@ -84,6 +84,8 @@
 	<dd>{scenarios.length}</dd>
 	<dt>Practice questions</dt>
 	<dd>{contentVersion.counts.questions ?? 0}</dd>
+	<dt>Ethics topics</dt>
+	<dd>{contentVersion.counts.ethicsTopics ?? 0}</dd>
 	<dt>Aligned to</dt>
 	<dd>
 		RBT Test Content Outline (3rd ed.), effective 1 January 2026; BCBA Test Content Outline

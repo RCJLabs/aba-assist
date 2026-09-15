@@ -37,7 +37,7 @@ contrastWith: []
 seeAlso: [negative-reinforcement]
 searchBoost: 1.4
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.1 }
   - { credential: BCBA, code: E.1 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2

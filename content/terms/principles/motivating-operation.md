@@ -42,7 +42,8 @@ flashcard:
   mnemonic: >-
     An MO changes how much you want it. An SD tells you when you can get it.
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.4 }
+  - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: B.15 }
   - { credential: BCBA, code: B.16 }
   - { credential: BCBA, code: G.5 }

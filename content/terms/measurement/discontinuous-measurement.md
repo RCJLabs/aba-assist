@@ -26,7 +26,7 @@ contrastWith: [continuous-measurement]
 seeAlso: [partial-interval-recording, whole-interval-recording, momentary-time-sampling]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.2 }
   - { credential: BCBA, code: C.5 }
   - { credential: BCBA, code: C.6 }
 citations:

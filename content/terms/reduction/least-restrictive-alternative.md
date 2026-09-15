@@ -29,7 +29,7 @@ nonExamples:
 seeAlso: [ethics-code, dignity, punishment]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: H.4 }
 citations:
   - sourceId: bacb-ethics-code-2022

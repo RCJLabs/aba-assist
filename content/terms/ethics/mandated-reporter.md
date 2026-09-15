@@ -28,7 +28,7 @@ nonExamples:
 seeAlso: [ethics-code, incident-report]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: D.7 }
   - { credential: BCBA, code: E.12 }
 citations:
   - sourceId: capta

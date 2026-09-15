@@ -28,7 +28,9 @@ nonExamples:
 seeAlso: [scope-of-practice, confidentiality, dignity, self-reporting]
 searchBoost: 1.3
 taskRefs:
-  - { credential: RBT, code: F }
+  - { credential: RBT, code: F.1 }
+  - { credential: RBT, code: F.6 }
+  - { credential: RBT, code: F.7 }
   - { credential: BCBA, code: E.1 }
   - { credential: BCBA, code: E.2 }
 citations:

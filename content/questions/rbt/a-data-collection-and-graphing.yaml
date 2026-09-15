@@ -7,7 +7,7 @@
 questions:
   - id: rbt-a-rate-per-hour
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.6 }
     type: single-best-answer
     stem: >-
       A technician counts 12 instances of a target behavior during a 40-minute session.
@@ -69,7 +69,7 @@ questions:
 
   - id: rbt-a-partial-interval-bias
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.2 }
     type: single-best-answer
     stem: >-
       A learner's talking-out is recorded with 10-second partial-interval recording. The
@@ -118,7 +118,7 @@ questions:
 
   - id: rbt-a-whole-interval-use
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.2 }
     type: single-best-answer
     stem: >-
       A supervisor wants to increase the time a learner stays engaged with a puzzle and
@@ -166,7 +166,7 @@ questions:
 
   - id: rbt-a-momentary-time-sampling
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.2 }
     type: single-best-answer
     stem: >-
       Every 5 minutes a timer sounds and the technician looks up and records whether the
@@ -215,7 +215,7 @@ questions:
 
   - id: rbt-a-latency-vs-duration
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.1 }
     type: single-best-answer
     stem: >-
       A plan asks the technician to record how long it takes a learner to begin putting
@@ -259,7 +259,7 @@ questions:
 
   - id: rbt-a-ioa-purpose
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.8 }
     type: single-best-answer
     stem: >-
       A second observer records the same session as the technician and the two records
@@ -305,7 +305,7 @@ questions:
 
   - id: rbt-a-permanent-product
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.3 }
     type: single-best-answer
     stem: >-
       At the end of a work period the technician counts the number of completed math
@@ -350,7 +350,7 @@ questions:
 
   - id: rbt-a-reading-a-phase-line
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.4 }
     type: single-best-answer
     stem: >-
       On a line graph, a vertical dashed line separates the first eight sessions from the
@@ -440,7 +440,7 @@ questions:
 
   - id: rbt-a-trials-to-criterion
     credential: RBT
-    taskRef: { credential: RBT, code: A }
+    taskRef: { credential: RBT, code: A.6 }
     type: single-best-answer
     stem: >-
       A supervisor wants to know how many teaching opportunities it takes a learner to

@@ -25,6 +25,7 @@ nonExamples:
 contrastWith: [cultural-humility]
 seeAlso: [social-validity, ethics-code]
 taskRefs:
+  - { credential: RBT, code: F.10 }
   - { credential: BCBA, code: E.10 }
   - { credential: BCBA, code: F.2 }
 citations:

@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [stimulus-fading]
 seeAlso: [prompt-fading, transfer-of-stimulus-control, errorless-teaching]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.8 }
 citations:
   - sourceId: touchette-1971

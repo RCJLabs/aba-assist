@@ -25,7 +25,7 @@ nonExamples:
 contrastWith: [conditioned-reinforcer]
 seeAlso: [motivating-operation, deprivation]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: B.7 }
 citations:
   - sourceId: skinner-1953

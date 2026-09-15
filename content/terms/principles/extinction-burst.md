@@ -28,7 +28,7 @@ contrastWith: [spontaneous-recovery]
 seeAlso: [extinction, resurgence]
 searchBoost: 1.2
 taskRefs:
-  - { credential: RBT, code: D }
+  - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: B.10 }
   - { credential: BCBA, code: G.18 }
 citations:

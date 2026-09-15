@@ -25,7 +25,7 @@ nonExamples:
     setting: clinic
 seeAlso: [generalization, schedule-thinning]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.9 }
   - { credential: BCBA, code: B.14 }
   - { credential: BCBA, code: G.16 }
 citations:

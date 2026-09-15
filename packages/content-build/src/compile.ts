@@ -4,6 +4,8 @@ import MiniSearch from 'minisearch';
 import {
 	ContentOutline,
 	CredentialFacts,
+	EthicsCode,
+	EthicsTopic,
 	QuizFile,
 	Scenario,
 	SourceRegistry,
@@ -47,6 +49,20 @@ type z_Term = ReturnType<typeof Term.parse>;
 type z_Scenario = ReturnType<typeof Scenario.parse>;
 type z_Outline = ReturnType<typeof ContentOutline.parse>;
 type z_Credential = ReturnType<typeof CredentialFacts.parse>;
+type z_EthicsCode = ReturnType<typeof EthicsCode.parse>;
+type z_EthicsTopic = ReturnType<typeof EthicsTopic.parse>;
+
+function topicProse(t: z_EthicsTopic): string[] {
+	return [
+		t.ourLabel,
+		t.gloss,
+		t.ourSummary,
+		t.plainSummary,
+		t.ifYouAreUnsure,
+		...t.whatThisLooksLike,
+		...t.commonPitfalls
+	];
+}
 
 function scenarioProse(s: z_Scenario): string[] {
 	const base = [s.title, s.situation];
@@ -372,6 +388,147 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		}
 	}
 
+	// ---------------------------------------------------------------- ethics
+	const ethicsCodes: z_EthicsCode[] = [];
+	const ethicsTopics: z_EthicsTopic[] = [];
+	const topicFiles = new Map<string, string>();
+	{
+		const dir = join(root, 'ethics', 'codes');
+		for (const path of await discover(dir, ['.yaml', '.yml'])) {
+			const { data, issues: pIssues } = await parseYamlFile(root, path);
+			push(...pIssues);
+			if (data === undefined) continue;
+			inputHash.update(JSON.stringify(data));
+			const file = path.slice(root.length + 1);
+			const { value, issues: sIssues } = checkSchema(
+				EthicsCode,
+				data,
+				file,
+				'schema/ethics-code'
+			);
+			push(...sIssues);
+			if (!value) continue;
+			if (ethicsCodes.some((c) => c.id === value.id)) {
+				push(error('structure/duplicate-id', `duplicate ethics code "${value.id}"`, file));
+			}
+			ethicsCodes.push(value);
+			if (!sources.has(value.sourceId)) {
+				push(error('refs/unknown-source', `cites unknown source "${value.sourceId}"`, file));
+			}
+			push(...checkReviewStatus(value.review, channel, file));
+			push(
+				...checkRights(
+					{},
+					[
+						value.ourOverview,
+						...value.corePrinciples.flatMap((x) => [x.ourLabel, x.ourSummary, x.sourceNote]),
+						...value.sections.flatMap((x) => [x.ourLabel, x.ourSummary])
+					],
+					sources,
+					file
+				)
+			);
+		}
+
+		const topicDir = join(root, 'ethics', 'topics');
+		for (const path of await discover(topicDir, ['.md'])) {
+			const { parsed, issues: pIssues } = await parseMarkdown(root, topicDir, path);
+			push(...pIssues);
+			if (!parsed) continue;
+			inputHash.update(JSON.stringify(parsed.data));
+			const { value, issues: sIssues } = checkSchema(
+				EthicsTopic,
+				parsed.data,
+				parsed.file,
+				'schema/ethics-topic'
+			);
+			push(...sIssues);
+			if (!value) continue;
+			if (value.id !== parsed.basename) {
+				push(
+					error(
+						'structure/id-filename-mismatch',
+						`id "${value.id}" does not match filename "${parsed.basename}"`,
+						parsed.file
+					)
+				);
+			}
+			if (topicFiles.has(value.id)) {
+				push(
+					error('structure/duplicate-id', `duplicate ethics topic "${value.id}"`, parsed.file)
+				);
+			}
+			topicFiles.set(value.id, parsed.file);
+			ethicsTopics.push(value);
+			push(...checkRights(value, topicProse(value), sources, parsed.file));
+			push(...checkReviewStatus(value.review, channel, parsed.file));
+			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', parsed.file));
+			push(
+				...checkScenarioSafety(
+					{ kind: 'ethics-topic' },
+					topicProse(value),
+					parsed.file
+				).filter((i) => i.rule === 'safety/clinical-decision-language')
+			);
+		}
+
+		// A topic must sit under a section that exists, and may only cite a standard number
+		// once someone has checked that code's numbering against the document itself.
+		const codesById = new Map(ethicsCodes.map((c) => [c.id, c]));
+		for (const t of ethicsTopics) {
+			const file = topicFiles.get(t.id)!;
+			for (const ref of t.sectionRefs) {
+				const code = codesById.get(ref.codeId);
+				if (!code) {
+					push(
+						error('refs/unresolved', `sectionRef points at unknown code "${ref.codeId}"`, file)
+					);
+					continue;
+				}
+				if (!code.sections.some((s) => s.number === ref.section)) {
+					push(
+						error('refs/unresolved', `${ref.codeId} has no section "${ref.section}"`, file)
+					);
+				}
+				if (ref.standardNumbers.length > 0 && !code.standardsVerified) {
+					push(
+						error(
+							'refs/unverified-standard',
+							`cites standard ${ref.standardNumbers.join(', ')} of ${ref.codeId}, but that code's standard numbers have not been verified against the document. Set standardsVerified once someone has checked them, or drop the numbers and link to the section.`,
+							file
+						)
+					);
+				}
+				for (const n of ref.standardNumbers) {
+					if (!n.startsWith(ref.section + '.')) {
+						push(
+							error(
+								'refs/unresolved',
+								`standard ${n} does not belong to section ${ref.section}`,
+								file
+							)
+						);
+					}
+				}
+			}
+			// Every credential a topic claims to apply to must be one its code binds.
+			const bound = new Set(
+				t.sectionRefs.flatMap((r) => codesById.get(r.codeId)?.appliesTo ?? [])
+			);
+			for (const cred of t.appliesTo) {
+				if (bound.size > 0 && !bound.has(cred)) {
+					push(
+						error(
+							'refs/unresolved',
+							`topic applies to ${cred}, but none of its codes bind ${cred}`,
+							file
+						)
+					);
+				}
+			}
+		}
+	}
+
 	// ------------------------------------------------- referential integrity
 	{
 		const termIds = new Set(terms.map((t) => t.id));
@@ -442,6 +599,24 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			checkTaskRefs([q.taskRef, ...q.secondaryTaskRefs], file);
 		}
 
+		const topicIds = new Set(ethicsTopics.map((t) => t.id));
+		const scenarioIdSet = new Set(scenarios.map((x) => x.id));
+		for (const t of ethicsTopics) {
+			const file = topicFiles.get(t.id)!;
+			checkRefs(t.termRefs, termIds, 'term', file, 'termRefs');
+			checkRefs(t.scenarioRefs, scenarioIdSet, 'scenario', file, 'scenarioRefs');
+			checkRefs(t.relatedTopics, topicIds, 'ethics topic', file, 'relatedTopics');
+			for (const c of t.citations) {
+				if (!sources.has(c.sourceId)) {
+					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
+				}
+			}
+			checkTaskRefs(t.taskRefs, file);
+			if (t.relatedTopics.includes(t.id)) {
+				push(error('refs/unresolved', `"${t.id}" lists itself as a related topic`, file));
+			}
+		}
+
 		// Outline tasks point at terms too, so the exam page can link each task to its
 		// vocabulary. Dangling links there would be invisible until someone tapped one.
 		for (const o of outlines.values()) {
@@ -480,9 +655,14 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	 * keep search engines away. Unreviewed clinical content should not be discoverable by
 	 * someone searching for an ABA term, even while the author is reviewing it on a phone.
 	 */
-	const unreviewed = [...terms, ...scenarios, ...questions, ...credentials].filter(
-		(x) => x.review.status !== 'approved'
-	).length;
+	const unreviewed = [
+		...terms,
+		...scenarios,
+		...questions,
+		...credentials,
+		...ethicsCodes,
+		...ethicsTopics
+	].filter((x) => x.review.status !== 'approved').length;
 
 	const counts = {
 		terms: terms.length,
@@ -491,6 +671,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		sources: sources.size,
 		outlines: outlines.size,
 		credentials: credentials.length,
+		ethicsTopics: ethicsTopics.length,
 		unreviewed
 	};
 
@@ -512,6 +693,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		questions,
 		[...outlines.values()],
 		credentials,
+		ethicsCodes,
+		ethicsTopics,
 		contentVersion
 	);
 
@@ -524,6 +707,8 @@ function buildAssets(
 	questions: QuizQuestion[],
 	outlines: z_Outline[],
 	credentials: z_Credential[],
+	ethicsCodes: z_EthicsCode[],
+	ethicsTopics: z_EthicsTopic[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -602,6 +787,22 @@ function buildAssets(
 		name: 'credentials',
 		fileName: `${base}/credentials.json`,
 		source: JSON.stringify(Object.fromEntries(credentials.map((c) => [c.id, c]))),
+		fetchedAtRuntime: false
+	});
+
+	assets.push({
+		name: 'ethics-codes',
+		fileName: `${base}/ethics-codes.json`,
+		source: JSON.stringify(Object.fromEntries(ethicsCodes.map((c) => [c.id, c]))),
+		fetchedAtRuntime: false
+	});
+
+	// Topics ship as one bundle rather than per-topic chunks: the whole reference is a
+	// few dozen kilobytes, and someone reading one ethics topic usually reads the next.
+	assets.push({
+		name: 'ethics-topics',
+		fileName: `${base}/ethics-topics.json`,
+		source: JSON.stringify(Object.fromEntries(ethicsTopics.map((t) => [t.id, t]))),
 		fetchedAtRuntime: false
 	});
 

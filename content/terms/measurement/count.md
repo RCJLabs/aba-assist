@@ -23,7 +23,7 @@ nonExamples:
     setting: clinic
 seeAlso: [frequency-and-rate, percentage]
 taskRefs:
-  - { credential: RBT, code: A }
+  - { credential: RBT, code: A.6 }
   - { credential: BCBA, code: C.3 }
 citations:
   - sourceId: johnston-pennypacker-2020

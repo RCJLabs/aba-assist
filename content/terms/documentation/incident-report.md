@@ -26,7 +26,8 @@ nonExamples:
 contrastWith: [session-note]
 seeAlso: [objective-language, mandated-reporter]
 taskRefs:
-  - { credential: RBT, code: E }
+  - { credential: RBT, code: D.7 }
+  - { credential: RBT, code: E.3 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

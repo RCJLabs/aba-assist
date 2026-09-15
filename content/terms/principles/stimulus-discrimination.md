@@ -27,7 +27,7 @@ nonExamples:
 contrastWith: [stimulus-generalization]
 seeAlso: [discrimination-training, stimulus-control]
 taskRefs:
-  - { credential: RBT, code: C }
+  - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.12 }
 citations:
   - sourceId: green-2001
