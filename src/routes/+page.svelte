@@ -271,6 +271,10 @@
 			<strong>Ethics</strong>
 			<span>Both codes in plain language: what each obligation means in practice.</span>
 		</a>
+		<a class="tile" href={resolve('/abbreviations')}>
+			<strong>Abbreviations</strong>
+			<span>What MO, SD, DRO and the rest stand for, in one list.</span>
+		</a>
 	</nav>
 
 	<h2>Study for the exam</h2>

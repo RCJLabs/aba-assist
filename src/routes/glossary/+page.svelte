@@ -27,6 +27,11 @@
 	example, a non-example, and the sources it was written from.
 </p>
 
+<p class="sideways">
+	Holding an abbreviation rather than a word?
+	<a href={resolve('/abbreviations')}>The abbreviation list</a> decodes them.
+</p>
+
 <ContentFilters label="Filter the glossary" />
 
 <p class="count" aria-live="polite">
@@ -64,6 +69,12 @@
 {/each}
 
 <style>
+	.sideways {
+		margin: 0 0 1rem;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

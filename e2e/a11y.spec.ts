@@ -5,6 +5,7 @@ const ROUTES = [
 	'/',
 	'/glossary',
 	'/glossary/negative-reinforcement',
+	'/abbreviations',
 	'/scenarios',
 	'/scenarios/learner-is-injuring-themselves',
 	'/scenarios/you-have-been-told-to-restrain-or-seclude-a-learner',
