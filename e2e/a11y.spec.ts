@@ -16,7 +16,10 @@ const ROUTES = [
 	'/study',
 	'/quiz',
 	'/ethics',
-	'/ethics/gifts'
+	'/ethics/gifts',
+	'/tools',
+	'/tools/supervision',
+	'/tools/development'
 ];
 
 /*

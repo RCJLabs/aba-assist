@@ -1,0 +1,260 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
+	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
+	import { developmentCsv, supervisionCsv } from '$lib/tracker/csv.js';
+
+	onMount(() => void tracker.load());
+
+	const uid = $props.id();
+	const CREDENTIALS: { value: TrackedCredential; label: string }[] = [
+		{ value: 'RBT', label: 'Technician (RBT)' },
+		{ value: 'BCaBA', label: 'Assistant analyst (BCaBA)' },
+		{ value: 'BCBA', label: 'Analyst (BCBA)' }
+	];
+
+	const cycle = $derived(tracker.currentCycle);
+	const cycleSummary = $derived(cycle ? tracker.summaryFor(cycle) : null);
+	const months = $derived(tracker.months);
+	const thisMonth = $derived(todayIso().slice(0, 7));
+	const short = $derived(months.filter((m) => m.standing === 'short').length);
+
+	function download(name: string, body: string) {
+		const url = URL.createObjectURL(new Blob([body], { type: 'text/csv;charset=utf-8' }));
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = name;
+		a.click();
+		URL.revokeObjectURL(url);
+	}
+
+	function exportSupervision() {
+		const s = tracker.snapshot();
+		download(
+			`supervision-${todayIso()}.csv`,
+			supervisionCsv(s.entries, s.workplaces, s.supervisees, s.serviceMonths)
+		);
+	}
+
+	function exportDevelopment() {
+		const s = tracker.snapshot();
+		download(`professional-development-${todayIso()}.csv`, developmentCsv(s.units, s.cycles));
+	}
+</script>
+
+<svelte:head>
+	<title>Tools — ABA Assist</title>
+	<meta
+		name="description"
+		content="Track supervision hours and professional development units on your own device, with no client data."
+	/>
+</svelte:head>
+
+<h1>Tools</h1>
+
+<p class="lede">
+	Supervision and professional development, tracked on this device. No account, nothing sent
+	anywhere, and no field in here can hold a client's name — a person you supervise is a code.
+</p>
+
+<div data-tracker-status={tracker.status} hidden></div>
+
+{#if tracker.status === 'unavailable'}
+	<p class="warn">
+		This needs local storage and the browser has blocked it. Rather than appearing to record
+		your hours and losing them, the tools are switched off.
+	</p>
+{:else}
+	<div class="field">
+		<label for="{uid}-credential">Track requirements for</label>
+		<select
+			id="{uid}-credential"
+			value={tracker.credential}
+			onchange={(e) => tracker.setCredential(e.currentTarget.value as TrackedCredential)}
+		>
+			{#each CREDENTIALS as c (c.value)}
+				<option value={c.value}>{c.label}</option>
+			{/each}
+		</select>
+	</div>
+
+	<div class="cards">
+		<article class="card">
+			<h2><a href={resolve('/tools/supervision')}>Supervision log</a></h2>
+			{#if tracker.supervisionRequirement}
+				<p>
+					{tracker.supervisionRequirement.monthlyPercent}% of the hours you deliver each month,
+					at every organisation, with {tracker.supervisionRequirement.contactsPerMonth} real-time
+					contacts.
+				</p>
+			{:else}
+				<p>
+					An analyst's own certification is not maintained by being supervised. Use this to
+					record the supervision you <em>give</em>, against each supervisee's code.
+				</p>
+			{/if}
+			<dl class="stats">
+				<div>
+					<dt>Months logged</dt>
+					<dd>{months.length}</dd>
+				</div>
+				<div>
+					<dt>Months short</dt>
+					<dd class:bad={short > 0}>{short}</dd>
+				</div>
+				<div>
+					<dt>Contacts</dt>
+					<dd>{tracker.entries.length}</dd>
+				</div>
+			</dl>
+			{#if months.length > 0}
+				{@const current = months.find((m) => m.month === thisMonth)}
+				{#if current}
+					<p class="now">
+						This month at {tracker.workplaceLabel(current.workplaceId)}:
+						{#if current.standing === 'met'}on track{:else if current.standing === 'short'}short{:else}waiting
+							on your service hours{/if}.
+					</p>
+				{/if}
+			{/if}
+		</article>
+
+		<article class="card">
+			<h2><a href={resolve('/tools/development')}>Professional development</a></h2>
+			{#if tracker.developmentRequirement}
+				{@const req = tracker.developmentRequirement}
+				<p>
+					{req.unitsPerCycle}
+					{req.unitLabel}s every {req.cycleYears} years{#if req.ethicsUnits}, including {req.ethicsUnits}
+						on ethics{/if}. Nothing carries forward.
+				</p>
+			{/if}
+			{#if cycleSummary}
+				<dl class="stats">
+					<div>
+						<dt>Earned</dt>
+						<dd>{cycleSummary.earned} / {cycleSummary.required}</dd>
+					</div>
+					<div>
+						<dt>Days left</dt>
+						<dd class:bad={cycleSummary.daysRemaining < 60}>
+							{cycleSummary.expired ? 'Ended' : cycleSummary.daysRemaining}
+						</dd>
+					</div>
+					<div>
+						<dt>Standing</dt>
+						<dd class:bad={cycleSummary.standing === 'short'}>
+							{cycleSummary.standing === 'met' ? 'Complete' : 'In progress'}
+						</dd>
+					</div>
+				</dl>
+			{:else}
+				<p class="now">No cycle set up yet.</p>
+			{/if}
+		</article>
+	</div>
+
+	<section>
+		<h2>Export</h2>
+		<p>
+			Both codes expect supervision documentation to be kept for seven years. A record that
+			exists only in this browser is one cleared cache away from gone, so take a copy.
+		</p>
+		<div class="actions">
+			<button
+				type="button"
+				class="button"
+				disabled={tracker.entries.length === 0}
+				onclick={exportSupervision}>Supervision CSV</button
+			>
+			<button
+				type="button"
+				class="button"
+				disabled={tracker.units.length === 0}
+				onclick={exportDevelopment}>Development CSV</button
+			>
+		</div>
+	</section>
+
+	<p class="note">
+		Requirements here come from the {tracker.handbookVersion} handbook and are restated in our own
+		words. They change. Where this app and your handbook differ, the handbook is right — and your
+		supervisor or the certifying board is who to ask.
+	</p>
+{/if}
+
+<style>
+	h1 {
+		font-size: 1.5rem;
+	}
+	.lede {
+		color: var(--text-muted);
+	}
+	.field {
+		display: grid;
+		gap: 0.25rem;
+		max-width: 22rem;
+		margin-bottom: 1.25rem;
+	}
+	label {
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+	.cards {
+		display: grid;
+		gap: 1rem;
+	}
+	.card {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 1rem;
+		background: var(--surface-raised);
+	}
+	.card h2 {
+		margin-top: 0;
+		font-size: 1.15rem;
+	}
+	.stats {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin: 0.75rem 0 0;
+	}
+	.stats div {
+		min-width: 5rem;
+	}
+	.stats dt {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+	.stats dd {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+	.bad {
+		color: var(--stop-text);
+	}
+	.now {
+		color: var(--text-muted);
+		font-size: 0.95rem;
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.warn {
+		background: var(--caution-bg);
+		border: 1px solid var(--caution-border);
+		color: var(--caution-text);
+		border-radius: var(--radius);
+		padding: 0.75rem;
+	}
+	.note {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		border-top: 1px solid var(--border);
+		padding-top: 0.75rem;
+	}
+</style>

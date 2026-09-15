@@ -130,6 +130,25 @@ never observed to fail is a comment, not a guard.
 
 ---
 
+## The tracker, and why it stores no client data
+
+`/tools` logs supervision contacts and professional-development units against the real
+requirements. It is the one place in the app where somebody types about their working day,
+so it is also the one place a client's name could end up in storage — and storing none is
+what keeps this app outside HIPAA entirely.
+
+The defence is the data model, not a warning. There is no `clientName` field, no `dob`, no
+`address`: a supervisee is identified by a `code` constrained to `^[A-Z]{1,3}[-_ ]?\d{1,4}$`,
+which cannot spell a name, and contact formats are enums. The one free-text note runs a
+client-side linter that warns on names, dates of birth, phone numbers, addresses and record
+numbers. It warns rather than blocks, because it cannot tell "Jamie Rivera" from "Safety
+Care" and a blocker that fires on the second teaches people to work around it.
+
+The thresholds it checks against — 5% of monthly service hours, two contacts, 12 PDUs, 32
+CEUs with 4 on ethics — are not constants in the code. They live in `content/credentials/`
+beside the prose that states them, carrying the same handbook locator and going through the
+same review queue, so there is one copy of each number rather than two that drift.
+
 ## Accessibility
 
 Target is WCAG 2.2 AA, and the axe sweep runs over every route in light, dark, 320px, and

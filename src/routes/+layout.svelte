@@ -39,9 +39,13 @@
 	});
 
 	/*
-	 * Five primary destinations, with short labels so they fit at 320px (64px each, all
-	 * still above the 44px target). Settings lives in the header; Situations, Exams and
-	 * About are reached from the home page and from the Urgent page.
+	 * Six primary destinations, with short labels so they fit at 320px (53px each, above
+	 * the 24px floor in 2.5.8 and 44px tall). Settings lives in the header; Situations,
+	 * Exams and About are reached from the home page and from the Urgent page.
+	 *
+	 * Tools is in the bar rather than one level down because it is the only part of this
+	 * app somebody opens on a day they are not studying — a supervision contact gets
+	 * logged in the minute after it happens or not at all.
 	 *
 	 * Route ids, resolved in the template: `resolve` applies the base path itself, which
 	 * is why nothing in this app concatenates `base` by hand. That matters more than it
@@ -53,6 +57,7 @@
 		{ id: '/glossary', label: 'Terms', urgent: false },
 		{ id: '/study', label: 'Study', urgent: false },
 		{ id: '/quiz', label: 'Quiz', urgent: false },
+		{ id: '/tools', label: 'Tools', urgent: false },
 		{ id: '/help', label: 'Urgent', urgent: true }
 	] as const;
 
@@ -223,10 +228,18 @@
 		align-items: center;
 		justify-content: center;
 		min-height: var(--tap);
-		padding: 0.5rem 0.25rem;
+		padding: 0.5rem 0.15rem;
 		text-decoration: none;
 		color: var(--text);
 		font-size: 0.9rem;
+		/* Six labels at 320px. Wrapping one to two lines would misalign the whole bar. */
+		white-space: nowrap;
+	}
+
+	@media (max-width: 380px) {
+		nav a {
+			font-size: 0.8rem;
+		}
 	}
 
 	/* Never colour alone: the current page is also marked with aria-current. */

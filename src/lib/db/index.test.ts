@@ -7,6 +7,10 @@ import {
 	clearDecisions,
 	countReviews,
 	DB_VERSION,
+	getAll,
+	put,
+	removeCycle,
+	removeSupervisee,
 	exportAll,
 	getAllCards,
 	getCard,
@@ -30,7 +34,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(2);
+		expect(DB_VERSION).toBe(3);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -68,7 +72,7 @@ describe('local database', () => {
 		expect(await getDecisions()).toHaveLength(0);
 	});
 
-	it('an install created before v2 gains the decisions store', async () => {
+	it('an install created before v2 gains the later stores', async () => {
 		// Exercises the migration ladder rather than a fresh create: open at v1 first.
 		const { openDB } = await import('idb');
 		const v1 = await openDB('aba-assist', 1, {
@@ -89,6 +93,75 @@ describe('local database', () => {
 			decidedAt: T0
 		});
 		expect(await getDecisions()).toHaveLength(1);
+
+		// And every step after it, in order — the point of an append-only ladder is that a
+		// v1 install walks all of them rather than jumping to the current schema.
+		await put('workplaces', { id: 'w1', label: 'Clinic', active: true, createdAt: T0 });
+		expect(await getAll('workplaces')).toHaveLength(1);
+	});
+
+	it('deletes a supervisee together with the contacts logged against them', async () => {
+		await put('supervisees', {
+			id: 's1',
+			code: 'S-04',
+			role: 'RBT',
+			active: true,
+			createdAt: T0
+		});
+		await put('supervisees', {
+			id: 's2',
+			code: 'S-05',
+			role: 'RBT',
+			active: true,
+			createdAt: T0
+		});
+		for (const [id, superviseeId] of [
+			['e1', 's1'],
+			['e2', 's1'],
+			['e3', 's2']
+		] as const) {
+			await put('supervisionEntries', {
+				id,
+				date: '2026-09-01',
+				minutes: 30,
+				format: 'individual',
+				modality: 'in-person',
+				observed: true,
+				workplaceId: 'w1',
+				superviseeId,
+				note: ''
+			});
+		}
+
+		await removeSupervisee('s1');
+		expect(await getAll('supervisees')).toHaveLength(1);
+		// Orphaned contacts would quietly shrink a compliance total rather than erroring.
+		expect(await getAll('supervisionEntries')).toHaveLength(1);
+		expect((await getAll('supervisionEntries'))[0]?.superviseeId).toBe('s2');
+	});
+
+	it('deletes a cycle together with the units earned inside it', async () => {
+		await put('cycles', {
+			id: 'c1',
+			credential: 'RBT',
+			startDate: '2027-01-01',
+			endDate: '2028-12-31',
+			supervisedOthers: false
+		});
+		await put('developmentUnits', {
+			id: 'u1',
+			cycleId: 'c1',
+			date: '2027-03-02',
+			units: 2,
+			kind: 'learning',
+			topic: 'general',
+			title: 'Discrete trial refresher',
+			provider: 'Authorized provider'
+		});
+
+		await removeCycle('c1');
+		expect(await getAll('cycles')).toHaveLength(0);
+		expect(await getAll('developmentUnits')).toHaveLength(0);
 	});
 
 	it('stores and retrieves a card', async () => {

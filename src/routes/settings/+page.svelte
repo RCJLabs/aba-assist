@@ -140,6 +140,13 @@
 		Never type a client's name, date of birth, or any identifying detail into this app.
 	</p>
 	<p>
+		The supervision log is built so that you cannot: there is no name field anywhere in it, and
+		a person you supervise is identified by a short code. <a href={resolve('/tools')}
+			>The tools</a
+		> also export to CSV, which matters because supervision records have to be kept for seven years
+		and a browser's storage is not a seven-year home.
+	</p>
+	<p>
 		<a href={resolve('/about')}>About this app, its sources, and how to report an error</a>
 	</p>
 </section>

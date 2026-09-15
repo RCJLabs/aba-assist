@@ -47,7 +47,12 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/study', /Flashcards/],
 		['/quiz', /Practice questions/],
 		['/exams', /Exams and certifications/],
-		['/ethics', /Ethics/]
+		['/ethics', /Ethics/],
+		// The tracker is the one part of this app somebody opens in a building with no
+		// signal, so it is precached rather than excluded like the per-term pages.
+		['/tools', /Tools/],
+		['/tools/supervision', /Supervision log/],
+		['/tools/development', /Professional development/]
 	];
 
 	for (const [path, heading] of routes) {
