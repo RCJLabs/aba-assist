@@ -55,6 +55,7 @@ export type ReviewableKind =
 	| 'ethics-topic'
 	| 'ethics-code'
 	| 'practice-guide'
+	| 'graph'
 	| 'credential'
 	| 'outline';
 

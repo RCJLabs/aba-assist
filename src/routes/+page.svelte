@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
-	import { termIndex, CATEGORY_LABELS, contentVersion, outlines } from '$lib/content/load.js';
+	import {
+		termIndex,
+		CATEGORY_LABELS,
+		contentVersion,
+		graphList,
+		outlines
+	} from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
@@ -27,6 +33,8 @@
 				return resolve('/ethics/[slug]', { slug: r.id });
 			case 'practice-guide':
 				return resolve('/tools/notes');
+			case 'graph':
+				return resolve('/graphs/[slug]', { slug: r.id });
 			case 'task':
 				return r.parent ? resolve('/exams/[id]', { id: r.parent }) : resolve('/exams');
 			default:
@@ -150,6 +158,12 @@
 			<span
 				>{outlineList.map((o) => o.credential).join(' and ')}: domains, weights, tasks,
 				requirements.</span
+			>
+		</a>
+		<a class="tile" href={resolve('/graphs')}>
+			<strong>Reading graphs</strong>
+			<span
+				>{graphList.length} worked graphs: level, trend, variability and what a design shows.</span
 			>
 		</a>
 		<a class="tile" href={resolve('/scenarios')}>

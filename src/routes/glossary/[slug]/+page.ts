@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { loadTerm, termIndex } from '$lib/content/load.js';
+import { graphList, loadTerm, termIndex } from '$lib/content/load.js';
 import type { EntryGenerator, PageLoad } from './$types';
 
 /** One prerendered, indexable page per term. */
@@ -20,6 +20,17 @@ export const load: PageLoad = async ({ params }) => {
 	return {
 		term,
 		contrastWith: link(term.contrastWith),
-		seeAlso: link(term.seeAlso)
+		seeAlso: link(term.seeAlso),
+		/*
+		 * Graphs that name this term.
+		 *
+		 * The link only exists in one direction in the content — a graph lists its terms —
+		 * because maintaining both would mean two places to forget. Inverting it here costs
+		 * one pass over six documents and means somebody reading the definition of "trend"
+		 * is one tap from a graph that has one.
+		 */
+		graphs: graphList
+			.filter((g) => g.termRefs.includes(term.id))
+			.map((g) => ({ id: g.id, title: g.title }))
 	};
 };

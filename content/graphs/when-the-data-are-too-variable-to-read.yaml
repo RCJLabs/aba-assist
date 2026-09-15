@@ -1,0 +1,127 @@
+id: when-the-data-are-too-variable-to-read
+title: When the data bounce too much to read
+gloss: High variability, an average that moved, and why that is not enough
+audience: [RBT, BCaBA, BCBA]
+fictional: true
+design: ab
+x:
+  label: Session
+  from: 1
+  to: 18
+  tickEvery: 2
+  unit: session
+y:
+  label: Minutes of engagement
+  from: 0
+  to: 30
+  tickEvery: 5
+  unit: minute
+yAxisNote: null
+phases:
+  - id: baseline
+    label: Baseline
+    from: 1
+    to: 8
+    changeNote: null
+  - id: intervention
+    label: Intervention
+    from: 9
+    to: 18
+    changeNote: >-
+      A choice board was offered at the start of each activity.
+series:
+  - id: engagement
+    label: Minutes of engagement
+    marker: circle
+    tier: null
+    points:
+      - { x: 1, y: 4 }
+      - { x: 2, y: 22 }
+      - { x: 3, y: 7 }
+      - { x: 4, y: 19 }
+      - { x: 5, y: 3 }
+      - { x: 6, y: 25 }
+      - { x: 7, y: 6 }
+      - { x: 8, y: 20 }
+      - { x: 9, y: 12 }
+      - { x: 10, y: 27 }
+      - { x: 11, y: 9 }
+      - { x: 12, y: 24 }
+      - { x: 13, y: 14 }
+      - { x: 14, y: 28 }
+      - { x: 15, y: 11 }
+      - { x: 16, y: 26 }
+      - { x: 17, y: 13 }
+      - { x: 18, y: 25 }
+callouts: []
+readings:
+  - id: baseline-variability
+    feature: variability
+    phaseId: baseline
+    text: >-
+      Baseline swings between three and twenty-five minutes from one session to the next.
+      An average of thirteen describes almost none of the actual sessions.
+  - id: intervention-variability
+    feature: variability
+    phaseId: intervention
+    text: >-
+      Intervention still swings, between nine and twenty-eight. The average has moved up,
+      but the low sessions are barely different from the low baseline sessions.
+  - id: overlap
+    feature: overlap
+    phaseId: intervention
+    text: >-
+      Most intervention sessions fall inside the baseline range. With overlap that heavy,
+      a single session tells you nothing about which condition it came from.
+  - id: what-next
+    feature: design
+    phaseId: null
+    text: >-
+      Data this variable usually mean something else is moving that nobody is measuring —
+      who was present, what time of day, how the day before went. Finding it is the
+      analyst's job, and the useful thing a technician can do is record the conditions
+      accurately enough that the pattern can be found.
+longDescription: >-
+  A line graph of minutes of engagement across eighteen sessions. During Baseline,
+  sessions one to eight, the values alternate sharply between three and twenty-five
+  minutes with no settled level. A phase-change line follows session eight. During
+  Intervention, sessions nine to eighteen, the values still alternate sharply, between
+  nine and twenty-eight minutes. The Intervention average is higher than the Baseline
+  average, but most Intervention sessions fall within the range covered by Baseline.
+teaching: >-
+  Variability is how much the data bounce around within a condition, and it decides how
+  much any average is worth. Here the mean went up by about six minutes, which would look
+  like a clear result in a table and looks like almost nothing on the graph. That gap
+  between the table and the graph is the reason behaviour analysis reads graphs at all.
+  Heavy variability is also information rather than noise: something is systematically
+  different between the high sessions and the low ones, and the pattern in this graph —
+  alternating almost session by session — is the shape that usually points at a variable
+  nobody has written down yet.
+plainSummary: >-
+  The dots jump up and down a lot in both parts of this graph. The average went up. But
+  the low sessions look the same as before. So you cannot tell from one session which
+  part of the graph it came from. Something else is going on.
+termRefs: [variability, visual-analysis, level, trend]
+taskRefs:
+  - { credential: RBT, code: A.7 }
+  - { credential: BCBA, code: C.11 }
+citations:
+  - sourceId: sidman-1960
+    useType: fact-reference
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Written from Sidman (1960) on variability as data rather than error. Data invented.
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

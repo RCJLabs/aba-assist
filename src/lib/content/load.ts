@@ -7,6 +7,7 @@ import type {
 	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
+	GraphDoc,
 	PracticeGuide,
 	QuizQuestion,
 	Term,
@@ -19,6 +20,7 @@ import credentialData from './generated/credentials.json';
 import ethicsCodeData from './generated/ethics-codes.json';
 import ethicsTopicData from './generated/ethics-topics.json';
 import practiceGuideData from './generated/practice-guides.json';
+import graphData from './generated/graphs.json';
 
 export const termIndex = index as TermIndexEntry[];
 export const contentVersion = version as {
@@ -121,6 +123,20 @@ export const practiceGuideList: PracticeGuide[] = Object.values(practiceGuides);
 
 export function practiceGuideById(id: string): PracticeGuide | undefined {
 	return practiceGuides[id];
+}
+
+// ----------------------------------------------------------------- graphs
+
+/**
+ * The graphs, eager like the practice guides: six documents of a few kilobytes each,
+ * and the index page renders every one of them as a thumbnail.
+ */
+export const graphs = graphData as unknown as Record<string, GraphDoc>;
+
+export const graphList: GraphDoc[] = Object.values(graphs);
+
+export function graphById(id: string): GraphDoc | undefined {
+	return graphs[id];
 }
 
 // ------------------------------------------------------------ credentials

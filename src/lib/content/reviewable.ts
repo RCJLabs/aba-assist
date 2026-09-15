@@ -5,6 +5,7 @@ import {
 	credentials,
 	ethicsCodes,
 	ethicsTopicList,
+	graphList,
 	loadQuestions,
 	practiceGuideList,
 	loadTermBucket,
@@ -213,6 +214,45 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		});
 	}
 
+	// ------------------------------------------------------------------ graphs
+	for (const g of graphList) {
+		items.push({
+			id: g.id,
+			kind: 'graph',
+			title: g.title,
+			subtitle: `${g.design} · ${g.gloss}`,
+			status: g.review.status,
+			href: resolve('/graphs/[slug]', { slug: g.id }),
+			fields: [
+				{ label: 'Why it matters', lines: [g.teaching] },
+				{ label: 'Plain language', lines: [g.plainSummary] },
+				// The text alternative is reviewed as content, not checked off as metadata:
+				// it is what a reader using a screen reader gets instead of the picture.
+				{ label: 'Described as', lines: [g.longDescription] },
+				{
+					label: 'Conditions',
+					lines: g.phases.map(
+						(p) =>
+							`${p.label} (${p.from}–${p.to}${p.seriesId ? `, ${p.seriesId}` : ''})${p.changeNote ? ` — ${p.changeNote}` : ''}`
+					)
+				},
+				{
+					label: 'Data',
+					lines: g.series.map((s) => `${s.label}: ${s.points.map((pt) => pt.y).join(', ')}`)
+				},
+				{
+					label: 'What to see in it',
+					lines: g.readings.map((r) => `${r.feature}: ${r.text}`)
+				},
+				...(g.callouts.length > 0
+					? [{ label: 'Parts', lines: g.callouts.map((c) => `${c.label} — ${c.text}`) }]
+					: [])
+			],
+			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
+			consulted: g.attestation.consulted
+		});
+	}
+
 	// ------------------------------------------------------------ ethics codes
 	for (const c of Object.values(ethicsCodes)) {
 		items.push({
@@ -309,6 +349,7 @@ export const KIND_LABELS: Record<ReviewableKind, string> = {
 	'ethics-topic': 'Ethics topics',
 	'ethics-code': 'Ethics codes',
 	'practice-guide': 'Practice guides',
+	graph: 'Graphs',
 	credential: 'Credential requirements',
 	outline: 'Exam outlines'
 };

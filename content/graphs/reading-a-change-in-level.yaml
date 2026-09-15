@@ -1,0 +1,124 @@
+id: reading-a-change-in-level
+title: Reading a change in level
+gloss: What it looks like when the average moves and the change lands straight away
+audience: [RBT, BCaBA, BCBA]
+fictional: true
+design: ab
+x:
+  label: Session
+  from: 1
+  to: 16
+  tickEvery: 2
+  unit: session
+y:
+  label: Talk-outs per 30 minutes
+  from: 0
+  to: 24
+  tickEvery: 4
+  unit: talk-out
+yAxisNote: null
+phases:
+  - id: baseline
+    label: Baseline
+    from: 1
+    to: 7
+    changeNote: null
+  - id: intervention
+    label: Intervention
+    from: 8
+    to: 16
+    changeNote: >-
+      A written schedule and reinforcement for raising a hand were introduced.
+series:
+  - id: talkouts
+    label: Talk-outs per 30 minutes
+    marker: circle
+    tier: null
+    points:
+      - { x: 1, y: 18 }
+      - { x: 2, y: 20 }
+      - { x: 3, y: 17 }
+      - { x: 4, y: 19 }
+      - { x: 5, y: 18 }
+      - { x: 6, y: 21 }
+      - { x: 7, y: 19 }
+      - { x: 8, y: 8 }
+      - { x: 9, y: 6 }
+      - { x: 10, y: 7 }
+      - { x: 11, y: 5 }
+      - { x: 12, y: 6 }
+      - { x: 13, y: 4 }
+      - { x: 14, y: 5 }
+      - { x: 15, y: 4 }
+      - { x: 16, y: 5 }
+callouts: []
+readings:
+  - id: baseline-level
+    feature: level
+    phaseId: baseline
+    text: >-
+      Baseline sits around nineteen, varying by a couple either way. There is no trend:
+      the last baseline session is no different from the first.
+  - id: intervention-level
+    feature: level
+    phaseId: intervention
+    text: >-
+      Intervention sits around five or six. No intervention session is as high as the
+      lowest baseline session, which is what makes the change hard to argue with.
+  - id: immediacy
+    feature: immediacy
+    phaseId: intervention
+    text: >-
+      The drop is there in the first session after the change rather than drifting down
+      over a week. A change that takes six sessions to appear is much weaker evidence,
+      because six sessions is enough time for something else to explain it.
+  - id: overlap
+    feature: overlap
+    phaseId: intervention
+    text: >-
+      No point in one condition falls inside the range of the other. That zero overlap is
+      the property a reader is really checking when they say the effect looks clear.
+longDescription: >-
+  A line graph of talk-outs per thirty minutes across sixteen sessions. During Baseline,
+  sessions one to seven, the count stays between seventeen and twenty-one. A phase-change
+  line follows session seven. During Intervention, sessions eight to sixteen, the count
+  drops immediately to eight and then settles between four and seven for the rest of the
+  graph. No Intervention session overlaps the Baseline range.
+teaching: >-
+  Level is where the data sit, and a change in level is the easiest effect to see and the
+  easiest to overstate. Three things turn a visible drop into a convincing one: the
+  distance between the two levels, whether the change happens immediately after the
+  condition changed, and how much the two conditions overlap. Overlap does most of the
+  work. If the best baseline sessions look like the worst intervention sessions, then on
+  any given day you could not tell which condition you were in — and a change you cannot
+  detect session to session is not a change you can rely on. What a graph cannot tell you
+  is whether the intervention caused the drop; an AB comparison shows that something
+  changed when the condition changed, not what.
+plainSummary: >-
+  Level means where the dots sit. Here they sit high, then low. The drop happens in the
+  first session after the change. No low session is as high as any high session. That
+  is a clear change in level.
+termRefs: [level, visual-analysis, phase-change-line, baseline]
+taskRefs:
+  - { credential: RBT, code: A.7 }
+  - { credential: BCBA, code: C.11 }
+citations:
+  - sourceId: kazdin-2011
+    useType: fact-reference
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Written from Kazdin (2011) on visual analysis. Data invented.
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

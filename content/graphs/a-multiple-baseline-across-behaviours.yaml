@@ -1,0 +1,199 @@
+id: a-multiple-baseline-across-behaviours
+title: A multiple baseline across behaviours
+gloss: Three staggered starts, and why the stagger is the whole argument
+audience: [BCaBA, BCBA, RBT]
+fictional: true
+design: multiple-baseline
+x:
+  label: Session
+  from: 1
+  to: 18
+  tickEvery: 2
+  unit: session
+y:
+  label: Correct responses out of 10
+  from: 0
+  to: 10
+  tickEvery: 2
+  unit: correct response
+yAxisNote: null
+phases:
+  - id: greeting-baseline
+    label: Baseline
+    from: 1
+    to: 4
+    seriesId: greeting
+    changeNote: null
+  - id: greeting-teaching
+    label: Teaching
+    from: 5
+    to: 18
+    seriesId: greeting
+    changeNote: >-
+      Teaching began on greetings only. The other two targets were left untouched.
+  - id: requesting-baseline
+    label: Baseline
+    from: 1
+    to: 8
+    seriesId: requesting
+    changeNote: null
+  - id: requesting-teaching
+    label: Teaching
+    from: 9
+    to: 18
+    seriesId: requesting
+    changeNote: >-
+      Teaching began on requests, four sessions after greetings.
+  - id: naming-baseline
+    label: Baseline
+    from: 1
+    to: 12
+    seriesId: naming
+    changeNote: null
+  - id: naming-teaching
+    label: Teaching
+    from: 13
+    to: 18
+    seriesId: naming
+    changeNote: >-
+      Teaching began on naming, last of the three.
+series:
+  - id: greeting
+    label: Greeting a peer
+    marker: circle
+    tier: Greeting a peer
+    points:
+      - { x: 1, y: 1 }
+      - { x: 2, y: 0 }
+      - { x: 3, y: 1 }
+      - { x: 4, y: 1 }
+      - { x: 5, y: 3 }
+      - { x: 6, y: 4 }
+      - { x: 7, y: 6 }
+      - { x: 8, y: 7 }
+      - { x: 9, y: 8 }
+      - { x: 10, y: 8 }
+      - { x: 11, y: 9 }
+      - { x: 12, y: 9 }
+      - { x: 13, y: 10 }
+      - { x: 14, y: 9 }
+      - { x: 15, y: 10 }
+      - { x: 16, y: 10 }
+      - { x: 17, y: 10 }
+      - { x: 18, y: 10 }
+  - id: requesting
+    label: Requesting a break
+    marker: square
+    tier: Requesting a break
+    points:
+      - { x: 1, y: 0 }
+      - { x: 2, y: 1 }
+      - { x: 3, y: 1 }
+      - { x: 4, y: 0 }
+      - { x: 5, y: 1 }
+      - { x: 6, y: 2 }
+      - { x: 7, y: 1 }
+      - { x: 8, y: 1 }
+      - { x: 9, y: 2 }
+      - { x: 10, y: 4 }
+      - { x: 11, y: 5 }
+      - { x: 12, y: 6 }
+      - { x: 13, y: 7 }
+      - { x: 14, y: 8 }
+      - { x: 15, y: 8 }
+      - { x: 16, y: 9 }
+      - { x: 17, y: 9 }
+      - { x: 18, y: 10 }
+  - id: naming
+    label: Naming an object
+    marker: triangle
+    tier: Naming an object
+    points:
+      - { x: 1, y: 1 }
+      - { x: 2, y: 1 }
+      - { x: 3, y: 0 }
+      - { x: 4, y: 2 }
+      - { x: 5, y: 1 }
+      - { x: 6, y: 1 }
+      - { x: 7, y: 0 }
+      - { x: 8, y: 1 }
+      - { x: 9, y: 1 }
+      - { x: 10, y: 2 }
+      - { x: 11, y: 1 }
+      - { x: 12, y: 1 }
+      - { x: 13, y: 3 }
+      - { x: 14, y: 5 }
+      - { x: 15, y: 6 }
+      - { x: 16, y: 7 }
+      - { x: 17, y: 8 }
+      - { x: 18, y: 9 }
+callouts: []
+readings:
+  - id: stagger
+    feature: design
+    phaseId: null
+    text: >-
+      Each tier stays flat until its own teaching starts, and only then climbs. Three
+      times, at three different points, the behaviour changed when and only when the
+      teaching reached it.
+  - id: untouched
+    feature: level
+    phaseId: naming-baseline
+    text: >-
+      Naming stays near zero for twelve sessions while the other two are already climbing.
+      If something general were causing the improvement — maturation, a better term at
+      school, more sleep — this tier would have moved too.
+  - id: why-no-reversal
+    feature: design
+    phaseId: null
+    text: >-
+      Nothing is ever withdrawn here. That is the point: you cannot take a learned skill
+      back to check, and you would not want to.
+longDescription: >-
+  Three stacked line graphs sharing a horizontal axis of eighteen sessions, showing
+  correct responses out of ten. The top tier, greeting a peer, is in Baseline near one
+  for sessions one to four, then in Teaching rises from three to ten. The middle tier,
+  requesting a break, stays in Baseline near one for sessions one to eight, then in
+  Teaching rises from two to ten. The bottom tier, naming an object, stays in Baseline
+  near one for sessions one to twelve, then in Teaching rises from three to nine. Each
+  tier has its own phase-change line, at sessions four, eight and twelve respectively,
+  and each tier only begins to climb after its own line.
+teaching: >-
+  A multiple baseline gets its evidence from timing rather than from withdrawal. The
+  argument runs: if teaching is what causes the change, then each behaviour should change
+  when its own teaching starts and not before. Staggering the starts is what makes that
+  testable, and it is also what rules out the boring explanations — a child who is simply
+  getting older, or a family who changed something at home, would improve on all three
+  targets at once rather than in the order the teaching happened to reach them. The
+  untouched tiers are doing real work while they sit flat, which is why a baseline that
+  runs for twelve sessions is not wasted time. This design suits skills, where a reversal
+  is impossible, and behaviour where withdrawing a working procedure would not be
+  acceptable.
+plainSummary: >-
+  Three skills are shown, one above the other. Teaching starts on each one at a different
+  time. Each skill only goes up after its own teaching starts. The ones not yet taught
+  stay flat. That timing is what shows the teaching did it.
+termRefs: [baseline, visual-analysis, phase-change-line, level, trend]
+taskRefs:
+  - { credential: BCBA, code: D.4 }
+  - { credential: RBT, code: A.7 }
+citations:
+  - sourceId: horner-baer-1978
+    useType: fact-reference
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Written from Horner and Baer (1978) and Kazdin (2011) on staggered-onset logic. Data invented.
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

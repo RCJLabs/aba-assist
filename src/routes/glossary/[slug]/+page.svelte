@@ -92,6 +92,17 @@
 		</section>
 	{/if}
 
+	{#if data.graphs.length > 0}
+		<section>
+			<h2>Shown on a graph</h2>
+			<ul class="links">
+				{#each data.graphs as g (g.id)}
+					<li><a href={resolve('/graphs/[slug]', { slug: g.id })}>{g.title}</a></li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	{#if data.seeAlso.length > 0}
 		<section>
 			<h2>See also</h2>

@@ -130,6 +130,42 @@ never observed to fail is a comment, not a guard.
 
 ---
 
+## Graphs are content, not pictures
+
+Data collection and graphing is the second-largest domain on the technician exam, and
+this app taught it entirely in words: eight glossary entries describing a line graph to
+somebody who had never been shown one. `/graphs` is six worked graphs — the parts of a
+line graph, a change in level, a baseline that was already improving, data too variable
+to read, a reversal, and a multiple baseline — each one built from a reviewed YAML
+document under `content/graphs/` and rendered as SVG at runtime.
+
+Three guards are structural rather than editorial:
+
+- **`fictional` is `z.literal(true)`.** Every series in this repository is invented to
+  show one thing. A graph of one person's behaviour is that person's data however the
+  axes are labelled, so "this is real" is unsayable rather than discouraged — the same
+  move as the copyright and supervisee-code guards.
+- **`longDescription` is required, and the build checks it names every condition on the
+  graph.** A picture with no equivalent is not accessible content, and an alternative
+  that omits a phase is not an equivalent. The renderer also emits the full data table,
+  so the numbers are always reachable without reading pixels.
+- **A truncated vertical axis has to say why.** `y.from` other than zero without a
+  `yAxisNote` fails the build, and a note without a truncated axis fails too. A scale
+  that starts part-way up is the commonest way an accurate graph misleads, and it is
+  exactly what this domain is about.
+
+The build also rejects a point plotted outside the axes (the renderer would clip it
+silently), conditions that leave a gap or overlap, two series that would differ by colour
+alone, and a multiple baseline whose tiers change at the same time — which is an AB
+replicated three times wearing a multiple baseline's clothes.
+
+One rendering rule is load-bearing enough to be unit-tested rather than eyeballed: the
+data path is **split at every phase change**. A line drawn across a phase-change line
+asserts that the sessions either side belong to the same condition, which is the exact
+comparison the change was made to allow. A staggered design is drawn as stacked tiers for
+the same reason — one frame with three sets of phase lines says that every change applied
+to every behaviour.
+
 ## The tracker, and why it stores no client data
 
 `/tools` logs supervision contacts and professional-development units against the real

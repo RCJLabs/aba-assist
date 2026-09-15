@@ -8,5 +8,6 @@ export * from './ethics.js';
 export * from './quiz.js';
 export * from './credential.js';
 export * from './practice.js';
+export * from './graph.js';
 export * from './compiled.js';
 export * from './search-options.js';

@@ -18,7 +18,20 @@ async function gradeOneCard(page: Page): Promise<void> {
 		.getByRole('button', { name: /Show|Reveal/ })
 		.first()
 		.click();
+
+	const progress = page.locator('.progress');
+	const before = await progress.textContent();
 	await page.getByRole('button', { name: 'Good' }).click();
+	/*
+	 * Wait for the card to advance before returning.
+	 *
+	 * The review is written to IndexedDB and awaited before the counter moves, so a
+	 * changed counter is the signal that the transaction committed. Without this a caller
+	 * that navigates immediately — `page.goto` is a full document load — can abort the
+	 * write in flight, and the test then exports a backup of nothing and fails on the
+	 * restore, several steps away from the actual cause.
+	 */
+	await expect(progress).not.toHaveText(before ?? '');
 }
 
 async function openSettings(page: Page): Promise<void> {

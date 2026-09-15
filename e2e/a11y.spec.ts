@@ -22,7 +22,10 @@ const ROUTES = [
 	'/tools/development',
 	'/tools/notes',
 	'/tools/timer',
-	'/tools/fieldwork'
+	'/tools/fieldwork',
+	'/graphs',
+	'/graphs/anatomy-of-a-line-graph',
+	'/graphs/a-multiple-baseline-across-behaviours'
 ];
 
 /*

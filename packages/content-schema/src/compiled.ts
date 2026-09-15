@@ -35,6 +35,7 @@ export const SearchKind = z.enum([
 	'scenario',
 	'ethics-topic',
 	'practice-guide',
+	'graph',
 	'task'
 ]);
 export type SearchKind = z.infer<typeof SearchKind>;

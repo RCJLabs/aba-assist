@@ -8,6 +8,7 @@ import {
 	EthicsCode,
 	EthicsTopic,
 	PracticeGuide,
+	GraphDoc,
 	QuizFile,
 	Scenario,
 	SourceRegistry,
@@ -19,6 +20,7 @@ import {
 	type Source,
 	type TaskRef,
 	type PracticeGuide as z_PracticeGuide,
+	type GraphDoc as z_GraphDoc,
 	type SearchIndexEntry,
 	type TermIndexEntry
 } from '@aba/content-schema';
@@ -73,6 +75,19 @@ function guideProse(g: z_PracticeGuide): string[] {
 	return g.kind === 'checklist'
 		? [...base, ...g.items.flatMap((i) => [i.label, i.why, i.example ?? ''])]
 		: [...base, ...g.pairs.flatMap((p) => [p.vague, p.objective, p.why])];
+}
+
+function graphProse(g: z_GraphDoc): string[] {
+	return [
+		g.title,
+		g.gloss,
+		g.teaching,
+		g.plainSummary,
+		g.longDescription,
+		...g.phases.map((p) => `${p.label} ${p.changeNote ?? ''}`),
+		...g.readings.map((r) => r.text),
+		...g.callouts.flatMap((c) => [c.label, c.text])
+	];
 }
 
 function scenarioProse(s: z_Scenario): string[] {
@@ -366,6 +381,56 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			 */
 			push(
 				...checkScenarioSafety({ kind: 'practice-guide' }, prose, parsed.file).filter(
+					(i) => i.rule === 'safety/clinical-decision-language'
+				)
+			);
+		}
+	}
+
+	// --------------------------------------------------------------- graphs
+	const graphs: z_GraphDoc[] = [];
+	const graphFiles = new Map<string, string>();
+	{
+		const dir = join(root, 'graphs');
+		for (const path of await discover(dir, ['.yaml', '.yml'])) {
+			const { data, issues: pIssues } = await parseYamlFile(root, path);
+			push(...pIssues);
+			if (data === undefined) continue;
+			inputHash.update(JSON.stringify(data));
+			const file = path.slice(root.length + 1);
+
+			const { value, issues: sIssues } = checkSchema(GraphDoc, data, file, 'schema/graph');
+			push(...sIssues);
+			if (!value) continue;
+
+			const basename = path.slice(path.lastIndexOf('/') + 1).replace(/\.ya?ml$/, '');
+			if (value.id !== basename) {
+				push(
+					error(
+						'structure/id-filename-mismatch',
+						`id "${value.id}" does not match filename "${basename}"`,
+						file
+					)
+				);
+			}
+			if (graphFiles.has(value.id)) {
+				push(error('structure/duplicate-id', `duplicate graph "${value.id}"`, file));
+			}
+			graphFiles.set(value.id, file);
+			graphs.push(value);
+
+			const prose = graphProse(value);
+			push(...checkRights(value, prose, sources, file));
+			push(...checkReviewStatus(value.review, channel, file));
+			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', file));
+			/*
+			 * The clinical-decision check only, for the same reason the practice guides get
+			 * only that one: describing what a graph shows is reading data, which is a
+			 * technician's job. Deciding what to change because of it is not, and that is
+			 * what this still catches.
+			 */
+			push(
+				...checkScenarioSafety({ kind: 'graph' }, prose, file).filter(
 					(i) => i.rule === 'safety/clinical-decision-language'
 				)
 			);
@@ -760,6 +825,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...ethicsCodes,
 		...ethicsTopics,
 		...guides,
+		...graphs,
 		...outlines.values()
 	].filter((x) => x.review.status !== 'approved').length;
 
@@ -772,6 +838,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		credentials: credentials.length,
 		ethicsTopics: ethicsTopics.length,
 		practiceGuides: guides.length,
+		graphs: graphs.length,
 		unreviewed
 	};
 
@@ -796,6 +863,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		ethicsCodes,
 		ethicsTopics,
 		guides,
+		graphs,
 		contentVersion
 	);
 
@@ -811,6 +879,7 @@ function buildAssets(
 	ethicsCodes: z_EthicsCode[],
 	ethicsTopics: z_EthicsTopic[],
 	guides: z_PracticeGuide[],
+	graphs: z_GraphDoc[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -901,6 +970,13 @@ function buildAssets(
 	});
 
 	assets.push({
+		name: 'graphs',
+		fileName: `${base}/graphs.json`,
+		source: JSON.stringify(Object.fromEntries(graphs.map((g) => [g.id, g]))),
+		fetchedAtRuntime: false
+	});
+
+	assets.push({
 		name: 'ethics-codes',
 		fileName: `${base}/ethics-codes.json`,
 		source: JSON.stringify(Object.fromEntries(ethicsCodes.map((c) => [c.id, c]))),
@@ -933,6 +1009,7 @@ function buildAssets(
 		'ethics-topic': 1,
 		scenario: 0.95,
 		'practice-guide': 0.9,
+		graph: 0.9,
 		task: 0.55
 	} as const;
 
@@ -1009,6 +1086,25 @@ function buildAssets(
 			r: g.taskRefs.map(taskRefKey),
 			p: null,
 			body: guideProse(g).join(' ')
+		});
+	}
+
+	for (const g of graphs) {
+		searchDocs.push({
+			i: g.id,
+			k: 'graph',
+			t: g.title,
+			// Somebody looking for a picture types the thing they cannot picture: "trend",
+			// "phase change line", "ABAB". The design name and every feature named in a
+			// reading are aliases for exactly that reason.
+			a: [g.design, g.design.replace(/-/g, ' '), ...new Set(g.readings.map((r) => r.feature))],
+			l: 'Graph',
+			g: g.gloss,
+			c: null,
+			b: KIND_WEIGHT.graph,
+			r: g.taskRefs.map(taskRefKey),
+			p: null,
+			body: graphProse(g).join(' ')
 		});
 	}
 

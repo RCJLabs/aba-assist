@@ -1,0 +1,169 @@
+id: anatomy-of-a-line-graph
+title: The parts of a line graph
+gloss: Every labelled piece of the standard behaviour graph, named on the graph itself
+audience: [RBT, BCaBA, BCBA]
+fictional: true
+design: ab
+x:
+  label: Session
+  from: 1
+  to: 20
+  tickEvery: 2
+  unit: session
+y:
+  label: Independent requests
+  from: 0
+  to: 20
+  tickEvery: 5
+  unit: request
+yAxisNote: null
+phases:
+  - id: baseline
+    label: Baseline
+    from: 1
+    to: 8
+    changeNote: null
+  - id: teaching
+    label: Teaching
+    from: 9
+    to: 20
+    changeNote: >-
+      Prompting and reinforcement for independent requests began.
+series:
+  - id: requests
+    label: Independent requests
+    marker: circle
+    tier: null
+    points:
+      - { x: 1, y: 2 }
+      - { x: 2, y: 3 }
+      - { x: 3, y: 2 }
+      - { x: 4, y: 4 }
+      - { x: 5, y: 3 }
+      - { x: 6, y: 2 }
+      - { x: 7, y: 3 }
+      - { x: 8, y: 3 }
+      - { x: 9, y: 5 }
+      - { x: 10, y: 7 }
+      - { x: 11, y: 9 }
+      - { x: 12, y: 11 }
+      - { x: 13, y: 12 }
+      - { x: 14, y: 14 }
+      - { x: 15, y: 15 }
+      - { x: 16, y: 16 }
+      - { x: 17, y: 17 }
+      - { x: 18, y: 18 }
+      - { x: 19, y: 18 }
+      - { x: 20, y: 19 }
+callouts:
+  - id: ordinate
+    label: Vertical axis
+    at: { x: 1, y: 15 }
+    place: right
+    termRef: line-graph
+    text: >-
+      The measure of behaviour, scaled from zero. Where this axis starts matters: a scale
+      that begins part-way up makes a small change look enormous.
+  - id: abscissa
+    label: Horizontal axis
+    at: { x: 11, y: 0 }
+    place: above
+    termRef: line-graph
+    text: >-
+      Time, usually one tick per session or per day, running left to right in the order
+      the sessions happened.
+  - id: data-point
+    label: Data point
+    at: { x: 4, y: 4 }
+    place: above
+    termRef: null
+    text: >-
+      One session's number. Read straight down to the horizontal axis for when, straight
+      across to the vertical axis for how much.
+  - id: data-path
+    label: Data path
+    at: { x: 14, y: 14 }
+    place: right
+    termRef: null
+    text: >-
+      The line joining consecutive points inside one condition. It is a reading aid, not
+      a claim about what happened between sessions.
+  - id: phase-line
+    label: Phase-change line
+    at: { x: 8, y: 11 }
+    place: left
+    termRef: phase-change-line
+    text: >-
+      The vertical line marking where something about the procedure changed. The path
+      does not cross it, because the two sides are different conditions and joining them
+      would imply a continuity the change interrupted.
+  - id: condition-label
+    label: Condition label
+    at: { x: 4, y: 20 }
+    place: below
+    termRef: null
+    text: >-
+      The name of what was in place during that stretch of sessions. Without it a reader
+      can see that something changed but not what.
+readings:
+  - id: baseline-level
+    feature: level
+    phaseId: baseline
+    text: >-
+      Across the first eight sessions the count sits between two and four with no
+      direction to it. That flatness is what makes the condition usable as a comparison.
+  - id: teaching-trend
+    feature: trend
+    phaseId: teaching
+    text: >-
+      From session nine the count climbs steadily and keeps climbing, reaching nineteen
+      by the last session. The direction is consistent rather than a single good day.
+  - id: change
+    feature: immediacy
+    phaseId: teaching
+    text: >-
+      The rise begins in the first session after the change rather than several sessions
+      later, which is one of the things a reader looks for.
+longDescription: >-
+  A line graph of independent requests across twenty sessions, in two conditions. During
+  Baseline, sessions one to eight, the count stays between two and four with no upward or
+  downward direction. A vertical phase-change line sits between sessions eight and nine.
+  During Teaching, sessions nine to twenty, the count rises from five to nineteen,
+  climbing in most sessions and never falling back to the baseline range. The two
+  conditions are not joined by a line across the phase-change line.
+teaching: >-
+  Almost everything the exam asks about graphing is a question about one of the seven
+  parts labelled here. A graph with an unlabelled axis, or with the data path drawn
+  straight through a phase-change line, is not a stylistic preference gone wrong: it is a
+  graph that says something untrue. The path across a phase line asserts that the
+  sessions either side belong to the same condition, which is the exact comparison the
+  change was made to allow. Read a graph part by part before reading it as a whole — when
+  something looks dramatic, the first question is what the vertical axis is doing.
+plainSummary: >-
+  This graph shows the parts of a line graph. Time runs along the bottom. The count runs
+  up the side. Each dot is one session. The upright line shows where the plan changed.
+  The dots are not joined across that line.
+termRefs: [line-graph, phase-change-line, visual-analysis, level, trend]
+taskRefs:
+  - { credential: RBT, code: A.4 }
+  - { credential: BCBA, code: C.10 }
+citations:
+  - sourceId: johnston-pennypacker-2020
+    useType: fact-reference
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Written from Johnston, Pennypacker and Green (2020) on measurement and display. Data invented.
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'

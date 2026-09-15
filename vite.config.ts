@@ -76,6 +76,10 @@ export default defineConfig({
 					'prerendered/pages/glossary/**',
 					'prerendered/pages/scenarios/**',
 					'prerendered/pages/ethics/**',
+					// Six pages of inline SVG. The graph documents are already in the JS
+					// bundle, so the app renders these offline from data — precaching the
+					// HTML too would be paying twice for the same six pages.
+					'prerendered/pages/graphs/**',
 					// A maintenance tool for one person, which pulls the whole corpus when
 					// opened. Nobody should be paying for it in their offline cache.
 					'prerendered/pages/review.html',

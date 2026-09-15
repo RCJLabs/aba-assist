@@ -850,6 +850,181 @@ describe('practice guides', () => {
 	});
 });
 
+describe('graphs', () => {
+	const graph = (over: Record<string, unknown> = {}) => ({
+		id: 'sample-graph',
+		title: 'A sample graph of something',
+		gloss: 'What the graph is for, in one short line',
+		audience: ['RBT'],
+		fictional: true,
+		design: 'ab',
+		x: { label: 'Session', from: 1, to: 6, tickEvery: 1, unit: 'session' },
+		y: { label: 'Count', from: 0, to: 10, tickEvery: 2, unit: 'response' },
+		phases: [
+			{ id: 'baseline', label: 'Baseline', from: 1, to: 3 },
+			{ id: 'teaching', label: 'Teaching', from: 4, to: 6, changeNote: 'Teaching began here.' }
+		],
+		series: [
+			{
+				id: 'count',
+				label: 'Count',
+				marker: 'circle',
+				points: [
+					{ x: 1, y: 1 },
+					{ x: 2, y: 2 },
+					{ x: 3, y: 1 },
+					{ x: 4, y: 6 },
+					{ x: 5, y: 7 },
+					{ x: 6, y: 8 }
+				]
+			}
+		],
+		longDescription:
+			'A line graph across six sessions. During Baseline the count stays between one and two. During Teaching it rises from six to eight, with a phase-change line between the two conditions.',
+		teaching:
+			'A short explanation of what the reader is meant to take away from this graph, long enough to clear the minimum the schema sets for the field.',
+		plainSummary:
+			'The dots are low at first. Then the plan changed. Then the dots go up and stay up.',
+		citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+		attestation,
+		review,
+		provenance,
+		...over
+	});
+
+	const yaml = (obj: Record<string, unknown>) => JSON.stringify(obj, null, 2);
+
+	it('accepts a well-formed graph', async () => {
+		const r = await build({ 'graphs/sample-graph.yaml': yaml(graph()) });
+		expect(rules(r)).toEqual([]);
+		expect(r.counts.graphs).toBe(1);
+	});
+
+	it('refuses a graph that claims to be real', async () => {
+		const r = await build({ 'graphs/sample-graph.yaml': yaml(graph({ fictional: false })) });
+		expect(rules(r)).toContain('schema/graph');
+	});
+
+	it('refuses a point plotted outside the axes, which would be silently clipped', async () => {
+		const bad = graph();
+		(bad.series[0] as { points: { x: number; y: number }[] }).points[3] = { x: 4, y: 40 };
+		const r = await build({ 'graphs/sample-graph.yaml': yaml(bad) });
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(/outside the axes/);
+	});
+
+	it('refuses conditions that leave a gap in the record', async () => {
+		const r = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({
+					phases: [
+						{ id: 'baseline', label: 'Baseline', from: 1, to: 2 },
+						{
+							id: 'teaching',
+							label: 'Teaching',
+							from: 4,
+							to: 6,
+							changeNote: 'Teaching began here.'
+						}
+					]
+				})
+			)
+		});
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(/gap or overlap/);
+	});
+
+	it('refuses a truncated vertical axis with no explanation, and an explanation with no truncation', async () => {
+		const truncated = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({ y: { label: 'Count', from: 4, to: 10, tickEvery: 2, unit: 'response' } })
+			)
+		});
+		expect(truncated.errors.map((e) => e.message).join(' ')).toMatch(/rather than 0/);
+
+		const spurious = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({ yAxisNote: 'A note explaining an axis that does not need explaining.' })
+			)
+		});
+		expect(spurious.errors.map((e) => e.message).join(' ')).toMatch(
+			/but the axis starts at 0/
+		);
+	});
+
+	it('refuses a description that does not name every condition', async () => {
+		const r = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({
+					longDescription:
+						'A line graph across six sessions. During Baseline the count stays low, and then it rises to eight by the last session without saying what changed.'
+				})
+			)
+		});
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(/never mentions the "Teaching"/);
+	});
+
+	it('refuses two series that would differ by colour alone', async () => {
+		const r = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({
+					series: [
+						graph().series[0],
+						{
+							...graph().series[0],
+							id: 'other',
+							label: 'Another count'
+						}
+					]
+				})
+			)
+		});
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(/share a marker shape/);
+	});
+
+	it('refuses a multiple baseline whose tiers change at the same time', async () => {
+		const tier = (id: string, marker: string) => ({
+			id,
+			label: id,
+			marker,
+			points: [
+				{ x: 1, y: 1 },
+				{ x: 2, y: 1 },
+				{ x: 3, y: 1 },
+				{ x: 4, y: 5 },
+				{ x: 5, y: 6 },
+				{ x: 6, y: 7 }
+			]
+		});
+		const phases = (seriesId: string) => [
+			{ id: `${seriesId}-b`, label: 'Baseline', from: 1, to: 3, seriesId },
+			{
+				id: `${seriesId}-t`,
+				label: 'Teaching',
+				from: 4,
+				to: 6,
+				seriesId,
+				changeNote: 'Teaching began here.'
+			}
+		];
+		const r = await build({
+			'graphs/sample-graph.yaml': yaml(
+				graph({
+					design: 'multiple-baseline',
+					series: [tier('one', 'circle'), tier('two', 'square')],
+					phases: [...phases('one'), ...phases('two')]
+				})
+			)
+		});
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(/not staggered/);
+	});
+
+	it('puts graphs in the search index, findable by design name', async () => {
+		const r = await build({ 'graphs/sample-graph.yaml': yaml(graph()) });
+		const asset = r.assets.find((a) => a.name === 'search-index');
+		expect(asset).toBeDefined();
+		expect(asset!.source).toContain('"k":"graph"');
+	});
+});
+
 describe('ethics reference', () => {
 	const code = (extra = '') => `
 id: rbt-ethics-code-2-0

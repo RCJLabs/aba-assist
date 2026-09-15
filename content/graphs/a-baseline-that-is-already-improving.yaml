@@ -1,0 +1,120 @@
+id: a-baseline-that-is-already-improving
+title: A baseline that is already improving
+gloss: Why a trend before the change makes the change impossible to credit
+audience: [RBT, BCaBA, BCBA]
+fictional: true
+design: ab
+x:
+  label: Session
+  from: 1
+  to: 18
+  tickEvery: 2
+  unit: session
+y:
+  label: Steps completed independently
+  from: 0
+  to: 12
+  tickEvery: 2
+  unit: step
+yAxisNote: null
+phases:
+  - id: baseline
+    label: Baseline
+    from: 1
+    to: 9
+    changeNote: null
+  - id: teaching
+    label: Teaching
+    from: 10
+    to: 18
+    changeNote: >-
+      Least-to-most prompting was introduced on the last three steps of the chain.
+series:
+  - id: steps
+    label: Steps completed independently
+    marker: circle
+    tier: null
+    points:
+      - { x: 1, y: 1 }
+      - { x: 2, y: 2 }
+      - { x: 3, y: 2 }
+      - { x: 4, y: 3 }
+      - { x: 5, y: 4 }
+      - { x: 6, y: 4 }
+      - { x: 7, y: 5 }
+      - { x: 8, y: 6 }
+      - { x: 9, y: 7 }
+      - { x: 10, y: 7 }
+      - { x: 11, y: 8 }
+      - { x: 12, y: 8 }
+      - { x: 13, y: 9 }
+      - { x: 14, y: 9 }
+      - { x: 15, y: 10 }
+      - { x: 16, y: 10 }
+      - { x: 17, y: 11 }
+      - { x: 18, y: 11 }
+callouts: []
+readings:
+  - id: baseline-trend
+    feature: trend
+    phaseId: baseline
+    text: >-
+      Baseline climbs from one step to seven across nine sessions, in the same direction
+      the teaching is meant to produce. Nothing about that is a bad thing for the learner;
+      it is only a problem for the reader trying to credit the teaching.
+  - id: teaching-trend
+    feature: trend
+    phaseId: teaching
+    text: >-
+      Teaching continues the same climb at roughly the same slope. If you covered the
+      phase-change line, nothing in the data would tell you where it belonged.
+  - id: what-it-shows
+    feature: design
+    phaseId: null
+    text: >-
+      The honest reading is that the learner improved and this graph cannot say why. That
+      is a real finding, not a failure to find one.
+longDescription: >-
+  A line graph of steps completed independently across eighteen sessions. During
+  Baseline, sessions one to nine, the count rises steadily from one to seven. A
+  phase-change line follows session nine. During Teaching, sessions ten to eighteen, the
+  count continues rising from seven to eleven at about the same rate. The slope either
+  side of the phase-change line is similar, and there is no step up at the change.
+teaching: >-
+  A baseline is not a formality before the interesting part; it is the comparison the
+  whole graph rests on. When baseline is already moving in the direction the programme
+  intends, improvement afterwards is exactly what would have happened anyway, and the
+  graph cannot separate the two. This is why a baseline is usually extended until it is
+  flat or heading the wrong way — not to delay teaching, but because starting on a rising
+  baseline spends the same weeks and buys no information. Notice what is not being said:
+  this does not mean the teaching failed, and it certainly does not mean somebody should
+  withhold teaching to protect a graph. Decisions about when a baseline has run long
+  enough belong to the supervising analyst.
+plainSummary: >-
+  The dots were already going up before the plan changed. They kept going up at the same
+  rate after. So the graph cannot show what the change did. The learner improved. The
+  reason is not visible here.
+termRefs: [trend, baseline, visual-analysis, level]
+taskRefs:
+  - { credential: RBT, code: A.7 }
+  - { credential: BCBA, code: D.1 }
+citations:
+  - sourceId: kazdin-2011
+    useType: fact-reference
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Written from Kazdin (2011) on baseline logic and visual analysis. Data invented.
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'
