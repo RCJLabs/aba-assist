@@ -61,3 +61,36 @@ describe('the technician question bank', () => {
 		expect(missing).toEqual([]);
 	});
 });
+
+/**
+ * The analyst bank is held to the weaker of the two ratchets, deliberately.
+ *
+ * It cannot fill its paper yet — that is a hundred and eighty-five items against a bank
+ * less than half the size — and the build says so on every run rather than hiding it.
+ * What it can be held to now is that no task on the outline is unexaminable, which is the
+ * sharper defect of the two: a thin area gives a candidate less practice, and a task with
+ * no question at all gives them none, silently, in an area they may most need.
+ *
+ * When the bank reaches full length this should be raised to match the technician one.
+ */
+describe('the analyst question bank', () => {
+	it('examines every task on the outline at least once', async () => {
+		const outline = Object.values(outlines).find((o) => o.credential === 'BCBA')!;
+		const questions = await loadQuestions('BCBA');
+		const cited = new Set(questions.map((q) => q.taskRef.code));
+
+		const missing = outline.domains
+			.flatMap((d) => d.tasks.map((t) => t.code))
+			.filter((code) => !cited.has(code));
+		expect(missing).toEqual([]);
+	});
+
+	it('has at least one question in every area', async () => {
+		const outline = Object.values(outlines).find((o) => o.credential === 'BCBA')!;
+		const questions = await loadQuestions('BCBA');
+		for (const d of outline.domains) {
+			const count = questions.filter((q) => q.taskRef.code.startsWith(`${d.letter}.`)).length;
+			expect(count, `area ${d.letter} (${d.name})`).toBeGreaterThan(0);
+		}
+	});
+});

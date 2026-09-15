@@ -1,0 +1,850 @@
+# BCBA practice questions — further items for areas C, D and E. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-c2-product-measure
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      A teacher wants to know how much written work a student completes, but cannot watch
+      continuously. Counting completed worksheets at the end of the lesson is an example
+      of:
+    options:
+      - id: a
+        text: A product measure
+        isCorrect: true
+        rationale: >-
+          The behaviour is measured by the lasting result it left behind, after the fact,
+          rather than as it happens.
+      - id: b
+        text: A direct measure
+        isCorrect: false
+        rationale: >-
+          Direct measurement records the behaviour as it occurs, which is exactly what is not
+          possible here.
+      - id: c
+        text: An indirect measure
+        isCorrect: false
+        rationale: >-
+          Indirect measurement asks somebody about the behaviour — an interview or a rating
+          scale — rather than counting anything it produced.
+      - id: d
+        text: A discontinuous measure
+        isCorrect: false
+        rationale: >-
+          Discontinuous procedures sample the behaviour while it is happening; they still
+          require observing.
+    explanation: >-
+      Measures divide into direct observation, permanent product, and indirect report.
+      Products are efficient and unobtrusive but blind to how the result was produced, so
+      they suit outcomes with a durable trace and suit them badly when the process is the
+      target.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [permanent-product, continuous-measurement, indirect-assessment, data-sheet]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-c3-rate-vs-count
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Observation sessions vary in length from ten to forty minutes. To compare how often
+      a behaviour occurs across sessions, the appropriate measure is:
+    options:
+      - id: a
+        text: Rate
+        isCorrect: true
+        rationale: >-
+          Dividing count by observation time makes figures from sessions of different lengths
+          comparable.
+      - id: b
+        text: Count
+        isCorrect: false
+        rationale: >-
+          A raw count confounds how often the behaviour happened with how long you watched.
+      - id: c
+        text: Percentage of intervals
+        isCorrect: false
+        rationale: >-
+          That is a sampling estimate of time, and it also requires the interval structure to
+          be held constant.
+      - id: d
+        text: Trials to criterion
+        isCorrect: false
+        rationale: >-
+          Trials to criterion measures how much teaching a skill took, not how often a
+          behaviour occurs.
+    explanation: >-
+      Choosing a measure starts from the question. Where sessions vary in length, count
+      alone is uninterpretable and rate is the minimum needed. Reporting a count without
+      its observation time is one of the most common ways a data set becomes unreadable
+      later.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [frequency-and-rate, count, percentage, trials-to-criterion]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c4-latency
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      A team wants to know whether a learner is starting tasks more promptly after an
+      instruction. The dimension to measure is:
+    options:
+      - id: a
+        text: Latency
+        isCorrect: true
+        rationale: >-
+          Latency is the elapsed time between the onset of a stimulus and the beginning of the
+          response, which is exactly what "how promptly they start" means.
+      - id: b
+        text: Duration
+        isCorrect: false
+        rationale: >-
+          Duration is how long the behaviour lasts once started, which does not answer the
+          question about starting.
+      - id: c
+        text: Interresponse time
+        isCorrect: false
+        rationale: >-
+          Interresponse time is the gap between successive responses, not between a stimulus
+          and a response.
+      - id: d
+        text: Rate
+        isCorrect: false
+        rationale: >-
+          Rate counts occurrences per unit time and says nothing about when a response begins
+          relative to an instruction.
+    explanation: >-
+      The temporal dimensions answer different questions: latency is when it starts,
+      duration is how long it lasts, interresponse time is the gap between one instance
+      and the next. Picking the wrong one produces data that cannot address the referral
+      question however carefully they were collected.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [latency, duration, interresponse-time, frequency-and-rate]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c5-partial-interval-bias
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      A behaviour occurs briefly once in most ten-second intervals. Partial interval
+      recording will:
+    options:
+      - id: a
+        text: Overestimate the proportion of time the behaviour occupied
+        isCorrect: true
+        rationale: >-
+          Scoring a whole interval for a single brief occurrence inflates the estimate of time
+          engaged.
+      - id: b
+        text: Underestimate the proportion of time
+        isCorrect: false
+        rationale: >-
+          Whole interval recording underestimates; partial interval overestimates.
+      - id: c
+        text: Estimate it accurately, because intervals are short
+        isCorrect: false
+        rationale: >-
+          Shortening intervals reduces the bias but does not remove it; the direction of the
+          error is built into the rule.
+      - id: d
+        text: Produce the same figure as momentary time sampling
+        isCorrect: false
+        rationale: >-
+          Momentary sampling scores only at the moment the interval ends and is far less
+          likely to catch a brief occurrence.
+    explanation: >-
+      Discontinuous procedures trade accuracy for practicality, and each is biased in a
+      known direction: partial interval up, whole interval down, momentary sampling
+      roughly unbiased for time on average but noisy for brief behaviour. Knowing the
+      direction is what lets you read somebody else's data honestly.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        partial-interval-recording,
+        whole-interval-recording,
+        momentary-time-sampling,
+        discontinuous-measurement
+      ]
+    citations:
+      - sourceId: hartmann-hall-1976
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c7-practicality
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      A measurement system is accurate but the classroom staff who must run it
+      consistently fail to complete it during busy periods. The best first response is to:
+    options:
+      - id: a
+        text: Simplify the measure so it can be run accurately in the real setting
+        isCorrect: true
+        rationale: >-
+          A measure that is not actually taken produces no data, so practicality in the
+          setting is part of whether the system works at all.
+      - id: b
+        text: Keep the system and retrain the staff repeatedly
+        isCorrect: false
+        rationale: >-
+          Retraining is worth one attempt, but a system that repeatedly fails under normal
+          conditions is the problem, not the staff.
+      - id: c
+        text: Switch to indirect report from the staff
+        isCorrect: false
+        rationale: >-
+          That abandons direct measurement altogether, which is a larger loss than simplifying
+          it.
+      - id: d
+        text: Accept the missing data and analyse what was collected
+        isCorrect: false
+        rationale: >-
+          Data missing during busy periods are missing precisely when the behaviour is most
+          likely, so the remaining data are biased.
+    explanation: >-
+      Measurement has to survive the setting it is used in. An elegant system nobody
+      completes yields less than a coarser one everybody does, and data missing
+      non-randomly are worse than fewer data, because the gaps line up with the conditions
+      of interest.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [treatment-integrity, continuous-measurement, discontinuous-measurement, data-sheet]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c9-select-measure
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      A behaviour occurs in long episodes of varying length, a few times a day, and the
+      referral question is how much of the day it occupies. The best measurement system
+      is:
+    options:
+      - id: a
+        text: Duration
+        isCorrect: true
+        rationale: >-
+          Total or mean duration directly answers how much time the behaviour occupies, which
+          is the question asked.
+      - id: b
+        text: Frequency count
+        isCorrect: false
+        rationale: >-
+          A count of a few long episodes says nothing about how much time they took.
+      - id: c
+        text: Trials to criterion
+        isCorrect: false
+        rationale: >-
+          That measures acquisition of a skill, not the extent of an ongoing behaviour.
+      - id: d
+        text: Partial interval recording
+        isCorrect: false
+        rationale: >-
+          It could be used, but it estimates what duration measures directly, and with a known
+          upward bias.
+    explanation: >-
+      Selecting a measure means matching three things: the dimension that matters, the
+      question being asked, and what the setting can support. Where episodes are long and
+      few, duration is both the most direct answer and the easiest to collect.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [duration, frequency-and-rate, partial-interval-recording, operational-definition]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c10-cumulative-record
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      Which graph type makes the rate of responding readable as the slope of the line?
+    options:
+      - id: a
+        text: A cumulative record
+        isCorrect: true
+        rationale: >-
+          On a cumulative graph each point adds to the previous total, so a steeper slope is a
+          higher rate and a flat line is no responding.
+      - id: b
+        text: A standard line graph of daily counts
+        isCorrect: false
+        rationale: >-
+          On a non-cumulative line graph the height of each point is the count; slope between
+          points is a change in count, not a rate.
+      - id: c
+        text: A bar graph
+        isCorrect: false
+        rationale: >-
+          Bar graphs compare discrete values across conditions and have no meaningful slope.
+      - id: d
+        text: A scatterplot of time of day
+        isCorrect: false
+        rationale: >-
+          A scatterplot shows when a behaviour tends to occur, not its rate as a slope.
+    explanation: >-
+      Graph type is chosen for what it makes visible. Cumulative records turn rate into
+      slope, standard line graphs show level and trend over sessions, bar graphs compare
+      conditions, and scatterplots expose temporal patterns. All of them need correctly
+      labelled axes and marked condition changes.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [cumulative-record, line-graph, bar-graph, scatterplot, phase-change-line]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d1-variables
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      In a study where a therapist alternates between delivering and withholding attention
+      to examine its effect on disruption, the independent variable is:
+    options:
+      - id: a
+        text: The attention condition the therapist manipulates
+        isCorrect: true
+        rationale: >-
+          The independent variable is the one the experimenter changes deliberately.
+      - id: b
+        text: The rate of disruption
+        isCorrect: false
+        rationale: >-
+          That is the dependent variable — what is measured to see whether the manipulation
+          had an effect.
+      - id: c
+        text: The therapist
+        isCorrect: false
+        rationale: >-
+          The person delivering the condition is held constant here rather than being what is
+          manipulated.
+      - id: d
+        text: The setting in which the sessions occur
+        isCorrect: false
+        rationale: >-
+          Unless it is deliberately varied, the setting is a constant, and if it varied
+          without being controlled it would be a confound.
+    explanation: >-
+      Every demonstration of a functional relation rests on saying clearly which variable
+      was changed and which was measured. Naming them precisely is also how confounds
+      become visible, because a confound is simply another variable that changed alongside
+      the independent one.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs:
+      [independent-variable, dependent-variable, functional-relation, confounding-variable]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d2-external-validity
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.2 }
+    type: single-best-answer
+    stem: >-
+      A well-controlled study demonstrates a clear effect with three participants in a
+      university clinic. A reviewer asks whether the result would hold in ordinary
+      schools. The reviewer is asking about:
+    options:
+      - id: a
+        text: External validity
+        isCorrect: true
+        rationale: >-
+          External validity concerns the extent to which a finding generalizes to other
+          people, settings and conditions.
+      - id: b
+        text: Internal validity
+        isCorrect: false
+        rationale: >-
+          Internal validity asks whether the change was caused by the independent variable,
+          which the question grants was well controlled.
+      - id: c
+        text: Social validity
+        isCorrect: false
+        rationale: >-
+          Social validity concerns whether the goals, procedures and outcomes are acceptable
+          to the people affected.
+      - id: d
+        text: Reliability of measurement
+        isCorrect: false
+        rationale: >-
+          That concerns consistency of the measure, not the reach of the finding.
+    explanation: >-
+      The two validities answer different questions: internal is "did this variable cause
+      it here", external is "would it happen elsewhere". Single-case designs establish
+      internal validity strongly, and build external validity through systematic
+      replication rather than through large samples.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [external-validity, internal-validity, social-validity, replication]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d5-single-case-strength
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      For an applied question about whether an intervention works for a particular client,
+      the principal advantage of a single-case design over a group comparison is that it:
+    options:
+      - id: a
+        text: Demonstrates the effect within the individual, who serves as their own control
+        isCorrect: true
+        rationale: >-
+          The comparison is between conditions for one person, so the finding is about that
+          person rather than about an average.
+      - id: b
+        text: Requires fewer statistical assumptions and so is more rigorous in general
+        isCorrect: false
+        rationale: >-
+          Rigour comes from experimental control, not from avoiding statistics, and neither
+          design is more rigorous in general.
+      - id: c
+        text: Establishes external validity more readily
+        isCorrect: false
+        rationale: >-
+          Generalizing from a small number of participants is the weaker side of single-case
+          work, addressed by replication.
+      - id: d
+        text: Removes the need for repeated measurement
+        isCorrect: false
+        rationale: >-
+          Single-case designs depend on repeated measurement across conditions; it is their
+          central requirement.
+    explanation: >-
+      Group designs answer questions about average effects across people and can hide the
+      individual for whom nothing worked. Single-case designs answer whether this
+      intervention changed this behaviour for this person, which is usually the applied
+      question, at the cost of needing replication for reach.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [single-case-design, experimental-control, replication, external-validity]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d6-critique-design
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      A graph shows baseline, then intervention, with a clear level change. Baseline had
+      three data points and a rising trend in the same direction as the intervention
+      effect. The most serious weakness is:
+    options:
+      - id: a
+        text: The baseline trend already predicted the change, so a functional relation is not demonstrated
+        isCorrect: true
+        rationale: >-
+          An unstable baseline heading in the direction of the predicted effect cannot support
+          the claim that the intervention produced it.
+      - id: b
+        text: Three data points are always too few
+        isCorrect: false
+        rationale: >-
+          The number matters less than stability; three stable points can be adequate while
+          ten unstable ones are not.
+      - id: c
+        text: There is no interobserver agreement reported
+        isCorrect: false
+        rationale: >-
+          That is a real reporting gap, but it does not by itself undermine the logic of the
+          demonstration the way the trend does.
+      - id: d
+        text: A reversal was not conducted
+        isCorrect: false
+        rationale: >-
+          A reversal would strengthen the demonstration, but many designs establish control
+          without one.
+    explanation: >-
+      Reading a single-case graph means asking whether the data rule out the alternatives.
+      A baseline trending towards the expected effect leaves maturation and ordinary
+      improvement as live explanations, which is why stability, not merely length, is the
+      criterion for moving to the next phase.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [baseline, trend, visual-analysis, experimental-control, ab-design]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e1-core-principles
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      An analyst is asked to continue a programme that a family likes but that the data
+      show is not working. Which core ethical principle most directly bears on the
+      decision?
+    options:
+      - id: a
+        text: Benefiting others
+        isCorrect: true
+        rationale: >-
+          The obligation to work for the benefit of the client is what makes continuing an
+          ineffective programme a problem, whatever its popularity.
+      - id: b
+        text: Behaving with integrity
+        isCorrect: false
+        rationale: >-
+          Integrity is engaged if the analyst misrepresents the results, but the decision
+          itself turns on the client's benefit.
+      - id: c
+        text: Treating others with compassion, dignity and respect
+        isCorrect: false
+        rationale: >-
+          This supports taking the family's view seriously, but it does not settle whether to
+          continue something ineffective.
+      - id: d
+        text: Ensuring competence
+        isCorrect: false
+        rationale: >-
+          Competence concerns whether the analyst is equipped to do the work, which is not
+          what is in question.
+    explanation: >-
+      The code is built on four core principles, and most practice dilemmas involve more
+      than one pulling in different directions. Naming which principle is doing the work —
+      rather than reaching for the whole code at once — is what makes an ethical analysis
+      usable.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [ethics-code, social-validity, scope-of-competence, dignity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e2-accountability
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      Which of the following is the most direct professional consequence of an ethics
+      violation for a certificant?
+    options:
+      - id: a
+        text: Action by the certifying board against the certification itself
+        isCorrect: true
+        rationale: >-
+          The board administers the code and can sanction, suspend or revoke certification.
+      - id: b
+        text: Automatic loss of a state licence
+        isCorrect: false
+        rationale: >-
+          Licensure is separate from certification; a board action may prompt review but does
+          not itself remove a licence.
+      - id: c
+        text: Criminal prosecution
+        isCorrect: false
+        rationale: >-
+          Some conduct is also criminal, but ethics enforcement is a professional mechanism,
+          not a criminal one.
+      - id: d
+        text: Mandatory retraining by the employer
+        isCorrect: false
+        rationale: >-
+          An employer may require this, but it is not the accountability mechanism attached to
+          the code.
+    explanation: >-
+      Unethical conduct carries risk to clients first, and then to the profession and the
+      practitioner. It is worth knowing which mechanism is which: employer discipline,
+      board action against certification, licensure review and legal liability are
+      separate systems that can each be engaged by the same conduct.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [ethics-code, public-statement, scope-of-practice]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e4-confidentiality-tech
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      An analyst needs to send session data to a supervisor while travelling. The most
+      defensible choice is to:
+    options:
+      - id: a
+        text: Use the organisation's approved secure system, even if it is slower
+        isCorrect: true
+        rationale: >-
+          Approved systems exist because they meet the legal and contractual requirements the
+          analyst is bound by, and convenience does not alter those.
+      - id: b
+        text: Send it from a personal email account with the client's initials instead of a name
+        isCorrect: false
+        rationale: >-
+          Initials are not de-identification, and the channel remains outside the
+          organisation's safeguards.
+      - id: c
+        text: Send it through a consumer messaging app the supervisor already uses
+        isCorrect: false
+        rationale: >-
+          Familiarity is not a safeguard, and the data would leave the systems the
+          organisation is accountable for.
+      - id: d
+        text: Photograph the data sheet and store it on a personal device until returning
+        isCorrect: false
+        rationale: >-
+          This creates an unprotected copy on a device outside the organisation's control.
+    explanation: >-
+      Confidentiality obligations follow the information rather than the setting, and they
+      apply across records, conversations, technology and public places. The practical
+      test is whether the route is one the organisation has approved and can account for.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [confidentiality, hipaa, session-note]
+    citations:
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e8-communication
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.8 }
+    type: single-best-answer
+    stem: >-
+      A caregiver becomes upset during a meeting and says the team is not listening. The
+      most effective initial response is to:
+    options:
+      - id: a
+        text: Stop presenting, ask what they are seeing, and reflect it back before continuing
+        isCorrect: true
+        rationale: >-
+          Establishing that the concern has been understood is what makes anything said
+          afterwards usable; continuing to present confirms the complaint.
+      - id: b
+        text: Restate the data more clearly, since the disagreement is factual
+        isCorrect: false
+        rationale: >-
+          Repeating the same content more loudly is the behaviour being objected to, and
+          rarely changes the outcome.
+      - id: c
+        text: Offer to reschedule so everybody can calm down
+        isCorrect: false
+        rationale: >-
+          This may be needed eventually, but ending the meeting first treats the concern as an
+          obstacle rather than information.
+      - id: d
+        text: Explain the clinical reasoning in more technical detail
+        isCorrect: false
+        rationale: >-
+          Added technical detail widens the gap the caregiver is describing.
+    explanation: >-
+      Interpersonal skill is a named part of the analyst role rather than a soft extra. A
+      caregiver who does not feel heard will not implement a plan, so the communication is
+      not separate from the clinical work — it is a condition of it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [collaboration, cultural-humility, social-validity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e10-culturally-responsive
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.10 }
+    type: single-best-answer
+    stem: >-
+      A family's goals for mealtimes differ from the ones a standard curriculum would
+      select. The culturally responsive response is to:
+    options:
+      - id: a
+        text: Build goals around what the family values, within what the evidence supports
+        isCorrect: true
+        rationale: >-
+          Adapting goals and procedures to the client's values and context is what cultural
+          responsiveness means in practice.
+      - id: b
+        text: Explain why the standard goals are evidence-based and proceed with them
+        isCorrect: false
+        rationale: >-
+          Evidence tells you what works for a goal; it does not choose the goal, and imposing
+          one is the failure being described.
+      - id: c
+        text: Select the goals the funder is most likely to approve
+        isCorrect: false
+        rationale: >-
+          Funder preference is a constraint to work within, not a substitute for the family's
+          values.
+      - id: d
+        text: Defer the decision until the family has completed a values questionnaire
+        isCorrect: false
+        rationale: >-
+          Assessment is useful, but deferring the conversation is not the same as responding
+          to what the family has already said.
+    explanation: >-
+      Cultural responsiveness shows up in the goals chosen and the procedures used, not
+      only in tone. Social validity has always required that goals be acceptable to the
+      people affected, so this is the field's own standard rather than an addition to it.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [cultural-responsiveness, cultural-humility, social-validity, informed-consent]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e11-bias
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.11 }
+    type: single-best-answer
+    stem: >-
+      An analyst notices they consistently rate supervisees from one background as less
+      ready for independence. The most appropriate action is to:
+    options:
+      - id: a
+        text: Examine the decisions against objective criteria and data, and change the process
+        isCorrect: true
+        rationale: >-
+          Countering bias means checking the judgements against something external and
+          altering how the decisions are made.
+      - id: b
+        text: Rely on intuition less and delay all independence decisions
+        isCorrect: false
+        rationale: >-
+          Delaying decisions uniformly harms everybody and does not address the pattern.
+      - id: c
+        text: Ask the supervisees whether they feel treated fairly and act on that
+        isCorrect: false
+        rationale: >-
+          Their view is worth having, but it places the burden on the people affected and does
+          not test the judgements.
+      - id: d
+        text: Note it and monitor whether the pattern continues
+        isCorrect: false
+        rationale: >-
+          Monitoring without changing anything allows a known problem to keep operating.
+    explanation: >-
+      Bias is not avoided by intending to be fair. The behaviour-analytic response is the
+      one applied everywhere else: define the judgement operationally, measure it, compare
+      it against criteria, and change the arrangement that produced the pattern.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [cultural-humility, supervision, performance-feedback, operational-definition]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e12-mandated-reporting
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.12 }
+    type: single-best-answer
+    stem: >-
+      An analyst forms a reasonable suspicion that a child is being harmed at home. The
+      reporting obligation is triggered by:
+    options:
+      - id: a
+        text: Reasonable suspicion, without needing to confirm it first
+        isCorrect: true
+        rationale: >-
+          Mandated reporting statutes are built on suspicion precisely so that reporters are
+          not asked to investigate.
+      - id: b
+        text: Confirmation by a second professional
+        isCorrect: false
+        rationale: >-
+          Requiring corroboration would delay reports the statute intends to be prompt.
+      - id: c
+        text: The supervisor agreeing that a report should be made
+        isCorrect: false
+        rationale: >-
+          Telling the supervisor is appropriate, but the legal duty attaches to the individual
+          mandated reporter.
+      - id: d
+        text: Consent from the caregiver
+        isCorrect: false
+        rationale: >-
+          Consent is not required and seeking it may place the child at greater risk.
+    explanation: >-
+      Legal and regulatory obligations sit alongside the ethics code and sometimes ahead
+      of it. Mandated reporting is the clearest case: the standard is suspicion rather
+      than proof, the duty is personal, and investigating is somebody else's job.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [mandated-reporter, confidentiality, ethics-code]
+    citations:
+      - sourceId: capta
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

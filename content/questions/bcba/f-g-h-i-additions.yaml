@@ -1,0 +1,1078 @@
+# BCBA practice questions — further items for areas F, G, H and I. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-f2-contextual-variables
+    credential: BCBA
+    taskRef: { credential: BCBA, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      An assessment finds a skill absent in the clinic. The family reports the child does
+      it at home daily, in their first language. The best interpretation is that:
+    options:
+      - id: a
+        text: The assessment arrangement may not have given the skill an occasion to occur
+        isCorrect: true
+        rationale: >-
+          A skill under different stimulus and language conditions may simply not be
+          occasioned by the clinic arrangement, which is a feature of the assessment rather
+          than of the child.
+      - id: b
+        text: The caregiver report is unreliable and the direct data should stand
+        isCorrect: false
+        rationale: >-
+          Direct data are stronger evidence about the condition observed, not about all
+          conditions, and dismissing the report discards the more informative finding.
+      - id: c
+        text: The skill is present but not generalized, so generalization should be the goal
+        isCorrect: false
+        rationale: >-
+          That is plausible but premature; the first step is to arrange an assessment
+          condition where the skill could appear.
+      - id: d
+        text: The skill should be taught from scratch in the clinic
+        isCorrect: false
+        rationale: >-
+          Teaching a skill the learner already has wastes time and may look like failure when
+          it stalls.
+    explanation: >-
+      Cultural and contextual variables shape what an assessment can detect. Language,
+      materials, who is present and what is ordinary in the setting all determine whether
+      a skill has any occasion to appear, and a discrepancy between report and direct data
+      is usually information rather than error.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [skills-assessment, cultural-responsiveness, ecological-assessment, stimulus-control]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-f3-criterion-referenced
+    credential: BCBA
+    taskRef: { credential: BCBA, code: F.3 }
+    type: single-best-answer
+    stem: >-
+      A criterion-referenced skills assessment differs from a norm-referenced one in that
+      it:
+    options:
+      - id: a
+        text: Compares the learner against defined criteria rather than against other people
+        isCorrect: true
+        rationale: >-
+          Criterion-referenced tools say what the learner can and cannot do relative to stated
+          criteria, which is what a teaching programme needs.
+      - id: b
+        text: Produces a standard score and percentile rank
+        isCorrect: false
+        rationale: >-
+          Those are products of norm-referenced instruments.
+      - id: c
+        text: Must be administered by a licensed psychologist
+        isCorrect: false
+        rationale: >-
+          Administration requirements vary by instrument and are not what distinguishes the
+          two types.
+      - id: d
+        text: Measures behaviour directly rather than by report
+        isCorrect: false
+        rationale: >-
+          Either type can use direct observation or report; the distinction is what the result
+          is compared against.
+    explanation: >-
+      The purpose of assessment determines the tool. Norm-referenced instruments answer
+      how a learner compares with peers, which suits eligibility questions.
+      Criterion-referenced instruments answer what to teach next, which is what a
+      behaviour-analytic programme is built from.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [skills-assessment, competency-assessment, ecological-assessment]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-f7-interpret-referral
+    credential: BCBA
+    taskRef: { credential: BCBA, code: F.7 }
+    type: single-best-answer
+    stem: >-
+      A referral describes concerns that assessment shows are fully accounted for by an
+      untreated medical condition, with no behavioural component the team can address. The
+      appropriate conclusion is:
+    options:
+      - id: a
+        text: Behaviour-analytic services are not indicated for this concern, and the referral should be redirected
+        isCorrect: true
+        rationale: >-
+          Interpreting assessment includes concluding that services are not needed, and
+          referring on is the appropriate action.
+      - id: b
+        text: Begin services and monitor whether the medical treatment resolves the concern
+        isCorrect: false
+        rationale: >-
+          Starting services that are not indicated consumes resources and can attribute a
+          medical improvement to the intervention.
+      - id: c
+        text: Begin a functional analysis to be certain
+        isCorrect: false
+        rationale: >-
+          A functional analysis is warranted where a behavioural function is plausible, not to
+          rule out what assessment has already accounted for.
+      - id: d
+        text: Accept the referral because the family has requested it
+        isCorrect: false
+        rationale: >-
+          Demand does not establish indication, and accepting on that basis is not in the
+          client's interest.
+    explanation: >-
+      Interpreting a referral means deciding whether behaviour-analytic services are
+      needed at all and, if so, of what kind. Concluding that they are not is a legitimate
+      and sometimes necessary outcome, and it is part of practising within scope.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        functional-behavior-assessment,
+        scope-of-practice,
+        continuity-of-care,
+        indirect-assessment
+      ]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g1-schedule-selection
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.1 }
+    type: single-best-answer
+    stem: >-
+      A newly acquired response needs to be strengthened quickly. The schedule that best
+      suits acquisition is:
+    options:
+      - id: a
+        text: Continuous reinforcement
+        isCorrect: true
+        rationale: >-
+          Reinforcing every occurrence produces the fastest acquisition, before thinning for
+          maintenance.
+      - id: b
+        text: A variable-ratio schedule
+        isCorrect: false
+        rationale: >-
+          Variable ratio produces high, persistent rates and suits maintenance, but it is a
+          poor choice while the response is still being acquired.
+      - id: c
+        text: A fixed-interval schedule
+        isCorrect: false
+        rationale: >-
+          Fixed interval produces a scalloped pattern and is unsuited to establishing a new
+          response.
+      - id: d
+        text: A variable-interval schedule
+        isCorrect: false
+        rationale: >-
+          Variable interval produces steady moderate rates, useful for maintenance rather than
+          acquisition.
+    explanation: >-
+      Schedule selection follows the phase. Dense, usually continuous, reinforcement
+      establishes a response; intermittent schedules maintain it and make it resistant to
+      extinction. Moving between them deliberately is schedule thinning, and skipping the
+      thinning is how a programme collapses when reinforcement stops.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        continuous-reinforcement,
+        variable-ratio-schedule,
+        schedule-thinning,
+        intermittent-reinforcement
+      ]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g5-arrange-mo
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.5 }
+    type: single-best-answer
+    stem: >-
+      To make requesting a preferred item more likely during a teaching session, the most
+      direct antecedent arrangement is to:
+    options:
+      - id: a
+        text: Arrange brief restricted access to the item before the session
+        isCorrect: true
+        rationale: >-
+          Limiting access establishes the item as a reinforcer and makes behaviour that has
+          produced it more likely, which is the value-altering and behaviour-altering effect
+          of an establishing operation.
+      - id: b
+        text: Place the item in view and tell the learner they may ask for it
+        isCorrect: false
+        rationale: >-
+          This adds a discriminative stimulus and a rule, which signal availability rather
+          than raising value; with free prior access the request may still not occur.
+      - id: c
+        text: Give free access to the item just before the session
+        isCorrect: false
+        rationale: >-
+          That is an abolishing operation and will make requesting less likely.
+      - id: d
+        text: Increase the reinforcement schedule for requesting
+        isCorrect: false
+        rationale: >-
+          A denser schedule matters once requests occur; it does not create the motivation to
+          request.
+    explanation: >-
+      Motivating operations and discriminative stimuli are both antecedents but do
+      different work: one changes how much the consequence is worth, the other signals
+      that it is available. Arranging them deliberately is usually cheaper and less
+      restrictive than changing consequences.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        motivating-operation,
+        establishing-operation,
+        abolishing-operation,
+        mand,
+        antecedent-intervention
+      ]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g6-conditional-discrimination
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.6 }
+    type: single-best-answer
+    stem: >-
+      Matching-to-sample requires a conditional discrimination because:
+    options:
+      - id: a
+        text: Which comparison is correct depends on the sample presented
+        isCorrect: true
+        rationale: >-
+          The correct response is conditional on another stimulus, which is what makes the
+          discrimination conditional rather than simple.
+      - id: b
+        text: Two stimuli must be physically identical
+        isCorrect: false
+        rationale: >-
+          Identity matching is one form, but arbitrary matching uses stimuli with nothing in
+          common.
+      - id: c
+        text: The learner must respond within a time limit
+        isCorrect: false
+        rationale: >-
+          Timing is a procedural detail, not what makes the discrimination conditional.
+      - id: d
+        text: Reinforcement is delivered intermittently
+        isCorrect: false
+        rationale: >-
+          The schedule is unrelated to whether the discrimination is simple or conditional.
+    explanation: >-
+      A simple discrimination has one stimulus signalling reinforcement. A conditional
+      discrimination has the meaning of one stimulus depending on another, which is the
+      structure behind matching-to-sample, listener responding by feature and class, and
+      equivalence-based instruction.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        matching-to-sample,
+        discrimination-training,
+        stimulus-control,
+        listener-responding,
+        stimulus-equivalence
+      ]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g7-errorless
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.7 }
+    type: single-best-answer
+    stem: >-
+      For a learner with a history of frustration and frequent errors on new
+      discriminations, the prompting approach most likely to suit is:
+    options:
+      - id: a
+        text: Errorless teaching with most-to-least prompting and a prompt delay
+        isCorrect: true
+        rationale: >-
+          Beginning with enough help to prevent errors and fading systematically minimises the
+          errors that occasion the difficulty.
+      - id: b
+        text: Least-to-most prompting so the learner has the chance to respond independently
+        isCorrect: false
+        rationale: >-
+          Least-to-most deliberately allows errors before help arrives, which is the opposite
+          of what this learner needs.
+      - id: c
+        text: No prompts, with error correction after each mistake
+        isCorrect: false
+        rationale: >-
+          This maximises errors for a learner whose errors are the problem.
+      - id: d
+        text: Physical prompting for every trial with no fading plan
+        isCorrect: false
+        rationale: >-
+          Prompting without a fading plan produces prompt dependence and never transfers
+          control.
+    explanation: >-
+      Prompt hierarchies are chosen for the learner and the skill. Least-to-most preserves
+      independence but produces errors; most-to-least and errorless approaches prevent
+      errors but need a deliberate fading plan. Either way the destination is stimulus
+      control by the natural cue.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        errorless-teaching,
+        most-to-least-prompting,
+        least-to-most-prompting,
+        time-delay,
+        prompt-fading,
+        transfer-of-stimulus-control
+      ]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g9-video-modeling
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.9 }
+    type: single-best-answer
+    stem: >-
+      Video modelling is most likely to be effective when the learner:
+    options:
+      - id: a
+        text: Has a generalized imitative repertoire and attends to the video
+        isCorrect: true
+        rationale: >-
+          Modelling depends on the learner being able to match a model; without an imitative
+          repertoire the video has nothing to work with.
+      - id: b
+        text: Prefers screens to in-person interaction
+        isCorrect: false
+        rationale: >-
+          Preference may aid attending but is not the precondition that makes modelling work.
+      - id: c
+        text: Has failed discrete-trial teaching for the same skill
+        isCorrect: false
+        rationale: >-
+          Prior failure of another method does not predict that modelling will succeed.
+      - id: d
+        text: Can already perform each component in isolation
+        isCorrect: false
+        rationale: >-
+          That is helpful for some chains but is not what makes modelling viable as a teaching
+          procedure.
+    explanation: >-
+      Modelling procedures rest on imitation as a response class: the model becomes a
+      discriminative stimulus for matching it. Video adds consistency and removes the need
+      for a live model, but it does not remove the prerequisite.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [modeling, imitation, observational-learning, discriminative-stimulus]
+    citations:
+      - sourceId: macduff-krantz-mcclannahan-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g10-rules-limits
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.10 }
+    type: single-best-answer
+    stem: >-
+      Establishing a behaviour by instruction rather than by shaping is least appropriate
+      when:
+    options:
+      - id: a
+        text: The target requires fine timing or fluency that a verbal description cannot capture
+        isCorrect: true
+        rationale: >-
+          Skills defined by their moment-to-moment dynamics have to be shaped by contact with
+          consequences; a rule cannot specify them.
+      - id: b
+        text: The contingency is delayed and rarely contacted
+        isCorrect: false
+        rationale: >-
+          That is precisely where rules are most useful, since direct shaping is impractical.
+      - id: c
+        text: The learner has a strong listener repertoire
+        isCorrect: false
+        rationale: >-
+          A strong listener repertoire makes instruction more viable, not less.
+      - id: d
+        text: The behaviour needs to occur immediately for safety reasons
+        isCorrect: false
+        rationale: >-
+          Urgency is a reason to use a rule where the learner can follow one, not a reason
+          against it.
+    explanation: >-
+      Rules get behaviour started without waiting for consequences to shape it, which
+      suits delayed or dangerous contingencies. Their limit is that rule-governed
+      behaviour can be insensitive to the actual contingencies, and that no description
+      substitutes for shaping a skill defined by its timing.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [rule-governed-behavior, contingency-shaped-behavior, shaping, verbal-behavior]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g11-shaping-criterion
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.11 }
+    type: single-best-answer
+    stem: >-
+      During shaping, reinforcement continues for an approximation that the learner now
+      performs easily and often. The most likely result is:
+    options:
+      - id: a
+        text: Progress stalls, because the current approximation is being maintained rather than surpassed
+        isCorrect: true
+        rationale: >-
+          Holding the criterion once a response is mastered reinforces staying where the
+          learner is.
+      - id: b
+        text: The response becomes more variable, producing better approximations
+        isCorrect: false
+        rationale: >-
+          Variability increases when reinforcement is withheld, not when it continues at the
+          current level.
+      - id: c
+        text: The response extinguishes through satiation
+        isCorrect: false
+        rationale: >-
+          Satiation affects the reinforcer's value; it does not explain a stalled shaping
+          programme.
+      - id: d
+        text: Generalization to other responses occurs automatically
+        isCorrect: false
+        rationale: >-
+          Nothing about holding the criterion promotes generalization.
+    explanation: >-
+      Shaping is differential reinforcement of successive approximations, and both halves
+      have to keep moving. Advancing too quickly loses the response; advancing too slowly
+      reinforces the plateau. Judging when to shift the criterion is the skill, and it is
+      read from the data rather than from the clock.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [shaping, differential-reinforcement-of-alternative-behavior, extinction, variability]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g12-backward-chaining
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.12 }
+    type: single-best-answer
+    stem: >-
+      Backward chaining is often chosen for a learner who gives up partway through a
+      sequence because:
+    options:
+      - id: a
+        text: Every trial ends with the learner completing the final step and contacting reinforcement
+        isCorrect: true
+        rationale: >-
+          Teaching the last step first means each attempt finishes with success and the
+          terminal reinforcer.
+      - id: b
+        text: It requires fewer steps in the task analysis
+        isCorrect: false
+        rationale: >-
+          The task analysis is the same; only the teaching order differs.
+      - id: c
+        text: The first steps are usually the hardest
+        isCorrect: false
+        rationale: >-
+          Difficulty varies by task and is not what recommends backward chaining.
+      - id: d
+        text: It avoids the need for prompting
+        isCorrect: false
+        rationale: >-
+          Prompting is used in all chaining formats, including backward.
+    explanation: >-
+      The three formats differ in where teaching starts and where the learner contacts
+      reinforcement. Forward chaining teaches step one first, backward teaches the last
+      step first so every trial ends in success, and total task runs the whole chain each
+      time with prompting throughout.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [backward-chaining, forward-chaining, total-task-chaining, chaining, task-analysis]
+    citations:
+      - sourceId: foxx-azrin-1972
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g13-free-operant
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.13 }
+    type: single-best-answer
+    stem: >-
+      A free-operant arrangement differs from a trial-based one in that:
+    options:
+      - id: a
+        text: The learner may respond at any time, and rate is a meaningful measure
+        isCorrect: true
+        rationale: >-
+          Without discrete trials there is no fixed number of opportunities, so responding is
+          measured as a rate over time.
+      - id: b
+        text: Reinforcement is delivered on a thinner schedule
+        isCorrect: false
+        rationale: >-
+          Schedule density is independent of whether the arrangement is trial-based or
+          free-operant.
+      - id: c
+        text: It can only be used for verbal behaviour
+        isCorrect: false
+        rationale: >-
+          Free-operant arrangements are used across repertoires.
+      - id: d
+        text: Prompts cannot be used
+        isCorrect: false
+        rationale: >-
+          Prompts are used in both arrangements.
+    explanation: >-
+      The arrangement determines what can be measured. Trial-based teaching supplies a
+      denominator, so percentage correct is meaningful; free-operant teaching has no fixed
+      opportunities, so rate is the natural measure. Choosing the format is partly a
+      choice about the data it will produce.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        discrete-trial-training,
+        naturalistic-teaching,
+        frequency-and-rate,
+        percentage,
+        incidental-teaching
+      ]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g14-interdependent-group
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.14 }
+    type: single-best-answer
+    stem: >-
+      Under an interdependent group contingency, the reinforcer is delivered when:
+    options:
+      - id: a
+        text: The group as a whole meets the criterion
+        isCorrect: true
+        rationale: >-
+          Interdependent arrangements make the outcome depend on collective performance.
+      - id: b
+        text: Each member meets the criterion, earning individually
+        isCorrect: false
+        rationale: >-
+          That is an independent group contingency, where each person's outcome depends only
+          on their own behaviour.
+      - id: c
+        text: One selected member meets the criterion, for everyone
+        isCorrect: false
+        rationale: >-
+          That is a dependent group contingency, which hinges on one person's performance.
+      - id: d
+        text: Any member meets the criterion, for themselves only
+        isCorrect: false
+        rationale: >-
+          This describes an independent arrangement again.
+    explanation: >-
+      The three arrangements distribute the contingency differently, and each carries a
+      different risk. Dependent and interdependent contingencies can produce peer pressure
+      or scapegoating of the person whose performance decides the outcome, which has to be
+      weighed against their efficiency.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [group-contingency, token-economy, social-validity]
+    citations:
+      - sourceId: litow-pumroy-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g15-common-stimuli
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.15 }
+    type: single-best-answer
+    stem: >-
+      Introducing features of the natural environment into the teaching setting so the
+      skill transfers is the generalization tactic known as:
+    options:
+      - id: a
+        text: Programming common stimuli
+        isCorrect: true
+        rationale: >-
+          Deliberately sharing stimuli between teaching and natural settings is what this
+          tactic names.
+      - id: b
+        text: Training sufficient exemplars
+        isCorrect: false
+        rationale: >-
+          That means teaching across enough examples that untaught ones are covered, which is
+          a different tactic.
+      - id: c
+        text: Teaching loosely
+        isCorrect: false
+        rationale: >-
+          Teaching loosely varies non-critical features during teaching so the skill does not
+          depend on any of them.
+      - id: d
+        text: Sequential modification
+        isCorrect: false
+        rationale: >-
+          Sequential modification is teaching in each setting where generalization fails,
+          rather than programming for it in advance.
+    explanation: >-
+      Generalization is programmed rather than hoped for, and the tactics are distinct:
+      sufficient exemplars, common stimuli, loose training, indiscriminable contingencies
+      and handing the behaviour to natural contingencies. Naming which one is in use is
+      what makes a plan checkable.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs:
+      [generalization, multiple-exemplar-training, teaching-loosely, stimulus-generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g16-natural-contingencies
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.16 }
+    type: single-best-answer
+    stem: >-
+      The most durable route to maintenance after teaching ends is usually to:
+    options:
+      - id: a
+        text: Shift the behaviour onto reinforcers that occur naturally in the environment
+        isCorrect: true
+        rationale: >-
+          A behaviour maintained by what the environment already provides does not depend on
+          the programme continuing.
+      - id: b
+        text: Keep the programmed reinforcement schedule in place indefinitely
+        isCorrect: false
+        rationale: >-
+          This maintains the behaviour but never ends, and it fails the moment the programme
+          does.
+      - id: c
+        text: Increase reinforcement magnitude at the end of teaching
+        isCorrect: false
+        rationale: >-
+          A larger reinforcer at the end does not create persistence once it stops.
+      - id: d
+        text: Reteach the skill periodically from baseline
+        isCorrect: false
+        rationale: >-
+          Reteaching is a response to lost maintenance, not a way of producing it.
+    explanation: >-
+      Maintenance is programmed by thinning the schedule and by handing the behaviour to
+      naturally occurring reinforcement. The test of a successful programme is that it can
+      be withdrawn, which means the natural contingencies have to be doing the work by the
+      end.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [maintenance, schedule-thinning, intermittent-reinforcement, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g17-timeout-safeguards
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.17 }
+    type: single-best-answer
+    stem: >-
+      Before a time-out procedure could be justified in a plan, the most important
+      precondition is that:
+    options:
+      - id: a
+        text: The environment the learner is removed from is genuinely reinforcing
+        isCorrect: true
+        rationale: >-
+          Time-out means time out from positive reinforcement; if the setting is not
+          reinforcing, removal is escape and will strengthen the behaviour.
+      - id: b
+        text: The duration is at least several minutes
+        isCorrect: false
+        rationale: >-
+          Longer is not better, and duration is a parameter rather than the precondition.
+      - id: c
+        text: The learner can describe why it is happening
+        isCorrect: false
+        rationale: >-
+          Understanding is desirable but is not what makes the procedure function as
+          punishment.
+      - id: d
+        text: It is applied consistently by every adult
+        isCorrect: false
+        rationale: >-
+          Consistency matters for any procedure, but it does not address whether time-out can
+          work here at all.
+    explanation: >-
+      Punishment procedures carry the heaviest justification burden: demonstrated need,
+      less restrictive alternatives tried, consent, oversight and monitoring for side
+      effects. Time-out adds a specific trap — if the setting is aversive, removal
+      reinforces the very behaviour it was meant to reduce.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        time-out,
+        negative-punishment,
+        response-cost,
+        overcorrection,
+        least-restrictive-alternative,
+        escape-extinction
+      ]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g19-equivalence-instruction
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.19 }
+    type: single-best-answer
+    stem: >-
+      The main efficiency argument for equivalence-based instruction is that:
+    options:
+      - id: a
+        text: Teaching a small number of relations yields a larger number that were never taught
+        isCorrect: true
+        rationale: >-
+          Derived relations emerge without instruction, so the taught set is smaller than the
+          resulting repertoire.
+      - id: b
+        text: It removes the need for reinforcement during teaching
+        isCorrect: false
+        rationale: >-
+          The trained relations are still established with reinforcement.
+      - id: c
+        text: It works without any prerequisite matching skills
+        isCorrect: false
+        rationale: >-
+          Conditional discrimination is a prerequisite; without it the procedure has nothing
+          to build on.
+      - id: d
+        text: It guarantees generalization to natural settings
+        isCorrect: false
+        rationale: >-
+          Derived relations are not the same as generalization across settings, which still
+          has to be programmed.
+    explanation: >-
+      Equivalence-based instruction exploits the fact that trained relations generate
+      untrained ones through symmetry and transitivity. The efficiency is real and
+      measurable, and it is a different thing from stimulus generalization, which depends
+      on shared features rather than derived relations.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [stimulus-equivalence, matching-to-sample, generalization, multiple-exemplar-training]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h1-mastery-criterion
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      Which goal statement is written so that two people would agree on whether it has
+      been met?
+    options:
+      - id: a
+        text: Independently sets the table before dinner on 8 of 10 consecutive evenings, with no prompts
+        isCorrect: true
+        rationale: >-
+          It names the response, the conditions, the criterion and what counts as independent,
+          so agreement is possible.
+      - id: b
+        text: Improves independence at mealtimes
+        isCorrect: false
+        rationale: >-
+          Neither the response nor the criterion is stated, so agreement is impossible.
+      - id: c
+        text: Sets the table consistently
+        isCorrect: false
+        rationale: >-
+          "Consistently" is not a criterion and the conditions are unstated.
+      - id: d
+        text: Demonstrates understanding of mealtime routines
+        isCorrect: false
+        rationale: >-
+          Understanding is not observable, which makes the goal unmeasurable in principle.
+    explanation: >-
+      A usable goal states the behaviour, the conditions under which it should occur, and
+      the criterion for mastery. Anything less leaves the decision to end teaching to
+      impression, and impressions differ between the people who wrote the goal and the
+      people running it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [operational-definition, objective-language, trials-to-criterion, social-validity]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h3-function-based
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      An assessment shows a behaviour is maintained by escape from demands. The most
+      defensible intervention among these is to:
+    options:
+      - id: a
+        text: Teach and reinforce an appropriate way to request a break, and honour it
+        isCorrect: true
+        rationale: >-
+          A function-based alternative that produces the same outcome as the problem behaviour
+          is the socially valid first choice.
+      - id: b
+        text: Deliver a preferred item when the behaviour does not occur for five minutes
+        isCorrect: false
+        rationale: >-
+          This offers a consequence unrelated to the maintaining one, so it competes poorly
+          with escape.
+      - id: c
+        text: Continue presenting demands until the behaviour stops
+        isCorrect: false
+        rationale: >-
+          That is escape extinction alone, without teaching an alternative, and it carries
+          predictable side effects.
+      - id: d
+        text: Remove the demands from the programme
+        isCorrect: false
+        rationale: >-
+          This removes the teaching rather than addressing the behaviour, and the demands
+          presumably serve a purpose.
+    explanation: >-
+      Function-based intervention starts from what the behaviour produces and teaches
+      something socially acceptable that produces the same thing. Functional communication
+      training is the clearest instance, and it is preferred because it gives the learner
+      a route rather than only closing one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        functional-communication-training,
+        function-of-behavior,
+        replacement-behavior,
+        escape-extinction,
+        differential-reinforcement-of-alternative-behavior
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h4-side-effects
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      When planning an extinction procedure, the effect most important to anticipate and
+      plan for is:
+    options:
+      - id: a
+        text: A temporary increase in the rate or intensity of the behaviour
+        isCorrect: true
+        rationale: >-
+          The extinction burst is predictable, and a plan that does not anticipate it tends to
+          be abandoned at exactly the wrong moment.
+      - id: b
+        text: Immediate and permanent cessation
+        isCorrect: false
+        rationale: >-
+          That is not what extinction produces, and expecting it guarantees the plan looks
+          like a failure.
+      - id: c
+        text: Improved generalization to other settings
+        isCorrect: false
+        rationale: >-
+          Extinction does not produce generalization as a side effect.
+      - id: d
+        text: Increased rule-governed responding
+        isCorrect: false
+        rationale: >-
+          Nothing about extinction produces this.
+    explanation: >-
+      Anticipating unwanted effects is part of selecting an intervention. Extinction
+      reliably produces a burst, increased variability, emotional responding and sometimes
+      resurgence of older responses, and everyone who will run it needs to know that in
+      advance.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        extinction,
+        extinction-burst,
+        resurgence,
+        spontaneous-recovery,
+        behavior-intervention-plan
+      ]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i4-supervisee-goals
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.4 }
+    type: single-best-answer
+    stem: >-
+      A supervisor sets the goal "become more professional" for a supervisee. The most
+      important problem with this goal is that:
+    options:
+      - id: a
+        text: It is not measurable, so neither party can tell whether it has been met
+        isCorrect: true
+        rationale: >-
+          Supervision goals need the same properties as client goals: observable, measurable
+          and individualized to assessed need.
+      - id: b
+        text: It is too ambitious for a single supervision period
+        isCorrect: false
+        rationale: >-
+          Ambition is not the issue; an unmeasurable goal fails whatever the timescale.
+      - id: c
+        text: It should have been chosen by the supervisee
+        isCorrect: false
+        rationale: >-
+          Collaboration is valuable, but a goal chosen collaboratively and stated vaguely is
+          still unusable.
+      - id: d
+        text: It duplicates the certification requirements
+        isCorrect: false
+        rationale: >-
+          It does not, and duplicating a requirement would not be the central flaw.
+    explanation: >-
+      Supervision is a behaviour-change programme with the supervisee as the learner, and
+      the same standards apply. Goals come from assessed skills and the requirements of
+      the role, and they are stated so that performance against them can be measured
+      rather than impressioned.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [supervision, operational-definition, performance-feedback, behavioral-skills-training]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i7-evaluate-supervision
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Which evidence best indicates that a supervisor's practice is effective?
+    options:
+      - id: a
+        text: Supervisee performance improves and client outcomes and procedural fidelity improve with it
+        isCorrect: true
+        rationale: >-
+          Evaluating supervision means measuring its effects on the supervisee and, through
+          them, on clients.
+      - id: b
+        text: Supervisees report high satisfaction with supervision
+        isCorrect: false
+        rationale: >-
+          Satisfaction is worth knowing and is not sufficient; it can be high where
+          performance is not improving.
+      - id: c
+        text: All required supervision hours were delivered on schedule
+        isCorrect: false
+        rationale: >-
+          Hours delivered is an input measure and says nothing about effect.
+      - id: d
+        text: Supervisees pass the certification examination
+        isCorrect: false
+        rationale: >-
+          Examination results reflect many influences and arrive too late to guide
+          supervision.
+    explanation: >-
+      Supervision is evaluated with data like anything else: supervisee performance,
+      client outcomes, and the integrity with which procedures are run. Counting hours
+      measures compliance rather than effect, which is why poor supervision can be fully
+      documented.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, treatment-integrity, performance-feedback, social-validity]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

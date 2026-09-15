@@ -46,7 +46,9 @@ test('a single area can be drilled, and the BCBA bank is separate', async ({ pag
 	await page.goto('/quiz');
 	await page.getByLabel('Exam', { exact: true }).selectOption('BCBA');
 	await page.getByLabel('Content area').selectOption('D');
-	await expect(page.locator('.setup')).toContainText('5 questions available');
+	// A count, not a particular count: pinning the bank size here would mean every
+	// question added to the bank breaks a test about the area filter.
+	await expect(page.locator('.setup')).toContainText(/\d+\s+questions available/);
 	await page.getByRole('button', { name: 'Start' }).click();
 	await expect(page.locator('.progress')).toContainText(/BCBA\s+D\.\d/);
 });
