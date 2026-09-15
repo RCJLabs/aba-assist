@@ -7,6 +7,8 @@ const ROUTES = [
 	'/glossary/negative-reinforcement',
 	'/scenarios',
 	'/scenarios/learner-is-injuring-themselves',
+	'/scenarios/you-have-been-told-to-restrain-or-seclude-a-learner',
+	'/scenarios/you-are-asked-to-work-outside-your-role',
 	'/help',
 	'/about',
 	'/settings',

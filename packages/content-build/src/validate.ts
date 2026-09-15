@@ -3,6 +3,7 @@ import {
 	ALLOWED_STATUSES,
 	CLINICAL_DECISION_LEXICON,
 	MAX_QUOTED_WORDS,
+	NAMEABLE_WITH_FLAG,
 	RESTRICTED_PROCEDURE_LEXICON,
 	REQUIRED_CONTACTS,
 	RISK_LEXICON,
@@ -131,20 +132,62 @@ export function checkScenarioSafety(
 	}
 
 	if (kind === 'escalation-only') {
-		const hit = joined.match(RESTRICTED_PROCEDURE_LEXICON);
-		if (hit) {
+		const esc = scenario.escalation as {
+			contacts?: string[];
+			mandatedReporterNote?: unknown;
+			immediateSafetyNote?: string;
+			legalNote?: string;
+			documentation?: string[];
+		};
+		const flags = (scenario.riskFlags as string[]) ?? [];
+		const contacts = esc?.contacts ?? [];
+
+		/*
+		 * Two different standards, because the two halves of a card do different jobs.
+		 *
+		 * The escalation block is where the APP speaks, and nothing in the restricted
+		 * lexicon belongs there at all. The title and situation are where the card repeats
+		 * back what has happened to the READER, and a card that cannot say "you have been
+		 * told to restrain a learner" is a card nobody recognises as theirs at the one
+		 * moment it matters. So there, and only there, a word may be named — and only when
+		 * the matching riskFlag is declared, so naming a situation and classifying it
+		 * cannot come apart.
+		 */
+		const answered = [
+			esc?.immediateSafetyNote ?? '',
+			typeof esc?.mandatedReporterNote === 'string' ? esc.mandatedReporterNote : '',
+			esc?.legalNote ?? '',
+			...(esc?.documentation ?? [])
+		].join('\n');
+
+		const spoken = answered.match(RESTRICTED_PROCEDURE_LEXICON);
+		if (spoken) {
 			issues.push(
 				error(
 					'safety/procedure-in-escalation',
-					`escalation content describes a physical procedure ("${hit[0]}"). Physical management is a certified hands-on competency, not readable knowledge. Say who to contact and what to document instead.`,
+					`escalation content describes a physical procedure ("${spoken[0]}"). Physical management is a certified hands-on competency, not readable knowledge. Say who to contact and what to document instead.`,
 					file
 				)
 			);
 		}
 
-		const esc = scenario.escalation as { contacts?: string[]; mandatedReporterNote?: unknown };
-		const flags = (scenario.riskFlags as string[]) ?? [];
-		const contacts = esc?.contacts ?? [];
+		const reported = [scenario.title, scenario.situation]
+			.filter((x) => typeof x === 'string')
+			.join('\n');
+		const allowed = flags
+			.map((f) => NAMEABLE_WITH_FLAG[f as keyof typeof NAMEABLE_WITH_FLAG])
+			.filter((re): re is RegExp => re !== undefined);
+		const everyHit = reported.matchAll(new RegExp(RESTRICTED_PROCEDURE_LEXICON.source, 'gi'));
+		for (const m of everyHit) {
+			if (allowed.some((re) => re.test(m[0]))) continue;
+			issues.push(
+				error(
+					'safety/procedure-in-escalation',
+					`the situation describes a physical procedure ("${m[0]}"). A card may name what it is refusing — "restraint", "seclusion", with the matching riskFlag set — but never how it is done.`,
+					file
+				)
+			);
+		}
 
 		for (const flag of flags) {
 			const required = REQUIRED_CONTACTS[flag as keyof typeof REQUIRED_CONTACTS];

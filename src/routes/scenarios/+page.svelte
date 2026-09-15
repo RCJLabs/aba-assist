@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { guidanceScenarios, escalationScenarios } from '$lib/content/scenarios.js';
+	import {
+		guidanceGroups,
+		escalationScenarios,
+		guidanceScenarios
+	} from '$lib/content/scenarios.js';
 </script>
 
 <svelte:head>
@@ -17,12 +21,18 @@
 	instructions for a specific person — the plan written for your learner always wins.
 </p>
 
-<h2>Everyday situations</h2>
-<ul>
-	{#each guidanceScenarios as s (s.id)}
-		<li><a href={resolve('/scenarios/[slug]', { slug: s.id })}>{s.title}</a></li>
-	{/each}
-</ul>
+<p class="count">
+	{guidanceScenarios.length} everyday situations and {escalationScenarios.length} that stop and escalate.
+</p>
+
+{#each guidanceGroups as g (g.id)}
+	<h2>{g.title}</h2>
+	<ul>
+		{#each g.scenarios as s (s.id)}
+			<li><a href={resolve('/scenarios/[slug]', { slug: s.id })}>{s.title}</a></li>
+		{/each}
+	</ul>
+{/each}
 
 <h2>Stop and escalate</h2>
 <p class="note">These do not have steps. They tell you who to contact and what to record.</p>
@@ -40,7 +50,8 @@
 		font-size: 1.1rem;
 		margin-top: 2rem;
 	}
-	.note {
+	.note,
+	.count {
 		color: var(--text-muted);
 		font-size: 0.9rem;
 	}

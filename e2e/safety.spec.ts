@@ -71,3 +71,76 @@ test('every term page offers a working errata link', async ({ page }) => {
 	const link = page.getByRole('link', { name: /report it/i });
 	await expect(link).toHaveAttribute('href', /github\.com\/RCJLabs\/aba-assist\/issues\/new/);
 });
+
+/*
+ * The refusal card the app most needs to have, and the navigation the page needs now that
+ * it carries twelve of them.
+ */
+
+test('the restraint card exists, names what it refuses, and gives no procedure', async ({
+	page
+}) => {
+	await page.goto('/scenarios/you-have-been-told-to-restrain-or-seclude-a-learner');
+
+	// It has to be findable by the word somebody would use, and has to refuse rather than
+	// instruct. Both halves matter: a card nobody recognises is a card nobody opens.
+	await expect(page.getByRole('heading', { level: 1 })).toContainText(/restrain/i);
+	await expect(page.getByText(/Stop and escalate/i)).toBeVisible();
+	await expect(page.locator('article ol')).toHaveCount(0);
+	await expect(page.getByRole('heading', { name: 'Contact now' })).toBeVisible();
+
+	// Nothing on the page may describe how it is done.
+	const body = (await page.locator('main').innerText()).toLowerCase();
+	for (const phrase of ['hold them', 'holding', 'prone', 'supine', 'takedown', 'floor hold']) {
+		expect(body, phrase).not.toContain(phrase);
+	}
+});
+
+test('searching for restraint reaches the card that refuses', async ({ page }) => {
+	await page.goto('/');
+	await page.getByLabel('Search terms').fill('restraint');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+	await expect(
+		page.locator('.results a', { hasText: /told to restrain or seclude/i })
+	).toBeVisible();
+});
+
+test('the urgent page puts the emergency cards first and can be jumped through', async ({
+	page
+}) => {
+	await page.goto('/help');
+
+	const jump = page.getByRole('navigation', { name: 'Jump to' });
+	const links = jump.getByRole('link');
+	const cards = page.locator('article.card');
+	await expect(links).toHaveCount(await cards.count());
+
+	// Every card routing to emergency services or the crisis line sits above every card
+	// that does not. Alphabetical order would bury a seizure behind a medication question.
+	const urgent = await cards.evaluateAll((els) =>
+		els.map((el) => /\(911\)|\(988\)/.test(el.textContent ?? ''))
+	);
+	expect(urgent.indexOf(false)).toBeGreaterThan(urgent.lastIndexOf(true));
+
+	// And the jump list actually lands on a card.
+	await links.last().click();
+	const target = await links.last().getAttribute('href');
+	await expect(page.locator(target!)).toBeInViewport();
+});
+
+test('everyday situations are grouped rather than listed as two dozen titles', async ({
+	page
+}) => {
+	await page.goto('/scenarios');
+	await expect(page.getByRole('heading', { name: 'In the session' })).toBeVisible();
+	await expect(
+		page.getByRole('heading', { name: 'Your supervisor, and what is yours to decide' })
+	).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Records and paperwork' })).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'At school' })).toBeVisible();
+
+	// Every situation appears exactly once across the groups.
+	const links = page.locator('ul li a');
+	const hrefs = await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+	expect(new Set(hrefs).size).toBe(hrefs.length);
+});

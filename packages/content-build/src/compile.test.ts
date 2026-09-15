@@ -203,6 +203,74 @@ describe('safety guard, end to end', () => {
 		expect(rules(r)).toContain('safety/procedure-in-escalation');
 	});
 
+	/*
+	 * The narrow allowance, checked in all four directions.
+	 *
+	 * A refusal card has to be able to say what it is refusing, or nobody recognises it as
+	 * theirs. What it must never do is describe how the thing is done, or name a
+	 * restricted procedure it has not also classified as one.
+	 */
+	const restraintCard = (over: Record<string, unknown> = {}) => ({
+		...scenarioBase,
+		kind: 'escalation-only',
+		riskFlags: ['restraint'],
+		title: 'You have been told to restrain a learner',
+		situation:
+			'A colleague or a supervisor tells you to restrain the learner, and expects you to do it now, in front of you.',
+		escalation: {
+			stopAndEscalate: true,
+			contacts: ['supervising-bcba', 'site-supervisor'],
+			immediateSafetyNote:
+				'Make sure everybody in the room is safe, and say plainly that you have not been trained and certified for this.',
+			documentation: ['Write down who asked, when, and what you said.'],
+			legalNote:
+				'State law, federal guidance and your employer policy govern this entirely, and certified training is a precondition.',
+			consultYourPolicy: true
+		},
+		...over
+	});
+
+	it('ACCEPTS a card that names the restricted procedure it exists to refuse', async () => {
+		const r = await build({ 'scenarios/a-scenario.md': frontmatter(restraintCard()) });
+		expect(rules(r)).toEqual([]);
+	});
+
+	it('REJECTS naming a restricted procedure without the matching flag', async () => {
+		const r = await build({
+			'scenarios/a-scenario.md': frontmatter(
+				restraintCard({ riskFlags: ['aggression-with-injury'] })
+			)
+		});
+		expect(rules(r)).toContain('safety/procedure-in-escalation');
+	});
+
+	it('REJECTS a situation that describes how the procedure is done', async () => {
+		const r = await build({
+			'scenarios/a-scenario.md': frontmatter(
+				restraintCard({
+					situation:
+						'Your supervisor shows you how to hold the client from behind and asks you to practise it on a colleague first.'
+				})
+			)
+		});
+		expect(rules(r)).toContain('safety/procedure-in-escalation');
+	});
+
+	it('REJECTS the named word inside the escalation block, flag or no flag', async () => {
+		const r = await build({
+			'scenarios/a-scenario.md': frontmatter(
+				restraintCard({
+					escalation: {
+						...restraintCard().escalation,
+						legalNote:
+							'Restrain the learner only where state law and your employer policy both permit it.'
+					}
+				})
+			)
+		});
+		expect(rules(r)).toContain('safety/procedure-in-escalation');
+	});
+
 	it('REJECTS a suspected-abuse card with no mandated-reporter note', async () => {
 		const r = await build({
 			'scenarios/a-scenario.md': frontmatter({

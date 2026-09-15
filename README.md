@@ -130,6 +130,32 @@ never observed to fail is a comment, not a guard.
 
 ---
 
+## The one place a safety guard had to be narrowed, and why
+
+The scenario schema forbids procedural language inside an escalation card: physical
+management is a certified hands-on competency, and an app that describes it is doing harm
+whatever its intentions. That check ran over the whole card, which meant the single most
+important refusal the app can make — _you have been told to restrain or seclude a learner_
+— could not be written, because its title contains the word.
+
+A card whose entire purpose is to refuse has to be able to say what it is refusing. So the
+check now applies two standards to the two halves of a card, which do different jobs:
+
+- The **escalation block** is where the app speaks. Nothing in the restricted lexicon may
+  appear there, with no exceptions, including the words below.
+- The **title and situation** are where the card repeats back what is happening to the
+  reader. There, and only there, `restraint` and `seclusion` may be named — and only when
+  the matching `riskFlag` is declared, so naming a situation and classifying it cannot come
+  apart.
+
+Every other word in the lexicon (`hold them`, `prone`, `escort`, `pin`, `takedown`…) stays
+forbidden everywhere. Four tests hold the shape: the card that names what it refuses is
+accepted; naming a restricted procedure without the matching flag is rejected; a situation
+that describes _how_ it is done is rejected; and the named word inside the escalation block
+is rejected, flag or no flag. The build caught a genuine slip while this was being written
+— "staff holding a current certification" in a legal note — which is the guard working
+rather than a reason to loosen it further.
+
 ## Graphs are content, not pictures
 
 Data collection and graphing is the second-largest domain on the technician exam, and

@@ -25,6 +25,15 @@
 	</p>
 </div>
 
+<nav aria-labelledby="jump" class="jump">
+	<h2 id="jump">Jump to</h2>
+	<ul>
+		{#each escalationScenarios as s (s.id)}
+			<li><a href="#{s.id}">{s.title}</a></li>
+		{/each}
+	</ul>
+</nav>
+
 <p class="intro">
 	This page tells you who to contact and what to write down. It deliberately does not tell you
 	what to do physically, and that is not an omission — see
@@ -35,7 +44,7 @@
 
 {#each escalationScenarios as s (s.id)}
 	{#if s.kind === 'escalation-only'}
-		<article class="card">
+		<article class="card" id={s.id}>
 			<h2>{s.title}</h2>
 
 			<ul class="flags">
@@ -109,6 +118,42 @@
 </section>
 
 <style>
+	/*
+	 * A jump list, because this page is now twelve cards long and gets opened while
+	 * something is happening. Scrolling past eleven wrong answers to reach the right one is
+	 * not a thing to ask of somebody one-handed in a hallway.
+	 */
+	.jump {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.25rem 1rem 0.75rem;
+		margin-bottom: 1.5rem;
+		background: var(--surface-raised);
+	}
+	.jump h2 {
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--text-muted);
+	}
+	.jump ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.jump li {
+		border-top: 1px solid var(--border);
+	}
+	.jump a {
+		display: flex;
+		align-items: center;
+		min-height: var(--tap);
+		padding: 0.35rem 0;
+	}
+	/* 2.4.11: the sticky nav must not swallow a card the reader has just jumped to. */
+	.card {
+		scroll-margin-top: 1rem;
+	}
 	h1 {
 		font-size: 1.5rem;
 	}
