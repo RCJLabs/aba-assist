@@ -65,7 +65,8 @@ function term(overrides: Record<string, unknown> = {}) {
 
 async function build(
 	files: Record<string, string>,
-	channel: Channel = 'pr'
+	channel: Channel = 'pr',
+	minimumTerms?: number
 ): Promise<Awaited<ReturnType<typeof compile>>> {
 	const root = await mkdtemp(join(tmpdir(), 'aba-content-'));
 	await mkdir(join(root, '_registry'), { recursive: true });
@@ -75,7 +76,7 @@ async function build(
 		await mkdir(join(path, '..'), { recursive: true });
 		await writeFile(path, content);
 	}
-	return compile({ root, channel, outDir: join(root, '.out') });
+	return compile({ root, channel, outDir: join(root, '.out'), minimumTerms });
 }
 
 const rules = (r: Awaited<ReturnType<typeof compile>>) => r.errors.map((e) => e.rule);
@@ -359,12 +360,20 @@ describe('referential integrity and review gate', () => {
 		expect((await build(draft, 'dev')).ok).toBe(true);
 	});
 
-	it('REJECTS in-review content in the release channel', async () => {
+	it('WITHHOLDS in-review content from the release channel', async () => {
+		/*
+		 * This used to assert that the build failed. It no longer does, deliberately: the
+		 * reader is protected by the entry being left out, which is the same guarantee at a
+		 * far lower price than refusing to publish anything at all. What the build still
+		 * refuses is to call itself a release on an empty glossary.
+		 */
 		const r = await build(
 			{ 'terms/principles/sample-term.md': frontmatter(term()) },
 			'release'
 		);
-		expect(rules(r)).toContain('review/status-not-shippable');
+		expect(rules(r)).not.toContain('review/status-not-shippable');
+		expect(r.counts.terms).toBe(0);
+		expect(r.counts.withheld).toBe(1);
 	});
 
 	it('REJECTS an approved term that does not say how it was approved', async () => {
@@ -1379,5 +1388,162 @@ review: { status: in-review`
 	it('REJECTS a topic that lists itself as related', async () => {
 		const r = await build(files(topic({ relatedTopics: ['gifts'] })));
 		expect(rules(r)).toContain('refs/unresolved');
+	});
+});
+
+describe('the release channel withholds rather than refuses', () => {
+	/*
+	 * The property under test is the one the whole change turns on: a reader never sees an
+	 * unapproved entry, and that is now achieved by leaving it out rather than by refusing
+	 * to build. Refusing made launch all-or-nothing, which is what turned a review queue
+	 * into a wall.
+	 */
+	const approved = {
+		status: 'approved',
+		authoredBy: 'tester',
+		authoredOn: '2026-09-14',
+		reviewedBy: 'reviewer',
+		reviewedOn: '2026-09-15'
+	};
+	/** `reviewMethod` sits on the term itself, not inside its review block. */
+	const read = { review: approved, reviewMethod: 'read' };
+	/** A second term needs its own prose, or the duplicate-prose guard fires first. */
+	const other = {
+		definition: {
+			technical:
+				'An entirely separate statement about a different concept, written out at enough length to clear the schema minimum.',
+			plain: 'Another easy way of saying a different thing so a new reader can follow along.',
+			gloss: 'A different summary line'
+		}
+	};
+
+	/** A release build needs its required kinds complete, so hand it none of them. */
+	const release = (files: Record<string, string>, minimumTerms = 1) =>
+		build(files, 'release', minimumTerms);
+
+	it('ships the approved term and leaves the unapproved one out', async () => {
+		const r = await release({
+			'terms/principles/kept.md': frontmatter(term({ id: 'kept', term: 'Kept', ...read })),
+			'terms/principles/held.md': frontmatter(term({ id: 'held', term: 'Held', ...other }))
+		});
+		expect(rules(r)).toEqual([]);
+		expect(r.ok).toBe(true);
+		expect(r.counts.terms).toBe(1);
+		expect(r.counts.withheld).toBe(1);
+		// Nothing a reader can reach is unreviewed — which is what the preview banner reads.
+		expect(r.counts.unreviewed).toBe(0);
+	});
+
+	it('still checks the entry it is withholding', async () => {
+		/*
+		 * Withholding must not become a way past the guards. An entry that is left out is
+		 * still parsed, rights-checked and read for risk language, because it is a file in
+		 * the repository that will one day be approved — and because a build that only
+		 * validates what it happens to ship would quietly stop validating.
+		 */
+		const r = await release({
+			'terms/principles/kept.md': frontmatter(term({ id: 'kept', term: 'Kept', ...read })),
+			'terms/principles/held.md': frontmatter(
+				term({
+					id: 'held',
+					term: 'Held',
+					...other,
+					citations: [
+						{
+							sourceId: 'closed-book',
+							useType: 'quotation',
+							quotedText: 'A sentence lifted straight out of the textbook.'
+						}
+					]
+				})
+			)
+		});
+		expect(rules(r)).toContain('rights/quotation-not-permitted');
+	});
+
+	it('prunes a reference into a withheld entry, and keeps contrast symmetric', async () => {
+		const r = await release({
+			'terms/principles/kept.md': frontmatter(
+				term({ id: 'kept', term: 'Kept', ...read, contrastWith: ['held'] })
+			),
+			'terms/principles/held.md': frontmatter(
+				term({ id: 'held', term: 'Held', ...other, contrastWith: ['kept'] })
+			)
+		});
+		expect(rules(r)).toEqual([]);
+		const index = r.assets.find((a) => a.name === 'terms.index');
+		expect(index).toBeDefined();
+		// The shipped term carries no link into a page that is not there.
+		expect(index!.source).not.toContain('held');
+	});
+
+	it('still refuses a reference to something that does not exist', async () => {
+		// Withheld and absent are different failures, and only one of them is a mistake.
+		const r = await release({
+			'terms/principles/kept.md': frontmatter(
+				term({ id: 'kept', term: 'Kept', ...read, seeAlso: ['no-such-term'] })
+			)
+		});
+		expect(rules(r)).toContain('refs/unresolved');
+	});
+
+	it('refuses to call itself a release with the glossary below the floor', async () => {
+		const r = await release(
+			{
+				'terms/principles/kept.md': frontmatter(term({ id: 'kept', term: 'Kept', ...read }))
+			},
+			2
+		);
+		expect(rules(r)).toContain('release/below-minimum');
+	});
+
+	it('refuses while any escalation card is unapproved', async () => {
+		/*
+		 * The safety surface is required whole. A card withheld while its neighbours ship
+		 * leaves a gap exactly where somebody is looking for the worst case, and that is a
+		 * worse outcome than the build not shipping.
+		 */
+		const r = await release({
+			'terms/principles/kept.md': frontmatter(term({ id: 'kept', term: 'Kept', ...read })),
+			'scenarios/a-scenario.md': frontmatter({
+				id: 'a-scenario',
+				title: 'A learner is injuring themselves',
+				situation:
+					'The learner is hurting themselves and the behaviour is escalating in front of you right now.',
+				setting: 'clinic',
+				audience: ['RBT'],
+				citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+				attestation,
+				review,
+				provenance,
+				kind: 'escalation-only',
+				riskFlags: ['self-injury'],
+				escalation: {
+					stopAndEscalate: true,
+					contacts: ['supervising-bcba', 'emergency-services-911'],
+					immediateSafetyNote:
+						'Get help now and follow the crisis protocol your employer has trained you on.',
+					documentation: ['Write down what happened and when.'],
+					legalNote: 'State law and your employer policy govern this situation entirely.',
+					consultYourPolicy: true
+				}
+			})
+		});
+		expect(rules(r)).toContain('release/incomplete-required');
+	});
+
+	it('leaves the other channels alone', async () => {
+		const draft = {
+			'terms/principles/held.md': frontmatter(
+				term({ id: 'held', review: { ...review, status: 'draft' } })
+			)
+		};
+		// A draft in a pull request is the author's to fix, not something to quietly drop.
+		expect(rules(await build(draft, 'pr'))).toContain('review/status-not-shippable');
+
+		const dev = await build(draft, 'dev');
+		expect(rules(dev)).toEqual([]);
+		expect(dev.counts.terms).toBe(1);
+		expect(dev.counts.withheld).toBe(0);
 	});
 });

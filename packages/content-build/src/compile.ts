@@ -4,6 +4,8 @@ import MiniSearch from 'minisearch';
 import {
 	CATEGORY_LABELS,
 	ContentOutline,
+	RELEASE_MINIMUM_TERMS,
+	WITHHOLDING_CHANNELS,
 	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
@@ -681,9 +683,101 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		}
 	}
 
+	// ------------------------------------------------------------ withholding
+	/*
+	 * What ships, and what is held back.
+	 *
+	 * A release used to fail if any entry was unapproved, so launch was all-or-nothing:
+	 * every entry reviewed, or nothing public. The guarantee worth keeping is that a reader
+	 * never sees unreviewed clinical content, and leaving an entry out keeps it exactly as
+	 * well as refusing to build did — while letting the approved core ship and grow with
+	 * each review session. Everything above still ran on every entry, withheld or not: this
+	 * decides what reaches the bundle, never what gets checked.
+	 */
+	const withholding = WITHHOLDING_CHANNELS.has(channel);
+	const ships = <T extends { review: { status: string } }>(x: T) =>
+		!withholding || x.review.status === 'approved';
+
+	/*
+	 * The required kinds are filtered like everything else rather than waved through. They
+	 * are guaranteed complete in a release that succeeds, by the check below; filtering
+	 * them too is what keeps the summary of a release that *fails* honest, instead of
+	 * reporting an unapproved outline as shipped.
+	 */
+	const allOutlines = [...outlines.values()];
+	const shipOutlines = allOutlines.filter(ships);
+	const shipCredentials = credentials.filter(ships);
+	const shipCodes = ethicsCodes.filter(ships);
+	const shipTerms = terms.filter(ships);
+	const shipScenarios = scenarios.filter(ships);
+	const shipQuestions = questions.filter(ships);
+	const shipGuides = guides.filter(ships);
+	const shipGraphs = graphs.filter(ships);
+	const shipTopics = ethicsTopics.filter(ships);
+
+	const shipTermIds = new Set(shipTerms.map((t) => t.id));
+	const shipScenarioIds = new Set(shipScenarios.map((x) => x.id));
+	const shipTopicIds = new Set(shipTopics.map((t) => t.id));
+	/** Drop references to entries this build is not shipping. */
+	const keep = (ids: string[], pool: Set<string>) => ids.filter((id) => pool.has(id));
+
+	/*
+	 * Four kinds have to be complete rather than grow one entry at a time. They are the
+	 * spine everything else hangs from, and a partial one is not a smaller app but a broken
+	 * or an unsafe one — an unapproved outline empties the exam filters and the quiz
+	 * blueprint without a word, and an escalation card withheld while its neighbours ship
+	 * leaves a gap exactly where somebody is looking for the worst case.
+	 */
+	if (withholding) {
+		const incomplete = (kind: string, items: { id: string; review: { status: string } }[]) => {
+			const missing = items.filter((x) => x.review.status !== 'approved').map((x) => x.id);
+			if (missing.length === 0) return;
+			push(
+				error(
+					'release/incomplete-required',
+					`every ${kind} must be approved before a release build; ${missing.length} ` +
+						`are not: ${missing.slice(0, 6).join(', ')}${missing.length > 6 ? ', …' : ''}`
+				)
+			);
+		};
+		incomplete('outline', allOutlines);
+		incomplete('ethics code', ethicsCodes);
+		incomplete('credential', credentials);
+		incomplete(
+			'escalation card',
+			scenarios.filter((x) => x.kind === 'escalation-only')
+		);
+
+		/*
+		 * And a floor on the glossary, because a nearly empty reference site is worse than no
+		 * reference site: it is indexed thin and first impressions of a reference tool are
+		 * hard to retake. This is the one number here that is a judgement rather than a
+		 * consequence, which is why it is named and not inlined.
+		 */
+		const floor = opts.minimumTerms ?? RELEASE_MINIMUM_TERMS;
+		if (shipTerms.length < floor) {
+			push(
+				error(
+					'release/below-minimum',
+					`a release needs at least ${floor} approved terms and has ` +
+						`${shipTerms.length}. Until then the build is a preview: it is published, ` +
+						`but it carries the review banner and keeps search engines out.`
+				)
+			);
+		}
+	}
+
 	// ------------------------------------------------- referential integrity
 	{
-		const termIds = new Set(terms.map((t) => t.id));
+		/*
+		 * Two pools, because a reference can fail in two different ways now. An id nothing
+		 * answers to is a mistake and still an error. An id that resolves to an entry this
+		 * build is withholding is not a mistake — it is the point — so the reference is
+		 * pruned and the entry that carried it ships without a link into a page that is not
+		 * there.
+		 */
+		const knownTerms = new Set(terms.map((t) => t.id));
+		const termIds = shipTermIds;
 		const retired = new Set(
 			[...terms, ...scenarios].filter((x) => x.review.status === 'retired').map((x) => x.id)
 		);
@@ -693,12 +787,13 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			pool: Set<string>,
 			kind: string,
 			file: string,
-			field: string
+			field: string,
+			known: Set<string> = pool
 		) => {
 			for (const id of ids) {
-				if (!pool.has(id)) {
+				if (!known.has(id)) {
 					push(error('refs/unresolved', `${field} points at unknown ${kind} "${id}"`, file));
-				} else if (retired.has(id)) {
+				} else if (pool.has(id) && retired.has(id)) {
 					push(error('refs/retired', `${field} points at retired item "${id}"`, file));
 				}
 			}
@@ -706,8 +801,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 		for (const t of terms) {
 			const file = termFiles.get(t.id)!;
-			checkRefs(t.seeAlso, termIds, 'term', file, 'seeAlso');
-			checkRefs(t.contrastWith, termIds, 'term', file, 'contrastWith');
+			checkRefs(t.seeAlso, termIds, 'term', file, 'seeAlso', knownTerms);
+			checkRefs(t.contrastWith, termIds, 'term', file, 'contrastWith', knownTerms);
 			for (const c of t.citations) {
 				if (!sources.has(c.sourceId)) {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
@@ -731,7 +826,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 		for (const s of scenarios) {
 			const file = scenarioFiles.get(s.id)!;
-			checkRefs(s.termRefs, termIds, 'term', file, 'termRefs');
+			checkRefs(s.termRefs, termIds, 'term', file, 'termRefs', knownTerms);
 			for (const c of s.citations) {
 				if (!sources.has(c.sourceId)) {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
@@ -742,7 +837,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 		for (const q of questions) {
 			const file = questionFiles.get(q.id)!;
-			checkRefs(q.termRefs, termIds, 'term', file, 'termRefs');
+			checkRefs(q.termRefs, termIds, 'term', file, 'termRefs', knownTerms);
 			for (const c of q.citations) {
 				if (!sources.has(c.sourceId)) {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
@@ -753,7 +848,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 		for (const g of guides) {
 			const file = guideFiles.get(g.id)!;
-			checkRefs(g.termRefs, termIds, 'term', file, 'termRefs');
+			checkRefs(g.termRefs, termIds, 'term', file, 'termRefs', knownTerms);
 			for (const c of g.citations) {
 				if (!sources.has(c.sourceId)) {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
@@ -762,13 +857,22 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			checkTaskRefs(g.taskRefs, file);
 		}
 
-		const topicIds = new Set(ethicsTopics.map((t) => t.id));
-		const scenarioIdSet = new Set(scenarios.map((x) => x.id));
+		const knownTopics = new Set(ethicsTopics.map((t) => t.id));
+		const knownScenarios = new Set(scenarios.map((x) => x.id));
+		const topicIds = shipTopicIds;
+		const scenarioIdSet = shipScenarioIds;
 		for (const t of ethicsTopics) {
 			const file = topicFiles.get(t.id)!;
-			checkRefs(t.termRefs, termIds, 'term', file, 'termRefs');
-			checkRefs(t.scenarioRefs, scenarioIdSet, 'scenario', file, 'scenarioRefs');
-			checkRefs(t.relatedTopics, topicIds, 'ethics topic', file, 'relatedTopics');
+			checkRefs(t.termRefs, termIds, 'term', file, 'termRefs', knownTerms);
+			checkRefs(
+				t.scenarioRefs,
+				scenarioIdSet,
+				'scenario',
+				file,
+				'scenarioRefs',
+				knownScenarios
+			);
+			checkRefs(t.relatedTopics, topicIds, 'ethics topic', file, 'relatedTopics', knownTopics);
 			for (const c of t.citations) {
 				if (!sources.has(c.sourceId)) {
 					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
@@ -790,7 +894,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 						termIds,
 						'term',
 						`taxonomy/${o.id}.yaml`,
-						`${t.code}.termRefs`
+						`${t.code}.termRefs`,
+						knownTerms
 					);
 				}
 			}
@@ -798,13 +903,59 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	}
 
 	/*
-	 * Can the bank fill the paper it simulates? Warnings only, and they are the ratchet:
-	 * the threshold in `checkExamCoverage` goes up as the bank grows.
+	 * Now drop the links that would dangle.
+	 *
+	 * A term that ships beside one that does not must not carry a "commonly confused with"
+	 * into a page that is not there. Pruning rather than erroring is what makes a partial
+	 * corpus coherent instead of merely smaller, and it keeps contrastWith symmetric within
+	 * whatever shipped: both halves of a pair are pruned by the same rule.
 	 */
-	for (const o of outlines.values()) {
-		push(...checkExamCoverage(o, questions, `taxonomy/${o.id}.yaml`));
+	const emitTerms = withholding
+		? shipTerms.map((t) => ({
+				...t,
+				seeAlso: keep(t.seeAlso, shipTermIds),
+				contrastWith: keep(t.contrastWith, shipTermIds)
+			}))
+		: shipTerms;
+	const emitScenarios = withholding
+		? shipScenarios.map((x) => ({ ...x, termRefs: keep(x.termRefs, shipTermIds) }))
+		: shipScenarios;
+	const emitQuestions = withholding
+		? shipQuestions.map((q) => ({ ...q, termRefs: keep(q.termRefs, shipTermIds) }))
+		: shipQuestions;
+	const emitGuides = withholding
+		? shipGuides.map((g) => ({ ...g, termRefs: keep(g.termRefs, shipTermIds) }))
+		: shipGuides;
+	const emitTopics = withholding
+		? shipTopics.map((t) => ({
+				...t,
+				termRefs: keep(t.termRefs, shipTermIds),
+				scenarioRefs: keep(t.scenarioRefs, shipScenarioIds),
+				relatedTopics: keep(t.relatedTopics, shipTopicIds)
+			}))
+		: shipTopics;
+	const emitOutlines = withholding
+		? shipOutlines.map((o) => ({
+				...o,
+				domains: o.domains.map((d) => ({
+					...d,
+					tasks: d.tasks.map((t) => ({ ...t, termRefs: keep(t.termRefs, shipTermIds) }))
+				}))
+			}))
+		: shipOutlines;
+
+	/*
+	 * Can the bank fill the paper it simulates? Warnings only, and they are the ratchet:
+	 * the threshold in `checkExamCoverage` goes up as the bank grows. Measured against what
+	 * ships, because a coverage figure counting questions the reader cannot reach is not a
+	 * coverage figure.
+	 */
+	for (const o of emitOutlines) {
+		push(...checkExamCoverage(o, emitQuestions, `taxonomy/${o.id}.yaml`));
 	}
 
+	// Authoring check, so it covers every file rather than only what ships: two entries
+	// with the same definition are a mistake even while one of them is withheld.
 	push(
 		...checkDuplicateProse(
 			terms.map((t) => ({
@@ -826,7 +977,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	 * keep search engines away. Unreviewed clinical content should not be discoverable by
 	 * someone searching for an ABA term, even while the author is reviewing it on a phone.
 	 */
-	const unreviewed = [
+	const everything = [
 		...terms,
 		...scenarios,
 		...questions,
@@ -835,20 +986,44 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...ethicsTopics,
 		...guides,
 		...graphs,
-		...outlines.values()
-	].filter((x) => x.review.status !== 'approved').length;
+		...allOutlines
+	];
+	const shipped = [
+		...emitTerms,
+		...emitScenarios,
+		...emitQuestions,
+		...shipCredentials,
+		...shipCodes,
+		...emitTopics,
+		...emitGuides,
+		...shipGraphs,
+		...emitOutlines
+	];
+
+	/*
+	 * `unreviewed` counts what a reader can actually reach, which is what it was always
+	 * for: it drives the site-wide preview banner and tells robots.txt to keep search
+	 * engines away from unreviewed clinical content. In a withholding build it is zero by
+	 * construction — nothing unapproved ships — so the banner switches itself off at the
+	 * same moment the build stops being a preview, rather than by a second rule that could
+	 * disagree with the first. `withheld` is the other half of that story, and the number
+	 * the author is working down.
+	 */
+	const unreviewed = shipped.filter((x) => x.review.status !== 'approved').length;
+	const withheld = everything.length - shipped.length;
 
 	const counts = {
-		terms: terms.length,
-		scenarios: scenarios.length,
-		questions: questions.length,
+		terms: emitTerms.length,
+		scenarios: emitScenarios.length,
+		questions: emitQuestions.length,
 		sources: sources.size,
-		outlines: outlines.size,
-		credentials: credentials.length,
-		ethicsTopics: ethicsTopics.length,
-		practiceGuides: guides.length,
-		graphs: graphs.length,
-		unreviewed
+		outlines: emitOutlines.length,
+		credentials: shipCredentials.length,
+		ethicsTopics: emitTopics.length,
+		practiceGuides: emitGuides.length,
+		graphs: shipGraphs.length,
+		unreviewed,
+		withheld
 	};
 
 	if (errors.length > 0 || opts.emit === false) {
@@ -864,15 +1039,15 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	}
 
 	const assets = buildAssets(
-		terms,
-		scenarios,
-		questions,
-		[...outlines.values()],
-		credentials,
-		ethicsCodes,
-		ethicsTopics,
-		guides,
-		graphs,
+		emitTerms,
+		emitScenarios,
+		emitQuestions,
+		emitOutlines,
+		shipCredentials,
+		shipCodes,
+		emitTopics,
+		emitGuides,
+		shipGraphs,
 		contentVersion
 	);
 

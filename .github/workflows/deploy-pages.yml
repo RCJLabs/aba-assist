@@ -28,8 +28,15 @@ jobs:
   # Content that has not been through clinical review is an expected state, not a broken
   # build. The site still publishes so it can be reviewed on a real device — reviewing
   # content is hard to do any other way — but it publishes as a clearly-marked preview:
-  # the app shows a persistent banner and robots.txt disallows indexing until every entry
-  # is approved. Both of those are driven by the content itself, not by this workflow.
+  # the app shows a persistent banner and robots.txt disallows indexing. Both of those are
+  # driven by the content itself, not by this workflow.
+  #
+  # A release build no longer needs every entry approved. It ships the approved ones and
+  # withholds the rest, so the public app grows with each review session instead of waiting
+  # for the last entry. What it does need is the spine complete — the task outlines, both
+  # ethics codes, the renewal facts and every escalation card — and enough of the glossary
+  # to be worth indexing. Until then this check fails and the preview goes out instead,
+  # which is a statement about readiness rather than a fault.
   gate:
     name: Release readiness
     runs-on: ubuntu-latest
@@ -46,10 +53,10 @@ jobs:
         run: |
           if npx tsx packages/content-build/src/cli.ts check --channel=release; then
             echo "channel=release" >> "$GITHUB_OUTPUT"
-            echo "::notice::All content is approved — publishing a release build."
+            echo "::notice::Release ready — publishing a release build of the approved content. Anything still unapproved is withheld from it."
           else
             echo "channel=pr" >> "$GITHUB_OUTPUT"
-            echo "::notice::Publishing a PREVIEW build: some entries have not completed clinical review. The app shows a review banner and robots.txt disallows indexing until they are approved. This is the review gate, not a build failure."
+            echo "::notice::Publishing a PREVIEW build: the release gate is not met yet (see the check output above for which required content is unapproved, or whether the glossary is still below the minimum). The app shows a review banner and robots.txt disallows indexing. This is the review gate, not a build failure."
           fi
 
   deploy:

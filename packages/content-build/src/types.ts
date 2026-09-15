@@ -18,6 +18,12 @@ export interface CompileOptions {
 	outDir: string;
 	/** When false, validate only — do not write anything. */
 	emit?: boolean;
+	/**
+	 * How many approved terms a release needs. Defaults to `RELEASE_MINIMUM_TERMS`, which
+	 * is the real gate; this exists so tests can exercise the threshold both ways without
+	 * writing a hundred and fifty fixtures to prove one branch.
+	 */
+	minimumTerms?: number;
 }
 
 export interface EmittedAsset {

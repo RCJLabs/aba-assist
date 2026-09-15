@@ -1,6 +1,7 @@
 import type { z } from 'zod';
 import {
 	ALLOWED_STATUSES,
+	WITHHOLDING_CHANNELS,
 	CLINICAL_DECISION_LEXICON,
 	MAX_QUOTED_WORDS,
 	NAMEABLE_WITH_FLAG,
@@ -243,7 +244,14 @@ export function checkScenarioSafety(
 	return issues;
 }
 
-/** Review-status gate for the channel being built. */
+/**
+ * Review-status gate for the channel being built.
+ *
+ * In a withholding channel an unapproved entry is not an error: the compiler leaves it out
+ * of the bundle instead, so the reader is protected by exclusion rather than by the build
+ * refusing to run. Every other check here still applies to it — an entry that claims to be
+ * approved must say who approved it whether or not it ships.
+ */
 export function checkReviewStatus(
 	review: {
 		status: string;
@@ -257,7 +265,7 @@ export function checkReviewStatus(
 	const issues: Issue[] = [];
 	const allowed = ALLOWED_STATUSES[channel];
 
-	if (!allowed.includes(review.status as never)) {
+	if (!WITHHOLDING_CHANNELS.has(channel) && !allowed.includes(review.status as never)) {
 		issues.push(
 			error(
 				'review/status-not-shippable',

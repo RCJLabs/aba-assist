@@ -34,6 +34,49 @@ export const ALLOWED_STATUSES: Record<Channel, readonly ReviewStatus[]> = {
 	release: ['approved']
 };
 
+/**
+ * Channels that withhold an entry rather than refuse to build.
+ *
+ * The guarantee is the same either way: nothing unreviewed reaches a reader. The
+ * difference is what an unreviewed entry costs. Refusing made launch all-or-nothing —
+ * every entry approved, or nothing public at all — which turns a review backlog into a
+ * wall rather than a queue. Withholding lets the approved core ship and grow, and the
+ * entry is still parsed, validated and rights-checked on the way to being left out.
+ *
+ * `pr` deliberately keeps refusing: a draft in a pull request is the author's problem to
+ * fix before proposing it, not something to quietly drop.
+ */
+export const WITHHOLDING_CHANNELS: ReadonlySet<Channel> = new Set<Channel>(['release']);
+
+/**
+ * Kinds that have to be complete before a release build, rather than growing entry by
+ * entry.
+ *
+ * These are small fixed sets that everything else is built on, and a partial one is not a
+ * smaller app but a broken or unsafe one. A missing task outline silently empties the exam
+ * filters and the quiz blueprint; a missing renewal rule makes the tracker compute against
+ * nothing; and an escalation card withheld while its neighbours ship means somebody
+ * looking up the worst thing that can happen in a session finds a gap. Together they come
+ * to a couple of dozen entries, so requiring them is a small, concrete first target.
+ */
+export const RELEASE_REQUIRES_COMPLETE = [
+	'outline',
+	'ethics-code',
+	'escalation scenario',
+	'credential'
+] as const;
+
+/**
+ * How much of the glossary has to be approved before a build is allowed to call itself a
+ * release and let search engines in.
+ *
+ * A thin public glossary is worse than none: it indexes badly, and first impressions of a
+ * reference tool are hard to retake. The number is the build plan's own figure for the
+ * core vocabulary rather than anything derived, so it is a judgement — argue with it and
+ * change it, but change it on purpose.
+ */
+export const RELEASE_MINIMUM_TERMS = 150;
+
 export const ContentLicense = z.enum([
 	'CC-BY-SA-4.0',
 	'CC-BY-4.0',
