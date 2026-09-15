@@ -20,7 +20,8 @@ const ROUTES = [
 	'/tools',
 	'/tools/supervision',
 	'/tools/development',
-	'/tools/notes'
+	'/tools/notes',
+	'/tools/timer'
 ];
 
 /*

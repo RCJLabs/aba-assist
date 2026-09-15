@@ -53,7 +53,8 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/tools', /Tools/],
 		['/tools/supervision', /Supervision log/],
 		['/tools/development', /Professional development/],
-		['/tools/notes', /Writing session notes/]
+		['/tools/notes', /Writing session notes/],
+		['/tools/timer', /Interval timer/]
 	];
 
 	for (const [path, heading] of routes) {

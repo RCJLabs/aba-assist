@@ -150,6 +150,15 @@
 			{/if}
 		</article>
 		<article class="card">
+			<h2><a href={resolve('/tools/timer')}>Interval timer</a></h2>
+			<p>
+				A repeating cue for partial interval, whole interval and momentary time sampling, with
+				a running percentage of intervals. Vibrates, so you can watch the learner rather than a
+				clock.
+			</p>
+			<p class="now">Nothing to set up, and nothing is saved.</p>
+		</article>
+		<article class="card">
 			<h2><a href={resolve('/tools/notes')}>Writing session notes</a></h2>
 			<p>
 				What a note usually has to carry and why, plus fourteen phrases people actually write

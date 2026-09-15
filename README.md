@@ -149,6 +149,28 @@ CEUs with 4 on ethics — are not constants in the code. They live in `content/c
 beside the prose that states them, carrying the same handbook locator and going through the
 same review queue, so there is one copy of each number rather than two that drift.
 
+## The interval timer records nothing
+
+`/tools/timer` is a repeating cue for partial interval, whole interval and momentary time
+sampling. It exists rather than a link to a stopwatch because the three procedures differ
+in _when_ you score, and each biases the estimate a known way — partial overestimates,
+whole underestimates, momentary is closest — which the setup screen says before the run
+starts, because a technician who does not know that hands their supervisor a number
+meaning something other than it appears to.
+
+It shows a running percentage of intervals so the totals can be copied onto whatever data
+sheet the organisation actually uses, **and then it throws them away**. A per-interval
+record of one person's behaviour is client data however anonymous the row looks, and the
+promise that this app holds none is worth more than the convenience of keeping it. Only
+the settings persist.
+
+Two implementation notes. Timing is a start timestamp plus arithmetic, never a counter:
+browsers throttle a hidden tab's timers to roughly once a minute and phones lock, and a
+drifting interval timer silently invalidates the data collected with it — so coming back
+catches up to the clock instead of resuming where the last tick left off. And the app
+takes a screen wake lock for the duration, because this is a tool somebody watches for ten
+minutes without touching.
+
 ## Your data lives on your device, which is a risk as well as a promise
 
 There is no account and nothing leaves the browser — which also means nobody else has a
