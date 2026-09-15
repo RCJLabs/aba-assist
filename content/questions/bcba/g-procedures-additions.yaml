@@ -1,0 +1,740 @@
+# BCBA practice questions — further items for area G, Behavior-Change Procedures. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-g1-magnitude
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.1 }
+    type: single-best-answer
+    stem: >-
+      Increasing the magnitude of a reinforcer is most likely to help when:
+    options:
+      - id: a
+        text: The behaviour competes with another source of reinforcement
+        isCorrect: true
+        rationale: >-
+          Where allocation is split between two sources, changing relative magnitude shifts
+          the balance.
+      - id: b
+        text: The learner has not yet acquired the response
+        isCorrect: false
+        rationale: >-
+          Acquisition is helped by schedule density and prompting, not by making an occasional
+          reinforcer larger.
+      - id: c
+        text: The reinforcer is already delivered continuously
+        isCorrect: false
+        rationale: >-
+          Continuous delivery means the constraint is elsewhere, not in magnitude.
+      - id: d
+        text: The behaviour is maintained automatically
+        isCorrect: false
+        rationale: >-
+          A socially delivered reinforcer competes poorly with automatic reinforcement
+          regardless of size.
+    explanation: >-
+      Reinforcer parameters — rate, immediacy, magnitude and quality — are the dials the
+      matching law describes. Which one to turn depends on what is limiting the behaviour,
+      and magnitude matters most where something else is competing for the same
+      responding.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [reinforcer, matching-law, magnitude, automatic-reinforcement]
+    citations:
+      - sourceId: herrnstein-1961
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-g2-dro-interval-reset
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.2 }
+    type: single-best-answer
+    stem: >-
+      In a differential reinforcement of other behaviour procedure with a resetting
+      interval, the interval restarts:
+    options:
+      - id: a
+        text: Each time the target behaviour occurs
+        isCorrect: true
+        rationale: >-
+          A resetting arrangement begins the interval again whenever the behaviour happens,
+          requiring a full interval free of it.
+      - id: b
+        text: Each time reinforcement is delivered
+        isCorrect: false
+        rationale: >-
+          That is true of both resetting and non-resetting variants, so it is not the
+          distinguishing feature.
+      - id: c
+        text: At the start of each session only
+        isCorrect: false
+        rationale: >-
+          That describes neither variant.
+      - id: d
+        text: When the learner requests a break
+        isCorrect: false
+        rationale: >-
+          Nothing in the procedure ties the interval to a request.
+    explanation: >-
+      Resetting and fixed-interval variants of this procedure differ in what the learner
+      has to do to contact reinforcement. Resetting is more demanding and can produce long
+      unreinforced stretches, which is the parameter to watch when the behaviour is
+      frequent.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [differential-reinforcement-of-other-behavior, schedule-thinning, extinction]
+    citations:
+      - sourceId: reynolds-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g3-ncr-thinning
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.3 }
+    type: single-best-answer
+    stem: >-
+      Noncontingent reinforcement is usually thinned by:
+    options:
+      - id: a
+        text: Gradually lengthening the interval between deliveries
+        isCorrect: true
+        rationale: >-
+          Stretching the schedule is how the procedure is faded towards something sustainable.
+      - id: b
+        text: Making delivery contingent on the target behaviour
+        isCorrect: false
+        rationale: >-
+          That converts it into a contingent procedure entirely and abandons the arrangement.
+      - id: c
+        text: Reducing the magnitude of each delivery
+        isCorrect: false
+        rationale: >-
+          Magnitude reduction is possible but is not the standard thinning route.
+      - id: d
+        text: Switching to a different reinforcer
+        isCorrect: false
+        rationale: >-
+          Changing the reinforcer is not thinning.
+    explanation: >-
+      Time-based delivery works by weakening the relation between the behaviour and its
+      consequence, and by reducing motivation. Thinning it means lengthening the interval
+      on a plan, and doing so too fast is the usual way the procedure fails.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [noncontingent-reinforcement, schedule-thinning, motivating-operation, extinction]
+    citations:
+      - sourceId: vollmer-1993
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g4-token-exchange
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.4 }
+    type: single-best-answer
+    stem: >-
+      The exchange ratio in a token economy most directly controls:
+    options:
+      - id: a
+        text: How much work a backup reinforcer costs, and so how hard tokens are worked for
+        isCorrect: true
+        rationale: >-
+          The exchange ratio sets the price, which determines responding much as a ratio
+          schedule does.
+      - id: b
+        text: Whether tokens are conditioned reinforcers
+        isCorrect: false
+        rationale: >-
+          Conditioning comes from pairing with backups, not from the ratio.
+      - id: c
+        text: How many backup items must be offered
+        isCorrect: false
+        rationale: >-
+          The number of backups is a separate design choice.
+      - id: d
+        text: Whether the system is a group contingency
+        isCorrect: false
+        rationale: >-
+          Group versus individual is an independent dimension.
+    explanation: >-
+      Designing a token system means setting what earns a token, what tokens buy, the
+      exchange ratio and the exchange schedule. The ratio is the price, and pricing it
+      badly produces either satiation or a system nobody works for.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        token-economy,
+        generalized-conditioned-reinforcer,
+        fixed-ratio-schedule,
+        schedule-thinning
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g5-sd-vs-mo-design
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.5 }
+    type: single-best-answer
+    stem: >-
+      A procedure makes a preferred item visible but unavailable until a task is finished.
+      This arrangement uses:
+    options:
+      - id: a
+        text: Both a motivating operation and a discriminative stimulus
+        isCorrect: true
+        rationale: >-
+          Visibility of the item raises its value and signals availability, so both antecedent
+          functions are operating.
+      - id: b
+        text: A motivating operation only
+        isCorrect: false
+        rationale: >-
+          The item being visible also signals the conditions of availability, which is a
+          discriminative function.
+      - id: c
+        text: A discriminative stimulus only
+        isCorrect: false
+        rationale: >-
+          Restricted access also changes how much the item is worth, which is a motivational
+          effect.
+      - id: d
+        text: Neither, since it is a consequence procedure
+        isCorrect: false
+        rationale: >-
+          Everything described happens before the behaviour.
+    explanation: >-
+      Antecedent arrangements often engage both functions at once. Separating them matters
+      when a procedure stops working: if value is the problem, restricted access helps; if
+      the signal is the problem, the discriminative arrangement needs changing.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        motivating-operation,
+        discriminative-stimulus,
+        antecedent-intervention,
+        establishing-operation
+      ]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g6-listener-responding
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.6 }
+    type: single-best-answer
+    stem: >-
+      Teaching a learner to select the correct item from an array when told its name
+      establishes:
+    options:
+      - id: a
+        text: Listener responding under conditional control of the spoken word
+        isCorrect: true
+        rationale: >-
+          Which item is correct depends on the word given, which is a conditional
+          discrimination in the listener repertoire.
+      - id: b
+        text: A tact
+        isCorrect: false
+        rationale: >-
+          A tact is speaker behaviour under control of a nonverbal stimulus.
+      - id: c
+        text: An echoic
+        isCorrect: false
+        rationale: >-
+          An echoic repeats the verbal stimulus rather than selecting an item.
+      - id: d
+        text: A simple discrimination
+        isCorrect: false
+        rationale: >-
+          It is conditional, because the correct selection changes with the word presented.
+    explanation: >-
+      Listener and speaker repertoires are taught separately and do not automatically
+      transfer. Framing selection tasks as conditional discriminations is what connects
+      them to matching-to-sample and to equivalence procedures.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [listener-responding, matching-to-sample, discrimination-training, tact]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g7-within-stimulus
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.7 }
+    type: single-best-answer
+    stem: >-
+      A within-stimulus prompt differs from an extra-stimulus prompt in that it:
+    options:
+      - id: a
+        text: Alters a feature of the teaching stimulus itself rather than adding something
+        isCorrect: true
+        rationale: >-
+          Exaggerating the relevant feature of the stimulus is a within-stimulus prompt;
+          pointing at it is extra-stimulus.
+      - id: b
+        text: Is delivered physically rather than verbally
+        isCorrect: false
+        rationale: >-
+          The distinction is about the stimulus, not the modality of delivery.
+      - id: c
+        text: Requires the learner to respond faster
+        isCorrect: false
+        rationale: >-
+          Timing is unrelated to the distinction.
+      - id: d
+        text: Cannot be faded
+        isCorrect: false
+        rationale: >-
+          Within-stimulus prompts are faded by returning the feature to normal, which is
+          stimulus fading.
+    explanation: >-
+      Prompt taxonomy matters because it determines how fading proceeds. Within-stimulus
+      prompts fade by restoring the natural stimulus, which tends to transfer control more
+      cleanly than removing an added prompt.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        prompt,
+        stimulus-fading,
+        prompt-fading,
+        transfer-of-stimulus-control,
+        errorless-teaching
+      ]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g8-time-delay-choice
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.8 }
+    type: single-best-answer
+    stem: >-
+      Progressive time delay is preferred over constant time delay when:
+    options:
+      - id: a
+        text: The learner needs a gradual increase in the opportunity to respond independently
+        isCorrect: true
+        rationale: >-
+          Lengthening the delay in steps eases the transition from prompted to independent
+          responding.
+      - id: b
+        text: Errors must be prevented entirely
+        isCorrect: false
+        rationale: >-
+          Neither variant prevents all errors, and constant delay is not more errorless.
+      - id: c
+        text: The skill is a chain rather than a discrete response
+        isCorrect: false
+        rationale: >-
+          Both variants are used with chains and discrete responses alike.
+      - id: d
+        text: The prompt is physical rather than verbal
+        isCorrect: false
+        rationale: >-
+          Prompt modality does not determine which delay variant fits.
+    explanation: >-
+      Time delay transfers control from the prompt to the natural stimulus by inserting a
+      pause. Constant delay jumps to a fixed interval; progressive delay lengthens it
+      gradually, which suits learners for whom the jump produces errors.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [time-delay, transfer-of-stimulus-control, prompt-fading, errorless-teaching]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g11-shaping-vs-prompting
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.11 }
+    type: single-best-answer
+    stem: >-
+      Shaping differs from prompting and fading in that shaping:
+    options:
+      - id: a
+        text: Changes the criterion for reinforcement as responding changes
+        isCorrect: true
+        rationale: >-
+          Shaping moves what counts as reinforceable; prompting supplies help and then removes
+          it.
+      - id: b
+        text: Requires no reinforcement
+        isCorrect: false
+        rationale: >-
+          Differential reinforcement is the mechanism of shaping.
+      - id: c
+        text: Applies only to motor behaviour
+        isCorrect: false
+        rationale: >-
+          Shaping applies across repertoires, including verbal behaviour.
+      - id: d
+        text: Cannot be combined with prompting
+        isCorrect: false
+        rationale: >-
+          The two are frequently combined in practice.
+    explanation: >-
+      Both build a response that is not there, by different routes. Prompting supplies the
+      response and removes support; shaping waits for approximations and reinforces closer
+      ones. Which suits depends on whether the response can be prompted at all.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        shaping,
+        prompt-fading,
+        differential-reinforcement-of-alternative-behavior,
+        transfer-of-stimulus-control
+      ]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g12-task-analysis-validation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.12 }
+    type: single-best-answer
+    stem: >-
+      Before teaching a chain, the task analysis should be validated by:
+    options:
+      - id: a
+        text: Observing a competent performer or running it yourself to check the steps and their order
+        isCorrect: true
+        rationale: >-
+          A task analysis written without checking against real performance frequently omits
+          or misorders steps.
+      - id: b
+        text: Asking the learner which steps they find hard
+        isCorrect: false
+        rationale: >-
+          Useful later, and not how the step list is validated.
+      - id: c
+        text: Counting the number of steps against a published standard
+        isCorrect: false
+        rationale: >-
+          There is no standard number; the right granularity depends on the learner.
+      - id: d
+        text: Confirming the funder accepts the format
+        isCorrect: false
+        rationale: >-
+          Administrative acceptance is unrelated to whether the analysis is correct.
+    explanation: >-
+      The task analysis is the programme in a chaining procedure, so its accuracy
+      determines everything downstream. Validating it against real performance, and
+      setting granularity to the learner, is the step most often skipped.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [task-analysis, chaining, total-task-chaining, operational-definition]
+    citations:
+      - sourceId: foxx-azrin-1972
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g13-format-selection
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.13 }
+    type: single-best-answer
+    stem: >-
+      A skill that must occur at unpredictable moments in daily routines is usually better
+      taught:
+    options:
+      - id: a
+        text: In a naturalistic arrangement, in the routines where it is needed
+        isCorrect: true
+        rationale: >-
+          Teaching where and when the skill is required builds the natural stimulus control it
+          depends on.
+      - id: b
+        text: In massed discrete trials until fluent, then generalized
+        isCorrect: false
+        rationale: >-
+          Massed trials build the response under conditions unlike the ones it must occur in,
+          which then needs undoing.
+      - id: c
+        text: Only after the learner masters it in isolation
+        isCorrect: false
+        rationale: >-
+          Isolation-first is a choice rather than a requirement and often costs transfer.
+      - id: d
+        text: Using a free-operant arrangement with no instruction
+        isCorrect: false
+        rationale: >-
+          Absence of instruction is not what naturalistic teaching means.
+    explanation: >-
+      Format selection weighs teaching efficiency against the conditions the skill must
+      eventually occur under. Discrete trials build responses quickly; naturalistic
+      arrangements build them under the control they actually need.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        naturalistic-teaching,
+        incidental-teaching,
+        discrete-trial-training,
+        generalization,
+        stimulus-control
+      ]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g14-dependent-risk
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.14 }
+    type: single-best-answer
+    stem: >-
+      The particular risk of a dependent group contingency is that:
+    options:
+      - id: a
+        text: The group's outcome rests on one person, who may be blamed or pressured
+        isCorrect: true
+        rationale: >-
+          Making everybody's access depend on one individual's performance creates exactly
+          that exposure.
+      - id: b
+        text: It is less effective than an independent contingency
+        isCorrect: false
+        rationale: >-
+          Effectiveness is not the concern; the social consequence is.
+      - id: c
+        text: It cannot be used in classrooms
+        isCorrect: false
+        rationale: >-
+          It is commonly used in classrooms.
+      - id: d
+        text: It requires a token system
+        isCorrect: false
+        rationale: >-
+          No token system is required.
+    explanation: >-
+      Group contingencies are efficient and carry social risks that vary by type.
+      Dependent arrangements concentrate the risk on one person, and the mitigation is
+      usually to keep the selected performer unidentified or to rotate them.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [group-contingency, social-validity, dignity, token-economy]
+    citations:
+      - sourceId: litow-pumroy-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g15-sufficient-exemplars
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.15 }
+    type: single-best-answer
+    stem: >-
+      Training sufficient exemplars works by:
+    options:
+      - id: a
+        text: Teaching across enough examples that untaught members of the class are covered
+        isCorrect: true
+        rationale: >-
+          Sampling the range of the stimulus or response class is what produces responding to
+          untrained members.
+      - id: b
+        text: Teaching one example very thoroughly
+        isCorrect: false
+        rationale: >-
+          Thoroughness on a single exemplar tends to produce narrow, setting-specific
+          responding.
+      - id: c
+        text: Removing all prompts before generalization is tested
+        isCorrect: false
+        rationale: >-
+          Prompt removal is about stimulus control rather than about generalization tactics.
+      - id: d
+        text: Reinforcing only untrained responses
+        isCorrect: false
+        rationale: >-
+          Untrained responses are the outcome, not the training target.
+    explanation: >-
+      The tactic answers how many examples are enough, and the answer is empirical: teach
+      exemplars until untaught ones occur, then stop. It is the most reliable of the
+      generalization tactics and the most often truncated.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        multiple-exemplar-training,
+        generalization,
+        stimulus-generalization,
+        response-generalization
+      ]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+      - sourceId: horner-baer-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g16-indiscriminable
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.16 }
+    type: single-best-answer
+    stem: >-
+      Making the reinforcement schedule indiscriminable supports maintenance because:
+    options:
+      - id: a
+        text: The learner cannot tell when reinforcement is available, so responding persists across conditions
+        isCorrect: true
+        rationale: >-
+          Uncertainty about availability is what makes responding resistant to the change from
+          teaching to natural conditions.
+      - id: b
+        text: It increases the total amount of reinforcement
+        isCorrect: false
+        rationale: >-
+          It typically reduces the total while maintaining responding.
+      - id: c
+        text: It prevents satiation entirely
+        isCorrect: false
+        rationale: >-
+          Satiation is addressed by other means and is not what this tactic targets.
+      - id: d
+        text: It converts the response into a rule
+        isCorrect: false
+        rationale: >-
+          Nothing about the tactic establishes rule control.
+    explanation: >-
+      Indiscriminable contingencies are one of the generalization and maintenance tactics:
+      intermittent, unsignalled reinforcement makes the shift out of teaching less
+      detectable, so the behaviour does not stop when the programme does.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [intermittent-reinforcement, maintenance, schedule-thinning, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g17-response-cost
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.17 }
+    type: single-best-answer
+    stem: >-
+      Response cost differs from time-out in that response cost:
+    options:
+      - id: a
+        text: Removes an earned reinforcer rather than access to the reinforcing environment
+        isCorrect: true
+        rationale: >-
+          Losing tokens or points is the removal of something earned; time-out removes access
+          to the setting for a period.
+      - id: b
+        text: Is a form of positive punishment
+        isCorrect: false
+        rationale: >-
+          Both are negative punishment, since both involve removal.
+      - id: c
+        text: Requires the behaviour to be dangerous
+        isCorrect: false
+        rationale: >-
+          Neither procedure is restricted to dangerous behaviour by definition.
+      - id: d
+        text: Does not reduce behaviour
+        isCorrect: false
+        rationale: >-
+          If it did not reduce behaviour it would not be punishment at all.
+    explanation: >-
+      Both are negative punishment and differ in what is removed. Response cost needs
+      something earned to remove, which is why it usually accompanies a token system, and
+      both carry the same obligations of justification and monitoring.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [response-cost, time-out, negative-punishment, token-economy]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-g18-punishment-side-effects
+    credential: BCBA
+    taskRef: { credential: BCBA, code: G.18 }
+    type: single-best-answer
+    stem: >-
+      Among the documented side effects of punishment procedures, the one with the widest
+      reach is usually:
+    options:
+      - id: a
+        text: Avoidance of the person or setting associated with the procedure
+        isCorrect: true
+        rationale: >-
+          The person delivering it can become a conditioned aversive stimulus, which damages
+          the working relationship broadly.
+      - id: b
+        text: Temporary increase in the punished behaviour
+        isCorrect: false
+        rationale: >-
+          A burst is characteristic of extinction rather than punishment.
+      - id: c
+        text: Improved generalization of the target
+        isCorrect: false
+        rationale: >-
+          Punishment does not produce generalization as a side effect.
+      - id: d
+        text: Increased rule-governed behaviour
+        isCorrect: false
+        rationale: >-
+          Not a documented effect of punishment procedures.
+    explanation: >-
+      Side effects of punishment include emotional responding, aggression, escape and
+      avoidance, and modelling of punitive practice by observers. Avoidance of the person
+      delivering it is the one that reaches every other programme they run.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        punishment,
+        positive-punishment,
+        negative-punishment,
+        respondent-conditioning,
+        least-restrictive-alternative
+      ]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

@@ -1,0 +1,860 @@
+# BCBA practice questions — area I, Personnel Supervision and Management. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-i1-cost-of-poor
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      The most direct cost of poor supervision falls on:
+    options:
+      - id: a
+        text: The clients served by the supervisee
+        isCorrect: true
+        rationale: >-
+          A supervisee who is not competently supervised delivers services to clients, so the
+          harm reaches them first.
+      - id: b
+        text: The supervisee's certification prospects
+        isCorrect: false
+        rationale: >-
+          That is a real cost and a secondary one.
+      - id: c
+        text: The supervisor's professional reputation
+        isCorrect: false
+        rationale: >-
+          Also real, and further removed than the client.
+      - id: d
+        text: The employing organisation's funding
+        isCorrect: false
+        rationale: >-
+          A consequence of a consequence rather than the direct cost.
+    explanation: >-
+      Supervision exists because the supervisee is delivering services now, not only
+      because they are qualifying. Naming the client as the party at risk is what keeps
+      supervision from becoming a paperwork exercise about hours.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [supervision, continuity-of-care, treatment-integrity]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-i1-benefits
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      Beyond meeting certification requirements, effective supervision most reliably
+      produces:
+    options:
+      - id: a
+        text: Better client outcomes through improved procedural integrity
+        isCorrect: true
+        rationale: >-
+          The mechanism by which supervision helps clients is the supervisee running
+          procedures correctly.
+      - id: b
+        text: Faster accumulation of fieldwork hours
+        isCorrect: false
+        rationale: >-
+          Hours accumulate at the same rate regardless of quality.
+      - id: c
+        text: Reduced need for documentation
+        isCorrect: false
+        rationale: >-
+          Good supervision generally increases documentation rather than reducing it.
+      - id: d
+        text: Higher supervisee satisfaction only
+        isCorrect: false
+        rationale: >-
+          Satisfaction may improve but is not the principal outcome.
+    explanation: >-
+      The case for supervision is empirical rather than regulatory. It works through what
+      the supervisee does in sessions, which is why integrity and client outcome are the
+      measures that matter.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, treatment-integrity, performance-feedback]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i2-contract
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.2 }
+    type: single-best-answer
+    stem: >-
+      A supervision contract most importantly establishes:
+    options:
+      - id: a
+        text: What each party will do, how often, and what happens if expectations are not met
+        isCorrect: true
+        rationale: >-
+          Stating obligations and the response to unmet ones in advance is what prevents later
+          disputes being resolved by power.
+      - id: b
+        text: The supervisee's hourly rate
+        isCorrect: false
+        rationale: >-
+          Compensation may be covered elsewhere and is not the core function.
+      - id: c
+        text: Which clients the supervisee will work with
+        isCorrect: false
+        rationale: >-
+          Caseload is operational and changes; the contract governs the relationship.
+      - id: d
+        text: The date certification will be achieved
+        isCorrect: false
+        rationale: >-
+          No contract can promise that.
+    explanation: >-
+      The supervisory relationship is unequal by construction, so the terms are set out in
+      advance. A contract that names frequency, format, expectations and the response to
+      problems is what makes the relationship reviewable rather than personal.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, collaboration, ethics-code]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i2-boundaries
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.2 }
+    type: single-best-answer
+    stem: >-
+      A supervisor and supervisee are also close personal friends. The main risk is that:
+    options:
+      - id: a
+        text: Honest evaluation and corrective feedback become harder to give and to receive
+        isCorrect: true
+        rationale: >-
+          The second relationship interferes with the core function of supervision, which is
+          evaluative.
+      - id: b
+        text: The supervisee will learn less content
+        isCorrect: false
+        rationale: >-
+          Content transmission is not what the relationship primarily threatens.
+      - id: c
+        text: Supervision hours will be miscounted
+        isCorrect: false
+        rationale: >-
+          Nothing about friendship implies inaccurate records.
+      - id: d
+        text: The client will notice
+        isCorrect: false
+        rationale: >-
+          The problem exists whether or not anybody notices.
+    explanation: >-
+      Multiple relationships matter in supervision for a specific reason: supervision
+      requires evaluation, and evaluation is what a friendship makes uncomfortable. The
+      risk is not misconduct so much as feedback quietly not being given.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [dual-relationship, supervision, conflict-of-interest, performance-feedback]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i2-frequency
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.2 }
+    type: single-best-answer
+    stem: >-
+      A supervisee raises a clinical problem between scheduled meetings. The supervisory
+      relationship works best if:
+    options:
+      - id: a
+        text: There is an agreed route for contact between meetings, established in advance
+        isCorrect: true
+        rationale: >-
+          Clinical questions do not wait for the calendar, and the route being agreed in
+          advance is what makes it usable.
+      - id: b
+        text: They hold it for the next scheduled meeting
+        isCorrect: false
+        rationale: >-
+          Holding a live clinical question until the next meeting can leave a client without
+          direction.
+      - id: c
+        text: They ask a peer instead
+        isCorrect: false
+        rationale: >-
+          A peer may help, but the supervisor is accountable for the work.
+      - id: d
+        text: They make the decision and report it afterwards
+        isCorrect: false
+        rationale: >-
+          That is the position supervision exists to prevent them being in.
+    explanation: >-
+      The relationship is set up so that the supervisee can reach direction when they need
+      it. Establishing the route in advance is what turns "ask your supervisor" from
+      advice into something that actually happens.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, scope-of-practice, continuity-of-care]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i3-power
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.3 }
+    type: single-best-answer
+    stem: >-
+      Supervising equitably requires particular attention to power because:
+    options:
+      - id: a
+        text: A supervisee who depends on the supervisor for certification may not raise concerns
+        isCorrect: true
+        rationale: >-
+          The dependency makes silence rational for the supervisee, so the supervisor has to
+          make raising concerns safe.
+      - id: b
+        text: Supervisors are usually more experienced
+        isCorrect: false
+        rationale: >-
+          Experience is the ordinary basis of the relationship rather than the equity problem.
+      - id: c
+        text: Supervisees are paid less
+        isCorrect: false
+        rationale: >-
+          Pay is not the mechanism at issue.
+      - id: d
+        text: Power differences prevent effective teaching
+        isCorrect: false
+        rationale: >-
+          They do not prevent teaching; they distort disclosure.
+    explanation: >-
+      Equity in supervision is mostly about who can say what. The supervisor controls
+      attestation, hours and evaluation, so the burden of making disagreement and error
+      safe to report sits with them rather than with the supervisee.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, cultural-humility, dignity, collaboration]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i3-responsive
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.3 }
+    type: single-best-answer
+    stem: >-
+      Culturally responsive supervision most concretely means:
+    options:
+      - id: a
+        text: Adapting how feedback is given and how goals are set to the supervisee's context
+        isCorrect: true
+        rationale: >-
+          Responsiveness shows up in the mechanics of supervision, not only in attitude.
+      - id: b
+        text: Avoiding discussion of cultural differences
+        isCorrect: false
+        rationale: >-
+          Avoidance is the opposite of responsiveness.
+      - id: c
+        text: Applying identical procedures to every supervisee
+        isCorrect: false
+        rationale: >-
+          Identical treatment is not the same as equitable treatment.
+      - id: d
+        text: Assigning supervisees to supervisors of similar background
+        isCorrect: false
+        rationale: >-
+          Matching is not required and does not substitute for responsive practice.
+    explanation: >-
+      Cultural responsiveness in supervision is practised through the same levers as
+      everything else: how goals are chosen, how performance is discussed, how feedback
+      lands, and whether the supervisee can say when something is not working.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [cultural-responsiveness, cultural-humility, performance-feedback, supervision]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i4-from-assessment
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.4 }
+    type: single-best-answer
+    stem: >-
+      Supervisee goals should be derived primarily from:
+    options:
+      - id: a
+        text: An assessment of their current skills against the requirements of their role
+        isCorrect: true
+        rationale: >-
+          Goals come from the gap between what the supervisee can do and what the role
+          demands.
+      - id: b
+        text: The certification task list alone
+        isCorrect: false
+        rationale: >-
+          The task list defines scope but not this supervisee's needs.
+      - id: c
+        text: The supervisee's stated interests
+        isCorrect: false
+        rationale: >-
+          Interests inform priorities but do not establish need.
+      - id: d
+        text: The caseload the organisation needs covered
+        isCorrect: false
+        rationale: >-
+          Organisational need is a constraint, not the basis for individual goals.
+    explanation: >-
+      Supervision is a behaviour-change programme and starts with assessment like any
+      other. Goals set without assessing current performance are either already met or out
+      of reach, and neither produces change.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [supervision, competency-assessment, performance-diagnostic, behavioral-skills-training]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i4-observable
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.4 }
+    type: single-best-answer
+    stem: >-
+      Which supervisee goal is stated so performance against it can be measured?
+    options:
+      - id: a
+        text: Runs a preference assessment to written protocol with 90% of steps correct on three occasions
+        isCorrect: true
+        rationale: >-
+          The behaviour, the standard and the number of occasions are all stated.
+      - id: b
+        text: Understands preference assessment formats
+        isCorrect: false
+        rationale: >-
+          Understanding is not observable.
+      - id: c
+        text: Improves at preference assessments
+        isCorrect: false
+        rationale: >-
+          No criterion and no baseline reference.
+      - id: d
+        text: Is comfortable running preference assessments
+        isCorrect: false
+        rationale: >-
+          Comfort is a private event and cannot be measured by the supervisor.
+    explanation: >-
+      Supervisee goals get the same treatment as client goals: behaviour, conditions,
+      criterion. Goals about understanding or comfort cannot be assessed, so they tend to
+      be signed off on impression.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, supervision, treatment-integrity, competency-assessment]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i5-bst-components
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.5 }
+    type: single-best-answer
+    stem: >-
+      Behavioural skills training is distinguished from ordinary instruction chiefly by
+      including:
+    options:
+      - id: a
+        text: Rehearsal and feedback until a performance criterion is met
+        isCorrect: true
+        rationale: >-
+          Practice with feedback to criterion is what separates it from telling and showing.
+      - id: b
+        text: Written materials given in advance
+        isCorrect: false
+        rationale: >-
+          Materials may accompany it but are not the distinguishing element.
+      - id: c
+        text: A test of knowledge at the end
+        isCorrect: false
+        rationale: >-
+          Knowledge tests do not establish performance.
+      - id: d
+        text: Supervision by a second analyst
+        isCorrect: false
+        rationale: >-
+          Not a component of the procedure.
+    explanation: >-
+      Instruction and modelling establish what to do; rehearsal and feedback establish
+      doing it. Training that stops after the first two reliably produces staff who can
+      describe a procedure and cannot run it.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [behavioral-skills-training, modeling, performance-feedback, competency-assessment]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i5-feedback-timing
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.5 }
+    type: single-best-answer
+    stem: >-
+      Feedback on a supervisee's implementation is generally most effective when it is:
+    options:
+      - id: a
+        text: Specific, and delivered close in time to the performance
+        isCorrect: true
+        rationale: >-
+          Specificity tells them what to change and immediacy connects it to what they did.
+      - id: b
+        text: General and delivered at the monthly meeting
+        isCorrect: false
+        rationale: >-
+          General and delayed feedback is the least effective combination.
+      - id: c
+        text: Written rather than spoken
+        isCorrect: false
+        rationale: >-
+          Medium matters less than specificity and timing.
+      - id: d
+        text: Delivered only when performance falls below criterion
+        isCorrect: false
+        rationale: >-
+          Feedback on correct performance is what maintains it.
+    explanation: >-
+      Feedback is a consequence, and it behaves like one: specific and immediate works,
+      vague and delayed does not. Feedback restricted to errors also leaves correct
+      performance unreinforced, which is how good practice quietly drifts.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [performance-feedback, behavioral-skills-training, supervision, treatment-drift]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i5-maintenance-of-staff
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.5 }
+    type: single-best-answer
+    stem: >-
+      Staff performance reaches criterion during training and declines over the following
+      weeks. The indicated response is to:
+    options:
+      - id: a
+        text: Schedule ongoing observation and feedback rather than treating training as finished
+        isCorrect: true
+        rationale: >-
+          Performance requires maintenance like any other behaviour, and periodic feedback is
+          what supplies it.
+      - id: b
+        text: Repeat the full training programme
+        isCorrect: false
+        rationale: >-
+          Repeating training addresses acquisition, which is not what failed.
+      - id: c
+        text: Replace the procedure with a simpler one
+        isCorrect: false
+        rationale: >-
+          Simplification is for procedures that never reached criterion.
+      - id: d
+        text: Introduce a consequence for poor performance
+        isCorrect: false
+        rationale: >-
+          A punitive response is neither the first nor usually the effective option.
+    explanation: >-
+      Training establishes performance; supervision maintains it. Drift after successful
+      training is the normal course of events rather than a training failure, and it is
+      why ongoing observation is part of the role.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [treatment-drift, performance-feedback, maintenance, treatment-integrity]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i6-skill-vs-motivation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      A supervisee performs a procedure correctly when observed and incorrectly when not.
+      This pattern points to:
+    options:
+      - id: a
+        text: A performance problem rather than a skill deficit
+        isCorrect: true
+        rationale: >-
+          They can do it, so what varies is the conditions under which they do, which is a
+          motivational or antecedent issue.
+      - id: b
+        text: A skill deficit requiring retraining
+        isCorrect: false
+        rationale: >-
+          Retraining a skill they demonstrably have will not change anything.
+      - id: c
+        text: An unclear written protocol
+        isCorrect: false
+        rationale: >-
+          An unclear protocol would produce errors under observation too.
+      - id: d
+        text: A measurement error
+        isCorrect: false
+        rationale: >-
+          The difference between observed and unobserved performance is the finding, not an
+          artefact.
+    explanation: >-
+      Diagnosing staff performance by its function is what determines the fix. Skill
+      deficits need training; performance problems need changed antecedents or
+      consequences; unclear expectations need clarification. Applying the wrong remedy is
+      the common error.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        performance-diagnostic,
+        behavioral-skills-training,
+        performance-feedback,
+        treatment-integrity
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i6-antecedent-fix
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      Staff report they were unaware a plan had changed. The indicated remedy is:
+    options:
+      - id: a
+        text: Improve how changes are communicated and confirmed, which is an antecedent fix
+        isCorrect: true
+        rationale: >-
+          The failure is in the information reaching them, so the fix is in how plans are
+          distributed and acknowledged.
+      - id: b
+        text: Retrain the whole team on the plan
+        isCorrect: false
+        rationale: >-
+          Training addresses skill, and the problem is that they did not know it had changed.
+      - id: c
+        text: Increase monitoring of implementation
+        isCorrect: false
+        rationale: >-
+          Monitoring would detect the problem again without addressing its cause.
+      - id: d
+        text: Add a consequence for running an outdated plan
+        isCorrect: false
+        rationale: >-
+          Punishing staff for not knowing something they were not told is unjust and
+          ineffective.
+    explanation: >-
+      Performance problems have functions, and the diagnostic question is which. Missing
+      antecedents — not knowing, not having the materials, not having time — are among the
+      most common and the cheapest to fix once correctly identified.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [performance-diagnostic, antecedent-intervention, treatment-integrity, collaboration]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i6-consequence-analysis
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      A procedure is skipped because running it correctly takes far longer and nothing
+      follows either way. This is best described as:
+    options:
+      - id: a
+        text: A consequence problem — effort is high and there is no differential outcome
+        isCorrect: true
+        rationale: >-
+          Where correct and incorrect performance produce the same result and one costs more,
+          allocation follows effort.
+      - id: b
+        text: A skill deficit
+        isCorrect: false
+        rationale: >-
+          Nothing indicates they cannot do it.
+      - id: c
+        text: An antecedent problem
+        isCorrect: false
+        rationale: >-
+          They know what to do; what is missing is any differential consequence.
+      - id: d
+        text: A supervision frequency problem
+        isCorrect: false
+        rationale: >-
+          More frequent supervision might mask it without addressing the arrangement.
+    explanation: >-
+      Staff behaviour follows the same contingencies as anybody's. A procedure that costs
+      more effort and produces no difference in outcome is being selected against, and the
+      fix is in the arrangement rather than in the person.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [performance-diagnostic, matching-law, performance-feedback, treatment-integrity]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: herrnstein-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i7-fidelity-measure
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Which measure most directly evaluates whether supervision is having its intended
+      effect on practice?
+    options:
+      - id: a
+        text: Procedural integrity of the supervisee's implementation over time
+        isCorrect: true
+        rationale: >-
+          Integrity is the behaviour supervision is meant to change, measured where it
+          matters.
+      - id: b
+        text: Number of supervision hours delivered
+        isCorrect: false
+        rationale: >-
+          Hours are an input and can be fully compliant while nothing improves.
+      - id: c
+        text: Supervisee self-rated confidence
+        isCorrect: false
+        rationale: >-
+          Confidence is not a measure of practice and can move opposite to competence.
+      - id: d
+        text: Number of clients on the supervisee's caseload
+        isCorrect: false
+        rationale: >-
+          Caseload size is unrelated to supervision quality.
+    explanation: >-
+      Evaluating supervision means measuring its effect rather than its occurrence.
+      Integrity over time, client outcomes and supervisee performance are the measures;
+      hours delivered is a compliance record that poor supervision satisfies just as well
+      as good.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [treatment-integrity, supervision, performance-feedback, social-validity]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i7-adjusting
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Supervision data show one supervisee improving and another static under the same
+      approach. The indicated response is to:
+    options:
+      - id: a
+        text: Change the approach for the supervisee who is not improving
+        isCorrect: true
+        rationale: >-
+          Supervision is individualized, and data showing no effect for one person is an
+          instruction to change what is done with that person.
+      - id: b
+        text: Continue, since the approach works in general
+        isCorrect: false
+        rationale: >-
+          That it works for somebody else is no help to the supervisee it is not working for.
+      - id: c
+        text: Conclude the static supervisee is unsuitable for the role
+        isCorrect: false
+        rationale: >-
+          A conclusion about the person before changing the approach reverses the order.
+      - id: d
+        text: Increase supervision hours for both
+        isCorrect: false
+        rationale: >-
+          More of an ineffective approach is not a change of approach.
+    explanation: >-
+      Evaluating supervision with data leads to adjusting it, which is the whole point of
+      measuring. Treating a flat line as a fact about the supervisee rather than about the
+      supervision is the same error as blaming a client for a failed intervention.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, performance-diagnostic, single-case-design, performance-feedback]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i7-client-outcome
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Including client outcomes when evaluating supervision is important because:
+    options:
+      - id: a
+        text: Supervision that improves supervisee behaviour without improving client outcomes has missed its purpose
+        isCorrect: true
+        rationale: >-
+          The point of supervision is the effect on the people receiving services, reached
+          through the supervisee.
+      - id: b
+        text: Client outcomes are easier to measure than supervisee behaviour
+        isCorrect: false
+        rationale: >-
+          They are usually harder, not easier.
+      - id: c
+        text: Funders require outcome reporting
+        isCorrect: false
+        rationale: >-
+          They may, and that is not the clinical reason.
+      - id: d
+        text: It removes the need to measure integrity
+        isCorrect: false
+        rationale: >-
+          Integrity is how the effect is produced and still needs measuring.
+    explanation: >-
+      The chain runs from supervision to supervisee behaviour to client outcome, and
+      evaluating only the middle link can miss a failure at the end. Measuring both is
+      what makes the chain visible rather than assumed.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, treatment-integrity, social-validity, continuity-of-care]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i3-assumptions
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.3 }
+    type: single-best-answer
+    stem: >-
+      A supervisor consistently gives one supervisee more independence earlier than others
+      with similar assessed skills. The first appropriate step is to:
+    options:
+      - id: a
+        text: Compare the independence decisions against the documented criteria
+        isCorrect: true
+        rationale: >-
+          Checking the judgements against stated criteria is what reveals whether the pattern
+          is justified.
+      - id: b
+        text: Give the other supervisees the same independence
+        isCorrect: false
+        rationale: >-
+          Levelling up without checking the criteria may extend an unjustified decision rather
+          than correct it.
+      - id: c
+        text: Reduce the first supervisee's independence
+        isCorrect: false
+        rationale: >-
+          Levelling down is equally unexamined.
+      - id: d
+        text: Ask the supervisees whether they feel treated equally
+        isCorrect: false
+        rationale: >-
+          Worth knowing, and it does not test the decisions.
+    explanation: >-
+      Equity is checked the way anything else is: state the criteria, compare the
+      decisions against them, and change the process where they diverge. Acting on the
+      pattern without examining it risks correcting in the wrong direction.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, cultural-humility, operational-definition, performance-feedback]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-i1-delegation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      A supervisor delegates part of a supervisee's training to a senior technician. The
+      supervisor remains responsible for:
+    options:
+      - id: a
+        text: The quality of what is delivered and the outcome of the supervision
+        isCorrect: true
+        rationale: >-
+          Delegation distributes the work and not the accountability.
+      - id: b
+        text: Nothing further, once delegation is documented
+        isCorrect: false
+        rationale: >-
+          Documentation records the arrangement; it does not transfer responsibility.
+      - id: c
+        text: Only the parts they deliver personally
+        isCorrect: false
+        rationale: >-
+          That is precisely the assumption delegation makes dangerous.
+      - id: d
+        text: Scheduling only
+        isCorrect: false
+        rationale: >-
+          Scheduling is administrative and not the substance of the obligation.
+    explanation: >-
+      Delegation is common and legitimate, and it leaves the accountability where it was.
+      The supervisor has to know what is being delivered, evaluate whoever is delivering
+      it, and remain answerable for the result.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, competency-assessment, treatment-integrity, ethics-code]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

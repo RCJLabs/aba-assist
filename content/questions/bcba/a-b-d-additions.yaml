@@ -1,0 +1,1201 @@
+# BCBA practice questions — further items for areas A, B and D. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-a1-prediction
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      A study reports that classroom noise and off-task behaviour rise and fall together,
+      with nothing manipulated. This supports:
+    options:
+      - id: a
+        text: Prediction, but not control
+        isCorrect: true
+        rationale: >-
+          A correlation lets you anticipate one from the other without showing that changing
+          one changes the other.
+      - id: b
+        text: Control, because the relation is consistent
+        isCorrect: false
+        rationale: >-
+          Control requires manipulation; consistency of a correlation does not supply it.
+      - id: c
+        text: Description only
+        isCorrect: false
+        rationale: >-
+          The relation between two variables goes beyond describing either one.
+      - id: d
+        text: Replication
+        isCorrect: false
+        rationale: >-
+          Replication is a method for confirming findings rather than a level of
+          understanding.
+    explanation: >-
+      Science aims at description, prediction and control, and they are ordered by what
+      they license. Correlational work supports prediction; only manipulation supports the
+      claim that one variable produced the change in the other.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [functional-relation, experimental-control, confounding-variable, dependent-variable]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-a2-determinism
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      The assumption of determinism in behaviour analysis commits the analyst to:
+    options:
+      - id: a
+        text: Treating behaviour as lawful and its causes as discoverable in the environment
+        isCorrect: true
+        rationale: >-
+          Determinism is the working assumption that behaviour has orderly causes that can be
+          found.
+      - id: b
+        text: Believing behaviour cannot be changed
+        isCorrect: false
+        rationale: >-
+          Lawfulness is what makes deliberate change possible rather than impossible.
+      - id: c
+        text: Rejecting the existence of private events
+        isCorrect: false
+        rationale: >-
+          Radical behaviourism includes private events rather than denying them.
+      - id: d
+        text: Explaining behaviour by inner states
+        isCorrect: false
+        rationale: >-
+          That is mentalism, which determinism as used here works against.
+    explanation: >-
+      The philosophical assumptions do practical work. Determinism is why an unexplained
+      behaviour is treated as a gap in the analysis rather than as evidence of something
+      uncaused, and it is what makes assessment worth doing.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [determinism, radical-behaviorism, empiricism, mentalism]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-a3-radical-vs-methodological
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.3 }
+    type: single-best-answer
+    stem: >-
+      Radical behaviourism differs from methodological behaviourism principally in that
+      it:
+    options:
+      - id: a
+        text: Includes private events as behaviour to be explained by the same principles
+        isCorrect: true
+        rationale: >-
+          Radical behaviourism treats thinking and feeling as behaviour, subject to the same
+          analysis.
+      - id: b
+        text: Rejects the study of observable behaviour
+        isCorrect: false
+        rationale: >-
+          Observable behaviour remains central to both positions.
+      - id: c
+        text: Requires physiological measurement
+        isCorrect: false
+        rationale: >-
+          Neither position requires it.
+      - id: d
+        text: Denies that private events exist
+        isCorrect: false
+        rationale: >-
+          That is closer to the methodological position, which excludes them from analysis.
+    explanation: >-
+      The distinction matters in practice. Treating a private event as behaviour means
+      asking what controls it, rather than either ignoring it or promoting it to an
+      explanation of the behaviour you can see.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [radical-behaviorism, methodological-behaviorism, private-event, mentalism]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-a4-eab-vs-aba
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      The experimental analysis of behaviour differs from applied behaviour analysis
+      mainly in its:
+    options:
+      - id: a
+        text: Purpose — understanding basic processes rather than improving socially important behaviour
+        isCorrect: true
+        rationale: >-
+          The branches are distinguished by aim, with applied work committed to social
+          importance.
+      - id: b
+        text: Use of single-case designs
+        isCorrect: false
+        rationale: >-
+          Both branches use single-case designs extensively.
+      - id: c
+        text: Rejection of reinforcement as a principle
+        isCorrect: false
+        rationale: >-
+          Both are built on the same principles.
+      - id: d
+        text: Requirement for human participants
+        isCorrect: false
+        rationale: >-
+          Applied work uses humans; basic work often does not, but that follows from purpose.
+    explanation: >-
+      The four branches — behaviourism, the experimental analysis, applied behaviour
+      analysis and practice — differ by aim rather than by method. The applied branch is
+      defined by social importance, which is why social validity belongs to it
+      specifically.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        experimental-analysis-of-behavior,
+        applied-behavior-analysis,
+        seven-dimensions-of-aba,
+        social-validity
+      ]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-a5-conceptually-systematic
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      Describing a procedure in terms of the basic principles it rests on satisfies which
+      dimension?
+    options:
+      - id: a
+        text: Conceptually systematic
+        isCorrect: true
+        rationale: >-
+          Relating procedures to the underlying principles is what this dimension requires.
+      - id: b
+        text: Technological
+        isCorrect: false
+        rationale: >-
+          Technological means the description is complete enough to replicate, which is a
+          different requirement.
+      - id: c
+        text: Effective
+        isCorrect: false
+        rationale: >-
+          Effectiveness concerns whether the change is large enough to matter.
+      - id: d
+        text: Generality
+        isCorrect: false
+        rationale: >-
+          Generality concerns whether change lasts, spreads and transfers.
+    explanation: >-
+      The seven dimensions are separable criteria, and two are easily conflated.
+      Technological asks whether somebody else could run it from the description;
+      conceptually systematic asks whether it is tied to known principles rather than
+      being an unexplained trick.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [seven-dimensions-of-aba, applied-behavior-analysis, evidence-based-practice]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-a5-effective-dimension
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      A procedure produces a statistically detectable but very small change that makes no
+      practical difference. It fails which dimension?
+    options:
+      - id: a
+        text: Effective
+        isCorrect: true
+        rationale: >-
+          The dimension requires change large enough to be of practical value, not merely
+          detectable.
+      - id: b
+        text: Applied
+        isCorrect: false
+        rationale: >-
+          Applied concerns whether the behaviour is socially important, which it may well be.
+      - id: c
+        text: Analytic
+        isCorrect: false
+        rationale: >-
+          Analytic concerns whether control was demonstrated.
+      - id: d
+        text: Behavioural
+        isCorrect: false
+        rationale: >-
+          Behavioural concerns measuring behaviour itself rather than a proxy.
+    explanation: >-
+      Effectiveness in this framework is a practical criterion rather than a statistical
+      one. A change too small to matter to the people involved fails, which is the
+      dimension's point and its connection to social validity.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [seven-dimensions-of-aba, social-validity, applied-behavior-analysis]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+      - sourceId: wolf-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-a2-parsimony-use
+    credential: BCBA
+    taskRef: { credential: BCBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      Parsimony requires that, before invoking a complex account of a behaviour, the
+      analyst:
+    options:
+      - id: a
+        text: Rule out the simpler explanations already available
+        isCorrect: true
+        rationale: >-
+          Simple and established accounts are considered first, and complexity is added only
+          when they fail.
+      - id: b
+        text: Choose whichever account is most testable
+        isCorrect: false
+        rationale: >-
+          Testability matters and is a different criterion from simplicity.
+      - id: c
+        text: Prefer the account that fits the most cases
+        isCorrect: false
+        rationale: >-
+          Scope is not what parsimony concerns.
+      - id: d
+        text: Defer to the published literature
+        isCorrect: false
+        rationale: >-
+          The literature informs the analysis rather than replacing the reasoning.
+    explanation: >-
+      Parsimony is a working rule, not a claim that the world is simple. In practice it
+      means checking whether an ordinary contingency accounts for the behaviour before
+      reaching for anything more elaborate.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [parsimony, philosophic-doubt, empiricism, explanatory-fiction]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b3-elicited-vs-emitted
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      The clearest practical marker distinguishing respondent from operant behaviour is
+      that respondent behaviour is:
+    options:
+      - id: a
+        text: Elicited by an antecedent stimulus rather than selected by its consequences
+        isCorrect: true
+        rationale: >-
+          Respondents are drawn out by a preceding stimulus; operants are strengthened or
+          weakened by what follows.
+      - id: b
+        text: Always involuntary and never learned
+        isCorrect: false
+        rationale: >-
+          Respondents can be conditioned, so they are certainly learned.
+      - id: c
+        text: Only observable in reflexes of the autonomic system
+        isCorrect: false
+        rationale: >-
+          Respondent conditioning is not restricted to the autonomic system.
+      - id: d
+        text: Impossible to measure directly
+        isCorrect: false
+        rationale: >-
+          Respondent behaviour is measured directly all the time.
+    explanation: >-
+      The two kinds of behaviour call for different analyses and different interventions.
+      Asking whether the behaviour is drawn out by something before it or selected by
+      something after it is the question that separates them.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [respondent-conditioning, operant-conditioning, three-term-contingency, stimulus]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b8-fi-scallop
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.8 }
+    type: single-best-answer
+    stem: >-
+      A fixed-interval schedule characteristically produces:
+    options:
+      - id: a
+        text: A pause after reinforcement followed by accelerating responding towards the end of the interval
+        isCorrect: true
+        rationale: >-
+          That pattern, seen as a scallop on a cumulative record, is the signature of fixed
+          interval.
+      - id: b
+        text: A steady moderate rate throughout
+        isCorrect: false
+        rationale: >-
+          That is the variable-interval pattern.
+      - id: c
+        text: A high steady rate with a post-reinforcement pause
+        isCorrect: false
+        rationale: >-
+          That describes fixed ratio.
+      - id: d
+        text: A very high rate with no pausing
+        isCorrect: false
+        rationale: >-
+          That describes variable ratio.
+    explanation: >-
+      The four basic schedules produce four recognisable patterns, and the patterns follow
+      from what the schedule makes relevant: time or responses, fixed or variable. Being
+      able to read the pattern back to the schedule is the skill being tested.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        fixed-interval-schedule,
+        variable-interval-schedule,
+        fixed-ratio-schedule,
+        variable-ratio-schedule,
+        cumulative-record
+      ]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b16-sd-availability
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.16 }
+    type: single-best-answer
+    stem: >-
+      The practical difference between a discriminative stimulus and a motivating
+      operation is that the discriminative stimulus signals:
+    options:
+      - id: a
+        text: Availability of the consequence, while the motivating operation changes its value
+        isCorrect: true
+        rationale: >-
+          One says the consequence is obtainable now; the other changes how much it is worth.
+      - id: b
+        text: Value, while the motivating operation signals availability
+        isCorrect: false
+        rationale: >-
+          That reverses the two.
+      - id: c
+        text: Punishment, while the motivating operation signals reinforcement
+        isCorrect: false
+        rationale: >-
+          Both can relate to either kind of consequence.
+      - id: d
+        text: Nothing, since they are the same thing
+        isCorrect: false
+        rationale: >-
+          They are distinct antecedent functions with different effects.
+    explanation: >-
+      Confusing the two leads to the wrong intervention. If the learner does not want the
+      consequence, signalling availability more loudly will not help; if they want it but
+      do not know it is available, changing deprivation will not help either.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [discriminative-stimulus, motivating-operation, establishing-operation, stimulus-control]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b20-symmetry
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.20 }
+    type: single-best-answer
+    stem: >-
+      After being taught to select B given A, a learner selects A given B without
+      training. This demonstrates:
+    options:
+      - id: a
+        text: Symmetry
+        isCorrect: true
+        rationale: >-
+          Reversal of a trained conditional relation without training is symmetry.
+      - id: b
+        text: Reflexivity
+        isCorrect: false
+        rationale: >-
+          Reflexivity is matching a stimulus to itself.
+      - id: c
+        text: Transitivity
+        isCorrect: false
+        rationale: >-
+          Transitivity derives a relation between two stimuli through a shared third.
+      - id: d
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization depends on physical similarity, while equivalence relations are
+          arbitrary.
+    explanation: >-
+      The three defining relations are tested separately, and each is a different untaught
+      outcome. A class is only demonstrated when reflexivity, symmetry and transitivity
+      all hold among its members.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [stimulus-equivalence, matching-to-sample, discrimination-training]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b22-matching-law-application
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.22 }
+    type: single-best-answer
+    stem: >-
+      Two response options produce reinforcement at different rates. The matching law
+      predicts that responding will be allocated:
+    options:
+      - id: a
+        text: In proportion to the relative rate of reinforcement from each
+        isCorrect: true
+        rationale: >-
+          Allocation matches the relative rate of reinforcement obtained from the
+          alternatives.
+      - id: b
+        text: Entirely to whichever produces more
+        isCorrect: false
+        rationale: >-
+          Exclusive choice is not what matching describes under concurrent schedules.
+      - id: c
+        text: Equally, regardless of the rates
+        isCorrect: false
+        rationale: >-
+          Equal allocation would occur only where the rates were equal.
+      - id: d
+        text: According to the effort required only
+        isCorrect: false
+        rationale: >-
+          Effort matters and is not the whole account; relative reinforcement rate is the core
+          relation.
+    explanation: >-
+      The matching law is the reason a replacement behaviour has to compete rather than
+      merely exist. It also explains why thinning the alternative too far returns the
+      problem behaviour: the relative rates shift back.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        matching-law,
+        concurrent-schedule,
+        replacement-behavior,
+        differential-reinforcement-of-alternative-behavior
+      ]
+    citations:
+      - sourceId: herrnstein-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b6-automatic-punishment
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.6 }
+    type: single-best-answer
+    stem: >-
+      A behaviour decreases because it directly produces an uncomfortable consequence,
+      with nobody else involved. This is:
+    options:
+      - id: a
+        text: Automatic punishment
+        isCorrect: true
+        rationale: >-
+          The punishing consequence is produced by the behaviour itself rather than delivered
+          by another person.
+      - id: b
+        text: Socially mediated punishment
+        isCorrect: false
+        rationale: >-
+          Social mediation requires another person to deliver the consequence.
+      - id: c
+        text: Automatic reinforcement
+        isCorrect: false
+        rationale: >-
+          Reinforcement would increase the behaviour, and this decreased.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Extinction withholds a maintaining consequence rather than adding an aversive one.
+    explanation: >-
+      The automatic and socially mediated distinction applies to punishment as well as
+      reinforcement. It matters because automatic consequences cannot be manipulated by
+      changing what other people do, which constrains the available interventions.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        automatic-reinforcement,
+        punishment,
+        socially-mediated-reinforcement,
+        sensory-extinction
+      ]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b13-stimulus-generalization-gradient
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.13 }
+    type: single-best-answer
+    stem: >-
+      A response trained to one tone occurs less and less as tones become less similar to
+      the trained one. This pattern is:
+    options:
+      - id: a
+        text: A generalization gradient
+        isCorrect: true
+        rationale: >-
+          Responding graded by similarity to the trained stimulus is what a generalization
+          gradient describes.
+      - id: b
+        text: A discrimination gradient reversal
+        isCorrect: false
+        rationale: >-
+          Not a standard term for this pattern.
+      - id: c
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          Response generalization varies the form of the response, not the stimulus.
+      - id: d
+        text: Stimulus equivalence
+        isCorrect: false
+        rationale: >-
+          Equivalence relations are arbitrary rather than based on physical similarity.
+    explanation: >-
+      A gradient shows how tightly stimulus control has been established. A steep gradient
+      means narrow control and a flat one means broad control, and which is wanted depends
+      entirely on the teaching goal.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [stimulus-generalization, stimulus-control, discrimination-training, generalization]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b10-extinction-variability
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.10 }
+    type: single-best-answer
+    stem: >-
+      Alongside a temporary increase in rate, operant extinction commonly produces:
+    options:
+      - id: a
+        text: Increased variability in the form of the response
+        isCorrect: true
+        rationale: >-
+          Novel and previously reinforced forms appear when the usual response stops working,
+          which is what makes extinction useful in shaping.
+      - id: b
+        text: Immediate and permanent cessation
+        isCorrect: false
+        rationale: >-
+          Extinction produces gradual decline with characteristic disruption, not immediate
+          cessation.
+      - id: c
+        text: A permanent reduction with no recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery after a break is well documented.
+      - id: d
+        text: Improved stimulus control
+        isCorrect: false
+        rationale: >-
+          Extinction does not sharpen stimulus control as a side effect.
+    explanation: >-
+      The disruption extinction produces is not only a nuisance. Increased variability is
+      what shaping exploits, and resurgence of older forms is what makes relapse
+      predictable when a newer response stops paying.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [extinction, extinction-burst, variability, resurgence, shaping]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b21-momentum-application
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.21 }
+    type: single-best-answer
+    stem: >-
+      Presenting several easy requests immediately before a difficult one exploits:
+    options:
+      - id: a
+        text: Behavioural momentum, by building responding that persists into the harder request
+        isCorrect: true
+        rationale: >-
+          A run of reinforced compliance increases the persistence of responding when the
+          harder demand arrives.
+      - id: b
+        text: Stimulus equivalence
+        isCorrect: false
+        rationale: >-
+          No derived relations are involved.
+      - id: c
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          The responses are different demands rather than untaught forms of one response.
+      - id: d
+        text: Negative reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing is removed contingent on the behaviour.
+    explanation: >-
+      The high-probability request sequence is momentum applied. Its effect depends on the
+      easy requests being genuinely high probability and reinforced, and on the difficult
+      request following quickly, which is where implementations usually go wrong.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        behavioral-momentum,
+        high-probability-request-sequence,
+        antecedent-intervention,
+        differential-reinforcement-of-alternative-behavior
+      ]
+    citations:
+      - sourceId: mace-1988
+        useType: fact-reference
+      - sourceId: nevin-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-b18-mand-control
+    credential: BCBA
+    taskRef: { credential: BCBA, code: B.18 }
+    type: single-best-answer
+    stem: >-
+      A learner says "water" while thirsty and is given water. The verbal operant is a
+      mand because it is:
+    options:
+      - id: a
+        text: Under the control of a motivating operation and specifies its reinforcer
+        isCorrect: true
+        rationale: >-
+          Mands are evoked by motivation and produce the specific consequence named.
+      - id: b
+        text: Under the control of a nonverbal stimulus
+        isCorrect: false
+        rationale: >-
+          That would make it a tact.
+      - id: c
+        text: A repetition of what somebody else said
+        isCorrect: false
+        rationale: >-
+          That would make it an echoic.
+      - id: d
+        text: Evoked by another person's verbal behaviour
+        isCorrect: false
+        rationale: >-
+          Verbal antecedent control without point-to-point correspondence is an intraverbal.
+    explanation: >-
+      The mand is the only verbal operant whose reinforcer is specified by the response
+      itself, which is why it is usually taught first: it puts the learner in control of
+      getting what they want, by a route other than problem behaviour.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [mand, motivating-operation, tact, echoic, functional-communication-training]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d3-maturation
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.3 }
+    type: single-best-answer
+    stem: >-
+      A student improves over a school year during an intervention. The threat that most
+      directly competes with the intervention as an explanation is:
+    options:
+      - id: a
+        text: Maturation
+        isCorrect: true
+        rationale: >-
+          Development and ordinary improvement over time can produce the same change without
+          any intervention.
+      - id: b
+        text: Instrumentation
+        isCorrect: false
+        rationale: >-
+          Instrumentation concerns the measure changing, which is not described here.
+      - id: c
+        text: Reactivity
+        isCorrect: false
+        rationale: >-
+          Reactivity is behaviour changing because of observation.
+      - id: d
+        text: Observer drift
+        isCorrect: false
+        rationale: >-
+          Drift is a measurement threat rather than an alternative explanation of the change.
+    explanation: >-
+      Threats to internal validity are the alternative explanations a design has to rule
+      out. Over long periods maturation is the most persistent, which is why extended
+      baselines and staggered introductions carry so much weight.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [internal-validity, confounding-variable, baseline, multiple-baseline-design]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d4-steady-state
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.4 }
+    type: single-best-answer
+    stem: >-
+      The logic of baseline requires that data be stable before the condition changes
+      because:
+    options:
+      - id: a
+        text: A stable baseline supports a prediction of what would have happened without the intervention
+        isCorrect: true
+        rationale: >-
+          The prediction is what the intervention data are compared against, and an unstable
+          baseline predicts nothing.
+      - id: b
+        text: Stability proves the measure is accurate
+        isCorrect: false
+        rationale: >-
+          Stability and accuracy are different properties.
+      - id: c
+        text: Funders require a minimum number of sessions
+        isCorrect: false
+        rationale: >-
+          Administrative requirements are not the logic.
+      - id: d
+        text: It reduces the number of sessions needed overall
+        isCorrect: false
+        rationale: >-
+          Waiting for stability usually lengthens baseline rather than shortening the study.
+    explanation: >-
+      Single-case designs work by prediction, verification and replication. Baseline
+      supplies the prediction, and its stability is what makes the prediction worth
+      anything when the next condition departs from it.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [baseline, visual-analysis, variability, experimental-control]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d7-reversal-unsuitable
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      A reversal design is least appropriate when:
+    options:
+      - id: a
+        text: The behaviour change is irreversible, such as an acquired academic skill
+        isCorrect: true
+        rationale: >-
+          Withdrawal cannot return the behaviour to baseline if the change does not reverse,
+          so the design cannot demonstrate control.
+      - id: b
+        text: The behaviour occurs at a low rate
+        isCorrect: false
+        rationale: >-
+          Low rates complicate measurement rather than ruling out the design.
+      - id: c
+        text: Only one participant is available
+        isCorrect: false
+        rationale: >-
+          Reversal designs are built for single participants.
+      - id: d
+        text: The intervention is expensive
+        isCorrect: false
+        rationale: >-
+          Cost is a practical constraint rather than a design one.
+    explanation: >-
+      Design selection follows from the behaviour and the ethics of withdrawal.
+      Irreversible changes and cases where withdrawal would be harmful both point away
+      from reversal and towards multiple baseline.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [reversal-design, multiple-baseline-design, experimental-control, single-case-design]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d8-mb-staggering
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.8 }
+    type: single-best-answer
+    stem: >-
+      Staggering the introduction of the intervention across baselines in a multiple
+      baseline design demonstrates control by showing that:
+    options:
+      - id: a
+        text: Each behaviour changes only when the intervention reaches it, and not before
+        isCorrect: true
+        rationale: >-
+          Change coinciding with introduction in each leg, and untreated legs staying stable,
+          is the demonstration.
+      - id: b
+        text: All behaviours change at the same time
+        isCorrect: false
+        rationale: >-
+          Simultaneous change would suggest a common external cause rather than the
+          intervention.
+      - id: c
+        text: The intervention can be withdrawn safely
+        isCorrect: false
+        rationale: >-
+          Withdrawal is the reversal design's mechanism, not this one's.
+      - id: d
+        text: Baselines are of equal length
+        isCorrect: false
+        rationale: >-
+          Equal lengths would defeat the staggering that carries the logic.
+    explanation: >-
+      Multiple baseline replaces withdrawal with staggered introduction. The untreated
+      baselines serve as the ongoing prediction, which is why change in an untreated leg
+      is the result that undermines the demonstration.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [multiple-baseline-design, experimental-control, baseline, replication]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d9-atd-carryover
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.9 }
+    type: single-best-answer
+    stem: >-
+      The principal threat in an alternating treatments design is:
+    options:
+      - id: a
+        text: Carryover between rapidly alternating conditions
+        isCorrect: true
+        rationale: >-
+          Conditions alternating quickly can influence one another, obscuring the difference
+          between them.
+      - id: b
+        text: Maturation over a long baseline
+        isCorrect: false
+        rationale: >-
+          Rapid alternation makes maturation a weak competitor.
+      - id: c
+        text: Irreversibility of the behaviour change
+        isCorrect: false
+        rationale: >-
+          That is the reversal design's problem.
+      - id: d
+        text: Inability to compare two interventions
+        isCorrect: false
+        rationale: >-
+          Comparing interventions is precisely what the design is for.
+    explanation: >-
+      Each design has a characteristic weakness. Alternating treatments compares
+      conditions quickly and efficiently, at the cost of multiple-treatment interference,
+      which is managed by signalling conditions clearly and counterbalancing their order.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [multielement-design, experimental-control, single-case-design, confounding-variable]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d5-replication-role
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      In single-case research, generality across people and settings is established
+      principally through:
+    options:
+      - id: a
+        text: Systematic replication across participants, settings and conditions
+        isCorrect: true
+        rationale: >-
+          Repeating the demonstration under varied conditions is how single-case findings
+          acquire reach.
+      - id: b
+        text: Random sampling from a population
+        isCorrect: false
+        rationale: >-
+          Single-case work does not rest on sampling for its inferences.
+      - id: c
+        text: Statistical tests of significance
+        isCorrect: false
+        rationale: >-
+          Significance testing does not establish generality in this framework.
+      - id: d
+        text: Increasing the number of sessions per participant
+        isCorrect: false
+        rationale: >-
+          More sessions strengthen the individual demonstration rather than its generality.
+    explanation: >-
+      The two validities are pursued by different routes. Internal validity comes from the
+      design within a case; external validity accumulates through direct and systematic
+      replication, which is why the literature is built from many small demonstrations.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [replication, external-validity, single-case-design, internal-validity]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d6-verification
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      In the prediction, verification and replication logic, verification is achieved
+      when:
+    options:
+      - id: a
+        text: Returning to the prior condition returns the data towards the predicted pattern
+        isCorrect: true
+        rationale: >-
+          Verification shows that the baseline prediction would have held, had the
+          intervention not been introduced.
+      - id: b
+        text: The intervention is introduced and the data change
+        isCorrect: false
+        rationale: >-
+          That is the departure from prediction rather than its verification.
+      - id: c
+        text: A second participant shows the same effect
+        isCorrect: false
+        rationale: >-
+          That is replication across participants.
+      - id: d
+        text: Two observers agree on the data
+        isCorrect: false
+        rationale: >-
+          That is measurement agreement rather than experimental logic.
+    explanation: >-
+      The three-step logic is what a reversal design enacts: baseline predicts,
+      intervention departs from the prediction, and return to baseline verifies that the
+      prediction would otherwise have held. Replication then repeats the departure.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [reversal-design, experimental-control, baseline, replication]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d2-internal-first
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.2 }
+    type: single-best-answer
+    stem: >-
+      A demonstration with weak internal validity but conducted in many ordinary settings:
+    options:
+      - id: a
+        text: Cannot support a claim that the intervention caused the change anywhere
+        isCorrect: true
+        rationale: >-
+          Without internal validity there is no established effect to generalize, however many
+          settings were involved.
+      - id: b
+        text: Has strong external validity that compensates
+        isCorrect: false
+        rationale: >-
+          Generality of an unestablished effect is not worth anything.
+      - id: c
+        text: Is adequate for applied purposes
+        isCorrect: false
+        rationale: >-
+          Applied work needs to know what produced the change in order to reproduce it.
+      - id: d
+        text: Establishes a functional relation through breadth
+        isCorrect: false
+        rationale: >-
+          Breadth does not substitute for control.
+    explanation: >-
+      Internal validity is prior. A finding that is not established in one place cannot be
+      generalized to many, which is why single-case work invests heavily in control before
+      it invests in reach.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [internal-validity, external-validity, functional-relation, experimental-control]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d1-confound
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      During an intervention a teaching assistant is also added to the classroom. The most
+      serious design consequence is that:
+    options:
+      - id: a
+        text: The independent variable is now two changes, so the effect cannot be attributed to either
+        isCorrect: true
+        rationale: >-
+          Two variables changing together is a confound, and the design cannot separate their
+          contributions.
+      - id: b
+        text: The dependent variable becomes unreliable
+        isCorrect: false
+        rationale: >-
+          Measurement of the behaviour is unaffected by the confound.
+      - id: c
+        text: External validity is reduced
+        isCorrect: false
+        rationale: >-
+          The problem is internal rather than about generalizing.
+      - id: d
+        text: The baseline must be extended
+        isCorrect: false
+        rationale: >-
+          Extending baseline does not undo a confound introduced with the intervention.
+    explanation: >-
+      A confound is another variable changing alongside the independent one. It is the
+      commonest reason an applied demonstration cannot support the claim made for it, and
+      it is prevented by naming precisely what will change and holding everything else
+      constant.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [confounding-variable, independent-variable, internal-validity, experimental-control]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-d4-baseline-ethics
+    credential: BCBA
+    taskRef: { credential: BCBA, code: D.4 }
+    type: single-best-answer
+    stem: >-
+      Extending a baseline while a harmful behaviour continues raises a conflict between:
+    options:
+      - id: a
+        text: Experimental rigour and the obligation to intervene promptly
+        isCorrect: true
+        rationale: >-
+          A longer baseline strengthens the demonstration while leaving the behaviour
+          untreated, which is the tension.
+      - id: b
+        text: Internal and external validity
+        isCorrect: false
+        rationale: >-
+          Both concern the evidence rather than the obligation to act.
+      - id: c
+        text: Measurement accuracy and practicality
+        isCorrect: false
+        rationale: >-
+          That is a different trade-off entirely.
+      - id: d
+        text: Reliability and validity
+        isCorrect: false
+        rationale: >-
+          Also a measurement question rather than an ethical one.
+    explanation: >-
+      Design decisions in applied work are constrained by obligations to the client. Where
+      harm is occurring, the usual resolution is a design that does not require
+      withholding treatment — multiple baseline rather than an extended baseline or a
+      reversal.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [baseline, multiple-baseline-design, ethics-code, experimental-control]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

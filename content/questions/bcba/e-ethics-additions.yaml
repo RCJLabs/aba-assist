@@ -1,0 +1,830 @@
+# BCBA practice questions — further items for area E, Ethical and Professional Issues. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-e1-compassion
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      A family is exhausted and asks to pause services for a month. Applying the principle
+      of treating others with compassion, dignity and respect means the analyst should:
+    options:
+      - id: a
+        text: Take the request seriously and plan the pause and return with them
+        isCorrect: true
+        rationale: >-
+          Respecting the family's judgement about their own capacity, while planning
+          continuity, is what the principle asks for.
+      - id: b
+        text: Explain the clinical cost of pausing and ask them to continue
+        isCorrect: false
+        rationale: >-
+          Presenting the cost is legitimate; using it to override their decision is not.
+      - id: c
+        text: Agree and discharge the client
+        isCorrect: false
+        rationale: >-
+          Discharge is a much larger step than a pause and abandons continuity.
+      - id: d
+        text: Reduce to the minimum the funder will authorise without asking
+        isCorrect: false
+        rationale: >-
+          Deciding for them, even helpfully, is what the principle rules out.
+    explanation: >-
+      The core principles frequently conflict with one another, and client benefit does
+      not automatically outrank respect for the people involved. A pause planned together
+      usually protects both better than a pause taken unilaterally by either side.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [dignity, continuity-of-care, social-validity, informed-consent]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-e1-integrity
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      An analyst realises a report they submitted contained an error that made outcomes
+      look better than they were. Acting with integrity requires them to:
+    options:
+      - id: a
+        text: Correct the record with everybody who received it
+        isCorrect: true
+        rationale: >-
+          Integrity means the correction goes where the error went, not only into a private
+          note.
+      - id: b
+        text: Note the correction in the file for future reference
+        isCorrect: false
+        rationale: >-
+          A file note does not reach the people who acted on the error.
+      - id: c
+        text: Correct it in the next report without comment
+        isCorrect: false
+        rationale: >-
+          A silent correction leaves the earlier claim standing for anybody who read it.
+      - id: d
+        text: Assess whether the error changed any decision first
+        isCorrect: false
+        rationale: >-
+          Whether it changed a decision affects urgency, not whether to correct it.
+    explanation: >-
+      Integrity is most tested when the error is one nobody has noticed. The standard is
+      that the record is accurate to the people who rely on it, which makes the scope of
+      the correction the scope of the original.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [ethics-code, public-statement, session-note]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e2-risk-to-profession
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      Beyond harm to the individual client, unethical practice damages the profession
+      chiefly by:
+    options:
+      - id: a
+        text: Reducing the trust that makes services acceptable to families and funders
+        isCorrect: true
+        rationale: >-
+          The profession operates on trust from the people who receive and pay for services,
+          and that is what erodes.
+      - id: b
+        text: Increasing the number of certificants
+        isCorrect: false
+        rationale: >-
+          The number of certificants is unrelated to whether any of them practise
+          ethically.
+      - id: c
+        text: Making research harder to publish
+        isCorrect: false
+        rationale: >-
+          Publication is affected by many things, and it is not how unethical practice
+          principally damages the field.
+      - id: d
+        text: Raising the cost of certification
+        isCorrect: false
+        rationale: >-
+          Certification costs are set by other factors entirely and are not the harm at
+          issue here.
+    explanation: >-
+      Risks run to the client, the profession and the practitioner. The professional-level
+      risk is cumulative and slow: each avoidable failure makes the next family more
+      sceptical, and the field is already contested by the people it serves.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [ethics-code, social-validity, public-statement]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e3-new-population
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      An analyst experienced with young children is asked to take a case involving an
+      adult with a very different presentation. Practising within competence means they
+      should:
+    options:
+      - id: a
+        text: Take it only with training, supervision or consultation appropriate to the new area
+        isCorrect: true
+        rationale: >-
+          Competence can be extended, and the route is training and supervision rather than
+          declining outright or proceeding alone.
+      - id: b
+        text: Decline, because it is outside their established competence
+        isCorrect: false
+        rationale: >-
+          Declining is one option and not the only ethical one; competence boundaries can be
+          extended deliberately.
+      - id: c
+        text: Accept, since behavioural principles are the same across populations
+        isCorrect: false
+        rationale: >-
+          Principles generalize; competence with a population and its context does not follow
+          automatically.
+      - id: d
+        text: Accept and refer out if difficulties arise
+        isCorrect: false
+        rationale: >-
+          Discovering the gap through a client's difficulties is the outcome this standard
+          exists to prevent.
+    explanation: >-
+      Scope of competence is a boundary that moves, and the standard governs how.
+      Extending it deliberately with supervision is legitimate; extending it by taking the
+      case and hoping is the failure mode.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [scope-of-competence, supervision, scope-of-practice, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e3-staying-current
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      Maintaining competence over a career depends most on:
+    options:
+      - id: a
+        text: Deliberately following developments in the areas one practises in
+        isCorrect: true
+        rationale: >-
+          Competence decays as the field moves, so it is maintained by tracking the areas
+          actually practised.
+      - id: b
+        text: Accumulating the required continuing education units
+        isCorrect: false
+        rationale: >-
+          Units are the minimum mechanism and can be accumulated without touching one's
+          practice areas.
+      - id: c
+        text: Years of experience in the role
+        isCorrect: false
+        rationale: >-
+          Experience without updating can entrench outdated practice.
+      - id: d
+        text: Supervising others regularly
+        isCorrect: false
+        rationale: >-
+          Supervising is valuable and is not itself how competence is maintained.
+    explanation: >-
+      The requirement is about competence rather than credits. Continuing education is the
+      mechanism, and it only serves the standard when it is chosen against what the
+      analyst actually does.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-competence, continuing-education-unit, evidence-based-practice]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e4-public-setting
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      Discussing a client while in a shared office where other staff can hear is:
+    options:
+      - id: a
+        text: A confidentiality concern even though everybody present is a colleague
+        isCorrect: true
+        rationale: >-
+          Access is limited to those who need the information for the work, not to everybody
+          employed nearby.
+      - id: b
+        text: Acceptable, because all present are bound by the same obligations
+        isCorrect: false
+        rationale: >-
+          Shared obligations do not create a need to know.
+      - id: c
+        text: Acceptable if no names are used
+        isCorrect: false
+        rationale: >-
+          Clients are frequently identifiable without names, especially within an
+          organisation.
+      - id: d
+        text: Only a concern if a family member might overhear
+        isCorrect: false
+        rationale: >-
+          The obligation does not depend on who happens to be nearby.
+    explanation: >-
+      Confidentiality operates on need to know rather than on employment. The everyday
+      failures are conversational and incidental — corridors, shared offices, open screens
+      — rather than deliberate disclosures.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [confidentiality, hipaa, dignity]
+    citations:
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e5-social-media
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.5 }
+    type: single-best-answer
+    stem: >-
+      An analyst wants to post an anonymised case success on social media. The safest
+      position is that:
+    options:
+      - id: a
+        text: Anonymisation is harder than it looks and consent should be obtained before posting anything case-derived
+        isCorrect: true
+        rationale: >-
+          Detail sufficient to make a case interesting is often sufficient to identify it
+          within a community.
+      - id: b
+        text: Removing the name makes the post acceptable
+        isCorrect: false
+        rationale: >-
+          Names are rarely what identifies a client in a local community.
+      - id: c
+        text: Posting is fine if the family would probably not mind
+        isCorrect: false
+        rationale: >-
+          Assumed consent is not consent.
+      - id: d
+        text: Any clinical post is prohibited outright
+        isCorrect: false
+        rationale: >-
+          Public statements about practice are permitted; what is governed is accuracy and
+          confidentiality.
+    explanation: >-
+      Public statements are governed for two things: truthfulness and confidentiality.
+      Case material carries the second risk even when carefully described, because the
+      audience most likely to identify the client is the one nearest to them.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [public-statement, confidentiality, informed-consent, dual-relationship]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e5-outcome-claims
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.5 }
+    type: single-best-answer
+    stem: >-
+      Describing services publicly, an analyst may:
+    options:
+      - id: a
+        text: State what the procedures are and what the evidence supports, without promising outcomes
+        isCorrect: true
+        rationale: >-
+          Accurate description of methods and the evidence base is permitted; guaranteeing
+          results is not.
+      - id: b
+        text: Guarantee improvement where the evidence base is strong
+        isCorrect: false
+        rationale: >-
+          A strong evidence base does not license a promise for an individual.
+      - id: c
+        text: Use client testimonials if freely given
+        isCorrect: false
+        rationale: >-
+          Solicited testimonials from current clients are specifically restricted because of
+          the relationship.
+      - id: d
+        text: Compare favourably with named local providers
+        isCorrect: false
+        rationale: >-
+          Disparaging comparisons are not defensible public statements.
+    explanation: >-
+      The standard is that public statements are truthful and not misleading. The two ways
+      this usually fails are implying a guarantee for an individual and using the
+      practitioner relationship to obtain endorsement.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [public-statement, evidence-based-practice, social-validity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e6-planned-transition
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.6 }
+    type: single-best-answer
+    stem: >-
+      An analyst is leaving the organisation in six weeks. Their obligation is to:
+    options:
+      - id: a
+        text: Plan the transition so services continue, with notice and handover
+        isCorrect: true
+        rationale: >-
+          Discontinuation and transition are governed: notice, planning and continuity are
+          required rather than optional.
+      - id: b
+        text: Complete current goals before leaving
+        isCorrect: false
+        rationale: >-
+          Rarely possible and not what the obligation requires.
+      - id: c
+        text: Inform the employer and leave handover to them
+        isCorrect: false
+        rationale: >-
+          The analyst has an obligation to the client that the employer's process does not
+          discharge.
+      - id: d
+        text: Continue remotely until a replacement is found
+        isCorrect: false
+        rationale: >-
+          Not required, and may be impractical or unsafe.
+    explanation: >-
+      Ending services responsibly is a named obligation. The failure mode is a departure
+      that leaves a client without a plan, and the remedy is notice, a handover and a
+      transition the family knows about in advance.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [continuity-of-care, collaboration, ethics-code]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e6-funding-ends
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.6 }
+    type: single-best-answer
+    stem: >-
+      Funding for a client ends abruptly. The analyst's obligation is to:
+    options:
+      - id: a
+        text: Support a transition to whatever is available and document what was recommended
+        isCorrect: true
+        rationale: >-
+          Continuity obligations persist even when the analyst cannot continue providing the
+          service.
+      - id: b
+        text: Cease immediately, since the service is unfunded
+        isCorrect: false
+        rationale: >-
+          Stopping without transition is the failure the standard addresses.
+      - id: c
+        text: Continue unpaid indefinitely
+        isCorrect: false
+        rationale: >-
+          Not required and not sustainable.
+      - id: d
+        text: Refer the family to appeal and take no further action
+        isCorrect: false
+        rationale: >-
+          An appeal may be worth pursuing and does not discharge the transition obligation.
+    explanation: >-
+      Discontinuation happens for reasons outside the analyst's control, and the standard
+      governs how it is handled rather than whether it happens. Documented recommendations
+      are often the most useful thing a family carries to the next provider.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [continuity-of-care, ethics-code, session-note]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e7-bartering
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.7 }
+    type: single-best-answer
+    stem: >-
+      A family offers to trade a service they provide for behaviour-analytic sessions. The
+      main concern is that:
+    options:
+      - id: a
+        text: Valuing the exchange creates a conflict that can distort the clinical relationship
+        isCorrect: true
+        rationale: >-
+          Bartering entangles the clinical relationship with a commercial one whose terms are
+          open to dispute.
+      - id: b
+        text: Bartering is always prohibited
+        isCorrect: false
+        rationale: >-
+          It is restricted and scrutinised rather than absolutely forbidden.
+      - id: c
+        text: The family cannot afford services otherwise
+        isCorrect: false
+        rationale: >-
+          That is the motivation for the offer, not the ethical concern.
+      - id: d
+        text: Tax treatment becomes complicated
+        isCorrect: false
+        rationale: >-
+          An administrative matter rather than the ethical one.
+    explanation: >-
+      Multiple relationships are judged by whether they risk exploitation or impaired
+      judgement. Bartering carries both: the valuation is disputable and the second
+      relationship persists alongside the clinical one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [dual-relationship, conflict-of-interest, ethics-code]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e7-unavoidable
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.7 }
+    type: single-best-answer
+    stem: >-
+      In a small rural community, some overlap between professional and personal
+      relationships is unavoidable. The analyst should:
+    options:
+      - id: a
+        text: Anticipate the overlaps, set explicit boundaries and document how they are managed
+        isCorrect: true
+        rationale: >-
+          Where a multiple relationship cannot be avoided, the standard is to manage it
+          transparently rather than pretend it is absent.
+      - id: b
+        text: Decline all clients with any community connection
+        isCorrect: false
+        rationale: >-
+          In a small community this would mean declining nearly everybody.
+      - id: c
+        text: Proceed without comment, since it is normal locally
+        isCorrect: false
+        rationale: >-
+          Normality does not remove the risk to judgement.
+      - id: d
+        text: Ask clients to keep the connection private
+        isCorrect: false
+        rationale: >-
+          Concealment makes the situation worse rather than managing it.
+    explanation: >-
+      Not every multiple relationship can be avoided, and the standard accounts for that.
+      What distinguishes acceptable practice is anticipation, explicit boundaries and a
+      record, rather than the absence of overlap.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [dual-relationship, conflict-of-interest, cultural-responsiveness, scope-of-practice]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e8-disagreement
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.8 }
+    type: single-best-answer
+    stem: >-
+      An analyst disagrees with another professional's recommendation in front of the
+      family. The more effective approach is generally to:
+    options:
+      - id: a
+        text: Raise the disagreement with the professional directly and return to the family with a joint position where possible
+        isCorrect: true
+        rationale: >-
+          Working it out between professionals protects the family from adjudicating a
+          technical dispute.
+      - id: b
+        text: State the disagreement clearly so the family can decide
+        isCorrect: false
+        rationale: >-
+          Families are entitled to information, and being asked to referee between
+          professionals is a different thing.
+      - id: c
+        text: Defer publicly and follow one's own view in practice
+        isCorrect: false
+        rationale: >-
+          That is a covert disagreement, which is worse.
+      - id: d
+        text: Avoid the topic entirely
+        isCorrect: false
+        rationale: >-
+          Avoidance leaves the family with contradictory advice and no resolution.
+    explanation: >-
+      Communication skill in this situation is about where the disagreement is worked out.
+      Families need honest information and not the burden of choosing between
+      professionals who have not spoken to each other.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [collaboration, social-validity, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e9-humility-vs-competence
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.9 }
+    type: single-best-answer
+    stem: >-
+      Cultural humility differs from cultural competence chiefly in that humility:
+    options:
+      - id: a
+        text: Treats understanding as ongoing and self-examining rather than as a state to be achieved
+        isCorrect: true
+        rationale: >-
+          Humility is a continuing stance including examination of one's own assumptions,
+          rather than a competency attained.
+      - id: b
+        text: Requires no learning about other cultures
+        isCorrect: false
+        rationale: >-
+          It requires learning; what it rejects is treating the learning as finished.
+      - id: c
+        text: Applies only to supervision
+        isCorrect: false
+        rationale: >-
+          It applies across practice.
+      - id: d
+        text: Is a lower standard than competence
+        isCorrect: false
+        rationale: >-
+          It is a different stance, not a weaker one.
+    explanation: >-
+      The shift from competence to humility is a shift from a checklist to a practice. The
+      operational difference is whether the analyst keeps asking what they might be
+      getting wrong about this family, or considers that question closed.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [cultural-humility, cultural-responsiveness, social-validity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e10-goals-not-procedures
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.10 }
+    type: single-best-answer
+    stem: >-
+      Culturally responsive service delivery requires adapting:
+    options:
+      - id: a
+        text: Assessment, goals and procedures alike
+        isCorrect: true
+        rationale: >-
+          Responsiveness reaches all three; adapting only one leaves the others imposing.
+      - id: b
+        text: Procedures only, since goals are clinically determined
+        isCorrect: false
+        rationale: >-
+          Goals are precisely where family values most need to carry weight.
+      - id: c
+        text: Goals only, since procedures are evidence-based
+        isCorrect: false
+        rationale: >-
+          Evidence-based procedures still have to be acceptable and deliverable in this
+          family's context.
+      - id: d
+        text: Communication style only
+        isCorrect: false
+        rationale: >-
+          Style matters least of the four if the goals themselves do not fit.
+    explanation: >-
+      Responsiveness that stops at tone is cosmetic. What the standard asks is that the
+      assessment can detect what matters here, the goals are ones this family values, and
+      the procedures are ones they will actually run.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [cultural-responsiveness, social-validity, skills-assessment, informed-consent]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e11-bias-in-assessment
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.11 }
+    type: single-best-answer
+    stem: >-
+      Bias most plausibly affects assessment through:
+    options:
+      - id: a
+        text: Which behaviours are noticed and recorded as problems in the first place
+        isCorrect: true
+        rationale: >-
+          What gets defined as a problem is a judgement, and it is where assumptions enter
+          earliest and least visibly.
+      - id: b
+        text: The arithmetic of scoring
+        isCorrect: false
+        rationale: >-
+          Scoring is mechanical once the data exist.
+      - id: c
+        text: The reliability of standardised instruments
+        isCorrect: false
+        rationale: >-
+          Instrument reliability is a psychometric property rather than a route for the
+          analyst's bias.
+      - id: d
+        text: The client's own reporting
+        isCorrect: false
+        rationale: >-
+          That is a source of variance and not the analyst's bias.
+    explanation: >-
+      Bias enters upstream of measurement. By the time something is being counted, the
+      decision that it was worth counting has already been made, and that decision carries
+      assumptions about what ordinary behaviour looks like.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [operational-definition, cultural-humility, social-validity, descriptive-assessment]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e12-licensure
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.12 }
+    type: single-best-answer
+    stem: >-
+      An analyst moves to a jurisdiction with its own licensure law. Their obligation is
+      to:
+    options:
+      - id: a
+        text: Comply with the local legal requirements as well as the certification standards
+        isCorrect: true
+        rationale: >-
+          Legal and regulatory requirements apply alongside the code, and certification does
+          not substitute for a licence where one is required.
+      - id: b
+        text: Rely on certification, which is national
+        isCorrect: false
+        rationale: >-
+          Certification does not override a jurisdiction's licensing law.
+      - id: c
+        text: Practise while the application is pending
+        isCorrect: false
+        rationale: >-
+          Practising without a required licence is not made acceptable by a pending
+          application.
+      - id: d
+        text: Follow whichever standard is less restrictive
+        isCorrect: false
+        rationale: >-
+          The more demanding requirement governs.
+    explanation: >-
+      Compliance obligations sit alongside the ethics code. Where a jurisdiction licenses
+      the practice, the licence is a legal precondition and the certification is separate,
+      and the analyst is responsible for knowing which apply.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [ethics-code, scope-of-practice, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e12-funder-rules
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.12 }
+    type: single-best-answer
+    stem: >-
+      A funder's documentation rules require detail the analyst considers clinically
+      unnecessary. The appropriate response is to:
+    options:
+      - id: a
+        text: Comply, while raising the concern through the proper channel
+        isCorrect: true
+        rationale: >-
+          Funder requirements are binding, and disagreement is pursued rather than acted on
+          unilaterally.
+      - id: b
+        text: Document what is clinically necessary and omit the rest
+        isCorrect: false
+        rationale: >-
+          Unilateral non-compliance with a binding requirement is not an option.
+      - id: c
+        text: Comply and say nothing
+        isCorrect: false
+        rationale: >-
+          Complying is right; a legitimate concern is still worth raising.
+      - id: d
+        text: Decline to serve clients funded that way
+        isCorrect: false
+        rationale: >-
+          A disproportionate response to a documentation disagreement.
+    explanation: >-
+      Legal, regulatory and funder requirements are constraints practice operates within.
+      Where they are burdensome the route is to comply and advocate for change, because
+      selective compliance puts both the client's funding and the analyst's standing at
+      risk.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [ethics-code, session-note, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-e2-self-report
+    credential: BCBA
+    taskRef: { credential: BCBA, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      A certificant becomes aware they have violated a standard. The expected action is
+      to:
+    options:
+      - id: a
+        text: Address the harm and use the reporting route the code requires
+        isCorrect: true
+        rationale: >-
+          Accountability mechanisms depend on self-report as well as third-party report, and
+          addressing harm comes first.
+      - id: b
+        text: Wait to see whether anybody raises it
+        isCorrect: false
+        rationale: >-
+          Waiting is not an accountability mechanism.
+      - id: c
+        text: Resolve it privately with the affected party only
+        isCorrect: false
+        rationale: >-
+          Making it right with the client is necessary and may not be sufficient.
+      - id: d
+        text: Consult a lawyer before taking any action
+        isCorrect: false
+        rationale: >-
+          Legal advice may be prudent and does not replace addressing harm.
+    explanation: >-
+      The system relies on certificants reporting themselves and one another, which is why
+      the standards name the obligation explicitly. Concealment converts a violation into
+      a more serious one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [ethics-code, incident-report, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

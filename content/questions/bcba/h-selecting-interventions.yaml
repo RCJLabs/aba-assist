@@ -1,0 +1,927 @@
+# BCBA practice questions — area H, Selecting and Implementing Interventions. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-h1-conditions
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      A goal states the behaviour and the criterion but not the conditions. The practical
+      consequence is that:
+    options:
+      - id: a
+        text: Two people may teach and test it under different circumstances and both believe they met it
+        isCorrect: true
+        rationale: >-
+          Conditions fix when and where the behaviour should occur, and without them mastery
+          is not comparable across people or settings.
+      - id: b
+        text: The goal cannot be measured at all
+        isCorrect: false
+        rationale: >-
+          It can be measured; what is unclear is under what circumstances the measurement
+          counts.
+      - id: c
+        text: The criterion becomes arbitrary
+        isCorrect: false
+        rationale: >-
+          The criterion can be perfectly well specified while the conditions are not.
+      - id: d
+        text: It will fail funder review automatically
+        isCorrect: false
+        rationale: >-
+          It may or may not; the clinical problem exists regardless.
+    explanation: >-
+      A complete goal names the behaviour, the conditions and the criterion. Omitting
+      conditions is the most common gap, and it shows up later as a skill that was
+      mastered in one arrangement and is absent everywhere else.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [operational-definition, objective-language, generalization, trials-to-criterion]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-h1-mastery-choice
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      Choosing a mastery criterion of 80% across three sessions rather than 100% in one
+      session mainly buys:
+    options:
+      - id: a
+        text: Evidence that the performance is stable rather than a single good day
+        isCorrect: true
+        rationale: >-
+          Requiring the criterion across sessions guards against concluding mastery from one
+          unrepresentative session.
+      - id: b
+        text: A faster route through the curriculum
+        isCorrect: false
+        rationale: >-
+          Requiring several sessions usually takes longer, not less time.
+      - id: c
+        text: Higher accuracy of the skill itself
+        isCorrect: false
+        rationale: >-
+          The criterion measures the skill; it does not improve it.
+      - id: d
+        text: Automatic generalization
+        isCorrect: false
+        rationale: >-
+          Nothing about a mastery criterion produces generalization.
+    explanation: >-
+      A criterion is a decision rule about when to stop teaching. Requiring performance
+      across sessions trades speed for confidence, and setting it too low or across too
+      few sessions is how targets get marked mastered and then fall apart.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [trials-to-criterion, maintenance, variability]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h1-social-validity-goal
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      Which addition most improves the goal "will raise a hand before speaking, 8 of 10
+      opportunities"?
+    options:
+      - id: a
+        text: Naming the settings and the people it should occur with
+        isCorrect: true
+        rationale: >-
+          Conditions are the missing element, and they determine whether the skill will be
+          useful beyond where it was taught.
+      - id: b
+        text: Raising the criterion to 10 of 10
+        isCorrect: false
+        rationale: >-
+          A stricter criterion does not address what is actually missing.
+      - id: c
+        text: Adding a deadline for mastery
+        isCorrect: false
+        rationale: >-
+          A date is administratively useful but does not make the goal more complete.
+      - id: d
+        text: Specifying the prompt level used in teaching
+        isCorrect: false
+        rationale: >-
+          That belongs in the procedure rather than the goal statement.
+    explanation: >-
+      Goal writing is where most later confusion is prevented. Behaviour, conditions and
+      criterion together let two people agree whether it has been met, and conditions are
+      also where social validity enters — whether the skill will serve the learner where
+      they live.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, social-validity, generalization]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h2-evidence-and-fit
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      Two interventions have comparable evidence. One requires resources the setting does
+      not have. Selecting the other is justified because:
+    options:
+      - id: a
+        text: An intervention that cannot be run as designed will not produce the evidenced effect
+        isCorrect: true
+        rationale: >-
+          Contextual fit determines whether the procedure will actually be implemented with
+          integrity, which is a precondition for any evidenced outcome.
+      - id: b
+        text: Evidence quality is less important than convenience
+        isCorrect: false
+        rationale: >-
+          That misstates the reasoning; evidence remains necessary, and fit decides between
+          options that have it.
+      - id: c
+        text: The simpler intervention is always preferable
+        isCorrect: false
+        rationale: >-
+          Simplicity is not the criterion; implementability in this setting is.
+      - id: d
+        text: Funders prefer lower-cost options
+        isCorrect: false
+        rationale: >-
+          Funder preference is not the clinical justification.
+    explanation: >-
+      Selection weighs the evidence base, the assessment results, client and family
+      values, and what the setting can actually sustain. An elegant plan run at half
+      integrity usually performs worse than a plainer one run properly.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [evidence-based-practice, treatment-integrity, social-validity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h2-client-values
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      A well-evidenced procedure conflicts with a family's stated values. The analyst
+      should first:
+    options:
+      - id: a
+        text: Explore what specifically is objectionable and whether an alternative achieves the same function
+        isCorrect: true
+        rationale: >-
+          Understanding the objection often reveals an alternative that is acceptable and
+          serves the same purpose.
+      - id: b
+        text: Proceed, because the evidence supports it
+        isCorrect: false
+        rationale: >-
+          Evidence does not override consent or values, and a plan the family rejects will not
+          be run.
+      - id: c
+        text: Abandon the goal
+        isCorrect: false
+        rationale: >-
+          The goal may be achievable by another route; abandoning it is premature.
+      - id: d
+        text: Refer the family elsewhere
+        isCorrect: false
+        rationale: >-
+          Referral may eventually be right but is a large step before any discussion.
+    explanation: >-
+      Intervention selection is not a purely technical decision. Where evidence and values
+      conflict, the usable move is normally to find a different procedure for the same
+      function rather than to treat it as a contest between the two.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [social-validity, informed-consent, cultural-responsiveness, evidence-based-practice]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h2-least-restrictive
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      Among procedures likely to be effective, the principle of least restrictiveness
+      requires selecting:
+    options:
+      - id: a
+        text: The one that achieves the outcome with the least intrusion on the client's freedom
+        isCorrect: true
+        rationale: >-
+          Restrictiveness is weighed alongside effectiveness, and the least restrictive
+          effective option is the one justified.
+      - id: b
+        text: The one with the largest effect size in the literature
+        isCorrect: false
+        rationale: >-
+          Effect size alone does not justify a more restrictive procedure when a less
+          restrictive one would work.
+      - id: c
+        text: The one the team is most experienced with
+        isCorrect: false
+        rationale: >-
+          Familiarity is a practical consideration, not a justification for restrictiveness.
+      - id: d
+        text: The one that produces results fastest
+        isCorrect: false
+        rationale: >-
+          Speed does not by itself justify greater intrusion.
+    explanation: >-
+      Restrictiveness is a dimension of selection, not an afterthought.
+      Reinforcement-based and antecedent procedures are preferred where they will work,
+      and anything more restrictive carries a burden of justification, oversight and
+      monitoring.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        least-restrictive-alternative,
+        antecedent-intervention,
+        differential-reinforcement-of-alternative-behavior,
+        punishment
+      ]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h3-fct-schedule
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      After functional communication training succeeds, requests occur at a rate the
+      setting cannot sustain. The standard next step is to:
+    options:
+      - id: a
+        text: Thin the schedule for the new request systematically, using delay or signalled availability
+        isCorrect: true
+        rationale: >-
+          Schedule thinning is the planned continuation of functional communication training,
+          not a sign it failed.
+      - id: b
+        text: Stop reinforcing the request
+        isCorrect: false
+        rationale: >-
+          That places the new response on extinction and predictably returns the original
+          behaviour.
+      - id: c
+        text: Return to the previous intervention
+        isCorrect: false
+        rationale: >-
+          Abandoning a working procedure at the thinning stage discards the gain.
+      - id: d
+        text: Teach a second replacement response
+        isCorrect: false
+        rationale: >-
+          A second response does not address the rate of the first.
+    explanation: >-
+      A high rate of requesting after successful training is the expected midpoint rather
+      than a problem with the procedure. The plan continues through thinning, and skipping
+      that step is the most common way functional communication training is reported to
+      have failed.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        functional-communication-training,
+        schedule-thinning,
+        extinction,
+        resurgence,
+        differential-reinforcement-of-alternative-behavior
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+      - sourceId: hagopian-1998
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h3-response-effort
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      For a replacement response to compete with an established problem behaviour, it most
+      needs to be:
+    options:
+      - id: a
+        text: Easier, faster or more reliable at producing the same consequence
+        isCorrect: true
+        rationale: >-
+          Allocation follows relative rates and effort, so the alternative has to win on at
+          least one of those dimensions.
+      - id: b
+        text: More socially appropriate in the eyes of adults
+        isCorrect: false
+        rationale: >-
+          Appropriateness matters for selection but does not make the response compete.
+      - id: c
+        text: Topographically similar to the problem behaviour
+        isCorrect: false
+        rationale: >-
+          Similarity of form is irrelevant to whether it competes.
+      - id: d
+        text: Taught in a separate setting first
+        isCorrect: false
+        rationale: >-
+          Separate teaching may help acquisition but is not what makes it compete.
+    explanation: >-
+      A replacement behaviour competes on the terms the matching law describes: relative
+      rate, immediacy, magnitude and effort. An alternative that is harder work for a
+      thinner payoff will not displace something that already works.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [replacement-behavior, matching-law, functional-communication-training, response-class]
+    citations:
+      - sourceId: herrnstein-1961
+        useType: fact-reference
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h3-same-function
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      The defining feature of a function-based replacement is that it:
+    options:
+      - id: a
+        text: Produces the same consequence the problem behaviour produced
+        isCorrect: true
+        rationale: >-
+          Serving the same function is what makes it a genuine alternative rather than an
+          unrelated skill.
+      - id: b
+        text: Is incompatible with the problem behaviour
+        isCorrect: false
+        rationale: >-
+          That describes an incompatible behaviour, which may or may not share the function.
+      - id: c
+        text: Is reinforced on a denser schedule
+        isCorrect: false
+        rationale: >-
+          Schedule density helps it compete but is not the defining feature.
+      - id: d
+        text: Is easier to measure
+        isCorrect: false
+        rationale: >-
+          Measurability is unrelated to function.
+    explanation: >-
+      Function-based intervention gives the learner another route to what they were
+      already getting. Teaching an appropriate behaviour that produces something different
+      leaves the original need unmet, which is why such plans tend to hold only while
+      supervision is close.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        replacement-behavior,
+        function-of-behavior,
+        functional-communication-training,
+        differential-reinforcement-of-incompatible-behavior
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h4-restrictive-risks
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      When a restrictive procedure is under consideration, the analyst's obligation to
+      anticipate unwanted effects extends to:
+    options:
+      - id: a
+        text: The client and to others in the setting, including those implementing it
+        isCorrect: true
+        rationale: >-
+          Effects reach beyond the client to peers, staff and the relationship, all of which
+          have to be weighed.
+      - id: b
+        text: The client only, since they are the one receiving it
+        isCorrect: false
+        rationale: >-
+          Restricting the analysis to the client misses effects that are often the most
+          serious.
+      - id: c
+        text: The funder's liability exposure
+        isCorrect: false
+        rationale: >-
+          That is a risk-management concern rather than the clinical obligation.
+      - id: d
+        text: Only effects reported in the published literature
+        isCorrect: false
+        rationale: >-
+          The literature informs the analysis but does not bound it.
+    explanation: >-
+      Anticipating unwanted effects is part of selecting an intervention, and restrictive
+      procedures carry the widest range: emotional responding, avoidance of the person
+      delivering it, modelling for peers, and the effect on staff asked to run it.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [least-restrictive-alternative, punishment, behavior-intervention-plan, social-validity]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h4-monitoring
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      Having anticipated a possible side effect, the analyst's next obligation is to:
+    options:
+      - id: a
+        text: Measure for it, so it would be detected if it occurred
+        isCorrect: true
+        rationale: >-
+          Anticipation without measurement leaves the risk unmonitored, which is the same as
+          not having anticipated it.
+      - id: b
+        text: Warn the caregivers and proceed
+        isCorrect: false
+        rationale: >-
+          Warning is necessary and insufficient; nobody would know whether it happened.
+      - id: c
+        text: Select a different procedure regardless
+        isCorrect: false
+        rationale: >-
+          A possible side effect does not automatically disqualify a procedure.
+      - id: d
+        text: Document the risk in the plan and review annually
+        isCorrect: false
+        rationale: >-
+          Annual review is far too slow to detect an emerging effect.
+    explanation: >-
+      Mitigating unwanted effects means building detection into the plan. A named risk
+      with no corresponding measure is a note rather than a safeguard, and the measure is
+      what turns it into something the team can act on.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        behavior-intervention-plan,
+        treatment-integrity,
+        continuous-measurement,
+        incident-report
+      ]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h5-renewal
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      A behaviour treated successfully in the clinic returns when the learner is seen at
+      home, where treatment was never run. This is best described as:
+    options:
+      - id: a
+        text: Renewal
+        isCorrect: true
+        rationale: >-
+          Renewal is the return of a response when the context changes from the one in which
+          treatment occurred.
+      - id: b
+        text: Resurgence
+        isCorrect: false
+        rationale: >-
+          Resurgence is the return of a previously reinforced response when a more recently
+          reinforced one stops working.
+      - id: c
+        text: Reinstatement
+        isCorrect: false
+        rationale: >-
+          Reinstatement follows response-independent delivery of the reinforcer that
+          maintained the behaviour.
+      - id: d
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery follows the passage of time after extinction rather than a
+          change of context.
+    explanation: >-
+      The relapse phenomena are distinguished by what triggers them: renewal by context
+      change, resurgence by a newer response failing, reinstatement by free delivery of
+      the old reinforcer, and spontaneous recovery by elapsed time. Each implies a
+      different preventative step.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [resurgence, extinction, spontaneous-recovery, generalization, maintenance]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h5-prevent-relapse
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      The most direct way to reduce the risk of renewal is to:
+    options:
+      - id: a
+        text: Conduct treatment across the contexts where the behaviour has to stay changed
+        isCorrect: true
+        rationale: >-
+          Treating in multiple contexts prevents the change being tied to one, which is what
+          renewal exploits.
+      - id: b
+        text: Extend treatment for longer in the original context
+        isCorrect: false
+        rationale: >-
+          More of the same context does not address a context change.
+      - id: c
+        text: Use a denser reinforcement schedule during treatment
+        isCorrect: false
+        rationale: >-
+          Density affects persistence but does not prevent context-driven return.
+      - id: d
+        text: Withdraw treatment abruptly to test durability
+        isCorrect: false
+        rationale: >-
+          Abrupt withdrawal tests for relapse rather than reducing it.
+    explanation: >-
+      Each relapse mechanism suggests its own prevention. Renewal argues for treating
+      across contexts, resurgence for thinning the alternative gradually rather than
+      letting it fail, and reinstatement for controlling incidental delivery of the old
+      reinforcer.
+    cognitiveLevel: application
+    difficulty: 4
+    termRefs: [generalization, maintenance, resurgence, multiple-exemplar-training]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h6-integrity-first
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      Outcome data show no improvement after four weeks. Before changing the intervention,
+      the analyst should:
+    options:
+      - id: a
+        text: Check whether the intervention was run as written
+        isCorrect: true
+        rationale: >-
+          A procedure not implemented as designed has not been tested, so changing it would be
+          changing something that was never tried.
+      - id: b
+        text: Increase the intensity of the intervention
+        isCorrect: false
+        rationale: >-
+          Intensifying an unimplemented procedure compounds the problem.
+      - id: c
+        text: Reassess the function
+        isCorrect: false
+        rationale: >-
+          That may follow, but integrity is the cheaper and more common explanation to rule
+          out first.
+      - id: d
+        text: Conclude the intervention is ineffective for this client
+        isCorrect: false
+        rationale: >-
+          That conclusion is unsupported until integrity is known.
+    explanation: >-
+      Procedural integrity data are what separate "this does not work" from "this was not
+      done". Checking integrity first is both the cheaper diagnosis and the one that most
+      often explains a flat graph.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [treatment-integrity, treatment-drift, performance-feedback, visual-analysis]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h6-simplify
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      Integrity data show staff consistently omit two of seven steps under time pressure.
+      The best first response is to:
+    options:
+      - id: a
+        text: Simplify the procedure so the essential steps survive the setting
+        isCorrect: true
+        rationale: >-
+          A procedure that is reliably run at five of seven steps is telling you the design
+          does not fit the conditions.
+      - id: b
+        text: Retrain and re-measure, repeatedly if necessary
+        isCorrect: false
+        rationale: >-
+          One retraining round is reasonable; repeated rounds against a structural problem is
+          not.
+      - id: c
+        text: Add a supervisor to observe every session
+        isCorrect: false
+        rationale: >-
+          Permanent observation is not a sustainable fix and does not address the design.
+      - id: d
+        text: Replace the staff involved
+        isCorrect: false
+        rationale: >-
+          A consistent pattern across staff under pressure points at the procedure rather than
+          the people.
+    explanation: >-
+      Integrity data support three responses: retrain, simplify, or change the procedure.
+      Which one is indicated depends on whether the failure looks like a skill deficit, a
+      design problem, or a mismatch between the plan and the setting.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        treatment-integrity,
+        performance-feedback,
+        behavioral-skills-training,
+        performance-diagnostic
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h7-discontinue
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.7 }
+    type: single-best-answer
+    stem: >-
+      Outcome data show the goal has been met and maintained across three months with
+      treatment faded. The indicated decision is to:
+    options:
+      - id: a
+        text: Discontinue the intervention for that goal and continue monitoring
+        isCorrect: true
+        rationale: >-
+          Meeting and maintaining the goal with treatment faded is what discontinuation is
+          for, with monitoring to catch loss.
+      - id: b
+        text: Continue at current intensity to be safe
+        isCorrect: false
+        rationale: >-
+          Continuing an intervention no longer needed consumes resources and is not in the
+          client's interest.
+      - id: c
+        text: Raise the criterion and continue
+        isCorrect: false
+        rationale: >-
+          Raising a criterion that has been met and maintained changes the goal without
+          justification.
+      - id: d
+        text: Discontinue services entirely
+        isCorrect: false
+        rationale: >-
+          One goal being met says nothing about the others.
+    explanation: >-
+      Outcome data drive continuation, modification and discontinuation alike. Ending an
+      intervention that has done its job is as much a data-based decision as changing one
+      that has not, and it is the one teams most often fail to make.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [maintenance, social-validity, continuity-of-care, schedule-thinning]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h7-modify-when
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.7 }
+    type: single-best-answer
+    stem: >-
+      Data show steady but very slow progress towards a goal that matters. The most
+      defensible decision is to:
+    options:
+      - id: a
+        text: Modify the procedure to increase the rate of progress, keeping the goal
+        isCorrect: true
+        rationale: >-
+          Progress in the right direction argues for changing how rather than whether, and the
+          slow rate is what needs addressing.
+      - id: b
+        text: Continue unchanged, since the trend is positive
+        isCorrect: false
+        rationale: >-
+          A positive trend too slow to reach the goal in a useful time is not a reason to
+          leave it alone.
+      - id: c
+        text: Discontinue, since the effect is small
+        isCorrect: false
+        rationale: >-
+          Discontinuing a working intervention because it is slow discards the gain.
+      - id: d
+        text: Change the goal to match the rate of progress
+        isCorrect: false
+        rationale: >-
+          Lowering the goal to fit the data is how meaningful outcomes get quietly abandoned.
+    explanation: >-
+      Reading outcome data means asking whether the trajectory reaches somewhere worth
+      arriving at, in a time that matters. Slow but real progress on an important goal is
+      an argument for modification, and moving the goal to fit the data is the failure
+      mode to avoid.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [trend, visual-analysis, social-validity, shaping]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h8-caregiver-training
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      Collaboration with caregivers is most likely to produce durable change when the
+      analyst:
+    options:
+      - id: a
+        text: Trains them to run the procedure and gives feedback on their performance
+        isCorrect: true
+        rationale: >-
+          Behavioural skills training with feedback is what produces implementation, as
+          opposed to understanding.
+      - id: b
+        text: Explains the rationale thoroughly at the outset
+        isCorrect: false
+        rationale: >-
+          Explanation supports buy-in but does not establish the skill.
+      - id: c
+        text: Provides a written plan and checks in monthly
+        isCorrect: false
+        rationale: >-
+          Written instruction without rehearsal and feedback rarely produces accurate
+          implementation.
+      - id: d
+        text: Runs the procedure for them during sessions
+        isCorrect: false
+        rationale: >-
+          That produces change while the analyst is present and nothing afterwards.
+    explanation: >-
+      Collaboration is not only consultation. Caregivers are implementers, and
+      implementers are trained the same way anybody is: instruction, modelling, rehearsal
+      and feedback until performance meets criterion.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [behavioral-skills-training, performance-feedback, treatment-integrity, collaboration]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h8-other-professionals
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      A speech pathologist and the analyst have overlapping goals that are stated
+      differently. The productive response is to:
+    options:
+      - id: a
+        text: Agree a shared operational definition and a single measure where the goals overlap
+        isCorrect: true
+        rationale: >-
+          Two definitions of the same target produce contradictory data and confuse everybody
+          implementing them.
+      - id: b
+        text: Keep separate goals so each discipline can report its own outcome
+        isCorrect: false
+        rationale: >-
+          Parallel measurement of the same behaviour is exactly what produces the
+          contradiction.
+      - id: c
+        text: Defer to the discipline with more sessions per week
+        isCorrect: false
+        rationale: >-
+          Session volume does not settle a definitional question.
+      - id: d
+        text: Ask the family to choose between the two
+        isCorrect: false
+        rationale: >-
+          This puts a technical disagreement onto the family.
+    explanation: >-
+      Interdisciplinary collaboration usually founders on definitions rather than on
+      disagreement about aims. Agreeing what will be counted, by whom and how, is the
+      concrete work that makes a shared plan possible.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [operational-definition, collaboration, interobserver-agreement, continuity-of-care]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-h8-client-involvement
+    credential: BCBA
+    taskRef: { credential: BCBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      Involving the client themselves in planning is most important because:
+    options:
+      - id: a
+        text: Their preferences and assent shape whether the plan is acceptable and sustainable
+        isCorrect: true
+        rationale: >-
+          The person receiving the intervention has the strongest claim on its goals and
+          procedures, and their assent bears on whether it continues.
+      - id: b
+        text: It satisfies a documentation requirement
+        isCorrect: false
+        rationale: >-
+          It may be documented, but that is not why it matters.
+      - id: c
+        text: It reduces the analyst's liability
+        isCorrect: false
+        rationale: >-
+          Liability is not the clinical reason.
+      - id: d
+        text: Clients usually select the most effective procedures
+        isCorrect: false
+        rationale: >-
+          Effectiveness is a separate question; involvement is about goals, acceptability and
+          assent.
+    explanation: >-
+      Social validity was always defined around the people affected, and the client is
+      first among them. Where the client can participate in choosing goals and procedures,
+      doing so is both the ethical position and the practical one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [assent, social-validity, dignity, informed-consent]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: hanley-2014
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

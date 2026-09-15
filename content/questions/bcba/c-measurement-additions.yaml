@@ -1,0 +1,781 @@
+# BCBA practice questions — further items for area C, Measurement, Data Display and Interpretation. All original; nothing drawn from any examination. Task codes are the verified 6th-edition codes.
+
+questions:
+  - id: bcba-c1-two-observers
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      The clearest test of whether a definition is operational is that:
+    options:
+      - id: a
+        text: Two independent observers using it agree on whether an instance occurred
+        isCorrect: true
+        rationale: >-
+          Agreement between independent observers is the practical criterion for a definition
+          being usable.
+      - id: b
+        text: It describes the behaviour in behavioural terminology
+        isCorrect: false
+        rationale: >-
+          Technical vocabulary can be entirely vague, and plain wording can be perfectly
+          precise.
+      - id: c
+        text: It names the likely function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function belongs in the analysis rather than in the definition of the response.
+      - id: d
+        text: It is short enough to fit on the data sheet
+        isCorrect: false
+        rationale: >-
+          Brevity is convenient and has nothing to do with whether the definition is precise.
+    explanation: >-
+      An operational definition exists so that different people count the same events.
+      That makes agreement the test, and it is also why definitions are revised when
+      agreement checks come out low rather than being defended.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, interobserver-agreement, objective-language]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-15'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-15'
+  - id: bcba-c3-percentage-hides
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Reporting only a percentage correct can mislead most seriously when:
+    options:
+      - id: a
+        text: The number of opportunities varies a great deal between sessions
+        isCorrect: true
+        rationale: >-
+          A percentage from four opportunities and one from forty look identical and carry
+          very different weight.
+      - id: b
+        text: The behaviour has a long duration
+        isCorrect: false
+        rationale: >-
+          Duration is a different dimension and not what a percentage of opportunities
+          conceals.
+      - id: c
+        text: Two observers are recording
+        isCorrect: false
+        rationale: >-
+          Agreement between observers is a separate question from what the measure hides.
+      - id: d
+        text: The data are graphed rather than tabulated
+        isCorrect: false
+        rationale: >-
+          How the data are displayed does not change what the measure itself conceals.
+    explanation: >-
+      A percentage is a ratio, and its denominator matters. Reporting percentage alongside
+      the number of opportunities is the simple fix, and its absence is a common way a
+      graph overstates what is known.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [percentage, trials-to-criterion, frequency-and-rate, visual-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c3-trials-to-criterion
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Trials to criterion is the appropriate measure when the question is:
+    options:
+      - id: a
+        text: How much teaching a skill required
+        isCorrect: true
+        rationale: >-
+          It counts the opportunities needed to reach mastery, which is a measure of
+          acquisition efficiency.
+      - id: b
+        text: How often the behaviour occurs in a day
+        isCorrect: false
+        rationale: >-
+          How often something happens per unit time is a rate question, not an acquisition
+          one.
+      - id: c
+        text: How long each response takes
+        isCorrect: false
+        rationale: >-
+          The length of a response is measured by duration, or by latency if timing its onset.
+      - id: d
+        text: Whether two procedures produce the same topography
+        isCorrect: false
+        rationale: >-
+          Topography is the form of the response and is not what this measure addresses.
+    explanation: >-
+      Measures answer questions. Trials to criterion is the natural dependent variable
+      when comparing teaching procedures, because what is at issue is how efficiently each
+      produced the skill rather than how often the behaviour occurred.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [trials-to-criterion, discrete-trial-training, percentage]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c4-irt
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      Interresponse time is the most informative temporal measure when the goal is to:
+    options:
+      - id: a
+        text: Space responses further apart, as in reinforcing lower rates
+        isCorrect: true
+        rationale: >-
+          Interresponse time measures the gap between responses, which is exactly what such a
+          programme changes.
+      - id: b
+        text: Reduce how long each episode lasts
+        isCorrect: false
+        rationale: >-
+          How long an episode lasts is duration, which measures the response rather than the
+          gap between responses.
+      - id: c
+        text: Speed up starting after an instruction
+        isCorrect: false
+        rationale: >-
+          Time from instruction to the start of responding is latency, not the gap between
+          responses.
+      - id: d
+        text: Count how many responses occurred
+        isCorrect: false
+        rationale: >-
+          A tally of occurrences is a count, or a rate once observation time is included.
+    explanation: >-
+      Each temporal measure lines up with a kind of programme. Where the intervention
+      targets the pacing of responses rather than their number, interresponse time is the
+      measure that will show the change.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [interresponse-time, differential-reinforcement-of-low-rates, duration, latency]
+    citations:
+      - sourceId: reynolds-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c5-whole-interval
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      Whole interval recording is most appropriate when the target is:
+    options:
+      - id: a
+        text: Sustained engagement that should occupy the entire interval
+        isCorrect: true
+        rationale: >-
+          Scoring only when the behaviour lasts the whole interval suits behaviour you want
+          continuous.
+      - id: b
+        text: A brief behaviour you want to see less of
+        isCorrect: false
+        rationale: >-
+          Partial interval suits that, because a single brief occurrence scores the whole
+          interval.
+      - id: c
+        text: A behaviour with a clear onset and offset you want timed
+        isCorrect: false
+        rationale: >-
+          Where onset and offset are clear, duration measures the thing directly and more
+          accurately.
+      - id: d
+        text: A behaviour that occurs a handful of times a day
+        isCorrect: false
+        rationale: >-
+          A simple count is both easier and more accurate for low-frequency behaviour.
+    explanation: >-
+      The choice between interval methods follows from what you want the data to be
+      sensitive to. Whole interval underestimates and so suits behaviour you want more of;
+      partial interval overestimates and so suits behaviour you want less of.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [whole-interval-recording, partial-interval-recording, momentary-time-sampling, duration]
+    citations:
+      - sourceId: hartmann-hall-1976
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c6-mts-interval-length
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      Lengthening the interval in momentary time sampling primarily:
+    options:
+      - id: a
+        text: Reduces observer burden while making the estimate noisier
+        isCorrect: true
+        rationale: >-
+          Fewer samples cost less to collect and give a less precise estimate of time engaged.
+      - id: b
+        text: Makes the estimate systematically higher
+        isCorrect: false
+        rationale: >-
+          Momentary sampling is not biased in a fixed direction by how long the interval is.
+      - id: c
+        text: Improves agreement between observers
+        isCorrect: false
+        rationale: >-
+          Fewer observation points do not improve agreement in any reliable way.
+      - id: d
+        text: Converts it into a continuous measure
+        isCorrect: false
+        rationale: >-
+          It remains a sampling procedure however the interval length is set.
+    explanation: >-
+      Interval length is the practicality dial on sampling procedures. The trade is always
+      the same — fewer observations for less precision — and the honest reporting of a
+      sampled estimate names the interval used.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [momentary-time-sampling, discontinuous-measurement, variability, reactivity]
+    citations:
+      - sourceId: hartmann-hall-1976
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c8-valid-not-reliable
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      A measure produces highly consistent numbers that do not reflect the behaviour of
+      interest. This measure is:
+    options:
+      - id: a
+        text: Reliable but not valid
+        isCorrect: true
+        rationale: >-
+          Consistency is reliability; measuring the intended thing is validity, and a measure
+          can have the first without the second.
+      - id: b
+        text: Valid but not reliable
+        isCorrect: false
+        rationale: >-
+          That is the reverse case, where the right thing is measured inconsistently.
+      - id: c
+        text: Both reliable and valid
+        isCorrect: false
+        rationale: >-
+          It fails validity by description, so both cannot hold.
+      - id: d
+        text: Neither reliable nor valid
+        isCorrect: false
+        rationale: >-
+          It is explicitly consistent, so reliability does hold here.
+    explanation: >-
+      Reliability and validity are separable, and consistency is the more seductive of the
+      two because it looks like rigour. A precisely recorded measure of the wrong thing
+      produces a clean graph that answers no question anybody asked.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [internal-validity, interobserver-agreement, operational-definition, reactivity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c8-accuracy
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      Accuracy of measurement is established by comparing the data against:
+    options:
+      - id: a
+        text: A true value obtained independently, such as a permanent product count
+        isCorrect: true
+        rationale: >-
+          Accuracy is agreement with the true state of affairs, which requires an independent
+          standard.
+      - id: b
+        text: A second observer's record
+        isCorrect: false
+        rationale: >-
+          That establishes agreement between observers, which two people can achieve while
+          both being wrong.
+      - id: c
+        text: The same observer on a second occasion
+        isCorrect: false
+        rationale: >-
+          That is consistency over time within one observer rather than accuracy.
+      - id: d
+        text: The expected result from the literature
+        isCorrect: false
+        rationale: >-
+          Expectation is not a standard against which a data set can be checked.
+    explanation: >-
+      Agreement and accuracy are different. Two observers trained on the same faulty
+      definition will agree with each other and both be wrong, which is why a true value —
+      where one is available — is the stronger check.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [interobserver-agreement, permanent-product, observer-drift, operational-definition]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c9-low-frequency
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      For a behaviour that occurs roughly twice a week and matters a great deal, the
+      appropriate measurement system is:
+    options:
+      - id: a
+        text: A count of every occurrence, with the observation period recorded
+        isCorrect: true
+        rationale: >-
+          Low-frequency behaviour is best captured by counting every instance; sampling would
+          miss most of them.
+      - id: b
+        text: Partial interval recording across sessions
+        isCorrect: false
+        rationale: >-
+          Sampling a rare behaviour produces mostly empty intervals and a poor estimate of
+          anything.
+      - id: c
+        text: Momentary time sampling
+        isCorrect: false
+        rationale: >-
+          The chance of a momentary sample coinciding with a rare behaviour is very low.
+      - id: d
+        text: Mean duration per session
+        isCorrect: false
+        rationale: >-
+          With so few occurrences a mean is unstable and says very little about the behaviour.
+    explanation: >-
+      Frequency of the behaviour drives the choice of system. Sampling exists to make
+      high-rate or continuous behaviour tractable; applied to rare behaviour it discards
+      almost all the information there is.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [count, frequency-and-rate, partial-interval-recording, momentary-time-sampling]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c10-axis-scaling
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      Changing the vertical axis scale between a baseline graph and an intervention graph
+      of the same data:
+    options:
+      - id: a
+        text: Can make the same change look larger or smaller, and misleads the reader
+        isCorrect: true
+        rationale: >-
+          Visual analysis depends on the display, so inconsistent scaling misrepresents the
+          size of the effect.
+      - id: b
+        text: Is acceptable if both axes are labelled
+        isCorrect: false
+        rationale: >-
+          Labelling the axes does not prevent the visual impression from misleading a reader.
+      - id: c
+        text: Improves readability when the ranges differ
+        isCorrect: false
+        rationale: >-
+          Where ranges differ the honest solution is a single scale or a clearly separated
+          figure.
+      - id: d
+        text: Has no effect, since the numbers are unchanged
+        isCorrect: false
+        rationale: >-
+          The numbers are unchanged and the impression is not, which is precisely the problem.
+    explanation: >-
+      A graph is an argument, and its scaling is part of the argument. Consistent axes,
+      marked phase changes and a scale that does not exaggerate are what make visual
+      analysis a defensible method rather than a rhetorical one.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [line-graph, visual-analysis, phase-change-line, level]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c10-phase-lines
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      Phase change lines on a graph exist to:
+    options:
+      - id: a
+        text: Mark where conditions changed so data are compared within conditions
+        isCorrect: true
+        rationale: >-
+          They divide the series into conditions, which is what makes level, trend and
+          variability comparisons meaningful.
+      - id: b
+        text: Separate one observer's data from another's
+        isCorrect: false
+        rationale: >-
+          Two observers would be shown by separate data paths or in a separate figure
+          entirely.
+      - id: c
+        text: Indicate missing sessions
+        isCorrect: false
+        rationale: >-
+          Sessions with no data are shown by breaking the data path rather than by a phase
+          line.
+      - id: d
+        text: Show the mastery criterion
+        isCorrect: false
+        rationale: >-
+          A criterion is normally drawn as a horizontal aim line across the condition.
+    explanation: >-
+      The conventions of a behavioural line graph are load-bearing rather than decorative:
+      the data path breaks at condition changes, phase lines mark them, and sessions with
+      no data leave a gap rather than being joined across.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [phase-change-line, line-graph, visual-analysis, baseline]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c11-variability
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      Highly variable baseline data present a problem for visual analysis chiefly because:
+    options:
+      - id: a
+        text: A subsequent change is hard to distinguish from the variability already present
+        isCorrect: true
+        rationale: >-
+          Effects are judged against the pattern in baseline, and wide variability makes a
+          change less discriminable.
+      - id: b
+        text: Variability means the measurement is inaccurate
+        isCorrect: false
+        rationale: >-
+          Variability may be genuine behaviour rather than any fault in the measurement.
+      - id: c
+        text: Variable data cannot be graphed
+        isCorrect: false
+        rationale: >-
+          Variable data graph perfectly well; the difficulty is in interpreting them.
+      - id: d
+        text: Statistical tests become necessary
+        isCorrect: false
+        rationale: >-
+          Statistical testing is not the standard remedy for variability in single-case work.
+    explanation: >-
+      Stability is what makes a baseline useful. Where variability is wide, the options
+      are to extend baseline, identify and control the source, or accept that only a large
+      effect will be demonstrable.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [variability, baseline, visual-analysis, trend]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c11-level-vs-trend
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      A data series shows no change in level but a clear reversal of trend after
+      intervention. The correct reading is that:
+    options:
+      - id: a
+        text: There is evidence of an effect, expressed as a change in direction rather than in level
+        isCorrect: true
+        rationale: >-
+          Level, trend and variability are separate features, and an effect can appear in any
+          of them.
+      - id: b
+        text: There is no effect, since level did not change
+        isCorrect: false
+        rationale: >-
+          Restricting the reading to level alone misses changes in direction entirely.
+      - id: c
+        text: The data are uninterpretable
+        isCorrect: false
+        rationale: >-
+          A trend reversal is interpretable and is often the more compelling demonstration.
+      - id: d
+        text: A statistical test is required to decide
+        isCorrect: false
+        rationale: >-
+          Visual analysis of level, trend and variability is the standard method for this
+          judgement.
+    explanation: >-
+      Visual analysis examines several features at once. An intervention that arrests a
+      worsening trend may show no change in level at all, and reading only the level would
+      report no effect where there plainly is one.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [level, trend, visual-analysis, variability]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c12-integrity-and-outcome
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.12 }
+    type: single-best-answer
+    stem: >-
+      Outcome data are strong but integrity data show the procedure was run at 60%. The
+      defensible conclusion is:
+    options:
+      - id: a
+        text: Something produced the change, but it is not established that the procedure as written did
+        isCorrect: true
+        rationale: >-
+          At that integrity level the independent variable is not what the plan describes, so
+          the finding cannot be attributed to it.
+      - id: b
+        text: The procedure works even at low integrity
+        isCorrect: false
+        rationale: >-
+          That claim would need to be demonstrated deliberately rather than inferred from one
+          case.
+      - id: c
+        text: The integrity data must be wrong
+        isCorrect: false
+        rationale: >-
+          Dismissing inconvenient integrity data is the error this measure exists to prevent.
+      - id: d
+        text: The outcome data should be discarded
+        isCorrect: false
+        rationale: >-
+          The outcome did happen; what is unclear is what produced it.
+    explanation: >-
+      Integrity data qualify every conclusion drawn from outcome data. High integrity lets
+      a result be attributed to the procedure; low integrity means something else, or some
+      subset, did the work, and the plan cannot be replicated from the description.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [treatment-integrity, independent-variable, internal-validity, replication]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c2-indirect-value
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      The principal value of indirect measures in an assessment is that they:
+    options:
+      - id: a
+        text: Cover more time and more settings than an observer can
+        isCorrect: true
+        rationale: >-
+          Report reaches across periods and places nobody was present for, which direct
+          observation cannot.
+      - id: b
+        text: Are more accurate than direct observation
+        isCorrect: false
+        rationale: >-
+          They are generally less accurate than observation; breadth rather than accuracy is
+          what they offer.
+      - id: c
+        text: Remove the need for operational definitions
+        isCorrect: false
+        rationale: >-
+          Definitions matter for interpreting a report just as much as for direct recording.
+      - id: d
+        text: Establish function directly
+        isCorrect: false
+        rationale: >-
+          Interviews and rating scales generate hypotheses rather than establishing function.
+    explanation: >-
+      Report and observation trade breadth against accuracy. The productive use of
+      indirect measures is to narrow where and when to observe, and the common misuse is
+      to treat a rating scale result as a finding about function.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [indirect-assessment, descriptive-assessment, reactivity, functional-behavior-assessment]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c7-reactivity
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      An observer's presence changes the behaviour being measured. This is:
+    options:
+      - id: a
+        text: Reactivity, which threatens the validity of what was recorded
+        isCorrect: true
+        rationale: >-
+          Reactivity is behaviour changing because it is being observed, and it makes the data
+          less representative.
+      - id: b
+        text: Observer drift
+        isCorrect: false
+        rationale: >-
+          Drift is the observer's application of the definition changing gradually over time.
+      - id: c
+        text: Poor interobserver agreement
+        isCorrect: false
+        rationale: >-
+          Agreement concerns whether two observers match each other, not the effect of being
+          watched.
+      - id: d
+        text: A ceiling effect
+        isCorrect: false
+        rationale: >-
+          A ceiling effect is a limit of the measure and is unrelated to being observed.
+    explanation: >-
+      Reactivity, drift and agreement are three different measurement threats. Reactivity
+      is usually managed by habituating to the observer or by unobtrusive recording, and
+      it is one reason permanent products are valuable where available.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [reactivity, observer-drift, interobserver-agreement, permanent-product]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c12-drift
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.12 }
+    type: single-best-answer
+    stem: >-
+      Agreement between two observers is high at the start of a study and declines over
+      months, with no change to the definition. The most likely explanation is:
+    options:
+      - id: a
+        text: Observer drift — their application of the definition has diverged over time
+        isCorrect: true
+        rationale: >-
+          Gradual divergence in how a definition is applied is exactly what drift describes.
+      - id: b
+        text: The behaviour has genuinely become harder to observe
+        isCorrect: false
+        rationale: >-
+          Possible, but not the first explanation for a slow decline in agreement over months.
+      - id: c
+        text: The definition was never operational
+        isCorrect: false
+        rationale: >-
+          Agreement was high initially, so the definition was workable when they started.
+      - id: d
+        text: Reactivity has increased
+        isCorrect: false
+        rationale: >-
+          Reactivity changes the behaviour being recorded rather than the agreement between
+          two observers.
+    explanation: >-
+      Drift is slow and invisible without periodic checks, which is why agreement is
+      measured throughout rather than once at the start. The remedy is retraining against
+      the written definition rather than rewriting it.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [observer-drift, interobserver-agreement, operational-definition, treatment-drift]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcba-c9-multiple-measures
+    credential: BCBA
+    taskRef: { credential: BCBA, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      Measuring both rate and duration of the same behaviour is justified when:
+    options:
+      - id: a
+        text: The behaviour could change on either dimension and both matter
+        isCorrect: true
+        rationale: >-
+          Where an intervention might reduce how often or how long, measuring one alone can
+          miss the effect.
+      - id: b
+        text: The team has capacity for two measures
+        isCorrect: false
+        rationale: >-
+          Having the capacity permits a second measure; it does not justify collecting one.
+      - id: c
+        text: Agreement on one measure is low
+        isCorrect: false
+        rationale: >-
+          Low agreement calls for fixing the definition rather than adding a second measure.
+      - id: d
+        text: The funder requires two data streams
+        isCorrect: false
+        rationale: >-
+          That is an administrative reason rather than a measurement one.
+    explanation: >-
+      More measures cost more to collect and are worth it only when each answers
+      something. Two dimensions are justified where the intervention could plausibly move
+      either, and an effect on one alone would otherwise be read as no effect.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [frequency-and-rate, duration, continuous-measurement, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
