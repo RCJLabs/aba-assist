@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import type { Term } from '@aba/content-schema';
 import { loadTerm, termIndex } from '$lib/content/load.js';
 import { getAllCards, recordReview } from '$lib/db/index.js';
+import { storage } from './storage.svelte.js';
 import {
 	CARD_STATE,
 	gradeCard,
@@ -163,6 +164,16 @@ class Study {
 		const { card, review } = gradeCard(before, g);
 		try {
 			await recordReview(card, review);
+			/*
+			 * Ask to keep this data, now that there is some.
+			 *
+			 * Here rather than on arrival: some browsers prompt, and a permission request
+			 * from a page somebody has not used yet is the kind that gets denied for good.
+			 * A first graded card is the earliest moment there is anything to lose — and
+			 * the reader who studies once a week is exactly who iOS evicts.
+			 */
+			storage.hasData = true;
+			void storage.requestPersist();
 		} catch {
 			// Storage failed: keep the session going in memory so the reader is not
 			// interrupted; the counts will simply not persist.

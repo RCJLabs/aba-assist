@@ -5,10 +5,14 @@
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { GRADES, study, type CardGrade } from '$lib/state/study.svelte.js';
+	import { storage } from '$lib/state/storage.svelte.js';
+
+	let nudgeDismissed = $state(false);
 
 	onMount(() => {
 		study.hydrate();
 		void study.refresh();
+		storage.load();
 	});
 
 	// The deck follows the filter. Reading the filter fields here is what re-runs the
@@ -64,6 +68,29 @@
 <svelte:window onkeydown={onKey} />
 
 <h1>Flashcards</h1>
+
+{#if storage.overdue && !nudgeDismissed && study.status !== 'session'}
+	<!--
+		Here rather than in a site-wide banner, and only outside a session.
+		This is the page whose data hurts most to lose — spaced repetition is worth
+		something only if the history survives — and the reader it warns is the one whose
+		weekly visits are exactly what makes iOS decide the storage is not in use.
+	-->
+	<div class="nudge" role="note">
+		<p>
+			{#if storage.lastBackup === null}
+				Your review history has never been backed up.
+			{:else}
+				Your last backup was {storage.daysSinceBackup} days ago.
+			{/if}
+			If this browser clears its storage, the schedule goes with it.
+		</p>
+		<div class="nudge-actions">
+			<a class="button" href={resolve('/settings')}>Back it up</a>
+			<button type="button" onclick={() => (nudgeDismissed = true)}>Not now</button>
+		</div>
+	</div>
+{/if}
 
 {#if study.status === 'session' && study.term}
 	<section class="session" aria-labelledby="card-heading">
@@ -201,6 +228,23 @@
 {/if}
 
 <style>
+	.nudge {
+		border: 1px solid var(--caution-border);
+		background: var(--caution-bg);
+		color: var(--caution-text);
+		border-radius: var(--radius);
+		padding: 0.75rem 1rem;
+		margin-bottom: 1rem;
+	}
+	.nudge p {
+		margin: 0 0 0.5rem;
+	}
+	.nudge-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

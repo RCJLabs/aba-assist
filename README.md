@@ -149,6 +149,34 @@ CEUs with 4 on ethics — are not constants in the code. They live in `content/c
 beside the prose that states them, carrying the same handbook locator and going through the
 same review queue, so there is one copy of each number rather than two that drift.
 
+## Your data lives on your device, which is a risk as well as a promise
+
+There is no account and nothing leaves the browser — which also means nobody else has a
+copy. Two things make that survivable rather than just private.
+
+**The app asks to keep its storage.** Safari and iOS clear a non-installed site's
+IndexedDB after roughly a week of inactivity. For spaced repetition that is exactly
+backwards: the reader who studies weekly is who the scheduling is for, and who loses it.
+`navigator.storage.persist()` is requested after the first graded card or logged
+supervision contact — not on arrival, because a permission prompt from a page somebody
+has not used yet is the kind that gets denied for good. Settings says plainly whether the
+browser agreed.
+
+**Backup, restore and delete are in Settings.** The backup is one JSON file. Restoring
+replaces everything on the device rather than merging, because merging two devices' review
+histories means deciding which one is true, and getting that wrong corrupts the thing
+people most want back — so the semantics are one thing the UI can state and the reader can
+confirm.
+
+The import is a trust boundary and is validated accordingly: a file this app did not
+write is refused by name, a file from a newer build is refused rather than silently
+losing the stores this build has no home for, rows are validated one at a time so a
+single corrupt flashcard cannot cost somebody two years of supervision records, and
+everything dropped is reported — a restore that lost a year of logs must not look like
+one that did not. The supervisee-code rule is enforced here too: a backup carrying a name
+where a code belongs has that row rejected, because the guard that keeps this app out of
+HIPAA has to hold at every door, not only the form.
+
 ## Accessibility
 
 Target is WCAG 2.2 AA, and the axe sweep runs over every route in light, dark, 320px, and

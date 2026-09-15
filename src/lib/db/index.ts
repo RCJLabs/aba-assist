@@ -436,6 +436,7 @@ export async function recentAttempts(limit = 20): Promise<QuizAttempt[]> {
 
 /** Everything, as one JSON-serialisable object. The free-tier answer to "I got a new phone". */
 export async function exportAll(): Promise<{
+	kind: 'aba-assist-backup';
 	version: number;
 	exportedAt: number;
 	cards: CardRecord[];
@@ -474,6 +475,9 @@ export async function exportAll(): Promise<{
 		db.getAll('developmentUnits')
 	]);
 	return {
+		// Marks the file as ours, so importing somebody's tax return gets a useful message
+		// rather than a silent nothing.
+		kind: 'aba-assist-backup',
 		version: DB_VERSION,
 		exportedAt: Date.now(),
 		cards,
@@ -491,6 +495,81 @@ export async function exportAll(): Promise<{
 		cycles,
 		developmentUnits
 	};
+}
+
+/**
+ * Whether there is anything on this device worth backing up.
+ *
+ * Counts rather than reads: this runs on page load to decide whether to nag somebody, and
+ * pulling the whole database to answer a yes/no question would be the wrong trade.
+ */
+export async function hasStoredData(): Promise<boolean> {
+	const db = await openAbaDB();
+	const stores: StoreName[] = [
+		'cards',
+		'quizAttempts',
+		'reviewDecisions',
+		'supervisionEntries',
+		'developmentUnits'
+	];
+	const counts = await Promise.all(stores.map((s) => db.count(s)));
+	return counts.some((n) => n > 0);
+}
+
+/**
+ * Replace everything with a validated backup, in one transaction.
+ *
+ * Replace rather than merge. Merging two devices' flashcard schedules means deciding
+ * which review history is true, and getting that wrong silently corrupts the thing the
+ * reader most wants back. "I got a new phone" is the case this exists for, and on a new
+ * phone there is nothing to merge with — so the semantics are one clear thing the UI can
+ * state plainly and the reader can confirm.
+ *
+ * One transaction so a failure halfway through leaves the old data rather than half of
+ * each. The caller has already validated; this writes what it is given.
+ */
+export async function restoreAll(data: {
+	cards: CardRecord[];
+	reviewLog: ReviewRecord[];
+	quizAttempts: QuizAttempt[];
+	reviewDecisions: ReviewDecision[];
+	supervisees: Supervisee[];
+	workplaces: Workplace[];
+	supervisionEntries: SupervisionEntry[];
+	serviceMonths: ServiceMonth[];
+	cycles: Cycle[];
+	developmentUnits: DevelopmentUnit[];
+}): Promise<void> {
+	const db = await openAbaDB();
+	const stores: StoreName[] = [
+		'cards',
+		'reviewLog',
+		'quizAttempts',
+		'reviewDecisions',
+		'supervisees',
+		'workplaces',
+		'supervisionEntries',
+		'serviceMonths',
+		'cycles',
+		'developmentUnits'
+	];
+	const tx = db.transaction(stores, 'readwrite');
+	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
+	await Promise.all([
+		// `reviewLog` has an auto-incrementing key and the export strips it, so these are
+		// added rather than put.
+		...data.reviewLog.map((r) => tx.objectStore('reviewLog').add(r)),
+		...data.cards.map((c) => tx.objectStore('cards').put(c)),
+		...data.quizAttempts.map((a) => tx.objectStore('quizAttempts').put(a)),
+		...data.reviewDecisions.map((d) => tx.objectStore('reviewDecisions').put(d)),
+		...data.supervisees.map((x) => tx.objectStore('supervisees').put(x)),
+		...data.workplaces.map((x) => tx.objectStore('workplaces').put(x)),
+		...data.supervisionEntries.map((x) => tx.objectStore('supervisionEntries').put(x)),
+		...data.serviceMonths.map((x) => tx.objectStore('serviceMonths').put(x)),
+		...data.cycles.map((x) => tx.objectStore('cycles').put(x)),
+		...data.developmentUnits.map((x) => tx.objectStore('developmentUnits').put(x))
+	]);
+	await tx.done;
 }
 
 export async function clearAll(): Promise<void> {

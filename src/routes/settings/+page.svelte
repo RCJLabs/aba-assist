@@ -1,7 +1,42 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { settings, type Theme, type Hand } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
+	import { storage, NUDGE_AFTER_DAYS } from '$lib/state/storage.svelte.js';
+
+	const uid = $props.id();
+	let fileInput: HTMLInputElement | null = $state(null);
+	let confirmingErase = $state(false);
+	let confirmingImport = $state<File | null>(null);
+
+	onMount(() => storage.load());
+
+	function chooseFile(e: Event) {
+		const file = (e.currentTarget as HTMLInputElement).files?.[0];
+		// Confirm before touching anything: restoring replaces what is here.
+		if (file) confirmingImport = file;
+	}
+
+	async function doImport() {
+		const file = confirmingImport;
+		confirmingImport = null;
+		if (!file) return;
+		await storage.importBackup(file);
+		if (fileInput) fileInput.value = '';
+		announcer.announce(storage.message, 'assertive');
+	}
+
+	async function doExport() {
+		await storage.exportBackup();
+		announcer.announce(storage.message);
+	}
+
+	async function doErase() {
+		confirmingErase = false;
+		await storage.eraseEverything();
+		announcer.announce(storage.message, 'assertive');
+	}
 
 	const themes: { value: Theme; label: string }[] = [
 		{ value: 'system', label: 'Match my device' },
@@ -134,8 +169,130 @@
 	<h2>Your data</h2>
 	<p>
 		Everything this app remembers stays on this device. There is no account, and nothing is
-		sent anywhere. Clearing your browser's data for this site removes it.
+		sent anywhere — which also means nobody else has a copy if this device is lost.
 	</p>
+
+	<div class="storage" data-persist={storage.persist}>
+		<h3>Is it safe here?</h3>
+		{#if storage.persist === 'granted'}
+			<p>
+				This browser has agreed to keep your data rather than clearing it to reclaim space. A
+				backup is still worth having — a granted browser is not a second device.
+			</p>
+		{:else if storage.persist === 'denied'}
+			<!--
+				The specific, documented failure: Safari and iOS evict a non-installed site's
+				storage after about a week of inactivity, which is exactly the person spaced
+				repetition is for.
+			-->
+			<p class="warn">
+				This browser has <strong>not</strong> agreed to keep your data. Some browsers — Safari and
+				iOS in particular — delete a site's storage after about a week of not visiting. Installing
+				the app to your home screen usually fixes this. Until then, export a backup regularly.
+			</p>
+		{:else if storage.persist === 'unsupported'}
+			<p>
+				This browser does not say whether it will keep your data, so treat it as though it will
+				not. Export a backup regularly.
+			</p>
+		{:else}
+			<p>Checking…</p>
+		{/if}
+
+		<p class="age">
+			{#if storage.lastBackup === null}
+				No backup taken on this device yet.
+			{:else if storage.daysSinceBackup === 0}
+				Last backup: today.
+			{:else}
+				Last backup: {storage.daysSinceBackup}
+				{storage.daysSinceBackup === 1 ? 'day' : 'days'} ago.
+			{/if}
+			{#if storage.overdue}
+				<strong>Worth doing now</strong> — anything older than {NUDGE_AFTER_DAYS} days is a month
+				of reviews you would be retyping.
+			{/if}
+		</p>
+	</div>
+
+	<h3>Backup and restore</h3>
+	<p class="hint">
+		The backup is one JSON file holding your flashcard scheduling, quiz history, supervision
+		log and development units. It contains no client information, because there is none to
+		contain.
+	</p>
+	<div class="actions">
+		<button type="button" class="primary" disabled={storage.busy} onclick={doExport}>
+			{storage.busy ? 'Working…' : 'Download a backup'}
+		</button>
+		<!-- Input first so the focus ring can be drawn on the label that follows it. -->
+		<input
+			id="{uid}-restore"
+			bind:this={fileInput}
+			type="file"
+			accept="application/json,.json"
+			onchange={chooseFile}
+		/>
+		<label class="filebtn" for="{uid}-restore">Restore from a backup</label>
+	</div>
+
+	{#if confirmingImport}
+		<div class="confirm" role="alertdialog" aria-labelledby="{uid}-confirm-import">
+			<p id="{uid}-confirm-import">
+				<strong>Restoring replaces everything on this device.</strong> Your current flashcard scheduling,
+				quiz history and logs will be gone. This cannot be undone, so download a backup first if
+				you have not.
+			</p>
+			<div class="actions">
+				<button type="button" class="flag" onclick={doImport}>Replace my data</button>
+				<button type="button" onclick={() => (confirmingImport = null)}>Cancel</button>
+			</div>
+		</div>
+	{/if}
+
+	{#if storage.message}
+		<p class="result" role="status">{storage.message}</p>
+	{/if}
+
+	{#if storage.report}
+		{@const dropped = storage.report.dropped}
+		{#if dropped.length > 0}
+			<!-- Never silently: a restore that lost rows must not look like one that did not. -->
+			<div class="warn" role="note">
+				<p><strong>Some rows could not be restored.</strong></p>
+				<ul>
+					{#each dropped as d (d.store + d.reason)}
+						<li>{d.count} from {d.store} — {d.reason}</li>
+					{/each}
+				</ul>
+			</div>
+		{/if}
+		{#if storage.report.notesToCheck > 0}
+			<p class="warn">
+				{storage.report.notesToCheck} restored supervision
+				{storage.report.notesToCheck === 1 ? 'note looks' : 'notes look'} like they may carry a name
+				or another identifier. Worth reading through and editing.
+			</p>
+		{/if}
+	{/if}
+
+	<h3>Delete everything</h3>
+	<p class="hint">
+		Removes every flashcard, attempt and log entry stored here. Your settings stay.
+	</p>
+	{#if confirmingErase}
+		<div class="actions">
+			<button type="button" class="flag" disabled={storage.busy} onclick={doErase}>
+				Yes, delete it all
+			</button>
+			<button type="button" onclick={() => (confirmingErase = false)}>Cancel</button>
+		</div>
+	{:else}
+		<button type="button" disabled={storage.busy} onclick={() => (confirmingErase = true)}>
+			Delete my data
+		</button>
+	{/if}
+
 	<p class="warn">
 		Never type a client's name, date of birth, or any identifying detail into this app.
 	</p>
@@ -164,6 +321,84 @@
 </section>
 
 <style>
+	h3 {
+		font-size: 1rem;
+		margin-bottom: 0.25rem;
+	}
+	.hint,
+	.age {
+		color: var(--text-muted);
+		font-size: 0.95rem;
+	}
+	.storage {
+		border: 1px solid var(--border);
+		border-left: 4px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.75rem 1rem;
+		margin: 0.75rem 0 1.25rem;
+		background: var(--surface-raised);
+	}
+	/* Never colour alone: each state is also stated in a sentence above. */
+	.storage[data-persist='granted'] {
+		border-left-color: var(--accent);
+	}
+	.storage[data-persist='denied'],
+	.storage[data-persist='unsupported'] {
+		border-left-color: var(--caution-border);
+	}
+	.storage h3 {
+		margin-top: 0;
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		margin: 0.5rem 0;
+	}
+	/*
+	 * A file input styled through its own label. The native control is kept in the
+	 * accessibility tree and in the tab order rather than hidden with `display: none`,
+	 * which would remove it from both.
+	 */
+	.filebtn {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap);
+		padding: 0.5rem 0.9rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface);
+		color: var(--text);
+		font-weight: 600;
+		cursor: pointer;
+	}
+	input[type='file'] {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		position: absolute;
+	}
+	input[type='file']:focus-visible + .filebtn {
+		outline: 3px solid var(--focus);
+		outline-offset: 2px;
+	}
+	.confirm {
+		border: 1px solid var(--stop-border);
+		background: var(--stop-bg);
+		color: var(--stop-text);
+		border-radius: var(--radius);
+		padding: 0.75rem 1rem;
+		margin: 0.5rem 0;
+	}
+	.result {
+		font-weight: 600;
+	}
+	.warn ul {
+		margin: 0.25rem 0 0;
+		padding-left: 1.2rem;
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

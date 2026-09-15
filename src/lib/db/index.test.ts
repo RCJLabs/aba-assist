@@ -8,7 +8,9 @@ import {
 	countReviews,
 	DB_VERSION,
 	getAll,
+	hasStoredData,
 	put,
+	restoreAll,
 	removeCycle,
 	removeSupervisee,
 	exportAll,
@@ -193,6 +195,45 @@ describe('local database', () => {
 		await putAttempt({ ...base, id: 'b', startedAt: T0, finishedAt: T0 + 5000 });
 		const list = await recentAttempts();
 		expect(list.map((a) => a.id)).toEqual(['b', 'a']);
+	});
+
+	it('restores a backup by replacing what is there, in one transaction', async () => {
+		await putCard(newCard('extinction', T0));
+		await put('workplaces', { id: 'old', label: 'Old job', active: true, createdAt: T0 });
+
+		await restoreAll({
+			cards: [newCard('shaping', T0)],
+			reviewLog: [{ cardId: 'shaping', grade: 3, reviewedAt: T0, scheduledDays: 1, state: 2 }],
+			quizAttempts: [],
+			reviewDecisions: [],
+			supervisees: [{ id: 's1', code: 'S-04', role: 'RBT', active: true, createdAt: T0 }],
+			workplaces: [{ id: 'new', label: 'New job', active: true, createdAt: T0 }],
+			supervisionEntries: [],
+			serviceMonths: [],
+			cycles: [],
+			developmentUnits: []
+		});
+
+		// Replace, not merge: merging two devices' review histories means deciding which
+		// one is true, and getting that wrong corrupts the thing people most want back.
+		const cards = await getAllCards();
+		expect(cards.map((c) => c.id)).toEqual(['shaping']);
+		expect((await getAll('workplaces')).map((w) => w.id)).toEqual(['new']);
+		expect(await getAll('supervisees')).toHaveLength(1);
+		// The log has an auto-incrementing key the export strips, so it is added, not put.
+		expect(await countReviews()).toBe(1);
+	});
+
+	it('reports whether there is anything worth backing up', async () => {
+		expect(await hasStoredData()).toBe(false);
+		await putCard(newCard('extinction', T0));
+		expect(await hasStoredData()).toBe(true);
+	});
+
+	it('stamps an export so an unrelated file can be told apart on the way back in', async () => {
+		await putCard(newCard('extinction', T0));
+		const dump = await exportAll();
+		expect(dump.kind).toBe('aba-assist-backup');
 	});
 
 	it('exports everything as plain data and clears on request', async () => {

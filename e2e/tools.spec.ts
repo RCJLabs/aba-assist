@@ -36,7 +36,20 @@ async function logContact(
 	const observed = page.getByLabel('The supervisor observed me working with a client');
 	if (opts.observed === false) await observed.uncheck();
 	else await observed.check();
+
+	const before = await page.locator('.month').count();
 	await page.getByRole('button', { name: 'Log contact' }).click();
+	/*
+	 * Wait for the write to land before returning.
+	 *
+	 * The month summary only appears once the entry is in IndexedDB and back in state, so
+	 * it is the signal that the transaction committed. Without this a caller that
+	 * navigates immediately — `page.goto` is a full document load — can abort the write in
+	 * flight and then assert against a database that never received it. It failed that way
+	 * roughly one full run in three, on the slower project only.
+	 */
+	if (before === 0) await expect(page.locator('.month')).not.toHaveCount(0);
+	await expect(page.getByLabel('What the contact covered')).toHaveValue('');
 }
 
 test('the tracker refuses to call a missing denominator non-compliance', async ({ page }) => {

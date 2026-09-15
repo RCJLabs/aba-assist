@@ -17,6 +17,7 @@ import {
 	type UnitTopic,
 	type Workplace
 } from '$lib/db/index.js';
+import { storage } from './storage.svelte.js';
 import {
 	cycleEnd,
 	summariseCycle,
@@ -236,6 +237,10 @@ class Tracker {
 		const e: SupervisionEntry = { ...entry, id: id() };
 		await put('supervisionEntries', e);
 		this.entries = [...this.entries, e];
+		// A supervision record is the thing here somebody would most hate to retype, and
+		// is supposed to survive seven years.
+		storage.hasData = true;
+		void storage.requestPersist();
 	}
 
 	async deleteEntry(entryId: string): Promise<void> {
