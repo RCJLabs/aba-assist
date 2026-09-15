@@ -568,6 +568,164 @@ ${extra}`;
 	});
 });
 
+describe('practice guides', () => {
+	const base = {
+		title: 'What a session note has to carry',
+		gloss: 'The elements most notes need, and why each one is there',
+		audience: ['RBT'],
+		ourSummary:
+			'A session note is a clinical record and a billing record at once, which is why a thin one causes trouble twice over and leaves the next person without any context.',
+		plainSummary:
+			'A note is a health record and a bill. Write it right after the session, and cover the same points each time.',
+		whoDecides:
+			'Your employer and your funder set the real requirements, and they differ. Use your organisation template and ask your supervisor.',
+		citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
+		attestation,
+		review,
+		provenance
+	};
+
+	const checklist = (over: Record<string, unknown> = {}) => ({
+		...base,
+		id: 'session-note-elements',
+		kind: 'checklist',
+		items: [
+			{
+				id: 'identifiers',
+				label: 'Who, when and where, by code',
+				why: 'The times are what a funder checks against the claim, and a mismatch is the commonest audit finding.'
+			},
+			{
+				id: 'data',
+				label: 'What the data showed',
+				why: 'A number without a measure is not data. Say what was counted and over what period.'
+			},
+			{
+				id: 'next',
+				label: 'What you handed to the next session',
+				why: 'One line on what the next person should watch for. It is the part colleagues actually read.'
+			}
+		],
+		...over
+	});
+
+	const phrasing = (over: Record<string, unknown> = {}) => ({
+		...base,
+		id: 'subjective-to-objective',
+		kind: 'phrasing',
+		title: 'Saying it so somebody else could have counted it',
+		pairs: [1, 2, 3, 4].map((n) => ({
+			id: `pair-${n}`,
+			vague: `A vague sentence number ${n}`,
+			objective: `The same observation stated as a count and a duration, number ${n}.`,
+			why: `Why the second version is the one a supervisor can use, number ${n}.`
+		})),
+		...over
+	});
+
+	it('loads a checklist and a phrasing guide, counts them, and emits the asset', async () => {
+		const r = await build({
+			'practice/session-note-elements.md': frontmatter(checklist()),
+			'practice/subjective-to-objective.md': frontmatter(phrasing())
+		});
+		expect(r.errors).toEqual([]);
+		expect(r.counts.practiceGuides).toBe(2);
+		expect(r.assets.map((a) => a.name)).toContain('practice-guides');
+	});
+
+	it('REJECTS a checklist carrying phrasing pairs', async () => {
+		// The discriminant decides which fields exist at all, so this is a parse error
+		// rather than a field somebody has to remember to leave empty.
+		const r = await build({
+			'practice/session-note-elements.md': frontmatter(
+				checklist({ pairs: [{ id: 'x', vague: 'a', objective: 'b', why: 'c' }] })
+			)
+		});
+		expect(rules(r).some((x) => x.startsWith('schema/practice-guide'))).toBe(true);
+	});
+
+	it('REJECTS a guide that does not say who actually decides', async () => {
+		const { whoDecides, ...withoutIt } = checklist();
+		void whoDecides;
+		const r = await build({ 'practice/session-note-elements.md': frontmatter(withoutIt) });
+		expect(rules(r).some((x) => x.startsWith('schema/practice-guide'))).toBe(true);
+	});
+
+	it("REJECTS a guide that strays into a clinician's role", async () => {
+		// The one safety check that applies to documentation guidance. The risk lexicon
+		// that guards scenarios deliberately does not: describing a hard incident
+		// accurately is the whole job here.
+		const r = await build({
+			'practice/session-note-elements.md': frontmatter(
+				checklist({
+					whoDecides:
+						'Where a behaviour looks medication-related, note the dosage and say whether it should be titrated before the next session.'
+				})
+			)
+		});
+		expect(rules(r)).toContain('safety/clinical-decision-language');
+	});
+
+	it('ACCEPTS a guide describing an incident, which scenarios would have flagged', async () => {
+		// Proof the filter is doing something: this prose trips the scenario risk lexicon,
+		// and here it is exactly what a technician is required to write down.
+		const r = await build({
+			'practice/subjective-to-objective.md': frontmatter(
+				phrasing({
+					pairs: [
+						{
+							id: 'aggressive',
+							vague: 'Was aggressive towards staff.',
+							objective:
+								'Hit the table with an open hand 3 times and pushed a chair over. No contact with staff, and nobody was injured.',
+							why: 'Aggressive covers everything from a raised voice to an injury, so name what happened.'
+						},
+						{
+							id: 'self-injury',
+							vague: 'Had a bad episode of self-injury.',
+							objective:
+								'Hit the side of his head with an open hand 6 times over about 40 seconds. No marks, and the incident report was filed the same day.',
+							why: 'An incident review will ask for a count, a duration and whether there was an injury.'
+						},
+						{
+							id: 'tantrum',
+							vague: 'Had a tantrum for ages.',
+							objective:
+								'Cried and lay on the floor for about 6 minutes, timed from the instruction.',
+							why: 'For ages is not a duration, and tantrum is a label for a set of behaviours.'
+						},
+						{
+							id: 'refused',
+							vague: 'Refused to comply.',
+							objective:
+								'Did not begin the task within 10 seconds on 8 of 12 trials, and began after one repeat on 5 of those.',
+							why: 'Refused hides both the measure and the response to prompting.'
+						}
+					]
+				})
+			)
+		});
+		expect(r.errors).toEqual([]);
+	});
+
+	it('REJECTS a guide whose plain summary is not actually plain', async () => {
+		const r = await build({
+			'practice/session-note-elements.md': frontmatter(
+				checklist({
+					plainSummary:
+						'Documentation contemporaneity constitutes an indispensable methodological prerequisite insofar as retrospective reconstruction demonstrably attenuates descriptive veridicality.'
+				})
+			)
+		});
+		expect(rules(r)).toContain('editorial/plain-language-too-hard');
+	});
+
+	it('REJECTS a guide whose id does not match its filename', async () => {
+		const r = await build({ 'practice/notes.md': frontmatter(checklist()) });
+		expect(rules(r)).toContain('structure/id-filename-mismatch');
+	});
+});
+
 describe('ethics reference', () => {
 	const code = (extra = '') => `
 id: rbt-ethics-code-2-0

@@ -4,6 +4,7 @@
 	import { KIND_LABELS, type ReviewableKind } from '$lib/content/reviewable.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { review } from '$lib/state/review.svelte.js';
+	import { downloadBlob } from '$lib/util/download.js';
 
 	let copied = $state(false);
 	let confirmingReset = $state(false);
@@ -35,13 +36,11 @@
 	}
 
 	function download() {
-		const blob = new Blob([review.exportPayload()], { type: 'application/json' });
-		const url = URL.createObjectURL(blob);
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = `aba-assist-review-${new Date().toISOString().slice(0, 10)}.json`;
-		a.click();
-		URL.revokeObjectURL(url);
+		downloadBlob(
+			`aba-assist-review-${new Date().toISOString().slice(0, 10)}.json`,
+			review.exportPayload(),
+			'application/json'
+		);
 	}
 
 	async function copy() {

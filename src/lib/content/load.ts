@@ -3,6 +3,7 @@ import type {
 	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
+	PracticeGuide,
 	QuizQuestion,
 	Term,
 	TermIndexEntry
@@ -13,6 +14,7 @@ import taxonomy from './generated/taxonomy.json';
 import credentialData from './generated/credentials.json';
 import ethicsCodeData from './generated/ethics-codes.json';
 import ethicsTopicData from './generated/ethics-topics.json';
+import practiceGuideData from './generated/practice-guides.json';
 
 export const termIndex = index as TermIndexEntry[];
 export const contentVersion = version as {
@@ -108,6 +110,20 @@ export const CREDENTIAL_LABELS: Record<string, string> = {
 	BCaBA: 'Board Certified Assistant Behavior Analyst',
 	BCBA: 'Board Certified Behavior Analyst'
 };
+
+// -------------------------------------------------------- practice guides
+
+/**
+ * The documentation aids. Two small documents opened together, so they ship in the main
+ * chunk rather than as a lazy import — the whole file is smaller than one term page.
+ */
+export const practiceGuides = practiceGuideData as unknown as Record<string, PracticeGuide>;
+
+export const practiceGuideList: PracticeGuide[] = Object.values(practiceGuides);
+
+export function practiceGuideById(id: string): PracticeGuide | undefined {
+	return practiceGuides[id];
+}
 
 // ------------------------------------------------------------ credentials
 

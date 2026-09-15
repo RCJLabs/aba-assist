@@ -201,3 +201,44 @@ test('the tracker with data in it is accessible', async ({ page }) => {
 	await expect(page.locator('.month')).toHaveCount(1);
 	await expectNoA11yViolations(page);
 });
+
+test('the note guides show the elements, the phrasing pairs, and who decides', async ({
+	page
+}) => {
+	await page.goto('/tools/notes');
+
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Writing session notes');
+	// Both guides render, with their content rather than a placeholder.
+	await expect(page.locator('.items li')).toHaveCount(9);
+	await expect(page.locator('.pairs li')).toHaveCount(14);
+
+	// Every guide names who actually sets the requirements, because this app does not.
+	await expect(page.locator('.who')).toHaveCount(2);
+	await expect(page.locator('.who').first()).toContainText(/employer|funder/i);
+
+	// Ticking is scratch paper: it is reported, and it does not survive leaving the page.
+	const progress = page.getByRole('status');
+	await expect(progress).toContainText('0 of 9 ticked');
+	await page.locator('.items input[type="checkbox"]').first().check();
+	await expect(progress).toContainText('1 of 9 ticked');
+
+	await page.goto('/tools');
+	await page.goto('/tools/notes');
+	await expect(page.getByRole('status')).toContainText('0 of 9 ticked');
+});
+
+test('the phrasing guide labels each side in words, not only by colour', async ({ page }) => {
+	await page.goto('/tools/notes');
+	const first = page.locator('.pairs li').first();
+	await expect(first.locator('.tag').first()).toHaveText('Instead of');
+	await expect(first.locator('.tag').nth(1)).toHaveText('Write');
+});
+
+test('the note guides have a plain-language reading', async ({ page }) => {
+	await page.goto('/tools/notes');
+	const summaries = page.locator('.summary');
+	await expect(summaries.first()).not.toHaveClass(/plain/);
+	await page.getByRole('button', { name: /plain language/i }).click();
+	await expect(summaries.first()).toHaveClass(/plain/);
+	await expect(summaries.first()).toContainText('health record');
+});

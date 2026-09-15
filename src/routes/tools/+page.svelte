@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
 	import { developmentCsv, supervisionCsv } from '$lib/tracker/csv.js';
+	import { downloadBlob } from '$lib/util/download.js';
 
 	onMount(() => void tracker.load());
 
@@ -19,26 +20,22 @@
 	const thisMonth = $derived(todayIso().slice(0, 7));
 	const short = $derived(months.filter((m) => m.standing === 'short').length);
 
-	function download(name: string, body: string) {
-		const url = URL.createObjectURL(new Blob([body], { type: 'text/csv;charset=utf-8' }));
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = name;
-		a.click();
-		URL.revokeObjectURL(url);
-	}
-
 	function exportSupervision() {
 		const s = tracker.snapshot();
-		download(
+		downloadBlob(
 			`supervision-${todayIso()}.csv`,
-			supervisionCsv(s.entries, s.workplaces, s.supervisees, s.serviceMonths)
+			supervisionCsv(s.entries, s.workplaces, s.supervisees, s.serviceMonths),
+			'text/csv;charset=utf-8'
 		);
 	}
 
 	function exportDevelopment() {
 		const s = tracker.snapshot();
-		download(`professional-development-${todayIso()}.csv`, developmentCsv(s.units, s.cycles));
+		downloadBlob(
+			`professional-development-${todayIso()}.csv`,
+			developmentCsv(s.units, s.cycles),
+			'text/csv;charset=utf-8'
+		);
 	}
 </script>
 
@@ -151,6 +148,14 @@
 			{:else}
 				<p class="now">No cycle set up yet.</p>
 			{/if}
+		</article>
+		<article class="card">
+			<h2><a href={resolve('/tools/notes')}>Writing session notes</a></h2>
+			<p>
+				What a note usually has to carry and why, plus fourteen phrases people actually write
+				and the same observation said so somebody else could have counted it.
+			</p>
+			<p class="now">Nothing to set up, and nothing is saved.</p>
 		</article>
 	</div>
 

@@ -6,6 +6,7 @@ import {
 	ethicsCodes,
 	ethicsTopicList,
 	loadQuestions,
+	practiceGuideList,
 	loadTermBucket,
 	outlines,
 	questionCredentials
@@ -182,6 +183,36 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		});
 	}
 
+	// ---------------------------------------------------------- practice guides
+	for (const g of practiceGuideList) {
+		items.push({
+			id: g.id,
+			kind: 'practice-guide',
+			title: g.title,
+			subtitle: `${g.audience.join(', ')} · ${g.gloss}`,
+			status: g.review.status,
+			href: resolve('/tools/notes'),
+			fields: [
+				{ label: 'What it says', lines: [g.ourSummary] },
+				{ label: 'Plain language', lines: [g.plainSummary] },
+				{ label: 'Who actually decides', lines: [g.whoDecides] },
+				g.kind === 'checklist'
+					? {
+							label: 'Elements',
+							lines: g.items.map(
+								(i) => `${i.label} — ${i.why}${i.example ? ` (e.g. ${i.example})` : ''}`
+							)
+						}
+					: {
+							label: 'Pairs',
+							lines: g.pairs.map((p) => `${p.vague} → ${p.objective} — ${p.why}`)
+						}
+			],
+			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
+			consulted: g.attestation.consulted
+		});
+	}
+
 	// ------------------------------------------------------------ ethics codes
 	for (const c of Object.values(ethicsCodes)) {
 		items.push({
@@ -277,6 +308,7 @@ export const KIND_LABELS: Record<ReviewableKind, string> = {
 	question: 'Practice questions',
 	'ethics-topic': 'Ethics topics',
 	'ethics-code': 'Ethics codes',
+	'practice-guide': 'Practice guides',
 	credential: 'Credential requirements',
 	outline: 'Exam outlines'
 };

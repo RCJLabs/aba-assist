@@ -49,7 +49,14 @@ export interface ReviewDecision {
 }
 
 export type ReviewableKind =
-	'term' | 'scenario' | 'question' | 'ethics-topic' | 'ethics-code' | 'credential' | 'outline';
+	| 'term'
+	| 'scenario'
+	| 'question'
+	| 'ethics-topic'
+	| 'ethics-code'
+	| 'practice-guide'
+	| 'credential'
+	| 'outline';
 
 /**
  * Someone a user supervises, or the organisation they work for.

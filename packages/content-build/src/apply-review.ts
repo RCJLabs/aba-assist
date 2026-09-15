@@ -30,7 +30,14 @@ import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { discover } from './parse.js';
 
 export type ReviewableKind =
-	'term' | 'scenario' | 'question' | 'ethics-topic' | 'ethics-code' | 'credential' | 'outline';
+	| 'term'
+	| 'scenario'
+	| 'question'
+	| 'ethics-topic'
+	| 'ethics-code'
+	| 'practice-guide'
+	| 'credential'
+	| 'outline';
 
 export interface ReviewDecisionInput {
 	id: string;
@@ -79,6 +86,7 @@ const COLLECTIONS: Record<ReviewableKind, { dir: string; ext: string }> = {
 	scenario: { dir: 'scenarios', ext: '.md' },
 	'ethics-topic': { dir: 'ethics/topics', ext: '.md' },
 	'ethics-code': { dir: 'ethics/codes', ext: '.yaml' },
+	'practice-guide': { dir: 'practice', ext: '.md' },
 	credential: { dir: 'credentials', ext: '.yaml' },
 	outline: { dir: 'taxonomy', ext: '.yaml' },
 	question: { dir: 'questions', ext: '.yaml' }

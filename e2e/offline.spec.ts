@@ -52,7 +52,8 @@ test('every main route still opens with no network', async ({ page, context }) =
 		// signal, so it is precached rather than excluded like the per-term pages.
 		['/tools', /Tools/],
 		['/tools/supervision', /Supervision log/],
-		['/tools/development', /Professional development/]
+		['/tools/development', /Professional development/],
+		['/tools/notes', /Writing session notes/]
 	];
 
 	for (const [path, heading] of routes) {

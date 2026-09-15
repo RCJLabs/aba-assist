@@ -6,6 +6,7 @@ import {
 	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
+	PracticeGuide,
 	QuizFile,
 	Scenario,
 	SourceRegistry,
@@ -16,6 +17,7 @@ import {
 	type QuizQuestion,
 	type Source,
 	type TaskRef,
+	type PracticeGuide as z_PracticeGuide,
 	type TermIndexEntry
 } from '@aba/content-schema';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
@@ -62,6 +64,13 @@ function topicProse(t: z_EthicsTopic): string[] {
 		...t.whatThisLooksLike,
 		...t.commonPitfalls
 	];
+}
+
+function guideProse(g: z_PracticeGuide): string[] {
+	const base = [g.title, g.gloss, g.ourSummary, g.plainSummary, g.whoDecides];
+	return g.kind === 'checklist'
+		? [...base, ...g.items.flatMap((i) => [i.label, i.why, i.example ?? ''])]
+		: [...base, ...g.pairs.flatMap((p) => [p.vague, p.objective, p.why])];
 }
 
 function scenarioProse(s: z_Scenario): string[] {
@@ -296,6 +305,68 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 				...checkScenarioSafety(value as unknown as Record<string, unknown>, prose, parsed.file)
 			);
 			push(...checkReviewStatus(value.review, channel, parsed.file));
+		}
+	}
+
+	// -------------------------------------------------------- practice guides
+	const guides: z_PracticeGuide[] = [];
+	const guideFiles = new Map<string, string>();
+	{
+		const dir = join(root, 'practice');
+		for (const path of await discover(dir, ['.md'])) {
+			const { parsed, issues: pIssues } = await parseMarkdown(root, dir, path);
+			push(...pIssues);
+			if (!parsed) continue;
+			inputHash.update(JSON.stringify(parsed.data));
+
+			const { value, issues: sIssues } = checkSchema(
+				PracticeGuide,
+				parsed.data,
+				parsed.file,
+				'schema/practice-guide'
+			);
+			push(...sIssues);
+			if (!value) continue;
+
+			if (value.id !== parsed.basename) {
+				push(
+					error(
+						'structure/id-filename-mismatch',
+						`id "${value.id}" does not match filename "${parsed.basename}"`,
+						parsed.file
+					)
+				);
+			}
+			if (guideFiles.has(value.id)) {
+				push(
+					error(
+						'structure/duplicate-id',
+						`duplicate practice guide "${value.id}"`,
+						parsed.file
+					)
+				);
+			}
+			guideFiles.set(value.id, parsed.file);
+			guides.push(value);
+
+			const prose = guideProse(value);
+			push(...checkRights(value, prose, sources, parsed.file));
+			push(...checkReviewStatus(value.review, channel, parsed.file));
+			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', parsed.file));
+			/*
+			 * The clinical-decision check, and only that one.
+			 *
+			 * The risk lexicon that guards scenarios would be actively wrong here: this is
+			 * documentation guidance, and the whole point of the phrasing guide is to help
+			 * somebody describe an incident — including a hard one — in terms a reader can
+			 * measure. Describing what happened is required of a technician; deciding what
+			 * to do about it is not theirs, which is what this check still catches.
+			 */
+			push(
+				...checkScenarioSafety({ kind: 'practice-guide' }, prose, parsed.file).filter(
+					(i) => i.rule === 'safety/clinical-decision-language'
+				)
+			);
 		}
 	}
 
@@ -612,6 +683,17 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			checkTaskRefs([q.taskRef, ...q.secondaryTaskRefs], file);
 		}
 
+		for (const g of guides) {
+			const file = guideFiles.get(g.id)!;
+			checkRefs(g.termRefs, termIds, 'term', file, 'termRefs');
+			for (const c of g.citations) {
+				if (!sources.has(c.sourceId)) {
+					push(error('refs/unknown-source', `cites unknown source "${c.sourceId}"`, file));
+				}
+			}
+			checkTaskRefs(g.taskRefs, file);
+		}
+
 		const topicIds = new Set(ethicsTopics.map((t) => t.id));
 		const scenarioIdSet = new Set(scenarios.map((x) => x.id));
 		for (const t of ethicsTopics) {
@@ -675,6 +757,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...credentials,
 		...ethicsCodes,
 		...ethicsTopics,
+		...guides,
 		...outlines.values()
 	].filter((x) => x.review.status !== 'approved').length;
 
@@ -686,6 +769,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		outlines: outlines.size,
 		credentials: credentials.length,
 		ethicsTopics: ethicsTopics.length,
+		practiceGuides: guides.length,
 		unreviewed
 	};
 
@@ -709,6 +793,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		credentials,
 		ethicsCodes,
 		ethicsTopics,
+		guides,
 		contentVersion
 	);
 
@@ -723,6 +808,7 @@ function buildAssets(
 	credentials: z_Credential[],
 	ethicsCodes: z_EthicsCode[],
 	ethicsTopics: z_EthicsTopic[],
+	guides: z_PracticeGuide[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -801,6 +887,14 @@ function buildAssets(
 		name: 'credentials',
 		fileName: `${base}/credentials.json`,
 		source: JSON.stringify(Object.fromEntries(credentials.map((c) => [c.id, c]))),
+		fetchedAtRuntime: false
+	});
+
+	// Two small documents that are opened together, so one file rather than two requests.
+	assets.push({
+		name: 'practice-guides',
+		fileName: `${base}/practice-guides.json`,
+		source: JSON.stringify(Object.fromEntries(guides.map((g) => [g.id, g]))),
 		fetchedAtRuntime: false
 	});
 

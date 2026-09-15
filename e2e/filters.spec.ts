@@ -50,6 +50,17 @@ test('search results respect the exam filter', async ({ page }) => {
 	// Internal and external validity are BCBA-outline terms with no RBT tagging.
 	await expect(page.getByRole('link', { name: /Internal Validity/ })).toBeVisible();
 
+	/*
+	 * Wait for the fuzzy index to take over before touching the filter.
+	 *
+	 * Typing warms the index in the background, and when it arrives the results re-render
+	 * from it instead of from the instant substring fallback. That handover can replace
+	 * the filter's DOM mid-interaction, which surfaced as an intermittent selectOption
+	 * timeout in full runs and never in isolation. `data-search-status` exists for exactly
+	 * this — waiting on it is deterministic, where waiting on results is not.
+	 */
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+
 	// The filter sits in a closed <details> on the home page; open it first.
 	await page.locator('details.filter-box summary').click();
 	await page

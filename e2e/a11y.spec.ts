@@ -19,7 +19,8 @@ const ROUTES = [
 	'/ethics/gifts',
 	'/tools',
 	'/tools/supervision',
-	'/tools/development'
+	'/tools/development',
+	'/tools/notes'
 ];
 
 /*
