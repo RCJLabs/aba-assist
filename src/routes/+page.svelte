@@ -144,6 +144,10 @@
 			<strong>Flashcards</strong>
 			<span>Spaced repetition over any set of terms. Works offline.</span>
 		</a>
+		<a class="tile" href={resolve('/plan')}>
+			<strong>What to study next</strong>
+			<span>Your practice history, read as a plan rather than a score.</span>
+		</a>
 		<a class="tile" href={resolve('/quiz')}>
 			<strong>Practice questions</strong>
 			<span>{questionCount} original questions with a rationale for every option.</span>

@@ -459,6 +459,15 @@
 			</tbody>
 		</table>
 
+		<!--
+			The link that used to be missing. A per-area table with nothing to do about it
+			leaves the reader to work out their own next step from six percentages.
+		-->
+		<p class="next-step">
+			<a href={resolve('/plan')}>See what to study next</a> — your areas across every session, with
+			an accuracy only where enough has been answered to mean anything.
+		</p>
+
 		{#if quiz.results.missed.length > 0}
 			<h3>Questions you missed</h3>
 			<ol class="missed">

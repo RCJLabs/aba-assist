@@ -217,6 +217,38 @@ is rejected, flag or no flag. The build caught a genuine slip while this was bei
 — "staff holding a current certification" in a legal note — which is the guard working
 rather than a reason to loosen it further.
 
+## The study plan refuses to give you a score
+
+`/plan` reads what is already stored — per-area totals on every quiz attempt, the
+scheduler's record of which terms have been seen — and turns it into a ranked list of
+next actions. Nothing new is recorded to produce it, so it works offline and tells nobody
+anything.
+
+The arithmetic is the easy half. What the page is really for is refusing two numbers that
+would be the most reassuring things on the screen and the least supported:
+
+- **No percentage until there are enough answers**, where "enough" is as many as the real
+  paper asks in that area. Derived rather than picked: "enough to say something about this
+  domain" and "as many as the exam will ask you about it" are the same number, which makes
+  the threshold arguable instead of arbitrary and lets it scale with the blueprint. Below
+  it the page shows the count and says how many more it wants.
+- **No overall figure until every area has been sampled.** An average over whichever areas
+  somebody happened to practise says more about their choice of practice than about their
+  knowledge.
+
+Even once there is a number, the page says what it is: an accuracy on this app's
+questions. Not a score, not a prediction, not a probability of passing. A bank written by
+one author is not a calibrated instrument and has never been validated against the real
+exam, and an app in this market that implies otherwise is doing the thing the reviews of
+its competitors complain about.
+
+Actions are ranked by how much the exam cares rather than by how bad the number looks: an
+area worth a quarter of the paper at 70% outranks one worth a twentieth at 50%, because
+that is where an hour is best spent. An unsampled area is scored as a coin flip plus a
+small bonus for the value of finding out — enough to prefer measuring over practising at
+equal weight, not enough to send somebody to sample a light area ahead of a heavy known
+weakness.
+
 ## Graphs are content, not pictures
 
 Data collection and graphing is the second-largest domain on the technician exam, and

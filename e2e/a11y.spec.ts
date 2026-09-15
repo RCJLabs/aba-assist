@@ -17,6 +17,7 @@ const ROUTES = [
 	'/exams/bcba-tco-6',
 	'/study',
 	'/quiz',
+	'/plan',
 	'/ethics',
 	'/ethics/gifts',
 	'/tools',

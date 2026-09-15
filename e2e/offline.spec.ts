@@ -50,6 +50,7 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/ethics', /Ethics/],
 		// The tracker is the one part of this app somebody opens in a building with no
 		// signal, so it is precached rather than excluded like the per-term pages.
+		['/plan', /What to study next/],
 		['/tools', /Tools/],
 		['/tools/supervision', /Supervision log/],
 		['/tools/development', /Professional development/],
