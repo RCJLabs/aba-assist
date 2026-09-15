@@ -331,3 +331,103 @@ describe('parseExport', () => {
 		expect(parseExport('not json').errors.join(' ')).toMatch(/Not valid JSON/);
 	});
 });
+
+describe('how an approval was reached', () => {
+	/*
+	 * The glossary is the only thing that may be carried by a sample, and a file that was
+	 * carried has to say so. An approval that hides its own basis is worth less than one
+	 * that states it, and the whole point of tiering the review is lost if the record
+	 * cannot tell the two apart afterwards.
+	 */
+
+	it('writes the method into a term that was read', async () => {
+		const root = await fixture();
+		const result = await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-15',
+			decisions: [{ id: 'sample-term', kind: 'term', decision: 'approved', method: 'read' }]
+		});
+		expect(result.errors).toEqual([]);
+		const text = await readFile(join(root, 'content/terms/principles/sample-term.md'), 'utf8');
+		expect(text).toContain('reviewMethod: read');
+		expect(text).not.toContain('sampledWith:');
+	});
+
+	it('writes the draw into a term that a sample carried', async () => {
+		const root = await fixture();
+		const result = await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-15',
+			decisions: [
+				{
+					id: 'sample-term',
+					kind: 'term',
+					decision: 'approved',
+					method: 'sampled',
+					sampledWith: 'term:principles@abc123:10-of-40'
+				}
+			]
+		});
+		expect(result.errors).toEqual([]);
+		const text = await readFile(join(root, 'content/terms/principles/sample-term.md'), 'utf8');
+		expect(text).toContain('reviewMethod: sampled');
+		expect(text).toContain("sampledWith: 'term:principles@abc123:10-of-40'");
+	});
+
+	it('REFUSES to record a sampled approval on anything but a glossary term', async () => {
+		const root = await fixture();
+		const result = await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-15',
+			decisions: [
+				{
+					id: 'sample-outline',
+					kind: 'outline',
+					decision: 'approved',
+					method: 'sampled',
+					sampledWith: 'x'
+				}
+			]
+		});
+		expect(result.errors.join(' ')).toMatch(/only recorded for glossary terms/);
+	});
+
+	it('REFUSES a sampled approval that does not name its draw', async () => {
+		const root = await fixture();
+		const result = await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-15',
+			decisions: [{ id: 'sample-term', kind: 'term', decision: 'approved', method: 'sampled' }]
+		});
+		expect(result.errors.join(' ')).toMatch(/must name the draw/);
+	});
+
+	it('clears the method when a term goes back to needing a change', async () => {
+		const root = await fixture();
+		await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-15',
+			decisions: [{ id: 'sample-term', kind: 'term', decision: 'approved', method: 'read' }]
+		});
+		await applyDecisions({
+			root,
+			reviewer: 'evan',
+			today: '2026-09-16',
+			decisions: [
+				{
+					id: 'sample-term',
+					kind: 'term',
+					decision: 'needs-change',
+					note: 'The gloss is wrong.'
+				}
+			]
+		});
+		const text = await readFile(join(root, 'content/terms/principles/sample-term.md'), 'utf8');
+		expect(text).not.toContain('reviewMethod:');
+	});
+});

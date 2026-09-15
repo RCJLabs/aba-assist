@@ -56,6 +56,26 @@ export const Review = z.strictObject({
 	changeNote: z.string().max(280).optional()
 });
 
+/**
+ * How an approval was reached. Spread into the glossary schema and nowhere else.
+ *
+ * Reviewing every item of a large corpus to the same depth is not a plan, so the build
+ * plan tiers it: situations, ethics and requirements are read one by one, and ordinary
+ * definitions are carried by a sample of their batch. That is a defensible way to review
+ * a glossary and an indefensible way to review an escalation card — so these two fields
+ * exist only on `Term`. Every other schema is strict, which makes `reviewMethod:
+ * "sampled"` on a scenario a parse error rather than a judgement call.
+ *
+ * The point of recording it is that afterwards anyone can tell which items a human
+ * actually read and which ones a sample carried. An approval that hides its own basis is
+ * worth less than one that states it.
+ */
+export const SampledApproval = {
+	reviewMethod: z.enum(['read', 'sampled']).nullable().default(null),
+	/** The draw that carried this item, e.g. "term:principles@a1b2c3:9-of-41". */
+	sampledWith: z.string().max(160).nullable().default(null)
+} as const;
+
 export const Provenance = z.strictObject({
 	license: ContentLicense,
 	tier: Tier.default('free'),

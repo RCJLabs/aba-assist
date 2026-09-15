@@ -45,6 +45,13 @@ export interface ReviewDecision {
 	decision: 'approved' | 'needs-change';
 	/** Required for `needs-change`: what is wrong. */
 	note: string;
+	/**
+	 * How an approval was reached. Glossary terms only — nothing else may be carried by a
+	 * sample, and the content schemas have no field for it anywhere else.
+	 */
+	method?: 'read' | 'sampled';
+	/** The draw that carried a sampled approval. */
+	sampledWith?: string;
 	decidedAt: number;
 }
 

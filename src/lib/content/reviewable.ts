@@ -34,6 +34,13 @@ export interface ReviewItem {
 	subtitle: string;
 	/** The status recorded in the content file, so a reviewer can see what is already done. */
 	status: string;
+	/**
+	 * Term category, and null for every other kind.
+	 *
+	 * Carried explicitly rather than parsed back out of `subtitle`, because the tiering
+	 * and the sampling both key off it and a display string is not an interface.
+	 */
+	category: string | null;
 	/** Where to read it as a reader would. Null for items with no page of their own. */
 	href: string | null;
 	fields: ReviewField[];
@@ -64,6 +71,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				title: t.term,
 				subtitle: `${category}${t.aliases.length ? ` · also: ${t.aliases.join(', ')}` : ''}`,
 				status: t.review.status,
+				category,
 				href: resolve('/glossary/[slug]', { slug: t.id }),
 				fields: [
 					{ label: 'Technical definition', lines: [t.definition.technical] },
@@ -119,6 +127,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: s.title,
 			subtitle: s.kind === 'guidance' ? 'Everyday situation' : 'Stop and escalate',
 			status: s.review.status,
+			category: null,
 			href: resolve('/scenarios/[slug]', { slug: s.id }),
 			fields,
 			citations: s.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
@@ -135,6 +144,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				title: q.stem,
 				subtitle: `${q.credential} ${q.taskRef.code} · ${q.cognitiveLevel} · difficulty ${q.difficulty}`,
 				status: q.review.status,
+				category: null,
 				href: null,
 				fields: [
 					{
@@ -167,6 +177,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: t.ourLabel,
 			subtitle: `${t.appliesTo.join(', ')} · ${t.gloss}`,
 			status: t.review.status,
+			category: null,
 			href: resolve('/ethics/[slug]', { slug: t.id }),
 			fields: [
 				{ label: 'What the obligation is', lines: [t.ourSummary] },
@@ -192,6 +203,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: g.title,
 			subtitle: `${g.audience.join(', ')} · ${g.gloss}`,
 			status: g.review.status,
+			category: null,
 			href: resolve('/tools/notes'),
 			fields: [
 				{ label: 'What it says', lines: [g.ourSummary] },
@@ -222,6 +234,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: g.title,
 			subtitle: `${g.design} · ${g.gloss}`,
 			status: g.review.status,
+			category: null,
 			href: resolve('/graphs/[slug]', { slug: g.id }),
 			fields: [
 				{ label: 'Why it matters', lines: [g.teaching] },
@@ -261,6 +274,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: c.shortName,
 			subtitle: `Effective ${c.effectiveDate} · ${c.appliesTo.join(', ')}`,
 			status: c.review.status,
+			category: null,
 			href: resolve('/ethics'),
 			fields: [
 				{ label: 'Overview', lines: [c.ourOverview] },
@@ -297,6 +311,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: `${c.credential} requirements`,
 			subtitle: `From the ${c.handbookVersion} handbook`,
 			status: c.review.status,
+			category: null,
 			href: c.outlineId ? resolve('/exams/[id]', { id: c.outlineId }) : null,
 			fields: [
 				{ label: 'Overview', lines: [c.ourOverview] },
@@ -320,6 +335,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			title: `${o.credential} Test Content Outline (${o.edition} ed.)`,
 			subtitle: `Effective ${o.effectiveDate} · ${o.domains.length} domains · ${o.totalTasks} tasks`,
 			status: o.review.status,
+			category: null,
 			href: resolve('/exams/[id]', { id: o.id }),
 			fields: [
 				{

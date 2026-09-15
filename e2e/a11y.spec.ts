@@ -26,6 +26,7 @@ const ROUTES = [
 	'/tools/timer',
 	'/tools/fieldwork',
 	'/graphs',
+	'/review',
 	'/graphs/anatomy-of-a-line-graph',
 	'/graphs/a-multiple-baseline-across-behaviours'
 ];

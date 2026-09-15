@@ -44,6 +44,14 @@ export interface ReviewDecisionInput {
 	kind: ReviewableKind;
 	decision: 'approved' | 'needs-change';
 	note?: string;
+	/**
+	 * How the approval was reached. Glossary terms only — every other schema is strict
+	 * and has no field for it, so a sampled approval on an escalation card cannot be
+	 * written even by a malformed export.
+	 */
+	method?: 'read' | 'sampled';
+	/** The draw that carried a sampled approval. Required with `method: "sampled"`. */
+	sampledWith?: string;
 }
 
 export interface ApplyReviewInput {
@@ -245,6 +253,36 @@ export function rewriteSingleReview(text: string, review: ReviewFields): string 
 	return spliceBlock(lines, start, renderReview(review, '')).join('\n');
 }
 
+/**
+ * Set or clear the two top-level keys that record how a term's approval was reached.
+ *
+ * They sit beside `review:` rather than inside it because the schema keeps them on the
+ * glossary alone, and the review block is shared by every kind of content. Clearing means
+ * removing the lines entirely rather than writing nulls, so a file that was never
+ * approved stays as clean as it was.
+ */
+export function rewriteMethod(
+	text: string,
+	method: 'read' | 'sampled' | null,
+	sampledWith: string | null
+): string {
+	const lines = text.split('\n').filter((l) => !/^(reviewMethod|sampledWith):/.test(l));
+	if (method === null) return lines.join('\n');
+
+	const added = [`reviewMethod: ${method}`];
+	if (sampledWith !== null) added.push(`sampledWith: '${sampledWith.replace(/'/g, "''")}'`);
+
+	// Immediately after the review block, which is where a reader looks for it.
+	const start = lines.findIndex((l) => /^review:\s*$/.test(l));
+	if (start === -1) return [...lines, ...added].join('\n');
+	let end = start + 1;
+	while (end < lines.length && (lines[end]!.startsWith(' ') || lines[end]!.trim() === '')) {
+		if (lines[end]!.trim() === '') break;
+		end++;
+	}
+	return [...lines.slice(0, end), ...added, ...lines.slice(end)].join('\n');
+}
+
 /** Split a markdown file into frontmatter and the rest, without reserialising either. */
 function splitFrontmatter(text: string): { front: string; rest: string } | null {
 	if (!text.startsWith('---\n')) return null;
@@ -253,11 +291,17 @@ function splitFrontmatter(text: string): { front: string; rest: string } | null 
 	return { front: text.slice(4, end + 1), rest: text.slice(end + 1) };
 }
 
-export function rewriteMarkdown(text: string, review: ReviewFields): string | null {
+export function rewriteMarkdown(
+	text: string,
+	review: ReviewFields,
+	method?: { method: 'read' | 'sampled' | null; sampledWith: string | null }
+): string | null {
 	const split = splitFrontmatter(text);
 	if (!split) return null;
-	const front = rewriteSingleReview(split.front, review);
-	return front === null ? null : `---\n${front}${split.rest}`;
+	let front = rewriteSingleReview(split.front, review);
+	if (front === null) return null;
+	if (method) front = rewriteMethod(front, method.method, method.sampledWith);
+	return `---\n${front}${split.rest}`;
 }
 
 /**
@@ -348,6 +392,21 @@ export async function applyDecisions(input: ApplyReviewInput): Promise<ApplyRevi
 			);
 			continue;
 		}
+		if (decision.method !== undefined && decision.kind !== 'term') {
+			errors.push(
+				`${key}: a review method is only recorded for glossary terms. Nothing else may be approved by sample.`
+			);
+		}
+		if (decision.method === 'sampled' && !(decision.sampledWith ?? '').trim()) {
+			errors.push(`${key}: a sampled approval must name the draw that carried it.`);
+		}
+		if (decision.method !== 'sampled' && (decision.sampledWith ?? '').trim()) {
+			errors.push(`${key}: names a sample but the method is not "sampled".`);
+		}
+		if (decision.method !== undefined && decision.decision !== 'approved') {
+			errors.push(`${key}: a review method only means something on an approval.`);
+		}
+
 		const note = (decision.note ?? '').trim();
 		if (decision.decision === 'needs-change' && note.length === 0) {
 			errors.push(`${key} is flagged but carries no note saying what is wrong.`);
@@ -400,7 +459,17 @@ export async function applyDecisions(input: ApplyReviewInput): Promise<ApplyRevi
 			if (result.expanded) expandedAnchors.push(first.item.file);
 			updated = result.text;
 		} else if (COLLECTIONS[first.item.kind].ext === '.md') {
-			updated = rewriteMarkdown(text, first.next);
+			// Only the glossary carries a review method; everything else has no field for it.
+			const method =
+				first.item.kind === 'term'
+					? first.decision.decision === 'approved'
+						? {
+								method: (first.decision.method ?? 'read') as 'read' | 'sampled',
+								sampledWith: first.decision.sampledWith ?? null
+							}
+						: { method: null, sampledWith: null }
+					: undefined;
+			updated = rewriteMarkdown(text, first.next, method);
 		} else {
 			updated = rewriteSingleReview(text, first.next);
 		}
@@ -464,10 +533,16 @@ export function parseExport(raw: string): {
 				errors.push(`decisions[${i}] has decision "${String(e.decision)}".`);
 				continue;
 			}
+			if (e.method !== undefined && e.method !== 'read' && e.method !== 'sampled') {
+				errors.push(`decisions[${i}] has method "${String(e.method)}".`);
+				continue;
+			}
 			decisions.push({
 				id: e.id,
 				kind: kind as ReviewableKind,
 				decision: e.decision,
+				...(e.method === undefined ? {} : { method: e.method }),
+				...(typeof e.sampledWith === 'string' ? { sampledWith: e.sampledWith } : {}),
 				note: typeof e.note === 'string' ? e.note : ''
 			});
 		}

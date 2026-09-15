@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { KIND_LABELS, type ReviewableKind } from '$lib/content/reviewable.js';
+	import { TIER_LABELS, TIER_NOTES, type ReviewTier } from '$lib/content/tier.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { review } from '$lib/state/review.svelte.js';
 	import { downloadBlob } from '$lib/util/download.js';
@@ -15,6 +16,14 @@
 	const item = $derived(review.current);
 	const decision = $derived(item ? review.decisions[item.id] : undefined);
 	const counts = $derived(review.counts);
+	const tiers: ReviewTier[] = ['A', 'B', 'C'];
+	const meta = $derived(item ? review.metaFor(item) : null);
+
+	async function carryBatch(name: string) {
+		const s = review.samples.get(name);
+		await review.carryBatch(name);
+		announcer.announce(`${s?.carried.length ?? 0} terms carried by the ${name} draw`);
+	}
 
 	async function decide(d: 'approved' | 'needs-change') {
 		if (!item) return;
@@ -104,6 +113,67 @@
 		</div>
 	</dl>
 
+	<!--
+		Tier first, because the queue is otherwise four hundred items in no particular
+		order and the only rational way through it is hardest-consequence-first.
+	-->
+	<div class="tiers" role="group" aria-label="Review tier">
+		{#each tiers as t (t)}
+			{@const load = review.tierLoad(t)}
+			<button
+				type="button"
+				class:active={review.tier === t}
+				onclick={() => review.setTier(t)}
+				aria-pressed={review.tier === t}
+			>
+				<strong>Tier {t}</strong>
+				<span class="tier-label">{TIER_LABELS[t]}</span>
+				<span class="tier-load">
+					{#if load.left === 0}
+						done
+					{:else}
+						{load.left} to read · about {load.minutes} min
+					{/if}
+				</span>
+			</button>
+		{/each}
+		<button
+			type="button"
+			class:active={review.tier === 'all'}
+			onclick={() => review.setTier('all')}
+			aria-pressed={review.tier === 'all'}
+		>
+			<strong>Everything</strong>
+			<span class="tier-label">No ordering</span>
+			<span class="tier-load">{counts.total - counts.decided} left</span>
+		</button>
+	</div>
+
+	{#if review.tier !== 'all'}
+		<p class="tier-note">{TIER_NOTES[review.tier]}</p>
+	{/if}
+
+	{#if review.tier === 'C'}
+		<div class="field sample-rate">
+			<label for="rate">Read this much of each glossary batch</label>
+			<select
+				id="rate"
+				value={String(review.sampleRate)}
+				onchange={(e) => (review.sampleRate = Number(e.currentTarget.value))}
+			>
+				<option value="1">All of it — no sampling</option>
+				<option value="0.5">Half</option>
+				<option value="0.25">A quarter</option>
+				<option value="0.1">A tenth</option>
+			</select>
+			<p class="hint">
+				Approving a batch on its sample records the rest as approved
+				<strong>without anybody reading them</strong>. Each carried file says so, and says
+				which draw carried it. How much is enough is your call, not the author's.
+			</p>
+		</div>
+	{/if}
+
 	<div class="controls">
 		<div class="field">
 			<label for="kind">Reviewing</label>
@@ -136,6 +206,12 @@
 				</p>
 				<h2>{item.title}</h2>
 				<p class="subtitle">{item.subtitle}</p>
+				{#if meta}
+					<p class="tier-why">
+						<span class="badge" data-tier={meta.tier}>Tier {meta.tier}</span>
+						{meta.reason}
+					</p>
+				{/if}
 			</header>
 
 			{#each item.fields as f (f.label)}
@@ -204,6 +280,52 @@
 		</p>
 	{/if}
 
+	{#if review.tier === 'C'}
+		<section class="batches">
+			<h2>Glossary batches</h2>
+			<p class="hint">
+				Each batch is one category. Read its draw, then decide whether the draw is enough to
+				carry the rest.
+			</p>
+			<ul>
+				{#each [...review.samples] as [name, s] (name)}
+					{@const state = review.batchState(name)}
+					<li data-state={state}>
+						<div>
+							<strong>{name.replace('term:', '')}</strong>
+							<span class="hint">
+								{s.drawn.length} drawn of {s.drawn.length + s.carried.length}
+								{#if state === 'flagged'}
+									· a drawn item was flagged, so this batch needs reading
+								{:else if state === 'carried'}
+									· {s.carried.length} carried by this draw
+								{:else if state === 'ready'}
+									· the draw is clean
+								{:else}
+									· draw not finished
+								{/if}
+							</span>
+						</div>
+						<button
+							type="button"
+							disabled={state !== 'ready'}
+							onclick={() => {
+								review.setTier('C');
+								void carryBatch(name);
+							}}
+						>
+							{#if state === 'carried'}
+								Carried
+							{:else}
+								Carry {s.carried.length} on this draw
+							{/if}
+						</button>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	<section class="export">
 		<h2>Export</h2>
 		<div class="field">
@@ -267,6 +389,112 @@
 {/if}
 
 <style>
+	.tiers {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.tiers button {
+		display: grid;
+		gap: 0.15rem;
+		text-align: left;
+		padding: 0.6rem 0.75rem;
+		min-height: var(--tap);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+		color: var(--text);
+		font: inherit;
+		cursor: pointer;
+	}
+	.tiers button.active {
+		border-color: var(--accent);
+		border-width: 2px;
+		padding: calc(0.6rem - 1px) calc(0.75rem - 1px);
+	}
+	.tier-label,
+	.tier-load {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+	.tier-note,
+	.hint {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+	.sample-rate {
+		border: 1px solid var(--caution-border);
+		background: var(--caution-bg);
+		border-radius: var(--radius);
+		padding: 0.75rem;
+		margin-bottom: 0.75rem;
+	}
+	.sample-rate .hint {
+		color: var(--caution-text);
+	}
+	.tier-why {
+		margin: 0.35rem 0 0;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: baseline;
+	}
+	/* Never colour alone: the badge carries the letter. */
+	.badge {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.05rem 0.4rem;
+		font-weight: 700;
+		color: var(--text);
+	}
+	.badge[data-tier='A'] {
+		border-color: var(--stop-border);
+		color: var(--stop-text);
+	}
+	.batches ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.4rem;
+	}
+	.batches li {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid var(--border);
+		border-left: 4px solid var(--border);
+		border-radius: var(--radius);
+		padding: 0.5rem 0.75rem;
+	}
+	.batches li[data-state='flagged'] {
+		border-left-color: var(--stop-border);
+	}
+	.batches li[data-state='carried'] {
+		border-left-color: var(--accent);
+	}
+	.batches li[data-state='ready'] {
+		border-left-color: var(--caution-border);
+	}
+	.batches button {
+		min-height: var(--tap);
+		padding: 0 0.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+		color: var(--text);
+		font: inherit;
+		cursor: pointer;
+	}
+	.batches button:disabled {
+		opacity: 0.55;
+		cursor: default;
+	}
 	h1 {
 		font-size: 1.5rem;
 	}

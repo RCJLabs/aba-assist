@@ -367,11 +367,65 @@ describe('referential integrity and review gate', () => {
 		expect(rules(r)).toContain('review/status-not-shippable');
 	});
 
+	it('REJECTS an approved term that does not say how it was approved', async () => {
+		const r = await build(
+			{
+				'terms/principles/sample-term.md': frontmatter(
+					term({
+						review: {
+							status: 'approved',
+							authoredBy: 'tester',
+							authoredOn: '2026-09-14',
+							reviewedBy: 'evan',
+							reviewedOn: '2026-09-15'
+						}
+					})
+				)
+			},
+			'release'
+		);
+		expect(r.errors.map((e) => e.message).join(' ')).toMatch(
+			/approved without recording whether it was read or carried/
+		);
+	});
+
+	it('REJECTS a sampled approval that does not name its draw, and the reverse', async () => {
+		const approved = {
+			status: 'approved',
+			authoredBy: 'tester',
+			authoredOn: '2026-09-14',
+			reviewedBy: 'evan',
+			reviewedOn: '2026-09-15'
+		};
+		const unnamed = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({ reviewMethod: 'sampled', review: approved })
+			)
+		});
+		expect(unnamed.errors.map((e) => e.message).join(' ')).toMatch(/no sample is named/);
+
+		const spurious = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					reviewMethod: 'read',
+					sampledWith: 'term:principles@v:2-of-9',
+					review: approved
+				})
+			)
+		});
+		expect(spurious.errors.map((e) => e.message).join(' ')).toMatch(
+			/names a sample but reviewMethod is not/
+		);
+	});
+
 	it('REJECTS an item approved by its own author', async () => {
 		const r = await build(
 			{
 				'terms/principles/sample-term.md': frontmatter(
 					term({
+						// A valid approval in every other respect, so the self-review rule is
+						// what rejects it rather than a missing method.
+						reviewMethod: 'read',
 						review: {
 							status: 'approved',
 							authoredBy: 'tester',

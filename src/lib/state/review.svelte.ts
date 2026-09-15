@@ -7,6 +7,15 @@ import {
 	type ReviewDecision
 } from '$lib/db/index.js';
 import { loadReviewItems, type ReviewItem } from '$lib/content/reviewable.js';
+import { contentVersion } from '$lib/content/load.js';
+import {
+	batchFor,
+	MINUTES_PER_ITEM,
+	samplesFor,
+	tierFor,
+	type ReviewTier,
+	type Sample
+} from '$lib/content/tier.js';
 
 export type ReviewStatus = 'idle' | 'loading' | 'ready' | 'unavailable';
 
@@ -29,6 +38,15 @@ class Review {
 	items = $state<ReviewItem[]>([]);
 	decisions = $state<Record<string, ReviewDecision>>({});
 	kind = $state<ReviewableKind | 'all'>('all');
+	tier = $state<ReviewTier | 'all'>('A');
+	/**
+	 * Fraction of each glossary batch drawn for reading.
+	 *
+	 * The reviewer sets it, deliberately: how much of a corpus one person has to read
+	 * before the rest can ship on its strength is a judgement about how much they trust
+	 * the author and the validator, and it is not the author's to make.
+	 */
+	sampleRate = $state(0.25);
 	/** Skip items already decided in this pass. */
 	hideDecided = $state(true);
 	index = $state(0);
@@ -69,12 +87,109 @@ class Review {
 		return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(this.reviewer.trim());
 	}
 
+	/** Tier and batch, computed once per load rather than per render. */
+	#meta = $derived(
+		new Map(this.items.map((i) => [i.id, { ...tierFor(i), batch: batchFor(i) }] as const))
+	);
+
+	metaFor(item: ReviewItem) {
+		return this.#meta.get(item.id) ?? { tier: 'C' as ReviewTier, reason: '', batch: null };
+	}
+
 	get queue(): ReviewItem[] {
-		return this.items.filter(
-			(i) =>
-				(this.kind === 'all' || i.kind === this.kind) &&
-				(!this.hideDecided || !this.decisions[i.id])
+		const inSample = this.samples;
+		return this.items.filter((i) => {
+			const meta = this.metaFor(i);
+			if (this.tier !== 'all' && meta.tier !== this.tier) return false;
+			if (this.kind !== 'all' && i.kind !== this.kind) return false;
+			if (this.hideDecided && this.decisions[i.id]) return false;
+			/*
+			 * In tier C only the drawn items are queued. Queueing all of them would make
+			 * the sample decorative: a reviewer who reads everything anyway has not
+			 * sampled, and one who reads the first few has drawn a sample by convenience
+			 * rather than at random, which is the thing sampling exists to avoid.
+			 */
+			if (meta.tier === 'C' && meta.batch) {
+				return inSample.get(meta.batch)?.drawn.includes(i.id) ?? false;
+			}
+			return true;
+		});
+	}
+
+	/** One draw per glossary batch, stable for a given build and sample rate. */
+	get samples(): Map<string, Sample> {
+		return samplesFor(
+			this.items.map((i) => ({ id: i.id, batch: this.metaFor(i).batch })),
+			this.sampleRate,
+			contentVersion.contentVersion
 		);
+	}
+
+	/**
+	 * Whether a batch's whole sample has been read and approved.
+	 *
+	 * One flagged item in the draw stops the batch: the sample said something and what it
+	 * said was that this batch needs reading. Carrying the rest anyway would make the
+	 * draw a formality.
+	 */
+	batchState(batch: string): 'incomplete' | 'flagged' | 'ready' | 'carried' {
+		const sample = this.samples.get(batch);
+		if (!sample) return 'incomplete';
+		const decided = sample.drawn.map((id) => this.decisions[id]);
+		if (decided.some((d) => d?.decision === 'needs-change')) return 'flagged';
+		if (decided.some((d) => !d)) return 'incomplete';
+		return sample.carried.every((id) => this.decisions[id]) ? 'carried' : 'ready';
+	}
+
+	/** Record the untested remainder of a batch as approved, on the strength of the draw. */
+	async carryBatch(batch: string): Promise<void> {
+		if (this.batchState(batch) !== 'ready') return;
+		const sample = this.samples.get(batch);
+		if (!sample) return;
+		for (const id of sample.carried) {
+			if (this.decisions[id]) continue;
+			const record: ReviewDecision = {
+				id,
+				kind: 'term',
+				decision: 'approved',
+				note: '',
+				method: 'sampled',
+				sampledWith: sample.label,
+				decidedAt: Date.now()
+			};
+			try {
+				await putDecision(record);
+			} catch {
+				this.status = 'unavailable';
+				return;
+			}
+			this.decisions = { ...this.decisions, [id]: record };
+		}
+	}
+
+	/** Items left in a tier, and a rough number of minutes to get through them. */
+	tierLoad(tier: ReviewTier): { total: number; left: number; minutes: number } {
+		let total = 0;
+		let left = 0;
+		const samples = this.samples;
+		for (const i of this.items) {
+			const meta = this.metaFor(i);
+			if (meta.tier !== tier) continue;
+			// A sampled batch costs only its draw; the rest is carried without reading.
+			const toRead =
+				meta.tier === 'C' && meta.batch
+					? (samples.get(meta.batch)?.drawn.includes(i.id) ?? false)
+					: true;
+			total++;
+			if (toRead && !this.decisions[i.id]) left++;
+		}
+		return { total, left, minutes: Math.ceil(left * MINUTES_PER_ITEM[tier]) };
+	}
+
+	setTier(tier: ReviewTier | 'all'): void {
+		this.tier = tier;
+		this.index = 0;
+		this.note = '';
 	}
 
 	get current(): ReviewItem | null {
@@ -116,6 +231,8 @@ class Review {
 			kind: item.kind,
 			decision,
 			note: decision === 'needs-change' ? this.note.trim() : '',
+			// Only the glossary records a method, and a decision made here was read.
+			...(item.kind === 'term' && decision === 'approved' ? { method: 'read' as const } : {}),
 			decidedAt: Date.now()
 		};
 		try {
@@ -158,7 +275,14 @@ class Review {
 				decisions: Object.values(this.decisions)
 					.slice()
 					.sort((a, b) => a.id.localeCompare(b.id))
-					.map((d) => ({ id: d.id, kind: d.kind, decision: d.decision, note: d.note }))
+					.map((d) => ({
+						id: d.id,
+						kind: d.kind,
+						decision: d.decision,
+						note: d.note,
+						...(d.method ? { method: d.method } : {}),
+						...(d.sampledWith ? { sampledWith: d.sampledWith } : {})
+					}))
 			},
 			null,
 			2

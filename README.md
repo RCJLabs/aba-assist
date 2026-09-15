@@ -81,6 +81,49 @@ and a bypassable gate is not a gate.
 `npm run build` defaults to `release`, so a production build cannot contain unreviewed
 content. An item approved by its own author is rejected too — review has to be independent.
 
+### Tiered review, because uniform review of 456 items is not a plan
+
+Everything is born unreviewed and the release channel ships nothing that is not approved,
+so the backlog is the thing standing between the app and a release. Reviewing it all to
+the same depth is not realistic and would not be a good use of the depth anyway: a wrong
+gloss on "count" costs a reader a moment, and a wrong line on an escalation card costs
+something else.
+
+`/review` sorts the queue into three tiers, and the tier is **derived** rather than
+tagged, so it stays true as content is added:
+
+- **Tier A, read every one.** Situations, both ethics codes and every ethics topic,
+  credential requirements, practice guides — and any glossary term in the ethics or
+  supervision categories, or whose prose trips the risk or clinical-decision lexicon. Add
+  a definition that mentions self-injury and it promotes itself on the next build.
+- **Tier B, read every one this pass.** Questions, graphs, and the exam outlines. Wrong
+  answers with confident rationales are the defining failure of the apps in this market.
+- **Tier C, sampled.** Ordinary definitions, carried by the validator, the citations and a
+  draw from each batch.
+
+Each tier shows how many items are left and roughly how long they will take, which is what
+turns "456 unreviewed" into a number of evenings.
+
+**Sampling is real and is recorded as such.** A batch is one glossary category. The draw is
+seeded by the batch name and the content version, so it is reproducible, it does not depend
+on the order the loader returned items in, and it changes when the content changes rather
+than re-approving rows somebody already saw. Only the drawn items are queued — a reviewer
+who reads the whole batch has not sampled, and one who reads the first few has drawn a
+sample by convenience, which is the thing sampling exists to avoid. **One flagged item in a
+draw stops the batch**: the sample said something, and what it said was that this batch
+needs reading.
+
+The rate is the reviewer's choice, from a tenth up to all of it. Nothing about that
+decision belongs to the author.
+
+Carried approvals say so in the file. `Term` alone carries `reviewMethod` and
+`sampledWith`, and every other schema is strict — so `reviewMethod: sampled` on an
+escalation card is a parse error rather than a judgement call. The build also rejects an
+approved term that does not say how it was approved, a sampled approval that does not name
+its draw, and a method set on anything that is not approved. Afterwards, anybody can tell
+which items a human read and which a draw carried, which is the whole point: an approval
+that hides its own basis is worth less than one that states it.
+
 ### Doing the review
 
 Review is the one step in this project that cannot be automated away, so it has a tool of

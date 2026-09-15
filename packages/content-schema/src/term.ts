@@ -1,7 +1,14 @@
 import { z } from 'zod';
 import { strictContent } from './guards.js';
 import { Citations } from './source.js';
-import { Attestation, Provenance, Review, Setting, Slug } from './primitives.js';
+import {
+	Attestation,
+	Provenance,
+	Review,
+	SampledApproval,
+	Setting,
+	Slug
+} from './primitives.js';
 import { TaskRef } from './taxonomy.js';
 
 export const TermCategory = z.enum([
@@ -94,6 +101,31 @@ export const Term = strictContent({
 	citations: Citations,
 	attestation: Attestation,
 	review: Review,
+	...SampledApproval,
 	provenance: Provenance
+}).check((ctx) => {
+	const t = ctx.value;
+	const fail = (message: string) =>
+		ctx.issues.push({ code: 'custom', message: `${t.id}: ${message}`, input: t.id });
+
+	/*
+	 * The method and its basis have to agree in both directions, like every other flag in
+	 * this repository: a sampled approval must name the draw that carried it, and an
+	 * approval reached by reading must not claim one.
+	 */
+	if (t.reviewMethod === 'sampled' && t.sampledWith === null) {
+		fail('reviewMethod is "sampled" but no sample is named');
+	}
+	if (t.reviewMethod !== 'sampled' && t.sampledWith !== null) {
+		fail('sampledWith names a sample but reviewMethod is not "sampled"');
+	}
+
+	// An approval has to say how it was reached, and a method means nothing without one.
+	if (t.review.status === 'approved' && t.reviewMethod === null) {
+		fail('approved without recording whether it was read or carried by a sample');
+	}
+	if (t.review.status !== 'approved' && t.reviewMethod !== null) {
+		fail(`reviewMethod is set but the status is "${t.review.status}"`);
+	}
 });
 export type Term = z.infer<typeof Term>;
