@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { TRACKER_ROLE_KEY as ROLE_KEY } from './mode.js';
 import { credentials } from '$lib/content/corpus.js';
 import {
 	getAll,
@@ -43,8 +44,6 @@ import {
 
 export type TrackerStatus = 'idle' | 'loading' | 'ready' | 'unavailable';
 export type TrackedCredential = 'RBT' | 'BCBA' | 'BCaBA';
-
-const ROLE_KEY = 'aba-assist:tracker-credential';
 
 /*
  * Re-exported so the pages can name a record without importing the database layer, which

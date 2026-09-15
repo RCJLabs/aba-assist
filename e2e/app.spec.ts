@@ -226,7 +226,7 @@ test('the category filter narrows to the glossary, since only terms have one', a
 
 	await page.locator('details.filter-box summary').click();
 	await page
-		.getByRole('group', { name: 'Filter search results' })
+		.getByRole('group', { name: 'Narrow search results' })
 		.getByLabel('Category', { exact: true })
 		.selectOption('ethics');
 

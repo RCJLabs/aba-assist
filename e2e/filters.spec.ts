@@ -61,12 +61,12 @@ test('search results respect the exam filter', async ({ page }) => {
 	 */
 	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
 
-	// The filter sits in a closed <details> on the home page; open it first.
-	await page.locator('details.filter-box summary').click();
+	// The exam choice is the mode switch at the top of the home page now, not a select
+	// inside the disclosure — the disclosure only narrows by domain and category.
 	await page
-		.getByRole('group', { name: 'Filter search results' })
-		.getByLabel('Exam', { exact: true })
-		.selectOption('RBT');
+		.getByRole('group', { name: 'Show content for' })
+		.getByRole('radio', { name: /Technician \(RBT\)/ })
+		.check();
 	await expect(page.getByRole('link', { name: /Internal Validity/ })).toHaveCount(0);
 	// Social validity is tagged to the RBT ethics area, so it survives the filter.
 	await expect(page.getByRole('link', { name: /Social Validity/ })).toBeVisible();

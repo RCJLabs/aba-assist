@@ -53,7 +53,7 @@
 	 * hand-built hrefs are exactly what breaks when it changes.
 	 */
 	const nav = [
-		{ id: '/', label: 'Search', urgent: false },
+		{ id: '/', label: 'Home', urgent: false },
 		{ id: '/glossary', label: 'Terms', urgent: false },
 		{ id: '/study', label: 'Study', urgent: false },
 		{ id: '/quiz', label: 'Quiz', urgent: false },

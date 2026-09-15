@@ -6,8 +6,11 @@
 		type CredentialFilter
 	} from '$lib/state/filters.svelte.js';
 
-	let { showCategory = true, label = 'Filter' }: { showCategory?: boolean; label?: string } =
-		$props();
+	let {
+		showCategory = true,
+		showCredential = true,
+		label = 'Filter'
+	}: { showCategory?: boolean; showCredential?: boolean; label?: string } = $props();
 
 	// Explicit for/id pairs rather than wrapping <label>s: a label that wraps a <select>
 	// gets the selected option's text folded into the control's accessible name ("Exam
@@ -21,18 +24,23 @@
 	screen readers, forced colours and one-handed use on every platform.
 -->
 <div class="filters" role="group" aria-label={label}>
-	<div class="field">
-		<label for="{uid}-exam">Exam</label>
-		<select
-			id="{uid}-exam"
-			value={filters.credential}
-			onchange={(e) => filters.set({ credential: e.currentTarget.value as CredentialFilter })}
-		>
-			{#each CREDENTIAL_OPTIONS as o (o.value)}
-				<option value={o.value}>{o.label}</option>
-			{/each}
-		</select>
-	</div>
+	<!-- Hidden where the page already owns the choice, so there are not two controls
+	     setting the same state on one screen. -->
+	{#if showCredential}
+		<div class="field">
+			<label for="{uid}-exam">Exam</label>
+			<select
+				id="{uid}-exam"
+				value={filters.credential}
+				onchange={(e) =>
+					filters.set({ credential: e.currentTarget.value as CredentialFilter })}
+			>
+				{#each CREDENTIAL_OPTIONS as o (o.value)}
+					<option value={o.value}>{o.label}</option>
+				{/each}
+			</select>
+		</div>
+	{/if}
 
 	{#if filters.domains.length > 0}
 		<div class="field">

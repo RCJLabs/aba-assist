@@ -55,7 +55,7 @@ async function expectNavPinnedToTheBottom(page: Page): Promise<void> {
 	).toBeLessThanOrEqual(1);
 
 	// And every destination in it is reachable, not just the bar it sits in.
-	for (const label of ['Search', 'Terms', 'Study', 'Quiz', 'Urgent']) {
+	for (const label of ['Home', 'Terms', 'Study', 'Quiz', 'Urgent']) {
 		await expect(nav.getByRole('link', { name: label, exact: true })).toBeVisible();
 	}
 }

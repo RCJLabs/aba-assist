@@ -217,6 +217,40 @@ is rejected, flag or no flag. The build caught a genuine slip while this was bei
 — "staff holding a current certification" in a legal note — which is the guard working
 rather than a reason to loosen it further.
 
+## The home page leads with a mode
+
+`/` opens with one choice — RBT, BCaBA, BCBA or everything — and that choice drives the
+app: the glossary, search, flashcards, the quiz and the study plan all follow it, and so
+does the tracker. It is the shared content filter promoted to the front rather than a new
+idea, which is why it costs almost nothing and why it persists across visits.
+
+Making it mean one thing required fixing something first. The app kept **two** credential
+states: the content filter, and the tracker's own role for whose supervision and
+development requirements are being checked. Choosing Analyst on the home page and then
+finding `/tools` still checking a technician's requirements is exactly what makes a mode
+switch feel decorative, so the mode now writes both. Choosing "everything" deliberately
+leaves the tracker alone — it has to be checking somebody's requirements, and silently
+resetting it would discard a choice made on purpose.
+
+Three constraints shaped the rest of the page:
+
+- **Search stays above the fold on a phone.** This is the app somebody opens one-handed in
+  a hallway between sessions; a redesign that buries the search field costs the app its
+  primary use. The mode switch is one row of four at 320px for that reason, and a test
+  asserts both — that all four chips share a row, and that the field is in the viewport.
+- **The page is complete with no stored data.** It is the app's main way of reaching
+  people, so a first-time visitor and a search engine both get the whole thing. The
+  personal strip — cards due, weakest area — loads afterwards through a dynamic import and
+  renders nothing when there is nothing to say, which also keeps the database layer out of
+  the entry bundle the performance budget guards.
+- **Destinations group by intent** — look something up, study for the exam, on the job —
+  rather than sitting in one pile of ten tiles. The urgent card stays outside the groups
+  and above them.
+
+The radio inputs are stretched over their chips rather than hidden at a pixel: the radio
+is the control, so it has to be the target. A 1px control fails WCAG 2.5.8 even when the
+label beside it is comfortably large, and the target-size test caught exactly that.
+
 ## The study plan refuses to give you a score
 
 `/plan` reads what is already stored — per-area totals on every quiz attempt, the
