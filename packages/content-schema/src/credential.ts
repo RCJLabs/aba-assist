@@ -75,9 +75,77 @@ const DevelopmentRequirement = z.strictObject({
 	locator: z.string().max(120)
 });
 
+/**
+ * One set of fieldwork rules. There are two live at once: the requirements in force now
+ * and the ones that replace them, which a trainee starting today may well be verified
+ * under. Getting that wrong costs somebody months, so both are modelled rather than
+ * averaged into one.
+ */
+const FieldworkRuleset = z.strictObject({
+	id: z.enum(['current', '2027']),
+	label: z.string().min(4).max(60),
+	/** When this set starts applying, where a source states it. */
+	effectiveFrom: z
+		.string()
+		.regex(/^\d{4}-\d{2}-\d{2}$/)
+		.nullable()
+		.default(null),
+	monthlyMinHours: z.number().min(0),
+	monthlyMaxHours: z.number().min(1),
+	/** Percent of the month's fieldwork hours that must be supervised. */
+	supervisedPercent: z.number().min(0).max(100),
+	concentratedPercent: z.number().min(0).max(100),
+	supervisedContacts: z.number().int().min(0),
+	concentratedContacts: z.number().int().min(0),
+	/**
+	 * Cumulative observation minutes required per month, or null where the rule is
+	 * instead "at least one observation with a client" and a count is what matters.
+	 */
+	observationMinutes: z.number().min(0).nullable().default(null),
+	concentratedObservationMinutes: z.number().min(0).nullable().default(null),
+	locator: z.string().max(160)
+});
+
+/**
+ * A ratio the handbook states without settling whether it is checked in each calendar
+ * month or across the whole fieldwork experience.
+ *
+ * That difference decides whether a light month is a failed month, which is exactly the
+ * kind of thing this app must not guess at: reporting a month as lost when it was not
+ * would send somebody to argue with a supervisor over nothing. While `scopeVerified` is
+ * false the app shows the figure and withholds the verdict — the same posture that kept
+ * ethics standard numbers out of the build until the documents arrived.
+ */
+const FieldworkRatio = z.strictObject({
+	id: z.enum(['individual-supervision', 'unrestricted']),
+	label: z.string().min(4).max(80),
+	percent: z.number().min(0).max(100),
+	/** What the percentage is taken of, in our words. */
+	of: z.string().min(4).max(80),
+	scopeVerified: z.boolean().default(false),
+	scope: z.enum(['month', 'total']).nullable().default(null),
+	locator: z.string().max(160)
+});
+
+const FieldworkRequirement = z.strictObject({
+	/** Credited hours needed, where concentrated hours count for more. */
+	totalHours: z.number().positive(),
+	concentratedTotalHours: z.number().positive(),
+	/** What one concentrated hour is worth against `totalHours`. */
+	concentratedMultiplier: z.number().min(1),
+	/** Everything must be finished inside this many continuous years. */
+	windowYears: z.number().int().min(1),
+	rulesets: z.array(FieldworkRuleset).min(1),
+	ratios: z.array(FieldworkRatio).default([]),
+	/** Activities that do not count, in our words, for the reminder on the log. */
+	excluded: z.array(z.string().min(4)).default([]),
+	locator: z.string().max(160)
+});
+
 export const MaintenanceRequirements = z.strictObject({
 	supervision: SupervisionRequirement.nullable().default(null),
-	development: DevelopmentRequirement.nullable().default(null)
+	development: DevelopmentRequirement.nullable().default(null),
+	fieldwork: FieldworkRequirement.nullable().default(null)
 });
 export type MaintenanceRequirements = z.infer<typeof MaintenanceRequirements>;
 
@@ -94,7 +162,11 @@ export const CredentialFacts = strictContent({
 	ourOverview: z.string().min(40).max(700),
 	sections: z.array(FactSection).min(1),
 	/** Machine-readable maintenance rules, for the tracker. */
-	requirements: MaintenanceRequirements.default({ supervision: null, development: null }),
+	requirements: MaintenanceRequirements.default({
+		supervision: null,
+		development: null,
+		fieldwork: null
+	}),
 	review: Review,
 	provenance: Provenance
 }).check((ctx) => {
@@ -131,6 +203,48 @@ export const CredentialFacts = strictContent({
 			}
 		}
 	}
+	/*
+	 * The flag and the data have to agree in both directions, as everywhere else: a ratio
+	 * claiming a verified scope must name one, and one that names a scope must not also
+	 * claim the scope is unknown.
+	 */
+	for (const ratio of ctx.value.requirements.fieldwork?.ratios ?? []) {
+		if (ratio.scopeVerified && ratio.scope === null) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${ctx.value.id}: fieldwork ratio "${ratio.id}" says its scope is verified but names none`,
+				input: ctx.value.id
+			});
+		}
+		if (!ratio.scopeVerified && ratio.scope !== null) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${ctx.value.id}: fieldwork ratio "${ratio.id}" names a scope while saying it is unverified`,
+				input: ctx.value.id
+			});
+		}
+	}
+
+	/*
+	 * The three hour figures have to describe the same requirement.
+	 *
+	 * The multiplier is the ratio between the two routes, published rounded — 1500 at 1.33
+	 * comes to 1995 rather than 2000, which is the rounding and not an error. So this
+	 * checks that the three agree to within a percent, which still catches a mistyped
+	 * total or a multiplier from the wrong credential.
+	 */
+	const fw = ctx.value.requirements.fieldwork;
+	if (fw) {
+		const implied = fw.totalHours / fw.concentratedTotalHours;
+		if (Math.abs(fw.concentratedMultiplier - implied) > 0.01) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${ctx.value.id}: a ${fw.concentratedMultiplier}x multiplier does not reconcile ${fw.concentratedTotalHours} concentrated hours with ${fw.totalHours} total (implies ${implied.toFixed(3)})`,
+				input: ctx.value.id
+			});
+		}
+	}
+
 	const sup = ctx.value.requirements.supervision;
 	if (sup) {
 		for (const [name, n] of [

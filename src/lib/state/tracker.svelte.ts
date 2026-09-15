@@ -5,12 +5,16 @@ import {
 	put,
 	remove,
 	removeCycle,
+	removeFieldworkPeriod,
 	removeSupervisee,
 	type Cycle,
 	type DevelopmentUnit,
+	type FieldworkMonth,
+	type FieldworkPeriod,
 	type ServiceMonth,
 	type ContactFormat,
 	type ContactModality,
+	type FieldworkType,
 	type Supervisee,
 	type SupervisionEntry,
 	type UnitKind,
@@ -18,6 +22,13 @@ import {
 	type Workplace
 } from '$lib/db/index.js';
 import { storage } from './storage.svelte.js';
+import {
+	rulesetById,
+	summariseFieldwork,
+	summariseFieldworkMonth,
+	type FieldworkRequirement,
+	type FieldworkRuleset
+} from '$lib/tracker/fieldwork.js';
 import {
 	cycleEnd,
 	summariseCycle,
@@ -45,6 +56,9 @@ export type {
 	ContactModality,
 	Cycle,
 	DevelopmentUnit,
+	FieldworkMonth,
+	FieldworkPeriod,
+	FieldworkType,
 	ServiceMonth,
 	Supervisee,
 	SupervisionEntry,
@@ -80,6 +94,8 @@ class Tracker {
 	serviceMonths = $state<ServiceMonth[]>([]);
 	cycles = $state<Cycle[]>([]);
 	units = $state<DevelopmentUnit[]>([]);
+	fieldworkPeriods = $state<FieldworkPeriod[]>([]);
+	fieldworkMonths = $state<FieldworkMonth[]>([]);
 
 	async load(): Promise<void> {
 		if (!browser || this.status === 'loading' || this.status === 'ready') return;
@@ -91,21 +107,33 @@ class Tracker {
 			// Storage blocked; the picker still works for this visit.
 		}
 		try {
-			const [supervisees, workplaces, entries, serviceMonths, cycles, units] =
-				await Promise.all([
-					getAll('supervisees'),
-					getAll('workplaces'),
-					getAll('supervisionEntries'),
-					getAll('serviceMonths'),
-					getAll('cycles'),
-					getAll('developmentUnits')
-				]);
+			const [
+				supervisees,
+				workplaces,
+				entries,
+				serviceMonths,
+				cycles,
+				units,
+				fieldworkPeriods,
+				fieldworkMonths
+			] = await Promise.all([
+				getAll('supervisees'),
+				getAll('workplaces'),
+				getAll('supervisionEntries'),
+				getAll('serviceMonths'),
+				getAll('cycles'),
+				getAll('developmentUnits'),
+				getAll('fieldworkPeriods'),
+				getAll('fieldworkMonths')
+			]);
 			this.supervisees = supervisees;
 			this.workplaces = workplaces;
 			this.entries = entries;
 			this.serviceMonths = serviceMonths;
 			this.cycles = cycles;
 			this.units = units;
+			this.fieldworkPeriods = fieldworkPeriods;
+			this.fieldworkMonths = fieldworkMonths;
 			this.status = 'ready';
 		} catch {
 			// Without storage this tool would appear to record things and lose them, which
@@ -304,6 +332,101 @@ class Tracker {
 		this.units = this.units.filter((u) => u.id !== unitId);
 	}
 
+	// -------------------------------------------------------------- fieldwork
+	//
+	// Trainee fieldwork, which is a different problem from the supervision an RBT
+	// receives: a different denominator, a monthly floor AND ceiling, a restricted split,
+	// and a five-year window. Kept in its own stores rather than folded into the
+	// supervision log, because a trainee who is also an RBT would otherwise find their
+	// fieldwork supervision quietly counted toward their technician percentage.
+
+	get fieldworkRequirement(): FieldworkRequirement | null {
+		return (credentials.bcba?.requirements?.fieldwork as FieldworkRequirement | null) ?? null;
+	}
+
+	get period(): FieldworkPeriod | null {
+		return this.fieldworkPeriods[0] ?? null;
+	}
+
+	get ruleset(): FieldworkRuleset | null {
+		const req = this.fieldworkRequirement;
+		if (!req) return null;
+		return rulesetById(req, this.period?.ruleset ?? 'current');
+	}
+
+	/** Months of the current period, most recent first. */
+	get myFieldworkMonths(): FieldworkMonth[] {
+		const id = this.period?.id;
+		if (!id) return [];
+		return this.fieldworkMonths
+			.filter((m) => m.periodId === id)
+			.slice()
+			.sort((a, b) => b.month.localeCompare(a.month));
+	}
+
+	fieldworkMonthSummary(m: FieldworkMonth) {
+		const req = this.fieldworkRequirement;
+		const rules = this.ruleset;
+		if (!req || !rules) return null;
+		return summariseFieldworkMonth($state.snapshot(m), req, rules);
+	}
+
+	get fieldworkProgress() {
+		const req = this.fieldworkRequirement;
+		const rules = this.ruleset;
+		if (!req || !rules) return null;
+		return summariseFieldwork(
+			$state.snapshot(this.myFieldworkMonths),
+			req,
+			rules,
+			this.period?.startDate ?? null,
+			todayIso()
+		);
+	}
+
+	async startFieldwork(
+		startDate: string,
+		ruleset: 'current' | '2027',
+		supervisorCode: string
+	): Promise<FieldworkPeriod> {
+		const p: FieldworkPeriod = {
+			id: id(),
+			startDate,
+			ruleset,
+			supervisorCode: supervisorCode.trim().toUpperCase(),
+			createdAt: Date.now()
+		};
+		await put('fieldworkPeriods', p);
+		this.fieldworkPeriods = [...this.fieldworkPeriods, p];
+		storage.hasData = true;
+		void storage.requestPersist();
+		return p;
+	}
+
+	/** One row per calendar month, so saving the same month again replaces it. */
+	async saveFieldworkMonth(
+		periodId: string,
+		month: string,
+		values: Omit<FieldworkMonth, 'id' | 'periodId' | 'month'>
+	): Promise<void> {
+		const row: FieldworkMonth = { ...values, id: `${periodId}:${month}`, periodId, month };
+		await put('fieldworkMonths', row);
+		this.fieldworkMonths = [...this.fieldworkMonths.filter((m) => m.id !== row.id), row];
+		storage.hasData = true;
+		void storage.requestPersist();
+	}
+
+	async deleteFieldworkMonth(monthId: string): Promise<void> {
+		await remove('fieldworkMonths', monthId);
+		this.fieldworkMonths = this.fieldworkMonths.filter((m) => m.id !== monthId);
+	}
+
+	async deleteFieldworkPeriod(periodId: string): Promise<void> {
+		await removeFieldworkPeriod(periodId);
+		this.fieldworkPeriods = this.fieldworkPeriods.filter((p) => p.id !== periodId);
+		this.fieldworkMonths = this.fieldworkMonths.filter((m) => m.periodId !== periodId);
+	}
+
 	/** Plain snapshots, for the CSV writers. */
 	snapshot() {
 		return {
@@ -312,7 +435,9 @@ class Tracker {
 			entries: $state.snapshot(this.entries),
 			serviceMonths: $state.snapshot(this.serviceMonths),
 			cycles: $state.snapshot(this.cycles),
-			units: $state.snapshot(this.units)
+			units: $state.snapshot(this.units),
+			fieldworkPeriods: $state.snapshot(this.fieldworkPeriods),
+			fieldworkMonths: $state.snapshot(this.myFieldworkMonths)
 		};
 	}
 }

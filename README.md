@@ -149,6 +149,32 @@ CEUs with 4 on ethics — are not constants in the code. They live in `content/c
 beside the prose that states them, carrying the same handbook locator and going through the
 same review queue, so there is one copy of each number rather than two that drift.
 
+## Fieldwork is checked a month at a time, not as a running total
+
+`/tools/fieldwork` is for analyst trainees, and it is deliberately not a progress bar with
+hours in it. Supervised fieldwork is verified one calendar month at a time: a month below
+its floor is worth **nothing**, not less, and hours above its ceiling are dropped. Somebody
+who adds their hours up and watches the number climb can arrive at verification a year
+later hundreds of hours short of what they thought they had, with nothing to be done about
+it. So each month gets its own verdict with the reason attached, while there is still time
+to fix the month — and the summary reports the hours that will not count as a figure of
+its own, because that is what turns "I logged 2000 hours" into "1840 of them count".
+
+Two ratios in the handbook — how much supervision must be one-to-one, how much of the work
+must be unrestricted — are stated as requirements without the text saying whether they are
+checked inside each month or across the whole experience. That difference decides whether a
+light month is a lost month. So the tracker shows those two as **figures and withholds the
+verdict**, saying plainly that it has not verified the scope and that the supervisor is who
+to ask. It is the same posture as `standardsVerified` in the ethics content: an unverified
+number is reported, never ruled on.
+
+The numbers themselves — the floor and ceiling, the supervision percentages, the contact
+counts, the 1.33 multiplier on concentrated hours, and the second ruleset that takes effect
+in 2027 — live in `content/credentials/bcba.yaml` with their handbook locators, not in the
+code. The schema rejects a `scopeVerified: true` ratio with no scope, a scope claimed
+without verification, and a multiplier that does not reconcile with the two hour totals it
+sits between.
+
 ## The interval timer records nothing
 
 `/tools/timer` is a repeating cue for partial interval, whole interval and momentary time

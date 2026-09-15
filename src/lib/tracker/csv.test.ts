@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { developmentCsv, supervisionCsv, toCsv } from './csv.js';
+import { developmentCsv, fieldworkCsv, supervisionCsv, toCsv } from './csv.js';
 
 describe('toCsv', () => {
 	it('quotes only what needs quoting', () => {
@@ -98,5 +98,63 @@ describe('developmentCsv', () => {
 			'2027-02-01,2027-01-01 to 2028-12-31,1.5,learning,ethics,Ethics refresher,A provider'
 		);
 		expect(rows[1]!.startsWith('2027-06-01')).toBe(true);
+	});
+});
+
+describe('fieldworkCsv', () => {
+	it('writes the monthly record the verification form asks for', () => {
+		const csv = fieldworkCsv(
+			[
+				{
+					id: 'p1:2026-09',
+					periodId: 'p1',
+					month: '2026-09',
+					type: 'concentrated',
+					totalHours: 100,
+					unrestrictedHours: 65,
+					supervisionHours: 10,
+					individualSupervisionHours: 6,
+					contacts: 6,
+					observedWithClient: true,
+					observationMinutes: 95,
+					note: 'Two sites this month'
+				}
+			],
+			{
+				id: 'p1',
+				startDate: '2026-01-01',
+				ruleset: 'current',
+				supervisorCode: 'S-01',
+				createdAt: 0
+			}
+		);
+		const [header, row] = csv.trim().split('\r\n');
+		expect(header).toContain('individual supervision hours');
+		// Restricted hours are derived rather than stored, because two numbers that must
+		// add up are two numbers that can disagree.
+		expect(row).toBe('2026-09,concentrated,S-01,100,65,35,10,6,6,yes,95,Two sites this month');
+	});
+
+	it('still writes a row when no period is on record', () => {
+		const csv = fieldworkCsv(
+			[
+				{
+					id: 'x',
+					periodId: 'p1',
+					month: '2026-09',
+					type: 'supervised',
+					totalHours: 20,
+					unrestrictedHours: 12,
+					supervisionHours: 1,
+					individualSupervisionHours: 1,
+					contacts: 4,
+					observedWithClient: false,
+					observationMinutes: 0,
+					note: ''
+				}
+			],
+			null
+		);
+		expect(csv.trim().split('\r\n')[1]).toBe('2026-09,supervised,,20,12,8,1,1,4,no,0,');
 	});
 });

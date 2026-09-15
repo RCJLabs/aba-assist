@@ -148,6 +148,44 @@ export interface DevelopmentUnit {
 	provider: string;
 }
 
+export type FieldworkType = 'supervised' | 'concentrated';
+
+/**
+ * One calendar month of supervised fieldwork, shaped like the monthly verification form.
+ *
+ * The month is the unit because that is how fieldwork is verified, and because a month
+ * that misses a requirement is lost whole rather than reduced. No client appears here at
+ * all: the supervisor is a code, and everything else is an hour count.
+ */
+export interface FieldworkMonth {
+	/** `${periodId}:${YYYY-MM}`, so re-entering a month updates it. */
+	id: string;
+	periodId: string;
+	/** YYYY-MM. */
+	month: string;
+	type: FieldworkType;
+	totalHours: number;
+	unrestrictedHours: number;
+	supervisionHours: number;
+	individualSupervisionHours: number;
+	contacts: number;
+	observedWithClient: boolean;
+	/** Cumulative minutes, for the ruleset that counts them rather than asking yes or no. */
+	observationMinutes: number;
+	note: string;
+}
+
+/** A run at the fieldwork requirement: when it started and whose rules it is under. */
+export interface FieldworkPeriod {
+	id: string;
+	/** YYYY-MM-DD. The five-year window runs from here. */
+	startDate: string;
+	ruleset: 'current' | '2027';
+	/** A code like "S-01", never a name — the same rule as a supervisee. */
+	supervisorCode: string;
+	createdAt: number;
+}
+
 interface AbaDB extends DBSchema {
 	cards: {
 		key: string;
@@ -197,6 +235,15 @@ interface AbaDB extends DBSchema {
 		value: DevelopmentUnit;
 		indexes: { 'by-cycle': string; 'by-date': string };
 	};
+	fieldworkPeriods: {
+		key: string;
+		value: FieldworkPeriod;
+	};
+	fieldworkMonths: {
+		key: string;
+		value: FieldworkMonth;
+		indexes: { 'by-period': string };
+	};
 }
 
 type StoreName =
@@ -209,7 +256,9 @@ type StoreName =
 	| 'supervisionEntries'
 	| 'serviceMonths'
 	| 'cycles'
-	| 'developmentUnits';
+	| 'developmentUnits'
+	| 'fieldworkPeriods'
+	| 'fieldworkMonths';
 
 type Migration = (
 	db: IDBPDatabase<AbaDB>,
@@ -255,6 +304,13 @@ const MIGRATIONS: Migration[] = [
 		const units = db.createObjectStore('developmentUnits', { keyPath: 'id' });
 		units.createIndex('by-cycle', 'cycleId');
 		units.createIndex('by-date', 'date');
+	},
+
+	// v4 — supervised fieldwork, for analyst and assistant-analyst trainees.
+	(db) => {
+		db.createObjectStore('fieldworkPeriods', { keyPath: 'id' });
+		const fwMonths = db.createObjectStore('fieldworkMonths', { keyPath: 'id' });
+		fwMonths.createIndex('by-period', 'periodId');
 	}
 ];
 
@@ -359,7 +415,9 @@ type TrackerStore =
 	| 'supervisionEntries'
 	| 'serviceMonths'
 	| 'cycles'
-	| 'developmentUnits';
+	| 'developmentUnits'
+	| 'fieldworkPeriods'
+	| 'fieldworkMonths';
 
 export async function getAll<S extends TrackerStore>(store: S): Promise<AbaDB[S]['value'][]> {
 	const db = await openAbaDB();
@@ -395,6 +453,18 @@ export async function removeSupervisee(id: string): Promise<void> {
 	await Promise.all([
 		tx.objectStore('supervisees').delete(id),
 		...entries.map((key) => tx.objectStore('supervisionEntries').delete(key))
+	]);
+	await tx.done;
+}
+
+/** Same reasoning for a fieldwork period and the months logged inside it. */
+export async function removeFieldworkPeriod(id: string): Promise<void> {
+	const db = await openAbaDB();
+	const tx = db.transaction(['fieldworkPeriods', 'fieldworkMonths'], 'readwrite');
+	const months = await tx.objectStore('fieldworkMonths').index('by-period').getAllKeys(id);
+	await Promise.all([
+		tx.objectStore('fieldworkPeriods').delete(id),
+		...months.map((key) => tx.objectStore('fieldworkMonths').delete(key))
 	]);
 	await tx.done;
 }
@@ -449,6 +519,8 @@ export async function exportAll(): Promise<{
 	serviceMonths: ServiceMonth[];
 	cycles: Cycle[];
 	developmentUnits: DevelopmentUnit[];
+	fieldworkPeriods: FieldworkPeriod[];
+	fieldworkMonths: FieldworkMonth[];
 }> {
 	const db = await openAbaDB();
 	const [
@@ -461,7 +533,9 @@ export async function exportAll(): Promise<{
 		supervisionEntries,
 		serviceMonths,
 		cycles,
-		developmentUnits
+		developmentUnits,
+		fieldworkPeriods,
+		fieldworkMonths
 	] = await Promise.all([
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
@@ -472,7 +546,9 @@ export async function exportAll(): Promise<{
 		db.getAll('supervisionEntries'),
 		db.getAll('serviceMonths'),
 		db.getAll('cycles'),
-		db.getAll('developmentUnits')
+		db.getAll('developmentUnits'),
+		db.getAll('fieldworkPeriods'),
+		db.getAll('fieldworkMonths')
 	]);
 	return {
 		// Marks the file as ours, so importing somebody's tax return gets a useful message
@@ -493,7 +569,9 @@ export async function exportAll(): Promise<{
 		supervisionEntries,
 		serviceMonths,
 		cycles,
-		developmentUnits
+		developmentUnits,
+		fieldworkPeriods,
+		fieldworkMonths
 	};
 }
 
@@ -510,7 +588,8 @@ export async function hasStoredData(): Promise<boolean> {
 		'quizAttempts',
 		'reviewDecisions',
 		'supervisionEntries',
-		'developmentUnits'
+		'developmentUnits',
+		'fieldworkMonths'
 	];
 	const counts = await Promise.all(stores.map((s) => db.count(s)));
 	return counts.some((n) => n > 0);
@@ -539,6 +618,8 @@ export async function restoreAll(data: {
 	serviceMonths: ServiceMonth[];
 	cycles: Cycle[];
 	developmentUnits: DevelopmentUnit[];
+	fieldworkPeriods: FieldworkPeriod[];
+	fieldworkMonths: FieldworkMonth[];
 }): Promise<void> {
 	const db = await openAbaDB();
 	const stores: StoreName[] = [
@@ -551,7 +632,9 @@ export async function restoreAll(data: {
 		'supervisionEntries',
 		'serviceMonths',
 		'cycles',
-		'developmentUnits'
+		'developmentUnits',
+		'fieldworkPeriods',
+		'fieldworkMonths'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
@@ -567,7 +650,9 @@ export async function restoreAll(data: {
 		...data.supervisionEntries.map((x) => tx.objectStore('supervisionEntries').put(x)),
 		...data.serviceMonths.map((x) => tx.objectStore('serviceMonths').put(x)),
 		...data.cycles.map((x) => tx.objectStore('cycles').put(x)),
-		...data.developmentUnits.map((x) => tx.objectStore('developmentUnits').put(x))
+		...data.developmentUnits.map((x) => tx.objectStore('developmentUnits').put(x)),
+		...data.fieldworkPeriods.map((x) => tx.objectStore('fieldworkPeriods').put(x)),
+		...data.fieldworkMonths.map((x) => tx.objectStore('fieldworkMonths').put(x))
 	]);
 	await tx.done;
 }
@@ -584,7 +669,9 @@ export async function clearAll(): Promise<void> {
 		'supervisionEntries',
 		'serviceMonths',
 		'cycles',
-		'developmentUnits'
+		'developmentUnits',
+		'fieldworkPeriods',
+		'fieldworkMonths'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));

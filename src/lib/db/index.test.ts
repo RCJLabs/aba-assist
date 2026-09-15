@@ -36,7 +36,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(3);
+		expect(DB_VERSION).toBe(4);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -211,7 +211,9 @@ describe('local database', () => {
 			supervisionEntries: [],
 			serviceMonths: [],
 			cycles: [],
-			developmentUnits: []
+			developmentUnits: [],
+			fieldworkPeriods: [],
+			fieldworkMonths: []
 		});
 
 		// Replace, not merge: merging two devices' review histories means deciding which

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
-	import { developmentCsv, supervisionCsv } from '$lib/tracker/csv.js';
+	import { developmentCsv, fieldworkCsv, supervisionCsv } from '$lib/tracker/csv.js';
 	import { downloadBlob } from '$lib/util/download.js';
 
 	onMount(() => void tracker.load());
@@ -19,12 +19,22 @@
 	const months = $derived(tracker.months);
 	const thisMonth = $derived(todayIso().slice(0, 7));
 	const short = $derived(months.filter((m) => m.standing === 'short').length);
+	const fieldwork = $derived(tracker.period ? tracker.fieldworkProgress : null);
 
 	function exportSupervision() {
 		const s = tracker.snapshot();
 		downloadBlob(
 			`supervision-${todayIso()}.csv`,
 			supervisionCsv(s.entries, s.workplaces, s.supervisees, s.serviceMonths),
+			'text/csv;charset=utf-8'
+		);
+	}
+
+	function exportFieldwork() {
+		const s = tracker.snapshot();
+		downloadBlob(
+			`fieldwork-${todayIso()}.csv`,
+			fieldworkCsv(s.fieldworkMonths, s.fieldworkPeriods[0] ?? null),
 			'text/csv;charset=utf-8'
 		);
 	}
@@ -150,6 +160,36 @@
 			{/if}
 		</article>
 		<article class="card">
+			<h2><a href={resolve('/tools/fieldwork')}>Fieldwork hours</a></h2>
+			{#if tracker.fieldworkRequirement}
+				{@const fw = tracker.fieldworkRequirement}
+				<p>
+					For analyst trainees: {fw.totalHours} supervised hours inside {fw.windowYears} years, checked
+					one calendar month at a time. A month below its floor does not count at all.
+				</p>
+			{/if}
+			{#if fieldwork}
+				<dl class="stats">
+					<div>
+						<dt>Credited</dt>
+						<dd>{fieldwork.credited}</dd>
+					</div>
+					<div>
+						<dt>Months short</dt>
+						<dd class:bad={fieldwork.monthsShort > 0}>{fieldwork.monthsShort}</dd>
+					</div>
+					<div>
+						<dt>Days left</dt>
+						<dd class:bad={fieldwork.daysRemaining !== null && fieldwork.daysRemaining < 90}>
+							{fieldwork.daysRemaining ?? '—'}
+						</dd>
+					</div>
+				</dl>
+			{:else}
+				<p class="now">Not tracking a fieldwork period yet.</p>
+			{/if}
+		</article>
+		<article class="card">
 			<h2><a href={resolve('/tools/timer')}>Interval timer</a></h2>
 			<p>
 				A repeating cue for partial interval, whole interval and momentary time sampling, with
@@ -186,6 +226,12 @@
 				class="button"
 				disabled={tracker.units.length === 0}
 				onclick={exportDevelopment}>Development CSV</button
+			>
+			<button
+				type="button"
+				class="button"
+				disabled={tracker.myFieldworkMonths.length === 0}
+				onclick={exportFieldwork}>Fieldwork CSV</button
 			>
 		</div>
 	</section>

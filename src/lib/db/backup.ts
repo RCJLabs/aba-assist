@@ -23,6 +23,8 @@ import { isSuperviseeCode, phiWarnings } from '$lib/tracker/phi.js';
 import type {
 	Cycle,
 	DevelopmentUnit,
+	FieldworkMonth,
+	FieldworkPeriod,
 	QuizAttempt,
 	ReviewDecision,
 	ServiceMonth,
@@ -49,6 +51,8 @@ export interface BackupPayload {
 	serviceMonths: ServiceMonth[];
 	cycles: Cycle[];
 	developmentUnits: DevelopmentUnit[];
+	fieldworkPeriods: FieldworkPeriod[];
+	fieldworkMonths: FieldworkMonth[];
 }
 
 export interface BackupReport {
@@ -340,6 +344,63 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		dropped
 	);
 
+	// A fieldwork period names its supervisor by code, and the code rule holds here too.
+	let namedSupervisors = 0;
+	const fieldworkPeriods = sift<FieldworkPeriod>(
+		'fieldworkPeriods',
+		raw.fieldworkPeriods,
+		(r) => {
+			if (!str(r.id) || !day(r.startDate)) return null;
+			const code = str(r.supervisorCode) ? r.supervisorCode.toUpperCase() : '';
+			if (code && !isSuperviseeCode(code)) {
+				namedSupervisors++;
+				return null;
+			}
+			return {
+				id: r.id,
+				startDate: r.startDate,
+				ruleset: oneOf(['current', '2027'] as const, r.ruleset) ? r.ruleset : 'current',
+				supervisorCode: code,
+				createdAt: num(r.createdAt) ? r.createdAt : Date.now()
+			};
+		},
+		dropped
+	);
+	if (namedSupervisors > 0) {
+		dropped.push({
+			store: 'fieldworkPeriods',
+			reason: 'the supervisor code was not a code — this app does not store names',
+			count: namedSupervisors
+		});
+	}
+
+	const fieldworkMonths = sift<FieldworkMonth>(
+		'fieldworkMonths',
+		raw.fieldworkMonths,
+		(r) => {
+			if (!str(r.id) || !str(r.periodId) || !month(r.month) || !num(r.totalHours)) return null;
+			const note = str(r.note) ? r.note.slice(0, 2000) : '';
+			if (note && phiWarnings(note).length > 0) notesToCheck++;
+			return {
+				id: r.id,
+				periodId: r.periodId,
+				month: r.month,
+				type: oneOf(['supervised', 'concentrated'] as const, r.type) ? r.type : 'supervised',
+				totalHours: r.totalHours,
+				unrestrictedHours: num(r.unrestrictedHours) ? r.unrestrictedHours : 0,
+				supervisionHours: num(r.supervisionHours) ? r.supervisionHours : 0,
+				individualSupervisionHours: num(r.individualSupervisionHours)
+					? r.individualSupervisionHours
+					: 0,
+				contacts: num(r.contacts) ? r.contacts : 0,
+				observedWithClient: bool(r.observedWithClient) ? r.observedWithClient : false,
+				observationMinutes: num(r.observationMinutes) ? r.observationMinutes : 0,
+				note
+			};
+		},
+		dropped
+	);
+
 	const data: BackupPayload = {
 		kind: BACKUP_KIND,
 		version: raw.version,
@@ -353,7 +414,9 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		supervisionEntries,
 		serviceMonths,
 		cycles,
-		developmentUnits
+		developmentUnits,
+		fieldworkPeriods,
+		fieldworkMonths
 	};
 
 	const counts: Record<string, number> = {
@@ -366,7 +429,9 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		supervisionEntries: supervisionEntries.length,
 		serviceMonths: serviceMonths.length,
 		cycles: cycles.length,
-		developmentUnits: developmentUnits.length
+		developmentUnits: developmentUnits.length,
+		fieldworkPeriods: fieldworkPeriods.length,
+		fieldworkMonths: fieldworkMonths.length
 	};
 
 	if (Object.values(counts).every((n) => n === 0)) {

@@ -9,6 +9,8 @@
 import type {
 	Cycle,
 	DevelopmentUnit,
+	FieldworkMonth,
+	FieldworkPeriod,
 	ServiceMonth,
 	Supervisee,
 	SupervisionEntry,
@@ -88,4 +90,51 @@ export function developmentCsv(units: DevelopmentUnit[], cycles: Cycle[]): strin
 			u.provider
 		]);
 	return toCsv(['date', 'cycle', 'units', 'type', 'topic', 'title', 'provider'], rows);
+}
+
+/**
+ * The monthly fieldwork record, in the shape the verification form asks for.
+ *
+ * Fieldwork is verified a month at a time and audited against a log the trainee keeps,
+ * which is a document that has to outlive any one browser. So this is not a convenience —
+ * it is the artifact.
+ */
+export function fieldworkCsv(
+	months: FieldworkMonth[],
+	period: FieldworkPeriod | null
+): string {
+	const rows = [...months]
+		.sort((a, b) => a.month.localeCompare(b.month))
+		.map((m) => [
+			m.month,
+			m.type,
+			period?.supervisorCode ?? '',
+			m.totalHours,
+			m.unrestrictedHours,
+			m.totalHours - m.unrestrictedHours,
+			m.supervisionHours,
+			m.individualSupervisionHours,
+			m.contacts,
+			m.observedWithClient ? 'yes' : 'no',
+			m.observationMinutes,
+			m.note
+		]);
+
+	return toCsv(
+		[
+			'month',
+			'fieldwork type',
+			'supervisor code',
+			'total hours',
+			'unrestricted hours',
+			'restricted hours',
+			'supervision hours',
+			'individual supervision hours',
+			'supervisor contacts',
+			'observed with a client',
+			'observation minutes',
+			'note'
+		],
+		rows
+	);
 }
