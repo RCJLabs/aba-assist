@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import MiniSearch from 'minisearch';
 import {
 	CATEGORY_LABELS,
+	CompetencyAssessment,
 	ContentOutline,
 	RELEASE_MINIMUM_TERMS,
 	WITHHOLDING_CHANNELS,
@@ -23,6 +24,7 @@ import {
 	type TaskRef,
 	type PracticeGuide as z_PracticeGuide,
 	type GraphDoc as z_GraphDoc,
+	type CompetencyAssessment as z_Competency,
 	type SearchIndexEntry,
 	type TermIndexEntry
 } from '@aba/content-schema';
@@ -110,6 +112,22 @@ function scenarioProse(s: z_Scenario): string[] {
 		s.escalation.legalNote,
 		...s.escalation.documentation
 	];
+}
+
+function competencyProse(c: z_Competency): string[] {
+	return [
+		c.ourOverview,
+		...c.sections.flatMap((s) => [
+			s.ourDescription,
+			s.sectionRule ?? '',
+			...s.tasks.flatMap((t) => [
+				t.ourSummary,
+				t.plainSummary,
+				...t.alternatives.map((a) => a.ourSummary)
+			])
+		]),
+		...c.rules.map((r) => r.value)
+	].filter(Boolean);
 }
 
 function questionProse(q: QuizQuestion): string[] {
@@ -440,6 +458,78 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		}
 	}
 
+	// ------------------------------------------------------------ competency
+	/*
+	 * Competency assessments, which are a performance requirement rather than a paper.
+	 * Same treatment as the task-list outlines: the numbering, the section names, the
+	 * labels and which methods are permitted are facts about a published requirement, and
+	 * every description is ours. The clinical-decision check runs, for the same reason it
+	 * runs over the graphs — saying what a task asks for is description, and saying what a
+	 * reader should do clinically is not this app's to say.
+	 */
+	const competencies: z_Competency[] = [];
+	const competencyFiles = new Map<string, string>();
+	{
+		const dir = join(root, 'competency');
+		for (const path of await discover(dir, ['.yaml', '.yml'])) {
+			const { data, issues: pIssues } = await parseYamlFile(root, path);
+			push(...pIssues);
+			if (data === undefined) continue;
+			inputHash.update(JSON.stringify(data));
+			const file = path.slice(root.length + 1);
+
+			const { value, issues: sIssues } = checkSchema(
+				CompetencyAssessment,
+				data,
+				file,
+				'schema/competency'
+			);
+			push(...sIssues);
+			if (!value) continue;
+
+			const basename = path.slice(path.lastIndexOf('/') + 1).replace(/\.ya?ml$/, '');
+			if (value.id !== basename) {
+				push(
+					error(
+						'structure/id-filename-mismatch',
+						`id "${value.id}" does not match filename "${basename}"`,
+						file
+					)
+				);
+			}
+			if (competencyFiles.has(value.id)) {
+				push(error('structure/duplicate-id', `duplicate competency "${value.id}"`, file));
+			}
+			competencyFiles.set(value.id, file);
+			competencies.push(value);
+
+			const prose = competencyProse(value);
+			// No citations array: the whole document cites one source, named at the top.
+			// The prose still goes through the verbatim and inline-quote heuristics.
+			push(...checkRights({}, prose, sources, file));
+			if (!sources.has(value.sourceId)) {
+				push(
+					error(
+						'refs/unknown-source',
+						`sourceId "${value.sourceId}" is not in the registry`,
+						file
+					)
+				);
+			}
+			push(...checkReviewStatus(value.review, channel, file));
+			for (const sec of value.sections) {
+				for (const t of sec.tasks) {
+					push(...checkPlainLanguage(t.plainSummary, `task ${t.number} plainSummary`, file));
+				}
+			}
+			push(
+				...checkScenarioSafety({ kind: 'graph' }, prose, file).filter(
+					(i) => i.rule === 'safety/clinical-decision-language'
+				)
+			);
+		}
+	}
+
 	// -------------------------------------------------------------- questions
 	const questions: QuizQuestion[] = [];
 	const questionFiles = new Map<string, string>();
@@ -714,6 +804,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	const shipGuides = guides.filter(ships);
 	const shipGraphs = graphs.filter(ships);
 	const shipTopics = ethicsTopics.filter(ships);
+	const shipCompetencies = competencies.filter(ships);
 
 	const shipTermIds = new Set(shipTerms.map((t) => t.id));
 	const shipScenarioIds = new Set(shipScenarios.map((x) => x.id));
@@ -884,6 +975,41 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			}
 		}
 
+		// The competency tasks point at both the glossary and the task-list codes, so a
+		// candidate can go from "I have to demonstrate chaining" to the material for it.
+		for (const c of competencies) {
+			const file = competencyFiles.get(c.id)!;
+			for (const sec of c.sections) {
+				for (const t of sec.tasks) {
+					checkRefs(
+						t.termRefs,
+						termIds,
+						'term',
+						file,
+						`task ${t.number}.termRefs`,
+						knownTerms
+					);
+					checkTaskRefs(
+						t.taskRefs.map((r) => {
+							const [credential, code] = r.split(':');
+							return { credential, code } as TaskRef;
+						}),
+						file
+					);
+					for (const alt of t.alternatives) {
+						checkRefs(
+							alt.termRefs,
+							termIds,
+							'term',
+							file,
+							`task ${t.number} "${alt.label}".termRefs`,
+							knownTerms
+						);
+					}
+				}
+			}
+		}
+
 		// Outline tasks point at terms too, so the exam page can link each task to its
 		// vocabulary. Dangling links there would be invisible until someone tapped one.
 		for (const o of outlines.values()) {
@@ -934,6 +1060,22 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 				relatedTopics: keep(t.relatedTopics, shipTopicIds)
 			}))
 		: shipTopics;
+	const emitCompetencies = withholding
+		? shipCompetencies.map((c) => ({
+				...c,
+				sections: c.sections.map((sec) => ({
+					...sec,
+					tasks: sec.tasks.map((t) => ({
+						...t,
+						termRefs: keep(t.termRefs, shipTermIds),
+						alternatives: t.alternatives.map((a) => ({
+							...a,
+							termRefs: keep(a.termRefs, shipTermIds)
+						}))
+					}))
+				}))
+			}))
+		: shipCompetencies;
 	const emitOutlines = withholding
 		? shipOutlines.map((o) => ({
 				...o,
@@ -986,7 +1128,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...ethicsTopics,
 		...guides,
 		...graphs,
-		...allOutlines
+		...allOutlines,
+		...competencies
 	];
 	const shipped = [
 		...emitTerms,
@@ -997,7 +1140,8 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		...emitTopics,
 		...emitGuides,
 		...shipGraphs,
-		...emitOutlines
+		...emitOutlines,
+		...emitCompetencies
 	];
 
 	/*
@@ -1022,6 +1166,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		ethicsTopics: emitTopics.length,
 		practiceGuides: emitGuides.length,
 		graphs: shipGraphs.length,
+		competencyAssessments: emitCompetencies.length,
 		unreviewed,
 		withheld
 	};
@@ -1048,6 +1193,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		emitTopics,
 		emitGuides,
 		shipGraphs,
+		emitCompetencies,
 		contentVersion
 	);
 
@@ -1064,6 +1210,7 @@ function buildAssets(
 	ethicsTopics: z_EthicsTopic[],
 	guides: z_PracticeGuide[],
 	graphs: z_GraphDoc[],
+	competencies: z_Competency[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -1157,6 +1304,13 @@ function buildAssets(
 		name: 'graphs',
 		fileName: `${base}/graphs.json`,
 		source: JSON.stringify(Object.fromEntries(graphs.map((g) => [g.id, g]))),
+		fetchedAtRuntime: false
+	});
+
+	assets.push({
+		name: 'competency',
+		fileName: `${base}/competency.json`,
+		source: JSON.stringify(Object.fromEntries(competencies.map((c) => [c.id, c]))),
 		fetchedAtRuntime: false
 	});
 

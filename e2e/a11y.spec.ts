@@ -14,6 +14,7 @@ const ROUTES = [
 	'/about',
 	'/settings',
 	'/exams',
+	'/competency',
 	'/exams/rbt-tco-3',
 	'/exams/bcba-tco-6',
 	'/study',

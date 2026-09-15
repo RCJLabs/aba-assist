@@ -11,12 +11,14 @@
  * needs; this holds what particular pages need.
  */
 import type {
+	CompetencyAssessment,
 	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
 	GraphDoc,
 	PracticeGuide
 } from '@aba/content-schema';
+import competencyData from './generated/competency.json';
 import credentialData from './generated/credentials.json';
 import ethicsCodeData from './generated/ethics-codes.json';
 import ethicsTopicData from './generated/ethics-topics.json';
@@ -97,3 +99,16 @@ export function topicsBySection(codeId: string, credential: string | null) {
 		)
 	}));
 }
+
+/**
+ * Competency assessments — the performance half of a credential.
+ *
+ * In `corpus.ts` rather than `load.ts` because only the competency page needs it, and
+ * `load.ts` is what every page pays for.
+ */
+export const competencyList = Object.values(
+	competencyData as unknown as Record<string, CompetencyAssessment>
+);
+
+export const competencyFor = (credential: string): CompetencyAssessment | undefined =>
+	competencyList.find((c) => c.credential === credential);

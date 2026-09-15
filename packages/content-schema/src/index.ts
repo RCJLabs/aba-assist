@@ -11,3 +11,4 @@ export * from './practice.js';
 export * from './graph.js';
 export * from './compiled.js';
 export * from './search-options.js';
+export * from './competency.js';

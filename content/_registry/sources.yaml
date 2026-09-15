@@ -101,6 +101,20 @@ sources:
       Effective 2026-01-01. Domain names, task codes, counts and exam weights are facts
       and are modelled freely. The document's wording is not reproduced — we link to it.
 
+  - id: bacb-rbt-ica-2026
+    kind: standard
+    title: RBT Initial Competency Assessment Packet
+    organization: Behavior Analyst Certification Board
+    year: 2026
+    url: https://www.bacb.com/rbt-handbook/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Version 01/2026, effective 2026-01-01. Task numbering, section names, task labels,
+      the permitted assessment methods and the procedural rules are facts about a
+      published requirement and are modelled freely. The document's wording is not
+      reproduced — we link to it.
+
   - id: bacb-ethics-code-2022
     kind: standard
     title: Ethics Code for Behavior Analysts

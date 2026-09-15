@@ -23,3 +23,19 @@ export {
 	CLINICAL_DECISION_LEXICON
 } from './lexicons.js';
 export { SEARCH_FIELDS, searchOptions, type AbaSearchOptions } from './search-options.js';
+
+/**
+ * How a competency task may be assessed.
+ *
+ * Here rather than beside the schema for the same reason the category labels are: the
+ * competency page renders these words, and importing them from a module that builds Zod
+ * schemas at module scope would ship the whole validation library to render four labels.
+ */
+export const ASSESSMENT_METHODS = ['with-a-client', 'role-play', 'interview'] as const;
+export type AssessmentMethod = (typeof ASSESSMENT_METHODS)[number];
+
+export const METHOD_LABELS: Record<AssessmentMethod, string> = {
+	'with-a-client': 'With a client',
+	'role-play': 'Role-play',
+	interview: 'Interview'
+};

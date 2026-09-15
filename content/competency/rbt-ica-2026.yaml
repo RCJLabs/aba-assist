@@ -1,0 +1,465 @@
+id: rbt-ica-2026
+credential: RBT
+name: Initial Competency Assessment
+edition: '01/2026'
+effectiveDate: '2026-01-01'
+issuer: BACB
+sourceId: bacb-rbt-ica-2026
+countsVerified: true
+officialText: null
+officialTitle: null
+officialUrl: null
+
+ourOverview: >-
+  The written examination is only half of what stands between a candidate and the
+  credential. Before applying, they have to show an assessor that they can actually do
+  nineteen things — most of them performed, some of them explained. It happens after the
+  forty-hour training and within ninety days of applying, it can run across several
+  sittings, and a task that does not go well can be retaught and assessed again another
+  day. This page lists what is asked and points at the material for each, so the
+  performance half can be prepared for rather than walked into.
+
+sections:
+  - id: measurement
+    title: Measurement
+    ourDescription: >-
+      Taking data while the session is happening, and getting it onto the graph
+      afterwards. All three can be shown with a client or acted in a role-play.
+    sectionRule: null
+    tasks:
+      - number: 1
+        label: Continuous Measurement
+        ourSummary: >-
+          Record every occurrence as it happens, using whichever continuous measure the
+          programme names — a count, how long it lasted, how long the learner took to
+          start, or the gap between one response and the next. What is being judged is
+          whether the measure matches the definition and whether you can keep it up while
+          also running the session.
+        plainSummary: Take data on every occurrence, using the measure the programme asks for.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:A.1']
+        termRefs:
+          [
+            continuous-measurement,
+            frequency-and-rate,
+            duration,
+            latency,
+            interresponse-time,
+            operational-definition
+          ]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 2
+        label: Discontinuous Measurement
+        ourSummary: >-
+          Run a sampling procedure — scoring whether the behaviour happened at any point in
+          an interval, throughout the whole interval, or at the moment the interval ended.
+          These estimate time rather than counting occurrences, and each one is biased in a
+          known direction, which is the part an assessor is most likely to ask about.
+        plainSummary: Run interval recording, and know which way each method is biased.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:A.2']
+        termRefs:
+          [
+            discontinuous-measurement,
+            partial-interval-recording,
+            whole-interval-recording,
+            momentary-time-sampling
+          ]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 3
+        label: Data and Graphs
+        ourSummary: >-
+          Get the session's data into the recording system and bring the learner's graph up
+          to date. That means transcribing without introducing errors, summarising as the
+          programme asks — a rate, a percentage, an average — and plotting so that the
+          phases and the condition changes stay readable.
+        plainSummary: Enter the data and update the graph so it stays readable.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:A.4', 'RBT:A.6', 'RBT:A.7']
+        termRefs: [data-sheet, line-graph, phase-change-line, percentage, visual-analysis]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+
+  - id: assessment
+    title: Assessment
+    ourDescription: >-
+      The two assessment activities a technician carries out rather than designs. Both can
+      be shown with a client or acted.
+    sectionRule: null
+    tasks:
+      - number: 4
+        label: Preference Assessments
+        ourSummary: >-
+          Run a preference assessment in the format the programme names, and record what
+          the learner chose. The formats differ in what they tell you and how long they
+          take, so knowing which one you are running, and why that one, matters as much as
+          running it smoothly.
+        plainSummary: Run a preference assessment the way the programme specifies, and record it.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:B.1']
+        termRefs:
+          [
+            preference-assessment,
+            paired-stimulus-preference-assessment,
+            multiple-stimulus-without-replacement,
+            multiple-stimulus-with-replacement,
+            free-operant-preference-assessment,
+            single-stimulus-preference-assessment
+          ]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 5
+        label: ABC Data
+        ourSummary: >-
+          Record what came before the behaviour, what the behaviour was, and what followed
+          it — in terms another person could have recorded the same way. The common failure
+          is writing an interpretation into the antecedent column, which turns the record
+          into a conclusion before anybody has analysed anything.
+        plainSummary: Write down what came before, what they did, and what came next.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:B.3', 'RBT:A.5']
+        termRefs:
+          [abc-recording, three-term-contingency, operational-definition, objective-language]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+
+  - id: acquisition-and-reduction
+    title: Skill Acquisition and Behavior Reduction
+    ourDescription: >-
+      The teaching and behaviour-change procedures a technician runs. This is the largest
+      section and the one with the most demanding evidence requirement.
+    sectionRule: >-
+      Three of the nine tasks in this section have to be demonstrated with a client rather
+      than acted in a role-play. Which three is your choice, so it is worth deciding early
+      which procedures your current clients will actually give you the chance to show.
+    tasks:
+      - number: 6
+        label: Discrete-Trial Teaching
+        ourSummary: >-
+          Run structured teaching trials: a clear instruction, room for the learner to
+          respond, the planned consequence, and a gap before the next trial. Pacing and
+          consistency are what an assessor watches, because those are what make the data
+          from one trial comparable with the next.
+        plainSummary: Run teaching trials with a clear instruction, a response and a planned consequence.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.3']
+        termRefs:
+          [
+            discrete-trial-training,
+            three-term-contingency,
+            error-correction,
+            trials-to-criterion
+          ]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 7
+        label: Naturalistic Teaching
+        ourSummary: >-
+          Teach inside ordinary activity, using what the learner is already interested in
+          as the occasion to teach and as the reinforcer. It looks less like teaching than
+          a trial does, which is exactly why an assessor will be watching for whether the
+          teaching targets are actually being run.
+        plainSummary: Teach in the flow of play and routine, using what the learner already wants.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.4']
+        termRefs: [naturalistic-teaching, incidental-teaching, mand, motivating-operation]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 8
+        label: Chaining
+        ourSummary: >-
+          Teach a multi-step skill from its written step list, linking the steps in the
+          direction the programme specifies — forward, backward, or the whole chain each
+          time. The task analysis is the programme; following it as written is the skill
+          being assessed.
+        plainSummary: Teach a multi-step skill from its step list, in the direction specified.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.5']
+        termRefs:
+          [chaining, task-analysis, forward-chaining, backward-chaining, total-task-chaining]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 9
+        label: Shaping
+        ourSummary: >-
+          Reinforce successively closer versions of a target response, and move the
+          criterion as the learner meets it. Moving too slowly stalls progress and moving
+          too quickly loses the response altogether, so the judgement about when to shift
+          is the thing being watched.
+        plainSummary: Reinforce closer and closer attempts, moving the bar as the learner meets it.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.10']
+        termRefs: [shaping, differential-reinforcement-of-alternative-behavior, reinforcer]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 10
+        label: Discrimination Training
+        ourSummary: >-
+          Teach the learner to respond to the right stimulus and not to others, by
+          reinforcing in its presence and withholding in its absence. Knowing which
+          stimulus is meant to control the response — and noticing when something else has
+          quietly taken over — is what separates running this from going through it.
+        plainSummary: Teach responding to the right cue and not to others.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.6']
+        termRefs: [discrimination-training, discriminative-stimulus, s-delta, stimulus-control]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 11
+        label: Prompting
+        ourSummary: >-
+          Deliver the prompts the programme names and fade them the way it specifies. Both
+          halves are assessed. Prompting reliably is straightforward; fading on schedule is
+          where prompt dependence comes from when it is skipped, and it is easy to skip
+          without noticing.
+        plainSummary: Use the prompts the programme names, and fade them as it says.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.7']
+        termRefs:
+          [
+            prompt,
+            prompt-hierarchy,
+            prompt-fading,
+            least-to-most-prompting,
+            most-to-least-prompting,
+            time-delay,
+            transfer-of-stimulus-control
+          ]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 12
+        label: Token Systems
+        ourSummary: >-
+          Run a points or tokens arrangement as written: what earns a token, what tokens
+          buy, and when the exchange happens. Delivering tokens is the easy part; holding
+          to the written exchange rules under pressure from the learner is the part that
+          gets assessed.
+        plainSummary: Run a token system as written — what earns tokens, and what they buy.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:C.11']
+        termRefs: [token-economy, conditioned-reinforcer, generalized-conditioned-reinforcer]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 13
+        label: Crisis and Emergency Procedures
+        ourSummary: >-
+          Follow the crisis procedure your employer and the learner's plan set out. This is
+          the one task on the list that this app does not prepare you for and will not try
+          to: crisis and physical-management procedures are employer-specific, require
+          certified hands-on training, and cannot be learned from reading. What you can
+          bring here is your own organisation's protocol, the plan itself, and the training
+          you were certified in. This task also accepts an interview.
+        plainSummary: Follow your employer's crisis protocol. This app does not teach that.
+        methods: [with-a-client, role-play, interview]
+        taskRefs: ['RBT:D.7']
+        termRefs: [behavior-intervention-plan, incident-report, least-restrictive-alternative]
+        consultYourPolicy: true
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 14
+        label: One of three behaviour-change procedures
+        ourSummary: >-
+          A single task satisfied by demonstrating any one of three procedures. That makes
+          it a choice worth making deliberately rather than preparing all three to the same
+          depth — pick the one your current clients and programmes will actually give you a
+          clean opportunity to show.
+        plainSummary: Show any one of three. You choose which one.
+        methods: [with-a-client, role-play]
+        taskRefs: ['RBT:D.2', 'RBT:D.3', 'RBT:D.4']
+        termRefs: [function-of-behavior]
+        alternatives:
+          - label: Antecedent Interventions
+            ourSummary: >-
+              Change what is in place before the behaviour — free access, a changed
+              instruction, a warning before a transition — so that the behaviour becomes
+              less likely rather than being dealt with after it happens.
+            termRefs:
+              [
+                antecedent-intervention,
+                motivating-operation,
+                establishing-operation,
+                abolishing-operation,
+                noncontingent-reinforcement,
+                high-probability-request-sequence
+              ]
+          - label: Differential Reinforcement
+            ourSummary: >-
+              Reinforce the behaviour the plan names — an alternative, an incompatible one,
+              or the absence of the target — while the target behaviour stops producing
+              what it used to.
+            termRefs:
+              [
+                differential-reinforcement-of-alternative-behavior,
+                differential-reinforcement-of-incompatible-behavior,
+                differential-reinforcement-of-other-behavior,
+                replacement-behavior
+              ]
+          - label: Extinction
+            ourSummary: >-
+              Withhold the consequence that has been maintaining the behaviour, exactly as
+              the plan specifies, and keep going through the increase in rate or intensity
+              that usually follows.
+            termRefs: [extinction, extinction-burst, escape-extinction, sensory-extinction]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+
+  - id: professionalism
+    title: Professionalism and Requirements
+    ourDescription: >-
+      Five tasks about how the role is conducted rather than how a procedure is run. Four
+      of the five are interviews, which means the preparation is being able to say it
+      clearly and give an example — not recognise it in a list.
+    sectionRule: null
+    tasks:
+      - number: 15
+        label: Session Notes
+        ourSummary: >-
+          Write up what happened in a session, factually and within whatever your employer
+          and the funder require. The skill being assessed is describing rather than
+          concluding, and the checklist and phrasing guide in this app's tools are built
+          for exactly this.
+        plainSummary: Write a session note that describes what happened rather than what you thought.
+        methods: [with-a-client, role-play, interview]
+        taskRefs: ['RBT:E.4', 'RBT:A.5']
+        termRefs: [session-note, objective-language, operational-definition, permanent-product]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 16
+        label: Client Dignity
+        ourSummary: >-
+          Give examples of how you maintain the learner's dignity. An interview task, so
+          prepare examples rather than a definition — how you speak about somebody in front
+          of them, how a refusal is treated, how private matters stay private, how choice
+          is preserved where the plan allows it.
+        plainSummary: Have real examples ready of how you treat the learner with respect.
+        methods: [interview]
+        taskRefs: ['RBT:F.1', 'RBT:F.10']
+        termRefs: [dignity, assent, confidentiality, cultural-humility]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 17
+        label: Professional Boundaries
+        ourSummary: >-
+          Give examples of keeping professional boundaries. Again an interview, so have
+          cases ready — gifts, social media, a family you know outside work, a request that
+          sits outside your role — and be able to say what you did and why.
+        plainSummary: Have real examples ready of where you drew a line at work.
+        methods: [interview]
+        taskRefs: ['RBT:F.7', 'RBT:F.8', 'RBT:F.6']
+        termRefs:
+          [dual-relationship, conflict-of-interest, public-statement, scope-of-practice]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 18
+        label: Supervision Requirements
+        ourSummary: >-
+          Describe the supervision standards that apply to you — how much, of what kind,
+          with whom, and what happens if a month falls short. These are specific published
+          figures rather than a general principle, and this app's supervision tracker is
+          built on the same requirements.
+        plainSummary: Describe the supervision rules that apply to you, with the actual figures.
+        methods: [interview]
+        taskRefs: ['RBT:F.3', 'RBT:F.4']
+        termRefs: [supervision, competency-assessment, continuity-of-care]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+      - number: 19
+        label: Seeking Clinical Direction
+        ourSummary: >-
+          Describe at least one situation where you would go to your supervisor for
+          clinical direction. The strongest answer is a real one with the reasoning
+          attached — what you saw, why it was not yours to decide, and what you did while
+          waiting for an answer.
+        plainSummary: Describe a situation where you would ask your supervisor, and why.
+        methods: [interview]
+        taskRefs: ['RBT:E.2', 'RBT:F.2']
+        termRefs: [scope-of-practice, supervision, behavior-intervention-plan]
+        officialText: null
+        officialTitle: null
+        officialUrl: null
+
+rules:
+  - label: Who oversees it
+    value: >-
+      A certified analyst or assistant analyst who has completed the eight-hour supervision
+      training takes responsibility for the assessment, signs it, and keeps the records.
+      Parts of it may be delegated to an assistant assessor holding technician
+      certification or higher.
+    locator: Qualified Assessor(s) and Relationship Expectations, p. 1
+  - label: Who may not assess you
+    value: >-
+      An assessor may not be related to you, may not be your subordinate, and may not be
+      employed by you. Paying somebody for the assessment itself does not count as
+      employing them. The person who delivered your forty-hour training may assess you.
+    locator: Qualified Assessor(s) and Relationship Expectations, p. 1
+  - label: Same organisation
+    value: >-
+      You, the assessor, and the organisation providing services to the client involved
+      must all be connected by employment or contract, for the whole assessment and not
+      only the parts involving a client.
+    locator: Relationship Expectations, p. 1
+  - label: When it happens
+    value: >-
+      After the forty-hour training is finished, and no more than ninety days before you
+      submit your certification application.
+    locator: Timing, p. 2
+  - label: How it can be run
+    value: >-
+      Across one sitting or several, in person, live over the internet, or by the assessor
+      watching recordings made specifically for the assessment.
+    locator: Structure, p. 2
+  - label: If a task does not go well
+    value: >-
+      The assessor may give corrective feedback and assess that task again on another day,
+      repeating until you are competent. No corrective feedback is given during the
+      assessment of a task that is being counted as the final one.
+    locator: Administration, p. 2
+  - label: Records
+    value: >-
+      The assessor initials each task, marks which method was used, and signs the
+      attestation once every task is done. The completed form goes in with your
+      application, on the official form rather than a copy, and the assessor keeps records
+      for at least seven years.
+    locator: Documentation, p. 2
+
+attestation:
+  originalProse: true
+  noVerbatimSource: true
+  aiAssisted: true
+  consulted: >-
+    Read from the assessment packet itself. Task labels, numbering, section names,
+    permitted methods and the procedural rules are recorded as facts; every description is
+    written from scratch and no wording is reproduced.
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-15'
+  reviewedBy: null
+  reviewedOn: null
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-15'
