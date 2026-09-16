@@ -98,7 +98,8 @@ termRefs:
 taskRefs:
   - { credential: RBT, code: E.1 }
   - { credential: RBT, code: E.2 }
-  - { credential: BCBA, code: C.11 }
+  - { credential: BCBA, code: E.4 }
+  - { credential: BCBA, code: E.12 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference
