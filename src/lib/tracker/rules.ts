@@ -21,6 +21,9 @@ import type {
 
 export interface SupervisionRequirement {
 	monthlyPercent: number;
+	/** The lower tier and where it starts, where a credential steps its requirement down. */
+	reducedPercent?: number | null;
+	reducedAfterServiceHours?: number | null;
 	contactsPerMonth: number;
 	observedContactsPerMonth: number;
 	individualContactsPerMonth: number;
@@ -127,15 +130,35 @@ export function summariseMonth(
 	const requiredHours =
 		serviceHours === null ? null : round((serviceHours * req.monthlyPercent) / 100);
 
+	/*
+	 * A requirement with a tier is one this app cannot judge.
+	 *
+	 * The assistant-analyst percentage steps down from 5% to 2% after the first 1,000
+	 * hours of post-certification practice, and nothing in here knows how many hours
+	 * somebody has accrued across their whole career — the log starts when they install
+	 * the app. Picking the stricter tier would tell an experienced assistant they were
+	 * short when they were not; picking the looser one would tell a new one they were
+	 * fine when they were not. So the hours are reported and the verdict withheld, which
+	 * is the same answer this engine already gives a month with no denominator.
+	 */
+	const tiered = req.reducedPercent !== null && req.reducedPercent !== undefined;
+
 	const checks: Check[] = [
 		{
 			id: 'percent',
-			label: `${req.monthlyPercent}% of service hours`,
-			met: requiredHours === null ? null : supervisedHours + EPSILON >= requiredHours,
+			label: tiered
+				? `${req.monthlyPercent}% of service hours, or ${req.reducedPercent}% later on`
+				: `${req.monthlyPercent}% of service hours`,
+			met:
+				requiredHours === null || tiered ? null : supervisedHours + EPSILON >= requiredHours,
 			detail:
 				requiredHours === null
 					? 'Enter the hours you delivered this month to work this out.'
-					: `${supervisedHours} of ${requiredHours} hours needed, on ${serviceHours} hours delivered.`
+					: tiered
+						? `${supervisedHours} supervised on ${serviceHours} hours delivered. ` +
+							`Which percentage you owe depends on whether you have passed ${req.reducedAfterServiceHours} hours ` +
+							`of post-certification practice, which this app does not know — check your handbook.`
+						: `${supervisedHours} of ${requiredHours} hours needed, on ${serviceHours} hours delivered.`
 		},
 		{
 			id: 'contacts',

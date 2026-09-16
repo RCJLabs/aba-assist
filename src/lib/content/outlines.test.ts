@@ -48,15 +48,25 @@ describe('the assistant-analyst outline', () => {
 		);
 	});
 
-	it('refuses to pace a simulation it does not know the time limit for', () => {
-		/*
-		 * The outline publishes the question counts but not the clock; that lives in the
-		 * handbook, which has not been read. `examFormat` returning null is what stops the
-		 * simulator offering a paper timed against a guess — a guessed pace is worse than
-		 * no simulation, because it is the one thing a simulation is for.
-		 */
-		expect(BCaBA().exam.minutes).toBeNull();
-		expect(examFormat(BCaBA())).toBeNull();
+	/*
+	 * This assertion used to be the opposite one.
+	 *
+	 * The outline publishes the question counts but not the clock, so `minutes` was null
+	 * and `examFormat` returned null, which stopped the simulator offering a paper timed
+	 * against a guess. That was right while the handbook was unread: a guessed pace is
+	 * worse than no simulation, because pace is the one thing a simulation is for.
+	 *
+	 * The handbook has now been read. It gives four hours for all 175 questions including
+	 * the tutorial and survey, so the refusal is retired and the figure is checked
+	 * instead. `npm run content:verify` checks it against the document itself.
+	 */
+	it('paces a simulation from the handbook rather than a guess', () => {
+		expect(BCaBA().exam.minutes).toBe(240);
+		const format = examFormat(BCaBA());
+		expect(format).not.toBeNull();
+		// The clock covers the unscored items too, so the pace is over all 175.
+		expect(format!.totalItems).toBe(175);
+		expect(format!.minutes).toBe(240);
 		expect(examFormat(outlineForCredential('BCBA')!)).not.toBeNull();
 	});
 });

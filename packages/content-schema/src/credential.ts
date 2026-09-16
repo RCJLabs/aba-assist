@@ -40,6 +40,19 @@ const FactSection = z.strictObject({
 const SupervisionRequirement = z.strictObject({
 	/** Percent of service-delivery hours that must be supervised, each calendar month. */
 	monthlyPercent: z.number().min(0).max(100),
+	/**
+	 * The lower percentage that applies once enough practice has been accrued, where a
+	 * credential steps its requirement down, and the hours at which the step happens.
+	 *
+	 * The assistant-analyst rule is the case this exists for: 5% of service hours for the
+	 * first 1,000 hours of post-certification practice, 2% after that. Flattening it to a
+	 * single number would make the app tell an experienced assistant they were short when
+	 * they were not, which is the failure this project treats as worse than saying nothing.
+	 *
+	 * Both are null where the requirement is flat, which is the ordinary case.
+	 */
+	reducedPercent: z.number().min(0).max(100).nullable().default(null),
+	reducedAfterServiceHours: z.number().int().min(1).nullable().default(null),
 	/** Minimum real-time contacts per month. */
 	contactsPerMonth: z.number().int().min(0),
 	/** Of those, how many must include the supervisor observing client work. */

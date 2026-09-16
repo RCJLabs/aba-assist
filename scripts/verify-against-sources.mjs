@@ -233,8 +233,12 @@ for (const doc of CODE_DOCS) {
  * sort a reviewer would have to open the handbook to catch.
  */
 const HANDBOOKS = [
+	// BCaBA first: "BCBAHandbook" is a substring of nothing here, but the assistant file
+	// is named BCaBAHandbook and a case-insensitive /BCBAHandbook/ would not match it —
+	// the order is what keeps each credential on its own document.
+	{ credential: 'bcaba', pattern: /BCaBAHandbook/i },
 	{ credential: 'rbt', pattern: /RBTHandbook/i },
-	{ credential: 'bcba', pattern: /BCBAHandbook/i }
+	{ credential: 'bcba', pattern: /(?<!a)BCBAHandbook/i }
 ];
 
 const credentials = load('credentials.json');

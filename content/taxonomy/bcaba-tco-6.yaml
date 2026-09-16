@@ -32,11 +32,12 @@ totalTasks: 90
 exam:
   scoredItems: 150
   unscoredItems: 25
-  # The outline states the question counts but not the time allowed; that lives in the
-  # BCaBA Handbook, which has not been read. Null rather than the analyst exam's four
-  # hours: a simulator that paces you against the wrong clock is worse than no simulator,
-  # and `examFormat` returns null here rather than guessing.
-  minutes: null
+  # The outline states the question counts but not the time allowed. This was left null
+  # until the BCaBA Handbook could be read rather than assumed from the analyst exam —
+  # a simulator that paces you against the wrong clock is worse than no simulator. The
+  # handbook gives four hours for all 175 questions, including the tutorial and survey
+  # (Examination Outline, p. 29; Examination Terms and Conditions, p. 34).
+  minutes: 240
 
 domains:
   - letter: A

@@ -61,23 +61,33 @@ test('the quiz runs the assistant bank, filed against the assistant outline', as
 	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
 });
 
-test('the quiz offers no timed simulation for an exam with no published clock', async ({
+/*
+ * This test used to assert the opposite, and it was passing for the wrong reason.
+ *
+ * The assistant outline publishes question counts but not the clock, so the quiz refused
+ * to offer a simulation rather than invent a pace. That was right, and the test checked
+ * it with `toHaveCount(0)` — which is satisfied instantly, before `previewPlan()` has
+ * resolved. It would have gone on passing whatever the page did. The replacement waits
+ * for the option and reads the figures off it, so it cannot pass by being early.
+ *
+ * The handbook has now been read: four hours for all 175 questions. Both analyst papers
+ * run to 240 minutes, so the clock alone cannot tell them apart — the item count is the
+ * discriminator, and that is what this asserts.
+ */
+test('the assistant exam is paced from its own handbook, not the analyst one', async ({
 	page
 }) => {
-	/*
-	 * The assistant outline publishes question counts and not the time allowed. Offering a
-	 * simulation would mean inventing the pace, which is the one thing a simulation is for.
-	 */
 	await setMode(page);
 	await page.goto('/quiz');
-	await expect(page.getByRole('radio', { name: /Full exam simulation/ })).toHaveCount(0);
-	await expect(page.locator('[data-no-simulation="BCaBA"]')).toContainText(
-		'not the time allowed'
-	);
 
-	// The analyst exam does publish one, so the option is there.
-	await page.getByLabel('Exam', { exact: true }).selectOption('BCBA');
-	await expect(page.getByRole('radio', { name: /Full exam simulation/ })).toBeVisible();
+	const simulation = page.getByRole('radio', { name: /Full exam simulation/ });
+	await expect(simulation).toBeVisible();
+	await simulation.check();
+
+	// 150 scored plus 25 unscored, four hours: the assistant paper, not the analyst's 185.
+	await expect(page.locator('.setup')).toContainText('175 questions in 240 minutes');
+	await expect(page.locator('.setup')).not.toContainText('185 questions');
+	await expect(page.locator('[data-no-simulation]')).toHaveCount(0);
 });
 
 test('the tracker withholds requirements it has not read instead of borrowing them', async ({
@@ -91,16 +101,35 @@ test('the tracker withholds requirements it has not read instead of borrowing th
 	await expect(page.getByLabel('Track requirements for')).toHaveValue('BCaBA');
 
 	/*
-	 * The analyst requirement is 32 units per cycle. Showing that number to an assistant
-	 * analyst is the specific bug this replaces: a figure nobody checked for them, in a
-	 * tool whose whole value is that the arithmetic is right.
+	 * The requirement used to be withheld, because the assistant handbook had not been
+	 * read and borrowing the analyst's 32 units would have been a figure nobody checked.
+	 * The handbook has been read, so the numbers are now the assistant's own — and the
+	 * analyst's must still never appear here, which is the half of this that never
+	 * expires.
 	 */
-	await expect(page.getByText('32')).toHaveCount(0);
-	await expect(page.getByText(/have not been read into the app yet/)).toBeVisible();
+	/*
+	 * Scoped to the card and compared with `toContainText`, which normalises whitespace.
+	 * A bare `getByText` compares against text that still carries the line breaks the
+	 * template's `{#if}` boundaries leave behind, so "including 4 on ethics" is not found
+	 * even though that is exactly what a reader sees.
+	 */
+	const cards = page.locator('.cards');
+	await expect(cards).toContainText('20 CEUs every 2 years, including 4 on ethics');
+	await expect(cards).not.toContainText('32 CEUs');
+	await expect(cards).not.toContainText('have not been read into the app yet');
 
-	// And the ledger still records units; it just does not score them against a total.
+	/*
+	 * The supervision percentage steps down with experience and the app cannot know which
+	 * tier applies, so the card must say both rather than presenting the upper figure as
+	 * the whole rule.
+	 */
+	await expect(cards).toContainText(
+		'5% of the hours you deliver each month for your first 1,000 hours of practice, then 2%'
+	);
+	// One contact a month, in the singular.
+	await expect(cards).toContainText('with 1 real-time contact.');
+
 	await page.goto('/tools/development');
-	await expect(page.getByText(/have not been read into the app yet/)).toBeVisible();
 	await expect(page.getByRole('heading', { name: 'Set up your cycle' })).toBeVisible();
 });
 

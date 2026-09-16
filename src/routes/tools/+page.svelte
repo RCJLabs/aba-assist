@@ -246,10 +246,24 @@
 		<article class="card">
 			<h2><a href={resolve('/tools/supervision')}>Supervision log</a></h2>
 			{#if tracker.supervisionRequirement}
+				{@const req = tracker.supervisionRequirement}
 				<p>
-					{tracker.supervisionRequirement.monthlyPercent}% of the hours you deliver each month,
-					at every organisation, with {tracker.supervisionRequirement.contactsPerMonth} real-time
-					contacts.
+					<!--
+						The percentage is a range where a credential steps it down with experience,
+						because stating the upper figure alone would read as the whole rule. The
+						assistant-analyst requirement drops from 5% to 2% after the first 1,000 hours
+						of post-certification practice, and the app has no way to know which applies.
+					-->
+					{#if req.reducedPercent !== null && req.reducedPercent !== undefined}
+						{req.monthlyPercent}% of the hours you deliver each month for your first
+						{req.reducedAfterServiceHours.toLocaleString()} hours of practice, then {req.reducedPercent}%
+						— at every organisation, with {req.contactsPerMonth}
+						{req.contactsPerMonth === 1 ? 'real-time contact' : 'real-time contacts'}.
+					{:else}
+						{req.monthlyPercent}% of the hours you deliver each month, at every organisation,
+						with {req.contactsPerMonth}
+						{req.contactsPerMonth === 1 ? 'real-time contact' : 'real-time contacts'}.
+					{/if}
 				</p>
 			{:else if tracker.credentialModelled}
 				<p>

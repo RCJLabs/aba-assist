@@ -255,6 +255,19 @@ sources:
       format, continuing education and recertification facts. Facts only.
 
   # ------------------------------------------------ primary literature, added for M1+
+  - id: bacb-bcaba-handbook-2026
+    kind: organization-publication
+    title: Board Certified Assistant Behavior Analyst Handbook
+    organization: Behavior Analyst Certification Board
+    year: 2026
+    url: https://www.bacb.com/bcaba/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Version updated 06/2026. Source for eligibility pathways, fieldwork, examination
+      format, continuing education and recertification facts. Facts only.
+
+  # ------------------------------------------------ primary literature, added for M1+
   - id: skinner-1953
     kind: book
     title: Science and Human Behavior

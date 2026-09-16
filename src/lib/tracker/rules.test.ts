@@ -349,3 +349,72 @@ describe('a development requirement that has not taken effect yet', () => {
 		expect(s.checks.map((c) => c.id)).toEqual(['total']);
 	});
 });
+
+/*
+ * A requirement this app cannot attribute to a tier is one it must not judge.
+ *
+ * The assistant-analyst percentage steps down from 5% to 2% after the first 1,000 hours
+ * of post-certification practice. Nothing here knows how much practice somebody has
+ * accrued — the log starts when they install the app — so the hours are reported and the
+ * verdict withheld, the same answer a month with no denominator already gets.
+ */
+describe('a supervision percentage with a tier in it', () => {
+	const tiered = {
+		monthlyPercent: 5,
+		reducedPercent: 2,
+		reducedAfterServiceHours: 1000,
+		contactsPerMonth: 1,
+		observedContactsPerMonth: 0,
+		individualContactsPerMonth: 0,
+		groupMax: 10,
+		locator: 'Supervision Requirements, p. 47'
+	};
+	const entry = (over = {}) => ({
+		id: 'e1',
+		date: '2026-09-04',
+		minutes: 120,
+		format: 'individual' as const,
+		modality: 'in-person' as const,
+		observed: false,
+		workplaceId: 'w1',
+		superviseeId: null,
+		note: '',
+		...over
+	});
+	const month = (hours: number) => ({
+		id: 'w1:2026-09',
+		month: '2026-09',
+		workplaceId: 'w1',
+		hours
+	});
+
+	it('reports the hours without calling them short or met', () => {
+		// 2 supervised on 100 delivered is 2%: enough on the lower tier, short on the upper.
+		const s = summariseMonth('2026-09', 'w1', [entry()], month(100), tiered);
+		const percent = s.checks.find((c) => c.id === 'percent')!;
+		expect(percent.met).toBeNull();
+		expect(s.standing).toBe('unknown');
+	});
+
+	it('says which figure depends on what, rather than picking one', () => {
+		const s = summariseMonth('2026-09', 'w1', [entry()], month(100), tiered);
+		const percent = s.checks.find((c) => c.id === 'percent')!;
+		expect(percent.label).toContain('5%');
+		expect(percent.label).toContain('2%');
+		expect(percent.detail).toContain('1000');
+		expect(percent.detail).toContain('this app does not know');
+	});
+
+	it('still checks the rules it can check', () => {
+		const s = summariseMonth('2026-09', 'w1', [entry()], month(100), tiered);
+		expect(s.checks.find((c) => c.id === 'contacts')!.met).toBe(true);
+	});
+
+	/* A flat requirement is unaffected: the technician rule still gets a verdict. */
+	it('leaves an untiered requirement judged as before', () => {
+		const flat = { ...tiered, reducedPercent: null, reducedAfterServiceHours: null };
+		const s = summariseMonth('2026-09', 'w1', [entry()], month(100), flat);
+		expect(s.checks.find((c) => c.id === 'percent')!.met).toBe(false);
+		expect(s.standing).toBe('short');
+	});
+});

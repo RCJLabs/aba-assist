@@ -32,24 +32,41 @@ test('the BCaBA outline page is its own document, not the analyst one', async ({
 	await expect(page.locator('#domain-I')).toContainText('Supervisory Relationships');
 
 	/*
-	 * The outline states the question counts but not the clock, so the page must not
-	 * invent one. A minutes figure here would be the analyst exam's, and pacing somebody
-	 * against the wrong clock is the one thing a timed simulation must not do.
+	 * The clock used to be absent here, and the assertion was that the page must not
+	 * invent one — any minutes figure would have been the analyst exam's.
+	 *
+	 * The assistant handbook has since been read, and it gives four hours. So has the
+	 * analyst one, and it also gives four hours: the clock cannot tell the two papers
+	 * apart, and a borrowed figure would look perfectly correct. The item count is what
+	 * distinguishes them, so that is what is checked — 175 here, 185 on the analyst page.
 	 */
-	await expect(page.getByText(/minutes|hours/)).toHaveCount(0);
+	await expect(page.getByText(/4 hours|240 minutes/)).toBeVisible();
+	await expect(page.getByText(/185/)).toHaveCount(0);
 });
 
 test('the BCBA outline page shows all nine areas and every task with a link to a term', async ({
 	page
 }) => {
 	await page.goto('/exams/bcba-tco-6');
+	await expect(page.locator('.lede')).toContainText(
+		'The exam has 175 scored questions plus 10 unscored, in 240 minutes.'
+	);
 	await expect(page.getByRole('heading', { level: 1 })).toHaveText(/BCBA/);
 	await expect(page.locator('.domains > li')).toHaveCount(9);
 	await expect(page.locator('.task')).toHaveCount(104);
 
 	// Facts from the outline document: the largest domain by tasks is B, with 24.
 	await expect(page.locator('#domain-B .task')).toHaveCount(24);
-	await expect(page.getByText(/4 hours|240 minutes/)).toBeVisible();
+	/*
+	 * The clock is asserted on the lede at the top of this test, not here.
+	 *
+	 * There used to be an unscoped `getByText(/4 hours|240 minutes/)` on this line, and it
+	 * found exactly one element — because the lede rendered "in 240\nminutes" with a line
+	 * break inside it, so the regex never matched the lede at all and the single hit was a
+	 * handbook fact further down. Fixing that whitespace made the lede match too and the
+	 * assertion failed on strict mode rather than on anything being wrong. It had been
+	 * passing by accident, and it is covered properly above.
+	 */
 
 	// Task summaries link into the glossary.
 	await page.locator('#domain-B .task a').first().click();

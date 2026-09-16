@@ -21,6 +21,13 @@
 			month: 'long',
 			year: 'numeric'
 		});
+
+	const examFormatLine = $derived.by(() => {
+		const parts = [`The exam has ${o.exam.scoredItems} scored questions`];
+		if (o.exam.unscoredItems) parts.push(`plus ${o.exam.unscoredItems} unscored`);
+		const sentence = parts.join(' ');
+		return o.exam.minutes ? `${sentence}, in ${o.exam.minutes} minutes.` : `${sentence}.`;
+	});
 </script>
 
 <svelte:head>
@@ -35,13 +42,16 @@
 	<a href={resolve('/exams')}>Exams</a>
 </nav>
 
+<!--
+	Built here rather than inline. A `{#if}` boundary inside a sentence swallows the
+	whitespace around it, which is how "150 scored questions" and "plus 25 unscored" came
+	to render as "questionsplus".
+-->
 <h1>{o.credential} — {CREDENTIAL_LABELS[o.credential] ?? o.credential}</h1>
 <p class="lede">
 	Test Content Outline, {o.edition} edition, effective {fmtDate(o.effectiveDate)}.
 	{#if o.exam.scoredItems}
-		The exam has {o.exam.scoredItems} scored questions{#if o.exam.unscoredItems}
-			plus {o.exam.unscoredItems} unscored{/if}{#if o.exam.minutes}, in {o.exam.minutes}
-			minutes{/if}.
+		{examFormatLine}
 	{/if}
 </p>
 
