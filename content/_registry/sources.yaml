@@ -740,3 +740,39 @@ sources:
     url: https://www.bacb.com/rbt/
     rights: all-rights-reserved
     quotationAllowed: false
+
+  - id: lindsley-1992
+    kind: journal-article
+    title: Precision teaching — discoveries and effects
+    authors: ['Lindsley, O. R.']
+    year: 1992
+    doi: 10.1901/jaba.1992.25-51
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Where celeration and the standard celeration chart come from. Consulted for facts
+      about what the measure is and what it is for.
+
+  - id: ward-carnes-2002
+    kind: journal-article
+    title: >-
+      Effects of posting self-set goals on collegiate football players' skill execution
+      during practice and games
+    authors: ['Ward, P.', 'Carnes, M.']
+    year: 2002
+    doi: 10.1901/jaba.2002.35-1
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Public posting and self-set goals in a sport setting. Facts only.
+
+  - id: komaki-barnett-1977
+    kind: journal-article
+    title: >-
+      A behavioral approach to coaching football — improving the play execution of the
+      offensive backfield on a youth football team
+    authors: ['Komaki, J.', 'Barnett, F. T.']
+    year: 1977
+    doi: 10.1901/jaba.1977.10-657
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: Early demonstration of behavioral coaching with feedback. Facts only.

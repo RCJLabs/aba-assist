@@ -270,8 +270,19 @@
 							max="400"
 							step="0.25"
 							bind:value={totalHours}
+							aria-describedby="{uid}-total-help"
 							required
 						/>
+						<!--
+							"Total" reads as "the rest of it" to anyone entering supervision separately
+							below, and a month entered that way is short by exactly the supervised
+							hours — every month, in the same direction, which is the kind of error
+							nobody notices until verification.
+						-->
+						<p class="hint" id="{uid}-total-help">
+							Everything you accrued this month, including the hours your supervisor was
+							present for. Not the independent hours on their own.
+						</p>
 					</div>
 					<div class="field">
 						<label for="{uid}-unrestricted">Unrestricted hours</label>

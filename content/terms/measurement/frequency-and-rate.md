@@ -27,7 +27,7 @@ nonExamples:
       Counting how often a learner stayed on task, which has no clear separate
       occurrences to count.
     setting: school
-contrastWith: [percentage]
+contrastWith: [percentage, celeration]
 seeAlso: [duration, latency, partial-interval-recording]
 searchBoost: 1.3
 taskRefs:

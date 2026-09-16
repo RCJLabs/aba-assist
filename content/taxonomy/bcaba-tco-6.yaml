@@ -935,7 +935,7 @@ domains:
           rather than from a standard list applied to everyone.
         plainSummary: Set supervision goals from what this person can already do.
         keywords: [skills assessment, supervision goals, individualized]
-        termRefs: [competency-assessment, skills-assessment, supervision]
+        termRefs: [competency-assessment, skills-assessment, supervision, goal-setting]
         attestation: *att
       - code: I.6
         ourSummary: >-
@@ -964,7 +964,8 @@ domains:
             behavioral-skills-training,
             cultural-responsiveness,
             modeling,
-            task-clarification
+            task-clarification,
+            public-posting
           ]
         attestation: *att
       - code: I.8

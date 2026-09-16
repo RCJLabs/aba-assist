@@ -25,7 +25,8 @@ nonExamples:
       An annual review that says "good job overall." Too late and too vague to change
       anything specific.
     setting: any
-seeAlso: [supervision, behavioral-skills-training, treatment-integrity]
+contrastWith: [goal-setting]
+seeAlso: [supervision, behavioral-skills-training, treatment-integrity, public-posting]
 taskRefs:
   - { credential: RBT, code: F.4 }
   - { credential: RBT, code: F.9 }

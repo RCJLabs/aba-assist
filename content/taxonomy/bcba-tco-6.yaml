@@ -348,7 +348,15 @@ domains:
           criterion — and select the right one for the question.
         plainSummary: Know the ways to measure how often a behavior happens and when to use each.
         keywords: [count, frequency, rate, percentage, trials to criterion]
-        termRefs: [frequency-and-rate, percentage, trials-to-criterion]
+        termRefs:
+          [
+            frequency-and-rate,
+            percentage,
+            trials-to-criterion,
+            count,
+            repeatability,
+            celeration
+          ]
         attestation: *att
       - code: C.4
         ourSummary: >-
@@ -356,7 +364,7 @@ domains:
           time — and select the right one for the question.
         plainSummary: Know the ways to measure the timing of behavior and when to use each.
         keywords: [duration, latency, IRT, interresponse time]
-        termRefs: [duration, latency, interresponse-time]
+        termRefs: [duration, latency, interresponse-time, temporal-extent, temporal-locus]
         attestation: *att
       - code: C.5
         ourSummary: >-
@@ -414,7 +422,7 @@ domains:
           immediacy of change within and across conditions.
         plainSummary: Read a graph for level, trend and variability and say what changed.
         keywords: [visual analysis, level, trend, variability, immediacy]
-        termRefs: [visual-analysis, baseline]
+        termRefs: [visual-analysis, baseline, trend, celeration]
         attestation: *att
       - code: C.12
         ourSummary: >-
@@ -993,7 +1001,7 @@ domains:
           the requirements of their role.
         plainSummary: Give each supervisee clear goals matched to what they still need to learn.
         keywords: [supervisee goals, skills assessment, competency]
-        termRefs: [competency-assessment, supervision]
+        termRefs: [competency-assessment, supervision, goal-setting]
         attestation: *att
       - code: I.5
         ourSummary: >-
@@ -1001,7 +1009,8 @@ domains:
           performance monitoring, incentives — to train and maintain staff performance.
         plainSummary: Train staff with practice and feedback, and keep their performance up over time.
         keywords: [behavioral skills training, BST, feedback, performance management]
-        termRefs: [behavioral-skills-training, performance-feedback]
+        termRefs:
+          [behavioral-skills-training, performance-feedback, public-posting, goal-setting]
         attestation: *att
       - code: I.6
         ourSummary: >-
