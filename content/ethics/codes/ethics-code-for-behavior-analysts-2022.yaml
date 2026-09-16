@@ -122,10 +122,10 @@ sections:
       - number: '1.08'
         ourLabel: Do not discriminate
         ourSummary: >-
-          Behave equitably and inclusively toward everyone, whatever their age, disability,
-          ethnicity, gender identity or expression, immigration status, relationship
-          status, national origin, race, religion, sexual orientation or income, and
-          whatever else the law protects.
+          Behave equitably and inclusively toward everyone, whatever their race,
+          ethnicity, national origin, religion, disability, age, gender identity or
+          expression, sexual orientation, relationship status, immigration status or
+          income, and whatever else the law protects.
       - number: '1.09'
         ourLabel: Do not harass
         ourSummary: >-
@@ -486,9 +486,9 @@ sections:
       - number: '4.07'
         ourLabel: Make diversity part of supervision, not an add-on
         ourSummary: >-
-          Actively bring topics of diversity into supervision and training — age,
-          disability, ethnicity, gender identity and expression, immigration status,
-          relationship status, national origin, race, religion, sexual orientation, income.
+          Actively bring topics of diversity into supervision and training — race,
+          ethnicity, national origin, religion, disability, age, gender identity and
+          expression, sexual orientation, relationship status, immigration status, income.
       - number: '4.08'
         ourLabel: Monitor performance with data, and give feedback in time
         ourSummary: >-
@@ -641,8 +641,8 @@ sections:
       - number: '6.06'
         ourLabel: Be competent to do the research you are doing
         ourSummary: >-
-          Conduct research independently only after you have completed research under a
-          supervisor in a defined relationship. You and your assistants perform only the
+          Conduct research independently only once you have completed supervised research
+          within a relationship agreed in advance. You and your assistants perform only the
           activities you are trained for; otherwise get the training or collaborate with
           someone competent. You are responsible for the ethical conduct of everyone on
           the project.

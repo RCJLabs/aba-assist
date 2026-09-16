@@ -517,8 +517,8 @@ domains:
         attestation: *att
       - code: D.4
         ourSummary: >-
-          Describe the defining features of single-case experimental designs, including
-          repeated measurement, baseline logic and within-subject replication.
+          Describe what makes an experimental design single-case: measurement repeated
+          across conditions, baseline logic, and replication within the participant.
         plainSummary: Know what makes single-case designs work as experiments.
         keywords: [single-case design, baseline logic, prediction, verification, replication]
         termRefs: [single-case-design, baseline, replication, ab-design, functional-relation]

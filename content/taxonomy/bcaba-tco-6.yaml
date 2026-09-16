@@ -389,8 +389,8 @@ domains:
         attestation: *att
       - code: D.5
         ourSummary: >-
-          Tell reversal, multiple-baseline, multielement and changing-criterion designs apart,
-          and run the one a situation allows.
+          Tell the single-case designs apart — changing criterion, multielement, multiple
+          baseline, reversal — and run whichever one a situation allows.
         plainSummary: Know the main single-case designs and use the one that fits.
         keywords: [reversal, multiple baseline, multielement, changing criterion]
         termRefs:

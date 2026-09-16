@@ -128,9 +128,9 @@ sections:
         ourLabel: Do not harass or discriminate
         ourSummary: >-
           Treat clients, coworkers and everyone else equitably and inclusively, whatever
-          their age, disability, ethnicity, gender identity or expression, immigration
-          status, relationship status, national origin, race, religion, sexual orientation
-          or income — and whatever else the law protects.
+          their race, ethnicity, national origin, religion, disability, age, gender
+          identity or expression, sexual orientation, relationship status, immigration
+          status or income — and whatever else the law protects.
       - number: '1.09'
         ourLabel: Notice when your own situation is affecting your work
         ourSummary: >-
@@ -209,7 +209,7 @@ sections:
       - number: '2.07'
         ourLabel: Act when a client's rights or safety are at risk
         ourSummary: >-
-          If you become aware that a client's legal rights are being violated, or that they
+          If you learn that somebody is breaching a client's legal rights, or that they
           are at risk of harm, take action: tell your supervisor, follow your
           organisation's policy, and document it. Some situations require contacting an
           outside authority as well.

@@ -413,6 +413,139 @@ if (ICA && assessment) {
 	console.log('\nInitial Competency Assessment — no document supplied, skipped');
 }
 
+/*
+ * ------------------------------------------------- verbatim overlap
+ *
+ * The copyright guard is structural: `officialText` is typed `z.null()`, so a standard
+ * cannot be pasted in. What it cannot see is a long phrase surviving into prose we wrote
+ * ourselves, which is how close paraphrase usually happens — not by copying a document
+ * but by reading one and writing from memory an hour later.
+ *
+ * So this compares everything we publish against every source we hold, and reports any
+ * run of eight words that appears in both. Eight is long enough that ordinary phrasing
+ * does not collide and short enough to catch a sentence that was absorbed rather than
+ * restated. Proper nouns and defined terms will legitimately match inside a longer
+ * window, which is why the unit is a word run rather than a phrase list.
+ *
+ * It lives here rather than in the build because it needs the documents, and those are
+ * the rights-holder's and are never committed.
+ */
+const RUN = 8;
+const words = (s) =>
+	String(s ?? '')
+		.toLowerCase()
+		.replace(/[^a-z0-9 ]+/g, ' ')
+		.split(/\s+/)
+		.filter(Boolean);
+
+function runsOf(value) {
+	const w = words(value);
+	const out = new Set();
+	for (let i = 0; i + RUN <= w.length; i++) out.add(w.slice(i, i + RUN).join(' '));
+	return out;
+}
+
+const sourceRuns = new Set();
+for (const file of readdirSync(sources)) {
+	if (!file.toLowerCase().endsWith('.pdf')) continue;
+	for (const r of runsOf(extract(join(sources, file)))) sourceRuns.add(r);
+}
+
+if (sourceRuns.size > 0) {
+	console.log('\nVerbatim overlap with the source documents');
+	// Fields that are meant to match: an id, a citation locator, a URL, a licence name.
+	const SKIP = new Set([
+		'id',
+		'sourceId',
+		'locator',
+		'sourceNote',
+		'officialUrl',
+		'license',
+		'status',
+		'authoredBy',
+		'reviewedBy',
+		'handbookSourceId',
+		'outlineId',
+		'credential'
+	]);
+	const contentWords = (run) =>
+		run.split(' ').filter((w) => w.length >= 4 && !/\d/.test(w)).length;
+	const overlaps = [];
+	const walk = (node, path) => {
+		if (typeof node === 'string') {
+			const shared = [...runsOf(node)].filter((r) => sourceRuns.has(r));
+			/*
+			 * A field is judged by its most language-heavy shared run, not its first. A
+			 * pasted sentence usually starts on a number — "no fewer than 20 and no more
+			 * than 130" — and reporting that opening made a whole copied sentence look
+			 * like a quantity. The rest of the same sentence is what gives it away.
+			 */
+			if (shared.length > 0) {
+				const run = shared.reduce((a, b) => (contentWords(b) > contentWords(a) ? b : a));
+				overlaps.push({ path, run, runs: shared.length });
+			}
+		} else if (Array.isArray(node)) {
+			node.forEach((v, i) => walk(v, `${path}[${i}]`));
+		} else if (node && typeof node === 'object') {
+			for (const [k, v] of Object.entries(node)) if (!SKIP.has(k)) walk(v, `${path}.${k}`);
+		}
+	};
+	for (const f of [
+		'ethics-codes.json',
+		'ethics-topics.json',
+		'credentials.json',
+		'taxonomy.json',
+		'scenarios.json',
+		'practice-guides.json'
+	]) {
+		walk(load(f), f.replace('.json', ''));
+	}
+	/*
+	 * A run can be unavoidable rather than copied. "The 3rd edition of the RBT Test Content
+	 * Outline" is a document's name and cannot be paraphrased into something else and stay
+	 * true; a figure and its unit are the fact itself. Those are reported for a reader
+	 * rather than failed.
+	 *
+	 * The discriminator is how much ordinary language the run carries, counted as words of
+	 * four letters or more that are not figures. A title or a quantity reaches four or so;
+	 * a sentence that was absorbed and rewritten from memory reaches eight. Sorting by
+	 * whether a digit appears anywhere — which is what this did first — lets any handbook
+	 * sentence through, because handbook sentences are full of numbers.
+	 */
+	/*
+	 * Two signals, either of which is enough. A run carrying six or more ordinary words is
+	 * a sentence somebody absorbed. So is a field that shares three or more runs at all:
+	 * overlapping windows mean a long stretch matched, and a stretch that long is not a
+	 * coincidence even when every word in it is short. The handbook sentence about
+	 * accruing no fewer than 20 hours is the case that needs the second signal — it is
+	 * short-worded throughout, and no single window of it looks like prose.
+	 */
+	const copied = (o) => contentWords(o.run) >= 6 || o.runs >= 3;
+	const prose = overlaps.filter(copied);
+	const factual = overlaps.filter((o) => !copied(o));
+	console.log(
+		prose.length === 0
+			? ok(`no ${RUN}-word run of ordinary prose is shared with any source`)
+			: bad(
+					'verbatim overlap',
+					`${RUN}-word prose runs: 0`,
+					`${prose.length} shared:\n            ` +
+						prose
+							.map(
+								(o) =>
+									`${o.path}: "${o.run}"${o.runs > 1 ? ` (+${o.runs - 1} more run(s))` : ''}`
+							)
+							.join('\n            ')
+				)
+	);
+	if (factual.length > 0) {
+		console.log(
+			`  NOTE  ${factual.length} run(s) that are mostly a title or a quantity, where the wording is the fact:\n          ` +
+				factual.map((o) => `${o.path}: "${o.run}"`).join('\n          ')
+		);
+	}
+}
+
 console.log(`\n${checked} facts checked, ${failed} disagreeing with the documents.`);
 if (failed > 0) {
 	console.log(
