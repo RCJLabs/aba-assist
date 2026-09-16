@@ -535,8 +535,8 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary preference- and functional-
-        assessment literature; no examination material consulted.
+        Original question written from the primary preference- and
+        functional-assessment literature; no examination material consulted.
     review:
       status: in-review
       authoredBy: claude
@@ -605,8 +605,8 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary preference- and functional-
-        assessment literature; no examination material consulted.
+        Original question written from the primary preference- and
+        functional-assessment literature; no examination material consulted.
     review:
       status: in-review
       authoredBy: claude

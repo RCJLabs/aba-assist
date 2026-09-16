@@ -823,7 +823,7 @@ questions:
       supervisor, which also protects the technician.
     cognitiveLevel: application
     difficulty: 2
-    termRefs: [dual-relationship, conflict-of-interest, professional-development-unit]
+    termRefs: [dual-relationship, conflict-of-interest, ethics-code]
     ethicsRefs: [gifts, conflicts-of-interest-and-money, multiple-relationships]
     citations:
       - sourceId: bacb-rbt-ethics-code-2

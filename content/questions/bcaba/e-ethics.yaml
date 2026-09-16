@@ -364,12 +364,7 @@ questions:
     cognitiveLevel: analysis
     difficulty: 3
     termRefs:
-      [
-        scope-of-competence,
-        supervision,
-        professional-development-unit,
-        evidence-based-practice
-      ]
+      [scope-of-competence, supervision, continuing-education-unit, evidence-based-practice]
     citations:
       - sourceId: bacb-ethics-code-2022
         useType: fact-reference

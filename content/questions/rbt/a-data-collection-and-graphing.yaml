@@ -583,8 +583,8 @@ questions:
         text: 'A rule for when one instance ends and the next begins'
         isCorrect: true
         rationale: >-
-          Without an offset rule and a minimum gap, one recorder scores a two-
-          minute episode and another scores nine short ones. That is where the
+          Without an offset rule and a minimum gap, one recorder scores a
+          two-minute episode and another scores nine short ones. That is where the
           duration totals diverge.
     explanation: >-
       A usable definition needs onset and offset criteria. For duration and for count

@@ -595,8 +595,8 @@ questions:
     taskRef: { credential: RBT, code: D.6 }
     type: single-best-answer
     stem: >-
-      Which of the following is a documented side effect associated with punishment-
-      based procedures?
+      Which of the following is a documented side effect associated with
+      punishment-based procedures?
     options:
       - id: a
         text: 'Avoidance of the person who delivers it'
@@ -875,8 +875,8 @@ questions:
         text: 'Reinforcing asking for a break to reduce hand-mouthing'
         isCorrect: false
         rationale: >-
-          Asking for a break is an alternative but it can occur while hand-
-          mouthing does, so it is DRA rather than DRI.
+          Asking for a break is an alternative but it can occur while
+          hand-mouthing does, so it is DRA rather than DRI.
       - id: b
         text: 'Reinforcing fewer than three instances per session'
         isCorrect: false
@@ -897,8 +897,8 @@ questions:
           That is DRO: reinforcement follows the absence of the behaviour rather
           than a specified competing response.
     explanation: >-
-      DRI is a special case of DRA where the reinforced response physically cannot co-
-      occur with the problem behaviour. The distinction matters because
+      DRI is a special case of DRA where the reinforced response physically cannot
+      co-occur with the problem behaviour. The distinction matters because
       incompatibility does some of the work automatically rather than relying on the
       alternative being more efficient.
     cognitiveLevel: recall

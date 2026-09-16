@@ -1301,8 +1301,8 @@ questions:
           learner’s response, a programmed consequence, and a short interval
           separating it from the next.
     explanation: >-
-      The structure of a discrete trial — antecedent, response, consequence, inter-
-      trial interval — is what makes each opportunity countable and each trial
+      The structure of a discrete trial — antecedent, response, consequence,
+      inter-trial interval — is what makes each opportunity countable and each trial
       comparable to the last. The inter-trial interval is a real component, not dead
       time.
     cognitiveLevel: recall
