@@ -1,40 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { expectNoA11yViolations } from './utils/a11y';
-
-const ROUTES = [
-	'/',
-	'/glossary',
-	'/glossary/negative-reinforcement',
-	'/abbreviations',
-	'/scenarios',
-	'/scenarios/learner-is-injuring-themselves',
-	'/scenarios/you-have-been-told-to-restrain-or-seclude-a-learner',
-	'/scenarios/you-are-asked-to-work-outside-your-role',
-	'/help',
-	'/about',
-	'/settings',
-	'/exams',
-	'/competency',
-	'/exams/rbt-tco-3',
-	'/exams/bcba-tco-6',
-	'/study',
-	'/quiz',
-	'/drills',
-	'/plan',
-	'/ethics',
-	'/ethics/gifts',
-	'/tools',
-	'/tools/supervision',
-	'/tools/development',
-	'/tools/notes',
-	'/tools/timer',
-	'/session',
-	'/tools/fieldwork',
-	'/graphs',
-	'/review',
-	'/graphs/anatomy-of-a-line-graph',
-	'/graphs/a-multiple-baseline-across-behaviours'
-];
+import { ROUTES } from './utils/routes';
 
 /*
  * The matrix: route × theme × width. States matter as much as initial paint, so the

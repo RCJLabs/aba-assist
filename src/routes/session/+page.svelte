@@ -328,7 +328,7 @@
 		margin-bottom: 0.25rem;
 	}
 
-	.field select,
+	/* Selects take their chrome from app.css, including the room the chevron needs. */
 	.field input {
 		width: 100%;
 		min-height: var(--tap);

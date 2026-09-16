@@ -130,3 +130,16 @@ test('the queue is reachable from settings and kept out of the index', async ({ 
 	await expect(page).toHaveURL(/\/review\/?$/);
 	await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
 });
+
+test('the preview banner offers the queue that clears it', async ({ page }) => {
+	/*
+	 * The banner names a number nobody could act on from where it appeared. The one person
+	 * who can change it should not have to remember a URL, and for everybody else the
+	 * queue explains itself on arrival.
+	 */
+	await page.goto('/');
+	const banner = page.getByRole('note').filter({ hasText: 'Preview build' });
+	await expect(banner).toBeVisible();
+	await banner.getByRole('link', { name: 'Review the content' }).click();
+	await expect(page.getByRole('heading', { level: 1, name: 'Content review' })).toBeVisible();
+});

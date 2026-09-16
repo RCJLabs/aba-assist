@@ -577,6 +577,12 @@
 	}
 	.setup {
 		display: grid;
+		/*
+		 * `minmax(0, 1fr)`, not the implicit `auto` track. An auto track is sized by its
+		 * widest item, and the exam picker is as wide as "RBT — Registered Behavior
+		 * Technician", so the whole form measured 476px inside a 320px phone.
+		 */
+		grid-template-columns: minmax(0, 1fr);
 		gap: 0.75rem;
 		max-width: 30rem;
 	}
@@ -591,15 +597,6 @@
 		font-size: 0.85rem;
 		font-weight: 600;
 		color: var(--text-muted);
-	}
-	select {
-		font: inherit;
-		font-weight: 400;
-		color: var(--text);
-		padding: 0.5rem 0.6rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
 	}
 	fieldset {
 		border: none;

@@ -299,15 +299,6 @@
 		font-weight: 600;
 		color: var(--text-muted);
 	}
-	select {
-		font: inherit;
-		font-weight: 400;
-		color: var(--text);
-		padding: 0.5rem 0.6rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
-	}
 	.primary {
 		background: var(--accent);
 		color: var(--accent-text);

@@ -102,16 +102,6 @@
 		color: var(--text-muted);
 	}
 
-	select {
-		font: inherit;
-		color: var(--text);
-		padding: 0.5rem 0.6rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
-		max-width: 100%;
-	}
-
 	.clear {
 		flex: 0 0 auto;
 		padding: 0.5rem 0.8rem;

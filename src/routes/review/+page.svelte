@@ -728,7 +728,7 @@
 		font-weight: 600;
 		color: var(--text-muted);
 	}
-	select,
+	/* Selects take their chrome from app.css; these are the text controls beside them. */
 	input[type='text'],
 	textarea {
 		font: inherit;

@@ -406,15 +406,6 @@
 		font-size: 0.9rem;
 	}
 	input,
-	select {
-		font: inherit;
-		padding: 0.6rem;
-		min-height: var(--tap);
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
-		color: var(--text);
-	}
 	.switch {
 		display: flex;
 		align-items: center;
@@ -428,6 +419,14 @@
 		flex-wrap: wrap;
 		gap: 0.75rem;
 		align-items: end;
+	}
+	/*
+	 * Wrap before crushing. Without a floor these fields shrink until the drop-down is
+	 * narrower than the word inside it, which looks like a rendering fault rather than a
+	 * tight layout.
+	 */
+	.inline .field {
+		min-width: 7rem;
 	}
 	.month {
 		border: 1px solid var(--border);

@@ -190,15 +190,6 @@
 		font-weight: 600;
 		font-size: 0.9rem;
 	}
-	select {
-		font: inherit;
-		padding: 0.6rem;
-		min-height: var(--tap);
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
-		color: var(--text);
-	}
 	.summary,
 	.empty {
 		border: 1px solid var(--border);
