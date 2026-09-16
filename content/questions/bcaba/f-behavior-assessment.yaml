@@ -1,0 +1,1098 @@
+# BCaBA practice questions — area F, Behavior Assessment. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-f1-records-first
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.1 }
+    type: single-best-answer
+    stem: >-
+      At the outset of a new case, why is reviewing existing educational and medical
+      records a priority?
+    options:
+      - id: a
+        text: They can reveal conditions and history that change what the assessment should look for
+        isCorrect: true
+        rationale: >-
+          Prior assessments, medical conditions and past programmes narrow the search and flag
+          risks before anyone begins observing.
+      - id: b
+        text: They provide the baseline data the programme will be evaluated against
+        isCorrect: false
+        rationale: >-
+          Records rarely contain data comparable to what the programme will collect; a
+          baseline must usually be taken.
+      - id: c
+        text: They establish the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by assessment, not by reading a file.
+      - id: d
+        text: They satisfy the funder's documentation requirement
+        isCorrect: false
+        rationale: >-
+          A funder may require it, but that is not why it matters clinically.
+    explanation: >-
+      A record review is cheap and frequently decisive: a documented medical condition, a
+      previous programme that failed, or a recent change of placement will reshape the
+      assessment before the first observation.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [functional-behavior-assessment, indirect-assessment, setting-event, incident-report]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-f1-medical-rule-out
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.1 }
+    type: single-best-answer
+    stem: >-
+      Records show that a learner's head-hitting began in the same month as repeated ear
+      infections. The appropriate first step is:
+    options:
+      - id: a
+        text: Ensure the medical question is referred and considered before assessment conclusions
+        isCorrect: true
+        rationale: >-
+          A possible medical contributor must be addressed by the medical team; proceeding as
+          though it is purely behavioural risks missing pain.
+      - id: b
+        text: Begin a functional analysis immediately to establish the function
+        isCorrect: false
+        rationale: >-
+          Running an analysis before a possible pain contributor is addressed exposes the
+          learner to conditions that may worsen it.
+      - id: c
+        text: Record the coincidence and continue the behavioural assessment unchanged
+        isCorrect: false
+        rationale: >-
+          Noting it without acting on it leaves the most likely explanation untested.
+      - id: d
+        text: Assume the infections are unrelated, since the behaviour continues now
+        isCorrect: false
+        rationale: >-
+          Continuation does not rule out a recurring or ongoing medical contributor.
+    explanation: >-
+      Behaviour that begins alongside a medical event is the standard case for referral
+      first. The assistant analyst's role is to surface it clearly and promptly, not to
+      evaluate the medical question.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [setting-event, functional-behavior-assessment, collaboration, scope-of-practice]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f1-prior-programmes
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.1 }
+    type: single-best-answer
+    stem: >-
+      A file shows a previous programme that used the same procedure now being proposed,
+      and it did not work. The most useful response is:
+    options:
+      - id: a
+        text: Find out how it was implemented and why it stopped before proposing it again
+        isCorrect: true
+        rationale: >-
+          A procedure that failed may have failed on integrity, on function, or on fit — and
+          each points somewhere different.
+      - id: b
+        text: Propose a different procedure, since this one has failed
+        isCorrect: false
+        rationale: >-
+          Discarding it without knowing why it failed may discard something that was never
+          properly run.
+      - id: c
+        text: Propose it again with a longer timeframe
+        isCorrect: false
+        rationale: >-
+          More time applied to an unexamined failure is a common way to lose another term.
+      - id: d
+        text: Disregard the earlier attempt, since the learner has changed since
+        isCorrect: false
+        rationale: >-
+          The learner may have changed, but the record is still the best available information
+          about what happens with this procedure here.
+    explanation: >-
+      Failed prior programmes are among the most informative things in a file and the most
+      often skipped. Very frequently the failure was integrity, which is a staffing
+      problem rather than a procedure problem.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        treatment-integrity,
+        behavior-intervention-plan,
+        evidence-based-practice,
+        treatment-drift
+      ]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f1-record-limits
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.1 }
+    type: single-best-answer
+    stem: >-
+      Which is the main limitation of relying on a previous provider's summary?
+    options:
+      - id: a
+        text: It reports conclusions without the data or conditions they rest on
+        isCorrect: true
+        rationale: >-
+          A summary states what was concluded; without the underlying data and conditions you
+          cannot judge how well supported it was.
+      - id: b
+        text: It will be out of date
+        isCorrect: false
+        rationale: >-
+          It may be, but currency is a smaller problem than not knowing what the conclusion
+          was based on.
+      - id: c
+        text: It cannot be shared without authorisation
+        isCorrect: false
+        rationale: >-
+          Authorisation is a procedural requirement, not a limitation on the content's value.
+      - id: d
+        text: It will use different terminology
+        isCorrect: false
+        rationale: >-
+          Terminology differences are a translation problem rather than an evidential one.
+    explanation: >-
+      Taking a previous conclusion as established is how an incorrect function assignment
+      survives from provider to provider for years. Asking for the data behind it is a
+      routine and reasonable request.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        functional-behavior-assessment,
+        indirect-assessment,
+        descriptive-assessment,
+        continuity-of-care
+      ]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f2-when-warranted
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      Which situation most clearly warrants behaviour-analytic services?
+    options:
+      - id: a
+        text: A learner's behaviour limits access to education and is maintained by identifiable consequences
+        isCorrect: true
+        rationale: >-
+          Socially significant behaviour with environmental determinants is what this service
+          is for.
+      - id: b
+        text: A learner is described by staff as difficult to work with
+        isCorrect: false
+        rationale: >-
+          A description of staff experience is not a definition of a behaviour or a
+          demonstrated need.
+      - id: c
+        text: A family would like general parenting advice
+        isCorrect: false
+        rationale: >-
+          This is outside the scope of a behaviour-analytic service and may suit a different
+          referral.
+      - id: d
+        text: A learner has a diagnosis associated with behavioural difficulties
+        isCorrect: false
+        rationale: >-
+          A diagnosis does not establish that this learner has a current behavioural need.
+    explanation: >-
+      Being clear about what warrants a service protects both the learner and the service.
+      Accepting referrals on the basis of a diagnosis or of staff frustration produces
+      programmes that have no target.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [social-validity, scope-of-practice, function-of-behavior, applied-behavior-analysis]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f2-referral-elsewhere
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      A learner's presentation suggests a communication difficulty that has never been
+      assessed. The appropriate action is:
+    options:
+      - id: a
+        text: Raise it with the supervisor and support a referral for speech and language assessment
+        isCorrect: true
+        rationale: >-
+          Recognising when another profession is needed, and routing it properly, is part of
+          the role.
+      - id: b
+        text: Add communication targets to the behaviour programme
+        isCorrect: false
+        rationale: >-
+          Adding targets outside the scope of an unassessed area substitutes for the
+          assessment that is needed.
+      - id: c
+        text: Advise the family to seek a speech assessment privately
+        isCorrect: false
+        rationale: >-
+          Giving the family a direction without routing it through the team leaves the service
+          uninvolved in a decision it should support.
+      - id: d
+        text: Wait to see whether communication improves as behaviour improves
+        isCorrect: false
+        rationale: >-
+          Waiting delays an assessment that may change what the behaviour programme should
+          target at all.
+    explanation: >-
+      Behaviour-analytic services and communication assessment are complements, not
+      alternatives. Many behaviour referrals turn out to rest on an absent means of asking
+      for things, which is a finding another profession has to make.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [collaboration, scope-of-practice, functional-communication-training, skills-assessment]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f2-not-warranted
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      Which is the weakest basis for beginning a behaviour reduction programme?
+    options:
+      - id: a
+        text: Staff find the behaviour annoying, though it causes no harm or barrier
+        isCorrect: true
+        rationale: >-
+          Staff preference is not a socially significant basis for reducing someone's
+          behaviour.
+      - id: b
+        text: The behaviour prevents the learner from accessing a class they want to attend
+        isCorrect: false
+        rationale: >-
+          A barrier to something the learner wants is a strong basis.
+      - id: c
+        text: The behaviour puts the learner at risk of injury
+        isCorrect: false
+        rationale: >-
+          Risk of harm is among the clearest bases for intervention.
+      - id: d
+        text: The behaviour prevents the learner from eating with their family
+        isCorrect: false
+        rationale: >-
+          Exclusion from ordinary family life is socially significant.
+    explanation: >-
+      Whose problem the behaviour is deserves an explicit answer. Reducing behaviour that
+      inconveniences adults but costs the learner nothing is where this field has
+      historically done harm.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [social-validity, dignity, assent, least-restrictive-alternative]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f2-service-intensity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.2 }
+    type: single-best-answer
+    stem: >-
+      Deciding how intensive a service should be is a decision that:
+    options:
+      - id: a
+        text: Belongs to the supervising analyst, informed by assessment and the family's context
+        isCorrect: true
+        rationale: >-
+          Service intensity is a clinical recommendation, and it rests on assessment and on
+          what the family can sustain.
+      - id: b
+        text: Is set by the funder's standard authorisation
+        isCorrect: false
+        rationale: >-
+          Funding constrains what can be delivered; it should not determine what is clinically
+          indicated.
+      - id: c
+        text: Should always be as high as the family will accept
+        isCorrect: false
+        rationale: >-
+          More hours are not automatically better, and intensity that a family cannot sustain
+          produces attrition.
+      - id: d
+        text: Follows from the learner's diagnosis
+        isCorrect: false
+        rationale: >-
+          A diagnosis does not determine an individual's service needs.
+    explanation: >-
+      This is one of the clearest scope boundaries for an assistant analyst. You
+      contribute the assessment data and what you know about the family's week; the
+      recommendation itself is the supervising analyst's.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [scope-of-practice, supervision, social-validity, cultural-responsiveness]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f3-social-significance
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.3 }
+    type: single-best-answer
+    stem: >-
+      Which target is most likely to function as a behavioural cusp?
+    options:
+      - id: a
+        text: Requesting items and help, which opens access to people and activities
+        isCorrect: true
+        rationale: >-
+          A cusp opens the learner to new environments and contingencies, and requesting does
+          exactly that.
+      - id: b
+        text: Sorting coloured blocks to criterion
+        isCorrect: false
+        rationale: >-
+          A discrete skill with little effect on what else becomes available.
+      - id: c
+        text: Sitting still for five minutes on request
+        isCorrect: false
+        rationale: >-
+          It may support instruction, but on its own it does not open new environments.
+      - id: d
+        text: Naming twenty animal pictures
+        isCorrect: false
+        rationale: >-
+          A useful repertoire component, but not one that changes what the learner can reach.
+    explanation: >-
+      Choosing cusps over isolated skills is how a limited number of teaching hours
+      produces disproportionate change. Requesting is the standard example because it
+      turns the environment into something the learner can operate.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [behavioral-cusp, pivotal-behavior, mand, functional-communication-training]
+    citations:
+      - sourceId: rosales-ruiz-baer-1997
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f3-client-informed
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.3 }
+    type: single-best-answer
+    stem: >-
+      What does it mean for a goal to be client-informed when the learner does not use
+      speech?
+    options:
+      - id: a
+        text: Their preferences and responses are gathered in other ways and shape the goal
+        isCorrect: true
+        rationale: >-
+          Choice-making, approach and avoidance, and assent behaviour all carry information
+          about what the learner wants.
+      - id: b
+        text: The guardian selects the goals on the learner's behalf
+        isCorrect: false
+        rationale: >-
+          Guardian input is essential but it is not the same as the learner's own.
+      - id: c
+        text: Goals are chosen from a developmental sequence appropriate to their level
+        isCorrect: false
+        rationale: >-
+          A sequence reflects norms rather than this learner's preferences.
+      - id: d
+        text: The learner is asked to agree to the goal in writing
+        isCorrect: false
+        rationale: >-
+          This mistakes a formality for the substance, and is not available to this learner.
+    explanation: >-
+      A learner who does not speak still expresses preference constantly. Treating
+      approach, avoidance and choice as data is what keeps a programme from being designed
+      entirely by people other than the person it is for.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [assent, preference-assessment, social-validity, dignity]
+    citations:
+      - sourceId: hanley-2014
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f3-prioritising
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.3 }
+    type: single-best-answer
+    stem: >-
+      Four goals are all defensible. Which consideration should carry the most weight in
+      ranking them?
+    options:
+      - id: a
+        text: Which would most improve the learner's access to daily life, including safety
+        isCorrect: true
+        rationale: >-
+          Impact on the learner's life, with safety weighted heavily, is the primary ranking
+          criterion.
+      - id: b
+        text: Which can be taught fastest with current resources
+        isCorrect: false
+        rationale: >-
+          Feasibility matters, but ranking by ease produces a programme of easy goals.
+      - id: c
+        text: Which the assessment showed the largest deficit in
+        isCorrect: false
+        rationale: >-
+          The largest deficit is not necessarily the most consequential one to address.
+      - id: d
+        text: Which the funder is most likely to authorise
+        isCorrect: false
+        rationale: >-
+          Funding is a constraint on delivery, not a basis for clinical priority.
+    explanation: >-
+      Prioritising is where a good assessment becomes a good programme. Safety first, then
+      access to ordinary life, then everything else — and feasibility decides sequencing
+      rather than importance.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [social-validity, behavioral-cusp, least-restrictive-alternative, skills-assessment]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+      - sourceId: wolf-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f3-culturally-responsive-goal
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.3 }
+    type: single-best-answer
+    stem: >-
+      A standard self-care goal conflicts with how a family does things at home. The
+      appropriate response is:
+    options:
+      - id: a
+        text: Discuss it with the family and adapt the goal to fit their practice
+        isCorrect: true
+        rationale: >-
+          A goal that conflicts with household practice will not be supported at home, and the
+          family's practice is not an obstacle to work around.
+      - id: b
+        text: Teach the standard version and let the family adapt it themselves
+        isCorrect: false
+        rationale: >-
+          This places the work of adaptation on the family and teaches a form they will not
+          use.
+      - id: c
+        text: Drop the goal, since it conflicts with the family's approach
+        isCorrect: false
+        rationale: >-
+          The underlying skill may still be valuable; it is the form that needs to change.
+      - id: d
+        text: Teach both versions so the learner can choose
+        isCorrect: false
+        rationale: >-
+          Teaching two forms doubles the cost for no clear benefit and may confuse the
+          discrimination.
+    explanation: >-
+      Most conflicts of this kind are about form rather than about the skill. Adapting the
+      form costs nothing and is usually the difference between a goal that is practised at
+      home and one that is not.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [cultural-responsiveness, social-validity, cultural-humility, collaboration]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f4-skills-assessment
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      What does a criterion-referenced skills assessment tell you that a norm-referenced
+      one does not?
+    options:
+      - id: a
+        text: Which specific skills the learner does and does not currently perform
+        isCorrect: true
+        rationale: >-
+          A criterion-referenced assessment maps performance against defined skills, which is
+          what a teaching programme needs.
+      - id: b
+        text: How the learner compares with peers of the same age
+        isCorrect: false
+        rationale: >-
+          That is precisely what norm-referenced assessment provides.
+      - id: c
+        text: Whether the learner qualifies for a service
+        isCorrect: false
+        rationale: >-
+          Eligibility usually rests on norm-referenced or diagnostic criteria.
+      - id: d
+        text: The function of the learner's challenging behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by functional assessment, not by a skills inventory.
+    explanation: >-
+      The two answer different questions and are often confused. A percentile tells you a
+      learner is behind; a criterion-referenced map tells you what to teach on Monday.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [skills-assessment, competency-assessment, task-analysis, trials-to-criterion]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f4-contextual-fit
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      A proposed procedure requires one-to-one staffing for 30 minutes daily. The
+      classroom has one adult for eight learners. This is a problem of:
+    options:
+      - id: a
+        text: Contextual fit
+        isCorrect: true
+        rationale: >-
+          The procedure may be effective and is not deliverable in this setting as it stands,
+          which is what contextual fit describes.
+      - id: b
+        text: Treatment integrity
+        isCorrect: false
+        rationale: >-
+          Integrity concerns whether a deliverable procedure is delivered as written; this one
+          cannot be delivered at all.
+      - id: c
+        text: Social validity
+        isCorrect: false
+        rationale: >-
+          Social validity concerns whether the goals and outcomes are valued, which is
+          separate.
+      - id: d
+        text: Internal validity
+        isCorrect: false
+        rationale: >-
+          Internal validity concerns causal inference from data, not deliverability.
+    explanation: >-
+      Contextual fit is assessed before a procedure is chosen, not discovered afterwards.
+      A procedure that the setting cannot run will be run badly, and the data will then be
+      read as evidence that the procedure does not work.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [treatment-integrity, social-validity, ecological-assessment, behavior-intervention-plan]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f4-ecological
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      An ecological assessment of a classroom would most usefully identify:
+    options:
+      - id: a
+        text: The routines, demands and available reinforcers the learner actually encounters
+        isCorrect: true
+        rationale: >-
+          It describes the environment as it operates, which is what any plan has to work
+          within.
+      - id: b
+        text: The learner's standardised scores across skill areas
+        isCorrect: false
+        rationale: >-
+          Scores describe the learner, not the environment.
+      - id: c
+        text: The function of the learner's challenging behaviour
+        isCorrect: false
+        rationale: >-
+          Function requires functional assessment; an environmental description generates
+          hypotheses at best.
+      - id: d
+        text: The staff's training history in behavioural procedures
+        isCorrect: false
+        rationale: >-
+          Useful for planning training, but not what an ecological assessment of the setting
+          is for.
+    explanation: >-
+      Programmes fail in settings more often than they fail in principle. Knowing what the
+      day actually contains — when demands come, what is available, who is present — is
+      what makes a plan survivable.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [ecological-assessment, setting-event, antecedent-intervention, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f4-social-validity-check
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.4 }
+    type: single-best-answer
+    stem: >-
+      The best time to check whether a family finds a proposed procedure acceptable is:
+    options:
+      - id: a
+        text: Before it begins, and again during implementation
+        isCorrect: true
+        rationale: >-
+          Acceptability shapes whether a procedure is used at all, so it is checked before and
+          monitored after.
+      - id: b
+        text: After the programme is complete, as part of the outcome report
+        isCorrect: false
+        rationale: >-
+          By then the procedure has either been used or quietly abandoned, and the information
+          comes too late.
+      - id: c
+        text: Only if the family raises a concern
+        isCorrect: false
+        rationale: >-
+          Families frequently do not raise concerns with professionals, and silence is not
+          agreement.
+      - id: d
+        text: At the annual review
+        isCorrect: false
+        rationale: >-
+          An annual cycle is far too slow to catch a procedure that is not acceptable.
+    explanation: >-
+      Procedures that a family finds unacceptable are not refused; they are simply not
+      used, and the resulting flat data gets attributed to the learner. Asking early is
+      much cheaper than diagnosing that later.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [social-validity, treatment-integrity, collaboration, cultural-responsiveness]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f5-mswo
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      In a multiple stimulus without replacement preference assessment, an item selected
+      by the learner is:
+    options:
+      - id: a
+        text: Removed, and the remaining items re-presented
+        isCorrect: true
+        rationale: >-
+          Selected items are not returned to the array, which yields a ranked hierarchy.
+      - id: b
+        text: Returned to the array before the next trial
+        isCorrect: false
+        rationale: >-
+          That describes multiple stimulus with replacement, which identifies the top item but
+          ranks the rest poorly.
+      - id: c
+        text: Presented alone for a fixed access period
+        isCorrect: false
+        rationale: >-
+          That is closer to single-stimulus presentation.
+      - id: d
+        text: Paired with each remaining item in turn
+        isCorrect: false
+        rationale: >-
+          That describes a paired-stimulus assessment.
+    explanation: >-
+      Without replacement is usually the practical choice: it produces a full hierarchy in
+      one pass, which is what a programme needs when the top item will satiate within a
+      session.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        multiple-stimulus-without-replacement,
+        multiple-stimulus-with-replacement,
+        paired-stimulus-preference-assessment,
+        preference-assessment
+      ]
+    citations:
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f5-free-operant
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      A free-operant preference assessment is most appropriate when:
+    options:
+      - id: a
+        text: The learner becomes distressed when items are removed during structured trials
+        isCorrect: true
+        rationale: >-
+          Free-operant observation involves no removal, so it avoids the distress that
+          trial-based formats can cause.
+      - id: b
+        text: A precise ranking of ten items is needed
+        isCorrect: false
+        rationale: >-
+          Free-operant observation gives approach data rather than a precise ranking.
+      - id: c
+        text: The learner has no established preferences
+        isCorrect: false
+        rationale: >-
+          Absence of known preferences is a reason to assess, not a reason to choose this
+          format.
+      - id: d
+        text: Only two items are being compared
+        isCorrect: false
+        rationale: >-
+          A paired presentation would be the direct way to compare two items.
+    explanation: >-
+      The choice of format is partly an assent question. If a learner finds item removal
+      distressing, a format that requires removing items is buying a ranking at the cost
+      of their week.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        free-operant-preference-assessment,
+        preference-assessment,
+        assent,
+        single-stimulus-preference-assessment
+      ]
+    citations:
+      - sourceId: roane-1998
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f5-preference-vs-reinforcer
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      A preference assessment ranks a toy first, but responding does not increase when the
+      toy is delivered for a target response. The correct conclusion is:
+    options:
+      - id: a
+        text: Preference was identified, but reinforcing effect for this response was not
+        isCorrect: true
+        rationale: >-
+          Preference predicts reinforcer effects imperfectly; the functional test is what
+          settles it.
+      - id: b
+        text: The preference assessment was conducted incorrectly
+        isCorrect: false
+        rationale: >-
+          A correctly run assessment can still identify an item that does not reinforce a
+          given response.
+      - id: c
+        text: The learner is not motivated to work
+        isCorrect: false
+        rationale: >-
+          This restates the observation as a trait rather than identifying a variable.
+      - id: d
+        text: The response requirement should be increased
+        isCorrect: false
+        rationale: >-
+          Increasing effort when the consequence is not reinforcing makes responding less
+          likely, not more.
+    explanation: >-
+      This is why a preference assessment and a reinforcer assessment are two steps.
+      Preference narrows the candidates; only a change in the behaviour it follows
+      establishes a reinforcer.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [preference-assessment, reinforcer-assessment, reinforcer, motivating-operation]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f5-timing
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      Why is it useful to run a brief preference assessment at the start of each session
+      rather than once a month?
+    options:
+      - id: a
+        text: Preferences shift with motivating operations and recent access
+        isCorrect: true
+        rationale: >-
+          What a learner will work for changes with deprivation, satiation and what happened
+          earlier that day.
+      - id: b
+        text: It provides better interobserver agreement data
+        isCorrect: false
+        rationale: >-
+          Agreement is a property of the measurement system, not of how often preferences are
+          sampled.
+      - id: c
+        text: Monthly assessments cannot rank more than three items
+        isCorrect: false
+        rationale: >-
+          The number of items is unrelated to how often the assessment is run.
+      - id: d
+        text: It satisfies the requirement for continuous measurement
+        isCorrect: false
+        rationale: >-
+          Preference sampling is not what continuous measurement of a target behaviour refers
+          to.
+    explanation: >-
+      A month-old preference list is one of the commonest reasons a session goes badly. A
+      two-minute sample at the start is among the cheapest interventions available.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [preference-assessment, motivating-operation, satiation, deprivation]
+    citations:
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+      - sourceId: michael-1982
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f6-indirect-role
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      In a functional assessment, the appropriate role of an indirect method such as a
+      structured interview is to:
+    options:
+      - id: a
+        text: Generate hypotheses and identify where to observe
+        isCorrect: true
+        rationale: >-
+          Interviews are efficient at narrowing the field; they do not establish function on
+          their own.
+      - id: b
+        text: Establish the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by direct observation and, where needed, experimental
+          analysis.
+      - id: c
+        text: Provide the baseline measure of the behaviour
+        isCorrect: false
+        rationale: >-
+          Baselines require direct measurement, not recalled estimates.
+      - id: d
+        text: Confirm the results of an experimental analysis
+        isCorrect: false
+        rationale: >-
+          A report cannot confirm an experimental result; the evidential direction runs the
+          other way.
+    explanation: >-
+      Indirect methods are the cheapest step and the least conclusive one. Used as
+      intended they save a great deal of observation time by saying where and when to
+      look.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        indirect-assessment,
+        functional-behavior-assessment,
+        descriptive-assessment,
+        functional-analysis
+      ]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f6-descriptive-limits
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      ABC data collected across two weeks shows that attention follows the behaviour in
+      most instances. What can be concluded?
+    options:
+      - id: a
+        text: Attention often follows the behaviour, which is a correlation rather than a function
+        isCorrect: true
+        rationale: >-
+          Descriptive data shows what follows the behaviour; it cannot show what maintains it,
+          because nothing was manipulated.
+      - id: b
+        text: The behaviour is maintained by attention
+        isCorrect: false
+        rationale: >-
+          This treats a correlation as a demonstrated function, which descriptive data cannot
+          support.
+      - id: c
+        text: Attention should be withheld following the behaviour
+        isCorrect: false
+        rationale: >-
+          An intervention decision on descriptive data alone risks running extinction on the
+          wrong reinforcer.
+      - id: d
+        text: The behaviour has multiple functions
+        isCorrect: false
+        rationale: >-
+          Nothing in the data speaks to multiple functions one way or the other.
+    explanation: >-
+      Attention follows almost everything in a busy setting, which is why descriptive data
+      over-identifies attention functions. It is a reason to test rather than a reason to
+      act.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [descriptive-assessment, abc-recording, functional-analysis, function-of-behavior]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f6-analysis-conditions
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      In a standard functional analysis, what is the purpose of the play or control
+      condition?
+    options:
+      - id: a
+        text: To provide a comparison in which the behaviour should be least likely
+        isCorrect: true
+        rationale: >-
+          Attention is free, demands are absent and preferred items are available, so elevated
+          responding in the test conditions stands out against it.
+      - id: b
+        text: To establish a preference hierarchy before testing
+        isCorrect: false
+        rationale: >-
+          Preference assessment is a separate procedure conducted beforehand.
+      - id: c
+        text: To test whether the behaviour is maintained by access to play materials
+        isCorrect: false
+        rationale: >-
+          The control condition is not a test condition; it is the baseline for comparison.
+      - id: d
+        text: To allow the learner to rest between test conditions
+        isCorrect: false
+        rationale: >-
+          Rest is not its function, although the condition is typically benign.
+    explanation: >-
+      Interpreting a functional analysis depends entirely on the comparison. Test
+      conditions elevated relative to control is the finding; test conditions elevated
+      relative to nothing is not.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [functional-analysis, baseline, experimental-control, multielement-design]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-f6-scope-in-analysis
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      An assistant analyst is asked to run sessions of a functional analysis designed by
+      their supervisor. Their responsibility includes:
+    options:
+      - id: a
+        text: Running the conditions as written, recording data, and reporting anything unexpected
+        isCorrect: true
+        rationale: >-
+          Implementation with integrity, accurate data and prompt reporting is exactly the
+          assistant analyst's contribution.
+      - id: b
+        text: Deciding when to terminate a condition on clinical grounds
+        isCorrect: false
+        rationale: >-
+          Termination criteria are part of the design and belong to the supervising analyst,
+          except where a safety plan directs otherwise.
+      - id: c
+        text: Adjusting the conditions if the behaviour does not appear
+        isCorrect: false
+        rationale: >-
+          Changing conditions mid-analysis without authorisation destroys the comparison and
+          is outside the role.
+      - id: d
+        text: Interpreting the results and selecting the intervention
+        isCorrect: false
+        rationale: >-
+          Interpretation and intervention selection are the supervising analyst's decisions.
+    explanation: >-
+      Functional analyses are the clearest illustration of the boundary: the assistant
+      analyst may be the person in the room for every session, and the design, the
+      stopping rules and the interpretation still belong to the supervisor.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [functional-analysis, treatment-integrity, scope-of-practice, supervision]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

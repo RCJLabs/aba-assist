@@ -1,0 +1,1390 @@
+# BCaBA practice questions — area G, Behavior-Change Procedures. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-g1-ncr-effect
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.1 }
+    type: single-best-answer
+    stem: >-
+      Attention is delivered on a fixed-time schedule regardless of what the learner is
+      doing. Attention-maintained behaviour decreases. The most likely reason is:
+    options:
+      - id: a
+        text: The motivating operation for attention has been weakened
+        isCorrect: true
+        rationale: >-
+          Freely available attention reduces its momentary value, so behaviour that produces
+          it becomes less likely.
+      - id: b
+        text: The behaviour has been placed on extinction
+        isCorrect: false
+        rationale: >-
+          Extinction withholds the reinforcer; here it is being delivered more, not less.
+      - id: c
+        text: The behaviour has been punished
+        isCorrect: false
+        rationale: >-
+          Nothing is delivered contingent on the behaviour, and nothing is removed.
+      - id: d
+        text: A discrimination has been established between conditions
+        isCorrect: false
+        rationale: >-
+          No signal distinguishes conditions in which responding is and is not reinforced.
+    explanation: >-
+      Time-based delivery works mostly through motivation rather than through
+      consequences. It is quick to arrange and its known cost is that it does not teach
+      anything, so it is usually paired with something that does.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [noncontingent-reinforcement, motivating-operation, extinction, satiation]
+    citations:
+      - sourceId: vollmer-1993
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-g1-contingent-delivery
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.1 }
+    type: single-best-answer
+    stem: >-
+      A staff member delivers praise several seconds after each correct response, while
+      the learner has moved on to something else. The likely effect is:
+    options:
+      - id: a
+        text: Reinforcement of whatever the learner was doing at the moment praise arrived
+        isCorrect: true
+        rationale: >-
+          Consequences act on behaviour occurring close to them in time, not on what was
+          intended.
+      - id: b
+        text: Strengthening of the correct response, since the praise was earned
+        isCorrect: false
+        rationale: >-
+          Intent does not determine which behaviour a consequence follows.
+      - id: c
+        text: No effect, since the delay was short
+        isCorrect: false
+        rationale: >-
+          Even short delays can be enough for a different behaviour to intervene, especially
+          early in learning.
+      - id: d
+        text: Punishment of the correct response
+        isCorrect: false
+        rationale: >-
+          Praise is not functioning as a punisher; it is simply landing on the wrong
+          behaviour.
+    explanation: >-
+      Immediacy is one of the few implementation details that reliably decides whether
+      teaching works. It is also the most common thing a supervisor sees and corrects
+      during an observation.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [positive-reinforcement, reinforcer, performance-feedback, treatment-integrity]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g2-token-exchange
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.2 }
+    type: single-best-answer
+    stem: >-
+      A token system stops working after two weeks. Tokens are still delivered but
+      exchange now happens only at the end of the week. The most likely cause is:
+    options:
+      - id: a
+        text: The delay between earning tokens and exchange has weakened their conditioned value
+        isCorrect: true
+        rationale: >-
+          Tokens work because they reliably produce backup reinforcers; a long delay erodes
+          that relation.
+      - id: b
+        text: The learner has satiated on tokens themselves
+        isCorrect: false
+        rationale: >-
+          Tokens are not consumed; satiation would occur on the backups, not the tokens.
+      - id: c
+        text: Too many backup items are available
+        isCorrect: false
+        rationale: >-
+          A wide backup set usually strengthens a generalized conditioned reinforcer rather
+          than weakening it.
+      - id: d
+        text: The response requirement is too low
+        isCorrect: false
+        rationale: >-
+          A low requirement would tend to produce more responding, not less.
+    explanation: >-
+      Token systems fail on exchange far more often than on delivery. The schedule of
+      exchange is the part most likely to be quietly stretched for staff convenience, and
+      it is the part the system depends on.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        token-economy,
+        conditioned-reinforcer,
+        generalized-conditioned-reinforcer,
+        schedule-thinning
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g3-capture-motivation
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.3 }
+    type: single-best-answer
+    stem: >-
+      Which arrangement best sets up a teaching opportunity for requesting a drink?
+    options:
+      - id: a
+        text: Present the activity shortly after physical exertion, with the drink visible but out of reach
+        isCorrect: true
+        rationale: >-
+          It arranges a motivating operation and a clear signal that requesting will work.
+      - id: b
+        text: Run drink-requesting trials at the same fixed time every session
+        isCorrect: false
+        rationale: >-
+          A fixed time ignores whether the learner wants a drink then, which is the variable
+          that matters.
+      - id: c
+        text: Offer the drink freely at the start of the session
+        isCorrect: false
+        rationale: >-
+          Free access removes the motivation the request depends on.
+      - id: d
+        text: Ask the learner to say the word "drink" ten times in a row
+        isCorrect: false
+        rationale: >-
+          Repetition without motivation trains an echoic rather than a request.
+    explanation: >-
+      Mands require motivation to be present. Contriving it — not depriving the learner,
+      but arranging the moment — is the difference between teaching a request and teaching
+      a word.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [motivating-operation, mand, discriminative-stimulus, antecedent-intervention]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g3-sd-clarity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.3 }
+    type: single-best-answer
+    stem: >-
+      A learner responds correctly only when a staff member leans towards the materials.
+      This suggests:
+    options:
+      - id: a
+        text: An unintended prompt has acquired stimulus control
+        isCorrect: true
+        rationale: >-
+          Responding depends on the staff member's movement rather than on the intended
+          instructional stimulus.
+      - id: b
+        text: The learner has mastered the discrimination
+        isCorrect: false
+        rationale: >-
+          Mastery would mean responding to the intended stimulus without the additional cue.
+      - id: c
+        text: The instruction is too complex
+        isCorrect: false
+        rationale: >-
+          Complexity is possible, but the specific finding is control by the wrong stimulus.
+      - id: d
+        text: The reinforcer is not effective
+        isCorrect: false
+        rationale: >-
+          Responding does occur when the lean is present, so the consequence is working.
+    explanation: >-
+      Inadvertent prompts are extremely common and usually invisible to the person
+      providing them. They show up as a skill that collapses the moment a different staff
+      member runs the programme.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [stimulus-control, prompt, transfer-of-stimulus-control, discriminative-stimulus]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g4-conditional-teaching
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.4 }
+    type: single-best-answer
+    stem: >-
+      When teaching matching-to-sample, why is the position of the correct comparison
+      varied across trials?
+    options:
+      - id: a
+        text: To prevent position becoming the controlling stimulus instead of the sample
+        isCorrect: true
+        rationale: >-
+          If the correct item is always in one place, the learner can respond correctly by
+          position without attending to the sample.
+      - id: b
+        text: To make the task more difficult over time
+        isCorrect: false
+        rationale: >-
+          Varying position is not a difficulty manipulation; it is a control check.
+      - id: c
+        text: To keep the learner's attention on the array
+        isCorrect: false
+        rationale: >-
+          Attention may be a side benefit, but the reason is the source of stimulus control.
+      - id: d
+        text: To satisfy the requirement for random presentation
+        isCorrect: false
+        rationale: >-
+          Randomisation for its own sake is not the reason; preventing a position bias is.
+    explanation: >-
+      Position bias is the classic false-positive in discrimination teaching: a learner
+      passes criterion and has learned the layout. Varying position is cheap and catches
+      it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [matching-to-sample, stimulus-control, discrimination-training, error-correction]
+    citations:
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g4-simple-discrimination
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.4 }
+    type: single-best-answer
+    stem: >-
+      A learner is taught to press a button only when a green light is on and not when it
+      is off. This establishes:
+    options:
+      - id: a
+        text: A simple discrimination
+        isCorrect: true
+        rationale: >-
+          One stimulus signals reinforcement and its absence signals no reinforcement, with no
+          further condition involved.
+      - id: b
+        text: A conditional discrimination
+        isCorrect: false
+        rationale: >-
+          No additional stimulus determines which response is correct.
+      - id: c
+        text: Stimulus equivalence
+        isCorrect: false
+        rationale: >-
+          No derived relations among stimuli are being established.
+      - id: d
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          No spread of untrained response forms is described.
+    explanation: >-
+      Simple discriminations are the building block. Getting the green-light case
+      genuinely under control, including reliably not responding when it is off, is what
+      makes the conditional work later on possible.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [discrimination-training, discriminative-stimulus, s-delta, stimulus-control]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g5-errorless
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.5 }
+    type: single-best-answer
+    stem: >-
+      What is the main rationale for an errorless teaching approach?
+    options:
+      - id: a
+        text: Preventing errors avoids establishing incorrect responding and reduces frustration
+        isCorrect: true
+        rationale: >-
+          Errors can be strengthened by practice and are often aversive, so preventing them
+          speeds acquisition.
+      - id: b
+        text: It requires fewer teaching trials overall
+        isCorrect: false
+        rationale: >-
+          Trial counts vary; the rationale is about what errors cost, not about trial economy.
+      - id: c
+        text: It removes the need for a prompt-fading plan
+        isCorrect: false
+        rationale: >-
+          Errorless approaches depend on a fading plan more than most, not less.
+      - id: d
+        text: It works for every learner and every skill
+        isCorrect: false
+        rationale: >-
+          No teaching approach is universal, and least-to-most has its own advantages.
+    explanation: >-
+      The trade-off is prompt dependence if fading is not planned, which is why errorless
+      teaching and a written fading schedule are effectively one procedure rather than
+      two.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [errorless-teaching, prompt, prompt-fading, transfer-of-stimulus-control]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+      - sourceId: touchette-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g5-prompt-dependence
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.5 }
+    type: single-best-answer
+    stem: >-
+      A learner performs a skill perfectly with a verbal prompt and never without one, six
+      weeks into teaching. The most likely explanation is:
+    options:
+      - id: a
+        text: The prompt has not been faded, so it has remained the controlling stimulus
+        isCorrect: true
+        rationale: >-
+          Without a fading plan, responding stays under the control of the prompt rather than
+          the natural stimulus.
+      - id: b
+        text: The skill is too difficult for the learner
+        isCorrect: false
+        rationale: >-
+          The learner performs it correctly when prompted, so the response itself is
+          available.
+      - id: c
+        text: The reinforcer is ineffective
+        isCorrect: false
+        rationale: >-
+          Responding occurs reliably under prompt, so the consequence is working.
+      - id: d
+        text: The learner has not generalised the skill
+        isCorrect: false
+        rationale: >-
+          Generalisation concerns new settings and stimuli; this is a transfer-of-control
+          failure in the taught setting.
+    explanation: >-
+      Prompt dependence is not a learner characteristic; it is the predictable result of
+      prompting without a plan to remove the prompt. The fix is a fading schedule written
+      before teaching starts.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [prompt-fading, transfer-of-stimulus-control, prompt-hierarchy, time-delay]
+    citations:
+      - sourceId: touchette-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g6-video-modeling
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.6 }
+    type: single-best-answer
+    stem: >-
+      Before using video modelling to teach a skill, the most important prerequisite to
+      check is:
+    options:
+      - id: a
+        text: That the learner attends to the video and can imitate what is shown
+        isCorrect: true
+        rationale: >-
+          Modelling depends on a generalised imitative repertoire; without it, the video
+          teaches nothing.
+      - id: b
+        text: That the video is professionally produced
+        isCorrect: false
+        rationale: >-
+          Production quality is largely irrelevant to whether the procedure works.
+      - id: c
+        text: That the learner enjoys watching videos
+        isCorrect: false
+        rationale: >-
+          Enjoyment may help engagement but is not the prerequisite the procedure rests on.
+      - id: d
+        text: That the model in the video is the same age as the learner
+        isCorrect: false
+        rationale: >-
+          Model similarity can help but is not a prerequisite for the procedure to function.
+    explanation: >-
+      The prerequisite is the point: teams sometimes adopt video modelling for a learner
+      who does not yet imitate, and then conclude the procedure does not work rather than
+      that it was not applicable.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [modeling, imitation, observational-learning, skills-assessment]
+    citations:
+      - sourceId: macduff-krantz-mcclannahan-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g7-rules-limits
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.7 }
+    type: single-best-answer
+    stem: >-
+      Stating a rule is least likely to be effective when:
+    options:
+      - id: a
+        text: The learner has no history with the consequences the rule describes
+        isCorrect: true
+        rationale: >-
+          A rule works by describing a contingency; without a relevant history, the
+          description has little control.
+      - id: b
+        text: The rule is stated in fewer than ten words
+        isCorrect: false
+        rationale: >-
+          Brevity generally helps rather than hinders.
+      - id: c
+        text: The rule is stated by a familiar adult
+        isCorrect: false
+        rationale: >-
+          Familiarity typically supports rule-following rather than undermining it.
+      - id: d
+        text: The consequence described is delayed by a few minutes
+        isCorrect: false
+        rationale: >-
+          Rules are in fact one of the main ways delayed consequences gain control over
+          behaviour.
+    explanation: >-
+      Rules are cheap and sometimes do everything needed. Where they fail, the usual
+      reason is that they describe a contingency the learner has never contacted, and the
+      answer is to arrange contact rather than to repeat the rule.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [rule-governed-behavior, contingency-shaped-behavior, stimulus-control]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g8-shaping-step
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.8 }
+    type: single-best-answer
+    stem: >-
+      During shaping, the learner stops responding after the criterion is raised. The most
+      appropriate adjustment is:
+    options:
+      - id: a
+        text: Return to the previous criterion, then raise it in a smaller step
+        isCorrect: true
+        rationale: >-
+          Extinction of the previous approximation means the step was too large; a smaller
+          step restores responding.
+      - id: b
+        text: Hold the new criterion and wait for responding to recover
+        isCorrect: false
+        rationale: >-
+          Waiting risks losing the earlier approximation as well, and offers nothing to
+          reinforce.
+      - id: c
+        text: Add a prompt to produce the new response
+        isCorrect: false
+        rationale: >-
+          Prompting can be appropriate, but it changes the procedure rather than fixing the
+          step size.
+      - id: d
+        text: Increase the magnitude of the reinforcer
+        isCorrect: false
+        rationale: >-
+          A larger reinforcer does not help if the response being required does not occur.
+    explanation: >-
+      Step size is the whole craft of shaping, and it is judged from the learner's
+      responding rather than from a plan. Going back one step is not failure; it is the
+      procedure working as designed.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        shaping,
+        differential-reinforcement-of-alternative-behavior,
+        extinction,
+        trials-to-criterion
+      ]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g8-shaping-vs-chaining
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.8 }
+    type: single-best-answer
+    stem: >-
+      Which target calls for shaping rather than chaining?
+    options:
+      - id: a
+        text: Increasing the volume of a learner's speech from a whisper to audible
+        isCorrect: true
+        rationale: >-
+          A single response is being refined along a dimension, which is shaping.
+      - id: b
+        text: Teaching the steps of making a sandwich
+        isCorrect: false
+        rationale: >-
+          A sequence of distinct linked steps is taught by chaining.
+      - id: c
+        text: Teaching a morning dressing routine
+        isCorrect: false
+        rationale: >-
+          A routine composed of ordered steps is a chain.
+      - id: d
+        text: Teaching the steps of hand-washing
+        isCorrect: false
+        rationale: >-
+          Hand-washing is a standard task analysis taught as a chain.
+    explanation: >-
+      Shaping changes one response along a dimension; chaining links several responses in
+      order. Choosing the wrong one produces a task analysis for something that has no
+      steps, or an attempt to shape a sequence.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [shaping, chaining, task-analysis, magnitude]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g9-backward-chaining
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.9 }
+    type: single-best-answer
+    stem: >-
+      Backward chaining is often chosen because:
+    options:
+      - id: a
+        text: The learner completes the final step and immediately contacts the natural reinforcer
+        isCorrect: true
+        rationale: >-
+          Finishing the chain produces the outcome, so every trial ends with the natural
+          consequence.
+      - id: b
+        text: It requires fewer prompts than forward chaining
+        isCorrect: false
+        rationale: >-
+          Prompting demands are similar; earlier steps are prompted in either case.
+      - id: c
+        text: It teaches the steps in the order they are performed
+        isCorrect: false
+        rationale: >-
+          That describes forward chaining.
+      - id: d
+        text: It avoids the need for a task analysis
+        isCorrect: false
+        rationale: >-
+          Every chaining format depends on a task analysis.
+    explanation: >-
+      Contacting the natural reinforcer on every trial is the specific advantage. It
+      matters most where the outcome is strongly preferred — the sandwich gets eaten, the
+      coat gets on and the learner goes outside.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [backward-chaining, forward-chaining, chaining, task-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g9-task-analysis-validation
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.9 }
+    type: single-best-answer
+    stem: >-
+      Before teaching from a task analysis, the most useful validation step is:
+    options:
+      - id: a
+        text: Perform the sequence yourself, or watch a competent performer, and revise the steps
+        isCorrect: true
+        rationale: >-
+          Performing or observing the chain reveals missing steps and wrong ordering that a
+          written list hides.
+      - id: b
+        text: Check the number of steps against a published example
+        isCorrect: false
+        rationale: >-
+          Step count varies legitimately with the learner and the setting.
+      - id: c
+        text: Confirm the learner can already perform the first step
+        isCorrect: false
+        rationale: >-
+          Useful for planning, but it does not validate whether the analysis itself is
+          correct.
+      - id: d
+        text: Ask the family to approve the sequence
+        isCorrect: false
+        rationale: >-
+          Family input matters for fit but does not verify the technical accuracy of the
+          steps.
+    explanation: >-
+      Most task analyses fail on a missing step that is obvious once performed — turning
+      the tap off, closing the lid. Ten minutes of doing it yourself prevents weeks of a
+      chain that cannot complete.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [task-analysis, chaining, total-task-chaining, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g10-mand-first
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.10 }
+    type: single-best-answer
+    stem: >-
+      For a learner with very little verbal behaviour, there is a strong argument for
+      teaching mands early because:
+    options:
+      - id: a
+        text: Mands produce the specific thing the learner wants, so they are directly reinforced
+        isCorrect: true
+        rationale: >-
+          The reinforcement is built into the operant, which makes it the easiest to establish
+          and the most immediately useful.
+      - id: b
+        text: Mands are easier to articulate than tacts
+        isCorrect: false
+        rationale: >-
+          Difficulty of articulation depends on the word, not on the operant class.
+      - id: c
+        text: Mands generalise automatically to tacts
+        isCorrect: false
+        rationale: >-
+          Transfer across operants is not automatic and often has to be taught explicitly.
+      - id: d
+        text: Mands require no motivating operation
+        isCorrect: false
+        rationale: >-
+          Mands depend on a motivating operation; that is what defines them.
+    explanation: >-
+      Teaching requesting first is also an ethical argument as much as a technical one: it
+      gives the learner a way to influence their environment, which often reduces the
+      behaviour that was doing that job.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [mand, tact, verbal-behavior, functional-communication-training]
+    citations:
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g10-transfer-trial
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.10 }
+    type: single-best-answer
+    stem: >-
+      A learner echoes "ball" when the adult says it, but does not say "ball" when shown
+      one. A transfer procedure would:
+    options:
+      - id: a
+        text: Present the ball, prompt the echoic, then re-present the ball alone
+        isCorrect: true
+        rationale: >-
+          The prompt evokes the response, and removing it while the object remains transfers
+          control to the object.
+      - id: b
+        text: Present the word repeatedly until the learner says it fluently
+        isCorrect: false
+        rationale: >-
+          This strengthens the echoic without moving control to the non-verbal stimulus.
+      - id: c
+        text: Present the ball and wait until the learner speaks spontaneously
+        isCorrect: false
+        rationale: >-
+          Waiting without a prompt offers no route to the response and risks a long
+          unproductive pause.
+      - id: d
+        text: Reinforce any vocalisation in the presence of the ball
+        isCorrect: false
+        rationale: >-
+          Reinforcing any sound does not build the specific tact and may strengthen unrelated
+          vocalisation.
+    explanation: >-
+      Transfer-of-control trials are the everyday mechanics of verbal behaviour teaching,
+      and the final re-presentation is the part most often skipped — which leaves the
+      learner with a strong echoic and no tact.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [tact, echoic, transfer-of-stimulus-control, prompt-fading]
+    citations:
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g11-emergent-efficiency
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.11 }
+    type: single-best-answer
+    stem: >-
+      Arranging teaching so that untrained relations emerge is valuable mainly because:
+    options:
+      - id: a
+        text: It yields more responding than was directly taught, for the same teaching time
+        isCorrect: true
+        rationale: >-
+          Emergent relations mean the learner acquires relations that were never trained,
+          which multiplies the return on instruction.
+      - id: b
+        text: It removes the need to measure progress
+        isCorrect: false
+        rationale: >-
+          Emergent responding has to be tested for, so it requires more measurement rather
+          than less.
+      - id: c
+        text: It guarantees maintenance of the taught relations
+        isCorrect: false
+        rationale: >-
+          Emergence and maintenance are different matters; both need programming.
+      - id: d
+        text: It works without reinforcement
+        isCorrect: false
+        rationale: >-
+          The directly taught relations are established with reinforcement in the usual way.
+    explanation: >-
+      The efficiency argument is the practical one, and it depends on testing for
+      emergence rather than assuming it. Untested emergent relations are an assumption,
+      not a result.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [stimulus-equivalence, matching-to-sample, multiple-exemplar-training, generalization]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g12-high-p-sequence
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.12 }
+    type: single-best-answer
+    stem: >-
+      A staff member presents three easy requests the learner reliably follows, then the
+      difficult one. This procedure works by:
+    options:
+      - id: a
+        text: Building momentum from a run of reinforced compliance into the harder request
+        isCorrect: true
+        rationale: >-
+          A dense recent history of reinforced responding makes the next response more likely
+          and more resistant to disruption.
+      - id: b
+        text: Punishing refusal of the difficult request
+        isCorrect: false
+        rationale: >-
+          Nothing is delivered or removed contingent on refusal.
+      - id: c
+        text: Extinguishing escape-maintained behaviour
+        isCorrect: false
+        rationale: >-
+          No maintaining reinforcer is being withheld.
+      - id: d
+        text: Teaching a new response through shaping
+        isCorrect: false
+        rationale: >-
+          No approximations to a new response are being reinforced.
+    explanation: >-
+      The sequence is cheap and often effective, and it depends on the easy requests
+      genuinely being easy and genuinely being reinforced. Run without reinforcement it
+      becomes three extra demands before a hard one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [high-probability-request-sequence, behavioral-momentum, positive-reinforcement]
+    citations:
+      - sourceId: mace-1988
+        useType: fact-reference
+      - sourceId: nevin-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g13-naturalistic-choice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.13 }
+    type: single-best-answer
+    stem: >-
+      A learner masters targets in discrete trials but does not use the skills during
+      play. The most appropriate adjustment is:
+    options:
+      - id: a
+        text: Add naturalistic teaching opportunities within play, using the learner's motivation
+        isCorrect: true
+        rationale: >-
+          Teaching in the context where the skill is meant to occur addresses the gap
+          directly.
+      - id: b
+        text: Increase the number of discrete trials per session
+        isCorrect: false
+        rationale: >-
+          More of the arrangement that produced the gap is unlikely to close it.
+      - id: c
+        text: Raise the mastery criterion in discrete trials
+        isCorrect: false
+        rationale: >-
+          A higher criterion in the same context does not address use in a different one.
+      - id: d
+        text: Introduce a token system for play
+        isCorrect: false
+        rationale: >-
+          A token system adds a consequence without addressing where the skill is being
+          taught.
+    explanation: >-
+      Discrete-trial and naturalistic arrangements are complements. The trial format
+      builds a repertoire efficiently; the natural context is where stimulus control has
+      to end up, and it rarely arrives there on its own.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [discrete-trial-training, naturalistic-teaching, incidental-teaching, generalization]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g13-free-operant
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.13 }
+    type: single-best-answer
+    stem: >-
+      A free-operant teaching arrangement differs from a discrete-trial arrangement mainly
+      in that:
+    options:
+      - id: a
+        text: The learner responds at their own pace rather than to presented trials
+        isCorrect: true
+        rationale: >-
+          Free-operant arrangements have no discrete trial structure; responding is
+          continuously available.
+      - id: b
+        text: It uses no reinforcement
+        isCorrect: false
+        rationale: >-
+          Reinforcement is used in both arrangements.
+      - id: c
+        text: It cannot be used to teach new skills
+        isCorrect: false
+        rationale: >-
+          Free-operant arrangements are routinely used for acquisition.
+      - id: d
+        text: It requires no data collection
+        isCorrect: false
+        rationale: >-
+          Both require measurement; only the practical system differs.
+    explanation: >-
+      The distinction matters for measurement as much as for teaching: trial-based
+      arrangements lend themselves to percentage correct, while free-operant responding is
+      usually captured as rate.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [discrete-trial-training, naturalistic-teaching, frequency-and-rate, percentage]
+    citations:
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g14-interdependent
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.14 }
+    type: single-best-answer
+    stem: >-
+      Under an interdependent group contingency, the group earns the reinforcer only if
+      the whole group meets the criterion. The main risk is:
+    options:
+      - id: a
+        text: Peers may pressure or blame the learners who find the criterion hardest
+        isCorrect: true
+        rationale: >-
+          Tying everyone's outcome to the weakest performance creates social pressure that can
+          become harmful.
+      - id: b
+        text: Only one learner will benefit from the reinforcer
+        isCorrect: false
+        rationale: >-
+          Under an interdependent contingency the whole group accesses it together.
+      - id: c
+        text: The contingency cannot be applied to academic behaviour
+        isCorrect: false
+        rationale: >-
+          It applies readily to academic behaviour.
+      - id: d
+        text: Staff cannot monitor individual performance
+        isCorrect: false
+        rationale: >-
+          Individual performance can be recorded within any group contingency.
+    explanation: >-
+      Group contingencies are efficient and can build cooperation; they also concentrate
+      social consequences on whoever struggles most. Setting an achievable criterion and
+      monitoring peer behaviour is what keeps them safe.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [group-contingency, dignity, social-validity]
+    citations:
+      - sourceId: litow-pumroy-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g15-contract-elements
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.15 }
+    type: single-best-answer
+    stem: >-
+      Which element is essential to a workable contingency contract?
+    options:
+      - id: a
+        text: A specific statement of the behaviour, the consequence, and who does what
+        isCorrect: true
+        rationale: >-
+          A contract only functions if both parties can tell without argument whether the
+          terms were met.
+      - id: b
+        text: A formal signature witnessed by a supervisor
+        isCorrect: false
+        rationale: >-
+          A signature is common practice but not what makes the contract function.
+      - id: c
+        text: A financial reinforcer of meaningful value
+        isCorrect: false
+        rationale: >-
+          The reinforcer need not be financial; it needs to be effective for this person.
+      - id: d
+        text: A fixed duration of at least one month
+        isCorrect: false
+        rationale: >-
+          Duration should fit the goal; short contracts are often more effective.
+    explanation: >-
+      Contracts fail on vagueness far more often than on the reinforcer. If either party
+      can reasonably dispute whether the terms were met, the contract is generating
+      conflict rather than behaviour change.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [assent, operational-definition, premack-principle, informed-consent]
+    citations:
+      - sourceId: premack-1959
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g16-self-management
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.16 }
+    type: single-best-answer
+    stem: >-
+      A learner is taught to record their own on-task behaviour at set intervals. A common
+      early benefit of this is that:
+    options:
+      - id: a
+        text: Self-recording itself often changes the behaviour being recorded
+        isCorrect: true
+        rationale: >-
+          Reactivity to self-monitoring frequently produces improvement before any other
+          component is added.
+      - id: b
+        text: It removes the need for staff to collect data
+        isCorrect: false
+        rationale: >-
+          Staff data is still needed, at minimum to check the accuracy of self-recording.
+      - id: c
+        text: It guarantees accurate measurement
+        isCorrect: false
+        rationale: >-
+          Self-recorded data requires accuracy checks, which is a known limitation.
+      - id: d
+        text: It eliminates the need for reinforcement
+        isCorrect: false
+        rationale: >-
+          Self-management procedures usually still arrange consequences, sometimes
+          self-delivered.
+    explanation: >-
+      Reactivity is usually a nuisance in measurement and an asset here. It is also why
+      self-monitoring is worth trying early: it is low-cost, it hands control to the
+      learner, and it frequently works.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [reactivity, performance-feedback, assent, dignity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g17-common-stimuli
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.17 }
+    type: single-best-answer
+    stem: >-
+      Which strategy programmes for generalisation by building a link between the teaching
+      and the target setting?
+    options:
+      - id: a
+        text: Introducing materials and routines from the target setting into teaching
+        isCorrect: true
+        rationale: >-
+          Programming common stimuli deliberately includes features of the target setting in
+          the teaching context.
+      - id: b
+        text: Teaching to a higher mastery criterion
+        isCorrect: false
+        rationale: >-
+          A higher criterion strengthens the response without addressing where it will occur.
+      - id: c
+        text: Using a denser schedule of reinforcement
+        isCorrect: false
+        rationale: >-
+          A denser schedule speeds acquisition rather than promoting transfer.
+      - id: d
+        text: Adding a token economy
+        isCorrect: false
+        rationale: >-
+          A token system adds a consequence but does not link the teaching to the target
+          setting.
+    explanation: >-
+      Programming common stimuli is among the cheapest generalisation strategies
+      available: use the same cup, the same table, the same instruction wording the target
+      setting uses.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [generalization, stimulus-generalization, teaching-loosely, multiple-exemplar-training]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g17-response-generalization
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.17 }
+    type: single-best-answer
+    stem: >-
+      A learner taught one way to ask for help begins using two other untaught phrasings
+      with the same effect. This is:
+    options:
+      - id: a
+        text: Response generalization
+        isCorrect: true
+        rationale: >-
+          Untrained forms of the response appeared and produced the same consequence.
+      - id: b
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Stimulus generalization is responding to new stimuli, not emitting new response
+          forms.
+      - id: c
+        text: Maintenance
+        isCorrect: false
+        rationale: >-
+          Maintenance is the persistence of behaviour over time after teaching ends.
+      - id: d
+        text: Behavioural contrast
+        isCorrect: false
+        rationale: >-
+          Contrast is a change in responding in one condition following a change in another.
+    explanation: >-
+      Response generalization is what makes a taught request usable in real conversation.
+      It can be encouraged by reinforcing variability and by teaching loosely rather than
+      insisting on one exact form.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [response-generalization, stimulus-generalization, teaching-loosely, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g18-dra-without-extinction
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.18 }
+    type: single-best-answer
+    stem: >-
+      Differential reinforcement of an alternative behaviour is run while the problem
+      behaviour still occasionally produces its maintaining reinforcer. The likely result
+      is:
+    options:
+      - id: a
+        text: Slower and less complete reduction, because both responses still pay off
+        isCorrect: true
+        rationale: >-
+          With the problem behaviour still intermittently reinforced, it remains in
+          competition and becomes more persistent.
+      - id: b
+        text: No reduction at all under any circumstances
+        isCorrect: false
+        rationale: >-
+          Reduction can occur if the alternative is far more efficient, though it is typically
+          weaker and slower.
+      - id: c
+        text: A faster reduction, because the learner has two options
+        isCorrect: false
+        rationale: >-
+          Continued reinforcement of the problem behaviour works against reduction.
+      - id: d
+        text: An immediate extinction burst
+        isCorrect: false
+        rationale: >-
+          A burst follows the withholding of reinforcement, which is not what is happening.
+    explanation: >-
+      This is the most common real-world implementation gap: the alternative is
+      reinforced, and the problem behaviour is still reinforced too, often by a different
+      person. Intermittent reinforcement then makes it harder to change than before.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        differential-reinforcement-of-alternative-behavior,
+        extinction,
+        intermittent-reinforcement,
+        treatment-integrity
+      ]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g18-select-dr
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.18 }
+    type: single-best-answer
+    stem: >-
+      A learner leaves their seat frequently. The team wants to reinforce a response that
+      cannot occur at the same time. The appropriate procedure is:
+    options:
+      - id: a
+        text: Differential reinforcement of incompatible behaviour
+        isCorrect: true
+        rationale: >-
+          Reinforcing sitting, which cannot occur simultaneously with leaving the seat, is
+          DRI.
+      - id: b
+        text: Differential reinforcement of other behaviour
+        isCorrect: false
+        rationale: >-
+          DRO reinforces the absence of the behaviour over an interval, without specifying
+          what occurs instead.
+      - id: c
+        text: Differential reinforcement of low rates
+        isCorrect: false
+        rationale: >-
+          DRL reduces a behaviour to a lower rate rather than replacing it with an
+          incompatible one.
+      - id: d
+        text: Differential reinforcement of high rates
+        isCorrect: false
+        rationale: >-
+          DRH increases a rate, which is the opposite of the goal.
+    explanation: >-
+      Choosing between the differential reinforcement procedures is a question about what
+      you want the learner to be doing instead. Incompatible responses are the strongest
+      option because the two cannot co-occur.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        differential-reinforcement-of-incompatible-behavior,
+        differential-reinforcement-of-other-behavior,
+        differential-reinforcement-of-low-rates,
+        differential-reinforcement-of-high-rates
+      ]
+    citations:
+      - sourceId: reynolds-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g19-safeguards
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.19 }
+    type: single-best-answer
+    stem: >-
+      A plan proposes a punishment-based procedure. Which condition must be satisfied
+      before it may be considered?
+    options:
+      - id: a
+        text: Less restrictive alternatives have been tried and documented as insufficient
+        isCorrect: true
+        rationale: >-
+          Restrictive procedures sit at the end of a documented sequence, not at the start of
+          one.
+      - id: b
+        text: Staff have been trained in how to deliver it
+        isCorrect: false
+        rationale: >-
+          Training is necessary but does not by itself justify choosing a restrictive
+          procedure.
+      - id: c
+        text: The behaviour has occurred for more than six months
+        isCorrect: false
+        rationale: >-
+          Duration alone does not establish that a restrictive procedure is warranted.
+      - id: d
+        text: The family has asked for a faster approach
+        isCorrect: false
+        rationale: >-
+          A request for speed is not a clinical justification, though the family's views
+          matter to the decision.
+    explanation: >-
+      Selecting, authorising and overseeing restrictive procedures is the supervising
+      analyst's decision, within the employer's policy and the law. An assistant analyst's
+      part is to know what the safeguards are and to say when they have not been met.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        least-restrictive-alternative,
+        positive-punishment,
+        negative-punishment,
+        behavior-intervention-plan
+      ]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+      - sourceId: abai-restraint-position-2010
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g19-side-effects
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.19 }
+    type: single-best-answer
+    stem: >-
+      Which is a documented risk of punishment-based procedures that a plan must account
+      for?
+    options:
+      - id: a
+        text: Escape and avoidance of the person or setting associated with the procedure
+        isCorrect: true
+        rationale: >-
+          Suppression can generalise to the people and places present, damaging the
+          relationship the programme depends on.
+      - id: b
+        text: Permanent loss of the punished response from the repertoire
+        isCorrect: false
+        rationale: >-
+          Suppression is typically not permanent; responding commonly recovers when conditions
+          change.
+      - id: c
+        text: Improved generalisation of the alternative behaviour
+        isCorrect: false
+        rationale: >-
+          Punishment does not teach the alternative and does not improve its generalisation.
+      - id: d
+        text: A reduced need to measure the behaviour
+        isCorrect: false
+        rationale: >-
+          Restrictive procedures require more measurement and oversight, not less.
+    explanation: >-
+      The side effects are part of why the safeguards exist. A procedure that suppresses
+      behaviour while making the learner avoid the staff member delivering it has traded
+      one problem for a larger one.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [punishment, negative-reinforcement, least-restrictive-alternative, behavioral-contrast]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+      - sourceId: abai-restraint-position-2010
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-g20-thinning
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: G.20 }
+    type: single-best-answer
+    stem: >-
+      A skill is mastered on continuous reinforcement. To support maintenance, the
+      schedule should be:
+    options:
+      - id: a
+        text: Thinned gradually towards an intermittent schedule
+        isCorrect: true
+        rationale: >-
+          Intermittent reinforcement produces responding that persists when reinforcement is
+          not always available.
+      - id: b
+        text: Held at continuous reinforcement indefinitely
+        isCorrect: false
+        rationale: >-
+          Continuous reinforcement is not available in natural settings, so the skill would
+          not survive outside teaching.
+      - id: c
+        text: Stopped abruptly once the criterion is met
+        isCorrect: false
+        rationale: >-
+          Abrupt removal is extinction, and the skill is likely to be lost.
+      - id: d
+        text: Replaced with a token system
+        isCorrect: false
+        rationale: >-
+          Changing the reinforcer type does not address the schedule, which is what
+          maintenance depends on.
+    explanation: >-
+      Continuous reinforcement builds a skill; intermittent reinforcement keeps it.
+      Thinning is the bridge between the two, and it is the step most often omitted once a
+      target is marked mastered.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [schedule-thinning, intermittent-reinforcement, continuous-reinforcement, maintenance]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

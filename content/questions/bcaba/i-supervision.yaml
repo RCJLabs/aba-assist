@@ -1,0 +1,937 @@
+# BCaBA practice questions — area I, Supervisory Relationships. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-i1-supervision-risks
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      Which is a documented consequence of ineffective supervision?
+    options:
+      - id: a
+        text: Higher staff turnover and poorer client outcomes
+        isCorrect: true
+        rationale: >-
+          Weak supervision is associated with staff leaving and with worse results for the
+          people they serve.
+      - id: b
+        text: Increased demand for the service
+        isCorrect: false
+        rationale: >-
+          There is no such relationship, and it would not be a consequence of poor
+          supervision.
+      - id: c
+        text: Reduced need for training budgets
+        isCorrect: false
+        rationale: >-
+          Poor supervision tends to increase remedial training rather than reduce its cost.
+      - id: d
+        text: More accurate data collection
+        isCorrect: false
+        rationale: >-
+          Data accuracy depends on training and monitoring, which weak supervision provides
+          less of.
+    explanation: >-
+      Supervision is often treated as an administrative overhead. Framing it by its known
+      consequences — turnover, integrity, outcomes — is what justifies protecting the time
+      it takes.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [supervision, treatment-integrity, performance-feedback]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-i1-behavior-analytic-supervision
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      What makes supervision behaviour-analytic rather than merely regular?
+    options:
+      - id: a
+        text: Performance is measured, taught to criterion, and evaluated with data
+        isCorrect: true
+        rationale: >-
+          Behaviour-analytic supervision applies the same measurement and teaching procedures
+          to staff behaviour that it applies to clients.
+      - id: b
+        text: It occurs at a fixed frequency set by the certifying body
+        isCorrect: false
+        rationale: >-
+          Frequency is a requirement; it does not make the content behaviour-analytic.
+      - id: c
+        text: It is delivered by a certified analyst
+        isCorrect: false
+        rationale: >-
+          Who delivers it does not determine whether the methods are behavioural.
+      - id: d
+        text: It covers ethics as well as procedures
+        isCorrect: false
+        rationale: >-
+          Content coverage is necessary and is not what makes the method behavioural.
+    explanation: >-
+      The test is whether the supervisor could show you data on the supervisee's
+      performance. Meetings held reliably, with no measure of what changed, meet the
+      requirement and not the standard.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [supervision, competency-assessment, performance-feedback, behavioral-skills-training]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i1-frequency-not-enough
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.1 }
+    type: single-best-answer
+    stem: >-
+      A supervisor meets their supervisee weekly and reviews paperwork, but never observes
+      them with a client. The main problem is:
+    options:
+      - id: a
+        text: Performance cannot be assessed or improved without observing it
+        isCorrect: true
+        rationale: >-
+          Paperwork shows what was recorded; only observation shows what was done.
+      - id: b
+        text: The meetings are too short
+        isCorrect: false
+        rationale: >-
+          Duration is not what is missing; direct observation is.
+      - id: c
+        text: Weekly is too infrequent
+        isCorrect: false
+        rationale: >-
+          Weekly contact is substantial; the gap is in what the contact consists of.
+      - id: d
+        text: Paperwork review is not a permitted supervision activity
+        isCorrect: false
+        rationale: >-
+          Reviewing documentation is legitimate; it is simply not sufficient on its own.
+    explanation: >-
+      Observation is the part most easily squeezed out by caseload, and it is the part the
+      rest depends on. A supervisee can describe a procedure accurately and still not run
+      it that way.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, competency-assessment, treatment-integrity, performance-feedback]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i2-reciprocal-feedback
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.2 }
+    type: single-best-answer
+    stem: >-
+      Establishing reciprocal feedback in a supervisory relationship means:
+    options:
+      - id: a
+        text: The supervisee is expected and able to give feedback to the supervisor too
+        isCorrect: true
+        rationale: >-
+          Feedback travels in both directions, which requires the supervisor to invite it and
+          act on it.
+      - id: b
+        text: Feedback is given only when performance falls below criterion
+        isCorrect: false
+        rationale: >-
+          That describes corrective feedback timing, not reciprocity.
+      - id: c
+        text: The supervisee repeats back the feedback they received
+        isCorrect: false
+        rationale: >-
+          Checking understanding is useful but is not what reciprocal means.
+      - id: d
+        text: Feedback is documented by both parties
+        isCorrect: false
+        rationale: >-
+          Documentation is good practice and is separate from the direction feedback flows.
+    explanation: >-
+      Reciprocity is worth building because the supervisee sees things the supervisor
+      cannot — including which of the supervisor's instructions are unworkable in the
+      setting.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, performance-feedback, collaboration]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i2-rapport-first
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.2 }
+    type: single-best-answer
+    stem: >-
+      A new supervisee performs poorly and appears anxious during observations. The most
+      useful early step is:
+    options:
+      - id: a
+        text: Pair observation with reinforcement and build the relationship before increasing demands
+        isCorrect: true
+        rationale: >-
+          If observation is aversive, the supervisee will avoid it, and the information
+          supervision depends on disappears.
+      - id: b
+        text: Increase the frequency of observation until performance improves
+        isCorrect: false
+        rationale: >-
+          More exposure to an aversive event increases avoidance rather than performance.
+      - id: c
+        text: Provide written feedback instead of in-person feedback
+        isCorrect: false
+        rationale: >-
+          This avoids the difficulty rather than addressing it and removes the chance to
+          clarify.
+      - id: d
+        text: Reassign the supervisee to easier cases
+        isCorrect: false
+        rationale: >-
+          Reassignment may be appropriate later, but it does not address the anxiety about
+          observation.
+    explanation: >-
+      The same principles apply to staff as to learners. An observation process that
+      functions as a punisher produces staff who are hardest to observe when they most
+      need support.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, pairing, performance-feedback, negative-reinforcement]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i3-equity-allocation
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.3 }
+    type: single-best-answer
+    stem: >-
+      A supervisor wants to check whether supervision is equitable across their five
+      supervisees. The most informative thing to examine is:
+    options:
+      - id: a
+        text: The distribution of observation time, case complexity and feedback across the five
+        isCorrect: true
+        rationale: >-
+          Equity is a distribution, and these are the resources supervision actually
+          allocates.
+      - id: b
+        text: Whether each supervisee reports feeling supported
+        isCorrect: false
+        rationale: >-
+          Worth asking, and it does not reveal how opportunities were distributed.
+      - id: c
+        text: Whether each supervisee received the same written materials
+        isCorrect: false
+        rationale: >-
+          Identical materials do not address unequal access to observation and experience.
+      - id: d
+        text: Whether each supervisee met their required hours
+        isCorrect: false
+        rationale: >-
+          Meeting an hours requirement says nothing about what those hours contained.
+    explanation: >-
+      Equity claims are testable. Counting who got observed, who got the complex case and
+      who got dropped when the week was busy turns an impression into something that can
+      be corrected.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [supervision, cultural-responsiveness, performance-feedback, competency-assessment]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i3-access-barriers
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.3 }
+    type: single-best-answer
+    stem: >-
+      One supervisee consistently misses supervision scheduled at 8am. An equitable
+      response is to:
+    options:
+      - id: a
+        text: Find out what the barrier is and adjust the arrangement where possible
+        isCorrect: true
+        rationale: >-
+          Attendance patterns often reflect constraints such as caring responsibilities or
+          transport rather than commitment.
+      - id: b
+        text: Record the absences and address them as a performance issue
+        isCorrect: false
+        rationale: >-
+          Treating a possible constraint as a performance problem entrenches the inequity.
+      - id: c
+        text: Move all supervision to 8am for consistency
+        isCorrect: false
+        rationale: >-
+          Uniformity that excludes one person is the opposite of equitable.
+      - id: d
+        text: Provide the missed content in writing only
+        isCorrect: false
+        rationale: >-
+          This gives that supervisee a lesser form of supervision indefinitely.
+    explanation: >-
+      Equity in practice usually looks like asking why before deciding what. Scheduling is
+      one of the most common places where an apparently neutral arrangement produces an
+      unequal result.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, cultural-responsiveness, cultural-humility]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i4-expectations
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.4 }
+    type: single-best-answer
+    stem: >-
+      What should a supervision agreement specify in addition to meeting frequency?
+    options:
+      - id: a
+        text: What each party will do, how performance is assessed, and how problems are raised
+        isCorrect: true
+        rationale: >-
+          Clear expectations on both sides prevent most of the disputes that supervision
+          arrangements produce.
+      - id: b
+        text: The supervisee's career goals for the next five years
+        isCorrect: false
+        rationale: >-
+          Useful in a development conversation, but not what the agreement has to establish.
+      - id: c
+        text: The organisation's annual leave policy
+        isCorrect: false
+        rationale: >-
+          An employment matter rather than a supervision one.
+      - id: d
+        text: The client caseload for the whole year
+        isCorrect: false
+        rationale: >-
+          Caseload changes and is managed separately from the supervision agreement.
+    explanation: >-
+      Most supervision conflicts are expectation failures rather than performance
+      failures. Writing down what counts as adequate, on both sides, is what prevents the
+      argument later.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [supervision, competency-assessment, unrestricted-activity]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+      - sourceId: bacb-bcba-handbook-2026
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i4-two-way-expectations
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.4 }
+    type: single-best-answer
+    stem: >-
+      Why should performance expectations be set for the supervisor as well as the
+      supervisee?
+    options:
+      - id: a
+        text: The supervisee depends on the supervisor's availability and responsiveness to perform
+        isCorrect: true
+        rationale: >-
+          A supervisee cannot meet expectations if observations and answers do not arrive, so
+          the supervisor's commitments are part of the arrangement.
+      - id: b
+        text: It makes the agreement appear fairer
+        isCorrect: false
+        rationale: >-
+          Appearance is not the reason; dependency is.
+      - id: c
+        text: It is required for the agreement to be valid
+        isCorrect: false
+        rationale: >-
+          Validity requirements vary, and the practical reason stands regardless.
+      - id: d
+        text: It allows the supervisee to evaluate the supervisor formally
+        isCorrect: false
+        rationale: >-
+          Formal evaluation is a separate organisational matter.
+    explanation: >-
+      A supervisee waiting three weeks for an answer cannot be held to a standard that
+      assumed the answer arrived. Naming the supervisor's commitments makes that visible
+      rather than personal.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [supervision, performance-feedback, collaboration]
+    citations:
+      - sourceId: bacb-supervision-curriculum-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i5-goals-from-assessment
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.5 }
+    type: single-best-answer
+    stem: >-
+      Supervision goals for a new supervisee should be based primarily on:
+    options:
+      - id: a
+        text: An assessment of what they can currently do in practice
+        isCorrect: true
+        rationale: >-
+          Goals follow from a performance assessment, in the same way a learner's goals follow
+          from a skills assessment.
+      - id: b
+        text: The standard competency list used for all new staff
+        isCorrect: false
+        rationale: >-
+          A standard list is a starting point, not an individualised goal set.
+      - id: c
+        text: The supervisee's stated interests
+        isCorrect: false
+        rationale: >-
+          Interests should inform the plan without determining what competence requires.
+      - id: d
+        text: The requirements of their next certification cycle
+        isCorrect: false
+        rationale: >-
+          Certification requirements set minimums; they do not identify this person's gaps.
+    explanation: >-
+      Supervision is a teaching relationship, so it starts where teaching starts: with
+      what the learner can already do. A standard curriculum applied to everyone wastes
+      time on what they can do and misses what they cannot.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [competency-assessment, skills-assessment, supervision, behavioral-skills-training]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i5-assessment-method
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.5 }
+    type: single-best-answer
+    stem: >-
+      The most valid way to assess a supervisee's current skill in running a teaching
+      procedure is to:
+    options:
+      - id: a
+        text: Observe them running it with a learner and score it against the steps
+        isCorrect: true
+        rationale: >-
+          Direct observation scored against the procedure's steps measures the performance
+          itself.
+      - id: b
+        text: Ask them to describe how they would run it
+        isCorrect: false
+        rationale: >-
+          Describing a procedure and performing it are different repertoires, and the gap is
+          common.
+      - id: c
+        text: Review their session notes for that programme
+        isCorrect: false
+        rationale: >-
+          Notes record what was reported, not what was done.
+      - id: d
+        text: Test their knowledge of the underlying principles
+        isCorrect: false
+        rationale: >-
+          Principles knowledge is valuable and does not establish procedural skill.
+    explanation: >-
+      The say-do gap is the whole reason competency-based assessment exists. Staff who can
+      explain a procedure perfectly and run it poorly are common, and only observation
+      distinguishes them.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        competency-assessment,
+        treatment-integrity,
+        behavioral-skills-training,
+        performance-feedback
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i6-bst-components
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      Behavioural skills training is delivered but the supervisee still performs below
+      criterion. Which component was most likely omitted or cut short?
+    options:
+      - id: a
+        text: Rehearsal with feedback, repeated until criterion is met
+        isCorrect: true
+        rationale: >-
+          Instruction and modelling are quick to deliver and are commonly where training
+          stops; rehearsal and feedback are what change performance.
+      - id: b
+        text: Written instructions
+        isCorrect: false
+        rationale: >-
+          Instructions are almost always provided and are the least sufficient component
+          alone.
+      - id: c
+        text: Modelling of the procedure
+        isCorrect: false
+        rationale: >-
+          Modelling is often included, and on its own it does not establish performance
+          either.
+      - id: d
+        text: A description of the underlying principles
+        isCorrect: false
+        rationale: >-
+          Not a component of behavioural skills training as such.
+    explanation: >-
+      The loop is the procedure: rehearse, get feedback, rehearse again, until a criterion
+      is met. Training that ends after the demonstration is an information session with a
+      sign-in sheet.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [behavioral-skills-training, performance-feedback, competency-assessment, modeling]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i6-criterion-based
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      What makes staff training competency-based rather than exposure-based?
+    options:
+      - id: a
+        text: Training continues until performance meets a stated criterion
+        isCorrect: true
+        rationale: >-
+          The endpoint is defined by performance rather than by hours or sessions completed.
+      - id: b
+        text: Training is delivered by a certified analyst
+        isCorrect: false
+        rationale: >-
+          Who delivers it does not determine the endpoint.
+      - id: c
+        text: Training covers every procedure in the plan
+        isCorrect: false
+        rationale: >-
+          Coverage is about breadth, not about the standard reached.
+      - id: d
+        text: Training is documented with attendance records
+        isCorrect: false
+        rationale: >-
+          Attendance records document exposure, which is the alternative being contrasted.
+    explanation: >-
+      The difference shows up in what is recorded. An exposure model records that training
+      happened; a competency model records that the person reached criterion, and on what.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        competency-assessment,
+        behavioral-skills-training,
+        trials-to-criterion,
+        treatment-integrity
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i6-generalisation-of-training
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.6 }
+    type: single-best-answer
+    stem: >-
+      A supervisee reaches criterion during role-play but performs poorly with an actual
+      learner. The training most likely needed:
+    options:
+      - id: a
+        text: Practice in the real setting, with feedback there
+        isCorrect: true
+        rationale: >-
+          Skills trained only in role-play frequently do not transfer; training has to include
+          the setting it is for.
+      - id: b
+        text: More repetitions of the role-play
+        isCorrect: false
+        rationale: >-
+          More of the context that does not transfer is unlikely to produce transfer.
+      - id: c
+        text: A written quiz on the procedure
+        isCorrect: false
+        rationale: >-
+          Knowledge testing does not address a performance transfer problem.
+      - id: d
+        text: A different trainer
+        isCorrect: false
+        rationale: >-
+          Nothing indicates the trainer was the variable.
+    explanation: >-
+      Generalisation has to be programmed for staff exactly as it does for learners.
+      In-situ training and feedback is the component most often missing when role-play
+      performance does not survive first contact with a real session.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [behavioral-skills-training, generalization, performance-feedback, treatment-integrity]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i7-feedback-quality
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Which feedback is most likely to change a supervisee's performance?
+    options:
+      - id: a
+        text: Specific, delivered soon after the performance, and naming what to do differently
+        isCorrect: true
+        rationale: >-
+          Specificity, immediacy and an actionable alternative are what make feedback
+          function.
+      - id: b
+        text: General encouragement delivered at the weekly meeting
+        isCorrect: false
+        rationale: >-
+          Neither specific nor immediate, and it names nothing to change.
+      - id: c
+        text: A written summary at the end of the month
+        isCorrect: false
+        rationale: >-
+          The delay makes it difficult to connect to any particular performance.
+      - id: d
+        text: A comparison with a higher-performing colleague
+        isCorrect: false
+        rationale: >-
+          Social comparison tends to damage the relationship without identifying what to
+          change.
+    explanation: >-
+      These properties are the same ones that make reinforcement work, which is not a
+      coincidence. Feedback is a consequence, and consequences are governed by immediacy
+      and specificity.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [performance-feedback, supervision, behavioral-skills-training, positive-reinforcement]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i7-task-clarification
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Several staff perform a step inconsistently, and each describes the step
+      differently. The most appropriate first intervention is:
+    options:
+      - id: a
+        text: Task clarification — restate the step precisely and confirm shared understanding
+        isCorrect: true
+        rationale: >-
+          When people describe the task differently, the specification is the problem rather
+          than their motivation.
+      - id: b
+        text: Individual performance feedback for each staff member
+        isCorrect: false
+        rationale: >-
+          Feedback against an unclear standard produces inconsistent correction.
+      - id: c
+        text: An incentive for correct performance
+        isCorrect: false
+        rationale: >-
+          Incentives do not help when people do not agree on what correct is.
+      - id: d
+        text: Reducing the response effort of the step
+        isCorrect: false
+        rationale: >-
+          Effort may be worth addressing later, once the step itself is agreed.
+    explanation: >-
+      Diagnosing before intervening applies to staff as much as to learners. Task
+      clarification is cheap, and it is the right answer whenever the variation is in how
+      people understand the task.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        performance-diagnostic,
+        performance-feedback,
+        treatment-integrity,
+        operational-definition
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i7-response-effort
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.7 }
+    type: single-best-answer
+    stem: >-
+      Staff routinely skip a data step that requires fetching a separate form from another
+      room. The most promising change is:
+    options:
+      - id: a
+        text: Reduce the response effort by putting the form where the work happens
+        isCorrect: true
+        rationale: >-
+          Effort is a well-established determinant of whether a step is completed, and this is
+          directly manipulable.
+      - id: b
+        text: Remind staff at each shift handover
+        isCorrect: false
+        rationale: >-
+          Reminders address memory, not the effort that makes the step costly.
+      - id: c
+        text: Add the step to the annual appraisal
+        isCorrect: false
+        rationale: >-
+          A distant consequence rarely controls a moment-to-moment behaviour.
+      - id: d
+        text: Require a signature confirming the step was done
+        isCorrect: false
+        rationale: >-
+          Adding a second step raises the total effort rather than lowering it.
+    explanation: >-
+      Response effort is the most reliably overlooked variable in staff performance, and
+      usually the cheapest to change. Where a step is skipped by everyone, look at the
+      setup before looking at the people.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [performance-diagnostic, antecedent-intervention, treatment-integrity, data-sheet]
+    citations:
+      - sourceId: mace-1988
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i8-diagnose-first
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.8 }
+    type: single-best-answer
+    stem: >-
+      A supervisee is not running a procedure correctly. Which finding would point to a
+      skill deficit rather than a performance problem?
+    options:
+      - id: a
+        text: They cannot perform the procedure correctly even when asked to demonstrate it
+        isCorrect: true
+        rationale: >-
+          If the performance is unavailable under optimal conditions, the skill is the gap.
+      - id: b
+        text: They perform it correctly when observed and not otherwise
+        isCorrect: false
+        rationale: >-
+          Correct performance under observation shows the skill exists; the contingencies
+          differ.
+      - id: c
+        text: They describe the procedure accurately
+        isCorrect: false
+        rationale: >-
+          Accurate description does not establish that the performance is available.
+      - id: d
+        text: They report finding the procedure time-consuming
+        isCorrect: false
+        rationale: >-
+          This points to effort or competing demands rather than to a missing skill.
+    explanation: >-
+      The can-do versus will-do question decides the intervention: training for a skill
+      deficit, and a change to the contingencies or the setup for a performance problem.
+      Training someone who already has the skill wastes everyone's time.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        performance-diagnostic,
+        behavioral-skills-training,
+        performance-feedback,
+        function-of-behavior
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i8-competing-contingencies
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.8 }
+    type: single-best-answer
+    stem: >-
+      A supervisee has the skill and performs the procedure only when their manager is
+      present. The most likely account is:
+    options:
+      - id: a
+        text: Competing contingencies make the procedure costly when unobserved
+        isCorrect: true
+        rationale: >-
+          The procedure competes with other demands, and only the manager's presence tips the
+          balance.
+      - id: b
+        text: A skill deficit that appears intermittently
+        isCorrect: false
+        rationale: >-
+          A skill that is reliably present under observation is available.
+      - id: c
+        text: Insufficient knowledge of the underlying principles
+        isCorrect: false
+        rationale: >-
+          Knowledge does not vary with who is in the room.
+      - id: d
+        text: Poor initial training
+        isCorrect: false
+        rationale: >-
+          Training produced a performance that occurs, which is evidence it worked.
+    explanation: >-
+      Managing what competes with a procedure — caseload, paperwork, the other eight
+      things due that hour — is usually more effective than another round of training the
+      person does not need.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [performance-diagnostic, stimulus-control, treatment-integrity, performance-feedback]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i9-evaluating-supervision
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.9 }
+    type: single-best-answer
+    stem: >-
+      Which measure best evaluates whether supervision is working?
+    options:
+      - id: a
+        text: Change in supervisee performance, and in the outcomes of the learners they serve
+        isCorrect: true
+        rationale: >-
+          Supervision is evaluated by what changes downstream of it, in both performance and
+          client outcomes.
+      - id: b
+        text: The number of supervision hours delivered
+        isCorrect: false
+        rationale: >-
+          Hours measure input, not effect.
+      - id: c
+        text: Supervisee satisfaction ratings
+        isCorrect: false
+        rationale: >-
+          Satisfaction is worth knowing and correlates poorly with performance change.
+      - id: d
+        text: The proportion of required topics covered
+        isCorrect: false
+        rationale: >-
+          Coverage is a completeness measure rather than an effectiveness one.
+    explanation: >-
+      The same standard applied to every other procedure in this field applies here: the
+      justification for supervision is what it changes, and that is measurable.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, treatment-integrity, competency-assessment, visual-analysis]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-i9-adjusting
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: I.9 }
+    type: single-best-answer
+    stem: >-
+      Data show a supervisee's procedural integrity has not improved over eight weeks of
+      weekly feedback. The appropriate response is:
+    options:
+      - id: a
+        text: Change the supervision approach and state what the change is meant to fix
+        isCorrect: true
+        rationale: >-
+          Supervision that is not producing change should be modified in the same data-based
+          way any procedure would be.
+      - id: b
+        text: Continue, since consistency is important in supervision
+        isCorrect: false
+        rationale: >-
+          Consistency in an approach that is not working is persistence without a rationale.
+      - id: c
+        text: Conclude the supervisee is unsuitable for the role
+        isCorrect: false
+        rationale: >-
+          The supervision approach has not been varied, so nothing supports that conclusion.
+      - id: d
+        text: Reduce the frequency of feedback
+        isCorrect: false
+        rationale: >-
+          Less of an unsuccessful approach is unlikely to help and removes information.
+    explanation: >-
+      Eight weeks of unchanged data is a finding about the supervision, not only about the
+      supervisee. Trying a different component — in-situ training, a checklist, reduced
+      effort — is the data-based response.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [supervision, treatment-integrity, performance-feedback, behavioral-skills-training]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

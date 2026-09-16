@@ -205,6 +205,12 @@
 					/>
 					<span>Full exam simulation, against the clock</span>
 				</label>
+			{:else}
+				<p class="untimed" role="note" data-no-simulation={quiz.credential}>
+					No timed simulation for this exam: the outline publishes its question counts but not
+					the time allowed, and pacing you against a guessed clock would defeat the point of
+					running one.
+				</p>
 			{/if}
 		</fieldset>
 
@@ -530,6 +536,12 @@
 {/if}
 
 <style>
+	.untimed {
+		margin: 0.5rem 0 0;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+
 	.swapped {
 		margin: 0.4rem 0 0;
 		font-size: 0.85rem;

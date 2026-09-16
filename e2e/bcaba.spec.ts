@@ -40,17 +40,44 @@ test('the glossary filters on the assistant outline, with its own areas', async 
 	expect(supervision).toBeLessThan(shown);
 });
 
-test('the quiz says whose bank it is running rather than swapping quietly', async ({
+test('the quiz runs the assistant bank, filed against the assistant outline', async ({
 	page
 }) => {
 	await setMode(page);
 	await page.goto('/quiz');
 
-	// No assistant questions are written yet, so the selector cannot offer that exam.
-	await expect(page.getByLabel('Exam', { exact: true })).toHaveValue('BCBA');
-	await expect(page.locator('[data-bankless="BCaBA"]')).toContainText(
-		'No BCaBA questions have been written yet'
+	await expect(page.getByLabel('Exam', { exact: true })).toHaveValue('BCaBA');
+	// No silent swap to another credential's bank; that note is for exams with none.
+	await expect(page.locator('[data-bankless]')).toHaveCount(0);
+
+	// The area list is the assistant outline's, including the two areas it names differently.
+	const area = page.getByLabel('Content area');
+	await expect(area).toContainText('Intervention Development and Monitoring');
+	await expect(area).not.toContainText('Personnel Supervision and Management');
+
+	await area.selectOption('I');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
+});
+
+test('the quiz offers no timed simulation for an exam with no published clock', async ({
+	page
+}) => {
+	/*
+	 * The assistant outline publishes question counts and not the time allowed. Offering a
+	 * simulation would mean inventing the pace, which is the one thing a simulation is for.
+	 */
+	await setMode(page);
+	await page.goto('/quiz');
+	await expect(page.getByRole('radio', { name: /Full exam simulation/ })).toHaveCount(0);
+	await expect(page.locator('[data-no-simulation="BCaBA"]')).toContainText(
+		'not the time allowed'
 	);
+
+	// The analyst exam does publish one, so the option is there.
+	await page.getByLabel('Exam', { exact: true }).selectOption('BCBA');
+	await expect(page.getByRole('radio', { name: /Full exam simulation/ })).toBeVisible();
 });
 
 test('the tracker withholds requirements it has not read instead of borrowing them', async ({

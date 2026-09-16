@@ -1,0 +1,1254 @@
+# BCaBA practice questions — area H, Intervention Development and Monitoring. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-h1-measurable-goal
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      Which intervention goal is stated in observable and measurable terms?
+    options:
+      - id: a
+        text: Independently puts on a coat within 60 seconds of the instruction, on 8 of 10 opportunities
+        isCorrect: true
+        rationale: >-
+          It names the response, the condition, the timeframe and the criterion, so anyone
+          could score it.
+      - id: b
+        text: Becomes more independent with dressing
+        isCorrect: false
+        rationale: >-
+          Neither the response nor the criterion is specified, so progress cannot be scored.
+      - id: c
+        text: Improves self-help skills across the school day
+        isCorrect: false
+        rationale: >-
+          This names a domain rather than a behaviour and gives no criterion.
+      - id: d
+        text: Demonstrates increased confidence in dressing tasks
+        isCorrect: false
+        rationale: >-
+          Confidence is an inference, not something two observers could score the same way.
+    explanation: >-
+      A goal has to survive being handed to someone who was not in the meeting. The test
+      is whether a new staff member could score it correctly on their first day from the
+      wording alone.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, objective-language, trials-to-criterion, task-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-h1-criterion-condition
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      A goal states "will request a break appropriately". What is most obviously missing?
+    options:
+      - id: a
+        text: A definition of what counts as appropriate, and a performance criterion
+        isCorrect: true
+        rationale: >-
+          "Appropriately" requires a judgement, and no criterion says how often or how well.
+      - id: b
+        text: The setting in which the goal applies
+        isCorrect: false
+        rationale: >-
+          Setting is worth adding, but the undefined term and the missing criterion are the
+          larger problems.
+      - id: c
+        text: The reinforcer that will be used
+        isCorrect: false
+        rationale: >-
+          A goal states the target; the procedure states the reinforcer.
+      - id: d
+        text: The date the goal was written
+        isCorrect: false
+        rationale: >-
+          Useful administratively but not part of what makes the goal measurable.
+    explanation: >-
+      Words like appropriately, consistently and independently are where measurable goals
+      quietly stop being measurable. Each needs replacing with what the observer would
+      actually see.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [operational-definition, objective-language, mand, trials-to-criterion]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h1-baseline-in-goal
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.1 }
+    type: single-best-answer
+    stem: >-
+      Why should a goal statement include the learner's current performance?
+    options:
+      - id: a
+        text: Without it, the size and significance of the intended change cannot be judged
+        isCorrect: true
+        rationale: >-
+          A target of eight out of ten means something very different from a baseline of seven
+          than from a baseline of zero.
+      - id: b
+        text: It is required by every funder
+        isCorrect: false
+        rationale: >-
+          Requirements vary, and the clinical reason stands regardless.
+      - id: c
+        text: It determines which reinforcer will be used
+        isCorrect: false
+        rationale: >-
+          Reinforcer selection comes from preference and reinforcer assessment.
+      - id: d
+        text: It establishes the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function comes from functional assessment, not from a performance level.
+    explanation: >-
+      Goals without a starting point are unreadable a year later, and they make it
+      impossible to tell an ambitious goal from a goal that had already been met when it
+      was written.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [baseline, operational-definition, level, trials-to-criterion]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h2-assessment-driven
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      A functional assessment indicates escape from demands. Which intervention component
+      follows most directly from that finding?
+    options:
+      - id: a
+        text: Teaching and honouring a break request, with demands adjusted
+        isCorrect: true
+        rationale: >-
+          It gives the learner an efficient way to obtain the same consequence the behaviour
+          was producing.
+      - id: b
+        text: A token system for preferred items
+        isCorrect: false
+        rationale: >-
+          Access to items does not address a consequence the behaviour was producing through
+          escape.
+      - id: c
+        text: Increased attention for periods without the behaviour
+        isCorrect: false
+        rationale: >-
+          Attention is not the maintaining consequence identified.
+      - id: d
+        text: Removing the preferred item following the behaviour
+        isCorrect: false
+        rationale: >-
+          A consequence unrelated to the identified function, and a restrictive one at that.
+    explanation: >-
+      Matching the intervention to the function is the single highest-yield decision in
+      plan design. Function-mismatched procedures often appear to work briefly and then
+      stop.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        function-of-behavior,
+        functional-communication-training,
+        negative-reinforcement,
+        replacement-behavior
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h2-evidence-base
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      What does it mean to say a procedure is evidence-based for a particular use?
+    options:
+      - id: a
+        text: Research supports it for that population and purpose, and it is judged against this learner's data
+        isCorrect: true
+        rationale: >-
+          Evidence-based practice combines research support with individual data and the
+          client's context, not research alone.
+      - id: b
+        text: It has been published in a peer-reviewed journal at least once
+        isCorrect: false
+        rationale: >-
+          A single publication does not establish an evidence base.
+      - id: c
+        text: It is widely used in the field
+        isCorrect: false
+        rationale: >-
+          Widespread use and evidence are not the same thing, and several common procedures
+          are poorly supported.
+      - id: d
+        text: It worked for a similar learner in the same service
+        isCorrect: false
+        rationale: >-
+          A local anecdote is weaker still, though it may be worth investigating.
+    explanation: >-
+      The definition has three parts for a reason. Research says a procedure is worth
+      trying; the learner's own data says whether it is working; the family's context says
+      whether it can be sustained.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [evidence-based-practice, social-validity, visual-analysis, treatment-integrity]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h2-scope-in-selection
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      An assistant analyst believes a different procedure would suit a learner better than
+      the one in the plan. They should:
+    options:
+      - id: a
+        text: Bring the reasoning and supporting data to the supervising analyst
+        isCorrect: true
+        rationale: >-
+          Plan changes are the supervising analyst's decision, and data-supported proposals
+          are exactly what an assistant analyst should bring.
+      - id: b
+        text: Trial the alternative for a week and compare the data
+        isCorrect: false
+        rationale: >-
+          Running an unauthorised procedure is outside scope and contaminates the existing
+          data.
+      - id: c
+        text: Continue with the plan and say nothing
+        isCorrect: false
+        rationale: >-
+          Withholding a clinically relevant observation does not serve the learner.
+      - id: d
+        text: Ask the family which procedure they prefer
+        isCorrect: false
+        rationale: >-
+          Asking the family to choose between procedures places a clinical decision on them
+          and bypasses the supervisor.
+    explanation: >-
+      The assistant analyst is often the person who sees the problem first. The route is
+      upward with evidence, not sideways into a trial — and a supervisor who receives that
+      well is doing their job too.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [scope-of-practice, supervision, behavior-intervention-plan, treatment-integrity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h2-package-vs-component
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.2 }
+    type: single-best-answer
+    stem: >-
+      A plan lists six components introduced simultaneously. From an evaluation standpoint
+      this means:
+    options:
+      - id: a
+        text: Any effect cannot be attributed to a particular component
+        isCorrect: true
+        rationale: >-
+          Simultaneous introduction leaves each component untested individually.
+      - id: b
+        text: The plan is stronger because it addresses several variables
+        isCorrect: false
+        rationale: >-
+          It may be more effective, and it is less informative, which is a real cost over
+          time.
+      - id: c
+        text: The plan cannot be effective
+        isCorrect: false
+        rationale: >-
+          Packages are frequently effective; the limitation is on what can be concluded.
+      - id: d
+        text: The plan violates the requirement for treatment integrity
+        isCorrect: false
+        rationale: >-
+          Integrity concerns whether components are delivered as written, not how many there
+          are.
+    explanation: >-
+      Packages are sometimes the right clinical choice, particularly under time pressure.
+      The cost is that the service accumulates components nobody can drop, because nobody
+      knows which ones are working.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        behavior-intervention-plan,
+        treatment-integrity,
+        multielement-design,
+        evidence-based-practice
+      ]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h3-risk-weighing
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      Two procedures are expected to be similarly effective. One is more restrictive. The
+      plan should:
+    options:
+      - id: a
+        text: Select the less restrictive procedure
+        isCorrect: true
+        rationale: >-
+          Where effectiveness is comparable, the less restrictive option is required.
+      - id: b
+        text: Select the more restrictive procedure for faster results
+        isCorrect: false
+        rationale: >-
+          Speed is not established here, and it would not justify greater restriction if it
+          were.
+      - id: c
+        text: Alternate between them to compare
+        isCorrect: false
+        rationale: >-
+          Exposing a learner to a more restrictive procedure to make a comparison that is not
+          needed is not justified.
+      - id: d
+        text: Let the family choose between them
+        isCorrect: false
+        rationale: >-
+          Family input matters, but the clinician cannot delegate the restrictiveness
+          judgement.
+    explanation: >-
+      The least restrictive alternative is a decision rule rather than a preference. It
+      applies most strongly precisely when the options are close, because that is when the
+      extra restriction buys nothing.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [least-restrictive-alternative, dignity, behavior-intervention-plan, ethics-code]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+      - sourceId: abai-restraint-position-2010
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h3-contextual-fit-plan
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      A plan is written for a household with three young children and one adult in the
+      evenings. Which feature most threatens it?
+    options:
+      - id: a
+        text: A component requiring five minutes of uninterrupted one-to-one attention every hour
+        isCorrect: true
+        rationale: >-
+          The household cannot supply that, so the component will be dropped and the plan will
+          appear to fail.
+      - id: b
+        text: A component using items the family already owns
+        isCorrect: false
+        rationale: >-
+          Using existing materials improves fit rather than threatening it.
+      - id: c
+        text: A component embedded in an existing bedtime routine
+        isCorrect: false
+        rationale: >-
+          Embedding in an existing routine is one of the strongest fit strategies.
+      - id: d
+        text: A component the older sibling can help with
+        isCorrect: false
+        rationale: >-
+          Appropriately involving a sibling can improve feasibility, within reason.
+    explanation: >-
+      Plans are usually abandoned rather than refused, and the abandonment is invisible.
+      Writing for the household that exists, rather than an idealised one, is what makes
+      the data mean something.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [treatment-integrity, social-validity, ecological-assessment, cultural-responsiveness]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h3-preferences-in-plan
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.3 }
+    type: single-best-answer
+    stem: >-
+      Incorporating a learner's preferences into a plan is valuable mainly because:
+    options:
+      - id: a
+        text: It improves engagement and assent, which affects whether the plan runs at all
+        isCorrect: true
+        rationale: >-
+          A plan built around what the learner values is more likely to be participated in
+          rather than endured.
+      - id: b
+        text: It makes the plan easier to write
+        isCorrect: false
+        rationale: >-
+          It usually makes the plan harder to write, not easier.
+      - id: c
+        text: It satisfies the requirement for informed consent
+        isCorrect: false
+        rationale: >-
+          Consent is a separate process, generally with the guardian.
+      - id: d
+        text: It guarantees the procedure will be effective
+        isCorrect: false
+        rationale: >-
+          No single feature guarantees effectiveness.
+    explanation: >-
+      Preference and assent are not softeners applied to a plan afterwards. They change
+      the probability that the plan is ever actually delivered, which makes them technical
+      considerations as much as ethical ones.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [assent, preference-assessment, social-validity, dignity]
+    citations:
+      - sourceId: hanley-2014
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h4-replacement-function
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      What is the most important property of a replacement behaviour?
+    options:
+      - id: a
+        text: It produces the same consequence as the behaviour it replaces, at least as easily
+        isCorrect: true
+        rationale: >-
+          If the replacement is harder or slower to the same outcome, the original behaviour
+          remains the better option for the learner.
+      - id: b
+        text: It is socially acceptable to staff and family
+        isCorrect: false
+        rationale: >-
+          Acceptability matters, but a socially acceptable response that does not work will
+          not be used.
+      - id: c
+        text: It is physically incompatible with the target behaviour
+        isCorrect: false
+        rationale: >-
+          Incompatibility is one useful option, not the defining property.
+      - id: d
+        text: It is already in the learner's repertoire
+        isCorrect: false
+        rationale: >-
+          Convenient if so, but the replacement can be taught; function is what it must match.
+    explanation: >-
+      Response efficiency is the whole account. The learner will use whichever response
+      gets the outcome with less effort, less delay and more reliability, and that is a
+      comparison the plan has to win rather than assert.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        replacement-behavior,
+        functional-communication-training,
+        function-of-behavior,
+        response-class
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h4-fct-honouring
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      A learner is taught to request a break instead of throwing materials. In the first
+      weeks, requests should be:
+    options:
+      - id: a
+        text: Honoured essentially every time they occur
+        isCorrect: true
+        rationale: >-
+          A dense schedule early on establishes the new response as reliable and efficient.
+      - id: b
+        text: Honoured on a variable schedule from the start
+        isCorrect: false
+        rationale: >-
+          Thinning too early makes the new response unreliable and the old one competitive
+          again.
+      - id: c
+        text: Honoured only when the learner has completed some work
+        isCorrect: false
+        rationale: >-
+          Adding a requirement immediately makes the request less efficient than the behaviour
+          it replaces.
+      - id: d
+        text: Honoured only if the learner asks calmly
+        isCorrect: false
+        rationale: >-
+          Adding a form requirement at the outset is a second contingency the learner has not
+          been taught.
+    explanation: >-
+      Thinning comes later, deliberately, and often through a signalled delay. Attaching
+      conditions in week one is the most common way functional communication training
+      fails.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [
+        functional-communication-training,
+        continuous-reinforcement,
+        schedule-thinning,
+        replacement-behavior
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+      - sourceId: hagopian-1998
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h4-before-reduction
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      Why should a replacement behaviour be identified before a reduction procedure is
+      introduced?
+    options:
+      - id: a
+        text: Otherwise the learner loses a way of producing an outcome and has no alternative
+        isCorrect: true
+        rationale: >-
+          Reducing a behaviour without a replacement removes access to something the learner
+          needs without providing another route to it.
+      - id: b
+        text: Because reduction procedures are prohibited without one
+        isCorrect: false
+        rationale: >-
+          Not an absolute prohibition, though good practice and most policies require it.
+      - id: c
+        text: Because it makes data collection easier
+        isCorrect: false
+        rationale: >-
+          Data collection is not the reason.
+      - id: d
+        text: Because funders require two goals per plan
+        isCorrect: false
+        rationale: >-
+          Funding structure is not a clinical rationale.
+    explanation: >-
+      This is the clinical core of a reduction plan. Removing a behaviour that was working
+      for the learner, with nothing in its place, predicts either its return or the
+      emergence of something worse.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [replacement-behavior, function-of-behavior, least-restrictive-alternative, extinction]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h4-efficiency
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.4 }
+    type: single-best-answer
+    stem: >-
+      A taught replacement request is used at school but not at home, where the original
+      behaviour continues. The most likely reason is:
+    options:
+      - id: a
+        text: At home the request is less efficient than the original behaviour
+        isCorrect: true
+        rationale: >-
+          If requests are slower, less reliable or more effortful at home, the original
+          behaviour remains the better option there.
+      - id: b
+        text: The learner has not generalised the response form
+        isCorrect: false
+        rationale: >-
+          Possible, but the differential outcome across settings points to the consequences
+          rather than the form.
+      - id: c
+        text: The home environment is less structured
+        isCorrect: false
+        rationale: >-
+          Structure may contribute, but the analysis still comes back to what each response
+          produces.
+      - id: d
+        text: The learner prefers the original behaviour
+        isCorrect: false
+        rationale: >-
+          Preference here is a restatement of the outcome rather than an explanation of it.
+    explanation: >-
+      When a replacement works in one setting and not another, look at what each response
+      produces in each setting rather than at the learner. Usually requests are honoured
+      promptly in one place and not in the other.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [
+        replacement-behavior,
+        functional-communication-training,
+        generalization,
+        treatment-integrity
+      ]
+    citations:
+      - sourceId: carr-durand-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h5-extinction-risks
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      Which combination of effects should a plan using extinction anticipate?
+    options:
+      - id: a
+        text: A temporary increase in rate or intensity, and later reappearance after a pause
+        isCorrect: true
+        rationale: >-
+          Extinction bursts and spontaneous recovery are both well documented and both need a
+          planned response.
+      - id: b
+        text: An immediate and permanent reduction
+        isCorrect: false
+        rationale: >-
+          Immediate permanent reduction is not what the literature describes.
+      - id: c
+        text: A gradual reduction with no side effects
+        isCorrect: false
+        rationale: >-
+          Side effects including emotional responding are common.
+      - id: d
+        text: An increase in the alternative behaviour only
+        isCorrect: false
+        rationale: >-
+          An alternative will increase only if one has been taught and reinforced.
+    explanation: >-
+      Planning for the burst and for recovery is what allows staff to hold the procedure
+      at the two moments it is most likely to be abandoned — and abandoning it at either
+      point reinforces a worse version of the behaviour.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [extinction-burst, spontaneous-recovery, extinction, resurgence]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h5-resurgence
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      A previously reduced behaviour reappears when the newly taught replacement stops
+      producing reinforcement. This is best described as:
+    options:
+      - id: a
+        text: Resurgence
+        isCorrect: true
+        rationale: >-
+          Resurgence is the return of a previously reinforced response when a more recently
+          reinforced one is no longer effective.
+      - id: b
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery follows a period without the behaviour, not a failure of the
+          alternative.
+      - id: c
+        text: An extinction burst
+        isCorrect: false
+        rationale: >-
+          A burst is an intensification of the response being extinguished, early in the
+          procedure.
+      - id: d
+        text: Behavioural contrast
+        isCorrect: false
+        rationale: >-
+          Contrast is a change in one condition following a change in another.
+    explanation: >-
+      Resurgence is why a replacement behaviour has to keep working. A team that stops
+      honouring requests when the schedule gets busy will see the original behaviour
+      return, and will usually attribute it to the learner.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [resurgence, extinction, functional-communication-training, replacement-behavior]
+    citations:
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h5-reinforcement-side-effects
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      Which is a genuine unwanted effect that a reinforcement-based plan should
+      anticipate?
+    options:
+      - id: a
+        text: Satiation reducing the reinforcer's effectiveness within a session
+        isCorrect: true
+        rationale: >-
+          Repeated delivery of the same reinforcer reduces its value, which flattens
+          responding mid-session.
+      - id: b
+        text: Permanent dependence on external reinforcement
+        isCorrect: false
+        rationale: >-
+          This is a common worry rather than a documented inevitability, and thinning
+          addresses it.
+      - id: c
+        text: Loss of the learner's existing skills
+        isCorrect: false
+        rationale: >-
+          Reinforcing one behaviour does not remove others from the repertoire.
+      - id: d
+        text: Suppression of all untargeted behaviour
+        isCorrect: false
+        rationale: >-
+          Reinforcement strengthens a target; it does not suppress everything else.
+    explanation: >-
+      Satiation is the practical one, and it is easily managed by varying reinforcers and
+      sampling preference at the start of a session. Naming the real risk matters more
+      than repeating the folk one.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [satiation, preference-assessment, motivating-operation, schedule-thinning]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: deleon-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h5-contrast
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.5 }
+    type: single-best-answer
+    stem: >-
+      A behaviour is reduced successfully in one classroom and increases in another where
+      nothing changed. This pattern is:
+    options:
+      - id: a
+        text: Behavioural contrast
+        isCorrect: true
+        rationale: >-
+          A change in responding in one condition following a change in the contingencies of
+          another is contrast.
+      - id: b
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization would mean the reduction spread to the second setting, not the
+          opposite.
+      - id: c
+        text: Resurgence
+        isCorrect: false
+        rationale: >-
+          Resurgence follows the failure of a more recently reinforced alternative.
+      - id: d
+        text: An extinction burst
+        isCorrect: false
+        rationale: >-
+          A burst occurs within the condition where reinforcement was withheld.
+    explanation: >-
+      Contrast is a reason to plan across settings rather than one at a time. A reduction
+      that simply moves the behaviour somewhere else is not a result the learner benefits
+      from.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [behavioral-contrast, extinction, generalization, stimulus-control]
+    citations:
+      - sourceId: reynolds-1961
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h6-integrity-first
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      Data shows no progress after three weeks. Before concluding the procedure is
+      ineffective, the team should first check:
+    options:
+      - id: a
+        text: Whether the procedure has been delivered as written
+        isCorrect: true
+        rationale: >-
+          A procedure that was not run cannot be evaluated, and low integrity is the most
+          common explanation for flat data.
+      - id: b
+        text: Whether the goal was set too high
+        isCorrect: false
+        rationale: >-
+          Worth reviewing, but it does not explain an absence of any movement.
+      - id: c
+        text: Whether the learner's preferences have changed
+        isCorrect: false
+        rationale: >-
+          Relevant, and still second to whether the procedure was actually delivered.
+      - id: d
+        text: Whether a different procedure would work better
+        isCorrect: false
+        rationale: >-
+          Changing procedures before checking integrity risks discarding one that was never
+          run.
+    explanation: >-
+      Integrity is checked first because it is both the most likely cause and the cheapest
+      to establish. Abandoning procedures that were never delivered is how a service
+      cycles through everything and settles on nothing.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [treatment-integrity, treatment-drift, performance-feedback, visual-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h6-integrity-measure
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      What is the most direct way to measure procedural integrity?
+    options:
+      - id: a
+        text: Observe sessions against a checklist of the procedure's steps
+        isCorrect: true
+        rationale: >-
+          Direct observation scored against the written steps measures what was actually done.
+      - id: b
+        text: Ask staff whether they followed the plan
+        isCorrect: false
+        rationale: >-
+          Self-report is a weak measure of performance, and not because staff are dishonest.
+      - id: c
+        text: Review the learner's outcome data
+        isCorrect: false
+        rationale: >-
+          Outcome data conflates integrity with effectiveness, which is the confusion to
+          avoid.
+      - id: d
+        text: Check that staff attended the training
+        isCorrect: false
+        rationale: >-
+          Attendance predicts performance poorly, which is why competency-based training
+          exists.
+    explanation: >-
+      Integrity is a measure of staff behaviour, and staff behaviour is measured the same
+      way any behaviour is. A step checklist also doubles as the feedback tool, which is
+      why it is worth writing carefully.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        treatment-integrity,
+        performance-feedback,
+        behavioral-skills-training,
+        competency-assessment
+      ]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h6-drift
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      Staff ran a procedure accurately at first, but six weeks later several steps have
+      quietly changed. This is:
+    options:
+      - id: a
+        text: Treatment drift
+        isCorrect: true
+        rationale: >-
+          Gradual departure from the written procedure over time is drift.
+      - id: b
+        text: Poor initial training
+        isCorrect: false
+        rationale: >-
+          Initial performance was accurate, so training established the skill.
+      - id: c
+        text: A failure of the procedure
+        isCorrect: false
+        rationale: >-
+          The procedure is no longer being run as written, so it has not been tested.
+      - id: d
+        text: Observer drift
+        isCorrect: false
+        rationale: >-
+          Observer drift concerns how data is recorded, not how the procedure is delivered.
+    explanation: >-
+      Drift is normal and predictable rather than a staff failing. Periodic integrity
+      checks and feedback are what hold a procedure in place; without them, drift is the
+      default.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [treatment-drift, treatment-integrity, performance-feedback, observer-drift]
+    citations:
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h6-progress-and-integrity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.6 }
+    type: single-best-answer
+    stem: >-
+      Why must progress and procedural integrity be tracked separately?
+    options:
+      - id: a
+        text: Flat data means something different depending on whether the procedure was delivered
+        isCorrect: true
+        rationale: >-
+          With integrity high, flat data indicts the procedure; with integrity low, it indicts
+          implementation.
+      - id: b
+        text: Funders require two separate reports
+        isCorrect: false
+        rationale: >-
+          Reporting requirements are not the reason.
+      - id: c
+        text: Integrity data is collected by a different person
+        isCorrect: false
+        rationale: >-
+          Who collects it is a logistical matter.
+      - id: d
+        text: Progress data is more reliable than integrity data
+        isCorrect: false
+        rationale: >-
+          Neither is inherently more reliable; they answer different questions.
+    explanation: >-
+      These two measures together are what let a team make a defensible decision. Either
+      one alone supports a confident conclusion that may be pointing at the wrong thing.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [treatment-integrity, visual-analysis, trend, performance-feedback]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h7-data-decision
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.7 }
+    type: single-best-answer
+    stem: >-
+      Four weeks of intervention data show a flat line at the baseline level, with
+      integrity confirmed at 95%. The appropriate decision is:
+    options:
+      - id: a
+        text: Modify or replace the procedure, and say what the change is intended to test
+        isCorrect: true
+        rationale: >-
+          With integrity established, the procedure itself is what the data indicts.
+      - id: b
+        text: Continue for another four weeks
+        isCorrect: false
+        rationale: >-
+          Continuing an intervention with no effect and confirmed integrity costs the learner
+          a month.
+      - id: c
+        text: Lower the goal so progress can be recorded
+        isCorrect: false
+        rationale: >-
+          Changing the target to fit the data misrepresents the outcome.
+      - id: d
+        text: Add a second procedure alongside the first
+        isCorrect: false
+        rationale: >-
+          Adding without removing accumulates untested components and makes the next decision
+          harder.
+    explanation: >-
+      Making the change explicit — what is being altered and what would count as it
+      working — is what keeps a sequence of adjustments from becoming an untraceable
+      drift.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [visual-analysis, treatment-integrity, level, behavior-intervention-plan]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h7-premature-change
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.7 }
+    type: single-best-answer
+    stem: >-
+      A team changes a procedure after three sessions because the data has not yet moved.
+      The main risk is:
+    options:
+      - id: a
+        text: Abandoning an effective procedure before its effect could appear
+        isCorrect: true
+        rationale: >-
+          Three sessions is rarely enough to distinguish no effect from an effect not yet
+          visible.
+      - id: b
+        text: Violating the treatment integrity requirement
+        isCorrect: false
+        rationale: >-
+          Changing a procedure by decision is not an integrity failure, though it does end the
+          test.
+      - id: c
+        text: Losing interobserver agreement
+        isCorrect: false
+        rationale: >-
+          Agreement is unaffected by a change of procedure.
+      - id: d
+        text: Reducing the learner's assent to the programme
+        isCorrect: false
+        rationale: >-
+          Possible in principle, but not the main risk in this decision.
+    explanation: >-
+      Deciding in advance how long a procedure gets, and what would count as a change,
+      protects against both the premature switch and the opposite failure of running
+      something ineffective for a term.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [visual-analysis, trend, variability, baseline]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h7-scope-modification
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.7 }
+    type: single-best-answer
+    stem: >-
+      The data clearly supports modifying a procedure. An assistant analyst's role at this
+      point is to:
+    options:
+      - id: a
+        text: Present the data and a recommendation to the supervising analyst, who decides
+        isCorrect: true
+        rationale: >-
+          Interpreting data and recommending is within the role; changing the plan is not.
+      - id: b
+        text: Implement the modification and document it
+        isCorrect: false
+        rationale: >-
+          Implementing a plan change without authorisation is outside scope, however well
+          supported.
+      - id: c
+        text: Wait for the supervisor to notice the pattern
+        isCorrect: false
+        rationale: >-
+          Withholding a clear finding delays a decision the learner needs.
+      - id: d
+        text: Discuss the modification with the family first
+        isCorrect: false
+        rationale: >-
+          The family is part of the decision, but it should not be put to them before the
+          supervising analyst has seen it.
+    explanation: >-
+      This boundary is a recurring theme of the assistant credential: the data work and
+      the recommendation belong to you, and the plan decision belongs to the analyst
+      responsible for it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-practice, supervision, behavior-intervention-plan, visual-analysis]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h8-collaboration-value
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      Why is including a classroom teacher in plan discussions more than a courtesy?
+    options:
+      - id: a
+        text: They will run the plan in the setting, and their constraints determine whether it works
+        isCorrect: true
+        rationale: >-
+          The person delivering the procedure holds the information that decides its
+          feasibility.
+      - id: b
+        text: It satisfies the requirement for consent
+        isCorrect: false
+        rationale: >-
+          Consent comes from the person with legal authority, not from the teacher.
+      - id: c
+        text: It allows the plan to be shortened
+        isCorrect: false
+        rationale: >-
+          Length is not the issue collaboration addresses.
+      - id: d
+        text: It transfers responsibility for outcomes to the school
+        isCorrect: false
+        rationale: >-
+          Collaboration does not move clinical responsibility, and framing it that way would
+          be wrong.
+    explanation: >-
+      A plan written without the person who will run it is a plan written for a setting
+      that does not exist. Their constraints are data about feasibility, not obstacles to
+      be managed.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [collaboration, treatment-integrity, ecological-assessment, social-validity]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h8-including-family
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      Which practice best reflects including a family rather than informing them?
+    options:
+      - id: a
+        text: Bringing options with trade-offs and deciding together what fits their week
+        isCorrect: true
+        rationale: >-
+          Inclusion means the family's input can change the decision, not just receive it.
+      - id: b
+        text: Sending a written summary of the plan before it begins
+        isCorrect: false
+        rationale: >-
+          A summary informs; it does not give the family a part in the decision.
+      - id: c
+        text: Inviting the family to observe a session
+        isCorrect: false
+        rationale: >-
+          Observation is valuable and still not participation in the decision.
+      - id: d
+        text: Asking the family to sign the plan document
+        isCorrect: false
+        rationale: >-
+          A signature records agreement to a decision already made.
+    explanation: >-
+      The test is whether anything in the plan would have been different if the family had
+      answered differently. If not, they were informed rather than included.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [collaboration, social-validity, cultural-humility, informed-consent]
+    citations:
+      - sourceId: wolf-1978
+        useType: fact-reference
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-h8-consistency
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: H.8 }
+    type: single-best-answer
+    stem: >-
+      A learner receives support from a teaching assistant, a speech therapist and a
+      behaviour team, each using different prompting. The most likely consequence is:
+    options:
+      - id: a
+        text: Slower acquisition, because the prompting the learner contacts is inconsistent
+        isCorrect: true
+        rationale: >-
+          Inconsistent prompting and fading make transfer of stimulus control slower and less
+          reliable.
+      - id: b
+        text: Faster generalisation, because the learner meets more variation
+        isCorrect: false
+        rationale: >-
+          Unplanned inconsistency in the teaching procedure is not the same as planned
+          variation in stimuli.
+      - id: c
+        text: No effect, since each professional works on different goals
+        isCorrect: false
+        rationale: >-
+          They are prompting the same learner on overlapping skills, so the procedures
+          interact.
+      - id: d
+        text: Improved assent, because the learner has more choice
+        isCorrect: false
+        rationale: >-
+          Inconsistency between adults is not learner choice.
+    explanation: >-
+      Coordinating prompting across a team is unglamorous and is often the highest-yield
+      thing available. It requires someone to convene the conversation, which is
+      frequently the assistant analyst.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [prompt-hierarchy, transfer-of-stimulus-control, collaboration, treatment-integrity]
+    citations:
+      - sourceId: touchette-1985
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

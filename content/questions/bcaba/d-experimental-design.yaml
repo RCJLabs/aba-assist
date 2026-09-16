@@ -1,0 +1,647 @@
+# BCaBA practice questions — area D, Experimental Design. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-d1-identify-variables
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      A team introduces a token board and records the number of independent responses per
+      session. In this arrangement, the independent variable and the dependent variable
+      are, in that order:
+    options:
+      - id: a
+        text: The token board, and the number of independent responses
+        isCorrect: true
+        rationale: >-
+          The independent variable is what the team manipulates; the dependent variable is the
+          behaviour they measure.
+      - id: b
+        text: The number of independent responses, and the token board
+        isCorrect: false
+        rationale: >-
+          This reverses them. The behaviour being counted is what depends on the manipulation.
+      - id: c
+        text: The learner, and the number of independent responses
+        isCorrect: false
+        rationale: >-
+          The learner is the participant, not a variable the team sets.
+      - id: d
+        text: The session length, and the token board
+        isCorrect: false
+        rationale: >-
+          Session length is a held-constant condition here, and the token board is what was
+          introduced rather than what was measured.
+    explanation: >-
+      Getting these the right way round is what makes a graph readable: the vertical axis
+      carries the dependent variable, and the phase lines mark changes in the independent
+      variable. Reversing them produces a graph that cannot answer the question asked of
+      it.
+    cognitiveLevel: application
+    difficulty: 1
+    termRefs: [independent-variable, dependent-variable, line-graph]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-d1-multiple-changes
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      Alongside a new prompting procedure, a classroom also changes the seating plan and
+      the daily schedule. What has happened to the independent variable?
+    options:
+      - id: a
+        text: It is now confounded, because three changes occurred together
+        isCorrect: true
+        rationale: >-
+          Three simultaneous changes mean any effect cannot be attributed to one of them. That
+          is a confound, not a stronger intervention.
+      - id: b
+        text: It has become a package intervention that can be evaluated as a whole
+        isCorrect: false
+        rationale: >-
+          A package can be evaluated as a whole only if it was planned and applied as one
+          thing from the start, and the team still could not say which part worked.
+      - id: c
+        text: It is unchanged, because the prompting procedure is still the target
+        isCorrect: false
+        rationale: >-
+          Intent does not isolate a variable. What changed at the same time is what matters.
+      - id: d
+        text: It has become a dependent variable
+        isCorrect: false
+        rationale: >-
+          Nothing here is being measured as an outcome; the manipulation is simply impure.
+    explanation: >-
+      Confounding is the most common way a good intervention gets credited to the wrong
+      thing, or an ineffective one gets kept. If several things must change at once, say
+      so in the record rather than reporting the result as evidence for one of them.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [confounding-variable, independent-variable, internal-validity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d2-internal-validity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.2 }
+    type: single-best-answer
+    stem: >-
+      A learner's behaviour improves during an intervention, but a new medication was
+      started the same week. This most directly threatens:
+    options:
+      - id: a
+        text: Internal validity
+        isCorrect: true
+        rationale: >-
+          Internal validity is confidence that the intervention, and not something else,
+          produced the change. A simultaneous event undermines exactly that.
+      - id: b
+        text: External validity
+        isCorrect: false
+        rationale: >-
+          External validity concerns whether a result would hold elsewhere, which is a later
+          question than whether it holds here.
+      - id: c
+        text: Social validity
+        isCorrect: false
+        rationale: >-
+          Social validity concerns whether the goals and outcomes matter to the people
+          involved.
+      - id: d
+        text: Treatment integrity
+        isCorrect: false
+        rationale: >-
+          Treatment integrity concerns whether the procedure was delivered as written, which
+          is not what the medication affects.
+    explanation: >-
+      The distinction is practical: a threat to internal validity means you cannot claim
+      your work caused the change, which matters before you recommend continuing it.
+      Documenting the medication change is the minimum honest response.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [internal-validity, confounding-variable, external-validity]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d2-external-validity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.2 }
+    type: single-best-answer
+    stem: >-
+      A procedure worked for four learners in one clinic. What would most increase
+      confidence that it generalises to other settings?
+    options:
+      - id: a
+        text: Replication with different learners, staff and settings
+        isCorrect: true
+        rationale: >-
+          External validity in single-case work is built by replication across participants
+          and conditions rather than by a single large sample.
+      - id: b
+        text: Increasing the number of sessions with the same four learners
+        isCorrect: false
+        rationale: >-
+          More data on the same four strengthens internal validity, not the case for
+          generalising beyond them.
+      - id: c
+        text: Reporting the effect size for the four learners
+        isCorrect: false
+        rationale: >-
+          An effect size describes what happened with these participants; it says nothing
+          about other settings.
+      - id: d
+        text: Adding a control group from the same clinic
+        isCorrect: false
+        rationale: >-
+          A control group from the same setting does not address whether the result travels to
+          different settings.
+    explanation: >-
+      This is the answer single-case methodology gives to a real criticism. Generality is
+      not assumed from one demonstration and is not bought by sample size; it is
+      accumulated through systematic replication.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [external-validity, replication, single-case-design]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d3-prediction-verification
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.3 }
+    type: single-best-answer
+    stem: >-
+      In a reversal design, returning to baseline conditions after an effective
+      intervention phase serves primarily to:
+    options:
+      - id: a
+        text: Verify the prediction made from the original baseline
+        isCorrect: true
+        rationale: >-
+          Verification shows that, had the intervention not been introduced, baseline
+          responding would have continued as predicted.
+      - id: b
+        text: Replicate the effect of the intervention
+        isCorrect: false
+        rationale: >-
+          Replication happens when the intervention is reintroduced and the effect appears
+          again.
+      - id: c
+        text: Establish a stable measure of the dependent variable
+        isCorrect: false
+        rationale: >-
+          Stability is established in the first baseline; the return serves an analytic
+          purpose.
+      - id: d
+        text: Demonstrate generality across settings
+        isCorrect: false
+        rationale: >-
+          Generality across settings requires measurement in other settings, which a reversal
+          does not provide.
+    explanation: >-
+      Prediction, verification and replication are the three steps every single-case
+      design arranges in its own way. Naming which step a phase serves is what turns a
+      sequence of conditions into an experiment.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [single-case-design, reversal-design, baseline, experimental-control]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d3-own-control
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.3 }
+    type: single-best-answer
+    stem: >-
+      What does it mean to say that in single-case design each participant serves as their
+      own control?
+    options:
+      - id: a
+        text: The comparison is between conditions for the same person, measured repeatedly
+        isCorrect: true
+        rationale: >-
+          The participant's own responding under one condition is the standard against which
+          their responding under another is judged.
+      - id: b
+        text: The participant chooses which condition to be in
+        isCorrect: false
+        rationale: >-
+          Condition assignment is a design decision; participant choice is a separate matter
+          of assent and preference.
+      - id: c
+        text: The participant is compared with others of the same age
+        isCorrect: false
+        rationale: >-
+          That is a normative comparison, which is a group-design logic.
+      - id: d
+        text: Each participant receives every intervention in a fixed order
+        isCorrect: false
+        rationale: >-
+          Order is chosen deliberately in some designs and counterbalanced in others; a fixed
+          order is not the defining feature.
+    explanation: >-
+      Because each person is their own comparison, single-case designs answer the question
+      a practitioner actually has: did this work for this person. Repeated measurement is
+      what makes that comparison possible.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [single-case-design, baseline, continuous-measurement]
+    citations:
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d4-strength-individual
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.4 }
+    type: single-best-answer
+    stem: >-
+      Which question is a single-case design better placed to answer than a group
+      comparison design?
+    options:
+      - id: a
+        text: Did this intervention change this learner's behaviour?
+        isCorrect: true
+        rationale: >-
+          Single-case designs are built to detect and demonstrate change within an individual.
+      - id: b
+        text: What is the average effect of this intervention across a population?
+        isCorrect: false
+        rationale: >-
+          Averages across populations are what group designs are built for.
+      - id: c
+        text: How does this intervention compare with a placebo across many participants?
+        isCorrect: false
+        rationale: >-
+          A large placebo comparison is a group-design question.
+      - id: d
+        text: What proportion of people benefit from this intervention overall?
+        isCorrect: false
+        rationale: >-
+          A population proportion requires a sample large enough to estimate it.
+    explanation: >-
+      A group average can hide the fact that some participants got worse. For a
+      practitioner deciding whether to continue with one person, the individual
+      demonstration is the relevant evidence — and it is available within weeks rather
+      than years.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [single-case-design, applied-behavior-analysis, visual-analysis]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d4-repeated-measurement
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.4 }
+    type: single-best-answer
+    stem: >-
+      Repeated measurement across every phase gives single-case designs a practical
+      advantage over pre-test and post-test comparison because it:
+    options:
+      - id: a
+        text: Reveals trend and variability that two measurements would hide
+        isCorrect: true
+        rationale: >-
+          Two points cannot show whether behaviour was already improving, or how much it
+          bounces from day to day.
+      - id: b
+        text: Removes the need for a baseline condition
+        isCorrect: false
+        rationale: >-
+          Repeated measurement is what makes a baseline informative; it does not replace it.
+      - id: c
+        text: Guarantees that the intervention caused any change observed
+        isCorrect: false
+        rationale: >-
+          Causal claims come from the arrangement of conditions, not from measuring often.
+      - id: d
+        text: Reduces the influence of observer reactivity
+        isCorrect: false
+        rationale: >-
+          Frequent observation may reduce reactivity over time, but that is a side effect
+          rather than the advantage in question.
+    explanation: >-
+      A pre-post pair can make a rising baseline look like a treatment effect. Continuous
+      data makes the shape of the behaviour visible, which is what a decision has to be
+      based on.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [continuous-measurement, trend, variability, baseline]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d5-multiple-baseline-choice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      A team wants to evaluate a procedure that teaches hand-washing. Withdrawing the
+      procedure would be undesirable because the skill should not be lost. The most
+      appropriate design is:
+    options:
+      - id: a
+        text: A multiple baseline across behaviours or settings
+        isCorrect: true
+        rationale: >-
+          A multiple baseline demonstrates control by staggering the start of the
+          intervention, so nothing has to be withdrawn.
+      - id: b
+        text: A reversal design
+        isCorrect: false
+        rationale: >-
+          A reversal requires removing the intervention, which is the situation being avoided.
+      - id: c
+        text: A multielement design
+        isCorrect: false
+        rationale: >-
+          Rapid alternation suits comparing conditions, not a skill that is meant to be
+          acquired and kept.
+      - id: d
+        text: An AB design
+        isCorrect: false
+        rationale: >-
+          An AB design has no verification, so it cannot demonstrate a functional relation at
+          all.
+    explanation: >-
+      Choosing a design is usually a choice about what the situation permits. Irreversible
+      skills, ethical objections to withdrawal, and behaviour that must not return are all
+      reasons a multiple baseline is the practical answer.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [multiple-baseline-design, reversal-design, ab-design, single-case-design]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+      - sourceId: horner-baer-1978
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d5-changing-criterion
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      A learner currently completes 5 minutes of exercise. The plan raises the requirement
+      to 8, then 12, then 15 minutes, with reinforcement at each step. Which design does
+      this describe?
+    options:
+      - id: a
+        text: Changing criterion
+        isCorrect: true
+        rationale: >-
+          A changing criterion design raises the performance requirement in steps and looks
+          for behaviour to track each new criterion.
+      - id: b
+        text: Multiple baseline
+        isCorrect: false
+        rationale: >-
+          A multiple baseline staggers the introduction of one intervention across behaviours,
+          settings or people.
+      - id: c
+        text: Multielement
+        isCorrect: false
+        rationale: >-
+          A multielement design alternates conditions rapidly to compare them.
+      - id: d
+        text: Reversal
+        isCorrect: false
+        rationale: >-
+          A reversal withdraws and reinstates the intervention, which is not what happens
+          here.
+    explanation: >-
+      Experimental control is shown when behaviour changes at each step and not between
+      them, which is why the steps must be large enough to see and why an occasional step
+      back down is sometimes built in.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [changing-criterion-design, shaping, single-case-design, trials-to-criterion]
+    citations:
+      - sourceId: hartmann-hall-1976
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d5-multielement
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      Two prompting procedures are alternated in a rapidly changing sequence across
+      sessions, each signalled by a different coloured folder. This arrangement is a:
+    options:
+      - id: a
+        text: Multielement design
+        isCorrect: true
+        rationale: >-
+          Rapid alternation of conditions, with a discriminative signal for each, is the
+          multielement (alternating treatments) arrangement.
+      - id: b
+        text: Changing criterion design
+        isCorrect: false
+        rationale: >-
+          No performance criterion is being raised in steps here.
+      - id: c
+        text: Reversal design
+        isCorrect: false
+        rationale: >-
+          A reversal moves between baseline and one intervention in extended phases.
+      - id: d
+        text: Multiple baseline design
+        isCorrect: false
+        rationale: >-
+          No staggered introduction across behaviours, settings or participants is described.
+    explanation: >-
+      The coloured folders are not decoration: without a signal for which condition is in
+      effect, the two procedures can blur into one, which is the main threat this design
+      has to manage.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [multielement-design, discriminative-stimulus, prompt-hierarchy, single-case-design]
+    citations:
+      - sourceId: barlow-hayes-1979
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d5-ab-limits
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      What is the specific limitation of an AB design?
+    options:
+      - id: a
+        text: It predicts but never verifies, so a functional relation cannot be claimed
+        isCorrect: true
+        rationale: >-
+          One baseline and one intervention phase leaves the prediction untested, so any other
+          event occurring at the same time remains a live explanation.
+      - id: b
+        text: It cannot show whether behaviour changed at all
+        isCorrect: false
+        rationale: >-
+          It can show change perfectly well; what it cannot show is what caused the change.
+      - id: c
+        text: It requires too many sessions to be practical
+        isCorrect: false
+        rationale: >-
+          An AB design is the least demanding arrangement there is; brevity is why it is
+          tempting.
+      - id: d
+        text: It can only be used with academic behaviour
+        isCorrect: false
+        rationale: >-
+          There is no restriction on the kind of behaviour it can be applied to.
+    explanation: >-
+      AB is worth understanding precisely because it is what most services actually run.
+      It is useful for monitoring and it is not an experiment, and treating it as one is
+      how coincidences get reported as effects.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [ab-design, single-case-design, internal-validity, functional-relation]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d6-component-analysis
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      A multi-part intervention works. The team wants to know whether the visual schedule
+      inside it is doing anything. The appropriate analysis is:
+    options:
+      - id: a
+        text: A component analysis
+        isCorrect: true
+        rationale: >-
+          A component analysis adds or removes parts of a package to find which are
+          responsible for the effect.
+      - id: b
+        text: A comparative analysis
+        isCorrect: false
+        rationale: >-
+          A comparative analysis contrasts two whole treatments with each other.
+      - id: c
+        text: A parametric analysis
+        isCorrect: false
+        rationale: >-
+          A parametric analysis varies the amount or value of one dimension, such as
+          reinforcer magnitude or session length.
+      - id: d
+        text: A functional analysis
+        isCorrect: false
+        rationale: >-
+          A functional analysis tests the maintaining consequences of behaviour, not the parts
+          of a treatment package.
+    explanation: >-
+      Component analyses matter in service delivery because packages accumulate parts that
+      nobody has tested. Dropping an inert component saves staff time that can go into the
+      part that works.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [multielement-design, treatment-integrity, behavior-intervention-plan]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-d6-parametric
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      A team compares 30 seconds, 60 seconds and 120 seconds of access to a preferred item
+      as reinforcement for the same response. This is best described as:
+    options:
+      - id: a
+        text: A parametric analysis
+        isCorrect: true
+        rationale: >-
+          Varying the value of one dimension of the same procedure, to find how the effect
+          changes with it, is a parametric analysis.
+      - id: b
+        text: A component analysis
+        isCorrect: false
+        rationale: >-
+          No parts are being added or removed; one quantity is being varied.
+      - id: c
+        text: A comparative analysis
+        isCorrect: false
+        rationale: >-
+          A comparative analysis contrasts distinct treatments rather than levels of one.
+      - id: d
+        text: A preference assessment
+        isCorrect: false
+        rationale: >-
+          The preferred item is already identified; the question is how much access is needed.
+    explanation: >-
+      Parametric questions are the ones services most often answer by habit — a fixed 30
+      seconds because that is what the form says. Testing the parameter can make a
+      procedure cheaper or more effective without changing it at all.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [reinforcer-assessment, magnitude, schedule-thinning, preference-assessment]
+    citations:
+      - sourceId: roane-1998
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

@@ -1,0 +1,1198 @@
+# BCaBA practice questions — area B, Concepts and Principles. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-b1-response-vs-class
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.1 }
+    type: single-best-answer
+    stem: >-
+      A learner gets a staff member's attention by tapping an arm, by saying a name, and
+      by waving. All three reliably produce attention. These three forms are best
+      described as:
+    options:
+      - id: a
+        text: One response class
+        isCorrect: true
+        rationale: >-
+          Forms that differ topographically but produce the same effect, maintained by the
+          same consequence, make up a response class.
+      - id: b
+        text: Three response classes
+        isCorrect: false
+        rationale: >-
+          They share a function and a maintaining consequence, so they belong to one class
+          rather than three.
+      - id: c
+        text: A behavioural chain
+        isCorrect: false
+        rationale: >-
+          A chain is a sequence in which each link produces the conditions for the next. These
+          are alternatives, not steps.
+      - id: d
+        text: A stimulus class
+        isCorrect: false
+        rationale: >-
+          A stimulus class groups stimuli. These are responses.
+    explanation: >-
+      Grouping by function is what stops a plan from playing whack-a-mole. Reduce tapping
+      alone and the class still has two members available; treat the class and you are
+      working on the thing that is actually maintained.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [response-class, behavior, topography, function-of-behavior]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-b1-behavior-definition
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.1 }
+    type: single-best-answer
+    stem: >-
+      Which is the best behavioural definition of "behaviour" for measurement purposes?
+    options:
+      - id: a
+        text: Activity of a living organism that can be observed and measured
+        isCorrect: true
+        rationale: >-
+          Behaviour is what an organism does, stated so that it can be seen and counted.
+      - id: b
+        text: Any action a person takes deliberately
+        isCorrect: false
+        rationale: >-
+          Deliberateness is an inference and excludes a great deal of behaviour that is
+          clearly measurable.
+      - id: c
+        text: The outward expression of an internal state
+        isCorrect: false
+        rationale: >-
+          This makes behaviour evidence about something else rather than the subject matter
+          itself.
+      - id: d
+        text: Anything a person does that causes a problem for others
+        isCorrect: false
+        rationale: >-
+          That defines a social judgement about behaviour, not behaviour.
+    explanation: >-
+      The definition has to be usable by a second observer, which is why observability and
+      measurability are in it and intention is not. Everything downstream — data, graphs,
+      decisions — rests on this.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [behavior, operational-definition, objective-language]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b2-stimulus-class
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      A learner responds correctly to a red mug, a red ball and a red jumper when asked to
+      find something red. The red items function as:
+    options:
+      - id: a
+        text: A stimulus class sharing a common feature
+        isCorrect: true
+        rationale: >-
+          Stimuli grouped by a shared physical property form a feature stimulus class, and
+          responding transfers across its members.
+      - id: b
+        text: A response class
+        isCorrect: false
+        rationale: >-
+          A response class groups responses. These are objects presented to the learner.
+      - id: c
+        text: An arbitrary stimulus class
+        isCorrect: false
+        rationale: >-
+          An arbitrary class has no shared physical property; its members go together only by
+          training or convention.
+      - id: d
+        text: A stimulus chain
+        isCorrect: false
+        rationale: >-
+          The items are alternatives presented on separate occasions, not a sequence.
+    explanation: >-
+      The feature-versus-arbitrary distinction predicts how easily responding will spread.
+      Colour supports spread on its own; a class like "things that cost money" has to be
+      built deliberately.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [stimulus-class, stimulus, stimulus-generalization]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b2-stimulus-single
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      Which is an example of a single stimulus rather than a stimulus class?
+    options:
+      - id: a
+        text: The specific bell that rings at 10:15 in one classroom
+        isCorrect: true
+        rationale: >-
+          One particular event, on one occasion, in one setting, is a single stimulus.
+      - id: b
+        text: Adult voices giving instructions
+        isCorrect: false
+        rationale: >-
+          This groups many different events by a shared function, which makes it a class.
+      - id: c
+        text: Written words naming animals
+        isCorrect: false
+        rationale: >-
+          This is a set of stimuli grouped together, so it is a class.
+      - id: d
+        text: Signals that a break is available
+        isCorrect: false
+        rationale: >-
+          Several different events sharing one function form a class.
+    explanation: >-
+      The distinction becomes practical when a skill is taught to a single stimulus and
+      then fails everywhere else. If teaching used one bell, the learner may have learned
+      that bell rather than the class it belongs to.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [stimulus, stimulus-class, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b3-respondent-operant
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      A learner flinches when a door slams, and also asks for headphones when the room is
+      noisy. These two are, respectively:
+    options:
+      - id: a
+        text: Respondent and operant
+        isCorrect: true
+        rationale: >-
+          The flinch is elicited by a stimulus; the request is emitted and maintained by its
+          consequences.
+      - id: b
+        text: Operant and respondent
+        isCorrect: false
+        rationale: >-
+          This reverses them. A flinch to a sudden noise is elicited, not selected by
+          consequences.
+      - id: c
+        text: Both respondent
+        isCorrect: false
+        rationale: >-
+          Asking for headphones is maintained by what it produces, which makes it operant.
+      - id: d
+        text: Both operant
+        isCorrect: false
+        rationale: >-
+          A flinch to a sudden loud noise is a reflexive response to an antecedent stimulus.
+    explanation: >-
+      The same episode usually contains both. Treating an elicited response as though it
+      were maintained by attention leads to a plan aimed at the wrong process — and to a
+      learner being asked to stop doing something consequences cannot reach.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [respondent-conditioning, operant-conditioning, behavior]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b3-pairing-respondent
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      Repeatedly presenting a neutral tone just before a puff of air to the eye, until the
+      tone alone produces a blink, is:
+    options:
+      - id: a
+        text: Respondent conditioning
+        isCorrect: true
+        rationale: >-
+          A previously neutral stimulus comes to elicit a response through pairing with an
+          eliciting stimulus.
+      - id: b
+        text: Operant conditioning
+        isCorrect: false
+        rationale: >-
+          No consequence follows a response to select it; the change is in what the antecedent
+          elicits.
+      - id: c
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping reinforces successive approximations to a target response.
+      - id: d
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization is responding spreading to similar stimuli, not a new eliciting
+          relation being established.
+    explanation: >-
+      The same pairing logic appears in applied work whenever a neutral person or setting
+      becomes associated with something aversive. Recognising it as respondent explains
+      why simply reinforcing approach often is not enough.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [respondent-conditioning, pairing, operant-conditioning]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b4-negative-reinforcement
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.4 }
+    type: single-best-answer
+    stem: >-
+      A learner covers their ears during a noisy activity. Staff move them to a quieter
+      room, and ear-covering becomes more frequent over following weeks. This is:
+    options:
+      - id: a
+        text: Negative reinforcement
+        isCorrect: true
+        rationale: >-
+          A stimulus was removed after the behaviour and the behaviour increased, which is the
+          definition.
+      - id: b
+        text: Positive reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing was added; noise was removed.
+      - id: c
+        text: Negative punishment
+        isCorrect: false
+        rationale: >-
+          Punishment would mean the behaviour decreased, and it increased.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Extinction is withholding the maintaining consequence, which is the opposite of what
+          happened.
+    explanation: >-
+      Positive and negative describe whether something was added or removed, never whether
+      the outcome was good or bad. Here the arrangement is both effective reinforcement
+      and, quite possibly, the right thing to have done.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [negative-reinforcement, positive-reinforcement, escape-extinction, reinforcer]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b4-positive-reinforcement-test
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.4 }
+    type: single-best-answer
+    stem: >-
+      A staff member says a task is reinforcing for a learner because the learner smiles
+      during it. What is missing from this claim?
+    options:
+      - id: a
+        text: Evidence that the behaviour it follows increases in future
+        isCorrect: true
+        rationale: >-
+          Reinforcement is defined by its effect on future behaviour. Without that, the claim
+          is about apparent enjoyment.
+      - id: b
+        text: Evidence that the learner prefers the task to other tasks
+        isCorrect: false
+        rationale: >-
+          Preference is useful information but is still not the defining test.
+      - id: c
+        text: A formal preference assessment
+        isCorrect: false
+        rationale: >-
+          A preference assessment identifies candidates; it does not establish a reinforcement
+          effect either.
+      - id: d
+        text: Confirmation that the task is age-appropriate
+        isCorrect: false
+        rationale: >-
+          Age-appropriateness is a separate consideration and does not bear on the definition.
+    explanation: >-
+      This is the most common everyday error in the vocabulary: calling something a
+      reinforcer because it looks pleasant. The functional definition is what keeps the
+      term from becoming a synonym for reward.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs:
+      [reinforcer, positive-reinforcement, reinforcer-assessment, preference-assessment]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b5-negative-punishment
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.5 }
+    type: single-best-answer
+    stem: >-
+      Minutes are removed from a learner's free-choice time following a specific
+      behaviour, and the behaviour decreases. This describes:
+    options:
+      - id: a
+        text: Negative punishment
+        isCorrect: true
+        rationale: >-
+          A stimulus was removed after the behaviour and the behaviour decreased.
+      - id: b
+        text: Positive punishment
+        isCorrect: false
+        rationale: >-
+          Nothing was added; access was removed.
+      - id: c
+        text: Negative reinforcement
+        isCorrect: false
+        rationale: >-
+          Reinforcement would mean the behaviour increased.
+      - id: d
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Extinction involves withholding the maintaining reinforcer, not removing an
+          unrelated amount of preferred time.
+    explanation: >-
+      Naming the procedure correctly matters because negative punishment procedures
+      usually carry authorisation and oversight requirements that reinforcement-based
+      procedures do not, and those requirements attach to what the procedure is rather
+      than what it is called.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [negative-punishment, response-cost, positive-punishment, least-restrictive-alternative]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b5-punishment-definition
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.5 }
+    type: single-best-answer
+    stem: >-
+      A team reports using a punishment procedure, but the behaviour has not decreased
+      over eight weeks. Technically, what should be concluded?
+    options:
+      - id: a
+        text: The procedure is not functioning as punishment for this learner
+        isCorrect: true
+        rationale: >-
+          Punishment is defined by a decrease in future behaviour. No decrease means the
+          consequence is not a punisher here.
+      - id: b
+        text: The procedure needs to be applied more intensely
+        isCorrect: false
+        rationale: >-
+          Escalating a procedure that is not working is exactly the reasoning that produces
+          harm without benefit.
+      - id: c
+        text: The learner is resistant to punishment
+        isCorrect: false
+        rationale: >-
+          This explains nothing and relocates the problem into the learner.
+      - id: d
+        text: The procedure is working but slowly
+        isCorrect: false
+        rationale: >-
+          Eight weeks with no decrease is evidence against the effect, not evidence of a slow
+          one.
+    explanation: >-
+      The functional definition cuts both ways: it prevents calling a pleasant thing a
+      reinforcer, and it prevents calling an unpleasant thing a punisher. The second case
+      is the one that keeps ineffective restrictive procedures in place.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [punishment, positive-punishment, least-restrictive-alternative, treatment-integrity]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+      - sourceId: abai-restraint-position-2010
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b6-automatic
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.6 }
+    type: single-best-answer
+    stem: >-
+      A learner hums the same tune while alone in a room, with nobody present and nothing
+      else happening. The most likely contingency is:
+    options:
+      - id: a
+        text: Automatic reinforcement
+        isCorrect: true
+        rationale: >-
+          The behaviour produces its own consequence directly, without another person
+          delivering anything.
+      - id: b
+        text: Socially mediated positive reinforcement
+        isCorrect: false
+        rationale: >-
+          Nobody is present to mediate a consequence.
+      - id: c
+        text: Socially mediated negative reinforcement
+        isCorrect: false
+        rationale: >-
+          No demand or aversive stimulus is being removed by another person.
+      - id: d
+        text: Operant extinction
+        isCorrect: false
+        rationale: >-
+          Nothing is being withheld; the behaviour is occurring and continuing.
+    explanation: >-
+      The distinction decides what an intervention can even reach. Socially mediated
+      behaviour can be addressed by changing what people do; automatically reinforced
+      behaviour usually requires changing what the behaviour produces or what competes
+      with it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        automatic-reinforcement,
+        socially-mediated-reinforcement,
+        sensory-extinction,
+        function-of-behavior
+      ]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+      - sourceId: vollmer-1993
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b6-socially-mediated
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.6 }
+    type: single-best-answer
+    stem: >-
+      Which observation would most support a socially mediated function rather than an
+      automatic one?
+    options:
+      - id: a
+        text: The behaviour is far more frequent when an adult is nearby than when alone
+        isCorrect: true
+        rationale: >-
+          A large difference tied to the presence of a person who can deliver a consequence
+          points to social mediation.
+      - id: b
+        text: The behaviour occurs at a steady rate regardless of who is present
+        isCorrect: false
+        rationale: >-
+          Insensitivity to the presence of others is more consistent with automatic
+          reinforcement.
+      - id: c
+        text: The behaviour has a consistent topography
+        isCorrect: false
+        rationale: >-
+          Topography does not indicate function; the same form can serve different functions.
+      - id: d
+        text: The behaviour began after a change of school
+        isCorrect: false
+        rationale: >-
+          A historical correlate suggests when something started, not what maintains it now.
+    explanation: >-
+      Alone-condition data is the cheapest useful discrimination available in descriptive
+      assessment. It does not settle function on its own, but a behaviour that nearly
+      stops when no one is present is telling you something.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        socially-mediated-reinforcement,
+        automatic-reinforcement,
+        descriptive-assessment,
+        functional-analysis
+      ]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b7-generalized-reinforcer
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.7 }
+    type: single-best-answer
+    stem: >-
+      Tokens exchangeable for a range of different items and activities function as:
+    options:
+      - id: a
+        text: A generalized conditioned reinforcer
+        isCorrect: true
+        rationale: >-
+          Backed by many different reinforcers, a token retains its effect across many
+          motivating conditions.
+      - id: b
+        text: An unconditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          Unconditioned reinforcers are effective without a learning history; tokens are not.
+      - id: c
+        text: A conditioned punisher
+        isCorrect: false
+        rationale: >-
+          Tokens here are delivered to strengthen behaviour, not to reduce it.
+      - id: d
+        text: A discriminative stimulus
+        isCorrect: false
+        rationale: >-
+          A token may also signal availability, but its role here is as a consequence.
+    explanation: >-
+      The breadth of the backup set is what makes a token system robust to satiation. A
+      token backed by one snack stops working the moment the learner has had enough of
+      that snack.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        generalized-conditioned-reinforcer,
+        token-economy,
+        conditioned-reinforcer,
+        unconditioned-reinforcer
+      ]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b7-conditioned-punisher
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.7 }
+    type: single-best-answer
+    stem: >-
+      A particular word, previously neutral, has been paired with the loss of a preferred
+      item. The word alone now reduces the behaviour it follows. The word has become:
+    options:
+      - id: a
+        text: A conditioned punisher
+        isCorrect: true
+        rationale: >-
+          Its suppressing effect was acquired through pairing rather than being present from
+          the start.
+      - id: b
+        text: An unconditioned punisher
+        isCorrect: false
+        rationale: >-
+          Unconditioned punishers suppress behaviour without a pairing history.
+      - id: c
+        text: A conditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          It reduces the behaviour it follows rather than strengthening it.
+      - id: d
+        text: A motivating operation
+        isCorrect: false
+        rationale: >-
+          It is functioning as a consequence, not as something that alters the value of a
+          consequence.
+    explanation: >-
+      Conditioned punishers accumulate quietly in a setting — a tone, a name said a
+      certain way, a staff member approaching. Noticing them matters, because their
+      effects are real and usually unplanned.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [conditioned-punisher, conditioned-reinforcer, pairing, punishment]
+    citations:
+      - sourceId: azrin-holz-1966
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b8-variable-ratio
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.8 }
+    type: single-best-answer
+    stem: >-
+      Which simple schedule typically produces a high, steady rate of responding with
+      little post-reinforcement pausing?
+    options:
+      - id: a
+        text: Variable ratio
+        isCorrect: true
+        rationale: >-
+          Reinforcement after an unpredictable number of responses maintains high, steady
+          responding.
+      - id: b
+        text: Fixed interval
+        isCorrect: false
+        rationale: >-
+          Fixed interval produces a scalloped pattern, with pausing after reinforcement and
+          acceleration towards the end of the interval.
+      - id: c
+        text: Fixed ratio
+        isCorrect: false
+        rationale: >-
+          Fixed ratio produces high rates but with a distinct pause after each reinforcer.
+      - id: d
+        text: Variable interval
+        isCorrect: false
+        rationale: >-
+          Variable interval produces steady responding, but at a lower rate than variable
+          ratio.
+    explanation: >-
+      Schedule effects are examined because they predict what a plan will look like in
+      practice. A fixed ratio that is too large produces exactly the pause a team then
+      misreads as non-compliance.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        variable-ratio-schedule,
+        fixed-ratio-schedule,
+        fixed-interval-schedule,
+        variable-interval-schedule
+      ]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b8-interval-vs-ratio
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.8 }
+    type: single-best-answer
+    stem: >-
+      A learner receives reinforcement for the first correct response after an average of
+      four minutes has passed. This is a:
+    options:
+      - id: a
+        text: Variable interval schedule
+        isCorrect: true
+        rationale: >-
+          Reinforcement depends on time passing, and the amount of time varies around an
+          average.
+      - id: b
+        text: Variable ratio schedule
+        isCorrect: false
+        rationale: >-
+          A ratio schedule depends on the number of responses, not on time.
+      - id: c
+        text: Fixed interval schedule
+        isCorrect: false
+        rationale: >-
+          A fixed interval uses the same duration every time rather than an average.
+      - id: d
+        text: Continuous reinforcement
+        isCorrect: false
+        rationale: >-
+          Continuous reinforcement follows every response.
+    explanation: >-
+      Interval schedules make rate largely irrelevant beyond one response after the
+      interval ends, which is why they suit maintaining a behaviour rather than building
+      one.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [
+        variable-interval-schedule,
+        fixed-interval-schedule,
+        variable-ratio-schedule,
+        continuous-reinforcement
+      ]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b9-extinction-example
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.9 }
+    type: single-best-answer
+    stem: >-
+      A learner's calling out has been maintained by adult attention. Staff now continue
+      the lesson without responding to calling out. This procedure is:
+    options:
+      - id: a
+        text: Operant extinction
+        isCorrect: true
+        rationale: >-
+          The maintaining reinforcer — attention — is no longer delivered following the
+          behaviour.
+      - id: b
+        text: Negative punishment
+        isCorrect: false
+        rationale: >-
+          Nothing is being removed contingently; a consequence is simply no longer delivered.
+      - id: c
+        text: Differential reinforcement of other behaviour
+        isCorrect: false
+        rationale: >-
+          That would require reinforcement delivered for the absence of the behaviour, which
+          is not described.
+      - id: d
+        text: Response cost
+        isCorrect: false
+        rationale: >-
+          Response cost removes an amount of something the learner already has.
+    explanation: >-
+      Extinction is defined by the reinforcer that is withheld, which is why it depends
+      entirely on knowing the function. Withholding attention from behaviour maintained by
+      escape is not extinction at all.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [extinction, planned-ignoring, function-of-behavior, extinction-burst]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b9-extinction-burst
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.9 }
+    type: single-best-answer
+    stem: >-
+      Two days after an extinction procedure begins, the behaviour is more frequent and
+      more forceful than before. The most likely account is:
+    options:
+      - id: a
+        text: An extinction burst, which is a common early effect
+        isCorrect: true
+        rationale: >-
+          A temporary increase in rate, magnitude or variability is a well-documented early
+          effect of withholding a reinforcer.
+      - id: b
+        text: That the function was misidentified
+        isCorrect: false
+        rationale: >-
+          Possible, but a burst is expected under a correct extinction procedure, so an
+          increase alone is not evidence of error.
+      - id: c
+        text: That the procedure is being implemented too strictly
+        isCorrect: false
+        rationale: >-
+          Inconsistent implementation is more likely to prolong the behaviour than to produce
+          a burst.
+      - id: d
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery is a reappearance after a period without the behaviour, not an
+          immediate intensification.
+    explanation: >-
+      Knowing to expect the burst is the difference between holding a plan and abandoning
+      it at the worst possible moment — because giving in during a burst reinforces the
+      more intense form.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [extinction-burst, extinction, spontaneous-recovery, resurgence]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+      - sourceId: lerman-iwata-wallace-1999
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b10-sd-sdelta
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.10 }
+    type: single-best-answer
+    stem: >-
+      A learner asks for help only when a particular staff member is in the room, because
+      only that person has ever provided it. That staff member's presence functions as:
+    options:
+      - id: a
+        text: A discriminative stimulus
+        isCorrect: true
+        rationale: >-
+          Their presence signals that the response will be reinforced, and responding occurs
+          in their presence.
+      - id: b
+        text: A motivating operation
+        isCorrect: false
+        rationale: >-
+          Their presence signals availability rather than altering how much help is wanted.
+      - id: c
+        text: An unconditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          Their presence is an antecedent here, not a consequence delivered after behaviour.
+      - id: d
+        text: A conditioned punisher
+        isCorrect: false
+        rationale: >-
+          Nothing suggests responding is suppressed in their presence; it is more likely.
+    explanation: >-
+      This narrow stimulus control is one of the commonest failure modes in a teaching
+      programme, and it is not a learner problem: the behaviour was reinforced in one
+      person's presence and nowhere else.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [discriminative-stimulus, stimulus-control, s-delta, generalization]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b10-conditional
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.10 }
+    type: single-best-answer
+    stem: >-
+      A learner must select the picture of a cat when the spoken word is "cat" and the
+      picture of a dog when the spoken word is "dog". The control being taught is:
+    options:
+      - id: a
+        text: Conditional discrimination
+        isCorrect: true
+        rationale: >-
+          Which response is correct depends on an additional stimulus, so control is
+          conditional rather than simple.
+      - id: b
+        text: Simple discrimination
+        isCorrect: false
+        rationale: >-
+          In a simple discrimination one stimulus signals reinforcement, with no second
+          stimulus determining which response is correct.
+      - id: c
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          Response generalization is the spread of untrained response forms.
+      - id: d
+        text: Stimulus fading
+        isCorrect: false
+        rationale: >-
+          Stimulus fading gradually changes a stimulus feature that is controlling responding.
+    explanation: >-
+      Conditional discriminations are the foundation of matching-to-sample, listener
+      responding and eventually equivalence. They also fail in a characteristic way: a
+      learner who passes by position or by the array rather than by the sample.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [stimulus-control, matching-to-sample, discrimination-training, listener-responding]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b11-discrimination-generalization
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.11 }
+    type: single-best-answer
+    stem: >-
+      A learner taught to greet their teacher now greets every adult who enters the
+      classroom, including strangers. This illustrates:
+    options:
+      - id: a
+        text: Stimulus generalization, where a discrimination is also needed
+        isCorrect: true
+        rationale: >-
+          Responding has spread across similar stimuli, which is generalization; the goal now
+          requires teaching the discrimination as well.
+      - id: b
+        text: Failure of the teaching procedure
+        isCorrect: false
+        rationale: >-
+          The skill was acquired and spread. What is missing is the discrimination, which is a
+          further teaching target.
+      - id: c
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          Response generalization is the appearance of untrained forms of the response, not
+          responding to new stimuli.
+      - id: d
+        text: Stimulus discrimination
+        isCorrect: false
+        rationale: >-
+          Discrimination would mean responding differently to different adults, which is what
+          is absent.
+    explanation: >-
+      Generalization and discrimination are two sides of the same process, and a programme
+      needs both specified. Asking only for generalization produces exactly this outcome,
+      and it can have safety consequences.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        stimulus-generalization,
+        stimulus-discrimination,
+        discrimination-training,
+        generalization
+      ]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b12-umo
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.12 }
+    type: single-best-answer
+    stem: >-
+      Which is the clearest example of an unconditioned motivating operation?
+    options:
+      - id: a
+        text: Several hours without water increasing the value of a drink
+        isCorrect: true
+        rationale: >-
+          Deprivation of water alters the value of water as a reinforcer with no learning
+          history required.
+      - id: b
+        text: A token board increasing the value of tokens
+        isCorrect: false
+        rationale: >-
+          Tokens acquire their value through pairing, so any related operation is conditioned.
+      - id: c
+        text: A written schedule signalling that a break is coming
+        isCorrect: false
+        rationale: >-
+          That is an antecedent signalling availability, which is stimulus control rather than
+          a motivating operation.
+      - id: d
+        text: Praise increasing the value of adult attention
+        isCorrect: false
+        rationale: >-
+          The value of social attention is largely established through a learning history.
+    explanation: >-
+      Unconditioned motivating operations are few and predictable: food, water, sleep,
+      temperature, pain. They are also the ones most often ignored in a plan, and a
+      learner who has not slept is not a plan-fidelity problem.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [motivating-operation, establishing-operation, deprivation, satiation]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b13-rule-governed
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.13 }
+    type: single-best-answer
+    stem: >-
+      A new staff member follows a written protocol correctly on their first shift, having
+      never experienced its consequences. Their behaviour is best described as:
+    options:
+      - id: a
+        text: Rule-governed
+        isCorrect: true
+        rationale: >-
+          The behaviour is controlled by a verbal statement of the contingency rather than by
+          direct contact with it.
+      - id: b
+        text: Contingency-shaped
+        isCorrect: false
+        rationale: >-
+          Contingency-shaped behaviour is produced by direct contact with consequences over
+          time, which has not happened.
+      - id: c
+        text: Automatically reinforced
+        isCorrect: false
+        rationale: >-
+          Nothing suggests the behaviour produces its own consequence directly.
+      - id: d
+        text: Respondent
+        isCorrect: false
+        rationale: >-
+          The behaviour is emitted and controlled by its stated consequences, not elicited.
+    explanation: >-
+      The distinction predicts a common pattern: rule-governed performance is fast to
+      establish and can be insensitive to what actually happens, which is why observation
+      and feedback matter more in the first weeks than the protocol does.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [rule-governed-behavior, contingency-shaped-behavior, behavioral-skills-training]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b14-mand-vs-tact
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.14 }
+    type: single-best-answer
+    stem: >-
+      A learner says "juice" while reaching towards a locked fridge, having had nothing to
+      drink for two hours. This verbal operant is a:
+    options:
+      - id: a
+        text: Mand
+        isCorrect: true
+        rationale: >-
+          It is under the control of a motivating operation and is reinforced by the item
+          named.
+      - id: b
+        text: Tact
+        isCorrect: false
+        rationale: >-
+          A tact is under the control of a non-verbal stimulus and is reinforced socially, not
+          by the item.
+      - id: c
+        text: Intraverbal
+        isCorrect: false
+        rationale: >-
+          An intraverbal is controlled by other verbal behaviour, and none preceded this.
+      - id: d
+        text: Echoic
+        isCorrect: false
+        rationale: >-
+          An echoic repeats what was just said, and nothing was said to the learner.
+    explanation: >-
+      Mands are classified by their antecedent and consequence, not by their form. The
+      same word is a mand here and a tact if the learner says it while simply seeing juice
+      on a shelf with no motivation for it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [mand, tact, motivating-operation, verbal-behavior]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b14-intraverbal
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.14 }
+    type: single-best-answer
+    stem: >-
+      An adult says "You brush your..." and the learner says "teeth". The learner's
+      response is an:
+    options:
+      - id: a
+        text: Intraverbal
+        isCorrect: true
+        rationale: >-
+          The response is controlled by the preceding verbal stimulus and does not match its
+          form.
+      - id: b
+        text: Echoic
+        isCorrect: false
+        rationale: >-
+          An echoic would repeat the words that were said, which "teeth" does not.
+      - id: c
+        text: Tact
+        isCorrect: false
+        rationale: >-
+          A tact is under non-verbal stimulus control, and no object or event was presented.
+      - id: d
+        text: Mand
+        isCorrect: false
+        rationale: >-
+          No motivating operation is described, and the response does not specify a
+          reinforcer.
+    explanation: >-
+      Intraverbals carry most of conversation, and they are the operant most often assumed
+      rather than taught. A learner with strong tacts and weak intraverbals can label the
+      world and still not answer a question about it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [intraverbal, echoic, tact, verbal-behavior]
+    citations:
+      - sourceId: skinner-1957
+        useType: fact-reference
+      - sourceId: sundberg-michael-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-b15-emergent-relations
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: B.15 }
+    type: single-best-answer
+    stem: >-
+      A learner is taught to match a spoken word to a picture, and a spoken word to a
+      printed word. Without further teaching, they match the picture to the printed word.
+      This is:
+    options:
+      - id: a
+        text: An emergent relation
+        isCorrect: true
+        rationale: >-
+          The matching appeared without being directly trained, which is what makes it
+          emergent.
+      - id: b
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Generalization is responding spreading to physically similar stimuli. A picture and
+          a printed word are not similar.
+      - id: c
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          No new form of the response appeared; a new relation between stimuli did.
+      - id: d
+        text: Prompt fading
+        isCorrect: false
+        rationale: >-
+          No prompt was gradually removed; no teaching occurred for this relation at all.
+    explanation: >-
+      This is where teaching gets cheap. Training a small number of relations can yield a
+      much larger number, which is why equivalence-based arrangements are worth setting up
+      deliberately rather than waiting to see whether they happen.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [stimulus-equivalence, matching-to-sample, generalization, multiple-exemplar-training]
+    citations:
+      - sourceId: sidman-1994
+        useType: fact-reference
+      - sourceId: green-2001
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

@@ -102,3 +102,61 @@ describe('the analyst question bank', () => {
 		expect(missing).toEqual([]);
 	});
 });
+
+describe('the assistant-analyst question bank', () => {
+	/*
+	 * Held to the same ratchet as the other two, with one difference in how it is expressed.
+	 *
+	 * The assistant outline does not publish the exam's time limit, so `examFormat` returns
+	 * null and `planSimulation` cannot be used here — deliberately, because a simulation
+	 * paced against a guess is worse than none. The bank size is therefore checked against
+	 * the paper the outline does describe: its scored and unscored question counts.
+	 */
+	const outline = () => Object.values(outlines).find((o) => o.credential === 'BCaBA')!;
+
+	it('has enough questions for a paper the length of the real one', async () => {
+		const o = outline();
+		const paper = o.exam.scoredItems! + (o.exam.unscoredItems ?? 0);
+		const questions = await loadQuestions('BCaBA');
+		expect(
+			questions.length,
+			`bank is ${questions.length}, paper is ${paper}`
+		).toBeGreaterThanOrEqual(paper);
+	});
+
+	it('has enough in every area to sample one paper to blueprint, with slack', async () => {
+		const questions = await loadQuestions('BCaBA');
+		for (const d of outline().domains) {
+			if (d.examItems === null) continue;
+			const count = questions.filter((q) => q.taskRef.code.startsWith(`${d.letter}.`)).length;
+			expect(count, `area ${d.letter} (${d.name})`).toBeGreaterThanOrEqual(
+				Math.ceil(d.examItems * MIN_RATIO)
+			);
+		}
+	});
+
+	it('examines every task on the outline at least once', async () => {
+		const questions = await loadQuestions('BCaBA');
+		const cited = new Set(questions.map((q) => q.taskRef.code));
+
+		const missing = outline()
+			.domains.flatMap((d) => d.tasks.map((t) => t.code))
+			.filter((code) => !cited.has(code));
+		expect(missing).toEqual([]);
+	});
+
+	it('is its own bank, not the analyst bank relabelled', async () => {
+		// The two credentials number their tasks independently, so a question filed under
+		// the wrong one lands on a task that exists and asks something else.
+		const questions = await loadQuestions('BCaBA');
+		expect(questions.every((q) => q.credential === 'BCaBA')).toBe(true);
+		expect(questions.every((q) => q.taskRef.credential === 'BCaBA')).toBe(true);
+
+		const analyst = await loadQuestions('BCBA');
+		const ids = new Set(analyst.map((q) => q.id));
+		expect(questions.filter((q) => ids.has(q.id))).toEqual([]);
+
+		const stems = new Set(analyst.map((q) => q.stem));
+		expect(questions.filter((q) => stems.has(q.stem))).toEqual([]);
+	});
+});

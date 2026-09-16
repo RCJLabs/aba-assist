@@ -1,0 +1,664 @@
+# BCaBA practice questions — area A, Behaviorism and Philosophical Foundations. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-a1-three-goals
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      A supervisor says the team has "done the science" on a learner's hand-flapping
+      because they can now state when it is most likely to happen and how often. Which
+      goal of a natural science of behaviour has the team NOT yet demonstrated?
+    negated: true
+    options:
+      - id: a
+        text: Control
+        isCorrect: true
+        rationale: >-
+          Control means producing a change in the behaviour by changing the conditions it
+          depends on. Knowing when it happens is not the same as being able to change it.
+      - id: b
+        text: Description
+        isCorrect: false
+        rationale: >-
+          Description is already done: the team can say what the behaviour looks like and how
+          often it occurs.
+      - id: c
+        text: Prediction
+        isCorrect: false
+        rationale: >-
+          Prediction is already done: the team can state the conditions under which the
+          behaviour is more and less likely.
+      - id: d
+        text: Replication
+        isCorrect: false
+        rationale: >-
+          Replication is a method used to establish the goals, not one of the three goals a
+          natural science of behaviour pursues.
+    explanation: >-
+      Description, prediction and control are the three goals, in that order of demands.
+      Description says what happens; prediction says when it will happen again; control
+      shows that changing one thing reliably changes the other. Stopping at prediction is
+      common and is the point at which a correlation is often mistaken for a functional
+      relation.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [functional-relation, applied-behavior-analysis]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-a1-prediction-vs-control
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      Which observation is the clearest evidence that a team has achieved control rather
+      than only prediction?
+    options:
+      - id: a
+        text: Removing and then reinstating the antecedent changes the behaviour both times
+        isCorrect: true
+        rationale: >-
+          Changing a condition and seeing the behaviour follow it, twice, is a demonstration
+          of control rather than of association.
+      - id: b
+        text: The behaviour occurs in 80% of observed sessions
+        isCorrect: false
+        rationale: >-
+          A rate is a description. It says what happened, not what would change it.
+      - id: c
+        text: The behaviour is more likely on days the learner slept badly
+        isCorrect: false
+        rationale: >-
+          This is prediction. The relation is observed rather than produced, and sleep was not
+          manipulated.
+      - id: d
+        text: Two observers agree on when the behaviour occurred
+        isCorrect: false
+        rationale: >-
+          Observer agreement is a measurement property. It makes the data trustworthy without
+          saying anything about causes.
+    explanation: >-
+      Control is demonstrated by manipulation, not by observation. The everyday version of
+      this mistake is treating a strong correlate as a cause, which then produces a plan
+      aimed at something that was never doing the work.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [functional-relation, experimental-control, independent-variable]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a1-natural-science
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      Calling behaviour analysis a natural science commits a practitioner to which of the
+      following?
+    options:
+      - id: a
+        text: Treating behaviour as a subject matter in its own right, lawful and observable
+        isCorrect: true
+        rationale: >-
+          A natural science studies its subject directly and assumes it is orderly. Behaviour
+          is the subject matter, not an indirect readout of something else.
+      - id: b
+        text: Explaining behaviour by the mental states that accompany it
+        isCorrect: false
+        rationale: >-
+          That reverses the commitment: it treats behaviour as evidence about something else
+          rather than as the thing being explained.
+      - id: c
+        text: Restricting study to behaviour that can be seen by a second observer
+        isCorrect: false
+        rationale: >-
+          Private events are within the subject matter. What is required is that claims about
+          them be disciplined, not that they be excluded.
+      - id: d
+        text: Using only group comparison designs, as other sciences do
+        isCorrect: false
+        rationale: >-
+          Method does not define the commitment, and single-case designs are the field's
+          standard tool for showing lawful relations.
+    explanation: >-
+      The natural-science commitment is what separates this field from approaches that
+      treat behaviour as a symptom. It has a practical consequence: the things you change
+      are events in the environment, because those are the variables the science says
+      behaviour depends on.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [applied-behavior-analysis, radical-behaviorism, behavior]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a2-determinism
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      An assistant analyst tells a parent that a behaviour "just happens for no reason at
+      all." Which assumption of the science does this statement conflict with?
+    options:
+      - id: a
+        text: Determinism
+        isCorrect: true
+        rationale: >-
+          Determinism is the assumption that events have causes and that the causes can be
+          found. "No reason" abandons the search rather than reporting its result.
+      - id: b
+        text: Parsimony
+        isCorrect: false
+        rationale: >-
+          Parsimony is about preferring the simplest adequate account, not about whether
+          causes exist at all.
+      - id: c
+        text: Pragmatism
+        isCorrect: false
+        rationale: >-
+          Pragmatism judges an account by whether it works. It is not what the statement
+          violates.
+      - id: d
+        text: Empiricism
+        isCorrect: false
+        rationale: >-
+          Empiricism requires claims to rest on observation. The problem here is the denial of
+          causes, not the absence of data.
+    explanation: >-
+      Determinism is what makes assessment worth doing: if behaviour were random there
+      would be nothing to find. In practice "no reason" almost always means "no reason I
+      have identified yet", and saying so accurately keeps the assessment alive.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [determinism, empiricism, function-of-behavior]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a2-parsimony
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      A learner stops requesting after a long car journey. A colleague proposes that the
+      learner "has lost motivation for language." Applying parsimony, what should be
+      considered first?
+    options:
+      - id: a
+        text: That satiation or fatigue has temporarily reduced the value of the reinforcers
+        isCorrect: true
+        rationale: >-
+          A simple, already-established account — a motivating operation has changed — should
+          be ruled out before a broader and vaguer one is adopted.
+      - id: b
+        text: That an underlying language disorder has emerged
+        isCorrect: false
+        rationale: >-
+          This is a larger claim requiring far more evidence, and it is outside an assistant
+          analyst's scope to assert.
+      - id: c
+        text: That the learner is choosing not to communicate
+        isCorrect: false
+        rationale: >-
+          This restates the observation as an intention and explains nothing that can be
+          changed.
+      - id: d
+        text: That the teaching procedure was never effective
+        isCorrect: false
+        rationale: >-
+          The procedure was effective until the journey, so this contradicts the history
+          rather than simplifying it.
+    explanation: >-
+      Parsimony asks for the simplest account that fits, not the most interesting one.
+      Here the ordinary explanation is a change in motivating operations, which is both
+      testable and immediately actionable.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [parsimony, motivating-operation, satiation]
+    citations:
+      - sourceId: michael-1982
+        useType: fact-reference
+      - sourceId: laraway-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a2-empiricism-doubt
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.2 }
+    type: single-best-answer
+    stem: >-
+      Which pair of practices best reflects empiricism and philosophic doubt working
+      together?
+    options:
+      - id: a
+        text: Collecting data on the procedure you believe in, and changing course when it does not work
+        isCorrect: true
+        rationale: >-
+          Empiricism supplies the data; philosophic doubt is the willingness to let the data
+          overturn what you expected.
+      - id: b
+        text: Relying on the judgement of the most experienced person in the room
+        isCorrect: false
+        rationale: >-
+          Experience is useful, but deferring to it in place of data is the opposite of both
+          attitudes.
+      - id: c
+        text: Choosing procedures that have published support and not measuring them again
+        isCorrect: false
+        rationale: >-
+          Evidence for a procedure in general is not evidence that it is working for this
+          person now, which is what measurement establishes.
+      - id: d
+        text: Withholding judgement until a large sample is available
+        isCorrect: false
+        rationale: >-
+          Single-case methods exist precisely so that decisions about one person can be made
+          from that person's data.
+    explanation: >-
+      These two attitudes only do their work as a pair. Data without doubt gets used to
+      confirm what was already believed; doubt without data has nothing to resolve it.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [empiricism, philosophic-doubt, evidence-based-practice]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a3-private-events
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.3 }
+    type: single-best-answer
+    stem: >-
+      From a radical behaviourist position, how is a learner's report of feeling anxious
+      best treated?
+    options:
+      - id: a
+        text: As behaviour in its own right, with its own history, not as the cause of other behaviour
+        isCorrect: true
+        rationale: >-
+          Radical behaviourism includes private events in the subject matter and explains them
+          the same way it explains public behaviour, rather than promoting them to causes.
+      - id: b
+        text: As data that should be excluded because it cannot be verified
+        isCorrect: false
+        rationale: >-
+          That is methodological behaviourism, which rules private events out of the subject
+          matter altogether.
+      - id: c
+        text: As the reason the learner avoids the activity
+        isCorrect: false
+        rationale: >-
+          Using the feeling as the explanation is the move radical behaviourism specifically
+          refuses; the feeling and the avoidance likely share a history.
+      - id: d
+        text: As evidence of an internal state that must be treated before behaviour can change
+        isCorrect: false
+        rationale: >-
+          This treats the private event as a prior cause, which reverses the account and puts
+          the intervention out of reach.
+    explanation: >-
+      The distinction matters clinically. If anxiety causes avoidance, there is nothing in
+      the environment to change. If both are products of the same history, the history is
+      where the intervention goes — and the learner's report is still taken seriously as
+      information.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [radical-behaviorism, private-event, methodological-behaviorism]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a3-explanatory-fiction
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.3 }
+    type: single-best-answer
+    stem: >-
+      Which statement is an explanatory fiction?
+    options:
+      - id: a
+        text: 'He hits because he is aggressive.'
+        isCorrect: true
+        rationale: >-
+          The explanation is the behaviour renamed. Nothing new is offered, and there is
+          nothing to change.
+      - id: b
+        text: 'He hits when a demand is presented and hitting has ended demands before.'
+        isCorrect: false
+        rationale: >-
+          This names an antecedent and a history of consequences, both of which can be checked
+          and changed.
+      - id: c
+        text: 'He hits more on days he arrives without breakfast.'
+        isCorrect: false
+        rationale: >-
+          This identifies a setting event. It may be incomplete, but it points at something
+          real.
+      - id: d
+        text: 'He hits at a mean rate of four times per hour.'
+        isCorrect: false
+        rationale: >-
+          This is a measurement, not an explanation, and does not pretend to be one.
+    explanation: >-
+      An explanatory fiction takes a description, turns it into a noun, and then offers
+      the noun as the cause. The test is whether the explanation adds anything you could
+      act on; here it does not.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [explanatory-fiction, mentalism, function-of-behavior]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a3-mentalism-contrast
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.3 }
+    type: single-best-answer
+    stem: >-
+      A report states that a learner "lacks the internal motivation to complete work."
+      Rewriting this in radical behaviourist terms would most appropriately produce:
+    options:
+      - id: a
+        text: A statement of what conditions have and have not followed work completion
+        isCorrect: true
+        rationale: >-
+          It relocates the account to the environment — what happens after work is finished —
+          which is both observable and changeable.
+      - id: b
+        text: A statement of the learner's reinforcement history in general terms
+        isCorrect: false
+        rationale: >-
+          Closer, but still too vague to act on; the specific contingency around this task is
+          what is needed.
+      - id: c
+        text: A statement that motivation cannot be measured and so cannot be discussed
+        isCorrect: false
+        rationale: >-
+          Radical behaviourism does not refuse to discuss motivation; it analyses it as
+          motivating operations and history.
+      - id: d
+        text: A statement of the learner's diagnosis and its known features
+        isCorrect: false
+        rationale: >-
+          A diagnosis describes a group. It does not explain this learner's behaviour, and the
+          assistant analyst should not be reasoning from it.
+    explanation: >-
+      The rewrite is the whole skill. Saying a learner lacks motivation ends the
+      conversation. Saying that finishing work has so far produced nothing the learner
+      values, while stopping has reliably produced a break, starts a plan.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [mentalism, radical-behaviorism, motivating-operation]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+      - sourceId: michael-1982
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a4-branches
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      A researcher studies schedules of reinforcement with pigeons in a laboratory, with
+      no applied aim. This work belongs to:
+    options:
+      - id: a
+        text: The experimental analysis of behaviour
+        isCorrect: true
+        rationale: >-
+          Basic laboratory research into behavioural processes is the experimental analysis of
+          behaviour.
+      - id: b
+        text: Applied behaviour analysis
+        isCorrect: false
+        rationale: >-
+          Applied work addresses socially significant behaviour in the settings where it
+          matters.
+      - id: c
+        text: Behaviourism
+        isCorrect: false
+        rationale: >-
+          Behaviourism is the philosophy of the science, not the research activity itself.
+      - id: d
+        text: Professional practice guided by behaviour analysis
+        isCorrect: false
+        rationale: >-
+          Professional practice is service delivery to clients, which this is not.
+    explanation: >-
+      The four are commonly confused because they share vocabulary. Philosophy asks what
+      the science assumes; the experimental analysis discovers basic processes; applied
+      work applies them to behaviour that matters; practice is the delivery of services to
+      people.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [experimental-analysis-of-behavior, applied-behavior-analysis, radical-behaviorism]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a4-applied-vs-practice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      Which activity is professional practice rather than applied behaviour analysis?
+    options:
+      - id: a
+        text: Running a learner's programme and billing a funder for the session
+        isCorrect: true
+        rationale: >-
+          Service delivery to a client, under the rules of a profession, is professional
+          practice. It uses the science without itself being research.
+      - id: b
+        text: Using a multiple baseline to test whether a new teaching procedure works
+        isCorrect: false
+        rationale: >-
+          Testing a procedure with an experimental design and socially significant behaviour
+          is applied behaviour analysis.
+      - id: c
+        text: Publishing a component analysis of a classroom intervention
+        isCorrect: false
+        rationale: >-
+          Analysis of a socially significant intervention, reported publicly, is applied
+          research.
+      - id: d
+        text: Demonstrating that a treatment effect replicates across three learners
+        isCorrect: false
+        rationale: >-
+          Replication across participants is applied research method, not service delivery.
+    explanation: >-
+      The line is often blurred in a working day, which is exactly why the distinction is
+      examined. Practice borrows from the applied science; it does not automatically
+      produce it, and claiming otherwise overstates what a service can conclude.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [applied-behavior-analysis, scope-of-practice, evidence-based-practice]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a4-philosophy-role
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      What does behaviourism, as a philosophy, contribute that the experimental analysis
+      of behaviour does not?
+    options:
+      - id: a
+        text: An account of what the science assumes and what counts as an explanation
+        isCorrect: true
+        rationale: >-
+          Philosophy settles the ground rules: what the subject matter is, and what an
+          acceptable explanation looks like.
+      - id: b
+        text: Experimental evidence about basic behavioural processes
+        isCorrect: false
+        rationale: >-
+          That is precisely what the experimental analysis of behaviour contributes.
+      - id: c
+        text: Procedures for changing socially significant behaviour
+        isCorrect: false
+        rationale: >-
+          Those come from applied behaviour analysis.
+      - id: d
+        text: Ethical standards governing certificants
+        isCorrect: false
+        rationale: >-
+          Ethical standards come from the profession, not from the philosophy of the science.
+    explanation: >-
+      Philosophy is not decoration here. The refusal to accept an inner cause as an
+      explanation is a philosophical commitment, and it is what pushes every analysis back
+      towards variables somebody can actually change.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [radical-behaviorism, explanatory-fiction, experimental-analysis-of-behavior]
+    citations:
+      - sourceId: skinner-1974
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a5-dimension-generality
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      A programme teaches a learner to ask for help, but the skill appears only with one
+      staff member in one room. Which of the defining dimensions is not yet satisfied?
+    options:
+      - id: a
+        text: Generality
+        isCorrect: true
+        rationale: >-
+          Generality requires that behaviour change last over time, appear in other settings,
+          or spread to other behaviours. None has been shown.
+      - id: b
+        text: Applied
+        isCorrect: false
+        rationale: >-
+          The target — asking for help — is socially significant, so this dimension is
+          satisfied.
+      - id: c
+        text: Behavioural
+        isCorrect: false
+        rationale: >-
+          The skill is observable and measurable, so this dimension is satisfied.
+      - id: d
+        text: Effective
+        isCorrect: false
+        rationale: >-
+          The behaviour did change to a meaningful degree with that staff member, so there is
+          evidence of effectiveness as far as it goes.
+    explanation: >-
+      Generality is the dimension most often left to chance, and the one most likely to be
+      missing when a programme looks successful in session and invisible at home. It has
+      to be programmed, not hoped for.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [seven-dimensions-of-aba, generalization, maintenance]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-a5-analytic
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      A team reports that a learner improved after an intervention was introduced, with no
+      baseline and no return to prior conditions. Which dimension is the report weakest
+      on?
+    options:
+      - id: a
+        text: Analytic
+        isCorrect: true
+        rationale: >-
+          Analytic means demonstrating a functional relation — showing the change depended on
+          the intervention. Without a comparison there is no such demonstration.
+      - id: b
+        text: Technological
+        isCorrect: false
+        rationale: >-
+          Technological concerns whether the procedure is described well enough to repeat. The
+          report may describe it perfectly and still lack a demonstration.
+      - id: c
+        text: Conceptually systematic
+        isCorrect: false
+        rationale: >-
+          This concerns whether the procedure is described in terms of behavioural principles,
+          which is a separate question.
+      - id: d
+        text: Applied
+        isCorrect: false
+        rationale: >-
+          The behaviour may be entirely socially significant; the weakness is in what the data
+          can show.
+    explanation: >-
+      Analytic is the dimension that costs the most to satisfy and is dropped first under
+      time pressure. The consequence is that a service cannot tell an improvement caused
+      by its work from one that would have happened anyway.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [seven-dimensions-of-aba, functional-relation, experimental-control, baseline]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

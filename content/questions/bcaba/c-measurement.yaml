@@ -1,0 +1,1217 @@
+# BCaBA practice questions — area C, Measurement, Data Display, and Interpretation. All original; nothing drawn from any examination. Task codes are the 6th-edition BCaBA codes.
+
+questions:
+  - id: bcaba-c1-dimension-choice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      A teacher reports that a learner's tantrums "go on forever" but are not especially
+      frequent. Which dimension should the measurement system capture first?
+    options:
+      - id: a
+        text: Duration
+        isCorrect: true
+        rationale: >-
+          The concern is how long each episode lasts, which is what duration measures.
+      - id: b
+        text: Count
+        isCorrect: false
+        rationale: >-
+          A count would confirm what is already reported — that episodes are not frequent —
+          without addressing the concern.
+      - id: c
+        text: Latency
+        isCorrect: false
+        rationale: >-
+          Latency measures the time from a signal to the start of the behaviour, not how long
+          it continues.
+      - id: d
+        text: Interresponse time
+        isCorrect: false
+        rationale: >-
+          Interresponse time measures the gap between responses, which is about spacing rather
+          than episode length.
+    explanation: >-
+      Matching the dimension to the concern is the first decision in measurement, and
+      getting it wrong produces data that cannot answer the question anyone actually
+      asked.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [duration, count, latency, interresponse-time]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary literature named in its citations; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: bcaba-c1-rate-vs-count
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      Sessions vary between 20 and 60 minutes. Reporting a raw count of responses per
+      session would be misleading because:
+    options:
+      - id: a
+        text: A count ignores the time available for the behaviour to occur
+        isCorrect: true
+        rationale: >-
+          With unequal observation periods, the same rate produces different counts, so counts
+          are not comparable across sessions.
+      - id: b
+        text: Counts cannot be graphed on an equal-interval chart
+        isCorrect: false
+        rationale: >-
+          Counts graph perfectly well; the problem is comparability, not plotting.
+      - id: c
+        text: Counts are always less reliable than duration measures
+        isCorrect: false
+        rationale: >-
+          Reliability depends on the definition and the observers, not on the dimension.
+      - id: d
+        text: Counts cannot be collected by a single observer
+        isCorrect: false
+        rationale: >-
+          A single observer can collect counts without difficulty.
+    explanation: >-
+      Rate exists precisely for this case: dividing by observation time makes unequal
+      sessions comparable. Where sessions are a fixed length, count and rate carry the
+      same information.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [count, frequency-and-rate, continuous-measurement, line-graph]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c1-magnitude
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      Which concern is best captured by measuring magnitude rather than count or duration?
+    options:
+      - id: a
+        text: How loudly a learner speaks in the classroom
+        isCorrect: true
+        rationale: >-
+          Magnitude is the intensity or force of the response, which is what loudness
+          describes.
+      - id: b
+        text: How often a learner speaks in the classroom
+        isCorrect: false
+        rationale: >-
+          That is a count, or a rate if session length varies.
+      - id: c
+        text: How long a learner speaks for once they begin
+        isCorrect: false
+        rationale: >-
+          That is duration: the time from the start of the response to its end.
+      - id: d
+        text: How quickly a learner begins speaking after being asked a question
+        isCorrect: false
+        rationale: >-
+          That is latency: the time from the instruction to the start of the response.
+    explanation: >-
+      Magnitude is the dimension most often left unmeasured because it is the hardest to
+      record objectively. Where it matters, defining bands with examples is usually more
+      workable than attempting a continuous scale.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [magnitude, count, duration, latency]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c2-operational-definition
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      Which is the best operational definition of "on task"?
+    options:
+      - id: a
+        text: Eyes oriented to the assigned materials or to the speaker, with hands on the task materials
+        isCorrect: true
+        rationale: >-
+          It names observable features two people could agree on without inferring intent.
+      - id: b
+        text: Paying attention to the assigned work
+        isCorrect: false
+        rationale: >-
+          Paying attention is an inference, and two observers would score it differently.
+      - id: c
+        text: Being engaged and interested in the lesson
+        isCorrect: false
+        rationale: >-
+          Engagement and interest are private states, not observable features.
+      - id: d
+        text: Not being disruptive during the lesson
+        isCorrect: false
+        rationale: >-
+          Defining a behaviour by what it is not leaves the observer with no positive
+          criterion.
+    explanation: >-
+      The test of a definition is not elegance but agreement: could a new observer, given
+      only this sentence, score the same session the same way. Anything requiring a
+      judgement about what the learner meant fails it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, objective-language, interobserver-agreement, topography]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c2-topography-function
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      A definition written purely in terms of topography may be inadequate when:
+    options:
+      - id: a
+        text: The same form of behaviour serves different functions on different occasions
+        isCorrect: true
+        rationale: >-
+          A form-based definition groups occasions that may need different responses, and can
+          obscure the relation the plan depends on.
+      - id: b
+        text: The behaviour occurs at a low rate
+        isCorrect: false
+        rationale: >-
+          A low rate makes measurement harder to schedule but does not make a form-based
+          definition inadequate.
+      - id: c
+        text: Only one observer is available
+        isCorrect: false
+        rationale: >-
+          Observer availability is a staffing matter, not a property of the definition.
+      - id: d
+        text: The behaviour occurs in more than one setting
+        isCorrect: false
+        rationale: >-
+          A good topographical definition travels across settings without difficulty.
+    explanation: >-
+      Topographical definitions are usually the right starting point because they are easy
+      to agree on. The limitation appears when a plan needs to treat two identical-looking
+      episodes differently, which is a function question.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [topography, operational-definition, function-of-behavior, response-class]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c2-definition-failure
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      Two observers score the same session and agree on only 55% of intervals. The first
+      thing to examine is:
+    options:
+      - id: a
+        text: Whether the definition is specific enough to be applied the same way
+        isCorrect: true
+        rationale: >-
+          Low agreement most often reflects a definition that leaves room for judgement.
+      - id: b
+        text: Whether the learner behaved unusually that day
+        isCorrect: false
+        rationale: >-
+          The learner's behaviour does not explain why two people watching it disagreed.
+      - id: c
+        text: Whether the intervention is working
+        isCorrect: false
+        rationale: >-
+          Data this unreliable cannot support any conclusion about the intervention yet.
+      - id: d
+        text: Whether the graph is scaled correctly
+        isCorrect: false
+        rationale: >-
+          Scaling affects how data looks, not whether the two records agree.
+    explanation: >-
+      Agreement is a property of the measurement system, and the definition is the part of
+      it most often at fault. Retraining observers on a vague definition raises agreement
+      only until the next new observer arrives.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [interobserver-agreement, operational-definition, observer-drift, data-sheet]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c3-permanent-product
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Counting the number of completed worksheet items at the end of a lesson is an
+      example of:
+    options:
+      - id: a
+        text: Product measurement
+        isCorrect: true
+        rationale: >-
+          The behaviour is measured through the lasting effect it produced, after the fact.
+      - id: b
+        text: Direct observation
+        isCorrect: false
+        rationale: >-
+          Direct observation requires watching the behaviour as it occurs.
+      - id: c
+        text: Indirect assessment
+        isCorrect: false
+        rationale: >-
+          Indirect assessment gathers information by asking people, not by measuring outcomes.
+      - id: d
+        text: Momentary time sampling
+        isCorrect: false
+        rationale: >-
+          Time sampling records whether behaviour is occurring at specified moments.
+    explanation: >-
+      Product measures are efficient and are the right choice whenever the outcome
+      uniquely reflects the behaviour. They fail when someone else could have produced the
+      product, which is worth checking before relying on them.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs:
+      [permanent-product, continuous-measurement, indirect-assessment, momentary-time-sampling]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c3-indirect-limits
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      What is the main limitation of relying on a caregiver interview as the measure of
+      how often a behaviour occurs?
+    options:
+      - id: a
+        text: It depends on recall and estimation rather than on observation
+        isCorrect: true
+        rationale: >-
+          Reports are shaped by memory, salience and recent events, so estimates drift from
+          what observation would show.
+      - id: b
+        text: It cannot identify possible antecedents
+        isCorrect: false
+        rationale: >-
+          Interviews are often quite good at generating hypotheses about antecedents.
+      - id: c
+        text: It takes longer than direct observation
+        isCorrect: false
+        rationale: >-
+          Interviews are usually much quicker, which is part of why they are relied on.
+      - id: d
+        text: It cannot be conducted by an assistant analyst
+        isCorrect: false
+        rationale: >-
+          Conducting structured interviews is within an assistant analyst's scope under
+          supervision.
+    explanation: >-
+      Indirect methods are valuable for generating hypotheses and for understanding what
+      matters to a family. Treating them as measurement is what produces baselines that
+      cannot be compared with anything collected later.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs:
+      [
+        indirect-assessment,
+        descriptive-assessment,
+        functional-behavior-assessment,
+        continuous-measurement
+      ]
+    citations:
+      - sourceId: hanley-iwata-mccord-2003
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c3-direct-choice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      Which situation most requires direct measurement rather than a product measure?
+    options:
+      - id: a
+        text: The concern is how a learner completes a task, not whether it gets completed
+        isCorrect: true
+        rationale: >-
+          A product cannot show the process; only observation of the behaviour itself can.
+      - id: b
+        text: The concern is how many problems a learner answers correctly
+        isCorrect: false
+        rationale: >-
+          The completed work is an adequate product measure of that.
+      - id: c
+        text: The concern is whether a learner packed their bag
+        isCorrect: false
+        rationale: >-
+          The packed bag is a product that answers the question directly.
+      - id: d
+        text: The concern is how many items a learner sorted
+        isCorrect: false
+        rationale: >-
+          The sorted items are a product measure of exactly that.
+    explanation: >-
+      The rule of thumb is whether the product could have been produced any other way, or
+      by anyone else. Where process matters — prompting level, independence, safety —
+      observation is the only option.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [permanent-product, continuous-measurement, prompt-hierarchy, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c4-rate-calculation
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      A learner emits 36 responses in a 45-minute session. What is the rate per minute?
+    options:
+      - id: a
+        text: 0.8 per minute
+        isCorrect: true
+        rationale: >-
+          36 divided by 45 minutes gives 0.8 responses per minute.
+      - id: b
+        text: 1.25 per minute
+        isCorrect: false
+        rationale: >-
+          This inverts the division, dividing minutes by responses instead.
+      - id: c
+        text: 3.6 per minute
+        isCorrect: false
+        rationale: >-
+          This uses a 10-minute session rather than the 45 minutes given.
+      - id: d
+        text: 36 per minute
+        isCorrect: false
+        rationale: >-
+          This reports the raw count as though the session lasted one minute.
+    explanation: >-
+      Rate is count divided by observation time, and the unit must be stated. Reporting
+      "0.8" without "per minute" is the most common way a rate becomes uninterpretable
+      three months later.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [frequency-and-rate, count, continuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c4-latency-duration
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      An instruction is delivered at 10:02:00. The learner begins the task at 10:02:45 and
+      finishes at 10:09:45. The latency and the duration are, respectively:
+    options:
+      - id: a
+        text: 45 seconds and 7 minutes
+        isCorrect: true
+        rationale: >-
+          Latency runs from the instruction to the start of the response; duration runs from
+          the start to the end.
+      - id: b
+        text: 7 minutes and 45 seconds
+        isCorrect: false
+        rationale: >-
+          This reverses the two measures.
+      - id: c
+        text: 45 seconds and 7 minutes 45 seconds
+        isCorrect: false
+        rationale: >-
+          This includes the latency inside the duration, which double-counts the waiting time.
+      - id: d
+        text: 7 minutes 45 seconds and 7 minutes
+        isCorrect: false
+        rationale: >-
+          The first figure adds the latency to the duration and labels it latency.
+    explanation: >-
+      Latency and duration answer different questions — how long before starting, and how
+      long once started — and a learner can be excellent on one and poor on the other.
+      Recording both costs nothing extra once the clock is running.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [latency, duration, continuous-measurement, data-sheet]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c4-event-recording-fit
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      Event recording is a poor fit for which behaviour?
+    options:
+      - id: a
+        text: Rocking that occurs in long continuous bouts with no clear start or end
+        isCorrect: true
+        rationale: >-
+          Without discrete, countable instances there is nothing well defined to tally.
+      - id: b
+        text: Raising a hand to answer a question
+        isCorrect: false
+        rationale: >-
+          This has a clear beginning and end and is easily counted.
+      - id: c
+        text: Requesting a break
+        isCorrect: false
+        rationale: >-
+          Each request is a discrete, countable instance.
+      - id: d
+        text: Completing a puzzle piece
+        isCorrect: false
+        rationale: >-
+          Each placement is discrete and countable.
+    explanation: >-
+      Event recording needs discrete instances. Continuous or high-rate behaviour is where
+      duration or a sampling system earns its place, and forcing a count produces numbers
+      nobody can defend.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [count, continuous-measurement, duration, discontinuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c5-partial-interval
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      Partial-interval recording scores an interval as an occurrence if the behaviour
+      happens at any point within it. As a result, it tends to:
+    options:
+      - id: a
+        text: Overestimate the proportion of time the behaviour occurs
+        isCorrect: true
+        rationale: >-
+          A single brief instance marks the whole interval, so the summary exceeds the true
+          occurrence.
+      - id: b
+        text: Underestimate the proportion of time the behaviour occurs
+        isCorrect: false
+        rationale: >-
+          Underestimation is characteristic of whole-interval recording, which requires the
+          whole interval.
+      - id: c
+        text: Give an unbiased estimate of duration
+        isCorrect: false
+        rationale: >-
+          Momentary time sampling is the system that tends to give a closer estimate of
+          duration.
+      - id: d
+        text: Give an exact count of occurrences
+        isCorrect: false
+        rationale: >-
+          Interval systems record whether behaviour occurred, not how many times.
+    explanation: >-
+      The bias is systematic, not random, which means it must be stated whenever the data
+      is reported. It also means a change of system mid-programme can look like a
+      behaviour change when nothing has changed.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs:
+      [
+        partial-interval-recording,
+        whole-interval-recording,
+        momentary-time-sampling,
+        discontinuous-measurement
+      ]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c5-whole-interval
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      Which behaviour and system are best matched?
+    options:
+      - id: a
+        text: Sustained engagement with a task, measured by whole-interval recording
+        isCorrect: true
+        rationale: >-
+          Whole-interval recording rewards behaviour that continues throughout, which suits a
+          target defined by sustaining it.
+      - id: b
+        text: Brief hand-flapping, measured by whole-interval recording
+        isCorrect: false
+        rationale: >-
+          Brief behaviour rarely fills an interval, so it would almost always be scored as
+          absent.
+      - id: c
+        text: Sustained engagement, measured by partial-interval recording
+        isCorrect: false
+        rationale: >-
+          Partial interval would score a moment of engagement as a full interval, inflating
+          the measure.
+      - id: d
+        text: Brief hand-flapping, measured by duration recording across the session
+        isCorrect: false
+        rationale: >-
+          Duration is workable but demanding for very brief high-rate behaviour, and a
+          sampling system is usually the practical choice.
+    explanation: >-
+      Choosing a system is choosing a bias you can live with. Whole interval undercounts,
+      so it suits behaviour you want more of; partial interval overcounts, so it suits
+      behaviour you want less of and would rather not miss.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [
+        whole-interval-recording,
+        partial-interval-recording,
+        duration,
+        discontinuous-measurement
+      ]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c5-time-sampling
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.5 }
+    type: single-best-answer
+    stem: >-
+      A single staff member must teach a group and also record one learner's engagement.
+      The most practical system is:
+    options:
+      - id: a
+        text: Momentary time sampling at fixed intervals
+        isCorrect: true
+        rationale: >-
+          It requires a glance at set moments rather than continuous observation, which is
+          compatible with teaching.
+      - id: b
+        text: Continuous duration recording
+        isCorrect: false
+        rationale: >-
+          Continuous recording requires watching throughout, which the staff member cannot do
+          while teaching.
+      - id: c
+        text: Event recording of every instance
+        isCorrect: false
+        rationale: >-
+          Counting every instance also requires continuous attention.
+      - id: d
+        text: Permanent product recording
+        isCorrect: false
+        rationale: >-
+          Engagement leaves no product to count afterwards.
+    explanation: >-
+      Measurement that cannot be collected is worse than a coarser system that can,
+      because missing data quietly becomes invented data. Momentary time sampling is the
+      usual answer when one person has to do two jobs.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs:
+      [momentary-time-sampling, discontinuous-measurement, continuous-measurement, data-sheet]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c6-ioa-calculation
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      Two observers record a 20-interval session and agree on 17 intervals. What is the
+      interval-by-interval agreement?
+    options:
+      - id: a
+        text: 85%
+        isCorrect: true
+        rationale: >-
+          17 agreements divided by 20 intervals, multiplied by 100, gives 85%.
+      - id: b
+        text: 17%
+        isCorrect: false
+        rationale: >-
+          This reports the number of agreements as though it were a percentage.
+      - id: c
+        text: 88%
+        isCorrect: false
+        rationale: >-
+          This does not follow from the figures given.
+      - id: d
+        text: 3%
+        isCorrect: false
+        rationale: >-
+          This reports the number of disagreements rather than the agreement.
+    explanation: >-
+      Interval-by-interval agreement is the simplest form and also the most forgiving: it
+      counts agreements on non-occurrence, which inflates the figure when behaviour is
+      rare. Knowing that is part of reading the number.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [interobserver-agreement, partial-interval-recording, data-sheet]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c6-observer-drift
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      Agreement between two long-serving observers is high, but a newly trained observer
+      scores the same sessions very differently. The most likely explanation is:
+    options:
+      - id: a
+        text: The two long-serving observers have drifted together from the written definition
+        isCorrect: true
+        rationale: >-
+          Observer drift can produce high agreement between observers who have shifted in the
+          same direction, away from the definition.
+      - id: b
+        text: The new observer has not been trained
+        isCorrect: false
+        rationale: >-
+          The new observer was trained, which is what makes the discrepancy informative.
+      - id: c
+        text: The behaviour has changed
+        isCorrect: false
+        rationale: >-
+          All three scored the same sessions, so the behaviour is held constant.
+      - id: d
+        text: The definition is too specific
+        isCorrect: false
+        rationale: >-
+          An over-specific definition would tend to produce disagreement between the
+          experienced observers too.
+    explanation: >-
+      High agreement is not the same as accuracy. Periodically checking observers against
+      the written definition, rather than only against each other, is what catches this.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs:
+      [observer-drift, interobserver-agreement, operational-definition, treatment-drift]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c6-reactivity
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      A learner's behaviour changes noticeably whenever an unfamiliar observer is in the
+      room. This is:
+    options:
+      - id: a
+        text: Reactivity
+        isCorrect: true
+        rationale: >-
+          Reactivity is a change in behaviour produced by the presence of observation itself.
+      - id: b
+        text: Observer drift
+        isCorrect: false
+        rationale: >-
+          Drift is a change in how observers apply a definition, not a change in the learner's
+          behaviour.
+      - id: c
+        text: Poor interobserver agreement
+        isCorrect: false
+        rationale: >-
+          Nothing here says two observers disagreed.
+      - id: d
+        text: A confound in the independent variable
+        isCorrect: false
+        rationale: >-
+          The observer is not the intervention, although the effect does threaten the data.
+    explanation: >-
+      Reactivity is usually managed by letting the observer become a familiar part of the
+      setting before data counts. It is also a reason to be careful about drawing
+      conclusions from the first session of anything.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [reactivity, observer-drift, interobserver-agreement, baseline]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c7-system-selection
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      A behaviour occurs in long episodes, and the team needs to know whether the episodes
+      are getting shorter. The most appropriate system is:
+    options:
+      - id: a
+        text: Duration recording per episode
+        isCorrect: true
+        rationale: >-
+          Episode length is the question, and duration per episode is what answers it
+          directly.
+      - id: b
+        text: Partial-interval recording
+        isCorrect: false
+        rationale: >-
+          Partial interval would score any episode as present in an interval, hiding changes
+          in length.
+      - id: c
+        text: Event recording
+        isCorrect: false
+        rationale: >-
+          A count would show the number of episodes, not whether they shortened.
+      - id: d
+        text: Permanent product recording
+        isCorrect: false
+        rationale: >-
+          The behaviour leaves no product to measure.
+    explanation: >-
+      Selecting a system means asking what change would count as improvement. If the
+      intended improvement is shorter episodes, only a system sensitive to length can show
+      it.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [duration, partial-interval-recording, count, continuous-measurement]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c7-feasibility
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      A measurement plan is technically ideal but requires a second adult present for
+      every session, which the setting cannot provide. The appropriate response is:
+    options:
+      - id: a
+        text: Choose a workable system, state its limitations, and record what it can support
+        isCorrect: true
+        rationale: >-
+          Data that is actually collected, with its limits stated, is more use than an ideal
+          plan that produces gaps.
+      - id: b
+        text: Keep the ideal plan and accept that data will be missing on most days
+        isCorrect: false
+        rationale: >-
+          Systematically missing data is not a neutral gap; it biases whatever is left.
+      - id: c
+        text: Estimate the missing sessions from the sessions that were recorded
+        isCorrect: false
+        rationale: >-
+          Estimating data and entering it as observation misrepresents the record.
+      - id: d
+        text: Stop measuring until staffing improves
+        isCorrect: false
+        rationale: >-
+          A programme running without any data is the situation measurement exists to prevent.
+    explanation: >-
+      The logistics of the setting are part of choosing a measurement system, not an
+      obstacle to it. What is not negotiable is that the record says what was actually
+      done.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs:
+      [discontinuous-measurement, momentary-time-sampling, data-sheet, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c7-representative-data
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.7 }
+    type: single-best-answer
+    stem: >-
+      Sessions are always recorded during the same afternoon activity, but the behaviour
+      of concern occurs mostly in the morning. The resulting data is:
+    options:
+      - id: a
+        text: Not representative, whatever its reliability
+        isCorrect: true
+        rationale: >-
+          Sampling only the period where the behaviour is least likely cannot describe the
+          behaviour as a whole.
+      - id: b
+        text: Representative, because the same activity is sampled each time
+        isCorrect: false
+        rationale: >-
+          Consistency in sampling is not the same as representativeness of the behaviour.
+      - id: c
+        text: Representative, provided agreement is high
+        isCorrect: false
+        rationale: >-
+          Agreement concerns whether two observers scored the same thing, not whether the
+          sample reflects the behaviour.
+      - id: d
+        text: Sufficient, because some data is better than none
+        isCorrect: false
+        rationale: >-
+          Data that systematically misses the behaviour can support confident conclusions that
+          are wrong, which is worse than none.
+    explanation: >-
+      When and where you measure is a design decision with the same weight as what you
+      measure. A sampling schedule chosen for staff convenience will usually describe
+      staff convenience.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [continuous-measurement, scatterplot, setting-event, descriptive-assessment]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c8-graph-choice
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      Which display is most appropriate for showing how a learner's responding changed
+      across successive sessions of a programme?
+    options:
+      - id: a
+        text: An equal-interval line graph with sessions on the horizontal axis
+        isCorrect: true
+        rationale: >-
+          A line graph over successive sessions shows level, trend and variability, which is
+          what a decision needs.
+      - id: b
+        text: A bar graph of the total for each phase
+        isCorrect: false
+        rationale: >-
+          A phase total hides the shape of the change and cannot show trend within a phase.
+      - id: c
+        text: A pie chart of response types
+        isCorrect: false
+        rationale: >-
+          A pie chart shows composition at one moment and cannot show change over time.
+      - id: d
+        text: A cumulative record of the first session only
+        isCorrect: false
+        rationale: >-
+          A cumulative record shows within-session rate, not change across sessions.
+    explanation: >-
+      The equal-interval line graph is the field's default for a reason: it makes the
+      three things visual analysis depends on visible at once. Summaries by phase are for
+      reporting, not for deciding.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [line-graph, bar-graph, cumulative-record, visual-analysis]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c8-cumulative-record
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      On a cumulative record, a steeper slope indicates:
+    options:
+      - id: a
+        text: A higher rate of responding
+        isCorrect: true
+        rationale: >-
+          Cumulative records add each response to the running total, so slope is rate.
+      - id: b
+        text: A longer session
+        isCorrect: false
+        rationale: >-
+          Session length is shown along the horizontal axis, not by slope.
+      - id: c
+        text: Greater variability
+        isCorrect: false
+        rationale: >-
+          Variability appears as changes in slope, not as steepness itself.
+      - id: d
+        text: A decrease in responding
+        isCorrect: false
+        rationale: >-
+          A decrease flattens the line; a cumulative record never descends.
+    explanation: >-
+      Cumulative records are unusual in that the line can never go down. Reading slope as
+      rate is the whole skill, and it makes within-session changes — pausing, acceleration
+      — obvious in a way a session total cannot.
+    cognitiveLevel: recall
+    difficulty: 3
+    termRefs: [cumulative-record, frequency-and-rate, line-graph, visual-analysis]
+    citations:
+      - sourceId: ferster-skinner-1957
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c8-phase-lines
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      What is the purpose of a phase change line on a graph?
+    options:
+      - id: a
+        text: To mark the session at which the conditions changed
+        isCorrect: true
+        rationale: >-
+          It shows exactly where one condition ended and another began, so the reader can
+          compare them.
+      - id: b
+        text: To separate data collected by different observers
+        isCorrect: false
+        rationale: >-
+          Observer identity is usually noted in a legend or in the record, not by a phase
+          line.
+      - id: c
+        text: To indicate the mastery criterion
+        isCorrect: false
+        rationale: >-
+          A criterion is usually shown as a horizontal aim line, not a vertical phase line.
+      - id: d
+        text: To join data points across a break in recording
+        isCorrect: false
+        rationale: >-
+          Data paths are deliberately broken across gaps rather than joined.
+    explanation: >-
+      Phase lines are drawn between sessions rather than through a data point, and data is
+      not connected across them. Both conventions exist so the eye does not read a change
+      that the data does not contain.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [phase-change-line, line-graph, visual-analysis, baseline]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c9-trend-vs-level
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      Baseline data shows a clear upward trend in the target behaviour. Introducing an
+      intervention now would make it difficult to:
+    options:
+      - id: a
+        text: Attribute any further increase to the intervention
+        isCorrect: true
+        rationale: >-
+          Behaviour already rising would likely continue rising, so a further increase is
+          ambiguous.
+      - id: b
+        text: Measure the behaviour accurately
+        isCorrect: false
+        rationale: >-
+          Trend in the data has no bearing on measurement accuracy.
+      - id: c
+        text: Calculate interobserver agreement
+        isCorrect: false
+        rationale: >-
+          Agreement is unaffected by the direction of the data path.
+      - id: d
+        text: Identify the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by assessment, not by baseline trend.
+    explanation: >-
+      A baseline trending in the direction of the goal is the classic reason to wait. The
+      usual exception is when waiting carries a risk, in which case the limitation goes in
+      the record rather than being ignored.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [trend, baseline, level, visual-analysis]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c9-variability
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      Data in the intervention phase is highly variable, ranging from near zero to the
+      baseline mean. The most defensible interpretation is:
+    options:
+      - id: a
+        text: The effect is unclear, and the source of the variability should be investigated
+        isCorrect: true
+        rationale: >-
+          Wide variability means the condition is not controlling responding consistently, and
+          something else is operating.
+      - id: b
+        text: The intervention works, because some sessions are near zero
+        isCorrect: false
+        rationale: >-
+          Selecting the favourable sessions is not analysis; the range is the finding.
+      - id: c
+        text: The intervention has failed and should be withdrawn
+        isCorrect: false
+        rationale: >-
+          Some sessions show a substantial effect, so failure is not established either.
+      - id: d
+        text: The data should be averaged to remove the noise
+        isCorrect: false
+        rationale: >-
+          Averaging hides exactly the pattern that needs explaining.
+    explanation: >-
+      Variability is information, not noise to be smoothed away. Days that differ usually
+      differ for a reason — a different staff member, a missed meal, a different activity
+      — and finding it is more useful than a mean.
+    cognitiveLevel: analysis
+    difficulty: 4
+    termRefs: [variability, visual-analysis, setting-event, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+      - sourceId: sidman-1960
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c10-mastery-criterion
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      Which mastery criterion is most likely to produce a skill that lasts?
+    options:
+      - id: a
+        text: 90% accuracy across three consecutive sessions with two different instructors
+        isCorrect: true
+        rationale: >-
+          Requiring performance to repeat across sessions and across people builds in evidence
+          of stability and some generality.
+      - id: b
+        text: 100% accuracy in a single session
+        isCorrect: false
+        rationale: >-
+          One session cannot distinguish a learned skill from a good day.
+      - id: c
+        text: 80% accuracy across two consecutive sessions with the same instructor
+        isCorrect: false
+        rationale: >-
+          Better than one session, but it says nothing about whether the skill survives a
+          change of instructor.
+      - id: d
+        text: Any session in which the learner responds without prompts
+        isCorrect: false
+        rationale: >-
+          A single unprompted response is not a criterion; it is an observation.
+    explanation: >-
+      A criterion is a prediction that the skill will hold. Building repetition and at
+      least one change of condition into it is the cheapest available evidence that the
+      prediction is sound.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [trials-to-criterion, maintenance, generalization, competency-assessment]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: bcaba-c10-criterion-review
+    credential: BCaBA
+    taskRef: { credential: BCaBA, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      Skills are routinely mastered but fail a maintenance check four weeks later. The
+      most appropriate response is to:
+    options:
+      - id: a
+        text: Re-examine the mastery criterion, since it is not predicting durability
+        isCorrect: true
+        rationale: >-
+          A criterion that is regularly followed by loss is set too low or too narrowly, and
+          evaluating it is part of using it.
+      - id: b
+        text: Re-teach each skill when it is lost
+        isCorrect: false
+        rationale: >-
+          Re-teaching treats the symptom and leaves the criterion producing the same result.
+      - id: c
+        text: Lengthen every teaching session
+        isCorrect: false
+        rationale: >-
+          Session length is not the variable identified by the pattern.
+      - id: d
+        text: Stop running maintenance checks, since they disrupt the schedule
+        isCorrect: false
+        rationale: >-
+          The checks are what revealed the problem; removing them hides it.
+    explanation: >-
+      Mastery criteria are meant to be evaluated, not only applied. A pattern of mastery
+      followed by loss is direct evidence about the criterion, and it is one of the few
+      places where a service gets a clean answer.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [maintenance, trials-to-criterion, schedule-thinning, generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
