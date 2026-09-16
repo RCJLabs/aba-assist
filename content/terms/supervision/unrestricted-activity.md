@@ -23,6 +23,7 @@ nonExamples:
   - text: >-
       Running a discrete-trial session as written. That is restricted activity.
     setting: clinic
+contrastWith: [restricted-activity]
 seeAlso: [supervision]
 taskRefs:
   - { credential: BCBA, code: I.4 }

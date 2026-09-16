@@ -117,4 +117,41 @@ describe('every outline in the build', () => {
 		const creds = Object.values(outlines).map((o) => o.credential);
 		expect(new Set(creds).size).toBe(creds.length);
 	});
+
+	/**
+	 * Glossary coverage, measured against what the exam actually weights.
+	 *
+	 * A raw term count per area says nothing: five per cent of a paper does not need the
+	 * coverage fourteen per cent does. The ratio is what shows an area falling behind, and
+	 * it is how the analyst supervision and intervention areas were found sitting at
+	 * eleven per cent of the exam apiece with twenty terms between them.
+	 *
+	 * The floor is set at today's thinnest area rather than at some aspirational figure,
+	 * because a ratchet exists to stop regression, not to fail on arrival. Today that
+	 * area is technician Documentation and Reporting: thirteen per cent of that paper,
+	 * thirteen terms, exactly one per point, and the least covered area in the app. Next
+	 * come technician Behavior Assessment at 1.36 and analyst Ethical and Professional
+	 * Issues at 1.38. Those three are where this number gets raised from.
+	 */
+	const MIN_TERMS_PER_WEIGHT_POINT = 1;
+
+	it('covers every area in proportion to what the exam weights it', () => {
+		const thin: string[] = [];
+		for (const o of Object.values(outlines)) {
+			const prefix = `${o.credential}:`;
+			for (const d of o.domains) {
+				if (d.examWeightPercent === null || d.examWeightPercent === 0) continue;
+				const n = termIndex.filter((t) =>
+					t.r.some((r) => r.startsWith(prefix) && r.charAt(prefix.length) === d.letter)
+				).length;
+				const ratio = n / d.examWeightPercent;
+				if (ratio < MIN_TERMS_PER_WEIGHT_POINT) {
+					thin.push(
+						`${o.credential} ${d.letter} (${d.name}): ${n} terms for ${d.examWeightPercent}% — ${ratio.toFixed(2)} per point`
+					);
+				}
+			}
+		}
+		expect(thin).toEqual([]);
+	});
 });

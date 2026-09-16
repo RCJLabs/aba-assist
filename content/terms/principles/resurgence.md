@@ -24,6 +24,7 @@ nonExamples:
       A behavior briefly returning weeks into extinction with no change in the
       replacement. That is spontaneous recovery.
     setting: any
+contrastWith: [renewal, reinstatement]
 seeAlso: [extinction-burst, spontaneous-recovery, functional-communication-training]
 taskRefs:
   - { credential: RBT, code: D.6 }

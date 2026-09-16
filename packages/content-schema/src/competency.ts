@@ -54,6 +54,24 @@ export const CompetencyTask = strictContent({
 	/** Task-list codes this draws on, as "RBT:C.3". */
 	taskRefs: z.array(z.string()).default([]),
 	termRefs: z.array(Slug).default([]),
+	/**
+	 * What a competent demonstration contains, in our words.
+	 *
+	 * NOT a scoring rubric, and not the assessor's form. This is our own account of the
+	 * observable parts of doing the task well, written so a candidate can rehearse
+	 * something specific instead of re-reading a description of the task. The packet is
+	 * still the authority and the page says so; the point of this field is that
+	 * "demonstrate preference assessment" is not a thing anybody can practise.
+	 */
+	demonstration: z.array(z.string().min(15).max(300)).default([]),
+	/**
+	 * Where candidates commonly come unstuck, in our words.
+	 *
+	 * Written from what the task requires rather than from any assessor's record, because
+	 * we have no access to one. It is the difference between knowing the task and knowing
+	 * what will actually cost you the sign-off.
+	 */
+	commonStops: z.array(z.string().min(15).max(300)).default([]),
 	/** Set where the task is satisfied by any one of several procedures. */
 	alternatives: z.array(CompetencyAlternative).default([]),
 	/**
@@ -134,6 +152,27 @@ export const CompetencyAssessment = z
 			if (t.alternatives.length === 1) {
 				fail(
 					`task ${t.number} lists a single alternative; either add the others or fold it in`
+				);
+			}
+
+			/*
+			 * The structural half of the no-crisis-instruction rule.
+			 *
+			 * A task marked `consultYourPolicy` is one this app refuses to prepare anybody
+			 * for — the crisis task — and a list of what a good demonstration contains is
+			 * exactly the instruction being refused. Writing one is a parse error rather
+			 * than an editorial slip somebody has to catch in review.
+			 */
+			if (t.consultYourPolicy && (t.demonstration.length > 0 || t.commonStops.length > 0)) {
+				fail(
+					`task ${t.number} defers to the employer's policy, so it must not describe how to do it`
+				);
+			}
+			// The other half: every task we DO prepare people for has to actually prepare
+			// them. A rehearsal list of one line is a heading, not a rehearsal.
+			if (!t.consultYourPolicy && t.demonstration.length < 3) {
+				fail(
+					`task ${t.number} needs at least three things a demonstration contains; got ${t.demonstration.length}`
 				);
 			}
 		}

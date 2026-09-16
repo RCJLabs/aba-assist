@@ -332,7 +332,7 @@ domains:
           the criterion picked skills that actually held up.
         plainSummary: Decide when a skill counts as learned, and check whether that rule worked.
         keywords: [mastery criteria, trials to criterion, maintenance]
-        termRefs: [trials-to-criterion, maintenance, competency-assessment]
+        termRefs: [trials-to-criterion, maintenance, competency-assessment, mastery-criterion]
         attestation: *att
 
   - letter: D
@@ -734,7 +734,7 @@ domains:
           who does what, agreed with the person rather than imposed on them.
         plainSummary: Write an agreement that says what happens for what behavior, agreed with the person.
         keywords: [contingency contract, behavioral contract, agreement]
-        termRefs: [assent, premack-principle, informed-consent]
+        termRefs: [assent, premack-principle, informed-consent, contingency-contract]
         attestation: *att
       - code: G.16
         ourSummary: >-
@@ -742,7 +742,7 @@ domains:
           arrange their own consequences, and hand control over as they can take it.
         plainSummary: Teach people to track and manage their own behavior.
         keywords: [self-management, self-monitoring, goal setting]
-        termRefs: [assent, dignity, performance-feedback]
+        termRefs: [assent, dignity, performance-feedback, self-management]
         attestation: *att
       - code: G.17
         ourSummary: >-
@@ -891,7 +891,7 @@ domains:
           worse client outcomes, unhappy staff, and people leaving the job.
         plainSummary: Supervise the way the research says to, and know what bad supervision costs.
         keywords: [supervision practices, turnover, client outcomes, risk]
-        termRefs: [supervision, treatment-integrity, performance-feedback]
+        termRefs: [supervision, treatment-integrity, performance-feedback, staff-turnover]
         attestation: *att
       - code: I.2
         ourSummary: >-
@@ -899,7 +899,7 @@ domains:
           well, and making feedback something that travels in both directions.
         plainSummary: Build a supervision relationship where feedback goes both ways.
         keywords: [rapport, active listening, reciprocal feedback, reinforcement]
-        termRefs: [supervision, performance-feedback, collaboration]
+        termRefs: [supervision, performance-feedback, collaboration, reciprocal-feedback]
         attestation: *att
       - code: I.3
         ourSummary: >-
@@ -907,7 +907,7 @@ domains:
           checking who is actually getting your observation time and your best opportunities.
         plainSummary: Make supervision fair, and check who is really getting your time.
         keywords: [equity, fairness, access, bias]
-        termRefs: [supervision, cultural-responsiveness, cultural-humility]
+        termRefs: [supervision, cultural-responsiveness, cultural-humility, power-differential]
         attestation: *att
       - code: I.4
         ourSummary: >-
@@ -915,7 +915,8 @@ domains:
           neither side is guessing what counts as meeting expectations.
         plainSummary: Agree up front what each of you will do, in writing.
         keywords: [performance expectations, supervision contract, roles]
-        termRefs: [supervision, unrestricted-activity, competency-assessment]
+        termRefs:
+          [supervision, unrestricted-activity, competency-assessment, supervision-contract]
         attestation: *att
       - code: I.5
         ourSummary: >-
@@ -932,7 +933,13 @@ domains:
         plainSummary: Train staff by showing, practising and giving feedback until they meet a standard.
         keywords: [BST, competency-based training, behavioral skills training]
         termRefs:
-          [behavioral-skills-training, competency-assessment, modeling, performance-feedback]
+          [
+            behavioral-skills-training,
+            competency-assessment,
+            modeling,
+            performance-feedback,
+            in-situ-training
+          ]
         attestation: *att
       - code: I.7
         ourSummary: >-
@@ -941,7 +948,13 @@ domains:
         plainSummary: Improve staff performance with methods that work and that people accept.
         keywords: [performance management, task clarification, response effort, feedback]
         termRefs:
-          [performance-feedback, behavioral-skills-training, cultural-responsiveness, modeling]
+          [
+            performance-feedback,
+            behavioral-skills-training,
+            cultural-responsiveness,
+            modeling,
+            task-clarification
+          ]
         attestation: *att
       - code: I.8
         ourSummary: >-

@@ -47,6 +47,28 @@ sections:
             interresponse-time,
             operational-definition
           ]
+        demonstration:
+          - >-
+            Say which dimension the programme asks for before you start, and set the sheet up
+            for that one rather than for whatever is easiest to count.
+          - >-
+            Start and stop the clock at the points your definition names, not at the point an
+            episode becomes obvious.
+          - >-
+            Record each instance as it happens rather than reconstructing the session from
+            memory at the end.
+          - >-
+            Convert to the summary the programme uses, and label it with its unit.
+        commonStops:
+          - >-
+            Treating a long continuous bout as one instance one session and as several the
+            next, because the definition never said where an episode ends.
+          - >-
+            Leaving the timer running through a break, which inflates duration and is
+            invisible afterwards.
+          - >-
+            Reporting a raw count when sessions vary in length, so the numbers cannot be
+            compared with each other.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -67,6 +89,28 @@ sections:
             whole-interval-recording,
             momentary-time-sampling
           ]
+        demonstration:
+          - >-
+            Name the system you are running, and what it tends to over- or under-estimate,
+            before the first interval.
+          - >-
+            Use a cue you can hear or feel, and score at the moment the interval ends rather
+            than when you next look up.
+          - >-
+            Score each interval against the written definition rather than against how busy
+            the session felt.
+          - >-
+            Report the result as a percentage of intervals scored, and say so.
+        commonStops:
+          - >-
+            Scoring momentary time sampling as though it were partial interval, by counting
+            anything seen during the interval.
+          - >-
+            Missing intervals while delivering instruction, and filling them in from memory
+            afterwards.
+          - >-
+            Describing the result as the proportion of time the behaviour occurred, which no
+            interval system measures.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -81,6 +125,27 @@ sections:
         methods: [with-a-client, role-play]
         taskRefs: ['RBT:A.4', 'RBT:A.6', 'RBT:A.7']
         termRefs: [data-sheet, line-graph, phase-change-line, percentage, visual-analysis]
+        demonstration:
+          - >-
+            Transcribe the session's raw data without altering it, and check your totals
+            against the sheet.
+          - >-
+            Summarise with the measure the programme names, and label it with its unit.
+          - >-
+            Plot every session on the correct point of the horizontal axis, including sessions
+            with no responding.
+          - >-
+            Put a phase change line between the sessions where conditions changed, and do not
+            join data across it.
+        commonStops:
+          - >-
+            Leaving out a zero session, so a real result reads as a gap in recording.
+          - >-
+            Connecting data points across a phase change, which makes a condition change look
+            like part of a trend.
+          - >-
+            Changing the vertical scale between updates, so the same data looks like a
+            different result.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -111,6 +176,26 @@ sections:
             free-operant-preference-assessment,
             single-stimulus-preference-assessment
           ]
+        demonstration:
+          - >-
+            Say which format you are running and why that one, before you start.
+          - >-
+            Present the array the way the format specifies, including what happens to an item
+            once it is chosen.
+          - >-
+            Record each selection as it happens, along with where the items were placed.
+          - >-
+            Finish with a ranking or an approach record in a form the supervisor can use.
+        commonStops:
+          - >-
+            Letting the learner take a second item before the trial is scored, which loses the
+            selection.
+          - >-
+            Presenting items in the same position every trial, so the record shows a position
+            bias rather than a preference.
+          - >-
+            Calling the top-ranked item a reinforcer without any test of whether it
+            strengthens behaviour.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -126,6 +211,27 @@ sections:
         taskRefs: ['RBT:B.3', 'RBT:A.5']
         termRefs:
           [abc-recording, three-term-contingency, operational-definition, objective-language]
+        demonstration:
+          - >-
+            Record what happened immediately before, what the behaviour was, and what
+            followed, for each instance.
+          - >-
+            Write the antecedent as an observable event rather than as a reason.
+          - >-
+            Make the entry close in time to the event rather than reconstructing the sequence
+            later.
+          - >-
+            Leave function out of the record: you are recording a sequence, not drawing a
+            conclusion from it.
+        commonStops:
+          - >-
+            Writing something like "wanted attention" in the antecedent column, which records
+            a conclusion as an observation.
+          - >-
+            Recording only the memorable episodes, which makes the sample unrepresentative of
+            the day.
+          - >-
+            Merging several instances into one entry because they happened close together.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -157,6 +263,26 @@ sections:
             error-correction,
             trials-to-criterion
           ]
+        demonstration:
+          - >-
+            Set out the materials and have the learner's attention before the instruction goes
+            in.
+          - >-
+            Deliver the instruction once, in the wording the programme uses.
+          - >-
+            Wait the response interval the programme allows before prompting or scoring.
+          - >-
+            Deliver the consequence immediately, and record the trial before setting up the
+            next one.
+        commonStops:
+          - >-
+            Repeating the instruction when nothing happens, which teaches the learner to wait
+            for the second one.
+          - >-
+            Delivering the reinforcer a few seconds late, once the learner has already moved
+            on to something else.
+          - >-
+            Scoring a prompted response as independent because the prompt was a small one.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -171,6 +297,26 @@ sections:
         methods: [with-a-client, role-play]
         taskRefs: ['RBT:C.4']
         termRefs: [naturalistic-teaching, incidental-teaching, mand, motivating-operation]
+        demonstration:
+          - >-
+            Follow what the learner is already interested in and use that as the opportunity.
+          - >-
+            Wait for, or arrange, a moment where the target response is genuinely useful to
+            them.
+          - >-
+            Deliver the natural consequence — the item, the activity, the help — rather than
+            an unrelated reinforcer.
+          - >-
+            Record the opportunity and the response without stopping the activity to do it.
+        commonStops:
+          - >-
+            Turning it into discrete trials in a play area by running the same instruction
+            over and over.
+          - >-
+            Waiting for a better response until the learner has lost interest in the item
+            entirely.
+          - >-
+            Losing the data because recording was left until the end of the session.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -186,6 +332,25 @@ sections:
         taskRefs: ['RBT:C.5']
         termRefs:
           [chaining, task-analysis, forward-chaining, backward-chaining, total-task-chaining]
+        demonstration:
+          - >-
+            Work from the written task analysis, in front of you, rather than from memory.
+          - >-
+            Use the chaining format the programme names, and be able to say which one it is.
+          - >-
+            Prompt at the level the programme specifies for the step being taught, not for the
+            whole chain.
+          - >-
+            Score each step on its own rather than scoring the chain as a single response.
+        commonStops:
+          - >-
+            Completing a step for the learner when they hesitate, and then scoring it as
+            independent.
+          - >-
+            Running total task where the programme specifies backward chaining, or the
+            reverse.
+          - >-
+            Dropping a step because the analysis was not in front of you.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -200,6 +365,24 @@ sections:
         methods: [with-a-client, role-play]
         taskRefs: ['RBT:C.10']
         termRefs: [shaping, differential-reinforcement-of-alternative-behavior, reinforcer]
+        demonstration:
+          - >-
+            State the current criterion and the target response before you begin.
+          - >-
+            Reinforce responses that meet the criterion, and not responses below it.
+          - >-
+            Raise the criterion once responding at the current one is steady, rather than
+            after a set number of trials.
+          - >-
+            Go back a step if responding drops out, and record that you did.
+        commonStops:
+          - >-
+            Reinforcing every attempt, which keeps the current approximation and never reaches
+            the target.
+          - >-
+            Raising the criterion after one good response, and losing the behaviour.
+          - >-
+            Not being able to say what the current criterion is when you are asked.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -214,6 +397,28 @@ sections:
         methods: [with-a-client, role-play]
         taskRefs: ['RBT:C.6']
         termRefs: [discrimination-training, discriminative-stimulus, s-delta, stimulus-control]
+        demonstration:
+          - >-
+            Present the stimuli the programme names, with their positions varied across
+            trials.
+          - >-
+            Reinforce responding in the presence of the target stimulus and not in its
+            absence.
+          - >-
+            Run the error-correction procedure the programme specifies, the same way each
+            time.
+          - >-
+            Record which stimulus was presented as well as whether the response was correct.
+        commonStops:
+          - >-
+            Leaving the correct item in the same place, so the learner responds by position
+            instead.
+          - >-
+            Looking at or leaning towards the correct item, which quietly becomes the stimulus
+            in control.
+          - >-
+            Changing the error-correction procedure part-way through because the learner is
+            struggling.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -237,6 +442,28 @@ sections:
             time-delay,
             transfer-of-stimulus-control
           ]
+        demonstration:
+          - >-
+            Name the prompt hierarchy the programme uses and where this learner currently sits
+            in it.
+          - >-
+            Deliver the prompt at the level specified, not at the level that guarantees a
+            correct response.
+          - >-
+            Fade as the plan directs, and record the prompt level used on every trial.
+          - >-
+            Transfer control back to the natural stimulus before scoring anything as
+            independent.
+        commonStops:
+          - >-
+            Recording only correct or incorrect, with no prompt level, so nobody can see
+            whether fading is happening.
+          - >-
+            Adding a small verbal cue on top of the specified prompt without noticing you are
+            doing it.
+          - >-
+            Staying at one prompt level for weeks because it reliably produces correct
+            responses.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -251,6 +478,27 @@ sections:
         methods: [with-a-client, role-play]
         taskRefs: ['RBT:C.11']
         termRefs: [token-economy, conditioned-reinforcer, generalized-conditioned-reinforcer]
+        demonstration:
+          - >-
+            Deliver tokens immediately and contingently, for the behaviour the programme
+            names.
+          - >-
+            Keep to the exchange schedule the programme specifies rather than stretching it
+            for convenience.
+          - >-
+            Let the learner choose from the backup items at exchange.
+          - >-
+            Record tokens earned and exchanges made, not only the end-of-session total.
+        commonStops:
+          - >-
+            Delaying exchange to the end of the week, which strips the tokens of the value
+            they depend on.
+          - >-
+            Taking back tokens already earned, which is a different procedure with its own
+            authorisation requirements.
+          - >-
+            Running a single backup item, which stops working the moment the learner has had
+            enough of it.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -315,6 +563,26 @@ sections:
               the plan specifies, and keep going through the increase in rate or intensity
               that usually follows.
             termRefs: [extinction, extinction-burst, escape-extinction, sensory-extinction]
+        demonstration:
+          - >-
+            Say which of the three you are demonstrating, and why that one suits this learner
+            and this programme.
+          - >-
+            Run it as the plan specifies, including the parts that are inconvenient.
+          - >-
+            Keep going through the period where things get worse before they get better, where
+            the plan says to.
+          - >-
+            Record what you did, not only what the learner did.
+        commonStops:
+          - >-
+            Choosing the procedure that is easiest to talk about rather than the one you can
+            show cleanly.
+          - >-
+            Stopping extinction at the first increase in intensity, which reinforces the
+            stronger form of the behaviour.
+          - >-
+            Describing one procedure accurately and then running a different one.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -338,6 +606,26 @@ sections:
         methods: [with-a-client, role-play, interview]
         taskRefs: ['RBT:E.4', 'RBT:A.5']
         termRefs: [session-note, objective-language, operational-definition, permanent-product]
+        demonstration:
+          - >-
+            Include every element your employer's format requires, checked off rather than
+            remembered.
+          - >-
+            Describe behaviour in observable terms with times, rather than in terms of mood or
+            intent.
+          - >-
+            Record what you did as well as what the learner did.
+          - >-
+            Write it close to the session rather than at the end of the week.
+        commonStops:
+          - >-
+            Writing that the learner had a good day, with nothing measurable behind it.
+          - >-
+            Recording a conclusion about why a behaviour happened, which is not a technician's
+            to record.
+          - >-
+            Leaving out the start and end times or the service location, which the format
+            requires.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -352,6 +640,23 @@ sections:
         methods: [interview]
         taskRefs: ['RBT:F.1', 'RBT:F.10']
         termRefs: [dignity, assent, confidentiality, cultural-humility]
+        demonstration:
+          - >-
+            Give a concrete example from your own practice rather than a definition.
+          - >-
+            Name something you actually changed in how you work because of it.
+          - >-
+            Put the learner's preferences and choices in the example, not only politeness.
+          - >-
+            Say what you would do if a colleague's practice fell short of it.
+        commonStops:
+          - >-
+            Answering with a definition of dignity and stopping there.
+          - >-
+            Giving an example that is really about being pleasant rather than about choice and
+            respect.
+          - >-
+            Having no answer at all for what you would do about somebody else's conduct.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -366,6 +671,25 @@ sections:
         taskRefs: ['RBT:F.7', 'RBT:F.8', 'RBT:F.6']
         termRefs:
           [dual-relationship, conflict-of-interest, public-statement, scope-of-practice]
+        demonstration:
+          - >-
+            Name specific boundaries: gifts, social contact, second relationships,
+            information.
+          - >-
+            Give a real example of a request you would decline, and the words you would use.
+          - >-
+            Say who you would tell about it, and how soon.
+          - >-
+            Separate what you decide yourself from what you take to your supervisor.
+        commonStops:
+          - >-
+            Talking only about social media, which is one boundary among several.
+          - >-
+            Saying you would decline without being able to say how, which is the part that is
+            hard in the moment.
+          - >-
+            Treating a boundary as a personal judgement call rather than a requirement of the
+            code.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -380,6 +704,24 @@ sections:
         methods: [interview]
         taskRefs: ['RBT:F.3', 'RBT:F.4']
         termRefs: [supervision, competency-assessment, continuity-of-care]
+        demonstration:
+          - >-
+            State the supervision requirement that applies to you in numbers, not in general
+            terms.
+          - >-
+            Say what counts towards it and what does not.
+          - >-
+            Say what happens if a month falls short, and what you would do about it.
+          - >-
+            Say where your supervision is documented and who holds that record.
+        commonStops:
+          - >-
+            Knowing supervision is required without knowing the percentage or the contact
+            requirement.
+          - >-
+            Assuming the supervisor tracks it, when meeting the requirement is yours.
+          - >-
+            Having no answer for a month that has already fallen short.
         officialText: null
         officialTitle: null
         officialUrl: null
@@ -394,6 +736,25 @@ sections:
         methods: [interview]
         taskRefs: ['RBT:E.2', 'RBT:F.2']
         termRefs: [scope-of-practice, supervision, behavior-intervention-plan]
+        demonstration:
+          - >-
+            Give an example of something you took to your supervisor rather than deciding
+            yourself.
+          - >-
+            Name the line: implementing and recording is yours, changing the plan is not.
+          - >-
+            Say how quickly you would raise different kinds of thing, and by what route.
+          - >-
+            Say what you do in the meantime, while you are waiting for an answer.
+        commonStops:
+          - >-
+            Giving an example where you made the change and told the supervisor afterwards.
+          - >-
+            Having no answer for what to do while waiting, which is where most of the risk
+            sits.
+          - >-
+            Describing the supervisor as somebody to ask rather than the person responsible
+            for the plan.
         officialText: null
         officialTitle: null
         officialUrl: null

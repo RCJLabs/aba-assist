@@ -108,6 +108,34 @@
 								</p>
 							{/if}
 
+							{#if t.demonstration.length > 0}
+								<details class="rehearse">
+									<summary>What to rehearse</summary>
+									<div>
+										<h4>A demonstration of this contains</h4>
+										<ul class="does">
+											{#each t.demonstration as d (d)}
+												<li>{d}</li>
+											{/each}
+										</ul>
+										{#if t.commonStops.length > 0}
+											<h4>Where people come unstuck</h4>
+											<ul class="stops">
+												{#each t.commonStops as c (c)}
+													<li>{c}</li>
+												{/each}
+											</ul>
+										{/if}
+										<p class="ours">
+											Ours, not the assessor's. We have no access to a scoring rubric and this
+											is not one — it is what we think doing the task well looks like, written
+											so there is something specific to practise. Your assessor works from the
+											packet.
+										</p>
+									</div>
+								</details>
+							{/if}
+
 							{#if t.alternatives.length > 0}
 								<ul class="alts">
 									{#each t.alternatives as alt (alt.label)}
@@ -160,6 +188,52 @@
 {/if}
 
 <style>
+	.rehearse {
+		margin: 0.6rem 0;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+
+	.rehearse summary {
+		padding: 0.5rem 0.7rem;
+		min-height: var(--tap);
+		display: flex;
+		align-items: center;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.rehearse > div {
+		padding: 0 0.7rem 0.6rem;
+	}
+
+	.rehearse h4 {
+		font-size: 0.9rem;
+		margin: 0.4rem 0 0.3rem;
+	}
+
+	.rehearse ul {
+		margin: 0;
+		padding-left: 1.1rem;
+	}
+
+	.rehearse li + li {
+		margin-top: 0.35rem;
+	}
+
+	.stops {
+		/* Never colour alone: the heading above already says what this list is. */
+		border-left: 3px solid var(--stop-border, var(--border));
+		padding-left: 1.1rem;
+		margin-left: -0.15rem;
+	}
+
+	.ours {
+		margin: 0.7rem 0 0;
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

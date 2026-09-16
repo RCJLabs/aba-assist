@@ -89,3 +89,34 @@ test('is reachable from home', async ({ page }) => {
 		'Initial Competency Assessment'
 	);
 });
+
+test('every task you are meant to prepare for has something to rehearse', async ({ page }) => {
+	/*
+	 * The readiness checklist on its own told a candidate nothing they could practise:
+	 * "demonstrate preference assessment" is a heading, not a rehearsal. The one task
+	 * without a rehearsal list is the crisis task, where the schema refuses one.
+	 */
+	await page.goto('/competency');
+
+	const tasks = page.locator('.task');
+	const total = await tasks.count();
+	const rehearsals = await page.locator('.task .rehearse').count();
+	expect(total).toBe(19);
+	expect(rehearsals).toBe(total - 1);
+
+	// The crisis task is the exception, and it says why rather than going quiet.
+	const crisis = page.locator('.task', { hasText: 'Crisis and Emergency Procedures' });
+	await expect(crisis.locator('.rehearse')).toHaveCount(0);
+	await expect(crisis.locator('.policy')).toContainText("employer's protocol");
+});
+
+test("the rehearsal notes never claim to be the assessor's rubric", async ({ page }) => {
+	await page.goto('/competency');
+	const first = page.locator('.task .rehearse').first();
+	await first.locator('summary').click();
+	await expect(first.locator('.does li').first()).toBeVisible();
+	await expect(first.locator('.stops li').first()).toBeVisible();
+	// The claim this page must never make, stated as the thing it does say instead.
+	await expect(first.locator('.ours')).toContainText('no access to a scoring rubric');
+	await expect(first.locator('.ours')).toContainText('this is not one');
+});

@@ -123,6 +123,8 @@ function competencyProse(c: z_Competency): string[] {
 			...s.tasks.flatMap((t) => [
 				t.ourSummary,
 				t.plainSummary,
+				...t.demonstration,
+				...t.commonStops,
 				...t.alternatives.map((a) => a.ourSummary)
 			])
 		]),
