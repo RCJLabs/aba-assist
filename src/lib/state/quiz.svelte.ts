@@ -1,7 +1,9 @@
 import { browser } from '$app/environment';
 import type { QuizQuestion } from '@aba/content-schema';
-import { loadQuestions, outlineForCredential } from '$lib/content/load.js';
-import { putAttempt } from '$lib/db/index.js';
+import { loadQuestions, outlineForCredential, termIndex } from '$lib/content/load.js';
+import { getAllCards, putAttempt, putCards } from '$lib/db/index.js';
+import { planReinforcement, termsToReinforce } from '$lib/study/reinforce.js';
+import { study } from './study.svelte.js';
 import {
 	crossedWarning,
 	examFormat,
@@ -75,6 +77,14 @@ class Quiz {
 	 * write has settled rather than leaving it to luck.
 	 */
 	saved = $state<'idle' | 'pending' | 'saved' | 'unavailable'>('idle');
+	/**
+	 * How many terms this run made due in the flashcard deck.
+	 *
+	 * Reported rather than done silently: the run has changed what the reader's next
+	 * study session will contain, and a queue that grew without explanation is the kind
+	 * of thing people turn off.
+	 */
+	reinforced = $state(0);
 
 	/** Set only in simulation mode. */
 	plan = $state<SimulationPlan | null>(null);
@@ -357,6 +367,23 @@ class Quiz {
 		 * write first narrows that window to as little as this code can make it, and the
 		 * results still do not wait on it.
 		 */
+		/*
+		 * What the run caught out goes into the flashcard queue.
+		 *
+		 * Best-effort and deliberately separate from the attempt write: a failure here
+		 * must not make the run itself look unrecorded, because the run is the thing the
+		 * plan reads. Storage being unavailable simply means no terms were added, and the
+		 * results screen then says nothing rather than claiming something.
+		 */
+		const reinforcing = this.#reinforce(missed).then(
+			(n) => {
+				this.reinforced = n;
+			},
+			() => {
+				this.reinforced = 0;
+			}
+		);
+
 		const saving = putAttempt({
 			id: `${this.startedAt}-${Math.random().toString(36).slice(2, 8)}`,
 			credential: this.credential,
@@ -382,7 +409,25 @@ class Quiz {
 		this.results = { total: this.items.length, correct, perDomain, missed };
 		this.status = 'done';
 
-		await saving;
+		await Promise.all([saving, reinforcing]);
+	}
+
+	/** Make the terms behind the missed questions due for review. Returns how many. */
+	async #reinforce(missed: { q: QuizQuestion }[]): Promise<number> {
+		if (!browser || missed.length === 0) return 0;
+		const flashcardTerms = new Set(termIndex.filter((t) => t.f).map((t) => t.i));
+		const ids = termsToReinforce(
+			missed.map((m) => ({ termRefs: m.q.termRefs })),
+			flashcardTerms
+		);
+		if (ids.length === 0) return 0;
+
+		const cards = new Map((await getAllCards()).map((c) => [c.id, c]));
+		const plan = planReinforcement(ids, cards, Date.now());
+		await putCards(plan.writes);
+		// The deck holds its cards in memory, so it has to be told they changed.
+		study.invalidateCards();
+		return plan.created + plan.pulled;
 	}
 
 	reset(): void {
@@ -393,6 +438,7 @@ class Quiz {
 		this.selected = [];
 		this.results = null;
 		this.saved = 'idle';
+		this.reinforced = 0;
 		this.plan = null;
 		this.flagged = {};
 		this.ranOutOfTime = false;

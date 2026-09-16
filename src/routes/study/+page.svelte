@@ -169,6 +169,8 @@
 
 	<ContentFilters label="Choose the deck" />
 
+	<div data-study-status={study.status} hidden></div>
+
 	{#if study.status === 'unavailable'}
 		<p class="warn">
 			Flashcards need local storage, which this browser has blocked or which is unavailable in

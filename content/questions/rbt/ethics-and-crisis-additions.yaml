@@ -1,0 +1,1057 @@
+# RBT practice questions — the 3rd edition's expanded ethics tasks (F.5 to F.9), the crisis task (D.7), and assisting with skills assessment (B.2). All original.
+
+questions:
+  - id: rbt-b2-technician-role-in-skills-assessment
+    credential: RBT
+    taskRef: { credential: RBT, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      A supervisor asks a technician to help with a skills assessment. Which part of that
+      work belongs to the technician?
+    options:
+      - id: a
+        text: Running the assigned items and recording exactly what the learner did
+        isCorrect: true
+        rationale: >-
+          Administering assigned portions and recording responses accurately is the
+          technician's contribution to an assessment.
+      - id: b
+        text: Choosing which subtests to administer based on the learner's presentation
+        isCorrect: false
+        rationale: >-
+          Selecting what to assess is an assessment-design decision the supervisor makes.
+      - id: c
+        text: Scoring the protocol and writing the summary of skill levels
+        isCorrect: false
+        rationale: >-
+          Interpreting and summarising assessment results sits with the supervisor.
+      - id: d
+        text: Deciding which skills should become goals from what you observed
+        isCorrect: false
+        rationale: >-
+          Goal selection follows from interpretation, which is not the technician's role.
+    explanation: >-
+      Technicians assist with assessment rather than conduct it. The line falls at
+      judgement: you run the items you were assigned and record what happened, and the
+      supervisor decides what it means and what follows from it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [skills-assessment, scope-of-practice, supervision, competency-assessment]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Scope of practice
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the codes and primary literature named in its
+        citations; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-16'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-16'
+  - id: rbt-b2-assessment-recording-fidelity
+    credential: RBT
+    taskRef: { credential: RBT, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      During an assigned assessment item the learner answers correctly after the
+      technician repeats the instruction a second time. The technician should record:
+    options:
+      - id: a
+        text: The response as it occurred, noting that the instruction was repeated
+        isCorrect: true
+        rationale: >-
+          The record has to show what actually happened, including any departure from the
+          standard presentation, because that changes what the score means.
+      - id: b
+        text: A correct response, since the learner did answer correctly
+        isCorrect: false
+        rationale: >-
+          Recording it as a clean correct hides a repetition that may invalidate the item.
+      - id: c
+        text: An incorrect response, since the first presentation produced nothing
+        isCorrect: false
+        rationale: >-
+          Scoring it incorrect also misrepresents what happened, and the decision is not the
+          technician's to make.
+      - id: d
+        text: Nothing, and move on to the next item
+        isCorrect: false
+        rationale: >-
+          Omitting the item leaves a gap the supervisor cannot interpret.
+    explanation: >-
+      Assessment items usually have a standard presentation, and departing from it is not
+      necessarily wrong — hiding it is. Recording what occurred lets the supervisor decide
+      whether the item still counts.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [skills-assessment, treatment-integrity, data-sheet, objective-language]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Ensuring an accurate record
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-b2-assessment-unfamiliar-item
+    credential: RBT
+    taskRef: { credential: RBT, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      A technician is assigned an assessment item they have never administered and have
+      not been trained on. The right action is:
+    options:
+      - id: a
+        text: Tell the supervisor before administering it and ask to be trained on it first
+        isCorrect: true
+        rationale: >-
+          Administering an assessment item you have not been trained on produces data nobody
+          can rely on, and it is outside what you have been checked on.
+      - id: b
+        text: Read the protocol carefully and administer it as written
+        isCorrect: false
+        rationale: >-
+          Reading a protocol is not the same as being trained to criterion on it, and
+          assessment items are easy to administer incorrectly.
+      - id: c
+        text: Administer it and note your uncertainty in the session note
+        isCorrect: false
+        rationale: >-
+          The note records the problem after the data is already compromised.
+      - id: d
+        text: Ask a more experienced technician to explain it quickly and then run it
+        isCorrect: false
+        rationale: >-
+          Informal coaching from a peer is not the training and check-off the role requires.
+    explanation: >-
+      Competence in this role is specific: trained and checked on this task, not generally
+      capable. Saying so before the session is the cheap version of this problem; saying
+      so after means an assessment has to be redone.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-competence, skills-assessment, supervision, behavioral-skills-training]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Competence
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-d7-whose-procedure
+    credential: RBT
+    taskRef: { credential: RBT, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      A crisis begins during a session. Which procedure governs what the technician does?
+    options:
+      - id: a
+        text: The learner's plan and the employer's written crisis procedure
+        isCorrect: true
+        rationale: >-
+          Crisis response is defined in advance by the plan and the employer's policy, and the
+          technician follows what those say.
+      - id: b
+        text: The technician's own judgement about what is safest in the moment
+        isCorrect: false
+        rationale: >-
+          Improvising a crisis response is outside the role and is what the written procedure
+          exists to prevent.
+      - id: c
+        text: Whatever the most senior person present decides at the time
+        isCorrect: false
+        rationale: >-
+          Seniority does not replace the written procedure, and the person present may not
+          know this learner's plan.
+      - id: d
+        text: The procedure used at the technician's previous employer
+        isCorrect: false
+        rationale: >-
+          Procedures are employer-specific and may conflict with this setting's policy and
+          this learner's plan.
+    explanation: >-
+      Everything about crisis response is decided beforehand: what counts as a crisis, who
+      is called, and what is recorded. If a technician does not know what their setting's
+      procedure says, that is a question for before the next session, not during one.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [behavior-intervention-plan, incident-report, scope-of-practice, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Responding to a crisis
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-d7-after-the-event
+    credential: RBT
+    taskRef: { credential: RBT, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      A crisis has ended and everyone is safe. What does the technician do next?
+    options:
+      - id: a
+        text: Notify the supervisor the same day and complete the employer's incident record
+        isCorrect: true
+        rationale: >-
+          Prompt notification and a written record are the two obligations that follow every
+          crisis, including ones that resolved quickly.
+      - id: b
+        text: Wait until the next scheduled supervision meeting to raise it
+        isCorrect: false
+        rationale: >-
+          A delay of days leaves the supervisor unable to act and the record written from
+          memory.
+      - id: c
+        text: Record it in the session note only, since nobody was hurt
+        isCorrect: false
+        rationale: >-
+          An absence of injury does not remove the reporting obligation, and a session note is
+          not the incident record.
+      - id: d
+        text: Tell the family and let them decide whether to report it
+        isCorrect: false
+        rationale: >-
+          Reporting to the employer and supervisor is the technician's own obligation and is
+          not the family's to waive.
+    explanation: >-
+      Same-day notification is the standard even when the episode looks minor, because the
+      supervisor may need to change the plan and because a record written later is a
+      record written from memory.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [incident-report, session-note, supervision, objective-language]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Reporting
+      - sourceId: bacb-rbt-handbook-2026
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-d7-documenting-objectively
+    credential: RBT
+    taskRef: { credential: RBT, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      Which entry is the most appropriate description of an incident for the record?
+    options:
+      - id: a
+        text: 'At 10:14 the learner left the room and went into the corridor. Staff followed the site procedure and the learner returned at 10:19.'
+        isCorrect: true
+        rationale: >-
+          It records times, what was observed, and that the written procedure was followed,
+          without interpretation.
+      - id: b
+        text: 'The learner had a major meltdown and completely lost control.'
+        isCorrect: false
+        rationale: >-
+          This is interpretation and judgement rather than description, and it is not
+          measurable.
+      - id: c
+        text: 'The learner was trying to get out of the maths task again.'
+        isCorrect: false
+        rationale: >-
+          This states a function as fact, which is a conclusion the technician is not in a
+          position to record as one.
+      - id: d
+        text: 'Nothing serious happened, the learner was just having a bad day.'
+        isCorrect: false
+        rationale: >-
+          Minimising and explaining by mood leaves no usable record of what occurred.
+    explanation: >-
+      Incident records get read by supervisors, by employers and sometimes far beyond
+      that. Times, observable events, and what procedure was followed are what make a
+      record useful and what keep it honest.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [incident-report, objective-language, operational-definition, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Ensuring an accurate record
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-d7-physical-management-training
+    credential: RBT
+    taskRef: { credential: RBT, code: D.7 }
+    type: single-best-answer
+    stem: >-
+      A technician has not completed their employer's certified safety training. A
+      situation arises that the site procedure says calls for it. The technician should:
+    options:
+      - id: a
+        text: Follow the parts of the procedure they are trained for and summon trained staff
+        isCorrect: true
+        rationale: >-
+          Uncertified staff do not carry out procedures requiring certification; they get help
+          from people who hold it and do what they are trained to do.
+      - id: b
+        text: Do their best to apply what they have seen colleagues do
+        isCorrect: false
+        rationale: >-
+          Imitating an uncertified version of a certified procedure is how people get hurt,
+          and it is outside the technician's authorisation.
+      - id: c
+        text: Leave the area entirely until it is over
+        isCorrect: false
+        rationale: >-
+          Abandoning the situation is not the answer either; summoning help and following the
+          parts you are trained for is.
+      - id: d
+        text: Ask the family present to intervene instead
+        isCorrect: false
+        rationale: >-
+          Directing a family member to act in place of trained staff is not the procedure and
+          shifts responsibility inappropriately.
+    explanation: >-
+      Certified safety training is a separate qualification with its own authorisation,
+      and it is not something an app, a colleague or a handbook can supply. What the
+      technician is always responsible for is knowing which parts of the procedure apply
+      to them, and calling the people who hold the rest.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs:
+      [scope-of-competence, least-restrictive-alternative, incident-report, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Competence
+      - sourceId: abai-restraint-position-2010
+        useType: fact-reference
+      - sourceId: usdoe-restraint-seclusion
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f5-devices-and-messaging
+    credential: RBT
+    taskRef: { credential: RBT, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      A technician wants to keep session notes on their phone between visits. The safest
+      practice is:
+    options:
+      - id: a
+        text: Use only the employer's approved system, and keep nothing identifiable on a personal device
+        isCorrect: true
+        rationale: >-
+          Client information belongs in the system the employer controls and can secure; a
+          personal device is outside that control.
+      - id: b
+        text: Store notes in the phone's notes app but use initials instead of names
+        isCorrect: false
+        rationale: >-
+          Initials with a date and a location frequently identify a person, and the device is
+          still unmanaged.
+      - id: c
+        text: Keep notes in a password-protected file on the phone
+        isCorrect: false
+        rationale: >-
+          A password does not make a personal device an approved store, and the file may sync
+          elsewhere automatically.
+      - id: d
+        text: Photograph the paper data sheet and delete it after entry
+        isCorrect: false
+        rationale: >-
+          A photograph of a data sheet is client information on a personal device, and
+          deletion is not reliable once it has synced.
+    explanation: >-
+      Almost every real confidentiality breach in this work is mundane: a phone, a car, a
+      group chat, a synced photo library. Keeping identifiable information inside the
+      employer's system is the practice that prevents most of them.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [confidentiality, hipaa, session-note, data-sheet]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Confidentiality
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f5-team-messaging-group
+    credential: RBT
+    taskRef: { credential: RBT, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      Colleagues use an unofficial group chat to coordinate cover, and someone posts a
+      question naming a client and a behaviour. The technician should:
+    options:
+      - id: a
+        text: Not reply with any client information, and raise the practice with the supervisor
+        isCorrect: true
+        rationale: >-
+          The disclosure has happened; not compounding it and telling the person who can stop
+          the practice are the two things within the technician's control.
+      - id: b
+        text: Reply privately to the person instead of in the group
+        isCorrect: false
+        rationale: >-
+          A private reply still discusses client information on an unapproved channel.
+      - id: c
+        text: Reply in the group using the client's initials only
+        isCorrect: false
+        rationale: >-
+          Initials within a team chat identify the client to everyone reading it.
+      - id: d
+        text: Ignore it, since the technician did not post it
+        isCorrect: false
+        rationale: >-
+          Silence leaves a practice running that will produce further disclosures.
+    explanation: >-
+      Group chats are convenient and are almost always outside the employer's records
+      system. Raising it is not reporting a colleague; it is getting a channel replaced
+      before it produces something worse.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [confidentiality, hipaa, collaboration, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Confidentiality
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Confidentiality
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f5-sharing-with-school
+    credential: RBT
+    taskRef: { credential: RBT, code: F.5 }
+    type: single-best-answer
+    stem: >-
+      A classroom teacher asks a technician directly for a copy of the learner's behaviour
+      data. The technician should:
+    options:
+      - id: a
+        text: Decline to release it themselves and refer the request to the supervisor
+        isCorrect: true
+        rationale: >-
+          Releasing records requires authorisation and goes through the proper channel, which
+          is not the technician.
+      - id: b
+        text: Share it, since the teacher works with the same learner
+        isCorrect: false
+        rationale: >-
+          Working with the learner is not authorisation to receive records.
+      - id: c
+        text: Share a summary rather than the raw data
+        isCorrect: false
+        rationale: >-
+          A summary is still client information released without authorisation.
+      - id: d
+        text: Ask the parent at pick-up whether it is alright
+        isCorrect: false
+        rationale: >-
+          Verbal agreement at the door is not the authorisation process, and the release
+          should not come from the technician.
+    explanation: >-
+      Requests from other professionals feel routine, which is exactly why they are a
+      common route to an unauthorised disclosure. Referring it up is quick and creates the
+      record that the release was authorised.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [confidentiality, hipaa, informed-consent, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Confidentiality
+      - sourceId: hipaa-privacy-rule
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f6-anonymised-post
+    credential: RBT
+    taskRef: { credential: RBT, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      A technician posts about a hard day on a public account without naming anyone,
+      mentioning the setting, the learner's age and the behaviour. The main problem is:
+    options:
+      - id: a
+        text: The details can identify the learner to anyone who knows them
+        isCorrect: true
+        rationale: >-
+          Setting, age and behaviour together frequently identify a person within a small
+          community, so the post is a disclosure.
+      - id: b
+        text: The post reflects poorly on the employer
+        isCorrect: false
+        rationale: >-
+          Reputational concern is real but secondary to a disclosure about a client.
+      - id: c
+        text: Social media use during work hours is prohibited
+        isCorrect: false
+        rationale: >-
+          Timing is not the issue; the content is.
+      - id: d
+        text: The technician did not have the employer's permission to post
+        isCorrect: false
+        rationale: >-
+          Employer permission would not make the disclosure acceptable.
+    explanation: >-
+      Anonymising by removing the name is the most common mistake in this area. What
+      identifies someone is usually the combination of details, and a post cannot be
+      withdrawn once it has been seen.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [public-statement, confidentiality, ethics-code, hipaa]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Public statements
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Public statements
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f6-credential-claims
+    credential: RBT
+    taskRef: { credential: RBT, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      Which statement may a technician make about themselves in public?
+    options:
+      - id: a
+        text: That they are a Registered Behavior Technician working under the supervision of a certified analyst
+        isCorrect: true
+        rationale: >-
+          An accurate statement of the credential held and the supervised nature of the role
+          is what the code permits.
+      - id: b
+        text: That they are a behaviour analyst working with children with autism
+        isCorrect: false
+        rationale: >-
+          This claims a credential the technician does not hold.
+      - id: c
+        text: That they provide behaviour therapy independently to families
+        isCorrect: false
+        rationale: >-
+          Technicians do not practise independently, so this misstates the role.
+      - id: d
+        text: That their programmes have a high success rate with this population
+        isCorrect: false
+        rationale: >-
+          A claim about outcomes is a claim about services the technician does not design and
+          cannot substantiate.
+    explanation: >-
+      The certification marks belong to the certifying board and describe a specific role.
+      Describing yourself accurately, including the supervised part, is both required and
+      the thing that tells a family who to call when a decision is needed.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [public-statement, scope-of-practice, scope-of-competence, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Public statements
+      - sourceId: bacb-rbt-handbook-2026
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f6-testimonial-request
+    credential: RBT
+    taskRef: { credential: RBT, code: F.6 }
+    type: single-best-answer
+    stem: >-
+      A family offers to write a public review naming the technician and describing their
+      child's progress. The technician should:
+    options:
+      - id: a
+        text: Decline to solicit or arrange it, and refer the offer to the supervisor and employer
+        isCorrect: true
+        rationale: >-
+          A public statement describing a client's services raises confidentiality and
+          solicitation concerns that are not the technician's to resolve.
+      - id: b
+        text: Accept, since the family offered it without being asked
+        isCorrect: false
+        rationale: >-
+          An unsolicited offer does not remove the confidentiality and endorsement issues.
+      - id: c
+        text: Accept if the family agrees not to name the child
+        isCorrect: false
+        rationale: >-
+          Naming the technician and describing the services still identifies the client to
+          many readers.
+      - id: d
+        text: Suggest the family post it about the organisation rather than the technician
+        isCorrect: false
+        rationale: >-
+          Redirecting the post is still arranging a public statement about a client's
+          services.
+    explanation: >-
+      Families often mean this kindly, which makes it harder to decline. The technician
+      does not have to adjudicate it: declining to arrange it and passing it to the
+      supervisor is the whole response.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [public-statement, confidentiality, dual-relationship, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Public statements
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Public statements
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f7-babysitting-offer
+    credential: RBT
+    taskRef: { credential: RBT, code: F.7 }
+    type: single-best-answer
+    stem: >-
+      A family asks a technician to babysit their child, whom the technician works with,
+      on weekends for pay. The technician should:
+    options:
+      - id: a
+        text: Decline and tell the supervisor the request was made
+        isCorrect: true
+        rationale: >-
+          A second paid relationship with the same family compromises the professional role,
+          and the supervisor needs to know it was raised.
+      - id: b
+        text: Accept, provided it is outside working hours and unpaid by the employer
+        isCorrect: false
+        rationale: >-
+          The conflict comes from the second relationship, not from whose time it is on.
+      - id: c
+        text: Accept if the family signs something acknowledging the two roles
+        isCorrect: false
+        rationale: >-
+          An acknowledgement does not remove the effect on the technician's objectivity or the
+          family's position.
+      - id: d
+        text: Accept, since it would help the family and the technician knows the child well
+        isCorrect: false
+        rationale: >-
+          Familiarity and goodwill are what make this request hard to refuse, not reasons it
+          is appropriate.
+    explanation: >-
+      This is the most common multiple-relationship request technicians face, and the
+      pressure is real: the family is short of childcare and the technician needs the
+      money. Telling the supervisor matters because the request will be made again, to
+      someone else.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [dual-relationship, conflict-of-interest, ethics-code, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Multiple relationships
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f7-unavoidable-overlap
+    credential: RBT
+    taskRef: { credential: RBT, code: F.7 }
+    type: single-best-answer
+    stem: >-
+      A technician discovers that a new learner is the child of a close neighbour. The
+      appropriate first step is:
+    options:
+      - id: a
+        text: Disclose the overlap to the supervisor before starting, so it can be managed or reassigned
+        isCorrect: true
+        rationale: >-
+          A pre-existing relationship is disclosed before the professional one begins, and the
+          supervisor decides what to do about it.
+      - id: b
+        text: Say nothing unless it begins to cause a problem
+        isCorrect: false
+        rationale: >-
+          By the time a problem appears the relationship has already affected the work, and
+          the disclosure looks like a concealment.
+      - id: c
+        text: Ask the family whether they mind
+        isCorrect: false
+        rationale: >-
+          The family's comfort does not settle a conflict that affects the technician's
+          objectivity and the employer's obligations.
+      - id: d
+        text: Refuse the case without explanation
+        isCorrect: false
+        rationale: >-
+          Refusing without disclosing leaves the supervisor unable to manage the situation or
+          assign appropriately.
+    explanation: >-
+      Disclosure before starting is what makes an overlap manageable. In small communities
+      these are common and often unavoidable, and the response is visibility and a plan
+      rather than pretending there is no overlap.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [dual-relationship, conflict-of-interest, supervision, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Multiple relationships
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f7-social-connection
+    credential: RBT
+    taskRef: { credential: RBT, code: F.7 }
+    type: single-best-answer
+    stem: >-
+      A parent sends a technician a friend request on a personal social media account. The
+      technician should:
+    options:
+      - id: a
+        text: Not accept it, and explain that they keep personal accounts separate from work
+        isCorrect: true
+        rationale: >-
+          A personal social connection creates a second relationship and exposes both parties
+          to information neither should have in this role.
+      - id: b
+        text: Accept but restrict what the parent can see
+        isCorrect: false
+        rationale: >-
+          Restricting visibility does not undo the second relationship the connection creates.
+      - id: c
+        text: Accept, since refusing would seem cold and damage rapport
+        isCorrect: false
+        rationale: >-
+          A brief, friendly explanation preserves rapport without creating the conflict.
+      - id: d
+        text: Accept and mention it to the supervisor afterwards
+        isCorrect: false
+        rationale: >-
+          Reporting it does not resolve it, and the connection is easier not to make than to
+          unwind.
+    explanation: >-
+      Declining is easier at the moment of the request than at any point afterwards, and a
+      short explanation is almost always received well. Employers frequently have a policy
+      on this, which is worth knowing before the request arrives.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [dual-relationship, confidentiality, public-statement, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Multiple relationships
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Multiple relationships
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f8-holiday-gift
+    credential: RBT
+    taskRef: { credential: RBT, code: F.8 }
+    type: single-best-answer
+    stem: >-
+      At the end of the year a family offers a technician a gift card of significant
+      value. The technician should:
+    options:
+      - id: a
+        text: Decline it, explain the limits their role places on gifts, and tell the supervisor
+        isCorrect: true
+        rationale: >-
+          A gift of significant value creates an obligation, and the limits are part of the
+          role rather than a personal preference.
+      - id: b
+        text: Accept it, since refusing would offend the family
+        isCorrect: false
+        rationale: >-
+          Possible offence is a reason to decline warmly and explain, not a reason to accept.
+      - id: c
+        text: Accept it and share it with the team
+        isCorrect: false
+        rationale: >-
+          Distributing it does not change that it was accepted.
+      - id: d
+        text: Accept it if the employer has no written policy on gifts
+        isCorrect: false
+        rationale: >-
+          The absence of a policy does not remove the ethical limit.
+    explanation: >-
+      A small, nominal token — a card, something home-made — is usually unremarkable.
+      Value is what turns a kindness into an obligation, and where the line falls is a
+      supervisor conversation worth having before December.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [conflict-of-interest, dual-relationship, ethics-code, dignity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Gifts
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Gifts
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f8-giving-a-gift
+    credential: RBT
+    taskRef: { credential: RBT, code: F.8 }
+    type: single-best-answer
+    stem: >-
+      A technician wants to buy a learner a birthday present out of their own money. The
+      appropriate step is:
+    options:
+      - id: a
+        text: Raise it with the supervisor first, because giving gifts carries the same limits as receiving them
+        isCorrect: true
+        rationale: >-
+          The limits run in both directions, and a gift from a technician can create
+          obligation and expectation just as one to them can.
+      - id: b
+        text: Go ahead, since giving a gift creates no obligation for the technician
+        isCorrect: false
+        rationale: >-
+          It creates expectation for the family and for the technician's colleagues, which is
+          the same problem from the other side.
+      - id: c
+        text: Go ahead if the gift is inexpensive
+        isCorrect: false
+        rationale: >-
+          Cost is relevant and is not the only consideration; the supervisor should still
+          know.
+      - id: d
+        text: Ask the family what the learner would like
+        isCorrect: false
+        rationale: >-
+          This commits to the gift before the question of whether to give one has been
+          settled.
+    explanation: >-
+      Technicians frequently care a great deal about the learners they work with, and the
+      impulse is a good one. The limit exists because a gift from one technician sets an
+      expectation for the next, and for the family with the next child.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [conflict-of-interest, dual-relationship, supervision, ethics-code]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Gifts
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Gifts
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f8-nominal-token
+    credential: RBT
+    taskRef: { credential: RBT, code: F.8 }
+    type: single-best-answer
+    stem: >-
+      Which is most likely to fall within acceptable limits?
+    options:
+      - id: a
+        text: A card and a small home-made item given by the family at the end of a programme
+        isCorrect: true
+        rationale: >-
+          A nominal, non-monetary token of thanks is generally acceptable and creates little
+          obligation.
+      - id: b
+        text: A weekend away offered by a grateful family
+        isCorrect: false
+        rationale: >-
+          A gift of substantial value creates a clear obligation.
+      - id: c
+        text: Cash equivalent to a day's pay
+        isCorrect: false
+        rationale: >-
+          Money from a client family is the clearest form of obligation and is not
+          appropriate.
+      - id: d
+        text: Regular weekly lunches paid for by the family
+        isCorrect: false
+        rationale: >-
+          A recurring benefit accumulates into a substantial one and normalises the
+          arrangement.
+    explanation: >-
+      The distinction is value and recurrence rather than intent. A one-off nominal token
+      is different in kind from something valuable or something that repeats, and
+      employers often set a figure — knowing yours is the practical version of this
+      standard.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [conflict-of-interest, dual-relationship, ethics-code, dignity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Gifts
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Gifts
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f9-receiving-correction
+    credential: RBT
+    taskRef: { credential: RBT, code: F.9 }
+    type: single-best-answer
+    stem: >-
+      A supervisor observes a session and says the technician's prompting was too heavy.
+      The most useful response is:
+    options:
+      - id: a
+        text: Ask what to do differently, restate it, and apply it in the next session
+        isCorrect: true
+        rationale: >-
+          Feedback only changes anything once it is specific enough to act on and is actually
+          applied.
+      - id: b
+        text: Explain why the session went the way it did
+        isCorrect: false
+        rationale: >-
+          Context may matter, and leading with explanation tends to close the conversation
+          rather than use it.
+      - id: c
+        text: Accept it without comment so as not to seem defensive
+        isCorrect: false
+        rationale: >-
+          Silent acceptance often means the feedback was not understood well enough to apply.
+      - id: d
+        text: Ask for the feedback in writing so it can be reviewed later
+        isCorrect: false
+        rationale: >-
+          Written feedback has uses and delays the change, and removes the chance to clarify
+          now.
+    explanation: >-
+      Taking feedback is a skill with observable parts, and it is one of the strongest
+      predictors of how quickly a technician improves. The test is whether the next
+      session looks different.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [performance-feedback, supervision, prompt-hierarchy, behavioral-skills-training]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Working with others
+      - sourceId: parsons-rollyson-reid-2012
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f9-disagreeing-well
+    credential: RBT
+    taskRef: { credential: RBT, code: F.9 }
+    type: single-best-answer
+    stem: >-
+      A technician believes an instruction from their supervisor will not work for this
+      learner. The appropriate action is:
+    options:
+      - id: a
+        text: Raise the concern with the supervisor, with what they have observed, and follow the instruction meanwhile
+        isCorrect: true
+        rationale: >-
+          Concerns are raised with evidence and the plan continues to be implemented as
+          written until the supervisor changes it.
+      - id: b
+        text: Follow the instruction and say nothing
+        isCorrect: false
+        rationale: >-
+          Withholding a relevant observation deprives the supervisor of information they need.
+      - id: c
+        text: Modify the instruction slightly to make it work
+        isCorrect: false
+        rationale: >-
+          Changing a procedure without authorisation is outside the role and contaminates the
+          data.
+      - id: d
+        text: Ask a colleague whether they agree before deciding what to do
+        isCorrect: false
+        rationale: >-
+          A peer's opinion does not authorise anything and delays raising it with the person
+          responsible.
+    explanation: >-
+      The technician is often the person who sees a problem first, which makes raising it
+      part of the job rather than a challenge to authority. The order matters: raise it,
+      and keep running the plan until it changes.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [supervision, treatment-integrity, scope-of-practice, collaboration]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Working with others
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Responsibility to supervisors
+    attestation: *att
+    review: *rev
+    provenance: *prov
+  - id: rbt-f9-working-with-the-team
+    credential: RBT
+    taskRef: { credential: RBT, code: F.9 }
+    type: single-best-answer
+    stem: >-
+      A teaching assistant asks a technician to explain what they are doing with the
+      learner during a shared lesson. The best response is:
+    options:
+      - id: a
+        text: Explain the part of the procedure they are running, and refer anything about the plan to the supervisor
+        isCorrect: true
+        rationale: >-
+          Describing your own role is appropriate and helps the team; explaining or justifying
+          the plan is the supervisor's part.
+      - id: b
+        text: Explain the whole behaviour plan so the assistant can support it
+        isCorrect: false
+        rationale: >-
+          Sharing the plan is a disclosure decision and an interpretation task that is not the
+          technician's.
+      - id: c
+        text: Say that they are not permitted to discuss the learner at all
+        isCorrect: false
+        rationale: >-
+          A flat refusal is inaccurate and damages a working relationship the learner depends
+          on.
+      - id: d
+        text: Suggest the assistant ask the family about it
+        isCorrect: false
+        rationale: >-
+          Directing a colleague to the family instead of the supervisor is the wrong route.
+    explanation: >-
+      Collaboration and confidentiality are not in tension here as often as people assume.
+      Describing what you are doing in the room is usually fine; handing over the plan, or
+      explaining why it is designed that way, is not yours to do.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [collaboration, confidentiality, scope-of-practice, supervision]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+        locator: Working with others
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+        locator: Confidentiality
+    attestation: *att
+    review: *rev
+    provenance: *prov

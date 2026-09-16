@@ -69,6 +69,18 @@ class Study {
 		void this.refresh();
 	}
 
+	/**
+	 * Drop the card cache so the next refresh re-reads storage.
+	 *
+	 * The cache is loaded once and kept, because `refresh()` runs on every filter change.
+	 * Anything that writes cards from outside this class — a quiz run making what it
+	 * caught out due — has to say so, or the deck goes on showing the counts it had
+	 * before.
+	 */
+	invalidateCards(): void {
+		this.#cards.clear();
+	}
+
 	/** The term ids the current filter puts in play. */
 	get deck(): string[] {
 		return termIndex.filter((t) => t.f && filters.matches(t)).map((t) => t.i);

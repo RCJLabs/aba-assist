@@ -498,6 +498,18 @@
 			an accuracy only where enough has been answered to mean anything.
 		</p>
 
+		{#if quiz.reinforced > 0}
+			<p class="reinforced" role="status" data-reinforced={quiz.reinforced}>
+				<strong
+					>{quiz.reinforced}
+					{quiz.reinforced === 1 ? 'term is' : 'terms are'} now due in your flashcards.</strong
+				>
+				What you missed here schedules the terms behind it —
+				<a href={resolve('/study')}>review them</a>. Nothing was marked as a failed review: the
+				cards are due, not graded.
+			</p>
+		{/if}
+
 		{#if quiz.results.missed.length > 0}
 			<h3>Questions you missed</h3>
 			<ol class="missed">
@@ -789,6 +801,14 @@
 		font-size: 0.85rem;
 		text-decoration: none;
 	}
+	.reinforced {
+		border: 1px solid var(--border);
+		border-left-width: 4px;
+		border-radius: var(--radius);
+		padding: 0.6rem 0.75rem;
+		font-size: 0.9rem;
+	}
+
 	.results h2 {
 		font-size: 1.3rem;
 	}

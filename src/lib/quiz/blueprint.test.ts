@@ -65,6 +65,50 @@ describe('the technician question bank', () => {
 	});
 });
 
+describe('the technician bank at task level', () => {
+	/*
+	 * The area ratchets above can be met while an individual task carries one question,
+	 * and a task with one question is a task the reader meets once and then recognises by
+	 * its wording rather than by knowing the answer.
+	 *
+	 * The ethics floor is higher on purpose. The 3rd edition doubled this domain — F.5 to
+	 * F.9 are the tasks it added — and being right about the current edition is the whole
+	 * claim this app makes against material still written for the previous one. A thin
+	 * ethics domain would make that claim hollow in exactly the place it is checked.
+	 */
+	const TASK_FLOOR = 2;
+	const ETHICS_ADDED = ['F.5', 'F.6', 'F.7', 'F.8', 'F.9'];
+	const ETHICS_FLOOR = 4;
+
+	const counts = async () => {
+		const questions = await loadQuestions('RBT');
+		const per = new Map<string, number>();
+		for (const q of questions) per.set(q.taskRef.code, (per.get(q.taskRef.code) ?? 0) + 1);
+		return per;
+	};
+
+	it('asks about every task at least twice', async () => {
+		const per = await counts();
+		const outline = Object.values(outlines).find((o) => o.credential === 'RBT')!;
+		const thin = outline.domains
+			.flatMap((d) => d.tasks.map((t) => t.code))
+			.filter((code) => (per.get(code) ?? 0) < TASK_FLOOR);
+		expect(thin).toEqual([]);
+	});
+
+	it('covers the tasks the 3rd edition added more than twice over', async () => {
+		const per = await counts();
+		for (const code of ETHICS_ADDED) {
+			expect(per.get(code) ?? 0, `task ${code}`).toBeGreaterThanOrEqual(ETHICS_FLOOR);
+		}
+	});
+
+	it('covers the crisis task, which is the one with the worst failure mode', async () => {
+		const per = await counts();
+		expect(per.get('D.7') ?? 0).toBeGreaterThanOrEqual(ETHICS_FLOOR);
+	});
+});
+
 describe('the analyst question bank', () => {
 	it('can fill a full-length paper without repeating an item', async () => {
 		const outline = Object.values(outlines).find((o) => o.credential === 'BCBA')!;

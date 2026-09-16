@@ -685,3 +685,18 @@ export async function clearAll(): Promise<void> {
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
 	await tx.done;
 }
+
+/**
+ * Write several cards in one transaction.
+ *
+ * Used when a quiz run makes the terms it caught out due for review: either all of them
+ * land or none do, so a half-written batch cannot leave the deck in a state the reader
+ * would have to work out for themselves.
+ */
+export async function putCards(cards: CardRecord[]): Promise<void> {
+	if (cards.length === 0) return;
+	const db = await openAbaDB();
+	const tx = db.transaction('cards', 'readwrite');
+	await Promise.all(cards.map((c) => tx.store.put(c)));
+	await tx.done;
+}
