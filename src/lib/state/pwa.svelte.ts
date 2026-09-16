@@ -16,7 +16,38 @@ class Pwa {
 	updateReady = $state(false);
 	offlineReady = $state(false);
 
+	/**
+	 * Whether the device reports a connection.
+	 *
+	 * Reported, not verified, and only ever acted on in one direction. `navigator.onLine`
+	 * says true for a captive portal or a router with no route to the internet, so a page
+	 * that announced "you are online" on the strength of it would be wrong often enough to
+	 * matter. False is the reliable half: when the device says there is no connection,
+	 * there is none. So the app only ever shows the offline state, and shows nothing at
+	 * all the rest of the time.
+	 */
+	online = $state(true);
+
 	#waiting: ServiceWorker | null = null;
+
+	/**
+	 * Follow the device's connection state.
+	 *
+	 * Separate from `register`, and not conditional on it: a browser that refuses service
+	 * workers still goes offline, and the reader is owed the same notice. Returns its own
+	 * teardown so a caller can stop listening.
+	 */
+	watchConnection(): () => void {
+		if (!browser) return () => {};
+		this.online = navigator.onLine;
+		const sync = () => (this.online = navigator.onLine);
+		addEventListener('online', sync);
+		addEventListener('offline', sync);
+		return () => {
+			removeEventListener('online', sync);
+			removeEventListener('offline', sync);
+		};
+	}
 
 	async register(): Promise<void> {
 		if (!browser || !('serviceWorker' in navigator)) return;

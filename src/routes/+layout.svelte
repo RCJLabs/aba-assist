@@ -6,6 +6,7 @@
 	import { page } from '$app/state';
 	import LiveRegion from '$lib/a11y/LiveRegion.svelte';
 	import SkipLink from '$lib/a11y/SkipLink.svelte';
+	import ConnectionNotice from '$lib/components/ConnectionNotice.svelte';
 	import ReviewBanner from '$lib/components/ReviewBanner.svelte';
 	import UpdatePrompt from '$lib/components/UpdatePrompt.svelte';
 	import { settings } from '$lib/state/settings.svelte.js';
@@ -19,6 +20,8 @@
 		settings.hydrate();
 		filters.hydrate();
 		void pwa.register();
+		// Not inside `register`: a browser that refuses service workers still goes offline.
+		return pwa.watchConnection();
 	});
 
 	/*
@@ -150,7 +153,13 @@
 	</ul>
 </nav>
 
+<!--
+	Both sit below the navigation so neither covers it. The connection notice is last: an
+	update prompt is something to act on and this is something to know, so the thing with
+	a button stays nearer the thumb.
+-->
 <UpdatePrompt />
+<ConnectionNotice />
 
 <LiveRegion />
 
