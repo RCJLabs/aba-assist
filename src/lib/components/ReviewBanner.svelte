@@ -16,14 +16,21 @@
 -->
 {#if preview}
 	<div class="banner" role="note">
-		<strong>Preview build.</strong>
-		{#if unreviewed}{unreviewed}
-			{unreviewed === 1 ? 'entry has' : 'entries have'}{:else}Content has{/if} not been through clinical
-		review yet. Do not rely on this for practice decisions.
+		<!--
+			Two lines on a phone rather than three.
+			
+			It sits on every screen, so each line it wraps to is a line of the app nobody
+			can read. The count went to the queue, which is the only place it can be acted
+			on; the warning stayed, because that is the part somebody could be harmed by
+			not seeing and it is not going behind a disclosure to save 20 pixels.
+		-->
+		<strong>Preview build</strong> — not clinically reviewed. Do not rely on it for practice
+		decisions.
 		<!--
 			The link a reviewer needs and nobody else does. It costs a reader nothing — the
-			queue explains what it is on arrival — and it is the difference between the one
-			person who can clear this banner having to remember a URL and not.
+			queue explains what it is on arrival, and says the number this used to carry —
+			and it is the difference between the one person who can clear this banner
+			having to remember a URL and not.
 		-->
 		<a href={resolve('/review')}>Review the content</a>
 	</div>
@@ -47,8 +54,10 @@
 		background: var(--caution-bg);
 		color: var(--caution-text);
 		border-bottom: 1px solid var(--caution-border);
-		padding: 0.5rem 1rem;
-		font-size: 0.9rem;
+		padding: 0.35rem 1rem;
+		font-size: 0.85rem;
+		line-height: 1.35;
 		text-align: center;
+		text-wrap: balance;
 	}
 </style>

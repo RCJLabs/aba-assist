@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, onNavigate } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import LiveRegion from '$lib/a11y/LiveRegion.svelte';
@@ -19,6 +19,40 @@
 		settings.hydrate();
 		filters.hydrate();
 		void pwa.register();
+	});
+
+	/*
+	 * Cross-fade between pages, where the browser supports it.
+	 *
+	 * Client-side routing replaces the DOM without the browser ever knowing a navigation
+	 * happened, so the cross-document `@view-transition` rule in app.css does nothing on
+	 * its own after the first load. This is what asks for one.
+	 *
+	 * The escalation route is exempt in both directions. Every other page can afford
+	 * 140ms; the one somebody opens because a learner is hurt cannot, and "it is only a
+	 * fraction of a second" is the argument that ends with an app that hesitates in the
+	 * one moment it must not. Reduced motion is handled in CSS, where the pseudo-elements
+	 * the transition runs on actually live.
+	 */
+	const URGENT = '/help';
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+		/*
+		 * Not started at all rather than started and instantly finished. The CSS override
+		 * below handles the transition the browser runs by itself on a full page load,
+		 * which no script can intercept; here there is a script, so the honest thing is to
+		 * not ask for the animation in the first place.
+		 */
+		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const to = navigation.to?.url.pathname ?? '';
+		const from = navigation.from?.url.pathname ?? '';
+		if (to.endsWith(URGENT) || from.endsWith(URGENT)) return;
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
 	});
 
 	afterNavigate(({ type }) => {

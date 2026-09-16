@@ -316,6 +316,23 @@ main {
 	scroll-margin-block-end: calc(var(--actionbar-h) + 1rem);
 }
 
+/*
+ * Cross-fade between pages, where the browser can do it for free.
+ *
+ * Shorter than the 250ms the user agent defaults to. This app is opened one-handed
+ * between sessions, so a transition is worth having only while it stays under the
+ * threshold where it reads as the page being slow. The escalation route opts out
+ * entirely — see `onNavigate` in the layout.
+ */
+@view-transition {
+	navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 140ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
@@ -324,6 +341,17 @@ main {
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.001ms !important;
 		scroll-behavior: auto !important;
+	}
+
+	/*
+	 * The universal rule above does not reach these: they are pseudo-elements on the
+	 * view-transition tree, which `*` does not match. Without this the cross-fade still
+	 * plays for somebody who asked for no motion.
+	 */
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
 	}
 }
 

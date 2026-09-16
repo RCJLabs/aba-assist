@@ -124,7 +124,15 @@
 		border-bottom: 1px solid var(--border);
 	}
 
-	a {
+	/*
+	 * Scoped to the list rows rather than every link on the page.
+	 *
+	 * A bare `a` selector is still scoped to this component, which is not the same as
+	 * scoped to the list: it also caught the one-sentence link above the filters and made
+	 * it a 44px block, breaking that sentence across three lines. A row is a tap target
+	 * and a link inside a sentence is not.
+	 */
+	li > a {
 		display: block;
 		padding: 0.75rem 0.25rem;
 		min-height: var(--tap);
