@@ -119,6 +119,30 @@ class Quiz {
 		return Object.values(this.flagged).filter(Boolean).length;
 	}
 
+	/**
+	 * Right so far, and the current run of them.
+	 *
+	 * Only meaningful where the reader has already been told each verdict. In the modes
+	 * that withhold feedback this is the answer key, so the page must not show it — see
+	 * the progress bar, which has the same rule.
+	 */
+	get runningScore(): { correct: number; answered: number; streak: number } {
+		let correct = 0;
+		let answered = 0;
+		let streak = 0;
+		for (const it of this.items) {
+			if (it.correct === null) continue;
+			answered += 1;
+			if (it.correct) {
+				correct += 1;
+				streak += 1;
+			} else {
+				streak = 0;
+			}
+		}
+		return { correct, answered, streak };
+	}
+
 	/** What a simulation would look like right now, given what is in the bank. */
 	async previewPlan(): Promise<SimulationPlan | null> {
 		if (!browser) return null;

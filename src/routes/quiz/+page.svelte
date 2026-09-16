@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { outlineForCredential, questionCredentials, termIndex } from '$lib/content/load.js';
@@ -12,11 +13,25 @@
 	const termName = new Map(termIndex.map((t) => [t.i, t.t]));
 
 	onMount(() => {
-		// The exam page and the shared filter can preselect the exam and domain. The
-		// filter is hydrated here because this runs before the root layout mounts.
+		/*
+		 * The exam page and the shared filter can preselect the exam and domain. The
+		 * filter is hydrated here because this runs before the root layout mounts.
+		 *
+		 * Precedence, highest first: the URL, because a link asked for it explicitly; then
+		 * anything the reader changed on the form before the bundle arrived, because they
+		 * asked for it more recently than the filter did; then the saved filter; then the
+		 * default. Without the middle term this used to overwrite the reader's choice a
+		 * moment after they made it.
+		 */
 		filters.hydrate();
-		const cred = page.url.searchParams.get('credential') ?? filters.refCredential ?? 'RBT';
-		const domain = page.url.searchParams.get('domain') ?? filters.domain;
+		// `||` rather than `??`: an unchanged control reads as an empty string, not null,
+		// and an empty string is the absence of a choice rather than a choice of nothing.
+		const cred =
+			page.url.searchParams.get('credential') ||
+			picked.credential ||
+			filters.refCredential ||
+			'RBT';
+		const domain = page.url.searchParams.get('domain') || picked.domain || filters.domain;
 		quiz.configure({
 			credential: questionCredentials.includes(cred)
 				? cred
@@ -27,14 +42,58 @@
 
 	let setupForm = $state<HTMLFormElement | null>(null);
 
-	/** Copy whatever the setup form currently shows into the quiz state. */
-	function adoptForm(): void {
-		if (!setupForm) return;
-		const data = new FormData(setupForm);
-		const credential = String(data.get('credential') ?? '');
-		const domain = String(data.get('domain') ?? '');
-		const count = Number(data.get('count') ?? NaN);
-		const mode = String(data.get('mode') ?? '');
+	/*
+	 * Adopt the prerendered form before this component renders over it.
+	 *
+	 * The page ships as static HTML, so the setup form is on screen and usable while the
+	 * bundle is still loading. A choice made in that window is in the DOM and not in the
+	 * state, and the template's `value={…}` would then quietly put it back — the reader
+	 * picks five questions, the select snaps to ten, and nothing says why.
+	 *
+	 * This runs in the component's script body, which on hydration is after the
+	 * prerendered elements are in the document and before Svelte writes to them. That is
+	 * the only moment the reader's choice is readable. On a client-side navigation there
+	 * is no such form yet and every read is null, which is a no-op.
+	 */
+	/** What the reader changed before the bundle arrived, and only that. */
+	const picked = browser
+		? readChangedSetup()
+		: { credential: '', domain: '', count: 0, mode: '' };
+	if (browser) applySetup(picked.credential, picked.domain, picked.count, picked.mode);
+
+	/*
+	 * A control counts as chosen only when it differs from the markup it was served with.
+	 *
+	 * Reading the values alone would make an untouched page look like a decision and
+	 * override the exam a deep link or the saved filter asked for. `defaultSelected` and
+	 * `defaultChecked` reflect the HTML attribute rather than the current state, so they
+	 * say what was served no matter what the reader has since done.
+	 */
+	function readChangedSetup(): {
+		credential: string;
+		domain: string;
+		count: number;
+		mode: string;
+	} {
+		const changedSelect = (id: string) => {
+			const el = document.getElementById(id) as HTMLSelectElement | null;
+			if (!el) return '';
+			const served =
+				[...el.options].find((o) => o.defaultSelected)?.value ?? el.options[0]?.value;
+			return el.value === served ? '' : el.value;
+		};
+		const radio = [...document.querySelectorAll<HTMLInputElement>('input[name="mode"]')].find(
+			(el) => el.checked && !el.defaultChecked
+		);
+		return {
+			credential: changedSelect('quiz-exam'),
+			domain: changedSelect('quiz-domain'),
+			count: Number(changedSelect('quiz-count')),
+			mode: radio?.value ?? ''
+		};
+	}
+
+	function applySetup(credential: string, domain: string, count: number, mode: string): void {
 		quiz.configure({
 			...(questionCredentials.includes(credential) ? { credential } : {}),
 			...(domain ? { domain } : {}),
@@ -43,6 +102,22 @@
 				? { mode: mode as QuizMode }
 				: {})
 		});
+	}
+
+	/**
+	 * Copy whatever the setup form currently shows into the quiz state, at submit.
+	 *
+	 * The adoption above covers the load; this covers everything after it, so a change
+	 * that never reached a handler for any reason cannot start the wrong run.
+	 */
+	function adoptForm(): void {
+		if (!setupForm) return;
+		const data = new FormData(setupForm);
+		const credential = String(data.get('credential') ?? '');
+		const domain = String(data.get('domain') ?? '');
+		const count = Number(data.get('count') ?? NaN);
+		const mode = String(data.get('mode') ?? '');
+		applySetup(credential, domain, count, mode);
 	}
 
 	const domains = $derived(outlineForCredential(quiz.credential)?.domains ?? []);
@@ -74,6 +149,17 @@
 	 * whether the run has a simulation plan, which is what let test mode fall through to
 	 * the practice wording.
 	 */
+	/*
+	 * Whether the page is allowed to show how the run is going.
+	 *
+	 * Practice mode gives a verdict on every question, so a bar coloured right and wrong
+	 * tells the reader nothing they were not just told. The other two modes withhold
+	 * feedback on purpose, and a coloured bar there would hand back the answer key one
+	 * segment at a time — so they get answered-or-not and nothing else.
+	 */
+	const showsVerdicts = $derived(quiz.mode === 'practice');
+	const score = $derived(quiz.runningScore);
+
 	const submitLabel = $derived.by(() => {
 		if (quiz.mode === 'practice') return 'Check answer';
 		return quiz.index + 1 >= quiz.items.length ? 'Finish' : 'Answer and continue';
@@ -86,6 +172,21 @@
 	const isMulti = $derived(item?.q.type === 'multi-select');
 	const letterOf = (id: string) => id.toUpperCase();
 
+	let verdictEl = $state<HTMLElement | null>(null);
+	let stemEl = $state<HTMLElement | null>(null);
+
+	/**
+	 * Put the reader where the new thing is.
+	 *
+	 * Checking an option scrolls it into view, so by the time the answer is submitted the
+	 * page is parked somewhere in the middle of the options and the verdict — which is
+	 * above the stem — is off the top of the screen. Moving focus scrolls it into view and
+	 * tells a screen reader where it went, which a scroll on its own does not.
+	 */
+	function focusAfterPaint(get: () => HTMLElement | null): void {
+		requestAnimationFrame(() => get()?.focus());
+	}
+
 	function submit() {
 		quiz.submit();
 		if (quiz.status === 'feedback') {
@@ -93,13 +194,19 @@
 				quiz.current?.correct ? 'Correct.' : 'Not correct. Rationale shown.',
 				'assertive'
 			);
+			focusAfterPaint(() => verdictEl);
 		}
 	}
 
 	async function next() {
 		await quiz.next();
 		if (quiz.status === 'done') announcer.announce('Session finished. Results shown.');
-		else announcer.announce(`Question ${quiz.progress.n} of ${quiz.progress.total}`);
+		else {
+			announcer.announce(`Question ${quiz.progress.n} of ${quiz.progress.total}`);
+			// Same reason, the other way: the next question starts at its stem, not at
+			// wherever the last one's rationales left the page.
+			focusAfterPaint(() => stemEl);
+		}
 	}
 
 	const pct = (c: number, t: number) => (t === 0 ? 0 : Math.round((100 * c) / t));
@@ -355,17 +462,55 @@
 			</div>
 		{/if}
 
+		<!--
+			One segment per question. `role="progressbar"` carries the position; the
+			segments are decoration on top of it, and in practice mode the tally below
+			says the same thing in words so the colours are never the only reading.
+		-->
+		<div
+			class="bar"
+			role="progressbar"
+			aria-valuemin={0}
+			aria-valuemax={quiz.items.length}
+			aria-valuenow={quiz.answeredCount}
+			aria-label="Questions answered"
+		>
+			{#each quiz.items as it, i (it.q.id)}
+				<span
+					class="seg"
+					data-state={it.correct === null
+						? i === quiz.index
+							? 'current'
+							: 'todo'
+						: showsVerdicts
+							? it.correct
+								? 'right'
+								: 'wrong'
+							: 'done'}
+					aria-hidden="true"
+				></span>
+			{/each}
+		</div>
+
 		<p class="progress">
-			Question {quiz.progress.n} of {quiz.progress.total}{#if !quiz.plan}
-				· {item.q.taskRef.credential}
+			Question {quiz.progress.n} of {quiz.progress.total}{#if !quiz.plan}&nbsp;·
+				{item.q.taskRef.credential}
 				{item.q.taskRef.code}{/if}
 			<!--
 				Said on every question rather than once at setup. The setting was chosen a
 				screen ago and the consequence lands here, which is where somebody wonders
 				why the answer has not appeared.
 			-->
-			{#if quiz.mode !== 'practice'}<span class="withheld">· answers at the end</span>{/if}
+			{#if quiz.mode !== 'practice'}<span class="withheld">&nbsp;· answers at the end</span
+				>{/if}
 		</p>
+
+		{#if showsVerdicts && score.answered > 0}
+			<p class="tally" aria-live="polite">
+				<span class="chip">{score.correct} of {score.answered} right so far</span>
+				{#if score.streak >= 3}<span class="chip streak">{score.streak} in a row</span>{/if}
+			</p>
+		{/if}
 
 		{#if item.q.negated}
 			<p class="callout" role="note">
@@ -373,8 +518,30 @@
 			</p>
 		{/if}
 
+		<!--
+			The verdict, before the options rather than after them.
+			
+			It used to sit under the explanation, which is below four per-option rationales
+			— so the one thing the reader pressed the button to find out was the last thing
+			on the page, several screens down. The detail stays where it was; only the
+			answer to "did I get it right" moves up.
+		-->
+		{#if quiz.status === 'feedback'}
+			<p
+				class="verdict-top"
+				data-correct={item.correct}
+				role="status"
+				tabindex="-1"
+				bind:this={verdictEl}
+			>
+				<span class="mark" aria-hidden="true">{item.correct ? '✓' : '✗'}</span>
+				<strong>{item.correct ? 'Correct.' : 'Not correct.'}</strong>
+				<span class="muted">The reasoning for every option is below.</span>
+			</p>
+		{/if}
+
 		<fieldset>
-			<legend>{item.q.stem}</legend>
+			<legend tabindex="-1" bind:this={stemEl}>{item.q.stem}</legend>
 			{#if isMulti}<p class="muted">Select every option that applies.</p>{/if}
 			<ul class="options">
 				{#each item.order as id (id)}
@@ -467,7 +634,6 @@
 			{/if}
 		{:else}
 			<div class="explanation" role="region" aria-label="Explanation">
-				<p class="verdict">{item.correct ? 'Correct.' : 'Not correct.'}</p>
 				<p>{item.q.explanation}</p>
 				{#if item.q.termRefs.length}
 					<p class="terms">
@@ -521,7 +687,14 @@
 			larger bank. Use the areas below to decide what to study next.
 		</p>
 
-		<table>
+		<!--
+			A bar in each row, beside the figures rather than instead of them. The table
+			stays the reading a screen reader gets and the numbers stay exact; the bar is a
+			second pass over the same row, so a weak area is visible without reading six
+			percentages. Deliberately no overall ring: this app refuses to state a
+			readiness score, and a ring is the shape people read one into.
+		-->
+		<table class="areas">
 			<caption class="visually-hidden">Results by content area</caption>
 			<thead>
 				<tr
@@ -532,7 +705,12 @@
 			<tbody>
 				{#each Object.entries(quiz.results.perDomain).sort() as [letter, row] (letter)}
 					<tr>
-						<th scope="row">{letter}. {row.name}</th>
+						<th scope="row">
+							{letter}. {row.name}
+							<span class="track" aria-hidden="true">
+								<span class="fill" style="width: {pct(row.correct, row.total)}%"></span>
+							</span>
+						</th>
 						<td>{row.correct} / {row.total}</td>
 						<td>{pct(row.correct, row.total)}%</td>
 					</tr>
@@ -802,6 +980,115 @@
 		font-size: 0.9rem;
 		color: var(--text-muted);
 	}
+
+	.bar {
+		display: flex;
+		gap: 2px;
+		height: 6px;
+		margin: 0 0 0.5rem;
+	}
+	.seg {
+		flex: 1 1 0;
+		min-width: 2px;
+		border-radius: 2px;
+		background: var(--border);
+	}
+	.seg[data-state='current'] {
+		background: var(--text-muted);
+	}
+	.seg[data-state='done'] {
+		background: var(--text-muted);
+		opacity: 0.55;
+	}
+	.seg[data-state='right'] {
+		background: var(--accent);
+	}
+	.seg[data-state='wrong'] {
+		background: var(--stop-border);
+	}
+
+	.tally {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin: 0 0 0.75rem;
+	}
+	.tally .chip {
+		display: inline-block;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 0.05rem 0.55rem;
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+	.tally .chip.streak {
+		border-color: var(--accent);
+		color: var(--text);
+	}
+
+	.verdict-top {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.4rem;
+		margin: 0 0 0.75rem;
+		padding: 0.55rem 0.8rem;
+		border-radius: var(--radius);
+		border: 1px solid var(--border);
+		background: var(--surface);
+		animation: verdict-in 200ms ease-out;
+	}
+	.verdict-top:focus-visible,
+	.verdict-top:focus {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+	.verdict-top[data-correct='true'] {
+		border-color: var(--accent);
+	}
+	.verdict-top[data-correct='false'] {
+		border-color: var(--stop-border);
+	}
+	.verdict-top .mark {
+		font-size: 1.1rem;
+		line-height: 1;
+	}
+	.verdict-top .muted {
+		font-size: 0.85rem;
+	}
+	@keyframes verdict-in {
+		from {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.verdict-top {
+			animation: none;
+		}
+	}
+
+	/* A bar under each area name, reading the same number as the cells beside it. */
+	.areas th[scope='row'] {
+		min-width: 9rem;
+	}
+	.areas .track {
+		display: block;
+		height: 0.4rem;
+		margin-top: 0.3rem;
+		border-radius: 999px;
+		background: var(--surface);
+		overflow: hidden;
+	}
+	.areas .fill {
+		display: block;
+		height: 100%;
+		background: var(--accent);
+	}
 	.options {
 		list-style: none;
 		padding: 0;
@@ -837,10 +1124,6 @@
 		padding: 0.6rem 0.9rem;
 		border-radius: 0 var(--radius) var(--radius) 0;
 		margin-bottom: 1rem;
-	}
-	.verdict {
-		font-weight: 700;
-		margin-top: 0;
 	}
 	.terms a {
 		display: inline-flex;

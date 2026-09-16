@@ -22,7 +22,7 @@ test('a practice session gives a rationale for every option and a per-area resul
 		// Feedback: every option carries a rationale, and the verdict is stated in words.
 		await expect(page.locator('.rationale')).toHaveCount(4);
 		await expect(page.getByRole('region', { name: 'Explanation' })).toBeVisible();
-		await expect(page.locator('.verdict')).toHaveText(/Correct\.|Not correct\./);
+		await expect(page.locator('.verdict-top')).toContainText(/Correct\.|Not correct\./);
 
 		await page.getByRole('button', { name: i < 5 ? 'Next question' : 'See results' }).click();
 	}
@@ -185,22 +185,97 @@ test('a simulation withholds every rationale until the end', async ({ page }) =>
 });
 
 test('a choice made before the page hydrates is still honoured', async ({ page }) => {
-	await page.goto('/quiz');
-
 	/*
-	 * The page is prerendered, so the form is on screen and usable before Svelte wires
-	 * its change handlers. Setting the value without dispatching an event is exactly what
-	 * that window looks like: the DOM moves and the state does not. The run must read the
-	 * form rather than trust that every change arrived.
+	 * The page is prerendered, so the form is on screen and usable before the bundle has
+	 * loaded. Two things could throw that choice away: the change handler is not wired
+	 * yet, and — worse — the template's `value={…}` puts the select back when it does
+	 * render. Blocking the bundle reproduces the window rather than racing it.
 	 */
-	await page.locator('#quiz-count').evaluate((el: HTMLSelectElement) => {
-		el.value = '5';
+	let release: (() => void) | undefined;
+	const held = new Promise<void>((r) => (release = r));
+	await page.route('**/_app/immutable/**', async (route) => {
+		await held;
+		await route.continue();
 	});
-	await page.locator('#quiz-exam').evaluate((el: HTMLSelectElement) => {
-		el.value = 'BCBA';
-	});
+
+	await page.goto('/quiz', { waitUntil: 'commit' });
+	await page.locator('#quiz-count').selectOption('5');
+	await page.locator('#quiz-exam').selectOption('BCBA');
+
+	release?.();
+	await expect(page.locator('#quiz-count')).toHaveValue('5');
+	await expect(page.locator('#quiz-exam')).toHaveValue('BCBA');
 
 	await page.getByRole('button', { name: 'Start' }).click();
 	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
 	await expect(page.locator('.progress')).toContainText('BCBA');
+});
+
+test('practice shows how the run is going, and puts the verdict where it can be seen', async ({
+	page
+}) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+
+	const bar = page.getByRole('progressbar', { name: 'Questions answered' });
+	await expect(bar).toHaveAttribute('aria-valuenow', '0');
+	await expect(bar).toHaveAttribute('aria-valuemax', '5');
+	await expect(page.locator('.tally')).toHaveCount(0);
+
+	await page.getByRole('radio').first().check();
+	await page.getByRole('button', { name: 'Check answer' }).click();
+
+	/*
+	 * Checking an option scrolls it into view, so the verdict has to come to the reader
+	 * rather than wait above the stem for them to scroll back up.
+	 */
+	const verdict = page.locator('.verdict-top');
+	await expect(verdict).toBeFocused();
+	await expect(verdict).toBeInViewport();
+	await expect(verdict).toContainText(/Correct\.|Not correct\./);
+
+	await expect(bar).toHaveAttribute('aria-valuenow', '1');
+	await expect(page.locator('.tally')).toContainText('of 1 right so far');
+	// The segment says which, and so does the tally — the colour is never the only reading.
+	await expect(page.locator('.seg').first()).toHaveAttribute('data-state', /right|wrong/);
+});
+
+test('the progress bar never leaks the answer key in a mode that withholds it', async ({
+	page
+}) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('radio', { name: /At the end/ }).check();
+	await page.getByRole('button', { name: 'Start' }).click();
+
+	await page.getByRole('radio').first().check();
+	await page.getByRole('button', { name: 'Answer and continue' }).click();
+
+	/*
+	 * Test mode holds every verdict back until the end. A bar coloured right and wrong
+	 * would hand the key back one segment at a time, so an answered question here is
+	 * answered and nothing more.
+	 */
+	await expect(page.locator('.seg').first()).toHaveAttribute('data-state', 'done');
+	await expect(page.locator('.seg[data-state="right"]')).toHaveCount(0);
+	await expect(page.locator('.seg[data-state="wrong"]')).toHaveCount(0);
+	// And no running score, for the same reason.
+	await expect(page.locator('.tally')).toHaveCount(0);
+});
+
+test('results show each area as a figure and as a bar', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	for (let i = 0; i < 5; i++) {
+		await page.getByRole('radio').first().check();
+		await page.getByRole('button', { name: 'Check answer' }).click();
+		await page.getByRole('button', { name: /Next question|See results/ }).click();
+	}
+	await expect(page.getByRole('heading', { name: /correct/ })).toBeVisible();
+	// The table is still the reading; the bars ride along inside it.
+	const rows = page.locator('.areas tbody tr');
+	await expect(rows.first()).toContainText('%');
+	await expect(page.locator('.areas .fill').first()).toBeAttached();
 });
