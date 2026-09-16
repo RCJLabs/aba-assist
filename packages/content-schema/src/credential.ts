@@ -260,6 +260,26 @@ export const CredentialFacts = strictContent({
 
 	const sup = ctx.value.requirements.supervision;
 	if (sup) {
+		/*
+		 * The two tiered fields describe one rule and are meaningless apart: a reduced
+		 * percentage with no threshold cannot be applied, and a threshold with no reduced
+		 * percentage says a step happens without saying to what. Requiring them together
+		 * also lets a reader of one conclude something about the other.
+		 */
+		if ((sup.reducedPercent === null) !== (sup.reducedAfterServiceHours === null)) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${ctx.value.id}: a tiered supervision requirement needs both the reduced percentage and the service hours it starts at`,
+				input: ctx.value.id
+			});
+		}
+		if (sup.reducedPercent !== null && sup.reducedPercent > sup.monthlyPercent) {
+			ctx.issues.push({
+				code: 'custom',
+				message: `${ctx.value.id}: the reduced supervision percentage (${sup.reducedPercent}) is above the ordinary one (${sup.monthlyPercent})`,
+				input: ctx.value.id
+			});
+		}
 		for (const [name, n] of [
 			['observedContactsPerMonth', sup.observedContactsPerMonth],
 			['individualContactsPerMonth', sup.individualContactsPerMonth]

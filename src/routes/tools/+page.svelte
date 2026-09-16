@@ -23,6 +23,30 @@
 	const fieldwork = $derived(tracker.period ? tracker.fieldworkProgress : null);
 
 	/*
+	 * The supervision blurb, assembled here rather than in the template.
+	 *
+	 * The percentage is a range where a credential steps it down with experience, because
+	 * stating the upper figure alone would read as the whole rule: the assistant-analyst
+	 * requirement drops from 5% to 2% after the first 1,000 hours of post-certification
+	 * practice, and the app has no way to know which of the two applies. The reduced
+	 * percentage and the hours it starts at are set as a pair or not at all, but a template
+	 * `{#if}` narrows only the field it names, so the sentence is built where both can be
+	 * checked together.
+	 */
+	const supervisionLine = $derived.by((): string | null => {
+		const req = tracker.supervisionRequirement;
+		if (!req) return null;
+		const contacts = `${req.contactsPerMonth} ${
+			req.contactsPerMonth === 1 ? 'real-time contact' : 'real-time contacts'
+		}`;
+		const { reducedPercent: reduced, reducedAfterServiceHours: after } = req;
+		if (reduced == null || after == null) {
+			return `${req.monthlyPercent}% of the hours you deliver each month, at every organisation, with ${contacts}.`;
+		}
+		return `${req.monthlyPercent}% of the hours you deliver each month for your first ${after.toLocaleString()} hours of practice, then ${reduced}% — at every organisation, with ${contacts}.`;
+	});
+
+	/*
 	 * The hub's figures, in the same form as the ones on the home page.
 	 *
 	 * These were three chips per card with a bare number each and no room for the sentence
@@ -245,26 +269,8 @@
 	<div class="cards" data-tracker={tracker.status}>
 		<article class="card">
 			<h2><a href={resolve('/tools/supervision')}>Supervision log</a></h2>
-			{#if tracker.supervisionRequirement}
-				{@const req = tracker.supervisionRequirement}
-				<p>
-					<!--
-						The percentage is a range where a credential steps it down with experience,
-						because stating the upper figure alone would read as the whole rule. The
-						assistant-analyst requirement drops from 5% to 2% after the first 1,000 hours
-						of post-certification practice, and the app has no way to know which applies.
-					-->
-					{#if req.reducedPercent !== null && req.reducedPercent !== undefined}
-						{req.monthlyPercent}% of the hours you deliver each month for your first
-						{req.reducedAfterServiceHours.toLocaleString()} hours of practice, then {req.reducedPercent}%
-						— at every organisation, with {req.contactsPerMonth}
-						{req.contactsPerMonth === 1 ? 'real-time contact' : 'real-time contacts'}.
-					{:else}
-						{req.monthlyPercent}% of the hours you deliver each month, at every organisation,
-						with {req.contactsPerMonth}
-						{req.contactsPerMonth === 1 ? 'real-time contact' : 'real-time contacts'}.
-					{/if}
-				</p>
+			{#if supervisionLine}
+				<p>{supervisionLine}</p>
 			{:else if tracker.credentialModelled}
 				<p>
 					An analyst's own certification is not maintained by being supervised. Use this to
