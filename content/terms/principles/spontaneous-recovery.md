@@ -29,6 +29,7 @@ taskRefs:
   - { credential: BCBA, code: B.10 }
   - { credential: BCaBA, code: B.9 }
   - { credential: BCaBA, code: H.5 }
+  - { credential: BCBA, code: H.5 }
 citations:
   - sourceId: lerman-iwata-1996
     useType: fact-reference

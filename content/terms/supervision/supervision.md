@@ -45,6 +45,9 @@ taskRefs:
   - { credential: BCaBA, code: I.4 }
   - { credential: BCaBA, code: I.5 }
   - { credential: BCaBA, code: I.9 }
+  - { credential: BCBA, code: I.3 }
+  - { credential: BCBA, code: I.4 }
+  - { credential: BCBA, code: I.7 }
 citations:
   - sourceId: bacb-rbt-handbook-2026
     useType: fact-reference

@@ -33,6 +33,7 @@ taskRefs:
   - { credential: BCaBA, code: E.9 }
   - { credential: BCaBA, code: H.8 }
   - { credential: BCaBA, code: I.3 }
+  - { credential: BCBA, code: E.10 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

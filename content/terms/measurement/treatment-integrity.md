@@ -37,6 +37,7 @@ taskRefs:
   - { credential: BCaBA, code: H.6 }
   - { credential: BCaBA, code: I.1 }
   - { credential: BCaBA, code: I.9 }
+  - { credential: BCBA, code: I.7 }
 citations:
   - sourceId: peterson-homer-wonderlich-1982
     useType: fact-reference

@@ -32,6 +32,7 @@ taskRefs:
   - { credential: BCBA, code: D.4 }
   - { credential: BCaBA, code: C.9 }
   - { credential: BCaBA, code: D.3 }
+  - { credential: BCBA, code: H.7 }
 citations:
   - sourceId: sidman-1960
     useType: fact-reference

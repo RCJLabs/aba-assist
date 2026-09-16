@@ -43,6 +43,7 @@ taskRefs:
   - { credential: BCBA, code: B.5 }
   - { credential: BCBA, code: G.17 }
   - { credential: BCaBA, code: B.5 }
+  - { credential: BCBA, code: G.18 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

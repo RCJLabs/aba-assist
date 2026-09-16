@@ -43,6 +43,8 @@ taskRefs:
   - { credential: BCBA, code: F.6 }
   - { credential: BCaBA, code: F.1 }
   - { credential: BCaBA, code: F.6 }
+  - { credential: BCBA, code: F.7 }
+  - { credential: BCBA, code: H.2 }
 citations:
   - sourceId: hanley-iwata-mccord-2003
     useType: fact-reference

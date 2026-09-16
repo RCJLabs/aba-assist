@@ -64,7 +64,15 @@ domains:
           and contrast it with mentalistic and methodological positions.
         plainSummary: Explain radical behaviorism and how it differs from other views of behavior.
         keywords: [radical behaviorism, private events, mentalism, methodological behaviorism]
-        termRefs: [radical-behaviorism, mentalism, private-event, explanatory-fiction]
+        termRefs:
+          [
+            radical-behaviorism,
+            mentalism,
+            private-event,
+            explanatory-fiction,
+            hypothetical-construct,
+            methodological-behaviorism
+          ]
         attestation: *att
       - code: A.4
         ourSummary: >-
@@ -124,7 +132,7 @@ domains:
           controls it, and identify each in an example.
         plainSummary: Tell reflex-based learning from consequence-based learning.
         keywords: [respondent, operant, conditioning, Pavlovian]
-        termRefs: [respondent-conditioning, operant-conditioning]
+        termRefs: [respondent-conditioning, operant-conditioning, three-term-contingency]
         attestation: *att
       - code: B.4
         ourSummary: >-
@@ -132,7 +140,7 @@ domains:
           identify each in an example.
         plainSummary: Know both kinds of reinforcement and what makes them different.
         keywords: [positive reinforcement, negative reinforcement, contingency]
-        termRefs: [positive-reinforcement, negative-reinforcement]
+        termRefs: [positive-reinforcement, negative-reinforcement, reinforcer]
         attestation: *att
       - code: B.5
         ourSummary: >-
@@ -148,7 +156,8 @@ domains:
           and punishment.
         plainSummary: Know when a consequence comes from the behavior itself and when another person delivers it.
         keywords: [automatic reinforcement, socially mediated]
-        termRefs: [automatic-reinforcement, socially-mediated-reinforcement]
+        termRefs:
+          [automatic-reinforcement, socially-mediated-reinforcement, function-of-behavior]
         attestation: *att
       - code: B.7
         ourSummary: >-
@@ -166,7 +175,8 @@ domains:
           [
             unconditioned-reinforcer,
             conditioned-reinforcer,
-            generalized-conditioned-reinforcer
+            generalized-conditioned-reinforcer,
+            conditioned-punisher
           ]
         attestation: *att
       - code: B.8
@@ -181,7 +191,8 @@ domains:
             fixed-ratio-schedule,
             variable-ratio-schedule,
             fixed-interval-schedule,
-            variable-interval-schedule
+            variable-interval-schedule,
+            intermittent-reinforcement
           ]
         attestation: *att
       - code: B.9
@@ -198,7 +209,16 @@ domains:
           that accompany each.
         plainSummary: Know what extinction means for operant and for respondent behavior.
         keywords: [extinction, respondent extinction, extinction burst]
-        termRefs: [extinction, extinction-burst, spontaneous-recovery]
+        termRefs:
+          [
+            extinction,
+            extinction-burst,
+            spontaneous-recovery,
+            escape-extinction,
+            planned-ignoring,
+            respondent-conditioning,
+            sensory-extinction
+          ]
         attestation: *att
       - code: B.11
         ourSummary: >-
@@ -241,7 +261,12 @@ domains:
             establishing-operation,
             abolishing-operation,
             deprivation,
-            satiation
+            satiation,
+            abative-effect,
+            behavior-altering-effect,
+            evocative-effect,
+            setting-event,
+            value-altering-effect
           ]
         attestation: *att
       - code: B.16
@@ -250,7 +275,15 @@ domains:
           function, and identify which is operating in an example.
         plainSummary: Tell the difference between a stimulus that changes wanting and one that signals availability.
         keywords: [MO vs SD, motivational function, discriminative function]
-        termRefs: [motivating-operation, discriminative-stimulus]
+        termRefs:
+          [
+            motivating-operation,
+            discriminative-stimulus,
+            abative-effect,
+            behavior-altering-effect,
+            evocative-effect,
+            value-altering-effect
+          ]
         attestation: *att
       - code: B.17
         ourSummary: >-
@@ -266,7 +299,18 @@ domains:
           transcription — and identify each by its controlling variables.
         plainSummary: Know the basic verbal operants and what controls each one.
         keywords: [mand, tact, echoic, intraverbal, textual, transcription, listener]
-        termRefs: [verbal-behavior, mand, tact, echoic, intraverbal, textual, transcription]
+        termRefs:
+          [
+            verbal-behavior,
+            mand,
+            tact,
+            echoic,
+            intraverbal,
+            textual,
+            transcription,
+            autoclitic,
+            listener-responding
+          ]
         attestation: *att
       - code: B.19
         ourSummary: >-
@@ -333,7 +377,7 @@ domains:
           and unambiguous, and evaluate a given definition against those standards.
         plainSummary: Write a definition of a behavior that two people would score the same way.
         keywords: [operational definition, observable, measurable]
-        termRefs: [operational-definition, topography]
+        termRefs: [operational-definition, topography, objective-language]
         attestation: *att
       - code: C.2
         ourSummary: >-
@@ -382,7 +426,12 @@ domains:
         plainSummary: Set up interval and time-sampling recording and know how each one biases the estimate.
         keywords: [partial interval, whole interval, momentary time sampling, PLACHECK]
         termRefs:
-          [partial-interval-recording, whole-interval-recording, momentary-time-sampling]
+          [
+            partial-interval-recording,
+            whole-interval-recording,
+            momentary-time-sampling,
+            discontinuous-measurement
+          ]
         attestation: *att
       - code: C.7
         ourSummary: >-
@@ -406,7 +455,7 @@ domains:
           asked and the setting's constraints.
         plainSummary: Match the measurement method to the behavior and the question.
         keywords: [selecting measurement, dimensions of behavior]
-        termRefs: [frequency-and-rate, duration]
+        termRefs: [frequency-and-rate, duration, magnitude]
         attestation: *att
       - code: C.10
         ourSummary: >-
@@ -414,7 +463,7 @@ domains:
           accurately with correctly labeled axes, phases and condition changes.
         plainSummary: Draw graphs that show the data honestly and are easy to read.
         keywords: [line graph, bar graph, cumulative record, phase change line, axes]
-        termRefs: [line-graph, cumulative-record, bar-graph]
+        termRefs: [line-graph, cumulative-record, bar-graph, phase-change-line]
         attestation: *att
       - code: C.11
         ourSummary: >-
@@ -422,7 +471,7 @@ domains:
           immediacy of change within and across conditions.
         plainSummary: Read a graph for level, trend and variability and say what changed.
         keywords: [visual analysis, level, trend, variability, immediacy]
-        termRefs: [visual-analysis, baseline, trend, celeration]
+        termRefs: [visual-analysis, baseline, trend, celeration, level, variability]
         attestation: *att
       - code: C.12
         ourSummary: >-
@@ -472,7 +521,7 @@ domains:
           repeated measurement, baseline logic and within-subject replication.
         plainSummary: Know what makes single-case designs work as experiments.
         keywords: [single-case design, baseline logic, prediction, verification, replication]
-        termRefs: [single-case-design, baseline, replication]
+        termRefs: [single-case-design, baseline, replication, ab-design, functional-relation]
         attestation: *att
       - code: D.5
         ourSummary: >-
@@ -538,7 +587,7 @@ domains:
           practice situation.
         plainSummary: Know the core principles of the ethics code and use them to decide what to do.
         keywords: [core principles, benefit others, dignity, integrity, competence]
-        termRefs: [ethics-code, dignity]
+        termRefs: [ethics-code, dignity, assent, informed-consent]
         attestation: *att
       - code: E.2
         ourSummary: >-
@@ -554,7 +603,7 @@ domains:
           is built and maintained through training, supervision and professional development.
         plainSummary: Do only what you are trained to do, and keep learning.
         keywords: [competence, scope of competence, professional development]
-        termRefs: [scope-of-competence, scope-of-practice]
+        termRefs: [scope-of-competence, scope-of-practice, continuing-education-unit]
         attestation: *att
       - code: E.4
         ourSummary: >-
@@ -651,7 +700,7 @@ domains:
           and the goals chosen from it.
         plainSummary: Take the client's culture and setting into account during assessment.
         keywords: [cultural variables, context, values]
-        termRefs: [cultural-responsiveness]
+        termRefs: [cultural-responsiveness, ecological-assessment]
         attestation: *att
       - code: F.3
         ourSummary: >-
@@ -672,7 +721,10 @@ domains:
             preference-assessment,
             paired-stimulus-preference-assessment,
             multiple-stimulus-without-replacement,
-            free-operant-preference-assessment
+            free-operant-preference-assessment,
+            multiple-stimulus-with-replacement,
+            reinforcer-assessment,
+            single-stimulus-preference-assessment
           ]
         attestation: *att
       - code: F.5
@@ -681,7 +733,8 @@ domains:
           observation — and interpret the correlations they reveal.
         plainSummary: Watch behavior in its usual setting and record what comes before and after it.
         keywords: [descriptive assessment, ABC recording, scatterplot]
-        termRefs: [descriptive-assessment, abc-recording, scatterplot]
+        termRefs:
+          [descriptive-assessment, abc-recording, scatterplot, functional-behavior-assessment]
         attestation: *att
       - code: F.6
         ourSummary: >-
@@ -689,7 +742,7 @@ domains:
           synthesized formats, and interpret the results.
         plainSummary: Test what a behavior is for by arranging conditions and watching what happens.
         keywords: [functional analysis, experimental analysis, synthesized]
-        termRefs: [functional-analysis, functional-behavior-assessment]
+        termRefs: [functional-analysis, functional-behavior-assessment, function-of-behavior]
         attestation: *att
       - code: F.7
         ourSummary: >-
@@ -705,7 +758,7 @@ domains:
           risk, likely benefit, and the client's and caregivers' values.
         plainSummary: Choose goals that matter to the client and put the most important ones first.
         keywords: [social significance, prioritizing goals, social validity]
-        termRefs: [social-validity]
+        termRefs: [social-validity, behavioral-cusp, pivotal-behavior]
         attestation: *att
 
   - letter: G
@@ -725,7 +778,7 @@ domains:
           selecting reinforcers and arranging schedules.
         plainSummary: Set up reinforcement so a target behavior actually gets stronger.
         keywords: [reinforcement procedures, reinforcer selection, schedules]
-        termRefs: [positive-reinforcement, negative-reinforcement]
+        termRefs: [positive-reinforcement, negative-reinforcement, premack-principle]
         attestation: *att
       - code: G.2
         ourSummary: >-
@@ -756,7 +809,8 @@ domains:
           the exchange system that keeps tokens effective.
         plainSummary: Make new things work as reinforcers, including tokens and points.
         keywords: [conditioned reinforcer, token economy, pairing, backup reinforcer]
-        termRefs: [conditioned-reinforcer, token-economy, pairing]
+        termRefs:
+          [conditioned-reinforcer, token-economy, pairing, generalized-conditioned-reinforcer]
         attestation: *att
       - code: G.5
         ourSummary: >-
@@ -764,7 +818,13 @@ domains:
           procedure to make the target behavior more likely.
         plainSummary: Set up wanting and signals so the behavior you are teaching is likely to happen.
         keywords: [MO, SD, antecedent arrangement, capturing motivation]
-        termRefs: [motivating-operation, discriminative-stimulus, antecedent-intervention]
+        termRefs:
+          [
+            motivating-operation,
+            discriminative-stimulus,
+            antecedent-intervention,
+            high-probability-request-sequence
+          ]
         attestation: *att
       - code: G.6
         ourSummary: >-
@@ -786,7 +846,8 @@ domains:
             prompt-hierarchy,
             errorless-teaching,
             most-to-least-prompting,
-            least-to-most-prompting
+            least-to-most-prompting,
+            error-correction
           ]
         attestation: *att
       - code: G.8
@@ -868,7 +929,14 @@ domains:
         plainSummary: Know the punishment procedures, when they are considered, and the safeguards required.
         keywords: [time-out, response cost, overcorrection, punishment procedures]
         termRefs:
-          [time-out, response-cost, overcorrection, positive-punishment, negative-punishment]
+          [
+            time-out,
+            response-cost,
+            overcorrection,
+            positive-punishment,
+            negative-punishment,
+            punishment
+          ]
         attestation: *att
       - code: G.18
         ourSummary: >-
@@ -876,7 +944,7 @@ domains:
           including extinction and punishment, and plan to minimize them.
         plainSummary: Anticipate the emotional fallout of procedures and reduce it.
         keywords: [side effects, emotional responding, elicited behavior, extinction burst]
-        termRefs: [extinction-burst, punishment]
+        termRefs: [extinction-burst, punishment, behavioral-contrast]
         attestation: *att
       - code: G.19
         ourSummary: >-
@@ -903,7 +971,7 @@ domains:
           conditions for performance.
         plainSummary: Write goals that say exactly what success looks like and how it will be measured.
         keywords: [goals, mastery criteria, measurable objectives]
-        termRefs: [operational-definition, social-validity]
+        termRefs: [operational-definition, social-validity, mastery-criterion]
         attestation: *att
       - code: H.2
         ourSummary: >-
@@ -911,7 +979,14 @@ domains:
           preference, and contextual fit with the setting and the people implementing them.
         plainSummary: Pick treatments that the evidence supports, the client prefers, and the setting can deliver.
         keywords: [intervention selection, evidence-based practice, preference, contextual fit]
-        termRefs: [evidence-based-practice, functional-behavior-assessment]
+        termRefs:
+          [
+            evidence-based-practice,
+            functional-behavior-assessment,
+            behavior-intervention-plan,
+            contextual-fit,
+            treatment-acceptability
+          ]
         attestation: *att
       - code: H.3
         ourSummary: >-
@@ -919,7 +994,14 @@ domains:
           communication — that serve the same purpose as the problem behavior.
         plainSummary: Replace a problem behavior with something that works just as well for the learner.
         keywords: [replacement behavior, functional communication training, socially valid]
-        termRefs: [functional-communication-training, replacement-behavior]
+        termRefs:
+          [
+            functional-communication-training,
+            replacement-behavior,
+            contingency-contract,
+            response-effort,
+            self-management
+          ]
         attestation: *att
       - code: H.4
         ourSummary: >-
@@ -927,7 +1009,7 @@ domains:
           others, including the risks of restrictive procedures.
         plainSummary: Plan for what could go wrong with a treatment and reduce the harm.
         keywords: [side effects, risk, restrictive procedures, least restrictive]
-        termRefs: [least-restrictive-alternative]
+        termRefs: [least-restrictive-alternative, response-blocking, risk-benefit-analysis]
         attestation: *att
       - code: H.5
         ourSummary: >-
@@ -935,7 +1017,7 @@ domains:
           and design against them.
         plainSummary: Know why treated behavior comes back and how to make that less likely.
         keywords: [relapse, resurgence, renewal, reinstatement]
-        termRefs: [resurgence, spontaneous-recovery]
+        termRefs: [resurgence, spontaneous-recovery, reinstatement, renewal]
         attestation: *att
       - code: H.6
         ourSummary: >-
@@ -943,14 +1025,28 @@ domains:
           the plan, or revise it.
         plainSummary: When a plan is not being followed, decide whether to fix the training or the plan.
         keywords: [procedural integrity, treatment drift, retraining]
-        termRefs: [treatment-integrity, treatment-drift]
+        termRefs:
+          [
+            treatment-integrity,
+            treatment-drift,
+            competing-contingencies,
+            component-analysis,
+            fidelity-checklist
+          ]
         attestation: *att
       - code: H.7
         ourSummary: >-
           Use outcome data to decide whether to continue, modify or discontinue an intervention.
         plainSummary: Let the data decide whether a treatment keeps going, changes or stops.
         keywords: [data-based decisions, effectiveness, modification]
-        termRefs: [visual-analysis, baseline]
+        termRefs:
+          [
+            visual-analysis,
+            baseline,
+            generalization-probe,
+            maintenance-probe,
+            parametric-analysis
+          ]
         attestation: *att
       - code: H.8
         ourSummary: >-
@@ -958,7 +1054,7 @@ domains:
           delivering interventions.
         plainSummary: Work with families and other professionals rather than around them.
         keywords: [collaboration, caregivers, interprofessional]
-        termRefs: [collaboration]
+        termRefs: [collaboration, caregiver-training]
         attestation: *att
 
   - letter: I
@@ -977,7 +1073,7 @@ domains:
           clients, supervisees and organizations.
         plainSummary: Know why good supervision matters and what bad supervision costs.
         keywords: [supervision, benefits, risks]
-        termRefs: [supervision]
+        termRefs: [supervision, burnout, staff-turnover]
         attestation: *att
       - code: I.2
         ourSummary: >-
@@ -985,7 +1081,16 @@ domains:
           expectations and the delivery of feedback.
         plainSummary: Set up supervision with clear agreements and give useful feedback.
         keywords: [supervision contract, expectations, feedback, rapport]
-        termRefs: [supervision, performance-feedback]
+        termRefs:
+          [
+            supervision,
+            performance-feedback,
+            group-supervision,
+            individual-supervision,
+            mentorship,
+            reciprocal-feedback,
+            supervision-contract
+          ]
         attestation: *att
       - code: I.3
         ourSummary: >-
@@ -993,7 +1098,7 @@ domains:
           identity affect the supervisory relationship.
         plainSummary: Treat supervisees fairly and take their backgrounds into account.
         keywords: [equity, cultural responsiveness, power]
-        termRefs: [cultural-humility, supervision]
+        termRefs: [cultural-humility, supervision, power-differential]
         attestation: *att
       - code: I.4
         ourSummary: >-
@@ -1001,7 +1106,14 @@ domains:
           the requirements of their role.
         plainSummary: Give each supervisee clear goals matched to what they still need to learn.
         keywords: [supervisee goals, skills assessment, competency]
-        termRefs: [competency-assessment, supervision, goal-setting]
+        termRefs:
+          [
+            competency-assessment,
+            supervision,
+            goal-setting,
+            restricted-activity,
+            unrestricted-activity
+          ]
         attestation: *att
       - code: I.5
         ourSummary: >-
@@ -1010,7 +1122,18 @@ domains:
         plainSummary: Train staff with practice and feedback, and keep their performance up over time.
         keywords: [behavioral skills training, BST, feedback, performance management]
         termRefs:
-          [behavioral-skills-training, performance-feedback, public-posting, goal-setting]
+          [
+            behavioral-skills-training,
+            performance-feedback,
+            public-posting,
+            goal-setting,
+            in-situ-training,
+            incentive-system,
+            organizational-behavior-management,
+            performance-monitoring,
+            pyramidal-training,
+            task-clarification
+          ]
         attestation: *att
       - code: I.6
         ourSummary: >-
@@ -1018,7 +1141,7 @@ domains:
           antecedents, competing contingencies — before choosing a remedy.
         plainSummary: Work out why a staff member is not performing before deciding how to fix it.
         keywords: [performance diagnostics, can't-do vs won't-do, function of performance]
-        termRefs: [performance-diagnostic]
+        termRefs: [performance-diagnostic, competing-contingencies, remediation-plan]
         attestation: *att
       - code: I.7
         ourSummary: >-
@@ -1026,7 +1149,8 @@ domains:
           fidelity — and adjust supervisory practice accordingly.
         plainSummary: Check with data whether your supervision is working, and change it if not.
         keywords: [supervision evaluation, data-based supervision]
-        termRefs: [supervision, treatment-integrity]
+        termRefs:
+          [supervision, treatment-integrity, fidelity-checklist, performance-monitoring]
         attestation: *att
 
 review:

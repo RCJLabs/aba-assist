@@ -71,15 +71,32 @@ describe('the assistant-analyst outline', () => {
 	});
 });
 
-describe('the terms tagged to the assistant-analyst outline', () => {
+/*
+ * The outline points at terms and the terms point back at the outline. They were written
+ * as one claim and they have to stay one claim: an edit to either side alone leaves a task
+ * with no glossary or a term filtered into an exam that never asks it.
+ *
+ * This ran against the assistant outline alone for a while, and the two outlines it did
+ * not cover drifted to 103 one-sided links — including a term claiming punishment was
+ * G.17 content while the outline filed it under G.18, which is the drift this check exists
+ * to catch and which nobody would find by reading. Every credential is checked now.
+ */
+describe.each(['RBT', 'BCBA', 'BCaBA'] as const)('the terms tagged to %s', (credential) => {
+	const outline = () => outlineForCredential(credential)!;
+
 	/*
-	 * The outline points at terms and the terms point back at the outline. They were
-	 * written as one claim and they have to stay one claim: an edit to either side alone
-	 * leaves a task with no glossary or a term filtered into an exam that never asks it.
+	 * A term may claim a whole area rather than a task, which is a weaker claim and a
+	 * legitimate one — there is no single task to point back at it, so those are kept out
+	 * of the pairing below. They are not unchecked: the compiler rejects an area letter
+	 * that is not in the outline (`refs/unknown-task-code`) and the term never reaches this
+	 * index, so a test for it here could not fail and is not written.
 	 */
+	const taskCodes = () =>
+		new Set(outline().domains.flatMap((d) => d.tasks.map((t) => t.code)));
+
 	const fromOutline = () => {
 		const pairs = new Set<string>();
-		for (const d of BCaBA().domains) {
+		for (const d of outline().domains) {
 			for (const t of d.tasks) {
 				for (const term of t.termRefs) pairs.add(`${term}|${t.code}`);
 			}
@@ -87,24 +104,30 @@ describe('the terms tagged to the assistant-analyst outline', () => {
 		return pairs;
 	};
 
+	const refsFor = (t: (typeof termIndex)[number]) =>
+		// Short keys: `i` is the term id, `r` its outline refs.
+		t.r
+			.filter((r) => r.startsWith(`${credential}:`))
+			.map((r) => r.slice(credential.length + 1));
+
 	const fromTerms = () => {
+		const codes = taskCodes();
 		const pairs = new Set<string>();
 		for (const t of termIndex) {
-			// Short keys: `i` is the term id, `r` its outline refs.
-			for (const ref of t.r) {
-				if (ref.startsWith('BCaBA:')) pairs.add(`${t.i}|${ref.slice('BCaBA:'.length)}`);
-			}
+			for (const code of refsFor(t)) if (codes.has(code)) pairs.add(`${t.i}|${code}`);
 		}
 		return pairs;
 	};
 
 	it('agree in both directions', () => {
-		const outline = fromOutline();
-		const terms = fromTerms();
-		expect([...outline].filter((p) => !terms.has(p)).sort()).toEqual([]);
-		expect([...terms].filter((p) => !outline.has(p)).sort()).toEqual([]);
+		const outlineSide = fromOutline();
+		const termSide = fromTerms();
+		expect([...outlineSide].filter((p) => !termSide.has(p)).sort()).toEqual([]);
+		expect([...termSide].filter((p) => !outlineSide.has(p)).sort()).toEqual([]);
 	});
+});
 
+describe('the terms tagged to the assistant-analyst outline', () => {
 	it('leave the assistant filter with something to show', () => {
 		// Filtering to BCaBA used to fall back to analyst refs. It no longer can, so an
 		// untagged corpus would present an empty glossary rather than a narrower one.

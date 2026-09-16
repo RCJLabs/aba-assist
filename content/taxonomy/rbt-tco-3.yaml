@@ -354,7 +354,10 @@ domains:
             high-probability-request-sequence,
             motivating-operation,
             abolishing-operation,
-            setting-event
+            setting-event,
+            abative-effect,
+            behavior-altering-effect,
+            evocative-effect
           ]
         attestation: *att
       - code: D.3

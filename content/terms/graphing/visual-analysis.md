@@ -34,6 +34,7 @@ taskRefs:
   - { credential: BCaBA, code: H.6 }
   - { credential: BCaBA, code: H.7 }
   - { credential: BCaBA, code: I.9 }
+  - { credential: BCBA, code: H.7 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference
