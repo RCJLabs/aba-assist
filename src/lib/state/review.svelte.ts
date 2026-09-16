@@ -8,7 +8,7 @@ import {
 } from '$lib/db/index.js';
 import { loadReviewItems, type ReviewItem } from '$lib/content/reviewable.js';
 import { contentVersion } from '$lib/content/load.js';
-import { gateFor, gatesRelease, type Gate } from '$lib/content/release.js';
+import { gateFor, inLaunchSet, launchSet, type Gate } from '$lib/content/release.js';
 import {
 	batchFor,
 	MINUTES_PER_ITEM,
@@ -44,8 +44,8 @@ class Review {
 	 * Show only what a release is waiting on.
 	 *
 	 * Off by default, because the ordinary job is reviewing content. On, it reduces the
-	 * queue to the entries that stand between a preview build and an indexed one, which
-	 * is normally a couple of dozen rather than the whole backlog.
+	 * queue to the entries that stand between a preview build and an indexed one: the four
+	 * required kinds and the glossary set that clears the floor, and nothing else.
 	 */
 	gateOnly = $state(false);
 	/**
@@ -112,11 +112,12 @@ class Review {
 
 	get queue(): ReviewItem[] {
 		const inSample = this.samples;
+		const launch = this.launchSet;
 		return this.items.filter((i) => {
 			const meta = this.metaFor(i);
-			// The gate filter overrides the tier, because it is a different question:
+			// The launch filter overrides the tier, because it is a different question:
 			// not "how closely must this be read" but "is a release waiting on it".
-			if (this.gateOnly && !gatesRelease(i)) return false;
+			if (this.gateOnly && !inLaunchSet(i, launch)) return false;
 			if (!this.gateOnly && this.tier !== 'all' && meta.tier !== this.tier) return false;
 			if (this.kind !== 'all' && i.kind !== this.kind) return false;
 			if (this.hideDecided && this.decisions[i.id]) return false;
@@ -126,17 +127,41 @@ class Review {
 			 * sampled, and one who reads the first few has drawn a sample by convenience
 			 * rather than at random, which is the thing sampling exists to avoid.
 			 */
-			if (meta.tier === 'C' && meta.batch) {
-				return inSample.get(meta.batch)?.drawn.includes(i.id) ?? false;
+			const batch = this.#batchOf(i);
+			if (meta.tier === 'C' && batch) {
+				return inSample.get(batch)?.drawn.includes(i.id) ?? false;
 			}
 			return true;
 		});
 	}
 
+	/** The 150 terms the rest of the corpus leans on hardest, computed once per load. */
+	#launch = $derived(launchSet(this.items));
+
+	get launchSet(): Set<string> {
+		return this.#launch;
+	}
+
+	/**
+	 * The batch an item is sampled within, which depends on what is being reviewed.
+	 *
+	 * In the ordinary queue a batch is a whole category. Under the launch filter it is
+	 * that category's launch-set terms only, and the terms outside it have no batch at
+	 * all. Sampling the whole category there would draw most of its items from outside
+	 * what is being reviewed, so the draw could never be completed and the carry button
+	 * could never light up — a sample nobody can finish is worse than no sample.
+	 */
+	#batchOf(item: ReviewItem): string | null {
+		const batch = this.metaFor(item).batch;
+		if (!batch) return null;
+		if (!this.gateOnly) return batch;
+		return this.#launch.has(item.id) ? `launch:${batch}` : null;
+	}
+
 	/** One draw per glossary batch, stable for a given build and sample rate. */
 	get samples(): Map<string, Sample> {
 		return samplesFor(
-			this.items.map((i) => ({ id: i.id, batch: this.metaFor(i).batch })),
+			this.items.map((i) => ({ id: i.id, batch: this.#batchOf(i) })),
 			this.sampleRate,
 			contentVersion.contentVersion
 		);
@@ -193,14 +218,45 @@ class Review {
 			const meta = this.metaFor(i);
 			if (meta.tier !== tier) continue;
 			// A sampled batch costs only its draw; the rest is carried without reading.
+			const batch = this.#batchOf(i);
 			const toRead =
-				meta.tier === 'C' && meta.batch
-					? (samples.get(meta.batch)?.drawn.includes(i.id) ?? false)
+				meta.tier === 'C' && batch
+					? (samples.get(batch)?.drawn.includes(i.id) ?? false)
 					: true;
 			total++;
 			if (toRead && !this.decisions[i.id]) left++;
 		}
 		return { total, left, minutes: Math.ceil(left * MINUTES_PER_ITEM[tier]) };
+	}
+
+	/**
+	 * What the launch set costs, in items to read and minutes.
+	 *
+	 * Measured under the filter it describes, so the number moves with the sample rate
+	 * rather than quoting a cost the reviewer is not about to pay. `total` is the whole
+	 * set; `left` is what is still to read once carried terms and existing decisions are
+	 * taken out.
+	 */
+	get launchLoad(): { total: number; left: number; minutes: number } {
+		const samples = this.samples;
+		const launch = this.#launch;
+		let total = 0;
+		let left = 0;
+		let minutes = 0;
+		for (const i of this.items) {
+			if (!inLaunchSet(i, launch)) continue;
+			total++;
+			const meta = this.metaFor(i);
+			const batch = this.gateOnly ? this.#batchOf(i) : `launch:${meta.batch}`;
+			const sampled = meta.tier === 'C' && meta.batch !== null;
+			const toRead = sampled
+				? (samples.get(batch ?? '')?.drawn.includes(i.id) ?? false)
+				: true;
+			if (!toRead || this.decisions[i.id]) continue;
+			left++;
+			minutes += MINUTES_PER_ITEM[meta.tier];
+		}
+		return { total, left, minutes: Math.ceil(minutes) };
 	}
 
 	setTier(tier: ReviewTier | 'all'): void {
@@ -236,6 +292,7 @@ class Review {
 	setGateOnly(on: boolean): void {
 		this.gateOnly = on;
 		this.index = 0;
+		this.note = '';
 	}
 
 	setKind(kind: ReviewableKind | 'all'): void {

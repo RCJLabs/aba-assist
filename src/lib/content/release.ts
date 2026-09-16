@@ -90,3 +90,41 @@ export function gateFor(items: ReviewItem[], decisions: Decisions = {}): Gate {
 export function gatesRelease(item: ReviewItem): boolean {
 	return item.gate !== null;
 }
+
+/**
+ * Which 150 terms, of the 259 there are.
+ *
+ * The floor is a number, not a list, so a reviewer clearing the four required kinds is
+ * then told "150 terms" and left to pick them. Picking badly is easy and expensive: a
+ * launch glossary missing the terms the questions and situations cite is a glossary whose
+ * own cross-references go nowhere, which is exactly the thinness the floor exists to
+ * prevent.
+ *
+ * So the set is the terms the rest of the corpus leans on hardest, counted rather than
+ * chosen: every question, situation, ethics topic, graph, practice guide and task-list
+ * entry that names a term is one inbound reference, and so is every cross-reference from
+ * another term. Ranked by that, ties broken by id so the set is the same on every device
+ * and in every build.
+ *
+ * This is a route to the floor, not a second gate. Approving 150 other terms clears it
+ * just as well; the build reads the count and nothing else.
+ */
+export function launchSet(items: ReviewItem[]): Set<string> {
+	const terms = items.filter((i) => i.kind === 'term');
+	const ranked = [...terms].sort(
+		(a, b) =>
+			(b.inboundRefs ?? 0) - (a.inboundRefs ?? 0) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
+	);
+	return new Set(ranked.slice(0, RELEASE_MINIMUM_TERMS).map((i) => i.id));
+}
+
+/**
+ * Everything on the shortest honest path to a published build.
+ *
+ * The four required kinds, complete, plus the glossary set above. Nothing else: the other
+ * 109 terms, the 603 questions and the 48 guidance situations are withheld individually
+ * and can be approved at any pace afterwards.
+ */
+export function inLaunchSet(item: ReviewItem, set: Set<string>): boolean {
+	return gatesRelease(item) || set.has(item.id);
+}

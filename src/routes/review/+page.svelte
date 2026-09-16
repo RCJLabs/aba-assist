@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { KIND_LABELS, type ReviewableKind } from '$lib/content/reviewable.js';
 	import { TIER_LABELS, TIER_NOTES, type ReviewTier } from '$lib/content/tier.js';
+	import { RELEASE_MINIMUM_TERMS } from '@aba/content-schema/runtime';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { review } from '$lib/state/review.svelte.js';
 	import { downloadBlob } from '$lib/util/download.js';
@@ -17,6 +18,7 @@
 	const decision = $derived(item ? review.decisions[item.id] : undefined);
 	const counts = $derived(review.counts);
 	const gate = $derived(review.gate);
+	const launch = $derived(review.launchLoad);
 	const tiers: ReviewTier[] = ['A', 'B', 'C'];
 	const meta = $derived(item ? review.metaFor(item) : null);
 
@@ -181,8 +183,24 @@
 					aria-pressed={review.gateOnly}
 					onclick={() => review.setGateOnly(!review.gateOnly)}
 				>
-					Review only what the gate needs
+					Review the launch set
 				</button>
+				<p class="gate-cost" data-launch-cost>
+					{#if launch.left === 0}
+						Nothing left to read in the launch set.
+					{:else}
+						<strong>{launch.left}</strong> to read · about
+						<strong>{launch.minutes} min</strong>
+						· {launch.total} entries in the set
+					{/if}
+				</p>
+				<p class="hint">
+					The four kinds above, complete, and the {RELEASE_MINIMUM_TERMS} glossary terms the rest
+					of the corpus cites most — every question, situation, ethics topic, graph, guide and task-list
+					entry that names a term counts as one reference, and the set is the top of that ranking.
+					Nothing else: the other terms, the questions and the guidance situations are withheld from
+					a release individually and can wait.
+				</p>
 				{#if gate.metAfterExport}
 					<p class="verdict good" role="status">
 						Every entry the gate needs is decided here. Export and apply the decisions and the
@@ -203,45 +221,51 @@
 		particular order and the only rational way through it is
 		hardest-consequence-first.
 	-->
-	<div class="tiers" role="group" aria-label="Review tier">
-		{#each tiers as t (t)}
-			{@const load = review.tierLoad(t)}
+	{#if !review.gateOnly}
+		<div class="tiers" role="group" aria-label="Review tier">
+			{#each tiers as t (t)}
+				{@const load = review.tierLoad(t)}
+				<button
+					type="button"
+					class:active={review.tier === t}
+					onclick={() => review.setTier(t)}
+					aria-pressed={review.tier === t}
+				>
+					<strong>Tier {t}</strong>
+					<span class="tier-label">{TIER_LABELS[t]}</span>
+					<span class="tier-load">
+						{#if load.left === 0}
+							done
+						{:else}
+							{load.left} to read · about {load.minutes} min
+						{/if}
+					</span>
+				</button>
+			{/each}
 			<button
 				type="button"
-				class:active={review.tier === t}
-				onclick={() => review.setTier(t)}
-				aria-pressed={review.tier === t}
+				class:active={review.tier === 'all'}
+				onclick={() => review.setTier('all')}
+				aria-pressed={review.tier === 'all'}
 			>
-				<strong>Tier {t}</strong>
-				<span class="tier-label">{TIER_LABELS[t]}</span>
-				<span class="tier-load">
-					{#if load.left === 0}
-						done
-					{:else}
-						{load.left} to read · about {load.minutes} min
-					{/if}
-				</span>
+				<strong>Everything</strong>
+				<span class="tier-label">No ordering</span>
+				<span class="tier-load">{counts.total - counts.decided} left</span>
 			</button>
-		{/each}
-		<button
-			type="button"
-			class:active={review.tier === 'all'}
-			onclick={() => review.setTier('all')}
-			aria-pressed={review.tier === 'all'}
-		>
-			<strong>Everything</strong>
-			<span class="tier-label">No ordering</span>
-			<span class="tier-load">{counts.total - counts.decided} left</span>
-		</button>
-	</div>
+		</div>
+	{/if}
 
-	{#if review.tier !== 'all'}
+	{#if !review.gateOnly && review.tier !== 'all'}
 		<p class="tier-note">{TIER_NOTES[review.tier]}</p>
 	{/if}
 
-	{#if review.tier === 'C'}
+	{#if review.gateOnly || review.tier === 'C'}
 		<div class="field sample-rate">
-			<label for="rate">Read this much of each glossary batch</label>
+			<label for="rate">
+				{review.gateOnly
+					? 'Read this much of each launch-set category'
+					: 'Read this much of each glossary batch'}
+			</label>
 			<select
 				id="rate"
 				value={String(review.sampleRate)}
@@ -556,6 +580,15 @@
 		margin: 0.6rem 0 0;
 		font-size: 0.85rem;
 		color: var(--text-muted);
+	}
+
+	.gate-cost {
+		margin: 0.5rem 0 0.35rem;
+		font-size: 0.95rem;
+	}
+
+	.gate-actions .hint {
+		margin: 0;
 	}
 
 	.tiers {

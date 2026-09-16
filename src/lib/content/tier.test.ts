@@ -15,6 +15,7 @@ function item(over: Partial<ReviewItem> = {}): ReviewItem {
 		fields: [{ label: 'Technical definition', lines: ['An ordinary definition of a thing.'] }],
 		citations: [],
 		consulted: '',
+		inboundRefs: 0,
 		...over
 	};
 }

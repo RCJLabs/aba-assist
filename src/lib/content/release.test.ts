@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gateFor, gatesRelease } from './release.js';
+import { gateFor, gatesRelease, inLaunchSet, launchSet } from './release.js';
 import type { ReviewItem } from './reviewable.js';
 
 function item(over: Partial<ReviewItem> = {}): ReviewItem {
@@ -15,6 +15,7 @@ function item(over: Partial<ReviewItem> = {}): ReviewItem {
 		fields: [],
 		citations: [],
 		consulted: 'Primary sources.',
+		inboundRefs: 0,
 		...over
 	};
 }
@@ -105,5 +106,58 @@ describe('the release gate', () => {
 	it('identifies the items the gate is waiting on', () => {
 		expect(gatesRelease(item({ gate: 'outline' }))).toBe(true);
 		expect(gatesRelease(item({ gate: null }))).toBe(false);
+	});
+});
+
+describe('the launch set', () => {
+	/** `n` terms whose inbound-reference counts descend, so the ranking has something to do. */
+	const ranked = (n: number) =>
+		Array.from({ length: n }, (_, i) =>
+			item({ id: `t${String(i).padStart(3, '0')}`, inboundRefs: n - i })
+		);
+
+	it('takes the terms the rest of the corpus cites most, up to the floor', () => {
+		const set = launchSet(ranked(200));
+		expect(set.size).toBe(150);
+		expect(set.has('t000')).toBe(true); // 200 references
+		expect(set.has('t149')).toBe(true); // 51
+		expect(set.has('t150')).toBe(false); // 50, and one place short
+	});
+
+	it('breaks ties by id, so every device draws the same set', () => {
+		// `ranked(149)` runs from 149 references down to 1, so three terms on zero are all
+		// below it and compete for the single remaining place.
+		const tied = ['b', 'c', 'a'].map((id) => item({ id, inboundRefs: 0 }));
+		const first = launchSet([...tied, ...ranked(149)]);
+		const again = launchSet([...[...tied].reverse(), ...ranked(149)]);
+		expect([...first].sort()).toEqual([...again].sort());
+		expect(first.has('a')).toBe(true);
+		expect(first.has('b')).toBe(false);
+		expect(first.has('c')).toBe(false);
+	});
+
+	it('ignores everything that is not a term', () => {
+		const set = launchSet([
+			item({ id: 'q1', kind: 'question', inboundRefs: null }),
+			item({ id: 'o1', kind: 'outline', gate: 'outline', inboundRefs: null }),
+			item({ id: 'term', inboundRefs: 1 })
+		]);
+		expect([...set]).toEqual(['term']);
+	});
+
+	it('is a shorter queue than the whole corpus, and includes the required kinds', () => {
+		const set = launchSet(ranked(200));
+		expect(inLaunchSet(item({ id: 'o1', kind: 'outline', gate: 'outline' }), set)).toBe(true);
+		// A term outside the set is withheld individually rather than blocking a release.
+		expect(inLaunchSet(item({ id: 't199' }), set)).toBe(false);
+		expect(inLaunchSet(item({ id: 'q1', kind: 'question' }), set)).toBe(false);
+	});
+
+	it('is a route to the floor and not a second gate', () => {
+		// 150 approved terms clear the floor whether or not they are the ones ranked highest.
+		const unranked = Array.from({ length: 150 }, (_, i) =>
+			approved({ id: `z${i}`, inboundRefs: 0 })
+		);
+		expect(gateFor(unranked).floor.remaining).toBe(0);
 	});
 });

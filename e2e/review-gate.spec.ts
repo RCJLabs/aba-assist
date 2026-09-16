@@ -43,7 +43,7 @@ test('counts escalation cards rather than every situation', async ({ page }) => 
 
 test('a decision made here is pending until it is exported', async ({ page }) => {
 	await openReview(page);
-	await page.getByRole('button', { name: 'Review only what the gate needs' }).click();
+	await page.getByRole('button', { name: 'Review the launch set' }).click();
 
 	const before = await page.locator('.gate .verdict strong').innerText();
 	await page.getByRole('button', { name: /^Approve/ }).click();
@@ -61,7 +61,7 @@ test('a decision made here is pending until it is exported', async ({ page }) =>
 
 test('can reduce the queue to the entries the gate needs', async ({ page }) => {
 	await openReview(page);
-	const toggle = page.getByRole('button', { name: 'Review only what the gate needs' });
+	const toggle = page.getByRole('button', { name: 'Review the launch set' });
 	await expect(toggle).toHaveAttribute('aria-pressed', 'false');
 	await toggle.click();
 	// The label stays put; aria-pressed is what changes.
@@ -70,6 +70,39 @@ test('can reduce the queue to the entries the gate needs', async ({ page }) => {
 	// Every item offered is now one the gate is waiting on.
 	await expect(page.locator('article.card')).toHaveCount(1);
 	await expect(page.locator('.gate .verdict')).toContainText('between this app');
+});
+
+test('the launch set states its own cost, and it is a fraction of the backlog', async ({
+	page
+}) => {
+	await openReview(page);
+	await page.getByRole('button', { name: 'Review the launch set' }).click();
+
+	/*
+	 * The point of the set is that it is finite and stated. "150 terms" without a number
+	 * of minutes is the same wall the backlog was, so the view has to cost itself.
+	 */
+	const cost = page.locator('[data-launch-cost]');
+	await expect(cost).toContainText('to read');
+	await expect(cost).toContainText('min');
+	await expect(cost).toContainText('170 entries in the set');
+});
+
+test('the launch set is a route to the floor rather than a second rule', async ({ page }) => {
+	await openReview(page);
+	await page.getByRole('button', { name: 'Review the launch set' }).click();
+	await expect(page.locator('.gate-actions .hint')).toContainText('cites most');
+	// The requirement the build reads is still the floor, unchanged by the route taken.
+	await expect(page.locator('[data-req="terms"]')).toContainText('of 150');
+});
+
+test('sampling is offered under the launch filter, not just in tier C', async ({ page }) => {
+	await openReview(page);
+	await page.getByRole('button', { name: 'Review the launch set' }).click();
+	await expect(page.locator('.sample-rate')).toBeVisible();
+	await expect(page.locator('.sample-rate label')).toContainText('launch-set category');
+	// And the tier switcher is out of the way, because the set spans all three.
+	await expect(page.locator('.tiers')).toHaveCount(0);
 });
 
 test('is honest that decisions have not reached the content files', async ({ page }) => {

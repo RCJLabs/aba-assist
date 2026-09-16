@@ -57,6 +57,16 @@ export interface ReviewItem {
 	citations: string[];
 	/** The author's own account of what they wrote it from. */
 	consulted: string;
+	/**
+	 * How many other entries in the corpus point at this one. Terms only; null elsewhere.
+	 *
+	 * The glossary has a floor to clear before a release, and 150 of 259 is a choice
+	 * somebody has to make. This is the number that makes it for them: a term the
+	 * questions, situations and task lists keep citing is one a reader will arrive at,
+	 * and a term nothing cites can ship later without anybody noticing it was missing.
+	 * Counted rather than tagged, so it stays true as the corpus grows.
+	 */
+	inboundRefs: number | null;
 }
 
 const list = (xs: readonly string[]) => xs.filter(Boolean);
@@ -71,10 +81,23 @@ const list = (xs: readonly string[]) => xs.filter(Boolean);
 export async function loadReviewItems(): Promise<ReviewItem[]> {
 	const items: ReviewItem[] = [];
 
+	/*
+	 * Inbound references, accumulated as the corpus is walked and attached to the term
+	 * items at the end. Counting here rather than in a second pass avoids loading every
+	 * category bucket and both question banks twice, which is the expensive half of this
+	 * function.
+	 */
+	const inbound = new Map<string, number>();
+	const cite = (refs: readonly string[]) => {
+		for (const r of refs) inbound.set(r, (inbound.get(r) ?? 0) + 1);
+	};
+
 	// ------------------------------------------------------------------ terms
 	for (const category of CATEGORIES) {
 		const bucket = await loadTermBucket(category);
 		for (const t of Object.values(bucket)) {
+			cite(t.seeAlso);
+			cite(t.contrastWith);
 			items.push({
 				id: t.id,
 				kind: 'term',
@@ -102,13 +125,15 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 					}
 				],
 				citations: t.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-				consulted: t.attestation.consulted
+				consulted: t.attestation.consulted,
+				inboundRefs: 0
 			});
 		}
 	}
 
 	// -------------------------------------------------------------- scenarios
 	for (const s of scenarios) {
+		cite(s.termRefs);
 		const fields: ReviewField[] = [{ label: 'The situation', lines: [s.situation] }];
 		if (s.kind === 'guidance') {
 			fields.push(
@@ -143,13 +168,15 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			href: resolve('/scenarios/[slug]', { slug: s.id }),
 			fields,
 			citations: s.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-			consulted: s.attestation.consulted
+			consulted: s.attestation.consulted,
+			inboundRefs: null
 		});
 	}
 
 	// -------------------------------------------------------------- questions
 	for (const credential of questionCredentials) {
 		for (const q of await loadQuestions(credential)) {
+			cite(q.termRefs);
 			items.push({
 				id: q.id,
 				kind: 'question',
@@ -177,13 +204,15 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 					}
 				],
 				citations: q.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-				consulted: q.attestation.consulted
+				consulted: q.attestation.consulted,
+				inboundRefs: null
 			});
 		}
 	}
 
 	// ----------------------------------------------------------- ethics topics
 	for (const t of ethicsTopicList) {
+		cite(t.termRefs);
 		items.push({
 			id: t.id,
 			kind: 'ethics-topic',
@@ -205,12 +234,14 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				}
 			],
 			citations: t.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-			consulted: t.attestation.consulted
+			consulted: t.attestation.consulted,
+			inboundRefs: null
 		});
 	}
 
 	// ---------------------------------------------------------- practice guides
 	for (const g of practiceGuideList) {
+		cite(g.termRefs);
 		items.push({
 			id: g.id,
 			kind: 'practice-guide',
@@ -237,12 +268,14 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 						}
 			],
 			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-			consulted: g.attestation.consulted
+			consulted: g.attestation.consulted,
+			inboundRefs: null
 		});
 	}
 
 	// ------------------------------------------------------------------ graphs
 	for (const g of graphList) {
+		cite(g.termRefs);
 		items.push({
 			id: g.id,
 			kind: 'graph',
@@ -278,7 +311,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 					: [])
 			],
 			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
-			consulted: g.attestation.consulted
+			consulted: g.attestation.consulted,
+			inboundRefs: null
 		});
 	}
 
@@ -316,7 +350,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				}
 			],
 			citations: [c.sourceId],
-			consulted: c.review.changeNote ?? ''
+			consulted: c.review.changeNote ?? '',
+			inboundRefs: null
 		});
 	}
 
@@ -341,12 +376,14 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				}))
 			],
 			citations: [c.handbookSourceId],
-			consulted: c.review.changeNote ?? ''
+			consulted: c.review.changeNote ?? '',
+			inboundRefs: null
 		});
 	}
 
 	// ---------------------------------------------------------------- outlines
 	for (const o of Object.values(outlines)) {
+		for (const d of o.domains) for (const t of d.tasks) cite(t.termRefs);
 		items.push({
 			id: o.id,
 			kind: 'outline',
@@ -370,8 +407,17 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				}))
 			],
 			citations: [o.sourceId],
-			consulted: o.review.changeNote ?? ''
+			consulted: o.review.changeNote ?? '',
+			inboundRefs: null
 		});
+	}
+
+	/*
+	 * Attached last because the counts are only complete once everything that can cite a
+	 * term has been walked, and the terms were built first.
+	 */
+	for (const item of items) {
+		if (item.kind === 'term') item.inboundRefs = inbound.get(item.id) ?? 0;
 	}
 
 	return items;
