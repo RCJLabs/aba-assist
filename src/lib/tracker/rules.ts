@@ -217,6 +217,13 @@ export interface CycleSummary {
 	daysRemaining: number;
 	/** Units still needed, and how many days are left to earn them in. */
 	remaining: number;
+	/**
+	 * False where the requirement starts after this cycle ends.
+	 *
+	 * The ledger still records what was earned; nothing is scored against a total that
+	 * does not apply yet, and `remaining` is zero rather than a debt nobody owes.
+	 */
+	requirementApplies: boolean;
 	standing: Standing;
 	expired: boolean;
 }
@@ -253,16 +260,44 @@ export function summariseCycle(
 	for (const u of mine) byTopic[u.topic] = round(byTopic[u.topic] + u.units);
 	const earned = round(mine.reduce((sum, u) => sum + u.units, 0));
 
-	const checks: Check[] = [
-		{
-			id: 'total',
-			label: `${req.unitsPerCycle} ${req.unitLabel}s`,
-			met: earned + EPSILON >= req.unitsPerCycle,
-			detail: `${earned} of ${req.unitsPerCycle} earned.`
-		}
-	];
+	/*
+	 * A requirement that has not started yet is not a requirement this cycle failed.
+	 *
+	 * The technician unit rule is the live case: the credential content records it as
+	 * applying from 2027, because anyone recertifying during 2026 meets the older annual
+	 * requirements one last time. Scoring every cycle against the new total regardless of
+	 * date told those readers they owed twelve units they do not owe — during exactly the
+	 * transition the content flags, to the largest group of people using this.
+	 *
+	 * The test is the cycle's end date, because the requirement attaches to the
+	 * recertification it leads to. A cycle that ends before the rule starts is recorded
+	 * and not scored, which is the same posture the tools take for a credential whose
+	 * requirements have not been read: keep the ledger, withhold the verdict.
+	 */
+	const applies = req.effectiveFrom === null || cycle.endDate >= req.effectiveFrom;
 
-	if (req.ethicsUnits !== null) {
+	const checks: Check[] = applies
+		? [
+				{
+					id: 'total',
+					label: `${req.unitsPerCycle} ${req.unitLabel}s`,
+					met: earned + EPSILON >= req.unitsPerCycle,
+					detail: `${earned} of ${req.unitsPerCycle} earned.`
+				}
+			]
+		: [
+				{
+					id: 'total',
+					label: `${req.unitsPerCycle} ${req.unitLabel}s`,
+					met: null,
+					detail:
+						`This requirement applies to cycles ending on or after ${req.effectiveFrom}. ` +
+						`This one ends ${cycle.endDate}, so the ${earned} recorded here are kept but not scored. ` +
+						`Check your handbook for what this cycle has to meet.`
+				}
+			];
+
+	if (applies && req.ethicsUnits !== null) {
 		checks.push({
 			id: 'ethics',
 			label: `${req.ethicsUnits} on ethics`,
@@ -271,7 +306,7 @@ export function summariseCycle(
 		});
 	}
 
-	if (req.supervisionUnits !== null) {
+	if (applies && req.supervisionUnits !== null) {
 		// The analyst supervision minimum applies only to a cycle in which they supervised
 		// somebody, which is a question only the user can answer — so it is a flag on the
 		// cycle rather than something inferred from the supervision log, which may well be
@@ -296,7 +331,8 @@ export function summariseCycle(
 		byTopic,
 		checks,
 		daysRemaining,
-		remaining: round(Math.max(0, req.unitsPerCycle - earned)),
+		requirementApplies: applies,
+		remaining: applies ? round(Math.max(0, req.unitsPerCycle - earned)) : 0,
 		standing: standingOf(checks),
 		expired: daysRemaining < 0
 	};

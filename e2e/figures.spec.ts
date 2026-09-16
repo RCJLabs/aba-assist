@@ -85,14 +85,23 @@ test('an unfinished cycle with time left is not flagged', async ({ page }) => {
 	await expect(row.locator('[data-tone="short"]')).toHaveCount(0);
 });
 
-test('a cycle that ended still owing units is flagged', async ({ page }) => {
+/*
+ * The technician unit rule applies from 2027, because anyone recertifying during 2026
+ * meets the older annual requirements one last time. A cycle that ended before then was
+ * never under it, so the ledger keeps what was earned and withholds the verdict — the
+ * same posture the tools take for a credential whose handbook has not been read.
+ */
+test('a cycle that ended before the rule started is recorded, not scored', async ({
+	page
+}) => {
 	await openDb(page);
 	await seedTracker(page, { cycle: { units: 7, startMonthsAgo: 30, years: 2 } });
 	await home(page);
 
-	const row = figure(page, /this cycle/);
-	await expect(row).toContainText('cycle ended');
-	await expect(row.locator('[data-tone="short"]')).toHaveCount(1);
+	const row = figure(page, /recorded/);
+	await expect(row).toContainText('not scored');
+	await expect(row).not.toContainText('of 12');
+	await expect(row).not.toContainText('still needed');
 });
 
 test('the competency count is marked as the reader own judgement', async ({ page }) => {

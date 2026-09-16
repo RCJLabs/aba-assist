@@ -282,3 +282,70 @@ describe('summariseCycle', () => {
 		]);
 	});
 });
+
+/*
+ * A requirement that has not started is not a requirement this cycle failed.
+ *
+ * The technician unit rule is the live case: it applies from 2027, because anyone
+ * recertifying during 2026 meets the older annual requirements one last time. The engine
+ * used to score every cycle against twelve units whatever its dates, which told those
+ * readers they owed units they do not owe.
+ */
+describe('a development requirement that has not taken effect yet', () => {
+	const req = {
+		unitLabel: 'PDU',
+		cycleYears: 2,
+		unitsPerCycle: 12,
+		ethicsUnits: null,
+		supervisionUnits: null,
+		supervisionUnitsOnlyIfSupervising: false,
+		carryOver: false,
+		effectiveFrom: '2027-01-01',
+		locator: 'Professional Development, p. 30'
+	};
+	const cycle = (endDate: string) => ({
+		id: 'c1',
+		credential: 'RBT' as const,
+		startDate: '2025-01-01',
+		endDate,
+		supervisedOthers: false
+	});
+
+	it('records what was earned without scoring it', () => {
+		const s = summariseCycle(cycle('2026-12-31'), [], req, '2026-09-16');
+		expect(s.requirementApplies).toBe(false);
+		expect(s.standing).toBe('unknown');
+		expect(s.checks[0]!.met).toBeNull();
+		expect(s.checks[0]!.detail).toContain('2027-01-01');
+	});
+
+	it('does not report a shortfall the reader does not owe', () => {
+		const s = summariseCycle(cycle('2026-12-31'), [], req, '2026-09-16');
+		expect(s.remaining).toBe(0);
+	});
+
+	it('scores a cycle that ends once the rule is in force', () => {
+		const s = summariseCycle(cycle('2027-06-30'), [], req, '2026-09-16');
+		expect(s.requirementApplies).toBe(true);
+		expect(s.standing).toBe('short');
+		expect(s.remaining).toBe(12);
+	});
+
+	it('scores normally where a credential names no start date', () => {
+		const s = summariseCycle(
+			cycle('2026-12-31'),
+			[],
+			{ ...req, effectiveFrom: null },
+			'2026-09-16'
+		);
+		expect(s.requirementApplies).toBe(true);
+		expect(s.standing).toBe('short');
+	});
+
+	/* The topic minimums are part of the same requirement, so they wait with it. */
+	it('holds back the topic minimums too', () => {
+		const withEthics = { ...req, ethicsUnits: 4 };
+		const s = summariseCycle(cycle('2026-12-31'), [], withEthics, '2026-09-16');
+		expect(s.checks.map((c) => c.id)).toEqual(['total']);
+	});
+});

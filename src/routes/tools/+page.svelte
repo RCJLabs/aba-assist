@@ -118,6 +118,19 @@
 		// There is no grace period and nothing carries over, so a cycle that ended still
 		// owing units is the one state here that cannot be recovered from.
 		const missedIt = c.remaining > 0 && c.expired;
+		if (!c.requirementApplies) {
+			return [
+				{
+					id: 'earned',
+					label: 'Units recorded this cycle',
+					detail: `The requirement starts with cycles ending ${tracker.developmentRequirement?.effectiveFrom}. This one is recorded, not scored.`,
+					value: String(c.earned),
+					tone: 'unknown',
+					note: 'not scored',
+					href: null
+				}
+			];
+		}
 		return [
 			{
 				id: 'earned',

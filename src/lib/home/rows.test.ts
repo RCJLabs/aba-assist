@@ -205,7 +205,8 @@ describe('the development figure', () => {
 		daysRemaining: 288,
 		remaining: 5,
 		standing: 'short' as const,
-		expired: false
+		expired: false,
+		requirementApplies: true
 	};
 
 	it('reports earned against required, with the deadline that makes it mean something', () => {
@@ -303,7 +304,8 @@ describe('the stack as a whole', () => {
 				daysRemaining: 288,
 				remaining: 5,
 				standing: 'short',
-				expired: false
+				expired: false,
+				requirementApplies: true
 			}
 		});
 		expect(rows.map((r) => r.id)).toEqual(['supervision', 'development', 'due']);
@@ -325,7 +327,8 @@ describe('the stack as a whole', () => {
 				daysRemaining: 288,
 				remaining: 0,
 				standing: 'met',
-				expired: false
+				expired: false,
+				requirementApplies: true
 			},
 			weakest: { letter: 'D', name: 'Behavior Reduction', accuracy: 0.42 },
 			weakestWeight: 19,

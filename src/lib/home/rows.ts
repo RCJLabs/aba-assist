@@ -155,6 +155,22 @@ function developmentRow(inputs: RowInputs): Figure | null {
 	 */
 	const missedIt = summary.remaining > 0 && days < 0;
 
+	/*
+	 * A requirement that starts after this cycle ends is not something to count against.
+	 * Showing "0 of 12" there would state a debt the reader does not owe.
+	 */
+	if (!summary.requirementApplies) {
+		return {
+			id: 'development',
+			label: `${req.unitLabel}s recorded`,
+			detail: `The ${req.unitsPerCycle}-${req.unitLabel} rule starts with cycles ending ${req.effectiveFrom}. This one is recorded, not scored.`,
+			value: String(summary.earned),
+			tone: 'unknown',
+			note: 'not scored',
+			href: '/tools/development'
+		};
+	}
+
 	return {
 		id: 'development',
 		label: `${req.unitLabel}s this cycle`,
