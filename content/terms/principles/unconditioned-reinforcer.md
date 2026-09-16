@@ -27,6 +27,7 @@ seeAlso: [motivating-operation, deprivation]
 taskRefs:
   - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: B.7 }
+  - { credential: BCaBA, code: B.7 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

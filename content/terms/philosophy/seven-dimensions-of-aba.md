@@ -30,6 +30,7 @@ seeAlso: [applied-behavior-analysis, social-validity]
 searchBoost: 1.3
 taskRefs:
   - { credential: BCBA, code: A.5 }
+  - { credential: BCaBA, code: A.5 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

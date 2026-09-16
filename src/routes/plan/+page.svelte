@@ -6,7 +6,11 @@
 	import { filters, CREDENTIAL_OPTIONS } from '$lib/state/filters.svelte.js';
 	import type { Action } from '$lib/study/plan.js';
 
-	onMount(() => void plan.load());
+	onMount(() => {
+		// Ahead of the root layout, so the plan is built for the chosen exam.
+		filters.hydrate();
+		void plan.load();
+	});
 
 	const uid = $props.id();
 	const pct = (n: number) => `${Math.round(n * 100)}%`;

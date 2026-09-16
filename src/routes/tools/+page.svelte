@@ -94,10 +94,15 @@
 					at every organisation, with {tracker.supervisionRequirement.contactsPerMonth} real-time
 					contacts.
 				</p>
-			{:else}
+			{:else if tracker.credentialModelled}
 				<p>
 					An analyst's own certification is not maintained by being supervised. Use this to
 					record the supervision you <em>give</em>, against each supervisee's code.
+				</p>
+			{:else}
+				<p>
+					This app has not read the requirements for your credential, so it will not tell you
+					what your month has to reach. Log the contacts; check the threshold in your handbook.
 				</p>
 			{/if}
 			<dl class="stats">
@@ -134,6 +139,11 @@
 					{req.unitsPerCycle}
 					{req.unitLabel}s every {req.cycleYears} years{#if req.ethicsUnits}, including {req.ethicsUnits}
 						on ethics{/if}. Nothing carries forward.
+				</p>
+			{:else}
+				<p>
+					No unit requirement is modelled for this credential yet, so the ledger records what
+					you earned without scoring it against a total.
 				</p>
 			{/if}
 			{#if cycleSummary}
@@ -244,11 +254,20 @@
 		</div>
 	</section>
 
-	<p class="note">
-		Requirements here come from the {tracker.handbookVersion} handbook and are restated in our own
-		words. They change. Where this app and your handbook differ, the handbook is right — and your
-		supervisor or the certifying board is who to ask.
-	</p>
+	{#if tracker.credentialModelled}
+		<p class="note">
+			Requirements here come from the {tracker.handbookVersion} handbook and are restated in our
+			own words. They change. Where this app and your handbook differ, the handbook is right — and
+			your supervisor or the certifying board is who to ask.
+		</p>
+	{:else}
+		<p class="note">
+			The requirements for this credential have not been read into the app yet, so it does not
+			state any. It would be easy to show you the analyst's numbers instead, and they would be
+			the wrong numbers. Log your hours and units here — that arithmetic is the same either way
+			— and take the totals to your own handbook for the thresholds.
+		</p>
+	{/if}
 {/if}
 
 <style>

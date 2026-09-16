@@ -28,6 +28,7 @@ seeAlso: [most-to-least-prompting, time-delay, prompt-fading]
 taskRefs:
   - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.7 }
+  - { credential: BCaBA, code: G.5 }
 citations:
   - sourceId: terrace-1963
     useType: fact-reference

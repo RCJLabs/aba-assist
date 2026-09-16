@@ -28,6 +28,8 @@ taskRefs:
   - { credential: RBT, code: C.11 }
   - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: G.17 }
+  - { credential: BCaBA, code: B.5 }
+  - { credential: BCaBA, code: G.19 }
 citations:
   - sourceId: kazdin-1977-token
     useType: fact-reference

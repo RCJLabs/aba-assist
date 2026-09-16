@@ -26,6 +26,7 @@ seeAlso: [extinction-burst, generalization]
 taskRefs:
   - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: G.18 }
+  - { credential: BCaBA, code: H.5 }
 citations:
   - sourceId: reynolds-1961
     useType: fact-reference

@@ -30,6 +30,7 @@ seeAlso: [differential-reinforcement-of-other-behavior]
 taskRefs:
   - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: G.2 }
+  - { credential: BCaBA, code: G.18 }
 citations:
   - sourceId: vollmer-iwata-1992
     useType: fact-reference

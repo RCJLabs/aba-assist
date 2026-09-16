@@ -29,6 +29,9 @@ taskRefs:
   - { credential: RBT, code: B.2 }
   - { credential: BCBA, code: C.2 }
   - { credential: BCBA, code: F.1 }
+  - { credential: BCaBA, code: C.3 }
+  - { credential: BCaBA, code: F.1 }
+  - { credential: BCaBA, code: F.6 }
 citations:
   - sourceId: hanley-iwata-mccord-2003
     useType: fact-reference

@@ -29,6 +29,8 @@ seeAlso: [verbal-behavior]
 taskRefs:
   - { credential: BCBA, code: B.17 }
   - { credential: BCBA, code: G.10 }
+  - { credential: BCaBA, code: B.13 }
+  - { credential: BCaBA, code: G.7 }
 citations:
   - sourceId: skinner-1974
     useType: fact-reference

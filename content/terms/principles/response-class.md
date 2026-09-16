@@ -26,6 +26,7 @@ nonExamples:
 seeAlso: [behavior, function-of-behavior, topography]
 taskRefs:
   - { credential: BCBA, code: B.1 }
+  - { credential: BCaBA, code: B.1 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

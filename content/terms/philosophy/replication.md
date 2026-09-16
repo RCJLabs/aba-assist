@@ -28,6 +28,7 @@ seeAlso: [single-case-design, experimental-control, philosophic-doubt]
 taskRefs:
   - { credential: BCBA, code: A.2 }
   - { credential: BCBA, code: D.4 }
+  - { credential: BCaBA, code: D.3 }
 citations:
   - sourceId: sidman-1960
     useType: fact-reference

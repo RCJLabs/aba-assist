@@ -29,6 +29,7 @@ seeAlso: [extinction]
 taskRefs:
   - { credential: BCBA, code: B.3 }
   - { credential: BCBA, code: B.10 }
+  - { credential: BCaBA, code: B.3 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

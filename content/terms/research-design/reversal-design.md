@@ -28,6 +28,7 @@ contrastWith: [multiple-baseline-design]
 seeAlso: [single-case-design, experimental-control]
 taskRefs:
   - { credential: BCBA, code: D.7 }
+  - { credential: BCaBA, code: D.5 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

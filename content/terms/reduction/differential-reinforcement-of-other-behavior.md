@@ -36,6 +36,7 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: G.2 }
+  - { credential: BCaBA, code: G.18 }
 citations:
   - sourceId: iwata-1982-1994
     useType: fact-reference

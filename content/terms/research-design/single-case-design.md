@@ -30,6 +30,8 @@ searchBoost: 1.2
 taskRefs:
   - { credential: BCBA, code: D.4 }
   - { credential: BCBA, code: D.5 }
+  - { credential: BCaBA, code: D.3 }
+  - { credential: BCaBA, code: D.4 }
 citations:
   - sourceId: sidman-1960
     useType: fact-reference

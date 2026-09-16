@@ -40,6 +40,10 @@ taskRefs:
   - { credential: RBT, code: D.1 }
   - { credential: BCBA, code: B.6 }
   - { credential: BCBA, code: F.6 }
+  - { credential: BCaBA, code: B.6 }
+  - { credential: BCaBA, code: H.2 }
+  - { credential: BCaBA, code: H.4 }
+  - { credential: BCaBA, code: I.8 }
 citations:
   - sourceId: iwata-1982-1994
     useType: fact-reference

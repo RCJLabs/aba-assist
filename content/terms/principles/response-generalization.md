@@ -25,6 +25,7 @@ seeAlso: [generalization, response-class]
 taskRefs:
   - { credential: RBT, code: C.8 }
   - { credential: BCBA, code: B.13 }
+  - { credential: BCaBA, code: G.17 }
 citations:
   - sourceId: stokes-baer-1977
     useType: fact-reference

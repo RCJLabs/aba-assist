@@ -25,6 +25,7 @@ nonExamples:
 seeAlso: [mentalism, parsimony]
 taskRefs:
   - { credential: BCBA, code: A.3 }
+  - { credential: BCaBA, code: A.3 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

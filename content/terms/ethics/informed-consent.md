@@ -29,6 +29,8 @@ seeAlso: [assent, confidentiality, ethics-code]
 taskRefs:
   - { credential: RBT, code: F }
   - { credential: BCBA, code: E.1 }
+  - { credential: BCaBA, code: E.5 }
+  - { credential: BCaBA, code: G.15 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

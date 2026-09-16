@@ -26,6 +26,7 @@ seeAlso: [continuous-measurement]
 taskRefs:
   - { credential: RBT, code: A.3 }
   - { credential: BCBA, code: C.2 }
+  - { credential: BCaBA, code: C.3 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

@@ -26,6 +26,8 @@ nonExamples:
 seeAlso: [functional-relation, replication, single-case-design]
 taskRefs:
   - { credential: BCBA, code: D.6 }
+  - { credential: BCaBA, code: D.3 }
+  - { credential: BCaBA, code: D.6 }
 citations:
   - sourceId: sidman-1960
     useType: fact-reference

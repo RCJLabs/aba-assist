@@ -29,6 +29,7 @@ seeAlso: [time-out, function-of-behavior]
 taskRefs:
   - { credential: RBT, code: D.4 }
   - { credential: BCBA, code: B.10 }
+  - { credential: BCaBA, code: B.9 }
 citations:
   - sourceId: lerman-iwata-1996
     useType: fact-reference

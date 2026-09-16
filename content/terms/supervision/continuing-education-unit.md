@@ -29,6 +29,7 @@ contrastWith: [professional-development-unit]
 seeAlso: [supervision]
 taskRefs:
   - { credential: BCBA, code: E.3 }
+  - { credential: BCaBA, code: E.4 }
 citations:
   - sourceId: bacb-bcba-handbook-2026
     useType: fact-reference

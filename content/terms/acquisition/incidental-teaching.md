@@ -27,6 +27,7 @@ seeAlso: [naturalistic-teaching, mand, motivating-operation]
 taskRefs:
   - { credential: RBT, code: C.4 }
   - { credential: BCBA, code: G.13 }
+  - { credential: BCaBA, code: G.13 }
 citations:
   - sourceId: hart-risley-1975
     useType: fact-reference

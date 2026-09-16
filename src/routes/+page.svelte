@@ -117,7 +117,12 @@
 		);
 	}
 
-	onMount(() => void refreshStrip());
+	onMount(() => {
+		// Before the root layout mounts, so the strip is built for the chosen mode
+		// rather than for the default.
+		filters.hydrate();
+		void refreshStrip();
+	});
 
 	const hasStrip = $derived(strip.dueCards > 0 || strip.weakest !== null);
 

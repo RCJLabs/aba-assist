@@ -30,6 +30,7 @@ contrastWith: [continuing-education-unit]
 seeAlso: [supervision]
 taskRefs:
   - { credential: RBT, code: F }
+  - { credential: BCaBA, code: E.4 }
 citations:
   - sourceId: bacb-rbt-handbook-2026
     useType: fact-reference

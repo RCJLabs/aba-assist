@@ -30,6 +30,12 @@ taskRefs:
   - { credential: RBT, code: F }
   - { credential: BCBA, code: F.8 }
   - { credential: BCBA, code: H.1 }
+  - { credential: BCaBA, code: A.5 }
+  - { credential: BCaBA, code: E.10 }
+  - { credential: BCaBA, code: F.3 }
+  - { credential: BCaBA, code: F.4 }
+  - { credential: BCaBA, code: H.3 }
+  - { credential: BCaBA, code: H.8 }
 citations:
   - sourceId: wolf-1978
     useType: fact-reference

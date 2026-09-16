@@ -26,6 +26,7 @@ contrastWith: [radical-behaviorism]
 seeAlso: [explanatory-fiction]
 taskRefs:
   - { credential: BCBA, code: A.3 }
+  - { credential: BCaBA, code: A.3 }
 citations:
   - sourceId: skinner-1974
     useType: fact-reference

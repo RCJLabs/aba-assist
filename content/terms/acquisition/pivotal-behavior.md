@@ -26,6 +26,7 @@ contrastWith: [behavioral-cusp]
 seeAlso: [mand]
 taskRefs:
   - { credential: BCBA, code: F.8 }
+  - { credential: BCaBA, code: F.3 }
 citations:
   - sourceId: koegel-koegel-1999
     useType: fact-reference

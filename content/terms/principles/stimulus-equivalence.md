@@ -38,6 +38,8 @@ taskRefs:
   - { credential: BCBA, code: B.20 }
   - { credential: BCBA, code: B.24 }
   - { credential: BCBA, code: G.19 }
+  - { credential: BCaBA, code: B.15 }
+  - { credential: BCaBA, code: G.11 }
 citations:
   - sourceId: sidman-1994
     useType: fact-reference

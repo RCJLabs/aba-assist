@@ -27,6 +27,7 @@ nonExamples:
 seeAlso: [line-graph, frequency-and-rate]
 taskRefs:
   - { credential: BCBA, code: C.10 }
+  - { credential: BCaBA, code: C.8 }
 citations:
   - sourceId: ferster-skinner-1957
     useType: fact-reference

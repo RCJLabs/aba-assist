@@ -26,6 +26,7 @@ nonExamples:
 seeAlso: [supervision]
 taskRefs:
   - { credential: BCBA, code: I.4 }
+  - { credential: BCaBA, code: I.4 }
 citations:
   - sourceId: bacb-bcba-handbook-2026
     useType: fact-reference

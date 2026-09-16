@@ -28,6 +28,8 @@ taskRefs:
   - { credential: RBT, code: C.9 }
   - { credential: BCBA, code: B.14 }
   - { credential: BCBA, code: G.16 }
+  - { credential: BCaBA, code: C.10 }
+  - { credential: BCaBA, code: G.20 }
 citations:
   - sourceId: stokes-baer-1977
     useType: fact-reference

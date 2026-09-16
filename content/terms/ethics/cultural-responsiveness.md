@@ -28,6 +28,12 @@ taskRefs:
   - { credential: RBT, code: F.10 }
   - { credential: BCBA, code: E.10 }
   - { credential: BCBA, code: F.2 }
+  - { credential: BCaBA, code: E.10 }
+  - { credential: BCaBA, code: E.9 }
+  - { credential: BCaBA, code: F.3 }
+  - { credential: BCaBA, code: H.3 }
+  - { credential: BCaBA, code: I.3 }
+  - { credential: BCaBA, code: I.7 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

@@ -24,6 +24,7 @@ nonExamples:
 seeAlso: [determinism, philosophic-doubt]
 taskRefs:
   - { credential: BCBA, code: A.2 }
+  - { credential: BCaBA, code: A.2 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

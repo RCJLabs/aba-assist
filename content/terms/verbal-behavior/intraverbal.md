@@ -27,6 +27,8 @@ seeAlso: [verbal-behavior, tact]
 taskRefs:
   - { credential: RBT, code: C }
   - { credential: BCBA, code: B.18 }
+  - { credential: BCaBA, code: B.14 }
+  - { credential: BCaBA, code: G.10 }
 citations:
   - sourceId: skinner-1957
     useType: fact-reference

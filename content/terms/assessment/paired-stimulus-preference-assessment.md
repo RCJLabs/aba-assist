@@ -28,6 +28,7 @@ seeAlso: [preference-assessment, single-stimulus-preference-assessment]
 taskRefs:
   - { credential: RBT, code: B.1 }
   - { credential: BCBA, code: F.4 }
+  - { credential: BCaBA, code: F.5 }
 citations:
   - sourceId: fisher-1992
     useType: fact-reference

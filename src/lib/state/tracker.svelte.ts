@@ -151,11 +151,22 @@ class Tracker {
 	}
 
 	/*
-	 * Requirements come from the credential content. A BCaBA maintains certification on the
-	 * analyst rules, so it reads the analyst facts rather than carrying a third copy.
+	 * Requirements come from the credential content, and only from the credential that was
+	 * actually read.
+	 *
+	 * This used to serve the analyst facts to an assistant analyst, on the reasoning that
+	 * the two are maintained alike. They are not, and the app was quietly telling a BCaBA
+	 * a number nobody had checked for them. Until the assistant handbook has been read,
+	 * there are no facts here for that credential and the tools say so — which is the
+	 * whole posture of this project applied to our own convenience.
 	 */
 	private get facts() {
-		return credentials[this.credential === 'BCaBA' ? 'bcba' : this.credential.toLowerCase()];
+		return credentials[this.credential.toLowerCase()];
+	}
+
+	/** False where the credential's handbook has not been read into content yet. */
+	get credentialModelled(): boolean {
+		return this.facts !== undefined;
 	}
 
 	get supervisionRequirement(): SupervisionRequirement | null {
@@ -341,6 +352,14 @@ class Tracker {
 
 	get fieldworkRequirement(): FieldworkRequirement | null {
 		return (credentials.bcba?.requirements?.fieldwork as FieldworkRequirement | null) ?? null;
+	}
+
+	/**
+	 * Fieldwork is accrued toward the analyst credential whoever is looking at it, so it
+	 * cites the analyst handbook rather than whichever credential the tracker is set to.
+	 */
+	get fieldworkHandbookVersion(): string {
+		return credentials.bcba?.handbookVersion ?? 'unknown';
 	}
 
 	get period(): FieldworkPeriod | null {

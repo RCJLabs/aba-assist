@@ -30,6 +30,8 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: D.7 }
   - { credential: BCBA, code: E.12 }
+  - { credential: BCaBA, code: E.11 }
+  - { credential: BCaBA, code: E.5 }
 citations:
   - sourceId: capta
     useType: fact-reference

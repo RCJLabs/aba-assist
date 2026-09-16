@@ -28,6 +28,7 @@ taskRefs:
   - { credential: RBT, code: D.2 }
   - { credential: RBT, code: E.3 }
   - { credential: BCBA, code: B.15 }
+  - { credential: BCaBA, code: G.3 }
 citations:
   - sourceId: bijou-peterson-ault-1968
     useType: fact-reference

@@ -12,7 +12,9 @@
 	const termName = new Map(termIndex.map((t) => [t.i, t.t]));
 
 	onMount(() => {
-		// The exam page and the shared filter can preselect the exam and domain.
+		// The exam page and the shared filter can preselect the exam and domain. The
+		// filter is hydrated here because this runs before the root layout mounts.
+		filters.hydrate();
 		const cred = page.url.searchParams.get('credential') ?? filters.refCredential ?? 'RBT';
 		const domain = page.url.searchParams.get('domain') ?? filters.domain;
 		quiz.configure({
@@ -24,6 +26,22 @@
 	});
 
 	const domains = $derived(outlineForCredential(quiz.credential)?.domains ?? []);
+
+	/*
+	 * When the mode asks for an exam this build has no questions for.
+	 *
+	 * The selector only offers exams that have a bank, so the setup above quietly swaps in
+	 * one that does. Quietly is the problem: somebody who set the app to the assistant
+	 * exam would otherwise sit an analyst paper without being told, and conclude the app
+	 * has assistant questions. It says so instead.
+	 */
+	const bankless = $derived(
+		filters.refCredential !== null &&
+			!questionCredentials.includes(filters.refCredential) &&
+			filters.refCredential !== quiz.credential
+			? filters.refCredential
+			: null
+	);
 	const item = $derived(quiz.current);
 	const optionById = $derived(
 		new Map<string, NonNullable<typeof item>['q']['options'][number]>(
@@ -117,6 +135,12 @@
 					<option value={c}>{c} — {CREDENTIAL_LABELS[c] ?? c}</option>
 				{/each}
 			</select>
+			{#if bankless}
+				<p class="swapped" role="note" data-bankless={bankless}>
+					No {bankless} questions have been written yet, so this is the {quiz.credential} bank. The
+					{bankless} outline is narrower, so some of these go past what it asks.
+				</p>
+			{/if}
 		</div>
 
 		<div class="field" hidden={quiz.mode === 'simulation'}>
@@ -506,6 +530,12 @@
 {/if}
 
 <style>
+	.swapped {
+		margin: 0.4rem 0 0;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

@@ -29,6 +29,8 @@ taskRefs:
   - { credential: RBT, code: A.2 }
   - { credential: BCBA, code: C.5 }
   - { credential: BCBA, code: C.6 }
+  - { credential: BCaBA, code: C.5 }
+  - { credential: BCaBA, code: C.7 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

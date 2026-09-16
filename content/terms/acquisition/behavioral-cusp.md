@@ -25,6 +25,7 @@ contrastWith: [pivotal-behavior]
 seeAlso: [imitation, mand]
 taskRefs:
   - { credential: BCBA, code: F.8 }
+  - { credential: BCaBA, code: F.3 }
 citations:
   - sourceId: rosales-ruiz-baer-1997
     useType: fact-reference

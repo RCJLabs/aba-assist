@@ -27,6 +27,7 @@ nonExamples:
 seeAlso: [supervision, performance-feedback, function-of-behavior]
 taskRefs:
   - { credential: BCBA, code: I.6 }
+  - { credential: BCaBA, code: I.8 }
 citations:
   - sourceId: parsons-rollyson-reid-2012
     useType: fact-reference

@@ -26,6 +26,7 @@ nonExamples:
 seeAlso: [reversal-design, baseline, internal-validity]
 taskRefs:
   - { credential: BCBA, code: D.4 }
+  - { credential: BCaBA, code: D.5 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

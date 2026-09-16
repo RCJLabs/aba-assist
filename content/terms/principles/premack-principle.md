@@ -28,6 +28,7 @@ seeAlso: [reinforcer, preference-assessment]
 taskRefs:
   - { credential: RBT, code: C }
   - { credential: BCBA, code: G.1 }
+  - { credential: BCaBA, code: G.15 }
 citations:
   - sourceId: premack-1959
     useType: fact-reference

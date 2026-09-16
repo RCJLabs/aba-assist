@@ -28,6 +28,8 @@ seeAlso: [indirect-assessment, task-analysis]
 taskRefs:
   - { credential: RBT, code: B.2 }
   - { credential: BCBA, code: F.3 }
+  - { credential: BCaBA, code: F.4 }
+  - { credential: BCaBA, code: I.5 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

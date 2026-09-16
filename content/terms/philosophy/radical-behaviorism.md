@@ -28,6 +28,8 @@ seeAlso: [private-event, methodological-behaviorism, explanatory-fiction]
 searchBoost: 1.3
 taskRefs:
   - { credential: BCBA, code: A.3 }
+  - { credential: BCaBA, code: A.3 }
+  - { credential: BCaBA, code: A.4 }
 citations:
   - sourceId: skinner-1974
     useType: fact-reference

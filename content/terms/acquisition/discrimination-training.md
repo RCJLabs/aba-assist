@@ -29,6 +29,8 @@ taskRefs:
   - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.12 }
   - { credential: BCBA, code: G.6 }
+  - { credential: BCaBA, code: B.11 }
+  - { credential: BCaBA, code: G.4 }
 citations:
   - sourceId: green-2001
     useType: fact-reference

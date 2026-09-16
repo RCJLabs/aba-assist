@@ -29,6 +29,7 @@ searchBoost: 1.3
 taskRefs:
   - { credential: RBT, code: A }
   - { credential: BCBA, code: B.1 }
+  - { credential: BCaBA, code: B.1 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

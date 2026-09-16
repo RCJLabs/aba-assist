@@ -29,6 +29,8 @@ seeAlso: [discrimination-training, stimulus-control]
 taskRefs:
   - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.12 }
+  - { credential: BCaBA, code: B.10 }
+  - { credential: BCaBA, code: G.4 }
 citations:
   - sourceId: green-2001
     useType: fact-reference

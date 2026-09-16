@@ -26,6 +26,7 @@ contrastWith: [internal-validity]
 seeAlso: [replication, generalization]
 taskRefs:
   - { credential: BCBA, code: D.2 }
+  - { credential: BCaBA, code: D.2 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

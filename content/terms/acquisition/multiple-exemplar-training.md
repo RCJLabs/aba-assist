@@ -27,6 +27,9 @@ seeAlso: [generalization, stimulus-generalization, teaching-loosely]
 taskRefs:
   - { credential: RBT, code: C.8 }
   - { credential: BCBA, code: G.15 }
+  - { credential: BCaBA, code: B.15 }
+  - { credential: BCaBA, code: G.11 }
+  - { credential: BCaBA, code: G.17 }
 citations:
   - sourceId: stokes-baer-1977
     useType: fact-reference

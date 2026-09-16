@@ -37,6 +37,8 @@ taskRefs:
   - { credential: RBT, code: F.5 }
   - { credential: RBT, code: F.6 }
   - { credential: BCBA, code: E.4 }
+  - { credential: BCaBA, code: E.2 }
+  - { credential: BCaBA, code: E.5 }
 citations:
   - sourceId: bacb-rbt-ethics-code-2
     useType: fact-reference

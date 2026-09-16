@@ -26,6 +26,7 @@ seeAlso: [abolishing-operation, motivating-operation]
 taskRefs:
   - { credential: RBT, code: C }
   - { credential: BCBA, code: B.15 }
+  - { credential: BCaBA, code: B.12 }
 citations:
   - sourceId: michael-1993
     useType: fact-reference

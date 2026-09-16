@@ -33,6 +33,7 @@ taskRefs:
   - { credential: RBT, code: F.5 }
   - { credential: BCBA, code: E.4 }
   - { credential: BCBA, code: E.12 }
+  - { credential: BCaBA, code: E.5 }
 citations:
   - sourceId: hipaa-privacy-rule
     useType: fact-reference

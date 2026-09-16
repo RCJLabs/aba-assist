@@ -32,6 +32,11 @@ taskRefs:
   - { credential: RBT, code: E.2 }
   - { credential: BCBA, code: C.12 }
   - { credential: BCBA, code: H.6 }
+  - { credential: BCaBA, code: D.6 }
+  - { credential: BCaBA, code: F.4 }
+  - { credential: BCaBA, code: H.6 }
+  - { credential: BCaBA, code: I.1 }
+  - { credential: BCaBA, code: I.9 }
 citations:
   - sourceId: peterson-homer-wonderlich-1982
     useType: fact-reference

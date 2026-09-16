@@ -28,6 +28,7 @@ contrastWith: [reversal-design]
 seeAlso: [single-case-design, replication]
 taskRefs:
   - { credential: BCBA, code: D.8 }
+  - { credential: BCaBA, code: D.5 }
 citations:
   - sourceId: horner-baer-1978
     useType: fact-reference

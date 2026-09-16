@@ -28,6 +28,7 @@ contrastWith: [differential-reinforcement-of-low-rates]
 seeAlso: [fixed-ratio-schedule]
 taskRefs:
   - { credential: BCBA, code: G.2 }
+  - { credential: BCaBA, code: G.18 }
 citations:
   - sourceId: ferster-skinner-1957
     useType: fact-reference

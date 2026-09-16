@@ -26,6 +26,8 @@ nonExamples:
 seeAlso: [functional-analysis, single-case-design]
 taskRefs:
   - { credential: BCBA, code: D.9 }
+  - { credential: BCaBA, code: D.5 }
+  - { credential: BCaBA, code: D.6 }
 citations:
   - sourceId: barlow-hayes-1979
     useType: fact-reference

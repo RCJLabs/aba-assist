@@ -28,6 +28,7 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: C.11 }
   - { credential: BCBA, code: G.4 }
+  - { credential: BCaBA, code: G.2 }
 citations:
   - sourceId: kazdin-1977-token
     useType: fact-reference

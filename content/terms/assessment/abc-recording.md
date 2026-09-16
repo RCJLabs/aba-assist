@@ -30,6 +30,7 @@ searchBoost: 1.3
 taskRefs:
   - { credential: RBT, code: B.3 }
   - { credential: BCBA, code: F.5 }
+  - { credential: BCaBA, code: F.6 }
 citations:
   - sourceId: bijou-peterson-ault-1968
     useType: fact-reference

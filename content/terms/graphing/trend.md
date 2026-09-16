@@ -26,6 +26,8 @@ seeAlso: [visual-analysis, level, variability, baseline]
 taskRefs:
   - { credential: RBT, code: A.7 }
   - { credential: BCBA, code: C.11 }
+  - { credential: BCaBA, code: C.9 }
+  - { credential: BCaBA, code: H.7 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

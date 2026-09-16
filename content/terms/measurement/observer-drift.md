@@ -26,6 +26,7 @@ seeAlso: [interobserver-agreement, reactivity, operational-definition]
 taskRefs:
   - { credential: RBT, code: A.8 }
   - { credential: BCBA, code: C.8 }
+  - { credential: BCaBA, code: C.6 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

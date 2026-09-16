@@ -26,6 +26,7 @@ nonExamples:
 seeAlso: [observer-drift, confounding-variable]
 taskRefs:
   - { credential: BCBA, code: C.8 }
+  - { credential: BCaBA, code: C.6 }
 citations:
   - sourceId: kazdin-1979
     useType: fact-reference

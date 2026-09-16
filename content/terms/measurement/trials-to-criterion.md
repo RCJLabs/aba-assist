@@ -25,6 +25,8 @@ seeAlso: [percentage]
 taskRefs:
   - { credential: RBT, code: A }
   - { credential: BCBA, code: C.3 }
+  - { credential: BCaBA, code: C.10 }
+  - { credential: BCaBA, code: H.1 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

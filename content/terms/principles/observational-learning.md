@@ -27,6 +27,7 @@ contrastWith: [imitation]
 seeAlso: [modeling]
 taskRefs:
   - { credential: BCBA, code: B.23 }
+  - { credential: BCaBA, code: G.6 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

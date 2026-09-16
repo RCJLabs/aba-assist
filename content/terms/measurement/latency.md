@@ -34,6 +34,8 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: A.1 }
   - { credential: BCBA, code: C.4 }
+  - { credential: BCaBA, code: C.1 }
+  - { credential: BCaBA, code: C.4 }
 citations:
   - sourceId: baer-wolf-risley-1968
     useType: fact-reference

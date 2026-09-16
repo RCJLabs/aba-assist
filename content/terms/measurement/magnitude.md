@@ -26,6 +26,7 @@ seeAlso: [frequency-and-rate, duration]
 taskRefs:
   - { credential: RBT, code: A }
   - { credential: BCBA, code: C.4 }
+  - { credential: BCaBA, code: C.1 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

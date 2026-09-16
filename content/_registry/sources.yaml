@@ -216,6 +216,20 @@ sources:
       and domain names were read directly from the document; every task summary in this
       repo is our own restatement, and the document's wording is not reproduced.
 
+  - id: bacb-bcaba-tco-6
+    kind: standard
+    title: BCaBA Test Content Outline (6th ed.)
+    organization: Behavior Analyst Certification Board
+    year: 2022
+    url: https://www.bacb.com/test-content-outlines-for-bacb-certifications/
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Effective 2025. Nine domains, 90 tasks, 150 scored and 25 unscored questions. The
+      document read was the 09/2024 update. Task codes, per-domain counts, domain names
+      and question counts were read directly from it; every task summary in this repo is
+      our own restatement, and the document's wording is not reproduced.
+
   - id: bacb-rbt-handbook-2026
     kind: organization-publication
     title: RBT Handbook

@@ -25,6 +25,7 @@ nonExamples:
 seeAlso: [single-case-design, shaping]
 taskRefs:
   - { credential: BCBA, code: D.9 }
+  - { credential: BCaBA, code: D.5 }
 citations:
   - sourceId: hartmann-hall-1976
     useType: fact-reference

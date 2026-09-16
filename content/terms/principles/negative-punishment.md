@@ -28,6 +28,8 @@ taskRefs:
   - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: B.5 }
   - { credential: BCBA, code: G.17 }
+  - { credential: BCaBA, code: B.5 }
+  - { credential: BCaBA, code: G.19 }
 citations:
   - sourceId: azrin-holz-1966
     useType: fact-reference

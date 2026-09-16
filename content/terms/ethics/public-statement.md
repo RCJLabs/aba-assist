@@ -28,6 +28,7 @@ seeAlso: [confidentiality, ethics-code]
 taskRefs:
   - { credential: RBT, code: F.6 }
   - { credential: BCBA, code: E.5 }
+  - { credential: BCaBA, code: E.2 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

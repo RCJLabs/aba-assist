@@ -29,6 +29,8 @@ taskRefs:
   - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: B.7 }
   - { credential: BCBA, code: G.4 }
+  - { credential: BCaBA, code: B.7 }
+  - { credential: BCaBA, code: G.2 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

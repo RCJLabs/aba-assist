@@ -27,6 +27,7 @@ seeAlso: [chaining, task-analysis]
 taskRefs:
   - { credential: RBT, code: C.5 }
   - { credential: BCBA, code: G.12 }
+  - { credential: BCaBA, code: G.9 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

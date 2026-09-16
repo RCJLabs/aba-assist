@@ -26,6 +26,7 @@ seeAlso: [confounding-variable, experimental-control]
 taskRefs:
   - { credential: BCBA, code: D.2 }
   - { credential: BCBA, code: D.3 }
+  - { credential: BCaBA, code: D.2 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

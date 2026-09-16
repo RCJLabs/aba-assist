@@ -24,10 +24,22 @@
 	let provider = $state('');
 
 	const req = $derived(tracker.developmentRequirement);
+	/*
+	 * The ledger still runs when the requirement is not modelled.
+	 *
+	 * Recording what you earned is useful on its own; what the app withholds in that case
+	 * is the verdict, because the threshold to score it against has not been read. A unit
+	 * is still a unit, so the form keeps a neutral label rather than borrowing the name
+	 * another credential uses for its own.
+	 */
+	const unitLabel = $derived(req?.unitLabel ?? 'unit');
 	const cycles = $derived(tracker.myCycles);
 	const current = $derived(tracker.currentCycle);
 	const summary = $derived(current ? tracker.summaryFor(current) : null);
 	const stray = $derived(current ? tracker.strayUnits(current) : []);
+	const recorded = $derived(
+		current ? tracker.unitsFor(current.id).reduce((n, u) => n + u.units, 0) : 0
+	);
 	const isAnalyst = $derived(tracker.credential !== 'RBT');
 
 	const KINDS: { value: UnitKind; label: string }[] = [
@@ -58,7 +70,7 @@
 		});
 		title = '';
 		provider = '';
-		announcer.announce(`Added ${units} ${req?.unitLabel ?? 'unit'}s`);
+		announcer.announce(`Added ${units} ${unitLabel}s`);
 	}
 </script>
 
@@ -78,18 +90,24 @@
 
 {#if tracker.status === 'unavailable'}
 	<p class="warn">This needs local storage and the browser has blocked it.</p>
-{:else if !req}
-	<p class="lede">No development requirement is modelled for this credential yet.</p>
 {:else}
-	<p class="lede">
-		{req.unitsPerCycle}
-		{req.unitLabel}s every {req.cycleYears} years{#if req.ethicsUnits}, including {req.ethicsUnits}
-			on ethics{/if}{#if req.supervisionUnits}, and {req.supervisionUnits} on supervision in any
-			cycle where you supervised somebody{/if}. Everything must be earned inside the cycle:
-		nothing carries forward, and a shortfall cannot be made up afterwards.
-	</p>
-	{#if req.effectiveFrom}
-		<p class="hint">This applies to cycles from {req.effectiveFrom}.</p>
+	{#if req}
+		<p class="lede">
+			{req.unitsPerCycle}
+			{req.unitLabel}s every {req.cycleYears} years{#if req.ethicsUnits}, including {req.ethicsUnits}
+				on ethics{/if}{#if req.supervisionUnits}, and {req.supervisionUnits} on supervision in any
+				cycle where you supervised somebody{/if}. Everything must be earned inside the cycle:
+			nothing carries forward, and a shortfall cannot be made up afterwards.
+		</p>
+		{#if req.effectiveFrom}
+			<p class="hint">This applies to cycles from {req.effectiveFrom}.</p>
+		{/if}
+	{:else}
+		<p class="lede">
+			The requirements for this credential have not been read into the app yet, so it will not
+			tell you how many units you owe or whether you are on track. The ledger still works:
+			record what you earned and check the totals against your own handbook.
+		</p>
 	{/if}
 
 	{#if cycles.length === 0}
@@ -115,32 +133,40 @@
 				<button type="submit" class="button primary">Add cycle</button>
 			</form>
 		</section>
-	{:else if current && summary}
+	{:else if current}
 		<section class="progress">
 			<h2>
 				Cycle to {current.endDate}
-				<span class="countdown" class:bad={summary.daysRemaining < 60}>
-					{#if summary.expired}
-						Ended {-summary.daysRemaining} days ago
-					{:else}
-						{summary.daysRemaining} days left
-					{/if}
-				</span>
+				{#if summary}
+					<span class="countdown" class:bad={summary.daysRemaining < 60}>
+						{#if summary.expired}
+							Ended {-summary.daysRemaining} days ago
+						{:else}
+							{summary.daysRemaining} days left
+						{/if}
+					</span>
+				{/if}
 			</h2>
 
-			<ul class="checks">
-				{#each summary.checks as c (c.id)}
-					<li data-met={String(c.met)}>
-						<span class="mark" aria-hidden="true">{c.met ? '✓' : '✗'}</span>
-						<span><strong>{c.label}</strong> <span class="detail">{c.detail}</span></span>
-					</li>
-				{/each}
-			</ul>
+			{#if summary}
+				<ul class="checks">
+					{#each summary.checks as c (c.id)}
+						<li data-met={String(c.met)}>
+							<span class="mark" aria-hidden="true">{c.met ? '✓' : '✗'}</span>
+							<span><strong>{c.label}</strong> <span class="detail">{c.detail}</span></span>
+						</li>
+					{/each}
+				</ul>
 
-			{#if summary.remaining > 0 && !summary.expired}
+				{#if summary.remaining > 0 && !summary.expired}
+					<p class="remaining">
+						{summary.remaining}
+						{unitLabel}{summary.remaining === 1 ? '' : 's'} to go, in {summary.daysRemaining} days.
+					</p>
+				{/if}
+			{:else}
 				<p class="remaining">
-					{summary.remaining}
-					{req.unitLabel}{summary.remaining === 1 ? '' : 's'} to go, in {summary.daysRemaining} days.
+					{recorded} recorded in this cycle. No total to check them against.
 				</p>
 			{/if}
 
@@ -176,7 +202,7 @@
 						<input id="{uid}-date" type="date" bind:value={date} required />
 					</div>
 					<div class="field">
-						<label for="{uid}-units">{req.unitLabel}s</label>
+						<label for="{uid}-units">{unitLabel}s</label>
 						<input
 							id="{uid}-units"
 							type="number"

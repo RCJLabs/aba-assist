@@ -29,6 +29,7 @@ seeAlso: [noncontingent-reinforcement]
 taskRefs:
   - { credential: RBT, code: C.1 }
   - { credential: BCBA, code: B.8 }
+  - { credential: BCaBA, code: B.8 }
 citations:
   - sourceId: ferster-skinner-1957
     useType: fact-reference

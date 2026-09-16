@@ -30,6 +30,10 @@ taskRefs:
   - { credential: RBT, code: A.7 }
   - { credential: BCBA, code: C.11 }
   - { credential: BCBA, code: D.6 }
+  - { credential: BCaBA, code: C.9 }
+  - { credential: BCaBA, code: H.6 }
+  - { credential: BCaBA, code: H.7 }
+  - { credential: BCaBA, code: I.9 }
 citations:
   - sourceId: kazdin-2011
     useType: fact-reference

@@ -26,6 +26,7 @@ contrastWith: [independent-variable]
 seeAlso: [operational-definition, functional-relation]
 taskRefs:
   - { credential: BCBA, code: D.1 }
+  - { credential: BCaBA, code: D.1 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

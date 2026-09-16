@@ -31,6 +31,8 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: H.4 }
+  - { credential: BCaBA, code: G.19 }
+  - { credential: BCaBA, code: H.3 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

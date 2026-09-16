@@ -46,6 +46,8 @@ searchBoost: 1.3
 taskRefs:
   - { credential: RBT, code: D.3 }
   - { credential: BCBA, code: G.2 }
+  - { credential: BCaBA, code: G.18 }
+  - { credential: BCaBA, code: G.8 }
 citations:
   - sourceId: carr-durand-1985
     useType: fact-reference

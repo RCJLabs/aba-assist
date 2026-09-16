@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('the exams index lists both outlines with verified exam facts', async ({ page }) => {
+test('the exams index lists every outline with verified exam facts', async ({ page }) => {
 	await page.goto('/exams');
 	await expect(
 		page.getByRole('link', { name: /RBT — Registered Behavior Technician/ })
@@ -8,8 +8,35 @@ test('the exams index lists both outlines with verified exam facts', async ({ pa
 	await expect(
 		page.getByRole('link', { name: /BCBA — Board Certified Behavior Analyst/ })
 	).toBeVisible();
+	await expect(
+		page.getByRole('link', { name: /BCaBA — Board Certified Assistant Behavior Analyst/ })
+	).toBeVisible();
 	await expect(page.getByText(/175 scored questions/)).toBeVisible();
 	await expect(page.getByText(/\b75 scored questions/)).toBeVisible();
+	await expect(page.getByText(/150 scored questions/)).toBeVisible();
+});
+
+test('the BCaBA outline page is its own document, not the analyst one', async ({ page }) => {
+	await page.goto('/exams/bcaba-tco-6');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText(/BCaBA/);
+	await expect(page.locator('.domains > li')).toHaveCount(9);
+	await expect(page.locator('.task')).toHaveCount(90);
+	await expect(page.getByText(/Task list pending/)).toHaveCount(0);
+
+	// Per-domain counts straight from the outline document, and its own area names.
+	await expect(page.locator('#domain-B .task')).toHaveCount(15);
+	await expect(page.locator('#domain-G .task')).toHaveCount(20);
+	await expect(page.locator('#domain-H')).toContainText(
+		'Intervention Development and Monitoring'
+	);
+	await expect(page.locator('#domain-I')).toContainText('Supervisory Relationships');
+
+	/*
+	 * The outline states the question counts but not the clock, so the page must not
+	 * invent one. A minutes figure here would be the analyst exam's, and pacing somebody
+	 * against the wrong clock is the one thing a timed simulation must not do.
+	 */
+	await expect(page.getByText(/minutes|hours/)).toHaveCount(0);
 });
 
 test('the BCBA outline page shows all nine areas and every task with a link to a term', async ({

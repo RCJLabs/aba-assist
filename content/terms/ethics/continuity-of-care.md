@@ -26,6 +26,7 @@ seeAlso: [ethics-code, self-reporting]
 taskRefs:
   - { credential: RBT, code: F }
   - { credential: BCBA, code: E.6 }
+  - { credential: BCaBA, code: E.6 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

@@ -25,6 +25,7 @@ seeAlso: [line-graph, preference-assessment]
 taskRefs:
   - { credential: RBT, code: A }
   - { credential: BCBA, code: C.10 }
+  - { credential: BCaBA, code: C.8 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

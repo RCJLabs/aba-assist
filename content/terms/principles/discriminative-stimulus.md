@@ -42,6 +42,8 @@ taskRefs:
   - { credential: BCBA, code: B.11 }
   - { credential: BCBA, code: B.16 }
   - { credential: BCBA, code: G.5 }
+  - { credential: BCaBA, code: B.10 }
+  - { credential: BCaBA, code: G.3 }
 citations:
   - sourceId: michael-1982
     useType: fact-reference

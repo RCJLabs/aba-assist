@@ -24,6 +24,7 @@ nonExamples:
 seeAlso: [stimulus-class, discriminative-stimulus, motivating-operation]
 taskRefs:
   - { credential: BCBA, code: B.2 }
+  - { credential: BCaBA, code: B.2 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

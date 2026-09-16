@@ -28,6 +28,8 @@ seeAlso: [extinction-burst, spontaneous-recovery, functional-communication-train
 taskRefs:
   - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: H.5 }
+  - { credential: BCaBA, code: G.12 }
+  - { credential: BCaBA, code: H.5 }
 citations:
   - sourceId: lerman-iwata-1996
     useType: fact-reference

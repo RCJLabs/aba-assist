@@ -29,6 +29,8 @@ seeAlso: [operational-definition, response-class]
 taskRefs:
   - { credential: RBT, code: A.5 }
   - { credential: BCBA, code: C.1 }
+  - { credential: BCaBA, code: B.1 }
+  - { credential: BCaBA, code: C.2 }
 citations:
   - sourceId: johnston-pennypacker-2020
     useType: fact-reference

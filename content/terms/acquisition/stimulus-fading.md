@@ -28,6 +28,7 @@ seeAlso: [prompt-fading, prompt]
 taskRefs:
   - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.8 }
+  - { credential: BCaBA, code: G.5 }
 citations:
   - sourceId: terrace-1963
     useType: fact-reference

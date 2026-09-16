@@ -29,6 +29,7 @@ seeAlso: [prompt-hierarchy, errorless-teaching, prompt-fading]
 taskRefs:
   - { credential: RBT, code: C.7 }
   - { credential: BCBA, code: G.7 }
+  - { credential: BCaBA, code: G.5 }
 citations:
   - sourceId: macduff-krantz-mcclannahan-2001
     useType: fact-reference

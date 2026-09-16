@@ -27,6 +27,7 @@ seeAlso: [intermittent-reinforcement, maintenance, continuous-reinforcement]
 taskRefs:
   - { credential: RBT, code: C.9 }
   - { credential: BCBA, code: G.16 }
+  - { credential: BCaBA, code: G.20 }
 citations:
   - sourceId: ferster-skinner-1957
     useType: fact-reference

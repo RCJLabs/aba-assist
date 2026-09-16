@@ -25,6 +25,9 @@ seeAlso: [imitation, observational-learning, prompt]
 taskRefs:
   - { credential: RBT, code: C }
   - { credential: BCBA, code: G.9 }
+  - { credential: BCaBA, code: G.6 }
+  - { credential: BCaBA, code: I.6 }
+  - { credential: BCaBA, code: I.7 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

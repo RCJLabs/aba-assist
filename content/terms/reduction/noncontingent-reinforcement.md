@@ -32,6 +32,7 @@ searchBoost: 1.2
 taskRefs:
   - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: G.3 }
+  - { credential: BCaBA, code: G.1 }
 citations:
   - sourceId: vollmer-1993
     useType: fact-reference

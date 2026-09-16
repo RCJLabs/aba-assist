@@ -31,6 +31,8 @@ taskRefs:
   - { credential: RBT, code: D.6 }
   - { credential: BCBA, code: B.10 }
   - { credential: BCBA, code: G.18 }
+  - { credential: BCaBA, code: B.9 }
+  - { credential: BCaBA, code: H.5 }
 citations:
   - sourceId: lerman-iwata-wallace-1999
     useType: fact-reference

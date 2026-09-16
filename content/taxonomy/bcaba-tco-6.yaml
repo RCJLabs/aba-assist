@@ -1,0 +1,978 @@
+# BCaBA Test Content Outline (6th edition) — structural facts, with OUR OWN summaries.
+#
+# Verified against the document itself (read from the PDF on 2026-09-16): nine domains,
+# 90 tasks, per-domain task counts A5 B15 C10 D6 E11 F6 G20 H8 I9, exam weights, and the
+# per-domain question counts printed in the outline's own summary table. Codes, counts
+# and names are facts. Every `ourSummary` and `plainSummary` below is written from
+# scratch and is deliberately NOT the document's wording — see OfficialTextGuard.
+#
+# Why `subsetOf` is null even though the assistant credential is narrower.
+#
+# The nine domain letters match the BCBA outline and seven of the nine domain names do
+# too, so it is tempting to model this as a subset. It is not one, and saying it was
+# would be a claim the data cannot support: the task numbering is independent (BCaBA
+# B has 15 tasks where BCBA B has 24, so B.15 means different things in the two
+# documents), two domains are named differently — H is Intervention Development and
+# Monitoring rather than Selecting and Implementing Interventions, and I is Supervisory
+# Relationships rather than Personnel Supervision and Management — and several tasks
+# have no BCBA counterpart at all (C.10 mastery criteria, E.6 transitions, I.3 equity
+# in supervision). The relationship is "same field, narrower scope, separate document",
+# which is exactly what two outlines with no declared parentage express.
+
+id: bcaba-tco-6
+credential: BCaBA
+edition: '6th'
+effectiveDate: '2025-01-01'
+issuer: BACB
+sourceId: bacb-bcaba-tco-6
+subsetOf: null
+countsVerified: true
+totalTasks: 90
+
+exam:
+  scoredItems: 150
+  unscoredItems: 25
+  # The outline states the question counts but not the time allowed; that lives in the
+  # BCaBA Handbook, which has not been read. Null rather than the analyst exam's four
+  # hours: a simulator that paces you against the wrong clock is worse than no simulator,
+  # and `examFormat` returns null here rather than guessing.
+  minutes: null
+
+domains:
+  - letter: A
+    name: Behaviorism and Philosophical Foundations
+    examWeightPercent: 7
+    examItems: 10
+    ourDescription: >-
+      What the science is trying to do, what it assumes about behavior, and how the
+      branches of the field relate to each other. A larger share of the assistant exam
+      than of the analyst one, which is worth knowing before deciding to skim it.
+    tasks:
+      - code: A.1
+        ourSummary: >-
+          State the goals a natural science of behavior pursues — describing what happens,
+          predicting when it will happen, and influencing it — and recognise each in practice.
+        plainSummary: Know the three things this science tries to do, and spot each one at work.
+        keywords: [description, prediction, control, goals of science]
+        termRefs: [functional-relation, applied-behavior-analysis]
+        attestation: &att
+          originalProse: true
+          noVerbatimSource: true
+          aiAssisted: true
+          consulted: >-
+            Task topic read from the official outline; summary written independently from
+            Skinner (1953) and Baer, Wolf and Risley (1968).
+      - code: A.2
+        ourSummary: >-
+          Explain the assumptions the science works from — selection by consequences,
+          determinism, empiricism, parsimony and pragmatism — and what each rules out.
+        plainSummary: Know the beliefs behind the science, and what each one stops you doing.
+        keywords: [selectionism, determinism, empiricism, parsimony, pragmatism]
+        termRefs: [determinism, empiricism, parsimony, philosophic-doubt]
+        attestation: *att
+      - code: A.3
+        ourSummary: >-
+          Account for behavior the way radical behaviorism does, including private events,
+          without falling back on inner causes that only rename what needs explaining.
+        plainSummary: Explain behavior by what happens around it, not by something inside the person.
+        keywords: [radical behaviorism, private events, mentalism, explanatory fiction]
+        termRefs: [radical-behaviorism, private-event, mentalism, explanatory-fiction]
+        attestation: *att
+      - code: A.4
+        ourSummary: >-
+          Tell apart the philosophy, the laboratory science, the applied science and the
+          service delivery that practitioners provide, and say which one a given activity is.
+        plainSummary: Know the difference between the ideas, the lab work, the applied work and the job.
+        keywords: [behaviorism, EAB, ABA, professional practice]
+        termRefs:
+          [radical-behaviorism, experimental-analysis-of-behavior, applied-behavior-analysis]
+        attestation: *att
+      - code: A.5
+        ourSummary: >-
+          Name and describe the defining dimensions of applied behavior analysis set out by
+          Baer, Wolf and Risley in 1968, and identify them in a piece of work.
+        plainSummary: Know the seven marks of applied behavior analysis and find them in real work.
+        keywords: [seven dimensions, applied, behavioral, analytic, generality]
+        termRefs: [seven-dimensions-of-aba, social-validity, generalization]
+        attestation: *att
+
+  - letter: B
+    name: Concepts and Principles
+    examWeightPercent: 12
+    examItems: 18
+    ourDescription: >-
+      The vocabulary everything else is built from: what behavior and stimuli are, how
+      consequences change behavior, what controls when it happens, and how verbal behavior
+      is classified. Most later domains are this domain applied to a problem.
+    tasks:
+      - code: B.1
+        ourSummary: >-
+          Tell behavior, a single response and a response class apart, and group responses
+          that do different things but produce the same effect.
+        plainSummary: Know what counts as one response and what counts as a group of them.
+        keywords: [behavior, response, response class]
+        termRefs: [behavior, response-class, topography]
+        attestation: *att
+      - code: B.2
+        ourSummary: >-
+          Distinguish a single stimulus from a stimulus class, and recognise when different
+          things in the world are functioning as one class for a learner.
+        plainSummary: Know when several different things all work the same way for a learner.
+        keywords: [stimulus, stimulus class, feature class, arbitrary class]
+        termRefs: [stimulus, stimulus-class]
+        attestation: *att
+      - code: B.3
+        ourSummary: >-
+          Separate respondent conditioning, where a stimulus comes to elicit a response, from
+          operant conditioning, where consequences change future behavior.
+        plainSummary: Know the difference between behavior that is triggered and behavior that is learned from results.
+        keywords: [respondent conditioning, operant conditioning, elicited, emitted]
+        termRefs: [respondent-conditioning, operant-conditioning]
+        attestation: *att
+      - code: B.4
+        ourSummary: >-
+          Distinguish reinforcement that adds something from reinforcement that removes
+          something, and identify each from what happened to the behavior afterwards.
+        plainSummary: Tell the two kinds of reinforcement apart by what changed after the behavior.
+        keywords: [positive reinforcement, negative reinforcement, escape, avoidance]
+        termRefs: [positive-reinforcement, negative-reinforcement, escape-extinction]
+        attestation: *att
+      - code: B.5
+        ourSummary: >-
+          Distinguish punishment that adds something from punishment that removes something,
+          judging both by a drop in future behavior rather than by how unpleasant they look.
+        plainSummary: Tell the two kinds of punishment apart, and judge them by whether behavior dropped.
+        keywords: [positive punishment, negative punishment, response cost]
+        termRefs: [positive-punishment, negative-punishment, punishment, response-cost]
+        attestation: *att
+      - code: B.6
+        ourSummary: >-
+          Separate consequences the behavior produces by itself from consequences another
+          person delivers, and say which is maintaining a behavior you are looking at.
+        plainSummary: Work out whether the behavior pays off by itself or because someone responds.
+        keywords: [automatic reinforcement, socially mediated, function]
+        termRefs:
+          [automatic-reinforcement, socially-mediated-reinforcement, function-of-behavior]
+        attestation: *att
+      - code: B.7
+        ourSummary: >-
+          Sort reinforcers and punishers into those that work without learning, those that
+          acquired their effect by pairing, and those that work across many motivations.
+        plainSummary: Know which rewards work from birth, which were learned, and which work any time.
+        keywords: [unconditioned, conditioned, generalized, pairing]
+        termRefs:
+          [
+            unconditioned-reinforcer,
+            conditioned-reinforcer,
+            generalized-conditioned-reinforcer,
+            conditioned-punisher
+          ]
+        attestation: *att
+      - code: B.8
+        ourSummary: >-
+          Identify the four simple schedules — fixed and variable, ratio and interval — and
+          recognise the response pattern each one tends to produce.
+        plainSummary: Know the four basic reinforcement schedules and the pattern each one makes.
+        keywords: [FR, VR, FI, VI, schedule effects]
+        termRefs:
+          [
+            fixed-ratio-schedule,
+            variable-ratio-schedule,
+            fixed-interval-schedule,
+            variable-interval-schedule
+          ]
+        attestation: *att
+      - code: B.9
+        ourSummary: >-
+          Recognise operant extinction from what was withheld, and separate it from simply
+          ignoring a behavior whose reinforcer is still arriving.
+        plainSummary: Spot real extinction, and know why ignoring is often not it.
+        keywords: [extinction, extinction burst, spontaneous recovery, planned ignoring]
+        termRefs: [extinction, extinction-burst, planned-ignoring, spontaneous-recovery]
+        attestation: *att
+      - code: B.10
+        ourSummary: >-
+          Distinguish the kinds of stimulus control, including signals for reinforcement,
+          signals for its absence, and control by conditional relations.
+        plainSummary: Know the different ways a signal can come to control behavior.
+        keywords: [stimulus control, SD, S-delta, conditional discrimination]
+        termRefs: [stimulus-control, discriminative-stimulus, s-delta, stimulus-discrimination]
+        attestation: *att
+      - code: B.11
+        ourSummary: >-
+          Separate responding differently to different stimuli from responding the same way
+          across stimuli, and say which one a given outcome shows.
+        plainSummary: Know the difference between telling things apart and treating them the same.
+        keywords: [discrimination, generalization, stimulus generalization]
+        termRefs: [discrimination-training, generalization, stimulus-generalization]
+        attestation: *att
+      - code: B.12
+        ourSummary: >-
+          Define motivating operations that need no learning history and give examples of
+          how deprivation and satiation change the value of a consequence.
+        plainSummary: Explain how going without something, or having lots of it, changes how much it is worth.
+        keywords: [UMO, deprivation, satiation, value-altering]
+        termRefs: [motivating-operation, deprivation, satiation, establishing-operation]
+        attestation: *att
+      - code: B.13
+        ourSummary: >-
+          Distinguish behavior shaped by direct contact with consequences from behavior that
+          follows a stated rule, and recognise where each pattern comes from.
+        plainSummary: Know the difference between learning from experience and following instructions.
+        keywords: [rule-governed, contingency-shaped, instructions]
+        termRefs: [rule-governed-behavior, contingency-shaped-behavior]
+        attestation: *att
+      - code: B.14
+        ourSummary: >-
+          Identify the elementary verbal operants by their antecedent and consequence rather
+          than by the words used, including mand, tact, echoic and intraverbal.
+        plainSummary: Sort what someone says by why they said it, not by the words themselves.
+        keywords: [mand, tact, echoic, intraverbal, verbal operant]
+        termRefs: [mand, tact, echoic, intraverbal, verbal-behavior, autoclitic]
+        attestation: *att
+      - code: B.15
+        ourSummary: >-
+          Define the processes by which untaught relations and novel performances emerge,
+          and give examples of responding that was never directly trained.
+        plainSummary: Explain how learners end up knowing things nobody taught them directly.
+        keywords: [emergent relations, derived relations, equivalence, generative]
+        termRefs: [stimulus-equivalence, multiple-exemplar-training]
+        attestation: *att
+
+  - letter: C
+    name: Measurement, Data Display, and Interpretation
+    examWeightPercent: 13
+    examItems: 20
+    ourDescription: >-
+      Choosing what to count, counting it the same way twice, putting it on a graph, and
+      reading the graph honestly. The largest single domain on the assistant exam, and the
+      one where a candidate's arithmetic is actually tested.
+    tasks:
+      - code: C.1
+        ourSummary: >-
+          Name the measurable dimensions of behavior — how often, how long, how hard, how
+          soon — and say which dimension a concern about behavior is really about.
+        plainSummary: Know the different things you can measure about a behavior, and pick the right one.
+        keywords: [count, rate, duration, magnitude, latency]
+        termRefs: [count, frequency-and-rate, duration, latency, magnitude]
+        attestation: *att
+      - code: C.2
+        ourSummary: >-
+          Describe what a behavior looks like and write a definition two observers can apply
+          the same way, without reference to intent or mood.
+        plainSummary: Write a definition of a behavior that two people would use the same way.
+        keywords: [topography, operational definition, observable, measurable]
+        termRefs: [topography, operational-definition, objective-language]
+        attestation: *att
+      - code: C.3
+        ourSummary: >-
+          Separate watching behavior happen from asking someone about it and from measuring
+          what it left behind, and weigh what each approach can and cannot tell you.
+        plainSummary: Know the difference between watching, asking, and measuring what is left over.
+        keywords: [direct measure, indirect measure, permanent product]
+        termRefs: [continuous-measurement, indirect-assessment, permanent-product]
+        attestation: *att
+      - code: C.4
+        ourSummary: >-
+          Set up and run measurement that records every occurrence, including event recording,
+          duration recording and latency, and keep the data sheet usable in session.
+        plainSummary: Record every time the behavior happens, and keep the sheet easy to use.
+        keywords: [event recording, duration recording, latency recording, continuous]
+        termRefs: [continuous-measurement, count, duration, latency, data-sheet]
+        attestation: *att
+      - code: C.5
+        ourSummary: >-
+          Set up and run interval and time-sampling systems, and state which of them tends to
+          over-estimate and which to under-estimate the behavior.
+        plainSummary: Use interval and time sampling, and know which ones report too much or too little.
+        keywords: [partial interval, whole interval, momentary time sampling]
+        termRefs:
+          [
+            discontinuous-measurement,
+            partial-interval-recording,
+            whole-interval-recording,
+            momentary-time-sampling
+          ]
+        attestation: *att
+      - code: C.6
+        ourSummary: >-
+          Judge whether a measurement system is recording the behavior it claims to and doing
+          so consistently, including calculating agreement between observers.
+        plainSummary: Check that the data really measures the behavior, and that two people agree.
+        keywords: [validity, reliability, IOA, observer drift, reactivity]
+        termRefs: [interobserver-agreement, observer-drift, reactivity]
+        attestation: *att
+      - code: C.7
+        ourSummary: >-
+          Choose a measurement system that fits the dimension of interest and the reality of
+          the setting, accepting the trade-off the choice makes.
+        plainSummary: Pick a way of measuring that suits both the behavior and the setting.
+        keywords: [measurement selection, representative data, feasibility]
+        termRefs: [continuous-measurement, discontinuous-measurement, data-sheet]
+        attestation: *att
+      - code: C.8
+        ourSummary: >-
+          Build graphs that show the quantitative relation you are claiming, including
+          equal-interval line graphs, bar graphs and cumulative records.
+        plainSummary: Draw graphs that actually show what the data says.
+        keywords: [line graph, bar graph, cumulative record, equal interval]
+        termRefs: [line-graph, bar-graph, cumulative-record, phase-change-line]
+        attestation: *att
+      - code: C.9
+        ourSummary: >-
+          Read a graph for level, trend and variability, compare conditions, and state what
+          the data supports and what it does not.
+        plainSummary: Read a graph for its level, direction and bounce, and say what it shows.
+        keywords: [visual analysis, level, trend, variability]
+        termRefs: [visual-analysis, level, trend, variability, baseline]
+        attestation: *att
+      - code: C.10
+        ourSummary: >-
+          Set criteria that say when a skill counts as learned, and check afterwards whether
+          the criterion picked skills that actually held up.
+        plainSummary: Decide when a skill counts as learned, and check whether that rule worked.
+        keywords: [mastery criteria, trials to criterion, maintenance]
+        termRefs: [trials-to-criterion, maintenance, competency-assessment]
+        attestation: *att
+
+  - letter: D
+    name: Experimental Design
+    examWeightPercent: 7
+    examItems: 10
+    ourDescription: >-
+      How a behavior analyst shows that the intervention, rather than something else, caused
+      the change. Small on the exam and easy to postpone, but it is what separates a
+      behavior analyst from someone who tried something and liked the result.
+    tasks:
+      - code: D.1
+        ourSummary: >-
+          Separate what you measure from what you change, and identify both in a described
+          study or in a programme running in a classroom.
+        plainSummary: Know which part you change and which part you measure.
+        keywords: [dependent variable, independent variable]
+        termRefs: [dependent-variable, independent-variable]
+        attestation: *att
+      - code: D.2
+        ourSummary: >-
+          Distinguish confidence that the intervention caused the change from confidence that
+          the result would hold elsewhere, and name what threatens each.
+        plainSummary: Know the difference between "it worked here" and "it would work elsewhere".
+        keywords: [internal validity, external validity, confounds]
+        termRefs: [internal-validity, external-validity, confounding-variable]
+        attestation: *att
+      - code: D.3
+        ourSummary: >-
+          Identify the features that make a single-case design work — each person as their own
+          control, repeated measures, prediction, verification and replication.
+        plainSummary: Know what makes a single-case study able to show cause.
+        keywords: [prediction, verification, replication, repeated measures]
+        termRefs: [single-case-design, baseline, replication, experimental-control]
+        attestation: *att
+      - code: D.4
+        ourSummary: >-
+          State what single-case design does well that group comparison does not, including
+          answering whether this intervention worked for this person.
+        plainSummary: Say what single-case studies are good for compared with group studies.
+        keywords: [single-case strengths, individual analysis]
+        termRefs: [single-case-design, applied-behavior-analysis]
+        attestation: *att
+      - code: D.5
+        ourSummary: >-
+          Tell reversal, multiple-baseline, multielement and changing-criterion designs apart,
+          and run the one a situation allows.
+        plainSummary: Know the main single-case designs and use the one that fits.
+        keywords: [reversal, multiple baseline, multielement, changing criterion]
+        termRefs:
+          [
+            reversal-design,
+            multiple-baseline-design,
+            multielement-design,
+            changing-criterion-design,
+            ab-design
+          ]
+        attestation: *att
+      - code: D.6
+        ourSummary: >-
+          Distinguish comparing whole treatments, isolating the active part of one, and
+          varying the amount of a parameter, and carry each out.
+        plainSummary: Know the difference between comparing treatments, testing their parts, and changing the dose.
+        keywords: [comparative analysis, component analysis, parametric analysis]
+        termRefs: [multielement-design, experimental-control, treatment-integrity]
+        attestation: *att
+
+  - letter: E
+    name: Ethical and Professional Issues
+    examWeightPercent: 12
+    examItems: 18
+    ourDescription: >-
+      The rules of the job and the judgement behind them: competence, confidentiality,
+      relationships, cultural responsiveness, and the law. Assistant analysts work under
+      supervision, so a recurring theme here is knowing when a question is not yours to settle.
+    tasks:
+      - code: E.1
+        ourSummary: >-
+          Apply the core principles behind the ethics codes — benefiting others, treating
+          people with compassion and respect, acting with integrity — to a real decision.
+        plainSummary: Use the core ethics principles to decide what to do in a real situation.
+        keywords: [core principles, benefit others, dignity, integrity]
+        termRefs: [ethics-code, dignity, assent]
+        attestation: *att
+      - code: E.2
+        ourSummary: >-
+          Identify what unethical conduct costs the person you serve, your colleagues and the
+          profession, including misuse of social media and misrepresenting a credential.
+        plainSummary: Know the harm unethical conduct does, and who it lands on.
+        keywords: [social media, misrepresentation, confidentiality breach]
+        termRefs: [public-statement, confidentiality, ethics-code]
+        attestation: *att
+      - code: E.3
+        ourSummary: >-
+          Know the edges of your own competence and take a question to your supervisor at the
+          point where it stops being yours to answer.
+        plainSummary: Know what you are qualified to do, and when to ask your supervisor.
+        keywords: [scope of competence, supervision, referral]
+        termRefs: [scope-of-competence, scope-of-practice, supervision]
+        attestation: *att
+      - code: E.4
+        ourSummary: >-
+          Choose professional development that genuinely widens what you can do — reading,
+          consultation, mentorship, conferences — rather than only collecting units.
+        plainSummary: Pick training that really grows your skills, not just one that counts.
+        keywords: [professional development, CEU, mentorship, consultation]
+        termRefs:
+          [continuing-education-unit, professional-development-unit, scope-of-competence]
+        attestation: *att
+      - code: E.5
+        ourSummary: >-
+          Apply the rules for collecting, storing, using and releasing confidential
+          information, and recognise the situations where disclosure is required.
+        plainSummary: Follow the rules on private information, and know when you must share it.
+        keywords: [confidentiality, HIPAA, records, disclosure]
+        termRefs: [confidentiality, hipaa, mandated-reporter, informed-consent]
+        attestation: *att
+      - code: E.6
+        ourSummary: >-
+          Identify what a responsible handover requires when a client or supervisee moves to
+          another professional, or when your own supervisor changes.
+        plainSummary: Know what a proper handover needs when someone changes professional.
+        keywords: [transition, continuity of care, handover, discharge]
+        termRefs: [continuity-of-care, supervision, session-note]
+        attestation: *att
+      - code: E.7
+        ourSummary: >-
+          Recognise the kinds of multiple relationship that arise in practice, the risks each
+          carries, and how to limit harm where one cannot be avoided.
+        plainSummary: Spot relationships that could cloud your judgement, and reduce the risk.
+        keywords: [multiple relationships, dual relationship, conflict of interest]
+        termRefs: [dual-relationship, conflict-of-interest, ethics-code]
+        attestation: *att
+      - code: E.8
+        ourSummary: >-
+          Use the interpersonal skills the work depends on — listening, accepting feedback,
+          seeking input, collaborating — to build working relationships that last.
+        plainSummary: Use everyday people skills to build working relationships that hold up.
+        keywords: [active listening, feedback, collaboration, teamwork]
+        termRefs: [collaboration, performance-feedback, supervision]
+        attestation: *att
+      - code: E.9
+        ourSummary: >-
+          Practise cultural humility: treat the people you work with as the authority on their
+          own culture, and keep checking your assumptions rather than declaring them settled.
+        plainSummary: Treat families as the experts on their own culture, and keep checking your assumptions.
+        keywords: [cultural humility, self-reflection, assumptions]
+        termRefs: [cultural-humility, cultural-responsiveness, collaboration]
+        attestation: *att
+      - code: E.10
+        ourSummary: >-
+          Deliver services and supervision that fit the person's culture and include them,
+          from goal selection through to the way sessions are run.
+        plainSummary: Make your services and supervision fit the person's culture and include them.
+        keywords: [culturally responsive, inclusion, goal selection, social validity]
+        termRefs: [cultural-responsiveness, social-validity, assent]
+        attestation: *att
+      - code: E.11
+        ourSummary: >-
+          Identify the legal and regulatory requirements that govern the work — licensure,
+          funder rules, certification standards — and comply with the ones that apply to you.
+        plainSummary: Know the laws and rules that govern the work, and follow the ones that apply.
+        keywords: [licensure, jurisprudence, funding, regulation]
+        termRefs: [scope-of-practice, self-reporting, mandated-reporter]
+        attestation: *att
+
+  - letter: F
+    name: Behavior Assessment
+    examWeightPercent: 11
+    examItems: 17
+    ourDescription: >-
+      Finding out what is going on before deciding what to do about it: reading the record,
+      deciding whether services are warranted, choosing goals with the client, and running
+      skill, preference and functional assessments.
+    tasks:
+      - code: F.1
+        ourSummary: >-
+          Read the records and data that already exist at the start of a case — educational,
+          medical, historical — and identify what they change about your plan.
+        plainSummary: Read the existing records first, and notice what they change.
+        keywords: [record review, intake, history, medical]
+        termRefs: [functional-behavior-assessment, indirect-assessment, incident-report]
+        attestation: *att
+      - code: F.2
+        ourSummary: >-
+          Identify when behavior-analytic services are warranted at all, and recognise the
+          situations that call for a different profession instead.
+        plainSummary: Know when this work is the right answer, and when another profession is.
+        keywords: [referral, indications for service, scope]
+        termRefs: [scope-of-practice, evidence-based-practice, collaboration]
+        attestation: *att
+      - code: F.3
+        ourSummary: >-
+          Choose and rank goals that matter to the person and their family, that fit their
+          culture, and that would make a real difference to daily life.
+        plainSummary: Pick goals the person actually wants, and put them in a sensible order.
+        keywords: [social significance, goal selection, client-informed, priority]
+        termRefs: [social-validity, behavioral-cusp, pivotal-behavior, cultural-responsiveness]
+        attestation: *att
+      - code: F.4
+        ourSummary: >-
+          Run assessments of what a person can already do and what they need, and check
+          whether a proposed approach fits the setting, the values and the resources available.
+        plainSummary: Assess what the person can do and check the plan suits their real life.
+        keywords: [skills assessment, contextual fit, social validity, resources]
+        termRefs:
+          [skills-assessment, ecological-assessment, social-validity, treatment-integrity]
+        attestation: *att
+      - code: F.5
+        ourSummary: >-
+          Run preference assessments and follow them with a test of whether the preferred item
+          actually strengthens behavior.
+        plainSummary: Find out what someone likes, then check it really works as a reward.
+        keywords: [preference assessment, reinforcer assessment, MSWO, paired stimulus]
+        termRefs:
+          [
+            preference-assessment,
+            reinforcer-assessment,
+            paired-stimulus-preference-assessment,
+            multiple-stimulus-without-replacement,
+            free-operant-preference-assessment
+          ]
+        attestation: *att
+      - code: F.6
+        ourSummary: >-
+          Carry out the three kinds of functional assessment — interviews, direct observation,
+          and experimental analysis — and say what each can and cannot establish.
+        plainSummary: Run the three kinds of function assessment, and know what each can show.
+        keywords: [indirect, descriptive, functional analysis, ABC]
+        termRefs:
+          [
+            functional-behavior-assessment,
+            indirect-assessment,
+            descriptive-assessment,
+            functional-analysis,
+            abc-recording
+          ]
+        attestation: *att
+
+  - letter: G
+    name: Behavior-Change Procedures
+    examWeightPercent: 15
+    examItems: 22
+    ourDescription: >-
+      The largest domain on the exam, and the bulk of the job: the procedures used to build
+      behavior, bring it under the right control, and make it last. Assistant analysts both
+      run these and train others to run them.
+    tasks:
+      - code: G.1
+        ourSummary: >-
+          Set up positive and negative reinforcement, delivered after the behavior or on a
+          timer, and choose between those arrangements deliberately.
+        plainSummary: Use reinforcement well, whether it follows the behavior or runs on a timer.
+        keywords: [reinforcement, noncontingent reinforcement, NCR, schedules]
+        termRefs:
+          [
+            positive-reinforcement,
+            negative-reinforcement,
+            noncontingent-reinforcement,
+            reinforcer
+          ]
+        attestation: *att
+      - code: G.2
+        ourSummary: >-
+          Build new reinforcers by pairing and put them to work, including token systems and
+          the exchange arrangements that keep tokens worth having.
+        plainSummary: Turn new things into rewards, including tokens and points.
+        keywords: [conditioned reinforcer, pairing, token economy, backup reinforcer]
+        termRefs:
+          [conditioned-reinforcer, pairing, token-economy, generalized-conditioned-reinforcer]
+        attestation: *att
+      - code: G.3
+        ourSummary: >-
+          Arrange motivation and the signals for reinforcement before a teaching opportunity,
+          so the behavior you want is likely before you ask for it.
+        plainSummary: Set up motivation and clear signals before you ask for the behavior.
+        keywords: [motivating operation, discriminative stimulus, antecedent arrangement]
+        termRefs:
+          [
+            motivating-operation,
+            discriminative-stimulus,
+            antecedent-intervention,
+            setting-event
+          ]
+        attestation: *att
+      - code: G.4
+        ourSummary: >-
+          Teach a learner to respond to one stimulus and not another, and to respond
+          differently depending on a further condition.
+        plainSummary: Teach someone to tell things apart, including when the answer depends on context.
+        keywords: [simple discrimination, conditional discrimination, matching to sample]
+        termRefs:
+          [
+            discrimination-training,
+            stimulus-discrimination,
+            matching-to-sample,
+            listener-responding
+          ]
+        attestation: *att
+      - code: G.5
+        ourSummary: >-
+          Use stimulus and response prompts with a fading plan chosen in advance, whether
+          errorless, least-to-most or graduated change to the materials.
+        plainSummary: Give help in a planned way, and plan how you will remove it.
+        keywords: [prompting, errorless, least-to-most, stimulus fading, prompt hierarchy]
+        termRefs:
+          [
+            prompt,
+            prompt-hierarchy,
+            errorless-teaching,
+            least-to-most-prompting,
+            most-to-least-prompting,
+            stimulus-fading,
+            prompt-fading
+          ]
+        attestation: *att
+      - code: G.6
+        ourSummary: >-
+          Teach by demonstrating the behavior, in person or on video, and make sure the learner
+          can already imitate what you are showing them.
+        plainSummary: Teach by showing, and check the learner can copy first.
+        keywords: [modeling, video modeling, imitation, observational learning]
+        termRefs: [modeling, imitation, observational-learning]
+        attestation: *att
+      - code: G.7
+        ourSummary: >-
+          Use instructions and stated rules to establish behavior, and recognise when a rule
+          will not be enough because the learner has no history with it.
+        plainSummary: Teach using instructions and rules, and know when they will not work.
+        keywords: [instructions, rules, rule-governed behavior]
+        termRefs: [rule-governed-behavior, contingency-shaped-behavior]
+        attestation: *att
+      - code: G.8
+        ourSummary: >-
+          Build a behavior that does not yet occur by reinforcing successively closer
+          approximations and raising the requirement as the learner meets it.
+        plainSummary: Build a new behavior a step at a time by rewarding closer attempts.
+        keywords: [shaping, successive approximations, differential reinforcement]
+        termRefs: [shaping, differential-reinforcement-of-alternative-behavior]
+        attestation: *att
+      - code: G.9
+        ourSummary: >-
+          Teach a multi-step skill from a task analysis using forward, backward or total-task
+          chaining, and choose the format that suits the learner.
+        plainSummary: Teach a multi-step skill by linking the steps, using the method that fits.
+        keywords: [chaining, task analysis, forward, backward, total task]
+        termRefs:
+          [chaining, task-analysis, forward-chaining, backward-chaining, total-task-chaining]
+        attestation: *att
+      - code: G.10
+        ourSummary: >-
+          Teach the elementary verbal operants directly, arranging the antecedent and the
+          consequence each one actually requires.
+        plainSummary: Teach requesting, naming, repeating and conversation, each in its own way.
+        keywords: [mand training, tact training, echoic, intraverbal]
+        termRefs: [mand, tact, echoic, intraverbal, verbal-behavior, transcription, textual]
+        attestation: *att
+      - code: G.11
+        ourSummary: >-
+          Arrange teaching so that untaught relations emerge, getting more responding out of
+          the instruction than you directly trained.
+        plainSummary: Teach in a way that gets learners responses you never taught directly.
+        keywords: [emergent relations, equivalence-based instruction, generative]
+        termRefs: [stimulus-equivalence, multiple-exemplar-training, matching-to-sample]
+        attestation: *att
+      - code: G.12
+        ourSummary: >-
+          Use procedures that make behavior persist when conditions get harder, including
+          building a history of dense reinforcement and easy requests before hard ones.
+        plainSummary: Make behavior keep going when things get harder.
+        keywords: [behavioral momentum, high-p sequence, persistence, resurgence]
+        termRefs: [behavioral-momentum, high-probability-request-sequence, resurgence]
+        attestation: *att
+      - code: G.13
+        ourSummary: >-
+          Choose between discrete-trial, free-operant and naturalistic teaching arrangements
+          on the basis of the learner's repertoire and the goal, and run the one you chose.
+        plainSummary: Pick the teaching format that fits the learner and the goal, then run it.
+        keywords: [discrete trial, free operant, naturalistic teaching, incidental teaching]
+        termRefs:
+          [
+            discrete-trial-training,
+            naturalistic-teaching,
+            incidental-teaching,
+            error-correction
+          ]
+        attestation: *att
+      - code: G.14
+        ourSummary: >-
+          Set up group contingencies — independent, dependent and interdependent — and weigh
+          the risk that a group turns on the person whose behavior decides the outcome.
+        plainSummary: Use contingencies that cover a group, and watch for the pitfalls.
+        keywords: [group contingency, independent, dependent, interdependent]
+        termRefs: [group-contingency]
+        attestation: *att
+      - code: G.15
+        ourSummary: >-
+          Write and run a contingency contract that states the behavior, the consequence and
+          who does what, agreed with the person rather than imposed on them.
+        plainSummary: Write an agreement that says what happens for what behavior, agreed with the person.
+        keywords: [contingency contract, behavioral contract, agreement]
+        termRefs: [assent, premack-principle, informed-consent]
+        attestation: *att
+      - code: G.16
+        ourSummary: >-
+          Teach self-management: have the learner set goals, record their own behavior and
+          arrange their own consequences, and hand control over as they can take it.
+        plainSummary: Teach people to track and manage their own behavior.
+        keywords: [self-management, self-monitoring, goal setting]
+        termRefs: [assent, dignity, performance-feedback]
+        attestation: *att
+      - code: G.17
+        ourSummary: >-
+          Plan for skills to carry to new people, places and materials, and for related
+          responses to appear, rather than hoping either happens by itself.
+        plainSummary: Plan for skills to work in new places and with new people.
+        keywords: [stimulus generalization, response generalization, multiple exemplars]
+        termRefs:
+          [
+            generalization,
+            stimulus-generalization,
+            response-generalization,
+            multiple-exemplar-training,
+            teaching-loosely
+          ]
+        attestation: *att
+      - code: G.18
+        ourSummary: >-
+          Run differential reinforcement in its several forms, and state what changes when the
+          problem behavior is also placed on extinction and when it is not.
+        plainSummary: Use differential reinforcement, and know what changes if extinction is added.
+        keywords: [DRA, DRI, DRO, DRL, extinction]
+        termRefs:
+          [
+            differential-reinforcement-of-alternative-behavior,
+            differential-reinforcement-of-incompatible-behavior,
+            differential-reinforcement-of-other-behavior,
+            differential-reinforcement-of-low-rates,
+            differential-reinforcement-of-high-rates,
+            extinction
+          ]
+        attestation: *att
+      - code: G.19
+        ourSummary: >-
+          Define positive and negative punishment procedures such as time-out, response cost
+          and overcorrection, and state the authorisation and safeguards each one requires.
+        plainSummary: Know the punishment procedures, when they are considered, and the safeguards required.
+        keywords: [time-out, response cost, overcorrection, safeguards]
+        termRefs:
+          [
+            time-out,
+            response-cost,
+            overcorrection,
+            positive-punishment,
+            negative-punishment,
+            least-restrictive-alternative
+          ]
+        attestation: *att
+      - code: G.20
+        ourSummary: >-
+          Keep a learned behavior going after teaching stops, by thinning the schedule and
+          handing the behavior over to consequences that occur naturally.
+        plainSummary: Make sure a new skill lasts after the teaching stops.
+        keywords: [maintenance, schedule thinning, natural contingencies]
+        termRefs: [maintenance, schedule-thinning, intermittent-reinforcement]
+        attestation: *att
+
+  - letter: H
+    name: Intervention Development and Monitoring
+    examWeightPercent: 13
+    examItems: 20
+    ourDescription: >-
+      Turning an assessment into a plan and then watching whether the plan is working: goals
+      in measurable terms, an intervention the evidence supports, a replacement behavior, and
+      data-based decisions about what to change.
+    tasks:
+      - code: H.1
+        ourSummary: >-
+          Write intervention goals someone else could measure without asking you what you
+          meant, in terms of what the learner will do.
+        plainSummary: Write goals in terms anyone could measure without asking you.
+        keywords: [observable, measurable, goal statement]
+        termRefs: [operational-definition, objective-language, trials-to-criterion]
+        attestation: *att
+      - code: H.2
+        ourSummary: >-
+          Select candidate interventions that follow from what the assessment found and that
+          the research actually supports, rather than from habit or availability.
+        plainSummary: Choose interventions that fit the assessment and have evidence behind them.
+        keywords: [evidence-based, assessment-driven, intervention selection]
+        termRefs: [evidence-based-practice, function-of-behavior, behavior-intervention-plan]
+        attestation: *att
+      - code: H.3
+        ourSummary: >-
+          Build goals and procedures around the risks involved and what will actually work in
+          this person's life, including their preferences, culture and the resources on hand.
+        plainSummary: Build the plan around real risks and what fits the person's life.
+        keywords: [risk, contextual fit, social validity, resources]
+        termRefs:
+          [social-validity, least-restrictive-alternative, cultural-responsiveness, assent]
+        attestation: *att
+      - code: H.4
+        ourSummary: >-
+          Decide what the person will do instead before deciding what to reduce, and choose a
+          replacement that serves the same function at least as well.
+        plainSummary: Decide what the person will do instead before trying to reduce anything.
+        keywords: [replacement behavior, functional equivalence, FCT]
+        termRefs:
+          [replacement-behavior, functional-communication-training, function-of-behavior]
+        attestation: *att
+      - code: H.5
+        ourSummary: >-
+          Anticipate the unwanted effects that reinforcement, extinction and punishment can
+          produce, and plan for them rather than being surprised by them.
+        plainSummary: Expect the side effects of these procedures and plan for them.
+        keywords: [side effects, extinction burst, contrast, resurgence]
+        termRefs: [extinction-burst, behavioral-contrast, resurgence, spontaneous-recovery]
+        attestation: *att
+      - code: H.6
+        ourSummary: >-
+          Track both whether the person is making progress and whether the plan is being run
+          as written, because a flat graph means different things in each case.
+        plainSummary: Check both the progress and whether the plan is being run properly.
+        keywords: [progress monitoring, procedural integrity, treatment drift]
+        termRefs: [treatment-integrity, treatment-drift, visual-analysis, performance-feedback]
+        attestation: *att
+      - code: H.7
+        ourSummary: >-
+          Decide from the data whether a procedure is working and whether to keep it, change
+          it or stop it — and say what you would have expected to see.
+        plainSummary: Use the data to decide whether to keep, change or stop a procedure.
+        keywords: [data-based decision, trend, modification]
+        termRefs: [visual-analysis, trend, level, phase-change-line]
+        attestation: *att
+      - code: H.8
+        ourSummary: >-
+          Work with the family, teachers and other professionals who support the person, and
+          include them in decisions rather than reporting decisions to them.
+        plainSummary: Work with the family and other professionals, and include them in decisions.
+        keywords: [collaboration, interdisciplinary, family, teachers]
+        termRefs: [collaboration, cultural-humility, social-validity, session-note]
+        attestation: *att
+
+  - letter: I
+    name: Supervisory Relationships
+    examWeightPercent: 10
+    examItems: 15
+    ourDescription: >-
+      Assistant analysts supervise technicians and are supervised themselves, so this domain
+      runs in both directions: building the relationship, training to competence, managing
+      performance, and checking whether the supervision is doing any good.
+    tasks:
+      - code: I.1
+        ourSummary: >-
+          Supervise the way the evidence says to, and state what poor supervision costs —
+          worse client outcomes, unhappy staff, and people leaving the job.
+        plainSummary: Supervise the way the research says to, and know what bad supervision costs.
+        keywords: [supervision practices, turnover, client outcomes, risk]
+        termRefs: [supervision, treatment-integrity, performance-feedback]
+        attestation: *att
+      - code: I.2
+        ourSummary: >-
+          Build and keep a working supervisory relationship — listening, reinforcing what goes
+          well, and making feedback something that travels in both directions.
+        plainSummary: Build a supervision relationship where feedback goes both ways.
+        keywords: [rapport, active listening, reciprocal feedback, reinforcement]
+        termRefs: [supervision, performance-feedback, collaboration]
+        attestation: *att
+      - code: I.3
+        ourSummary: >-
+          Use methods that make supervision fair across the people you supervise, including
+          checking who is actually getting your observation time and your best opportunities.
+        plainSummary: Make supervision fair, and check who is really getting your time.
+        keywords: [equity, fairness, access, bias]
+        termRefs: [supervision, cultural-responsiveness, cultural-humility]
+        attestation: *att
+      - code: I.4
+        ourSummary: >-
+          Agree in writing what the supervisor and the supervisee will each do, so that
+          neither side is guessing what counts as meeting expectations.
+        plainSummary: Agree up front what each of you will do, in writing.
+        keywords: [performance expectations, supervision contract, roles]
+        termRefs: [supervision, unrestricted-activity, competency-assessment]
+        attestation: *att
+      - code: I.5
+        ourSummary: >-
+          Pick supervision goals from an assessment of what the supervisee can already do,
+          rather than from a standard list applied to everyone.
+        plainSummary: Set supervision goals from what this person can already do.
+        keywords: [skills assessment, supervision goals, individualized]
+        termRefs: [competency-assessment, skills-assessment, supervision]
+        attestation: *att
+      - code: I.6
+        ourSummary: >-
+          Train supervisees with methods shown to work and to a stated standard — instruct,
+          model, rehearse, give feedback, and repeat until performance meets criterion.
+        plainSummary: Train staff by showing, practising and giving feedback until they meet a standard.
+        keywords: [BST, competency-based training, behavioral skills training]
+        termRefs:
+          [behavioral-skills-training, competency-assessment, modeling, performance-feedback]
+        attestation: *att
+      - code: I.7
+        ourSummary: >-
+          Manage performance with procedures the research supports and the person will
+          accept — modeling, practice, feedback, task clarification, changing response effort.
+        plainSummary: Improve staff performance with methods that work and that people accept.
+        keywords: [performance management, task clarification, response effort, feedback]
+        termRefs:
+          [performance-feedback, behavioral-skills-training, cultural-responsiveness, modeling]
+        attestation: *att
+      - code: I.8
+        ourSummary: >-
+          Work out why a supervisee is not performing before deciding what to do about it —
+          skill, materials, or competing contingencies — and match the fix to the reason.
+        plainSummary: Find out why someone is not performing before deciding how to fix it.
+        keywords: [performance diagnostics, skill deficit, competing contingencies]
+        termRefs: [performance-diagnostic, function-of-behavior, performance-feedback]
+        attestation: *att
+      - code: I.9
+        ourSummary: >-
+          Check with data whether your supervision is changing anything — in the supervisee's
+          performance and in the outcomes of the people they serve — and adjust it if not.
+        plainSummary: Check with data whether your supervision is working, and change it if not.
+        keywords: [supervision evaluation, outcomes, data-based]
+        termRefs: [supervision, treatment-integrity, visual-analysis]
+        attestation: *att
+
+review:
+  status: in-review
+  authoredBy: claude
+  authoredOn: '2026-09-16'
+  reviewedBy: null
+  reviewedOn: null
+  changeNote: >-
+    Codes, counts, weights and per-domain question counts read from the official outline
+    (updated 09/2024). Summaries are original and await review. The exam's time limit is
+    left null because the outline does not state it.
+
+provenance:
+  license: CC-BY-SA-4.0
+  tier: free
+  version: 1
+  updated: '2026-09-16'

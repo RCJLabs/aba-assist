@@ -30,6 +30,8 @@ taskRefs:
   - { credential: RBT, code: A }
   - { credential: BCBA, code: C.11 }
   - { credential: BCBA, code: D.4 }
+  - { credential: BCaBA, code: C.9 }
+  - { credential: BCaBA, code: D.3 }
 citations:
   - sourceId: sidman-1960
     useType: fact-reference

@@ -28,6 +28,7 @@ searchBoost: 1.3
 taskRefs:
   - { credential: RBT, code: C.6 }
   - { credential: BCBA, code: B.11 }
+  - { credential: BCaBA, code: B.10 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

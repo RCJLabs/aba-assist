@@ -31,6 +31,14 @@ taskRefs:
   - { credential: RBT, code: F.9 }
   - { credential: BCBA, code: I.2 }
   - { credential: BCBA, code: I.5 }
+  - { credential: BCaBA, code: E.8 }
+  - { credential: BCaBA, code: G.16 }
+  - { credential: BCaBA, code: H.6 }
+  - { credential: BCaBA, code: I.1 }
+  - { credential: BCaBA, code: I.2 }
+  - { credential: BCaBA, code: I.6 }
+  - { credential: BCaBA, code: I.7 }
+  - { credential: BCaBA, code: I.8 }
 citations:
   - sourceId: parsons-rollyson-reid-2012
     useType: fact-reference

@@ -28,6 +28,7 @@ seeAlso: [negative-punishment, planned-ignoring, least-restrictive-alternative]
 taskRefs:
   - { credential: RBT, code: D.5 }
   - { credential: BCBA, code: G.17 }
+  - { credential: BCaBA, code: G.19 }
 citations:
   - sourceId: azrin-holz-1966
     useType: fact-reference

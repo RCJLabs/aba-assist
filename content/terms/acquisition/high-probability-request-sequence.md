@@ -27,6 +27,7 @@ seeAlso: [behavioral-momentum, antecedent-intervention]
 taskRefs:
   - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: G.5 }
+  - { credential: BCaBA, code: G.12 }
 citations:
   - sourceId: mace-1988
     useType: fact-reference

@@ -28,6 +28,7 @@ seeAlso: [conditioned-reinforcer, motivating-operation]
 taskRefs:
   - { credential: RBT, code: C.2 }
   - { credential: BCBA, code: G.4 }
+  - { credential: BCaBA, code: G.2 }
 citations:
   - sourceId: sundberg-michael-2001
     useType: fact-reference

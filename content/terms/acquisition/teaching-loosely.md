@@ -28,6 +28,7 @@ seeAlso: [generalization, multiple-exemplar-training]
 taskRefs:
   - { credential: RBT, code: C.8 }
   - { credential: BCBA, code: G.15 }
+  - { credential: BCaBA, code: G.17 }
 citations:
   - sourceId: stokes-baer-1977
     useType: fact-reference

@@ -27,6 +27,8 @@ nonExamples:
 seeAlso: [social-validity, ethics-code]
 taskRefs:
   - { credential: BCBA, code: H.2 }
+  - { credential: BCaBA, code: F.2 }
+  - { credential: BCaBA, code: H.2 }
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference

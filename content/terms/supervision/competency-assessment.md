@@ -34,6 +34,10 @@ taskRefs:
   - { credential: RBT, code: F.2 }
   - { credential: RBT, code: F.4 }
   - { credential: BCBA, code: I.4 }
+  - { credential: BCaBA, code: C.10 }
+  - { credential: BCaBA, code: I.4 }
+  - { credential: BCaBA, code: I.5 }
+  - { credential: BCaBA, code: I.6 }
 citations:
   - sourceId: bacb-rbt-handbook-2026
     useType: fact-reference

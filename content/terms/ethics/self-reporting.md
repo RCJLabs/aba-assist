@@ -29,6 +29,7 @@ seeAlso: [ethics-code, supervision]
 taskRefs:
   - { credential: RBT, code: F.3 }
   - { credential: BCBA, code: E.2 }
+  - { credential: BCaBA, code: E.11 }
 citations:
   - sourceId: bacb-rbt-handbook-2026
     useType: fact-reference

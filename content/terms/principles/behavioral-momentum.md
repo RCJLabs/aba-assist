@@ -27,6 +27,7 @@ nonExamples:
 seeAlso: [high-probability-request-sequence, intermittent-reinforcement]
 taskRefs:
   - { credential: BCBA, code: B.21 }
+  - { credential: BCaBA, code: G.12 }
 citations:
   - sourceId: nevin-1992
     useType: fact-reference

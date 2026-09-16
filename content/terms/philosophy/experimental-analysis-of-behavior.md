@@ -28,6 +28,7 @@ contrastWith: [applied-behavior-analysis]
 seeAlso: [radical-behaviorism]
 taskRefs:
   - { credential: BCBA, code: A.4 }
+  - { credential: BCaBA, code: A.4 }
 citations:
   - sourceId: skinner-1953
     useType: fact-reference

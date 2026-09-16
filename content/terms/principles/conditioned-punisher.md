@@ -25,6 +25,7 @@ nonExamples:
 seeAlso: [punishment, conditioned-reinforcer]
 taskRefs:
   - { credential: BCBA, code: B.7 }
+  - { credential: BCaBA, code: B.7 }
 citations:
   - sourceId: azrin-holz-1966
     useType: fact-reference

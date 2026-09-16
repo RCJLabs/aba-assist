@@ -20,19 +20,31 @@ export const CREDENTIAL_OPTIONS: { value: CredentialFilter; label: string }[] = 
  * every time they open the app.
  *
  * Matching is done against the lightweight term index — `r` carries refs like
- * "RBT:C" and "BCBA:G.5" — so filtering never has to load a category bucket.
+ * "RBT:C" and "BCaBA:G.5" — so filtering never has to load a category bucket.
  *
- * The BCaBA outline is a subset of the BCBA one; until it is modelled separately, the
- * BCaBA filter uses BCBA refs, which is a superset of what a BCaBA candidate needs
- * rather than a different thing.
+ * Each filtered credential now has its own outline, so a credential filters on its own
+ * refs. The BCaBA filter used to borrow BCBA refs, which was defensible while there was
+ * no assistant outline and wrong the moment there was: the two documents number their
+ * tasks independently, so B.15 is not the same task in both and a borrowed domain letter
+ * would have pointed at the wrong content.
  */
 class Filters {
 	credential = $state<CredentialFilter>('all');
+	private hydrated = false;
 	domain = $state<string>('all');
 	category = $state<string>('all');
 
+	/**
+	 * Read the saved filter back.
+	 *
+	 * Idempotent, and it has to be: child components mount before the root layout does, so
+	 * a page that reads the filter in its own `onMount` — the quiz, the home strip — would
+	 * otherwise run against the default and quietly ignore the mode the reader chose. Those
+	 * pages call this first, and the layout's call then finds nothing left to do.
+	 */
 	hydrate(): void {
-		if (!browser) return;
+		if (!browser || this.hydrated) return;
+		this.hydrated = true;
 		try {
 			const raw = localStorage.getItem(KEY);
 			if (!raw) return;
@@ -67,9 +79,8 @@ class Filters {
 	}
 
 	/** The credential whose outline supplies the domain list. */
-	get refCredential(): 'RBT' | 'BCBA' | null {
-		if (this.credential === 'all') return null;
-		return this.credential === 'RBT' ? 'RBT' : 'BCBA';
+	get refCredential(): 'RBT' | 'BCBA' | 'BCaBA' | null {
+		return this.credential === 'all' ? null : this.credential;
 	}
 
 	get domains(): { letter: string; name: string }[] {

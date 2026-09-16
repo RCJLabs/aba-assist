@@ -36,6 +36,7 @@ searchBoost: 1.3
 taskRefs:
   - { credential: RBT, code: C.3 }
   - { credential: BCBA, code: G.13 }
+  - { credential: BCaBA, code: G.13 }
 citations:
   - sourceId: smith-2001-dtt
     useType: fact-reference

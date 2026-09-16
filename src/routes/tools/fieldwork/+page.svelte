@@ -416,8 +416,8 @@
 			{/each}
 		</ul>
 		<p class="note">
-			Restated in our own words from the {tracker.handbookVersion} handbook, and the handbook is
-			what governs. Your supervisor signs the monthly form; this is your copy of the arithmetic,
+			Restated in our own words from the {tracker.fieldworkHandbookVersion} handbook, and the handbook
+			is what governs. Your supervisor signs the monthly form; this is your copy of the arithmetic,
 			not a substitute for theirs.
 		</p>
 	</section>

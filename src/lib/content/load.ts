@@ -81,7 +81,7 @@ export const CATEGORIES: string[] = [...CATEGORY_ORDER];
 // --------------------------------------------------------------- taxonomy
 
 /**
- * The content outlines, keyed by id. Small enough (two documents) to import eagerly:
+ * The content outlines, keyed by id. Small enough (three documents) to import eagerly:
  * the domain filter needs the domain list on every page that has the filter.
  */
 export const outlines = taxonomy as unknown as Record<string, ContentOutline>;
