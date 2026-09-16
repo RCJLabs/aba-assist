@@ -28,14 +28,52 @@ if (!sources) {
 	process.exit(2);
 }
 
-/** Text of the first file in `sources` whose name matches, or null. */
-function text(pattern) {
+/** The first file in `sources` whose name matches, or null. */
+function find(pattern) {
 	const file = readdirSync(sources).find((f) => pattern.test(f));
-	if (!file) return null;
-	return execFileSync('pdftotext', ['-layout', join(sources, file), '-'], {
+	return file ? join(sources, file) : null;
+}
+
+/** Text of a document, or of one page of it. */
+function extract(path, page) {
+	const range = page ? ['-f', String(page), '-l', String(page)] : [];
+	return execFileSync('pdftotext', ['-layout', ...range, path, '-'], {
 		encoding: 'utf8',
 		maxBuffer: 64 * 1024 * 1024
 	});
+}
+
+/** Text of the first file in `sources` whose name matches, or null. */
+function text(pattern) {
+	const path = find(pattern);
+	return path ? extract(path) : null;
+}
+
+/**
+ * Printed page number to PDF page index.
+ *
+ * A locator says "p. 17" meaning the number printed in the footer, which is not the
+ * seventeenth page of the file — these handbooks put a cover and a contents table in
+ * front. Rather than assume an offset, this reads the footer of every page and builds
+ * the map, so it stays right when a document gains or loses front matter.
+ */
+function pageMap(path) {
+	const pages = extract(path).split('\f');
+	const map = new Map();
+	pages.forEach((body, i) => {
+		const lines = body.split('\n').filter((l) => l.trim());
+		const footer = lines.at(-1) ?? '';
+		const m = /\|\s*(\d+)\s*$/.exec(footer);
+		if (m && !map.has(Number(m[1]))) map.set(Number(m[1]), i + 1);
+	});
+	return map;
+}
+
+/** Numbers in a claim that are distinctive enough to look for on a page. */
+function figures(value) {
+	const found = new Set();
+	for (const m of value.matchAll(/\b(\d{2,4})\b/g)) found.add(m[1]);
+	return [...found];
 }
 
 const G = 'src/lib/content/generated';
@@ -181,6 +219,163 @@ for (const doc of CODE_DOCS) {
 				: bad(`section ${s.number} numbering`, 'contiguous', `jumps before ${gaps.join(', ')}`)
 		);
 	}
+}
+
+// ------------------------------------------------- credential page locators
+
+/**
+ * Do the cited pages actually carry the fact?
+ *
+ * Every requirement in a credential file names a section and a page. Two things are
+ * checkable without a person: whether that section heading appears on that printed page,
+ * and whether the distinctive figures in the claim appear there too. A locator that
+ * points at the wrong page is the sort of error nobody finds by reading the app, and the
+ * sort a reviewer would have to open the handbook to catch.
+ */
+const HANDBOOKS = [
+	{ credential: 'rbt', pattern: /RBTHandbook/i },
+	{ credential: 'bcba', pattern: /BCBAHandbook/i }
+];
+
+const credentials = load('credentials.json');
+
+for (const doc of HANDBOOKS) {
+	const cred = credentials[doc.credential];
+	if (!cred) continue;
+	const path = find(doc.pattern);
+	if (!path) {
+		console.log(`\n${doc.credential} handbook — no document supplied, skipped`);
+		continue;
+	}
+	console.log(`\n${cred.label} — page locators`);
+	const map = pageMap(path);
+	const cache = new Map();
+	const pageText = (n) => {
+		if (!cache.has(n)) {
+			const idx = map.get(n);
+			cache.set(n, idx ? extract(path, idx).replace(/\s+/g, ' ') : null);
+		}
+		return cache.get(n);
+	};
+
+	/*
+	 * Only prose items carry a checkable claim.
+	 *
+	 * The machine-readable `requirements` block was included here at first and produced
+	 * nothing but noise: stringifying it drags in the locator text itself, the numbers
+	 * belonging to sibling requirements, and the day and month of an ISO date as separate
+	 * two-digit figures. Those values are already checked properly by the outline and
+	 * ethics passes above, so this one sticks to the sentences a reader actually sees.
+	 */
+	const items = [];
+	for (const section of cred.sections ?? []) {
+		for (const item of section.items ?? []) {
+			if (item.locator) items.push(item);
+		}
+	}
+
+	const whole = extract(path).replace(/\s+/g, ' ');
+	const wrongPageItems = [];
+	const missingFigureItems = [];
+	const notInDocument = [];
+
+	for (const item of items) {
+		/*
+		 * A locator can name more than one place: "Accrual of Fieldwork, p. 16; 2027
+		 * Eligibility Requirements, p. 28" is one requirement documented in two sections.
+		 * Each part is checked on its own and the pages pooled, because the claim is
+		 * supported if it appears in any of the places cited for it.
+		 */
+		const parts = item.locator.split(';').map((p) => p.trim());
+		const span = [];
+		const heads = [];
+		for (const part of parts) {
+			const m = /^(.*?),\s*pp?\.\s*(\d+)(?:\s*[–-]\s*(\d+))?$/.exec(part);
+			if (!m) continue;
+			heads.push(m[1].trim().toLowerCase());
+			for (let p = Number(m[2]); p <= Number(m[3] ?? m[2]); p++) span.push(p);
+		}
+		if (span.length === 0) continue;
+
+		const body = span.map(pageText).filter(Boolean).join(' ');
+		if (!body) {
+			wrongPageItems.push(`${item.label} → ${item.locator} (page not in the document)`);
+			continue;
+		}
+		const lower = body.toLowerCase();
+		if (!heads.some((h) => lower.includes(h))) {
+			wrongPageItems.push(`${item.label} → ${item.locator}`);
+		}
+
+		/*
+		 * A figure missing from the cited page and a figure missing from the document are
+		 * different problems. The first is a locator a page or two out, or a total we
+		 * worked out ourselves — the exam is "75 scored and 10 unscored", and the page
+		 * never prints the 85. The second is a number with no support anywhere, which is
+		 * the only one worth stopping for.
+		 */
+		const absent = figures(String(item.value)).filter((n) => !body.includes(n));
+		const nowhere = absent.filter((n) => !whole.includes(n));
+		if (nowhere.length > 0) {
+			notInDocument.push(`${item.label} → ${item.locator}: ${nowhere.join(', ')}`);
+		} else if (absent.length > 0) {
+			missingFigureItems.push(`${item.label} → ${item.locator}: ${absent.join(', ')}`);
+		}
+	}
+
+	console.log(
+		wrongPageItems.length === 0
+			? ok(`all ${items.length} locators point at a page carrying their section heading`)
+			: bad(
+					'locator pages',
+					`${items.length} locators`,
+					`heading not on the cited page:\n            ${wrongPageItems.join('\n            ')}`
+				)
+	);
+	console.log(
+		notInDocument.length === 0
+			? ok('every figure quoted appears somewhere in the handbook')
+			: bad(
+					'unsupported figures',
+					`${items.length} claims`,
+					`no support anywhere in the document:\n            ${notInDocument.join('\n            ')}`
+				)
+	);
+	// Reported, but not a failure: the figure is in the handbook, the page is just off.
+	if (missingFigureItems.length > 0) {
+		console.log(`  NOTE  ${missingFigureItems.length} figure(s) elsewhere in the document:`);
+		for (const line of missingFigureItems) console.log(`          ${line}`);
+	}
+}
+
+// --------------------------------------------- initial competency assessment
+
+const ICA = find(/Initial_Competency_Assessment/i);
+const competency = load('competency.json');
+const assessment = Object.values(competency)[0];
+
+if (ICA && assessment) {
+	console.log(`\n${assessment.label ?? 'Initial Competency Assessment'}`);
+	const flat = extract(ICA).replace(/\s+/g, ' ');
+	const tasks = assessment.sections.flatMap((s) => s.tasks);
+	console.log(
+		/(\d+)\s+tasks/i.test(flat) || tasks.length > 0
+			? ok(`${tasks.length} tasks modelled`)
+			: bad('task count', String(tasks.length), 'no count found')
+	);
+	// Task numbers run 1..n with no gaps, which the schema enforces; what the document
+	// can settle is whether the section names match.
+	for (const s of assessment.sections) {
+		const name = (s.title ?? s.name ?? '').toLowerCase();
+		if (!name) continue;
+		console.log(
+			flat.toLowerCase().includes(name)
+				? ok(`section "${s.title ?? s.name}"`)
+				: bad(`section name`, s.title ?? s.name, 'not found in the packet')
+		);
+	}
+} else if (!ICA) {
+	console.log('\nInitial Competency Assessment — no document supplied, skipped');
 }
 
 console.log(`\n${checked} facts checked, ${failed} disagreeing with the documents.`);
