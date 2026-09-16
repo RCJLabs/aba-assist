@@ -76,3 +76,41 @@ test('the deck follows the exam filter', async ({ page }) => {
 	expect(Number(after)).toBeLessThan(Number(before));
 	expect(Number(after)).toBeGreaterThan(0);
 });
+
+test('a session shows how it is going, not just how far through it is', async ({ page }) => {
+	await page.goto('/study');
+	await page.getByLabel('New cards per session').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+
+	/*
+	 * The bar is the only thing on the page that says how the session went rather than
+	 * how far through it is, so a screen reader gets the position from the role and the
+	 * grades from the tally in words — the segment colours are never the only reading.
+	 */
+	const bar = page.getByRole('progressbar', { name: 'Cards graded' });
+	await expect(bar).toHaveAttribute('aria-valuenow', '0');
+	await expect(bar).toHaveAttribute('aria-valuemax', '5');
+
+	// The card says which part of the corpus it came from, and which side is showing.
+	await expect(page.locator('.card .face')).toHaveText('Term');
+	await expect(page.locator('.progress .chip')).toBeVisible();
+
+	await page.getByRole('button', { name: 'Show answer' }).click();
+	await expect(page.locator('.card .face')).toHaveText('Answer');
+	await page.getByRole('button', { name: /Good/ }).click();
+
+	await expect(bar).toHaveAttribute('aria-valuenow', '1');
+	await expect(page.locator('.tally')).toContainText('Good 1');
+
+	await page.getByRole('button', { name: 'Show answer' }).click();
+	await page.getByRole('button', { name: /Again/ }).click();
+	await expect(page.locator('.tally')).toContainText('Again 1');
+	await expect(page.locator('.tally')).toContainText('Good 1');
+
+	// And the summary breaks the session down by grade, each bar carrying its own count.
+	await page.getByRole('button', { name: 'End session' }).click();
+	const rows = page.locator('.breakdown li');
+	await expect(rows).toHaveCount(4);
+	await expect(rows.filter({ hasText: 'Again' })).toContainText('1');
+	await expect(rows.filter({ hasText: 'Easy' })).toContainText('0');
+});

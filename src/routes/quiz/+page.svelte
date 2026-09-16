@@ -25,6 +25,26 @@
 		});
 	});
 
+	let setupForm = $state<HTMLFormElement | null>(null);
+
+	/** Copy whatever the setup form currently shows into the quiz state. */
+	function adoptForm(): void {
+		if (!setupForm) return;
+		const data = new FormData(setupForm);
+		const credential = String(data.get('credential') ?? '');
+		const domain = String(data.get('domain') ?? '');
+		const count = Number(data.get('count') ?? NaN);
+		const mode = String(data.get('mode') ?? '');
+		quiz.configure({
+			...(questionCredentials.includes(credential) ? { credential } : {}),
+			...(domain ? { domain } : {}),
+			...(Number.isFinite(count) && count > 0 ? { count } : {}),
+			...(mode === 'practice' || mode === 'test' || mode === 'simulation'
+				? { mode: mode as QuizMode }
+				: {})
+		});
+	}
+
 	const domains = $derived(outlineForCredential(quiz.credential)?.domains ?? []);
 
 	/*
@@ -43,6 +63,21 @@
 			: null
 	);
 	const item = $derived(quiz.current);
+
+	/*
+	 * What the button is about to do, which is not the same in every mode.
+	 *
+	 * Only practice mode shows a rationale on submit. In the two modes that withhold
+	 * feedback the same press records the answer and moves on, and labelling it "Check
+	 * answer" promised a check that never came — the reader pressed it expecting the
+	 * answer and got the next question. Keyed on whether feedback follows rather than on
+	 * whether the run has a simulation plan, which is what let test mode fall through to
+	 * the practice wording.
+	 */
+	const submitLabel = $derived.by(() => {
+		if (quiz.mode === 'practice') return 'Check answer';
+		return quiz.index + 1 >= quiz.items.length ? 'Finish' : 'Answer and continue';
+	});
 	const optionById = $derived(
 		new Map<string, NonNullable<typeof item>['q']['options'][number]>(
 			item?.q.options.map((o) => [o.id, o]) ?? []
@@ -119,8 +154,20 @@
 
 	<form
 		class="setup"
+		bind:this={setupForm}
 		onsubmit={(e) => {
 			e.preventDefault();
+			/*
+			 * Read the controls before starting, rather than trusting that every change
+			 * reached the state.
+			 *
+			 * The page is prerendered, so the form is on screen and selectable before
+			 * Svelte hydrates. A change made in that window updates the DOM and never
+			 * reaches `configure`, and the run then uses a length or an exam the reader
+			 * did not pick. Reading the form here is one line and closes the window for
+			 * every control at once.
+			 */
+			adoptForm();
 			void quiz.start();
 		}}
 	>
@@ -128,6 +175,7 @@
 			<label for="quiz-exam">Exam</label>
 			<select
 				id="quiz-exam"
+				name="credential"
 				value={quiz.credential}
 				onchange={(e) => quiz.configure({ credential: e.currentTarget.value })}
 			>
@@ -147,6 +195,7 @@
 			<label for="quiz-domain">Content area</label>
 			<select
 				id="quiz-domain"
+				name="domain"
 				value={quiz.domain}
 				onchange={(e) => quiz.configure({ domain: e.currentTarget.value })}
 			>
@@ -161,6 +210,7 @@
 			<label for="quiz-count">Number of questions</label>
 			<select
 				id="quiz-count"
+				name="count"
 				value={String(quiz.count)}
 				onchange={(e) => quiz.configure({ count: Number(e.currentTarget.value) })}
 			>
@@ -309,6 +359,12 @@
 			Question {quiz.progress.n} of {quiz.progress.total}{#if !quiz.plan}
 				· {item.q.taskRef.credential}
 				{item.q.taskRef.code}{/if}
+			<!--
+				Said on every question rather than once at setup. The setting was chosen a
+				screen ago and the consequence lands here, which is where somebody wonders
+				why the answer has not appeared.
+			-->
+			{#if quiz.mode !== 'practice'}<span class="withheld">· answers at the end</span>{/if}
 		</p>
 
 		{#if item.q.negated}
@@ -365,12 +421,7 @@
 		{#if quiz.status === 'question'}
 			<div class="actions">
 				<button type="submit" class="primary" disabled={quiz.selected.length === 0}>
-					{(quiz.mode === 'test' || quiz.mode === 'simulation') &&
-					quiz.index + 1 >= quiz.items.length
-						? 'Finish'
-						: quiz.plan
-							? 'Answer and continue'
-							: 'Check answer'}
+					{submitLabel}
 				</button>
 				{#if quiz.plan}
 					<!-- What the real exam gives you: leave it, mark it, come back. -->
@@ -743,6 +794,10 @@
 		opacity: 0.55;
 		cursor: not-allowed;
 	}
+	.withheld {
+		color: var(--text-muted);
+	}
+
 	.progress {
 		font-size: 0.9rem;
 		color: var(--text-muted);

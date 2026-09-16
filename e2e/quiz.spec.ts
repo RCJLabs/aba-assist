@@ -31,15 +31,42 @@ test('a practice session gives a rationale for every option and a per-area resul
 	await expect(page.getByRole('table')).toBeVisible();
 });
 
-test('test mode withholds feedback until the end', async ({ page }) => {
+test('test mode withholds feedback until the end, and says so', async ({ page }) => {
 	await page.goto('/quiz');
 	await page.getByLabel('Number of questions').selectOption('5');
 	await page.getByRole('radio', { name: /At the end/ }).check();
 	await page.getByRole('button', { name: 'Start' }).click();
+
+	/*
+	 * The button used to say "Check answer" here, in the one mode that does not check it.
+	 * Pressing it records the answer and moves on, so the label has to say that, and the
+	 * run has to say where the answers went.
+	 */
+	await expect(page.getByRole('button', { name: 'Check answer' })).toHaveCount(0);
+	await expect(page.locator('.progress')).toContainText('answers at the end');
+
 	await page.getByRole('radio').first().check();
-	await page.getByRole('button', { name: 'Check answer' }).click();
+	await page.getByRole('button', { name: 'Answer and continue' }).click();
 	await expect(page.locator('.rationale')).toHaveCount(0);
 	await expect(page.locator('.progress')).toContainText('Question 2 of 5');
+
+	// The last question finishes the run rather than continuing it.
+	for (let i = 2; i <= 4; i++) {
+		await page.getByRole('radio').first().check();
+		await page.getByRole('button', { name: 'Answer and continue' }).click();
+	}
+	await page.getByRole('radio').first().check();
+	await expect(page.getByRole('button', { name: 'Finish' })).toBeVisible();
+});
+
+test('practice mode still offers to check the answer', async ({ page }) => {
+	await page.goto('/quiz');
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).not.toContainText('answers at the end');
+	await page.getByRole('radio').first().check();
+	await page.getByRole('button', { name: 'Check answer' }).click();
+	await expect(page.locator('.rationale').first()).toBeVisible();
 });
 
 test('a single area can be drilled, and the BCBA bank is separate', async ({ page }) => {
@@ -155,4 +182,25 @@ test('a simulation withholds every rationale until the end', async ({ page }) =>
 	await expect(page.locator('.explanation')).toHaveCount(0);
 	await expect(page.locator('.progress')).toContainText('Question 2 of');
 	await expect(page.locator('.exambar')).toContainText('1 answered');
+});
+
+test('a choice made before the page hydrates is still honoured', async ({ page }) => {
+	await page.goto('/quiz');
+
+	/*
+	 * The page is prerendered, so the form is on screen and usable before Svelte wires
+	 * its change handlers. Setting the value without dispatching an event is exactly what
+	 * that window looks like: the DOM moves and the state does not. The run must read the
+	 * form rather than trust that every change arrived.
+	 */
+	await page.locator('#quiz-count').evaluate((el: HTMLSelectElement) => {
+		el.value = '5';
+	});
+	await page.locator('#quiz-exam').evaluate((el: HTMLSelectElement) => {
+		el.value = 'BCBA';
+	});
+
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
+	await expect(page.locator('.progress')).toContainText('BCBA');
 });

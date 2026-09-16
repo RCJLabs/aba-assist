@@ -43,6 +43,15 @@ class Study {
 	term = $state<Term | null>(null);
 	revealed = $state(false);
 	session = $state({ reviewed: 0, again: 0 });
+	/**
+	 * The grade given to each card, in the order they were graded.
+	 *
+	 * The counts above answer "how much did I do"; this answers "how did it go", which is
+	 * what a progress bar and a breakdown need. Kept as a list rather than four counters
+	 * because the bar draws one segment per card in order, and a card regraded after an
+	 * "Again" is a second entry rather than an edit to the first.
+	 */
+	graded = $state<CardGrade[]>([]);
 	intervals = $state<Record<CardGrade, string> | null>(null);
 
 	#cards = new Map<string, CardRecord>();
@@ -134,6 +143,7 @@ class Study {
 		this.queue = [...due, ...fresh];
 		this.index = 0;
 		this.session = { reviewed: 0, again: 0 };
+		this.graded = [];
 		if (this.queue.length === 0) {
 			this.status = 'ready';
 			return;
@@ -195,6 +205,7 @@ class Study {
 			reviewed: this.session.reviewed + 1,
 			again: this.session.again + (g === 1 ? 1 : 0)
 		};
+		this.graded = [...this.graded, g];
 		// "Again" puts the card back at the end of this session so it is seen once more
 		// before the reader stops, which is what makes a short session actually teach.
 		if (g === 1) this.queue = [...this.queue, id];

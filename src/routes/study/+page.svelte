@@ -5,6 +5,7 @@
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { GRADES, study, type CardGrade } from '$lib/state/study.svelte.js';
+	import { CATEGORY_LABELS } from '$lib/content/load.js';
 	import { storage } from '$lib/state/storage.svelte.js';
 
 	let nudgeDismissed = $state(false);
@@ -55,6 +56,16 @@
 	const front = $derived(study.term?.flashcard.front ?? study.term?.term ?? '');
 	const back = $derived(study.term?.flashcard.back ?? study.term?.definition.plain ?? '');
 	const canStart = $derived(study.stats.due + study.stats.fresh > 0);
+
+	/** Cards still to see after this one, which is what the stack behind the card shows. */
+	const remaining = $derived(Math.max(0, study.progress.total - study.progress.done - 1));
+
+	/** How many of each grade this session, for the tally and the summary breakdown. */
+	const tally = $derived.by(() => {
+		const out: Record<CardGrade, number> = { 1: 0, 2: 0, 3: 0, 4: 0 };
+		for (const g of study.graded) out[g] += 1;
+		return out;
+	});
 </script>
 
 <svelte:head>
@@ -94,30 +105,74 @@
 
 {#if study.status === 'session' && study.term}
 	<section class="session" aria-labelledby="card-heading">
+		<!--
+			One segment per card graded so far, in order, plus the ones still to come.
+			`role="progressbar"` carries the position for a screen reader; the segments are
+			decoration on top of it, and the tally below says the same thing in words so
+			the colours are never the only signal.
+		-->
+		<div
+			class="bar"
+			role="progressbar"
+			aria-valuemin={0}
+			aria-valuemax={study.progress.total}
+			aria-valuenow={study.progress.done}
+			aria-label="Cards graded"
+		>
+			{#each study.graded as g, i (i)}
+				<span class="seg" data-grade={g} aria-hidden="true"></span>
+			{/each}
+			{#each { length: Math.max(0, study.progress.total - study.graded.length) }, i (i)}
+				<span class="seg" data-grade="0" aria-hidden="true"></span>
+			{/each}
+		</div>
+
 		<p class="progress">
 			Card {study.progress.done + 1} of {study.progress.total}
+			{#if study.term.category}<span class="chip">{CATEGORY_LABELS[study.term.category]}</span
+				>{/if}
 			{#if filters.active}<span class="muted">· {filters.describe() || 'filtered'}</span>{/if}
 		</p>
 
-		<div class="card" data-revealed={study.revealed}>
-			<h2 id="card-heading" class="front">{front}</h2>
-			{#if study.term.aliases.length && !study.revealed}
-				<p class="muted">Also called: {study.term.aliases.join(', ')}</p>
-			{/if}
-
-			{#if study.revealed}
-				<div class="back">
-					<p>{back}</p>
-					{#if study.term.flashcard.mnemonic}
-						<p class="mnemonic"><strong>Remember:</strong> {study.term.flashcard.mnemonic}</p>
+		<!--
+			The stack is the remaining queue, drawn. Two edges at most: a third reads as
+			clutter at 320px and says nothing the count above does not.
+		-->
+		<div class="stack" data-behind={Math.min(2, remaining)}>
+			<!--
+				Keyed on `revealed` so the card animates each time it turns. The animation is
+				a turn rather than a true two-sided flip because the back is taller than the
+				front and a backface-hidden pair needs a fixed height, which breaks at 200%
+				zoom and at 320px. Reduced motion removes it entirely.
+			-->
+			{#key study.revealed}
+				<div class="card" data-revealed={study.revealed}>
+					<p class="face" aria-hidden="true">{study.revealed ? 'Answer' : 'Term'}</p>
+					<h2 id="card-heading" class="front">{front}</h2>
+					{#if study.term.aliases.length && !study.revealed}
+						<p class="muted">Also called: {study.term.aliases.join(', ')}</p>
 					{/if}
-					<p class="open">
-						<a href={resolve('/glossary/[slug]', { slug: study.term.id })}
-							>Open the full entry</a
-						>
-					</p>
+
+					{#if study.revealed}
+						<div class="back">
+							<p>{back}</p>
+							{#if study.term.flashcard.mnemonic}
+								<p class="mnemonic">
+									<strong>Remember:</strong>
+									{study.term.flashcard.mnemonic}
+								</p>
+							{/if}
+							<p class="open">
+								<a href={resolve('/glossary/[slug]', { slug: study.term.id })}
+									>Open the full entry</a
+								>
+							</p>
+						</div>
+					{:else}
+						<p class="prompt" aria-hidden="true">Can you define it?</p>
+					{/if}
 				</div>
-			{/if}
+			{/key}
 		</div>
 
 		{#if !study.revealed}
@@ -129,12 +184,23 @@
 					<button type="button" class="grade grade-{g.grade}" onclick={() => grade(g.grade)}>
 						<span class="label">{g.label}</span>
 						<span class="when">{study.intervals?.[g.grade] ?? ''}</span>
+						<span class="key" aria-hidden="true">{g.key}</span>
 						<span class="visually-hidden">, key {g.key}</span>
 					</button>
 				{/each}
 			</div>
 			<p class="hint">
 				Keys 1 to 4 grade the card. The time under each button is when you will see it again.
+			</p>
+		{/if}
+
+		{#if study.session.reviewed > 0}
+			<p class="tally" aria-live="polite">
+				{#each GRADES as g (g.grade)}
+					{#if tally[g.grade] > 0}
+						<span class="chip" data-grade={g.grade}>{g.label} {tally[g.grade]}</span>
+					{/if}
+				{/each}
 			</p>
 		{/if}
 
@@ -148,6 +214,31 @@
 			{study.session.reviewed === 1 ? 'card' : 'cards'}{#if study.session.again > 0}, and
 				marked {study.session.again} to see again{/if}.
 		</p>
+
+		{#if study.session.reviewed > 0}
+			<!--
+				How the session went, by grade. A row of bars rather than a chart: four
+				numbers do not need axes, and each bar carries its own label and count so
+				the width is a second reading of the number rather than the only one.
+			-->
+			<ul class="breakdown">
+				{#each GRADES as g (g.grade)}
+					<li>
+						<span class="b-label">{g.label}</span>
+						<span class="b-track" aria-hidden="true">
+							<span
+								class="b-fill"
+								data-grade={g.grade}
+								style="width: {study.session.reviewed > 0
+									? (tally[g.grade] / study.session.reviewed) * 100
+									: 0}%"
+							></span>
+						</span>
+						<span class="b-count">{tally[g.grade]}</span>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 		<p>
 			<strong>{study.stats.due}</strong> due now · <strong>{study.stats.fresh}</strong> new
 			available ·
@@ -316,13 +407,158 @@
 		font-size: 0.9rem;
 		color: var(--text-muted);
 	}
+	/*
+	 * Grade colours, defined once. Every use pairs them with a label or a count, so they
+	 * reinforce a reading rather than being one; "0" is the not-yet-graded track.
+	 */
+	.bar,
+	.tally,
+	.breakdown {
+		--g0: var(--border);
+		--g1: var(--stop-border);
+		--g2: var(--caution-border);
+		--g3: var(--accent);
+		--g4: var(--accent);
+	}
+
+	.bar {
+		display: flex;
+		gap: 2px;
+		margin: 0 0 0.5rem;
+		height: 6px;
+	}
+	.seg {
+		flex: 1 1 0;
+		min-width: 2px;
+		border-radius: 2px;
+		background: var(--g0);
+	}
+	.seg[data-grade='1'] {
+		background: var(--g1);
+	}
+	.seg[data-grade='2'] {
+		background: var(--g2);
+	}
+	.seg[data-grade='3'] {
+		background: var(--g3);
+		opacity: 0.6;
+	}
+	.seg[data-grade='4'] {
+		background: var(--g4);
+	}
+
+	.chip {
+		display: inline-block;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 0.05rem 0.5rem;
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+	.tally {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin: 0.75rem 0 0;
+	}
+	.tally .chip[data-grade='1'] {
+		border-color: var(--g1);
+	}
+	.tally .chip[data-grade='2'] {
+		border-color: var(--g2);
+	}
+	.tally .chip[data-grade='3'],
+	.tally .chip[data-grade='4'] {
+		border-color: var(--g3);
+	}
+
+	/*
+	 * The queue, drawn behind the card. Pseudo-elements rather than real nodes: they are
+	 * decoration, and a screen reader should not meet two empty cards before the real one.
+	 */
+	/*
+	 * The edges sit inside the stack's own box rather than offset out of it. Translating
+	 * them outward looked right on a wide screen and pushed past the gutter at 320px,
+	 * where the page must not scroll sideways.
+	 */
+	.stack {
+		position: relative;
+		margin-bottom: 1.25rem;
+		padding-bottom: 22px;
+	}
+	.stack::before,
+	.stack::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		height: 100%;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+	.stack::before {
+		left: 8px;
+		right: 8px;
+		transform: translateY(8px);
+	}
+	.stack::after {
+		left: 16px;
+		right: 16px;
+		transform: translateY(16px);
+		opacity: 0.55;
+	}
+	.stack[data-behind='0']::before,
+	.stack[data-behind='0']::after,
+	.stack[data-behind='1']::after {
+		display: none;
+	}
+
 	.card {
+		/*
+		 * Above the two stack edges. They are ordinary positioned pseudo-elements rather
+		 * than negative-z-index ones: a negative z-index paints behind the nearest
+		 * ancestor with a background, which on this page meant behind the page itself.
+		 */
+		position: relative;
+		z-index: 1;
 		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		background: var(--surface-raised);
 		padding: 1.25rem 1rem;
 		min-height: 10rem;
-		margin-bottom: 1rem;
+		transform-origin: left center;
+		animation: turn 260ms ease-out;
+	}
+	.card[data-revealed='true'] {
+		border-color: var(--accent);
+	}
+	@keyframes turn {
+		from {
+			transform: perspective(900px) rotateY(-24deg);
+			opacity: 0.4;
+		}
+		to {
+			transform: perspective(900px) rotateY(0);
+			opacity: 1;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.card {
+			animation: none;
+		}
+	}
+
+	.face {
+		margin: 0 0 0.25rem;
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+	.prompt {
+		margin: 1rem 0 0;
+		color: var(--text-muted);
+		font-style: italic;
 	}
 	.front {
 		font-size: 1.5rem;
@@ -376,14 +612,84 @@
 		font-size: 0.8rem;
 		color: var(--text-muted);
 	}
+	/*
+	 * The keyboard number, on pointers that have a keyboard beside them. Hidden on touch,
+	 * where it is a number with nothing to press and the buttons are already tight at
+	 * 320px. The visually-hidden copy is always there for a screen reader.
+	 */
+	.grade .key {
+		display: none;
+		font-size: 0.7rem;
+		color: var(--text-muted);
+		border: 1px solid var(--border);
+		border-radius: 3px;
+		padding: 0 0.25rem;
+		line-height: 1.3;
+	}
+	@media (hover: hover) and (pointer: fine) {
+		.grade .key {
+			display: inline-block;
+		}
+	}
 	/* Colour reinforces the labels; it never replaces them. */
 	.grade-1 {
 		border-color: var(--stop-border);
+	}
+	.grade-2 {
+		border-color: var(--caution-border);
+	}
+	.grade-3 {
+		border-color: var(--accent);
+		opacity: 0.85;
 	}
 	.grade-4 {
 		border-color: var(--accent);
 	}
 	.summary h2 {
 		font-size: 1.2rem;
+	}
+
+	.breakdown {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1rem;
+		display: grid;
+		gap: 0.35rem;
+	}
+	.breakdown li {
+		display: grid;
+		grid-template-columns: 4rem 1fr 2rem;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.9rem;
+	}
+	.b-track {
+		height: 0.6rem;
+		border-radius: 999px;
+		background: var(--surface);
+		overflow: hidden;
+	}
+	.b-fill {
+		display: block;
+		height: 100%;
+		background: var(--g0);
+	}
+	.b-fill[data-grade='1'] {
+		background: var(--g1);
+	}
+	.b-fill[data-grade='2'] {
+		background: var(--g2);
+	}
+	.b-fill[data-grade='3'] {
+		background: var(--g3);
+		opacity: 0.6;
+	}
+	.b-fill[data-grade='4'] {
+		background: var(--g4);
+	}
+	.b-count {
+		text-align: right;
+		font-variant-numeric: tabular-nums;
+		font-weight: 600;
 	}
 </style>
