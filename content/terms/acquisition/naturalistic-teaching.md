@@ -1,7 +1,7 @@
 ---
 id: naturalistic-teaching
 term: Naturalistic Teaching
-aliases: [NET, natural environment teaching, incidental teaching]
+aliases: [NET, natural environment teaching]
 abbreviation: NET
 category: acquisition
 definition:

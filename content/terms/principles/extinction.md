@@ -1,7 +1,7 @@
 ---
 id: extinction
 term: Extinction
-aliases: [EXT, extinction burst, planned ignoring]
+aliases: [EXT]
 category: principles
 definition:
   technical: >-

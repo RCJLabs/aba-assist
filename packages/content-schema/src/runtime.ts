@@ -20,6 +20,7 @@ export {
 export {
 	RISK_LEXICON,
 	RESTRICTED_PROCEDURE_LEXICON,
+	PHYSICAL_CONTACT_LEXICON,
 	CLINICAL_DECISION_LEXICON
 } from './lexicons.js';
 export { SEARCH_FIELDS, searchOptions, type AbaSearchOptions } from './search-options.js';

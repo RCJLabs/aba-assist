@@ -1,8 +1,7 @@
 ---
 id: compound-schedule
 term: Compound Schedule
-aliases:
-  [complex schedule, multiple schedule, mixed schedule, chained schedule, tandem schedule]
+aliases: [complex schedule]
 category: principles
 definition:
   technical: >-

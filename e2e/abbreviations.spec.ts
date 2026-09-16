@@ -70,24 +70,28 @@ test('the two reinforcement notations are never merged', async ({ page }) => {
 	await expect(meaning(page, 'SR+').getByText('related')).toHaveCount(0);
 });
 
-test('a term the letters only point at is marked, not asserted', async ({ page }) => {
+test('letters decode to the one term they stand for, never to a broader one', async ({
+	page
+}) => {
+	/*
+	 * MSWO is a kind of preference assessment and FA is not FBA. The build now rejects an
+	 * alias that is another entry's name or abbreviation, so neither broader term is
+	 * reachable from these letters at all — which is a stronger promise than labelling the
+	 * second sense as merely related. The ordering rule that hedge belongs to is covered
+	 * on a fixture in acronyms.test.ts, where it does not depend on what the glossary
+	 * happens to contain today.
+	 */
 	await page.goto('/abbreviations');
 	await page.getByLabel('Find an abbreviation').fill('MSWO');
+	const mswo = meaning(page, 'MSWO').getByRole('listitem');
+	await expect(mswo).toHaveCount(1);
+	await expect(mswo.first()).toContainText('Multiple-Stimulus Without Replacement');
 
-	// MSWO is a kind of preference assessment, not another name for one.
-	const mswo = meaning(page, 'MSWO');
-	const first = mswo.getByRole('listitem').first();
-	await expect(first).toContainText('Multiple-Stimulus Without Replacement');
-	await expect(first).not.toContainText('related');
-	await expect(mswo.getByRole('listitem').nth(1)).toContainText('related');
-
-	// And FA must never be presented as standing for Functional Behavior Assessment.
 	await page.getByLabel('Find an abbreviation').fill('FA');
 	const fa = meaning(page, 'FA').getByRole('listitem');
+	await expect(fa).toHaveCount(1);
 	await expect(fa.first()).toContainText('Functional Analysis');
-	await expect(fa.first()).not.toContainText('related');
-	await expect(fa.nth(1)).toContainText('Functional Behavior Assessment');
-	await expect(fa.nth(1)).toContainText('related');
+	await expect(meaning(page, 'FA')).not.toContainText('Functional Behavior Assessment');
 });
 
 test('says what it does not cover rather than looking complete', async ({ page }) => {

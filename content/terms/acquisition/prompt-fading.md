@@ -1,7 +1,7 @@
 ---
 id: prompt-fading
 term: Prompt Fading
-aliases: [fading, most-to-least, least-to-most, transfer of stimulus control]
+aliases: [fading, prompt fading procedures]
 category: acquisition
 definition:
   technical: >-

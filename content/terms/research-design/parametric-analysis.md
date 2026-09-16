@@ -29,9 +29,9 @@ seeAlso: [reinforcer-assessment, magnitude, schedule-thinning]
 taskRefs:
   - { credential: BCBA, code: H.7 }
 citations:
-  - sourceId: roane-1998
-    useType: fact-reference
   - sourceId: kazdin-2011
+    useType: fact-reference
+  - sourceId: johnston-pennypacker-2020
     useType: fact-reference
 attestation:
   originalProse: true

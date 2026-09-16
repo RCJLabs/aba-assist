@@ -1,7 +1,6 @@
 ---
 id: chaining
 term: Chaining
-aliases: [forward chaining, backward chaining, total task]
 category: acquisition
 definition:
   technical: >-

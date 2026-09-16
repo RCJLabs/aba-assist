@@ -29,7 +29,7 @@ taskRefs:
   - { credential: BCBA, code: H.3 }
   - { credential: BCaBA, code: G.15 }
 citations:
-  - sourceId: premack-1959
+  - sourceId: homme-1969
     useType: fact-reference
 attestation:
   originalProse: true

@@ -1,7 +1,7 @@
 ---
 id: punishment
 term: Punishment
-aliases: [punisher, positive punishment, negative punishment]
+aliases: [punisher]
 category: principles
 definition:
   technical: >-

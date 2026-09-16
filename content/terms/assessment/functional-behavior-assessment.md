@@ -1,7 +1,7 @@
 ---
 id: functional-behavior-assessment
 term: Functional Behavior Assessment
-aliases: [FBA, functional assessment, functional analysis, FA]
+aliases: [FBA, functional assessment]
 abbreviation: FBA
 category: assessment
 definition:

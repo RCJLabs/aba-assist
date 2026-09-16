@@ -64,6 +64,58 @@ describe('what has to be read closely', () => {
 		expect(batchFor(risky)).toBeNull();
 	});
 
+	// The fixture above invents risk wording. The real entry has none, which is the case
+	// this covers: an entry about hands on a learner, with no crisis word anywhere in it.
+	it('promotes a definition about physical contact, with no risk word in it', () => {
+		const contact = item({
+			id: 'response-blocking',
+			category: 'reduction',
+			fields: [
+				{
+					label: 'Technical definition',
+					lines: [
+						'A procedure in which the interventionist physically interrupts a response as it begins.'
+					]
+				}
+			]
+		});
+		expect(tier(contact)).toBe('A');
+		expect(batchFor(contact)).toBeNull();
+
+		const prompting = item({
+			id: 'prompt',
+			category: 'acquisition',
+			fields: [{ label: 'Technical definition', lines: ['Physical guidance through a step.'] }]
+		});
+		expect(tier(prompting)).toBe('A');
+	});
+
+	// The broad lexicon matches "block" so that escalation prose cannot say it. Tiering
+	// uses the narrow one, or every interval-recording entry would land in the top tier.
+	it('leaves ten-second blocks and holding a container in the sampled tier', () => {
+		const intervals = item({
+			category: 'measurement',
+			fields: [
+				{
+					label: 'Technical definition',
+					lines: ['The session is divided into ten-second blocks and each is scored.']
+				}
+			]
+		});
+		expect(tier(intervals)).toBe('C');
+
+		const mand = item({
+			category: 'verbal-behavior',
+			fields: [
+				{
+					label: 'Example',
+					lines: ['A learner signs "open" while holding a closed container.']
+				}
+			]
+		});
+		expect(tier(mand)).toBe('C');
+	});
+
 	it('promotes a definition that strays into clinical decision language', () => {
 		const clinical = item({
 			fields: [{ label: 'Technical definition', lines: ['Used where a diagnosis of autism…'] }]

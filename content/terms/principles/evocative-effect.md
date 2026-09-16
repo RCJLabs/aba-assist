@@ -5,11 +5,10 @@ aliases: [evocative]
 category: principles
 definition:
   technical: >-
-    One of the two behavior-altering effects of a motivating operation: an increase in
-    the current frequency of behavior that has been reinforced by the stimulus whose
-    value the operation has raised. It is the behavioral half of an establishing
-    operation, and it is about behavior happening now rather than about what the learner
-    has learned.
+    What an establishing operation does to behavior: while the stimulus is worth more, the
+    responses that have produced it happen more often. It is the behavioral half of an
+    establishing operation, and it describes behavior in the present moment rather than
+    anything the learner has newly learned.
   plain: >-
     When something matters more right now, a person does more of what has got them that
     thing before. Miss lunch and you ask for a snack more often.

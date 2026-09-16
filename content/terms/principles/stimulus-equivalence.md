@@ -1,15 +1,7 @@
 ---
 id: stimulus-equivalence
 term: Stimulus Equivalence
-aliases:
-  [
-    equivalence relations,
-    emergent relations,
-    derived relations,
-    reflexivity,
-    symmetry,
-    transitivity
-  ]
+aliases: [equivalence relations, emergent relations, derived relations]
 category: principles
 definition:
   technical: >-

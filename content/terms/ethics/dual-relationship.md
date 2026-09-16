@@ -1,7 +1,7 @@
 ---
 id: dual-relationship
 term: Dual Relationship
-aliases: [multiple relationship, conflict of interest, boundary]
+aliases: [multiple relationship, boundary]
 category: ethics
 definition:
   technical: >-

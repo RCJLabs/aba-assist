@@ -1,15 +1,15 @@
 ---
 id: motivating-operation
 term: Motivating Operation
-aliases: [MO, establishing operation, abolishing operation, EO, AO]
+aliases: [MO]
 abbreviation: MO
 category: principles
 definition:
   technical: >-
-    An environmental variable that alters the current effectiveness of a stimulus as a
-    reinforcer or punisher, and correspondingly alters the frequency of behavior that has
-    been reinforced by that stimulus. An establishing operation increases effectiveness;
-    an abolishing operation decreases it.
+    An environmental variable with two effects at once: it changes how well a stimulus
+    currently works as a reinforcer or punisher, and it changes how often the responses
+    that have produced that stimulus occur. An establishing operation raises the
+    effectiveness; an abolishing operation lowers it.
   plain: >-
     Something that changes how much a person wants a thing right now, and so changes how
     hard they work for it. Going without food makes food worth more. Finishing a large

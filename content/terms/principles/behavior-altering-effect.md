@@ -5,10 +5,11 @@ aliases: [behavior altering, behaviour-altering effect]
 category: principles
 definition:
   technical: >-
-    The effect of a motivating operation on the current frequency of behavior that has
-    been reinforced by the stimulus whose value it has changed. It is evocative when that
-    frequency goes up and abative when it goes down. This is the half of a motivating
-    operation that is about what the learner is doing now.
+    What a motivating operation does to behavior rather than to worth: while the operation
+    is in force, the responses that have produced the affected stimulus happen more often
+    or less often than usual. More often is the evocative form, less often the abative
+    one. This is the half of a motivating operation that is about what the learner is
+    doing now.
   plain: >-
     Whether a person is doing more or less of something at this moment, because of how
     much the thing they get for it is worth right now.

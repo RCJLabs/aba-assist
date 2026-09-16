@@ -21,8 +21,8 @@ examples:
     setting: school
 nonExamples:
   - text: >-
-      Earning a break for completing three or fewer problems' worth of requests for
-      help. Reinforcing a lower rate is DRL.
+      Earning a break for making three or fewer requests for help in a lesson.
+      Reinforcing the behaviour for occurring less often is DRL.
     setting: school
 contrastWith: [differential-reinforcement-of-low-rates]
 seeAlso: [fixed-ratio-schedule]

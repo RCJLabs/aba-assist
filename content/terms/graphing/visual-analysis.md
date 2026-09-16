@@ -7,9 +7,11 @@ definition:
   technical: >-
     Judging from a graph whether behavior changed and whether the change is convincing,
     by examining level, trend and variability within each condition, and the immediacy,
-    magnitude and consistency of change across conditions. It is the primary method of
-    data interpretation in behavior analysis and it favors effects large and reliable
-    enough to see without statistics.
+    magnitude, consistency and overlap of change across conditions. Overlap is the share
+    of points in one phase falling within the range of the phase before it: the less two
+    phases overlap, the clearer the effect. It is the primary method of data
+    interpretation in behavior analysis and it favors effects large and reliable enough
+    to see without statistics.
   plain: >-
     Reading a graph to decide whether the behavior really changed. Look at how high the
     data are, which way they are heading, and how much they bounce around.

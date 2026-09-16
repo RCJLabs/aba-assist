@@ -1,7 +1,7 @@
 ---
 id: frequency-and-rate
 term: Frequency and Rate
-aliases: [count, rate of responding, frequency count]
+aliases: [rate of responding, frequency count]
 abbreviation: null
 category: measurement
 definition:

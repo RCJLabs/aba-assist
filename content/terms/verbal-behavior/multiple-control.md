@@ -28,6 +28,9 @@ seeAlso: [verbal-behavior, intraverbal]
 taskRefs:
   - { credential: BCBA, code: B.19 }
 citations:
+  - sourceId: michael-palmer-sundberg-2011
+    useType: fact-reference
+    locator: Convergent and divergent multiple control
   - sourceId: skinner-1957
     useType: fact-reference
 attestation:
@@ -35,7 +38,9 @@ attestation:
   noVerbatimSource: true
   aiAssisted: true
   consulted: >-
-    Written from Skinner (1957). No textbook glossary consulted.
+    Written from Michael, Palmer and Sundberg (2011), which named the convergent and
+    divergent forms, and Skinner (1957), which described multiple causation without those
+    names. No textbook glossary consulted.
 review:
   status: in-review
   authoredBy: claude

@@ -1,7 +1,7 @@
 ---
 id: discriminative-stimulus
 term: Discriminative Stimulus
-aliases: [SD, S-Delta, stimulus control]
+aliases: [SD]
 abbreviation: SD
 category: principles
 definition:

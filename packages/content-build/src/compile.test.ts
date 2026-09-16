@@ -1547,3 +1547,44 @@ describe('the release channel withholds rather than refuses', () => {
 		expect(dev.counts.withheld).toBe(0);
 	});
 });
+
+describe('an alias has to be another name for the same thing', () => {
+	const pair = (aliases: string[], abbreviation?: string) => ({
+		'terms/principles/sample-term.md': frontmatter(term({ aliases, abbreviation })),
+		'terms/principles/other-term.md': frontmatter(
+			term({
+				id: 'other-term',
+				term: 'Other Term',
+				abbreviation: 'OT',
+				definition: {
+					technical:
+						'A different concept entirely, stated at enough length to satisfy the minimum the schema imposes on this field.',
+					plain:
+						'Another short and easy way to say a different thing so a new reader can follow.',
+					gloss: 'A different summary line'
+				}
+			})
+		)
+	});
+
+	it('REJECTS an alias that is another entry’s name', async () => {
+		const r = await build(pair(['Other Term']));
+		expect(rules(r)).toContain('editorial/alias-names-another-term');
+	});
+
+	it('REJECTS an alias that is another entry’s abbreviation', async () => {
+		const r = await build(pair(['OT']));
+		expect(rules(r)).toContain('editorial/alias-names-another-term');
+	});
+
+	// "MTS" is both matching-to-sample and momentary-time-sampling, and both are right.
+	it('allows two entries to declare the same abbreviation', async () => {
+		const r = await build(pair(['OT'], 'OT'));
+		expect(rules(r)).not.toContain('editorial/alias-names-another-term');
+	});
+
+	it('leaves an ordinary synonym alone', async () => {
+		const r = await build(pair(['sample terminology']));
+		expect(rules(r)).not.toContain('editorial/alias-names-another-term');
+	});
+});

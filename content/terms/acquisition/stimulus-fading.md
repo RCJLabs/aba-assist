@@ -1,7 +1,7 @@
 ---
 id: stimulus-fading
 term: Stimulus Fading
-aliases: [stimulus shaping, within-stimulus prompt fading]
+aliases: [within-stimulus prompt fading]
 category: acquisition
 definition:
   technical: >-

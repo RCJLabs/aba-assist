@@ -523,6 +523,27 @@ sources:
     rights: all-rights-reserved
     quotationAllowed: false
 
+  - id: homme-1969
+    kind: book
+    title: How to Use Contingency Contracting in the Classroom
+    authors: ['Homme, L. E.', 'Csanyi, A. P.', 'Gonzales, M. A.', 'Rechs, J. R.']
+    year: 1969
+    publisher: Research Press
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: The originating account of contingency contracting.
+
+  - id: michael-palmer-sundberg-2011
+    kind: journal-article
+    title: The multiple control of verbal behavior
+    authors: ['Michael, J.', 'Palmer, D. C.', 'Sundberg, M. L.']
+    year: 2011
+    rights: all-rights-reserved
+    quotationAllowed: false
+    notes: >-
+      Source of the convergent and divergent terminology for multiple control. Skinner
+      (1957) describes multiple causation but not under those names.
+
   - id: michael-1993
     kind: journal-article
     title: Establishing operations

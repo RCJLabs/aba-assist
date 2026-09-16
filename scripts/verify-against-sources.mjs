@@ -490,13 +490,23 @@ if (sourceRuns.size > 0) {
 			for (const [k, v] of Object.entries(node)) if (!SKIP.has(k)) walk(v, `${path}.${k}`);
 		}
 	};
+	/*
+	 * The glossary is walked by category file rather than through `terms.index.json`,
+	 * which carries abbreviated search fields and would report the same overlap twice.
+	 * Reading the directory rather than listing the categories means a category added
+	 * later is checked without anybody remembering to add it here.
+	 */
+	const termFiles = readdirSync(G)
+		.filter((f) => /^terms\..+\.json$/.test(f) && f !== 'terms.index.json')
+		.sort();
 	for (const f of [
 		'ethics-codes.json',
 		'ethics-topics.json',
 		'credentials.json',
 		'taxonomy.json',
 		'scenarios.json',
-		'practice-guides.json'
+		'practice-guides.json',
+		...termFiles
 	]) {
 		walk(load(f), f.replace('.json', ''));
 	}

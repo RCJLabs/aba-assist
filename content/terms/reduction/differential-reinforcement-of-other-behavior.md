@@ -18,7 +18,9 @@ examples:
       A learner earns a preferred activity after each five minutes in which shouting did
       not occur.
     setting: school
-  - text: The interval starts again whenever the behavior happens, so the timer resets.
+  - text: >-
+      Under a resetting DRO the timer starts again the moment the behavior occurs, so the
+      learner has to go a full interval without it to earn anything.
     setting: clinic
 nonExamples:
   - text: >-

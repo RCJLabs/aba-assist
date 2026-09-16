@@ -1,7 +1,7 @@
 ---
 id: resurgence
 term: Resurgence
-aliases: [treatment relapse, renewal, reinstatement]
+aliases: [treatment relapse]
 category: principles
 definition:
   technical: >-

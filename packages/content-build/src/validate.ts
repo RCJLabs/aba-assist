@@ -345,6 +345,74 @@ export function checkDuplicateProse(
 }
 
 /**
+ * An alias has to be another name for the same thing.
+ *
+ * The glossary uses `aliases` for two jobs that look alike and are not: a genuine synonym
+ * ("MO" for motivating operation), and a term that is merely nearby — narrower, broader,
+ * or the opposite. The page renders them identically, as "also: …", so the second job
+ * quietly publishes a false claim. Left alone it produced "Discriminative Stimulus — also:
+ * S-Delta", which names the opposite concept, and "Resurgence — also: renewal,
+ * reinstatement", which names two different relapse effects a candidate is expected to
+ * tell apart.
+ *
+ * The rule that separates the jobs mechanically: if the glossary defines a term under
+ * that name, the name belongs to that term and cannot be an alias of another one. Search
+ * loses nothing, because the name is indexed on the entry that owns it, and the
+ * relationship that motivated the alias has its own fields — `contrastWith` and `seeAlso`.
+ *
+ * Abbreviations are held to the same rule with one exception: two terms may legitimately
+ * share one ("MTS" is both matching-to-sample and momentary-time-sampling), so a term that
+ * declares an abbreviation may also list it. What it may not do is claim another term's
+ * abbreviation while carrying a different one of its own.
+ */
+export function checkAliasCollisions(
+	terms: { id: string; term: string; abbreviation?: string | null; aliases: string[] }[],
+	fileOf: (id: string) => string
+): Issue[] {
+	const norm = (s: string) =>
+		s
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, ' ')
+			.trim();
+	const byName = new Map<string, string>();
+	const byAbbr = new Map<string, string>();
+	for (const t of terms) {
+		byName.set(norm(t.term), t.id);
+		if (t.abbreviation) byAbbr.set(norm(t.abbreviation), t.id);
+	}
+
+	const issues: Issue[] = [];
+	for (const t of terms) {
+		const own = t.abbreviation ? norm(t.abbreviation) : '';
+		for (const alias of t.aliases) {
+			const n = norm(alias);
+			const named = byName.get(n);
+			if (named && named !== t.id) {
+				issues.push(
+					error(
+						'editorial/alias-names-another-term',
+						`alias "${alias}" is the name of "${named}", so listing it here says the two are the same thing. Use contrastWith or seeAlso.`,
+						fileOf(t.id)
+					)
+				);
+				continue;
+			}
+			const abbreviated = byAbbr.get(n);
+			if (abbreviated && abbreviated !== t.id && own !== n) {
+				issues.push(
+					error(
+						'editorial/alias-names-another-term',
+						`alias "${alias}" is the abbreviation of "${abbreviated}". Two terms may share an abbreviation, but only by each declaring it.`,
+						fileOf(t.id)
+					)
+				);
+			}
+		}
+	}
+	return issues;
+}
+
+/**
  * Whether the question bank can actually run the exam it claims to simulate.
  *
  * The simulator already refuses to pad a short bank by repeating items, so a thin bank

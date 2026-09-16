@@ -11,7 +11,11 @@
  * restraint moves it into the read-everything tier on the next build, with no action from
  * the author — which is the only version of this that stays true.
  */
-import { CLINICAL_DECISION_LEXICON, RISK_LEXICON } from '@aba/content-schema/runtime';
+import {
+	CLINICAL_DECISION_LEXICON,
+	PHYSICAL_CONTACT_LEXICON,
+	RISK_LEXICON
+} from '@aba/content-schema/runtime';
 import type { ReviewItem } from './reviewable.js';
 
 export type ReviewTier = 'A' | 'B' | 'C';
@@ -85,6 +89,15 @@ function tierForTerm(item: ReviewItem): TierVerdict {
 	const clinical = prose.match(CLINICAL_DECISION_LEXICON);
 	if (clinical) {
 		return { tier: 'A', reason: `the definition mentions "${clinical[0]}"` };
+	}
+	/*
+	 * An entry about putting hands on a learner is not an ordinary definition, even when
+	 * it names no crisis. "Response blocking" and "hand-over-hand" carry no risk-lexicon
+	 * word, so without this they would be carried by a sample of their neighbours.
+	 */
+	const contact = prose.match(PHYSICAL_CONTACT_LEXICON);
+	if (contact) {
+		return { tier: 'A', reason: `the definition mentions "${contact[0]}"` };
 	}
 	return { tier: 'C', reason: 'an ordinary definition' };
 }

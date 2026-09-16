@@ -1,7 +1,7 @@
 ---
 id: unrestricted-activity
 term: Unrestricted Activity
-aliases: [unrestricted hours, restricted activity, fieldwork activities]
+aliases: [unrestricted hours, fieldwork activities]
 category: supervision
 definition:
   technical: >-

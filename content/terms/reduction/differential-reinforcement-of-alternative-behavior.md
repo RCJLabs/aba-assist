@@ -1,7 +1,7 @@
 ---
 id: differential-reinforcement-of-alternative-behavior
 term: Differential Reinforcement of Alternative Behavior
-aliases: [DRA, functional communication training, FCT]
+aliases: [DRA]
 abbreviation: DRA
 category: reduction
 definition:

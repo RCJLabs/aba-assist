@@ -7,9 +7,10 @@ definition:
   technical: >-
     Describing what was observed — actions, words, counts, times — rather than
     interpretations, motives or judgments. "Threw the pencil and said no, twice" is
-    objective; "was defiant" is subjective. Notes and reports written objectively can
-    be checked, compared and used in decisions; subjective ones cannot and can expose
-    the writer and the client to harm.
+    objective; "was defiant" is subjective. Some training materials abbreviate the
+    requirement as MOO, for measurable, observable and objective. Notes and reports
+    written objectively can be checked, compared and used in decisions; subjective ones
+    cannot and can expose the writer and the client to harm.
   plain: >-
     Writing down what you saw and heard, not what you think it meant. "Threw the
     pencil twice," not "was being difficult."

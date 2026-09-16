@@ -42,7 +42,7 @@ test('term pages are prerendered — content is in the HTML without JavaScript',
 	await expect(
 		page.getByRole('heading', { level: 1, name: 'Motivating Operation' })
 	).toBeVisible();
-	await expect(page.getByText(/alters the current effectiveness/)).toBeVisible();
+	await expect(page.getByText(/changes how well a stimulus currently works/)).toBeVisible();
 	await context.close();
 });
 

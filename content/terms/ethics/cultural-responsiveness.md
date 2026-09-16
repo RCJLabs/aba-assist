@@ -1,7 +1,7 @@
 ---
 id: cultural-responsiveness
 term: Cultural Responsiveness
-aliases: [culturally responsive practice, contextual fit]
+aliases: [culturally responsive practice]
 category: ethics
 definition:
   technical: >-

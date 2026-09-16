@@ -7,17 +7,20 @@ category: assessment
 definition:
   technical: >-
     A preference assessment in which an array is presented, the person selects an item,
-    the selected item is returned to the array and the unselected items are replaced
-    with new ones, and the array is presented again. It identifies the top preference
-    quickly but gives less information about the ranking of the rest.
+    the selected item is put back into the array, the positions are rearranged, and the
+    whole array is presented again. Every item stays available on every trial. That
+    identifies the top preference quickly, and because a strong favourite can be chosen
+    every time it says little about the ranking of the rest.
   plain: >-
-    Lay out several items and let the person pick. The picked item stays; the others are
-    swapped for new ones. Fast at finding the favorite, weak at ranking the rest.
-  gloss: An array where the chosen item stays and the rest are swapped
+    Lay out several items and let the person pick. The picked item goes back and
+    everything is shuffled for the next round. Fast at finding the favourite, weak at
+    ranking the rest.
+  gloss: An array where every item stays available each round
 examples:
   - text: >-
-      The learner keeps choosing the toy car each round while the other items rotate.
-      The car is clearly the top preference.
+      The learner chooses the toy car on all five trials while the same other items are
+      reshuffled around it. The car is clearly the top preference, and nothing has been
+      learned about the other four.
     setting: clinic
 nonExamples:
   - text: >-

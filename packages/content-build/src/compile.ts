@@ -32,6 +32,7 @@ import { discover, parseMarkdown, parseYamlFile } from './parse.js';
 import type { CompileOptions, CompileResult, EmittedAsset, Issue } from './types.js';
 import { error } from './types.js';
 import {
+	checkAliasCollisions,
 	checkDuplicateProse,
 	checkExamCoverage,
 	checkPlainLanguage,
@@ -1098,8 +1099,10 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		push(...checkExamCoverage(o, emitQuestions, `taxonomy/${o.id}.yaml`));
 	}
 
-	// Authoring check, so it covers every file rather than only what ships: two entries
-	// with the same definition are a mistake even while one of them is withheld.
+	// Authoring checks, so they cover every file rather than only what ships: two entries
+	// with the same definition are a mistake even while one of them is withheld, and so is
+	// an alias that claims another entry's name.
+	push(...checkAliasCollisions(terms, (id) => termFiles.get(id)!));
 	push(
 		...checkDuplicateProse(
 			terms.map((t) => ({

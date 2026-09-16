@@ -1,7 +1,7 @@
 ---
 id: partial-interval-recording
 term: Partial-Interval Recording
-aliases: [PIR, partial interval, discontinuous measurement]
+aliases: [PIR, partial interval]
 abbreviation: PIR
 category: measurement
 definition:

@@ -1,15 +1,15 @@
 ---
 id: behavior
 term: Behavior
-aliases: [response, dead man's test]
+aliases: [response]
 category: principles
 definition:
   technical: >-
     Anything a living organism does that involves movement or a change in the
     relationship between the organism and its environment, including private events.
-    The usual working test is that a dead person could not do it: "sitting quietly" or
-    "not hitting" fail that test and describe the absence of behavior rather than
-    behavior.
+    The usual working test, called the dead man's test, is that a dead person could not
+    do it: "sitting quietly" or "not hitting" fail that test and describe the absence of
+    behavior rather than behavior.
   plain: >-
     Anything a person does. If a dead person could do it, like "staying still," it is
     not behavior.

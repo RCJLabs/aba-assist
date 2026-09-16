@@ -31,8 +31,8 @@ questions:
         text: Multiple-stimulus with replacement
         isCorrect: false
         rationale: >-
-          In the with-replacement format the chosen item is returned to the array and the
-          unchosen items are swapped out.
+          In the with-replacement format the chosen item goes back into the array and the
+          same items are presented again, so nothing is removed and no ranking emerges.
     explanation: >-
       Multiple-stimulus without replacement presents an array, removes each selected item
       and re-presents the remainder. It is fast, gives a full ranking, and is widely used

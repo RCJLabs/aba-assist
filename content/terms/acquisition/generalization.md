@@ -1,7 +1,7 @@
 ---
 id: generalization
 term: Generalization
-aliases: [generalisation, stimulus generalization, response generalization, transfer]
+aliases: [generalisation, transfer]
 category: acquisition
 definition:
   technical: >-

@@ -1,7 +1,7 @@
 ---
 id: confidentiality
 term: Confidentiality
-aliases: [privacy, protected information, HIPAA]
+aliases: [privacy, protected information]
 category: ethics
 definition:
   technical: >-

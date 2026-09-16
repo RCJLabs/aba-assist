@@ -1,14 +1,16 @@
 ---
 id: celeration
 term: Celeration
-aliases: [acceleration, deceleration, celeration chart, standard celeration chart]
+aliases: [acceleration, deceleration]
 category: measurement
 definition:
   technical: >-
     How fast a rate is changing, expressed as a factor per unit of time — a count per
     minute per week, say. Where rate answers how often the behaviour happens, celeration
     answers whether that is rising or falling and how quickly, so it is a measure of
-    learning rather than of performance on any one day.
+    learning rather than of performance on any one day. It is conventionally plotted on
+    the Standard Celeration Chart, whose multiply-divide vertical scale turns a constant
+    celeration into a straight line.
   plain: >-
     Not how much someone is doing, but how fast they are getting better or worse at it.
     Twenty a minute this week and thirty next week is a rising celeration.

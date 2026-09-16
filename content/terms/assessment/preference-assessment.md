@@ -1,7 +1,6 @@
 ---
 id: preference-assessment
 term: Preference Assessment
-aliases: [MSWO, paired stimulus, free operant preference assessment]
 category: assessment
 definition:
   technical: >-
