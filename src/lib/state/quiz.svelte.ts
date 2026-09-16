@@ -395,7 +395,10 @@ class Quiz {
 			perDomain: Object.fromEntries(
 				Object.entries(perDomain).map(([k, v]) => [k, { total: v.total, correct: v.correct }])
 			),
-			missed: missed.map((m) => m.q.id)
+			missed: missed.map((m) => m.q.id),
+			// What the run examined, not what it got right. Coverage is a record of
+			// having looked, and a wrong answer is still a look.
+			tasks: [...new Set(this.items.map((it) => it.q.taskRef.code))].sort()
 		}).then(
 			() => {
 				this.saved = 'saved';

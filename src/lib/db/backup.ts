@@ -187,7 +187,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 						total: r.total,
 						correct: r.correct,
 						perDomain: isObj(r.perDomain) ? (r.perDomain as QuizAttempt['perDomain']) : {},
-						missed: Array.isArray(r.missed) ? r.missed.filter(str) : []
+						missed: Array.isArray(r.missed) ? r.missed.filter(str) : [],
+						tasks: Array.isArray(r.tasks) ? r.tasks.filter(str) : []
 					}
 				: null,
 		dropped

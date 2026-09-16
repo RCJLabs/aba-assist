@@ -33,6 +33,13 @@
 	--accent-text: #ffffff;
 	--link: #10467e;
 
+	/*
+	 * The coverage dial. Two strokes that have to be told apart at a glance, so both
+	 * clear 3:1 against the surface behind them (WCAG 1.4.11) and against each other.
+	 */
+	--dial-track: #848f9e;
+	--dial-fill: #1b3a5c;
+
 	--caution-bg: #fff4e0;
 	--caution-border: #a35b00;
 	--caution-text: #5c3200;
@@ -64,6 +71,9 @@
 		--accent-text: #0b1620;
 		--link: #9cc6f2;
 
+		--dial-track: #6b7d91;
+		--dial-fill: #dce9f8;
+
 		--caution-bg: #33260f;
 		--caution-border: #e0a34a;
 		--caution-text: #f4d9a8;
@@ -88,6 +98,8 @@
 	--accent: #9cc6f2;
 	--accent-text: #0b1620;
 	--link: #9cc6f2;
+	--dial-track: #6b7d91;
+	--dial-fill: #dce9f8;
 	--caution-bg: #33260f;
 	--caution-border: #e0a34a;
 	--caution-text: #f4d9a8;

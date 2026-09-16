@@ -8,20 +8,31 @@
  * renders in full with no data at all, and this fills a strip in afterwards if there is
  * anything to say.
  */
+import { domainCoverage, tasksExamined, type CoverageDomain } from '$lib/study/coverage.js';
+
 export interface HomeStrip {
 	dueCards: number;
 	attempts: number;
 	/** The area worth working on, or null while there is not enough to say. */
 	weakest: { letter: string; name: string; accuracy: number } | null;
+	/**
+	 * Task codes this reader has been asked about, area by area.
+	 *
+	 * Empty until storage has answered, which is why the dial is drawn from the outline
+	 * first and filled in afterwards: the ring's shape is the exam and is known at build
+	 * time; only the fill depends on the device.
+	 */
+	coverage: CoverageDomain[];
 }
 
-export const EMPTY: HomeStrip = { dueCards: 0, attempts: 0, weakest: null };
+export const EMPTY: HomeStrip = { dueCards: 0, attempts: 0, weakest: null, coverage: [] };
 
 export interface OutlineDomain {
 	letter: string;
 	name: string;
 	examWeightPercent: number | null;
 	examItems: number | null;
+	tasks: { code: string }[];
 }
 
 export async function loadStrip(
@@ -30,7 +41,7 @@ export async function loadStrip(
 ): Promise<HomeStrip> {
 	try {
 		// Split out of the entry bundle: nothing here is needed to paint the page.
-		const [{ getAllCards, recentAttempts }, { coverage, domainStats }] = await Promise.all([
+		const [{ getAllCards, recentAttempts }, { domainStats }] = await Promise.all([
 			import('$lib/db/index.js'),
 			import('$lib/study/plan.js')
 		]);
@@ -39,7 +50,6 @@ export async function loadStrip(
 		const now = Date.now();
 		const mine = history.filter((a) => a.credential === credential);
 		const stats = domainStats(domains, history, credential, [], new Set());
-		void coverage;
 
 		// Only areas with enough answers to report, weakest first; ties go to the heavier
 		// area, because that is where the time is better spent.
@@ -50,6 +60,7 @@ export async function loadStrip(
 		return {
 			dueCards: cards.filter((c) => c.due <= now && c.state !== 0).length,
 			attempts: mine.length,
+			coverage: domainCoverage(domains, tasksExamined(history, credential)),
 			weakest: measured[0]
 				? {
 						letter: measured[0].letter,

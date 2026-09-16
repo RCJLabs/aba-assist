@@ -14,6 +14,9 @@
 	import { rememberTrackerRole } from '$lib/state/mode.js';
 	import { search, type SearchHit } from '$lib/state/search.svelte.js';
 	import { EMPTY, loadStrip, type HomeStrip } from '$lib/home/strip.js';
+	import ExamDial from '$lib/components/ExamDial.svelte';
+	import { examDates } from '$lib/state/examDate.svelte.js';
+	import { daysUntil, domainCoverage, type CoverageDomain } from '$lib/study/coverage.js';
 
 	// Search results respect the same exam/domain/category filter as the glossary, so
 	// someone studying for one exam never sees content that is not on it.
@@ -112,7 +115,8 @@
 				letter: d.letter,
 				name: d.name,
 				examWeightPercent: d.examWeightPercent,
-				examItems: d.examItems
+				examItems: d.examItems,
+				tasks: d.tasks.map((t) => ({ code: t.code }))
 			}))
 		);
 	}
@@ -121,10 +125,62 @@
 		// Before the root layout mounts, so the strip is built for the chosen mode
 		// rather than for the default.
 		filters.hydrate();
+		examDates.hydrate();
 		void refreshStrip();
 	});
 
 	const hasStrip = $derived(strip.dueCards > 0 || strip.weakest !== null);
+
+	/*
+	 * The dial.
+	 *
+	 * The ring's shape comes from the compiled outline, so it is drawn correctly on the
+	 * very first paint with every arc empty — the exam's shape is a fact about the exam,
+	 * not about the reader. Storage then fills the arcs in. That ordering is the same one
+	 * the rest of this page follows, and it is why a first-time visitor sees a complete
+	 * map of the paper rather than a spinner.
+	 *
+	 * It is shown only when a credential has been chosen. In "All" mode nobody has said
+	 * which exam they are sitting, and quietly drawing the technician's outline would be
+	 * answering a question that was not asked.
+	 */
+	const dialCredential = $derived(filters.refCredential);
+
+	const dialDomains = $derived.by((): CoverageDomain[] => {
+		if (!dialCredential) return [];
+		if (strip.coverage.length > 0) return strip.coverage;
+		const outline = outlineForCredential(dialCredential);
+		return domainCoverage(
+			(outline?.domains ?? []).map((d) => ({
+				letter: d.letter,
+				name: d.name,
+				examWeightPercent: d.examWeightPercent,
+				tasks: d.tasks.map((t) => ({ code: t.code }))
+			})),
+			new Set()
+		);
+	});
+
+	const examDate = $derived(dialCredential ? examDates.get(dialCredential) : null);
+	const days = $derived(examDate ? daysUntil(examDate, Date.now()) : null);
+
+	function onExamDate(event: Event) {
+		const value = (event.currentTarget as HTMLInputElement).value;
+		if (!dialCredential) return;
+		if (value) examDates.set(dialCredential, value);
+		else examDates.clear(dialCredential);
+	}
+
+	/** Long form, for the summary line and for anything reading it aloud. */
+	const examDateLabel = $derived.by(() => {
+		if (!examDate) return null;
+		const [y, m, d] = examDate.split('-').map(Number);
+		return new Date(y!, m! - 1, d!).toLocaleDateString(undefined, {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric'
+		});
+	});
 
 	const outlineList = Object.values(outlines);
 	/*
@@ -233,11 +289,88 @@
 		</p>
 	{/if}
 {:else}
-	{#if hasStrip}
+	<!--
+		The crisis affordance stays first. It was above the old strip and it stays above the
+		dial: nothing on this page outranks knowing who to call.
+	-->
+	<a class="tile stop" href={resolve('/help')}>
+		<strong>Something urgent is happening</strong>
+		<span>Who to contact, and what to write down.</span>
+	</a>
+
+	{#if dialCredential}
 		<!--
-			Only rendered once there is something to say, and only after the page is already
-			complete. A first-time visitor and a search engine both get the full page without
-			waiting for storage that has nothing in it.
+			The dial. Drawn from the outline on the first paint, filled in from storage a
+			moment later — so a first-time visitor and a search engine both get a complete
+			map of the exam rather than a spinner.
+		-->
+		<section class="cockpit" aria-labelledby="cockpit-h">
+			<h2 id="cockpit-h">Where you are on the {dialCredential} outline</h2>
+
+			<ExamDial credential={dialCredential} domains={dialDomains} {days} />
+
+			<p class="caption">
+				Each arc is one content area, sized by how much of the exam it is worth and filled by
+				how many of its tasks you have been asked about. A full ring means every area has been
+				covered once — it is a map of where you have been, not a prediction about the paper.
+			</p>
+
+			<details class="when">
+				<summary>
+					{#if examDateLabel}
+						Exam on {examDateLabel} — change
+					{:else}
+						Add your exam date
+					{/if}
+				</summary>
+				<div class="when-body">
+					<label for="exam-date">Date of your {dialCredential} exam</label>
+					<input id="exam-date" type="date" value={examDate ?? ''} onchange={onExamDate} />
+					<p class="when-note">
+						Kept on this device, and used for the countdown only. Clearing the field removes
+						it.
+					</p>
+				</div>
+			</details>
+
+			{#if hasStrip}
+				<div class="strip">
+					{#if strip.dueCards > 0}
+						<a href={resolve('/study')}>
+							<strong>{strip.dueCards}</strong>
+							<span>{strip.dueCards === 1 ? 'card due' : 'cards due'}</span>
+						</a>
+					{/if}
+					{#if strip.weakest}
+						<a href={resolve('/plan')}>
+							<strong>{Math.round(strip.weakest.accuracy * 100)}%</strong>
+							<span>in {strip.weakest.name} — your weakest area</span>
+						</a>
+					{/if}
+				</div>
+			{/if}
+		</section>
+	{:else}
+		<!--
+			No exam chosen yet — and "Everything" is the default, so most people arrive here
+			rather than choosing it. Drawing the technician's ring anyway would be inventing
+			an exam nobody named, so this points at the control that names one instead. It is
+			one sentence, and it makes the dial discoverable without presuming.
+		-->
+		<section class="cockpit pick" aria-labelledby="pick-h">
+			<h2 id="pick-h">Studying for an exam?</h2>
+			<p class="caption">
+				Pick RBT, BCaBA or BCBA above. This is where you will see how much of that exam's
+				outline you have covered — area by area, each one sized by how much of the paper it is
+				worth.
+			</p>
+		</section>
+	{/if}
+
+	{#if hasStrip && !dialCredential}
+		<!--
+			The due queue and the weakest area are about work already done rather than about
+			an exam, so they are still worth saying with no mode chosen.
 		-->
 		<section class="strip" aria-label="Where you left off">
 			{#if strip.dueCards > 0}
@@ -254,11 +387,6 @@
 			{/if}
 		</section>
 	{/if}
-
-	<a class="tile stop" href={resolve('/help')}>
-		<strong>Something urgent is happening</strong>
-		<span>Who to contact, and what to write down.</span>
-	</a>
 
 	<h2>Look something up</h2>
 	<nav aria-label="Reference" class="tiles">
@@ -435,11 +563,91 @@
 		white-space: nowrap;
 	}
 	/* Never colour alone: the selected chip is also the only one announced as checked. */
+
+	/*
+	 * The cockpit: the dial, what it means, the exam date, and the two things worth
+	 * doing about it. One card, so it reads as one answer to "where am I".
+	 */
+	.cockpit {
+		margin: 1rem 0;
+		padding: 1rem 0.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+	}
+
+	.cockpit h2 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+		text-align: center;
+		color: var(--text-muted);
+		font-weight: 600;
+	}
+
+	.pick .caption {
+		margin-top: 0;
+	}
+
+	.caption {
+		margin: 0.75rem auto 0;
+		max-width: 34rem;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+
+	.when {
+		margin-top: 0.75rem;
+		font-size: 0.9rem;
+	}
+
+	.when summary {
+		display: flex;
+		align-items: center;
+		min-height: var(--tap);
+		cursor: pointer;
+		color: var(--link);
+	}
+
+	.when-body {
+		display: grid;
+		gap: 0.3rem;
+		padding-top: 0.25rem;
+	}
+
+	.when-body label {
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+
+	.when-body input {
+		/* The same box as every other control in the app, and never wider than its column. */
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		min-height: var(--tap);
+		padding: 0.5rem 0.7rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+		color: var(--text);
+		font: inherit;
+	}
+
+	.when-note {
+		margin: 0;
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+
 	.strip {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin-bottom: 1rem;
+	}
+
+	.cockpit .strip {
+		margin: 0.75rem 0 0;
 	}
 	.strip a {
 		flex: 1 1 8rem;

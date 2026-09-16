@@ -29,6 +29,16 @@ export interface QuizAttempt {
 	perDomain: Record<string, { total: number; correct: number }>;
 	/** Question ids answered incorrectly, for "review what I missed". */
 	missed: string[];
+	/**
+	 * Task codes this run actually examined, e.g. `["C.4", "F.10"]`.
+	 *
+	 * Codes rather than question ids because the question is "has this part of the
+	 * outline been looked at", and answering it from ids would mean loading the whole
+	 * question bank every time the home page paints. Optional because runs recorded
+	 * before this field existed have no answer; they read as an empty list, which is
+	 * honest — nothing is known about what they covered.
+	 */
+	tasks?: string[];
 }
 
 /**
