@@ -529,7 +529,8 @@ questions:
         text: The learner is not a candidate for behaviour-analytic services
         isCorrect: false
         rationale: >-
-          This does not follow at all.
+          An inconclusive analysis is a reason to assess differently, not a judgement
+          about whether the learner should receive services at all.
       - id: c
         text: Multiple functions have been ruled out
         isCorrect: false

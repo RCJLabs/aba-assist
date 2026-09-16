@@ -677,7 +677,8 @@ questions:
         text: 88%
         isCorrect: false
         rationale: >-
-          This does not follow from the figures given.
+          Close enough to the right answer to be tempting, which is the point of it: 17
+          divided by 20 is 0.85 exactly, not 0.88.
       - id: b
         text: 3%
         isCorrect: false

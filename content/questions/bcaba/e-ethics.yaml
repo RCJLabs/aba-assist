@@ -66,7 +66,7 @@ questions:
     taskRef: { credential: BCaBA, code: E.1 }
     type: single-best-answer
     stem: >-
-      A learner who previously joined a activity now pushes materials away and turns from
+      A learner who previously joined an activity now pushes materials away and turns from
       the table each time it is presented. Treating this as assent withdrawal means:
     options:
       - id: a
