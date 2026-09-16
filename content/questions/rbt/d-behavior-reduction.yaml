@@ -11,29 +11,29 @@ questions:
       procedure is this?
     options:
       - id: a
-        text: Differential reinforcement of alternative behavior
-        isCorrect: true
-        rationale: >-
-          Reinforcing an acceptable behavior that serves the same function while
-          withholding reinforcement for the problem behavior is DRA.
-      - id: b
-        text: Differential reinforcement of other behavior
-        isCorrect: false
-        rationale: >-
-          DRO reinforces the absence of the problem behavior for a period; it does not
-          specify a particular alternative to reinforce.
-      - id: c
-        text: Noncontingent reinforcement
-        isCorrect: false
-        rationale: >-
-          Noncontingent reinforcement is delivered on a time schedule regardless of
-          behavior.
-      - id: d
         text: Response cost
         isCorrect: false
         rationale: >-
           Response cost removes an earned reinforcer after the problem behavior; nothing
           is removed here.
+      - id: b
+        text: Differential reinforcement of alternative behavior
+        isCorrect: true
+        rationale: >-
+          Reinforcing an acceptable behavior that serves the same function while
+          withholding reinforcement for the problem behavior is DRA.
+      - id: c
+        text: Differential reinforcement of other behavior
+        isCorrect: false
+        rationale: >-
+          DRO reinforces the absence of the problem behavior for a period; it does not
+          specify a particular alternative to reinforce.
+      - id: d
+        text: Noncontingent reinforcement
+        isCorrect: false
+        rationale: >-
+          Noncontingent reinforcement is delivered on a time schedule regardless of
+          behavior.
     explanation: >-
       DRA strengthens a specific alternative that gets the learner the same outcome as the
       problem behavior, while the problem behavior stops working. It is the procedure
@@ -73,29 +73,29 @@ questions:
       this?
     options:
       - id: a
-        text: Differential reinforcement of other behavior
-        isCorrect: true
-        rationale: >-
-          Reinforcement contingent on the absence of the target behavior during an
-          interval, with the interval reset after an occurrence, is DRO.
-      - id: b
-        text: Differential reinforcement of alternative behavior
-        isCorrect: false
-        rationale: >-
-          DRA names a specific alternative behavior to reinforce; this plan reinforces
-          any behavior other than screaming.
-      - id: c
         text: Differential reinforcement of low rates
         isCorrect: false
         rationale: >-
           DRL reinforces a reduced but non-zero rate; this plan requires zero occurrences
           in the interval.
-      - id: d
+      - id: b
         text: Fixed-interval schedule
         isCorrect: false
         rationale: >-
           A fixed-interval schedule reinforces the first response after the interval;
           here reinforcement depends on the absence of a response.
+      - id: c
+        text: Differential reinforcement of other behavior
+        isCorrect: true
+        rationale: >-
+          Reinforcement contingent on the absence of the target behavior during an
+          interval, with the interval reset after an occurrence, is DRO.
+      - id: d
+        text: Differential reinforcement of alternative behavior
+        isCorrect: false
+        rationale: >-
+          DRA names a specific alternative behavior to reinforce; this plan reinforces
+          any behavior other than screaming.
     explanation: >-
       DRO delivers reinforcement when the problem behavior has not occurred for a set
       period. The interval is chosen from baseline data so the learner can succeed, and
@@ -121,28 +121,28 @@ questions:
       procedure?
     options:
       - id: a
-        text: It cannot physically happen at the same time as hand-mouthing
-        isCorrect: true
-        rationale: >-
-          Choosing an alternative that is incompatible with the problem behavior is what
-          makes this differential reinforcement of incompatible behavior.
-      - id: b
-        text: It is the behavior the learner already does most
-        isCorrect: false
-        rationale: >-
-          The alternative is chosen for incompatibility, not for how frequent it already
-          is.
-      - id: c
         text: It requires no reinforcement to maintain
         isCorrect: false
         rationale: >-
           The whole procedure depends on reinforcing the alternative.
-      - id: d
+      - id: b
         text: It punishes the hand-mouthing
         isCorrect: false
         rationale: >-
           Nothing is presented or removed after hand-mouthing; the procedure works
           through reinforcement of the alternative.
+      - id: c
+        text: It cannot physically happen at the same time as hand-mouthing
+        isCorrect: true
+        rationale: >-
+          Choosing an alternative that is incompatible with the problem behavior is what
+          makes this differential reinforcement of incompatible behavior.
+      - id: d
+        text: It is the behavior the learner already does most
+        isCorrect: false
+        rationale: >-
+          The alternative is chosen for incompatibility, not for how frequent it already
+          is.
     explanation: >-
       DRI is DRA with an alternative that cannot occur at the same time as the problem
       behavior. While hands are on the toy, hand-mouthing is impossible, so strengthening
@@ -214,28 +214,28 @@ questions:
       doing. Which procedure is this?
     options:
       - id: a
+        text: Time-out
+        isCorrect: false
+        rationale: >-
+          Access to reinforcement is being increased, not removed.
+      - id: b
         text: Noncontingent reinforcement
         isCorrect: true
         rationale: >-
           Delivering the maintaining reinforcer on a time schedule, independent of
           behavior, is noncontingent reinforcement. Free access reduces the motivation for
           the behavior.
-      - id: b
+      - id: c
         text: Differential reinforcement of other behavior
         isCorrect: false
         rationale: >-
           DRO requires the absence of the behavior during the interval; this schedule
           delivers attention whether or not shouting occurred.
-      - id: c
+      - id: d
         text: Positive punishment
         isCorrect: false
         rationale: >-
           Nothing is presented after shouting to reduce it.
-      - id: d
-        text: Time-out
-        isCorrect: false
-        rationale: >-
-          Access to reinforcement is being increased, not removed.
     explanation: >-
       Noncontingent reinforcement works as an abolishing operation: when attention is
       freely available, shouting to get it loses its value. It is easy to implement, but
@@ -260,27 +260,27 @@ questions:
       Which antecedent strategy is this?
     options:
       - id: a
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          No reinforcer is being withheld.
+      - id: b
         text: High-probability request sequence
         isCorrect: true
         rationale: >-
           A quick run of easy, reinforced requests immediately before a hard one uses
           behavioral momentum to make compliance with the hard request more likely.
-      - id: b
+      - id: c
         text: Premack principle
         isCorrect: false
         rationale: >-
           The Premack principle uses a preferred activity as a reward after the target
           behavior; nothing is being offered afterward here.
-      - id: c
+      - id: d
         text: Response cost
         isCorrect: false
         rationale: >-
           Nothing is being removed.
-      - id: d
-        text: Extinction
-        isCorrect: false
-        rationale: >-
-          No reinforcer is being withheld.
     explanation: >-
       The high-probability request sequence is an antecedent intervention: several
       requests the learner reliably follows are delivered and reinforced in quick
@@ -304,29 +304,29 @@ questions:
       replacement behavior is best matched to that function?
     options:
       - id: a
+        text: Sitting quietly with hands folded
+        isCorrect: false
+        rationale: >-
+          Sitting quietly does not get the learner what screaming got them, so it will
+          not compete with it.
+      - id: b
+        text: Raising a hand for attention
+        isCorrect: false
+        rationale: >-
+          Attention is a different function from escape.
+      - id: c
         text: Asking for a break
         isCorrect: true
         rationale: >-
           A break request produces the same outcome as screaming — a pause from the task
           — through an acceptable behavior, which is what functional communication
           training requires.
-      - id: b
+      - id: d
         text: Asking for a favorite snack
         isCorrect: false
         rationale: >-
           A snack does not serve the escape function; the learner would still scream to
           end tasks.
-      - id: c
-        text: Sitting quietly with hands folded
-        isCorrect: false
-        rationale: >-
-          Sitting quietly does not get the learner what screaming got them, so it will
-          not compete with it.
-      - id: d
-        text: Raising a hand for attention
-        isCorrect: false
-        rationale: >-
-          Attention is a different function from escape.
     explanation: >-
       A replacement behavior must serve the same function as the problem behavior. For
       escape-maintained behavior the matched replacement is a request for a break or for
@@ -395,28 +395,28 @@ questions:
       reinforcer and a shorter DRO interval. What is the appropriate action?
     options:
       - id: a
-        text: Continue the plan as written and bring the suggestion and data to the supervisor
-        isCorrect: true
-        rationale: >-
-          Technicians implement plans and contribute observations; modifying a plan is
-          the supervising analyst's responsibility.
-      - id: b
         text: Make the change and see whether it helps
         isCorrect: false
         rationale: >-
           An unauthorized change alters the intervention, makes the data uninterpretable
           and is outside the technician's scope.
-      - id: c
+      - id: b
         text: Make the change but record data as though the original plan were in use
         isCorrect: false
         rationale: >-
           That is both an unauthorized change and a falsified record.
-      - id: d
+      - id: c
         text: Stop running the plan until the supervisor agrees to the change
         isCorrect: false
         rationale: >-
           Withholding a plan is itself a change, and the learner loses the intervention
           in the meantime.
+      - id: d
+        text: Continue the plan as written and bring the suggestion and data to the supervisor
+        isCorrect: true
+        rationale: >-
+          Technicians implement plans and contribute observations; modifying a plan is
+          the supervising analyst's responsibility.
     explanation: >-
       Suggestions from technicians are valuable and supervisors want them. The route is
       to keep running the plan as written and raise the idea with data. Changing a plan
@@ -535,31 +535,31 @@ questions:
       about this?
     options:
       - id: a
+        text: 'The behaviour has changed function'
+        isCorrect: false
+        rationale: >-
+          Nothing here indicates a function change. The pattern described is the
+          standard course of extinction.
+      - id: b
         text: 'The plan has failed and should be stopped'
         isCorrect: false
         rationale: >-
           Stopping at this point is the most common way extinction goes wrong,
           because ending it here reinforces the strongest form of the behaviour.
-      - id: b
+      - id: c
         text: 'A temporary increase is a documented side effect, and it is reported rather than reacted to'
         isCorrect: true
         rationale: >-
           An extinction burst is expected and named in the literature. The
           technician records it, reports it the same day, and continues to run the
           plan as written.
-      - id: c
+      - id: d
         text: 'The reinforcer was misidentified'
         isCorrect: false
         rationale: >-
           Possible in principle, but an early increase is exactly what extinction
           of a correctly identified reinforcer looks like, so it is not evidence
           either way.
-      - id: d
-        text: 'The behaviour has changed function'
-        isCorrect: false
-        rationale: >-
-          Nothing here indicates a function change. The pattern described is the
-          standard course of extinction.
     explanation: >-
       Extinction commonly produces a temporary increase in rate, intensity or
       variability, and sometimes new forms of the behaviour. Knowing it is expected is
@@ -734,30 +734,30 @@ questions:
       into an interval. What does the procedure require?
     options:
       - id: a
+        text: 'Deliver a smaller reinforcer'
+        isCorrect: false
+        rationale: >-
+          Partial delivery is not part of the procedure and creates a contingency
+          nobody designed.
+      - id: b
         text: 'Deliver the reinforcer at the two-minute mark as planned'
         isCorrect: false
         rationale: >-
           DRO delivers only if the behaviour did not occur during the interval.
           Delivering anyway reinforces an interval containing the behaviour.
-      - id: b
+      - id: c
         text: 'Withhold the reinforcer and reset the interval as the plan specifies'
         isCorrect: true
         rationale: >-
           The defining feature of DRO is that reinforcement follows the absence of
           the behaviour for the whole interval. Occurrence means the interval does
           not earn.
-      - id: c
+      - id: d
         text: 'Shorten the interval to one minute permanently'
         isCorrect: false
         rationale: >-
           Changing the interval is a programme change. It may be the right
           adjustment, but the analyst makes it.
-      - id: d
-        text: 'Deliver a smaller reinforcer'
-        isCorrect: false
-        rationale: >-
-          Partial delivery is not part of the procedure and creates a contingency
-          nobody designed.
     explanation: >-
       DRO reinforces the omission of a behaviour across an interval. Whether a reset
       is momentary or whole-interval, and how long the interval is, are set by the
@@ -803,30 +803,30 @@ questions:
       directly?
     options:
       - id: a
+        text: 'DRH, reinforcing higher rates of throwing'
+        isCorrect: false
+        rationale: >-
+          DRH increases a behaviour, which is the opposite of the stated aim.
+      - id: b
         text: 'DRO, reinforcing the absence of throwing'
         isCorrect: false
         rationale: >-
           DRO would reduce throwing but does not specify or strengthen the asking,
           so the learner is left without a way to get help.
-      - id: b
+      - id: c
         text: 'DRA, reinforcing asking for help'
         isCorrect: true
         rationale: >-
           DRA reinforces a specific alternative response that serves the same
           function, which both reduces the problem behaviour and leaves the
           learner with something that works.
-      - id: c
+      - id: d
         text: 'DRL, reinforcing lower rates of throwing'
         isCorrect: false
         rationale: >-
           DRL is for behaviours that are acceptable at a lower rate. Throwing
           materials is not usually one of them, and it still teaches no
           alternative.
-      - id: d
-        text: 'DRH, reinforcing higher rates of throwing'
-        isCorrect: false
-        rationale: >-
-          DRH increases a behaviour, which is the opposite of the stated aim.
     explanation: >-
       DRA reinforces a specific alternative; DRO reinforces the absence of the target;
       DRI reinforces something incompatible. DRA is the usual choice where the learner
@@ -872,30 +872,30 @@ questions:
       behaviour?
     options:
       - id: a
+        text: 'Reinforcing asking for a break to reduce hand-mouthing'
+        isCorrect: false
+        rationale: >-
+          Asking for a break is an alternative but it can occur while hand-
+          mouthing does, so it is DRA rather than DRI.
+      - id: b
+        text: 'Reinforcing fewer than three instances per session'
+        isCorrect: false
+        rationale: >-
+          That is DRL, which reinforces a reduced rate rather than a competing
+          response.
+      - id: c
         text: 'Reinforcing hands resting on the desk to reduce hand-mouthing'
         isCorrect: true
         rationale: >-
           Hands on the desk and hands in the mouth cannot occur at the same time,
           which is what makes the alternative incompatible rather than merely
           different.
-      - id: b
+      - id: d
         text: 'Reinforcing any two minutes without hand-mouthing'
         isCorrect: false
         rationale: >-
           That is DRO: reinforcement follows the absence of the behaviour rather
           than a specified competing response.
-      - id: c
-        text: 'Reinforcing asking for a break to reduce hand-mouthing'
-        isCorrect: false
-        rationale: >-
-          Asking for a break is an alternative but it can occur while hand-
-          mouthing does, so it is DRA rather than DRI.
-      - id: d
-        text: 'Reinforcing fewer than three instances per session'
-        isCorrect: false
-        rationale: >-
-          That is DRL, which reinforces a reduced rate rather than a competing
-          response.
     explanation: >-
       DRI is a special case of DRA where the reinforced response physically cannot co-
       occur with the problem behaviour. The distinction matters because
@@ -942,28 +942,28 @@ questions:
       decrease?
     options:
       - id: a
-        text: 'Attention is being withheld'
-        isCorrect: false
-        rationale: >-
-          Attention is being delivered more often than before, not withheld.
-      - id: b
         text: 'The value of attention is reduced and it no longer depends on calling out'
         isCorrect: true
         rationale: >-
           Free and frequent access both weakens the motivating operation for
           attention and breaks the contingency between calling out and getting it.
-      - id: c
+      - id: b
         text: 'Calling out is being punished'
         isCorrect: false
         rationale: >-
           Nothing aversive follows calling out. The arrangement adds a consequence
           independently of behaviour rather than after it.
-      - id: d
+      - id: c
         text: 'The learner has been taught an alternative response'
         isCorrect: false
         rationale: >-
           Non-contingent reinforcement teaches nothing. That is a real limitation
           of it, and why it is often paired with a teaching procedure.
+      - id: d
+        text: 'Attention is being withheld'
+        isCorrect: false
+        rationale: >-
+          Attention is being delivered more often than before, not withheld.
     explanation: >-
       Non-contingent reinforcement works by reducing motivation and by severing the
       response-reinforcer contingency. It is an antecedent procedure, it acts quickly,
@@ -1010,28 +1010,28 @@ questions:
       behaviour. Why do plans commonly include the antecedent component?
     options:
       - id: a
-        text: 'It prevents the behaviour occurring rather than responding after it has'
-        isCorrect: true
-        rationale: >-
-          Antecedent strategies change the conditions under which the behaviour is
-          likely, so fewer occurrences need to be responded to at all.
-      - id: b
         text: 'It removes the need to collect data'
         isCorrect: false
         rationale: >-
           Data are collected regardless of which components a plan uses.
-      - id: c
+      - id: b
         text: 'It is less effective but easier to run'
         isCorrect: false
         rationale: >-
           Antecedent strategies are included because they work, not as a
           convenient substitute.
-      - id: d
+      - id: c
         text: 'It replaces the need for a functional assessment'
         isCorrect: false
         rationale: >-
           Choosing an antecedent strategy depends on knowing the function, so the
           assessment comes first rather than being replaced.
+      - id: d
+        text: 'It prevents the behaviour occurring rather than responding after it has'
+        isCorrect: true
+        rationale: >-
+          Antecedent strategies change the conditions under which the behaviour is
+          likely, so fewer occurrences need to be responded to at all.
     explanation: >-
       Antecedent strategies — non-contingent access, choice, priming, adjusting task
       difficulty, changing the schedule of demands — act before the behaviour occurs.
@@ -1151,28 +1151,28 @@ questions:
       support?
     options:
       - id: a
-        text: 'Escape from the task'
-        isCorrect: true
-        rationale: >-
-          The behaviour occurs under demands and produces removal of the demand.
-          That is the pattern of escape maintenance, whoever happens to be nearby.
-      - id: b
-        text: 'Access to attention'
-        isCorrect: false
-        rationale: >-
-          An adult being present is not the same as attention being the
-          consequence. What reliably follows is the task ending.
-      - id: c
         text: 'Automatic reinforcement'
         isCorrect: false
         rationale: >-
           Automatic reinforcement would not depend on a demand being present and
           would not be so tightly tied to the maths task.
-      - id: d
+      - id: b
         text: 'Access to a tangible item'
         isCorrect: false
         rationale: >-
           No item is delivered following the behaviour in this description.
+      - id: c
+        text: 'Escape from the task'
+        isCorrect: true
+        rationale: >-
+          The behaviour occurs under demands and produces removal of the demand.
+          That is the pattern of escape maintenance, whoever happens to be nearby.
+      - id: d
+        text: 'Access to attention'
+        isCorrect: false
+        rationale: >-
+          An adult being present is not the same as attention being the
+          consequence. What reliably follows is the task ending.
     explanation: >-
       Function is identified by what reliably follows the behaviour, not by who is
       present or what the behaviour looks like. Technicians assist with the assessment
@@ -1219,30 +1219,30 @@ questions:
       behaviour. What does running it correctly most depend on?
     options:
       - id: a
+        text: 'It being delivered inconsistently'
+        isCorrect: false
+        rationale: >-
+          Inconsistent delivery weakens any consequence procedure and makes the
+          resulting data uninterpretable.
+      - id: b
         text: 'The learner agreeing that it is fair'
         isCorrect: false
         rationale: >-
           Agreement is not the operative variable, although assent and dignity are
           real considerations the plan should already have addressed.
-      - id: b
+      - id: c
         text: 'The environment the learner is removed from being reinforcing in the first place'
         isCorrect: true
         rationale: >-
           Time-out is time out from reinforcement. If the ongoing activity is not
           reinforcing, removal from it is not a punishment and may function as
           escape.
-      - id: c
+      - id: d
         text: 'The duration being as long as possible'
         isCorrect: false
         rationale: >-
           Longer is not better; plans specify brief durations, and extended
           removal raises restrictiveness without adding effect.
-      - id: d
-        text: 'It being delivered inconsistently'
-        isCorrect: false
-        rationale: >-
-          Inconsistent delivery weakens any consequence procedure and makes the
-          resulting data uninterpretable.
     explanation: >-
       Time-out only functions as intended where the setting being removed is
       reinforcing. Used with a learner whose behaviour is escape-maintained it can

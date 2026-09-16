@@ -9,26 +9,26 @@ questions:
       The most direct cost of poor supervision falls on:
     options:
       - id: a
+        text: The supervisee's certification prospects
+        isCorrect: false
+        rationale: >-
+          That is a real cost and a secondary one.
+      - id: b
+        text: The supervisor's professional reputation
+        isCorrect: false
+        rationale: >-
+          Also real, and further removed than the client.
+      - id: c
+        text: The employing organisation's funding
+        isCorrect: false
+        rationale: >-
+          A consequence of a consequence rather than the direct cost.
+      - id: d
         text: The clients served by the supervisee
         isCorrect: true
         rationale: >-
           A supervisee who is not competently supervised delivers services to clients, so the
           harm reaches them first.
-      - id: b
-        text: The supervisee's certification prospects
-        isCorrect: false
-        rationale: >-
-          That is a real cost and a secondary one.
-      - id: c
-        text: The supervisor's professional reputation
-        isCorrect: false
-        rationale: >-
-          Also real, and further removed than the client.
-      - id: d
-        text: The employing organisation's funding
-        isCorrect: false
-        rationale: >-
-          A consequence of a consequence rather than the direct cost.
     explanation: >-
       Supervision exists because the supervisee is delivering services now, not only
       because they are qualifying. Naming the client as the party at risk is what keeps
@@ -66,26 +66,26 @@ questions:
       produces:
     options:
       - id: a
+        text: Reduced need for documentation
+        isCorrect: false
+        rationale: >-
+          Good supervision generally increases documentation rather than reducing it.
+      - id: b
+        text: Higher supervisee satisfaction only
+        isCorrect: false
+        rationale: >-
+          Satisfaction may improve but is not the principal outcome.
+      - id: c
         text: Better client outcomes through improved procedural integrity
         isCorrect: true
         rationale: >-
           The mechanism by which supervision helps clients is the supervisee running
           procedures correctly.
-      - id: b
+      - id: d
         text: Faster accumulation of fieldwork hours
         isCorrect: false
         rationale: >-
           Hours accumulate at the same rate regardless of quality.
-      - id: c
-        text: Reduced need for documentation
-        isCorrect: false
-        rationale: >-
-          Good supervision generally increases documentation rather than reducing it.
-      - id: d
-        text: Higher supervisee satisfaction only
-        isCorrect: false
-        rationale: >-
-          Satisfaction may improve but is not the principal outcome.
     explanation: >-
       The case for supervision is empirical rather than regulatory. It works through what
       the supervisee does in sessions, which is why integrity and client outcome are the
@@ -107,26 +107,26 @@ questions:
       A supervision contract most importantly establishes:
     options:
       - id: a
+        text: The supervisee's hourly rate
+        isCorrect: false
+        rationale: >-
+          Compensation may be covered elsewhere and is not the core function.
+      - id: b
+        text: Which clients the supervisee will work with
+        isCorrect: false
+        rationale: >-
+          Caseload is operational and changes; the contract governs the relationship.
+      - id: c
+        text: The date certification will be achieved
+        isCorrect: false
+        rationale: >-
+          No contract can promise that.
+      - id: d
         text: What each party will do, how often, and what happens if expectations are not met
         isCorrect: true
         rationale: >-
           Stating obligations and the response to unmet ones in advance is what prevents later
           disputes being resolved by power.
-      - id: b
-        text: The supervisee's hourly rate
-        isCorrect: false
-        rationale: >-
-          Compensation may be covered elsewhere and is not the core function.
-      - id: c
-        text: Which clients the supervisee will work with
-        isCorrect: false
-        rationale: >-
-          Caseload is operational and changes; the contract governs the relationship.
-      - id: d
-        text: The date certification will be achieved
-        isCorrect: false
-        rationale: >-
-          No contract can promise that.
     explanation: >-
       The supervisory relationship is unequal by construction, so the terms are set out in
       advance. A contract that names frequency, format, expectations and the response to
@@ -148,26 +148,26 @@ questions:
       A supervisor and supervisee are also close personal friends. The main risk is that:
     options:
       - id: a
+        text: Supervision hours will be miscounted
+        isCorrect: false
+        rationale: >-
+          Nothing about friendship implies inaccurate records.
+      - id: b
+        text: The client will notice
+        isCorrect: false
+        rationale: >-
+          The problem exists whether or not anybody notices.
+      - id: c
         text: Honest evaluation and corrective feedback become harder to give and to receive
         isCorrect: true
         rationale: >-
           The second relationship interferes with the core function of supervision, which is
           evaluative.
-      - id: b
+      - id: d
         text: The supervisee will learn less content
         isCorrect: false
         rationale: >-
           Content transmission is not what the relationship primarily threatens.
-      - id: c
-        text: Supervision hours will be miscounted
-        isCorrect: false
-        rationale: >-
-          Nothing about friendship implies inaccurate records.
-      - id: d
-        text: The client will notice
-        isCorrect: false
-        rationale: >-
-          The problem exists whether or not anybody notices.
     explanation: >-
       Multiple relationships matter in supervision for a specific reason: supervision
       requires evaluation, and evaluation is what a friendship makes uncomfortable. The
@@ -190,27 +190,27 @@ questions:
       relationship works best if:
     options:
       - id: a
+        text: They make the decision and report it afterwards
+        isCorrect: false
+        rationale: >-
+          That is the position supervision exists to prevent them being in.
+      - id: b
         text: There is an agreed route for contact between meetings, established in advance
         isCorrect: true
         rationale: >-
           Clinical questions do not wait for the calendar, and the route being agreed in
           advance is what makes it usable.
-      - id: b
+      - id: c
         text: They hold it for the next scheduled meeting
         isCorrect: false
         rationale: >-
           Holding a live clinical question until the next meeting can leave a client without
           direction.
-      - id: c
+      - id: d
         text: They ask a peer instead
         isCorrect: false
         rationale: >-
           A peer may help, but the supervisor is accountable for the work.
-      - id: d
-        text: They make the decision and report it afterwards
-        isCorrect: false
-        rationale: >-
-          That is the position supervision exists to prevent them being in.
     explanation: >-
       The relationship is set up so that the supervisee can reach direction when they need
       it. Establishing the route in advance is what turns "ask your supervisor" from
@@ -232,26 +232,26 @@ questions:
       Supervising equitably requires particular attention to power because:
     options:
       - id: a
+        text: Supervisors are usually more experienced
+        isCorrect: false
+        rationale: >-
+          Experience is the ordinary basis of the relationship rather than the equity problem.
+      - id: b
+        text: Supervisees are paid less
+        isCorrect: false
+        rationale: >-
+          Pay is not the mechanism at issue.
+      - id: c
+        text: Power differences prevent effective teaching
+        isCorrect: false
+        rationale: >-
+          They do not prevent teaching; they distort disclosure.
+      - id: d
         text: A supervisee who depends on the supervisor for certification may not raise concerns
         isCorrect: true
         rationale: >-
           The dependency makes silence rational for the supervisee, so the supervisor has to
           make raising concerns safe.
-      - id: b
-        text: Supervisors are usually more experienced
-        isCorrect: false
-        rationale: >-
-          Experience is the ordinary basis of the relationship rather than the equity problem.
-      - id: c
-        text: Supervisees are paid less
-        isCorrect: false
-        rationale: >-
-          Pay is not the mechanism at issue.
-      - id: d
-        text: Power differences prevent effective teaching
-        isCorrect: false
-        rationale: >-
-          They do not prevent teaching; they distort disclosure.
     explanation: >-
       Equity in supervision is mostly about who can say what. The supervisor controls
       attestation, hours and evaluation, so the burden of making disagreement and error
@@ -313,26 +313,26 @@ questions:
       Supervisee goals should be derived primarily from:
     options:
       - id: a
+        text: The caseload the organisation needs covered
+        isCorrect: false
+        rationale: >-
+          Organisational need is a constraint, not the basis for individual goals.
+      - id: b
         text: An assessment of their current skills against the requirements of their role
         isCorrect: true
         rationale: >-
           Goals come from the gap between what the supervisee can do and what the role
           demands.
-      - id: b
+      - id: c
         text: The certification task list alone
         isCorrect: false
         rationale: >-
           The task list defines scope but not this supervisee's needs.
-      - id: c
+      - id: d
         text: The supervisee's stated interests
         isCorrect: false
         rationale: >-
           Interests inform priorities but do not establish need.
-      - id: d
-        text: The caseload the organisation needs covered
-        isCorrect: false
-        rationale: >-
-          Organisational need is a constraint, not the basis for individual goals.
     explanation: >-
       Supervision is a behaviour-change programme and starts with assessment like any
       other. Goals set without assessing current performance are either already met or out
@@ -355,25 +355,25 @@ questions:
       Which supervisee goal is stated so performance against it can be measured?
     options:
       - id: a
-        text: Runs a preference assessment to written protocol with 90% of steps correct on three occasions
-        isCorrect: true
-        rationale: >-
-          The behaviour, the standard and the number of occasions are all stated.
-      - id: b
         text: Understands preference assessment formats
         isCorrect: false
         rationale: >-
           Understanding is not observable.
-      - id: c
+      - id: b
         text: Improves at preference assessments
         isCorrect: false
         rationale: >-
           No criterion and no baseline reference.
-      - id: d
+      - id: c
         text: Is comfortable running preference assessments
         isCorrect: false
         rationale: >-
           Comfort is a private event and cannot be measured by the supervisor.
+      - id: d
+        text: Runs a preference assessment to written protocol with 90% of steps correct on three occasions
+        isCorrect: true
+        rationale: >-
+          The behaviour, the standard and the number of occasions are all stated.
     explanation: >-
       Supervisee goals get the same treatment as client goals: behaviour, conditions,
       criterion. Goals about understanding or comfort cannot be assessed, so they tend to
@@ -396,25 +396,25 @@ questions:
       including:
     options:
       - id: a
-        text: Rehearsal and feedback until a performance criterion is met
-        isCorrect: true
-        rationale: >-
-          Practice with feedback to criterion is what separates it from telling and showing.
-      - id: b
         text: Written materials given in advance
         isCorrect: false
         rationale: >-
           Materials may accompany it but are not the distinguishing element.
-      - id: c
+      - id: b
         text: A test of knowledge at the end
         isCorrect: false
         rationale: >-
           Knowledge tests do not establish performance.
-      - id: d
+      - id: c
         text: Supervision by a second analyst
         isCorrect: false
         rationale: >-
           Not a component of the procedure.
+      - id: d
+        text: Rehearsal and feedback until a performance criterion is met
+        isCorrect: true
+        rationale: >-
+          Practice with feedback to criterion is what separates it from telling and showing.
     explanation: >-
       Instruction and modelling establish what to do; rehearsal and feedback establish
       doing it. Training that stops after the first two reliably produces staff who can
@@ -437,25 +437,25 @@ questions:
       Feedback on a supervisee's implementation is generally most effective when it is:
     options:
       - id: a
-        text: Specific, and delivered close in time to the performance
-        isCorrect: true
-        rationale: >-
-          Specificity tells them what to change and immediacy connects it to what they did.
-      - id: b
-        text: General and delivered at the monthly meeting
-        isCorrect: false
-        rationale: >-
-          General and delayed feedback is the least effective combination.
-      - id: c
         text: Written rather than spoken
         isCorrect: false
         rationale: >-
           Medium matters less than specificity and timing.
-      - id: d
+      - id: b
         text: Delivered only when performance falls below criterion
         isCorrect: false
         rationale: >-
           Feedback on correct performance is what maintains it.
+      - id: c
+        text: Specific, and delivered close in time to the performance
+        isCorrect: true
+        rationale: >-
+          Specificity tells them what to change and immediacy connects it to what they did.
+      - id: d
+        text: General and delivered at the monthly meeting
+        isCorrect: false
+        rationale: >-
+          General and delayed feedback is the least effective combination.
     explanation: >-
       Feedback is a consequence, and it behaves like one: specific and immediate works,
       vague and delayed does not. Feedback restricted to errors also leaves correct
@@ -478,26 +478,26 @@ questions:
       weeks. The indicated response is to:
     options:
       - id: a
+        text: Replace the procedure with a simpler one
+        isCorrect: false
+        rationale: >-
+          Simplification is for procedures that never reached criterion.
+      - id: b
+        text: Introduce a consequence for poor performance
+        isCorrect: false
+        rationale: >-
+          A punitive response is neither the first nor usually the effective option.
+      - id: c
         text: Schedule ongoing observation and feedback rather than treating training as finished
         isCorrect: true
         rationale: >-
           Performance requires maintenance like any other behaviour, and periodic feedback is
           what supplies it.
-      - id: b
+      - id: d
         text: Repeat the full training programme
         isCorrect: false
         rationale: >-
           Repeating training addresses acquisition, which is not what failed.
-      - id: c
-        text: Replace the procedure with a simpler one
-        isCorrect: false
-        rationale: >-
-          Simplification is for procedures that never reached criterion.
-      - id: d
-        text: Introduce a consequence for poor performance
-        isCorrect: false
-        rationale: >-
-          A punitive response is neither the first nor usually the effective option.
     explanation: >-
       Training establishes performance; supervision maintains it. Drift after successful
       training is the normal course of events rather than a training failure, and it is
@@ -520,27 +520,27 @@ questions:
       This pattern points to:
     options:
       - id: a
-        text: A performance problem rather than a skill deficit
-        isCorrect: true
-        rationale: >-
-          They can do it, so what varies is the conditions under which they do, which is a
-          motivational or antecedent issue.
-      - id: b
-        text: A skill deficit requiring retraining
-        isCorrect: false
-        rationale: >-
-          Retraining a skill they demonstrably have will not change anything.
-      - id: c
         text: An unclear written protocol
         isCorrect: false
         rationale: >-
           An unclear protocol would produce errors under observation too.
-      - id: d
+      - id: b
         text: A measurement error
         isCorrect: false
         rationale: >-
           The difference between observed and unobserved performance is the finding, not an
           artefact.
+      - id: c
+        text: A performance problem rather than a skill deficit
+        isCorrect: true
+        rationale: >-
+          They can do it, so what varies is the conditions under which they do, which is a
+          motivational or antecedent issue.
+      - id: d
+        text: A skill deficit requiring retraining
+        isCorrect: false
+        rationale: >-
+          Retraining a skill they demonstrably have will not change anything.
     explanation: >-
       Diagnosing staff performance by its function is what determines the fix. Skill
       deficits need training; performance problems need changed antecedents or
@@ -569,27 +569,27 @@ questions:
       Staff report they were unaware a plan had changed. The indicated remedy is:
     options:
       - id: a
-        text: Improve how changes are communicated and confirmed, which is an antecedent fix
-        isCorrect: true
-        rationale: >-
-          The failure is in the information reaching them, so the fix is in how plans are
-          distributed and acknowledged.
-      - id: b
-        text: Retrain the whole team on the plan
-        isCorrect: false
-        rationale: >-
-          Training addresses skill, and the problem is that they did not know it had changed.
-      - id: c
         text: Increase monitoring of implementation
         isCorrect: false
         rationale: >-
           Monitoring would detect the problem again without addressing its cause.
-      - id: d
+      - id: b
         text: Add a consequence for running an outdated plan
         isCorrect: false
         rationale: >-
           Punishing staff for not knowing something they were not told is unjust and
           ineffective.
+      - id: c
+        text: Improve how changes are communicated and confirmed, which is an antecedent fix
+        isCorrect: true
+        rationale: >-
+          The failure is in the information reaching them, so the fix is in how plans are
+          distributed and acknowledged.
+      - id: d
+        text: Retrain the whole team on the plan
+        isCorrect: false
+        rationale: >-
+          Training addresses skill, and the problem is that they did not know it had changed.
     explanation: >-
       Performance problems have functions, and the diagnostic question is which. Missing
       antecedents — not knowing, not having the materials, not having time — are among the
@@ -613,26 +613,26 @@ questions:
       follows either way. This is best described as:
     options:
       - id: a
+        text: An antecedent problem
+        isCorrect: false
+        rationale: >-
+          They know what to do; what is missing is any differential consequence.
+      - id: b
+        text: A supervision frequency problem
+        isCorrect: false
+        rationale: >-
+          More frequent supervision might mask it without addressing the arrangement.
+      - id: c
         text: A consequence problem — effort is high and there is no differential outcome
         isCorrect: true
         rationale: >-
           Where correct and incorrect performance produce the same result and one costs more,
           allocation follows effort.
-      - id: b
+      - id: d
         text: A skill deficit
         isCorrect: false
         rationale: >-
           Nothing indicates they cannot do it.
-      - id: c
-        text: An antecedent problem
-        isCorrect: false
-        rationale: >-
-          They know what to do; what is missing is any differential consequence.
-      - id: d
-        text: A supervision frequency problem
-        isCorrect: false
-        rationale: >-
-          More frequent supervision might mask it without addressing the arrangement.
     explanation: >-
       Staff behaviour follows the same contingencies as anybody's. A procedure that costs
       more effort and produces no difference in outcome is being selected against, and the
@@ -700,26 +700,26 @@ questions:
       approach. The indicated response is to:
     options:
       - id: a
+        text: Continue, since the approach works in general
+        isCorrect: false
+        rationale: >-
+          That it works for somebody else is no help to the supervisee it is not working for.
+      - id: b
+        text: Conclude the static supervisee is unsuitable for the role
+        isCorrect: false
+        rationale: >-
+          A conclusion about the person before changing the approach reverses the order.
+      - id: c
+        text: Increase supervision hours for both
+        isCorrect: false
+        rationale: >-
+          More of an ineffective approach is not a change of approach.
+      - id: d
         text: Change the approach for the supervisee who is not improving
         isCorrect: true
         rationale: >-
           Supervision is individualized, and data showing no effect for one person is an
           instruction to change what is done with that person.
-      - id: b
-        text: Continue, since the approach works in general
-        isCorrect: false
-        rationale: >-
-          That it works for somebody else is no help to the supervisee it is not working for.
-      - id: c
-        text: Conclude the static supervisee is unsuitable for the role
-        isCorrect: false
-        rationale: >-
-          A conclusion about the person before changing the approach reverses the order.
-      - id: d
-        text: Increase supervision hours for both
-        isCorrect: false
-        rationale: >-
-          More of an ineffective approach is not a change of approach.
     explanation: >-
       Evaluating supervision with data leads to adjusting it, which is the whole point of
       measuring. Treating a flat line as a fact about the supervisee rather than about the
@@ -783,27 +783,27 @@ questions:
       with similar assessed skills. The first appropriate step is to:
     options:
       - id: a
+        text: Reduce the first supervisee's independence
+        isCorrect: false
+        rationale: >-
+          Levelling down is equally unexamined.
+      - id: b
+        text: Ask the supervisees whether they feel treated equally
+        isCorrect: false
+        rationale: >-
+          Worth knowing, and it does not test the decisions.
+      - id: c
         text: Compare the independence decisions against the documented criteria
         isCorrect: true
         rationale: >-
           Checking the judgements against stated criteria is what reveals whether the pattern
           is justified.
-      - id: b
+      - id: d
         text: Give the other supervisees the same independence
         isCorrect: false
         rationale: >-
           Levelling up without checking the criteria may extend an unjustified decision rather
           than correct it.
-      - id: c
-        text: Reduce the first supervisee's independence
-        isCorrect: false
-        rationale: >-
-          Levelling down is equally unexamined.
-      - id: d
-        text: Ask the supervisees whether they feel treated equally
-        isCorrect: false
-        rationale: >-
-          Worth knowing, and it does not test the decisions.
     explanation: >-
       Equity is checked the way anything else is: state the criteria, compare the
       decisions against them, and change the process where they diverge. Acting on the
@@ -826,25 +826,25 @@ questions:
       supervisor remains responsible for:
     options:
       - id: a
-        text: The quality of what is delivered and the outcome of the supervision
-        isCorrect: true
-        rationale: >-
-          Delegation distributes the work and not the accountability.
-      - id: b
-        text: Nothing further, once delegation is documented
-        isCorrect: false
-        rationale: >-
-          Documentation records the arrangement; it does not transfer responsibility.
-      - id: c
         text: Only the parts they deliver personally
         isCorrect: false
         rationale: >-
           That is precisely the assumption delegation makes dangerous.
-      - id: d
+      - id: b
         text: Scheduling only
         isCorrect: false
         rationale: >-
           Scheduling is administrative and not the substance of the obligation.
+      - id: c
+        text: The quality of what is delivered and the outcome of the supervision
+        isCorrect: true
+        rationale: >-
+          Delegation distributes the work and not the accountability.
+      - id: d
+        text: Nothing further, once delegation is documented
+        isCorrect: false
+        rationale: >-
+          Documentation records the arrangement; it does not transfer responsibility.
     explanation: >-
       Delegation is common and legitimate, and it leaves the accountability where it was.
       The supervisor has to know what is being delivered, evaluate whoever is delivering

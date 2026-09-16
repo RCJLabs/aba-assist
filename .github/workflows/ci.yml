@@ -38,6 +38,11 @@ jobs:
       - run: npm ci
       - name: Validate content
         run: npx tsx packages/content-build/src/cli.ts check --channel=$ABA_CONTENT_CHANNEL --format=github
+      # Catches a new batch of questions written with the answer listed first, which the
+      # aggregate distribution test cannot see until the batch is large. Run the script
+      # without --check to fix it.
+      - name: Check the answer is not always in the same place
+        run: node scripts/balance-question-options.mjs --check
 
   quality:
     name: Lint, types, unit tests

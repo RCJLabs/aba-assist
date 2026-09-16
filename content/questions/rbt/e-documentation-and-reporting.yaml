@@ -9,25 +9,25 @@ questions:
       Which sentence belongs in a session note?
     options:
       - id: a
-        text: 'Cried for approximately 3 minutes after the tablet was removed at 10:15.'
-        isCorrect: true
-        rationale: >-
-          It describes what was observed, how long, and when, without interpretation.
-      - id: b
-        text: 'Had a meltdown because he was being manipulative about the tablet.'
-        isCorrect: false
-        rationale: >-
-          It labels the behavior and assigns a motive nobody observed.
-      - id: c
-        text: 'Was in a bad mood the whole session.'
-        isCorrect: false
-        rationale: >-
-          A mood judgment is not observable and gives the reader nothing measurable.
-      - id: d
         text: 'Did great today!'
         isCorrect: false
         rationale: >-
           A general evaluation contains no observation and cannot be checked.
+      - id: b
+        text: 'Cried for approximately 3 minutes after the tablet was removed at 10:15.'
+        isCorrect: true
+        rationale: >-
+          It describes what was observed, how long, and when, without interpretation.
+      - id: c
+        text: 'Had a meltdown because he was being manipulative about the tablet.'
+        isCorrect: false
+        rationale: >-
+          It labels the behavior and assigns a motive nobody observed.
+      - id: d
+        text: 'Was in a bad mood the whole session.'
+        isCorrect: false
+        rationale: >-
+          A mood judgment is not observable and gives the reader nothing measurable.
     explanation: >-
       Session notes describe behavior in objective, observable terms with times and
       amounts. They are clinical and often legal records, read by supervisors, funders and
@@ -66,28 +66,28 @@ questions:
       When should a technician complete the session note and data for a session?
     options:
       - id: a
-        text: As soon as possible after the session, the same day, while details are accurate
-        isCorrect: true
-        rationale: >-
-          Prompt documentation is accurate documentation. Most employers and funders
-          require same-day notes, and memory degrades quickly.
-      - id: b
-        text: At the end of the week for all sessions together
-        isCorrect: false
-        rationale: >-
-          Details from several sessions blur together and the records become
-          reconstructions.
-      - id: c
         text: Only when the supervisor asks for them
         isCorrect: false
         rationale: >-
           Documentation is a routine requirement, not an on-request one.
-      - id: d
+      - id: b
         text: Before the session, based on the plan
         isCorrect: false
         rationale: >-
           A note written before the session records what was planned, not what happened,
           and is a false record.
+      - id: c
+        text: As soon as possible after the session, the same day, while details are accurate
+        isCorrect: true
+        rationale: >-
+          Prompt documentation is accurate documentation. Most employers and funders
+          require same-day notes, and memory degrades quickly.
+      - id: d
+        text: At the end of the week for all sessions together
+        isCorrect: false
+        rationale: >-
+          Details from several sessions blur together and the records become
+          reconstructions.
     explanation: >-
       Data are recorded during the session and notes are completed immediately
       afterward. Delayed notes are less accurate and, where billing depends on them, can
@@ -160,26 +160,26 @@ questions:
       remembers roughly what happened. What should they do?
     options:
       - id: a
+        text: Leave it blank without comment
+        isCorrect: false
+        rationale: >-
+          An unexplained blank may be read as zero occurrences, which is also wrong.
+      - id: b
         text: Record only what was actually observed and recorded, mark the gap clearly, and tell the supervisor
         isCorrect: true
         rationale: >-
           Data reconstructed from memory are indistinguishable from real data on a graph.
           A marked gap is honest and interpretable.
-      - id: b
+      - id: c
         text: Fill in the numbers from memory
         isCorrect: false
         rationale: >-
           Estimated data presented as recorded data are falsified records.
-      - id: c
+      - id: d
         text: Copy the previous session's data for that period
         isCorrect: false
         rationale: >-
           That fabricates data and misrepresents the session.
-      - id: d
-        text: Leave it blank without comment
-        isCorrect: false
-        rationale: >-
-          An unexplained blank may be read as zero occurrences, which is also wrong.
     explanation: >-
       Missing data are a normal problem with an honest fix: mark the gap, explain it,
       report it. Fabricated data are an integrity violation that can invalidate treatment
@@ -251,27 +251,27 @@ questions:
       leave. How should the technician document the session time?
     options:
       - id: a
+        text: Ask the family to sign for two hours since it was their choice to leave
+        isCorrect: false
+        rationale: >-
+          A caregiver signature does not make undelivered time billable.
+      - id: b
         text: Record the actual 90 minutes of service delivered
         isCorrect: true
         rationale: >-
           Documentation must reflect the services actually provided; the schedule is not
           the record.
-      - id: b
+      - id: c
         text: Record two hours because that was the scheduled time
         isCorrect: false
         rationale: >-
           Billing for time not delivered is fraud, whatever the schedule said.
-      - id: c
+      - id: d
         text: Record two hours but note the early finish in the comments
         isCorrect: false
         rationale: >-
           The recorded time is what gets billed; a comment does not make an inaccurate
           entry accurate.
-      - id: d
-        text: Ask the family to sign for two hours since it was their choice to leave
-        isCorrect: false
-        rationale: >-
-          A caregiver signature does not make undelivered time billable.
     explanation: >-
       Session records are billing records. Recording time that was not delivered is
       false billing, regardless of who caused the change, and it is reportable conduct
@@ -341,26 +341,26 @@ questions:
       clinic. Which practice best protects the client's information?
     options:
       - id: a
+        text: Post a photo of the data sheet to a staff group chat to save time
+        isCorrect: false
+        rationale: >-
+          Group messaging apps are not approved channels for client records.
+      - id: b
         text: Keep the sheets in a closed folder or bag, out of sight, and hand them in promptly
         isCorrect: true
         rationale: >-
           Clinical records are secured from view and handed over without delay, following
           the organization's policy.
-      - id: b
+      - id: c
         text: Photograph the sheets with a personal phone for backup
         isCorrect: false
         rationale: >-
           A personal device is an unsecured copy of protected information.
-      - id: c
+      - id: d
         text: Leave the sheets in the car overnight and bring them in tomorrow
         isCorrect: false
         rationale: >-
           A car is not a secure location and the delay adds risk.
-      - id: d
-        text: Post a photo of the data sheet to a staff group chat to save time
-        isCorrect: false
-        rationale: >-
-          Group messaging apps are not approved channels for client records.
     explanation: >-
       Data sheets and session notes are protected health information. They are kept out
       of sight, transported securely, never copied to personal devices or unapproved
@@ -384,28 +384,28 @@ questions:
       technician performed correctly. What is being measured?
     options:
       - id: a
-        text: Treatment integrity — whether the program was delivered as written
-        isCorrect: true
-        rationale: >-
-          Scoring the correctness of implementation steps is treatment (procedural)
-          integrity measurement.
-      - id: b
-        text: Interobserver agreement on the learner's behavior
-        isCorrect: false
-        rationale: >-
-          Agreement compares two observers' records of the learner; this observation is
-          about the technician's delivery.
-      - id: c
         text: The learner's rate of correct responding
         isCorrect: false
         rationale: >-
           The learner's data are a separate measure from how well the program was run.
-      - id: d
+      - id: b
         text: Social validity
         isCorrect: false
         rationale: >-
           Social validity is about whether the goals and methods are acceptable to the
           people involved.
+      - id: c
+        text: Treatment integrity — whether the program was delivered as written
+        isCorrect: true
+        rationale: >-
+          Scoring the correctness of implementation steps is treatment (procedural)
+          integrity measurement.
+      - id: d
+        text: Interobserver agreement on the learner's behavior
+        isCorrect: false
+        rationale: >-
+          Agreement compares two observers' records of the learner; this observation is
+          about the technician's delivery.
     explanation: >-
       Treatment integrity is the degree to which an intervention is implemented as
       designed. Without it, outcome data cannot be interpreted: a plan that was not
@@ -476,29 +476,29 @@ questions:
       record?
     options:
       - id: a
-        text: 'Only the data, since illness is not part of the programme'
-        isCorrect: false
-        rationale: >-
-          Data without the context that explains them invite the wrong conclusion,
-          and the analyst has no way to recover the context later.
-      - id: b
         text: 'The data, plus a factual note that the caregiver reported poor sleep and a cold'
         isCorrect: true
         rationale: >-
           Variables outside the programme that could affect responding are part of
           what the technician is expected to record and pass on.
-      - id: c
+      - id: b
         text: 'An estimate of what the data would have been if the learner were well'
         isCorrect: false
         rationale: >-
           Adjusted data are invented data. They look like real data on a graph and
           cannot be told apart from it afterwards.
-      - id: d
+      - id: c
         text: 'A note that the learner was unmotivated'
         isCorrect: false
         rationale: >-
           "Unmotivated" is an interpretation. What the caregiver reported and what
           was observed are the record.
+      - id: d
+        text: 'Only the data, since illness is not part of the programme'
+        isCorrect: false
+        rationale: >-
+          Data without the context that explains them invite the wrong conclusion,
+          and the analyst has no way to recover the context later.
     explanation: >-
       Setting events — illness, sleep, a change at home, a different room — frequently
       account for a session that does not look like the others. Recording them
@@ -539,28 +539,28 @@ questions:
       to get on the school bus. What is the technician’s responsibility?
     options:
       - id: a
-        text: 'Advise the caregiver on how to handle the bus refusal'
-        isCorrect: false
-        rationale: >-
-          Advising on a situation outside the programme is a clinical
-          recommendation and outside the technician’s role.
-      - id: b
-        text: 'Pass the report to the supervising analyst promptly and record what was said'
-        isCorrect: true
-        rationale: >-
-          Relaying what caregivers and other team members raise is a named part of
-          the role. The analyst decides whether it changes anything.
-      - id: c
-        text: 'Add the bus to the session programme'
-        isCorrect: false
-        rationale: >-
-          Adding a target is a programme change, which the analyst makes.
-      - id: d
         text: 'Note it only if it happens again'
         isCorrect: false
         rationale: >-
           Waiting for a second report delays information the analyst may need now,
           and the detail is already fading.
+      - id: b
+        text: 'Advise the caregiver on how to handle the bus refusal'
+        isCorrect: false
+        rationale: >-
+          Advising on a situation outside the programme is a clinical
+          recommendation and outside the technician’s role.
+      - id: c
+        text: 'Pass the report to the supervising analyst promptly and record what was said'
+        isCorrect: true
+        rationale: >-
+          Relaying what caregivers and other team members raise is a named part of
+          the role. The analyst decides whether it changes anything.
+      - id: d
+        text: 'Add the bus to the session programme'
+        isCorrect: false
+        rationale: >-
+          Adding a target is a programme change, which the analyst makes.
     explanation: >-
       The technician sees and hears things nobody else on the team does. Passing them
       on promptly and factually is the mechanism by which that information reaches the
@@ -662,30 +662,30 @@ questions:
       situation that has arisen. Nobody is in danger. What is the appropriate course?
     options:
       - id: a
+        text: 'Ask the caregiver what they would prefer'
+        isCorrect: false
+        rationale: >-
+          That places a clinical decision on the family, who have not been asked
+          to make it and are not positioned to.
+      - id: b
+        text: 'End the session immediately'
+        isCorrect: false
+        rationale: >-
+          Ending is a large step for a situation with no danger in it, and it
+          costs the session’s data for no benefit.
+      - id: c
         text: 'Choose the procedure that seems closest and run it'
         isCorrect: false
         rationale: >-
           Selecting a procedure is a clinical decision. Running an unwritten one
           also produces data that do not describe the programme.
-      - id: b
+      - id: d
         text: 'Continue with what is written, contact the supervisor through the usual route, and record the question'
         isCorrect: true
         rationale: >-
           Running the written programme is never the wrong answer, and the
           question reaches the person whose decision it is with a record that it
           was raised at the time.
-      - id: c
-        text: 'Ask the caregiver what they would prefer'
-        isCorrect: false
-        rationale: >-
-          That places a clinical decision on the family, who have not been asked
-          to make it and are not positioned to.
-      - id: d
-        text: 'End the session immediately'
-        isCorrect: false
-        rationale: >-
-          Ending is a large step for a situation with no danger in it, and it
-          costs the session’s data for no benefit.
     explanation: >-
       Asking for direction promptly and through the agreed route is a named part of
       the role. The default while waiting is the written programme, because an
@@ -791,28 +791,28 @@ questions:
       writes the formal note later from them. What is the main risk?
     options:
       - id: a
+        text: 'The supervisor may want to see the shorthand'
+        isCorrect: false
+        rationale: >-
+          A supervisor asking to see working notes is ordinary and is not a risk.
+      - id: b
         text: 'The formal note may take longer to write'
         isCorrect: false
         rationale: >-
           Time to write is a practical matter and not the risk that matters here.
-      - id: b
+      - id: c
         text: 'Identifiable information may be held somewhere outside the record system’s protections'
         isCorrect: true
         rationale: >-
           Anything identifying a client belongs in the system the employer secures
           and retains. A personal device is outside those controls and outside the
           retention rules.
-      - id: c
+      - id: d
         text: 'The shorthand may be hard to read later'
         isCorrect: false
         rationale: >-
           Legibility is a real annoyance but a much smaller problem than where the
           information is being stored.
-      - id: d
-        text: 'The supervisor may want to see the shorthand'
-        isCorrect: false
-        rationale: >-
-          A supervisor asking to see working notes is ordinary and is not a risk.
     explanation: >-
       Client information is governed wherever it is written down, including a phone.
       Employers set which systems may hold it and for how long, and a personal device

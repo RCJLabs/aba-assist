@@ -69,27 +69,27 @@ questions:
       infections. The appropriate first step is:
     options:
       - id: a
+        text: Assume the infections are unrelated, since the behaviour continues now
+        isCorrect: false
+        rationale: >-
+          Continuation does not rule out a recurring or ongoing medical contributor.
+      - id: b
         text: Ensure the medical question is referred and considered before assessment conclusions
         isCorrect: true
         rationale: >-
           A possible medical contributor must be addressed by the medical team; proceeding as
           though it is purely behavioural risks missing pain.
-      - id: b
+      - id: c
         text: Begin a functional analysis immediately to establish the function
         isCorrect: false
         rationale: >-
           Running an analysis before a possible pain contributor is addressed exposes the
           learner to conditions that may worsen it.
-      - id: c
+      - id: d
         text: Record the coincidence and continue the behavioural assessment unchanged
         isCorrect: false
         rationale: >-
           Noting it without acting on it leaves the most likely explanation untested.
-      - id: d
-        text: Assume the infections are unrelated, since the behaviour continues now
-        isCorrect: false
-        rationale: >-
-          Continuation does not rule out a recurring or ongoing medical contributor.
     explanation: >-
       Behaviour that begins alongside a medical event is the standard case for referral
       first. The assistant analyst's role is to surface it clearly and promptly, not to
@@ -114,28 +114,28 @@ questions:
       and it did not work. The most useful response is:
     options:
       - id: a
-        text: Find out how it was implemented and why it stopped before proposing it again
-        isCorrect: true
-        rationale: >-
-          A procedure that failed may have failed on integrity, on function, or on fit — and
-          each points somewhere different.
-      - id: b
-        text: Propose a different procedure, since this one has failed
-        isCorrect: false
-        rationale: >-
-          Discarding it without knowing why it failed may discard something that was never
-          properly run.
-      - id: c
-        text: Propose it again with a longer timeframe
-        isCorrect: false
-        rationale: >-
-          More time applied to an unexamined failure is a common way to lose another term.
-      - id: d
         text: Disregard the earlier attempt, since the learner has changed since
         isCorrect: false
         rationale: >-
           The learner may have changed, but the record is still the best available information
           about what happens with this procedure here.
+      - id: b
+        text: Find out how it was implemented and why it stopped before proposing it again
+        isCorrect: true
+        rationale: >-
+          A procedure that failed may have failed on integrity, on function, or on fit — and
+          each points somewhere different.
+      - id: c
+        text: Propose a different procedure, since this one has failed
+        isCorrect: false
+        rationale: >-
+          Discarding it without knowing why it failed may discard something that was never
+          properly run.
+      - id: d
+        text: Propose it again with a longer timeframe
+        isCorrect: false
+        rationale: >-
+          More time applied to an unexamined failure is a common way to lose another term.
     explanation: >-
       Failed prior programmes are among the most informative things in a file and the most
       often skipped. Very frequently the failure was integrity, which is a staffing
@@ -163,27 +163,27 @@ questions:
       Which is the main limitation of relying on a previous provider's summary?
     options:
       - id: a
-        text: It reports conclusions without the data or conditions they rest on
-        isCorrect: true
-        rationale: >-
-          A summary states what was concluded; without the underlying data and conditions you
-          cannot judge how well supported it was.
-      - id: b
         text: It will be out of date
         isCorrect: false
         rationale: >-
           It may be, but currency is a smaller problem than not knowing what the conclusion
           was based on.
-      - id: c
+      - id: b
         text: It cannot be shared without authorisation
         isCorrect: false
         rationale: >-
           Authorisation is a procedural requirement, not a limitation on the content's value.
-      - id: d
+      - id: c
         text: It will use different terminology
         isCorrect: false
         rationale: >-
           Terminology differences are a translation problem rather than an evidential one.
+      - id: d
+        text: It reports conclusions without the data or conditions they rest on
+        isCorrect: true
+        rationale: >-
+          A summary states what was concluded; without the underlying data and conditions you
+          cannot judge how well supported it was.
     explanation: >-
       Taking a previous conclusion as established is how an incorrect function assignment
       survives from provider to provider for years. Asking for the data behind it is a
@@ -211,28 +211,28 @@ questions:
       Which situation most clearly warrants behaviour-analytic services?
     options:
       - id: a
-        text: A learner's behaviour limits access to education and is maintained by identifiable consequences
-        isCorrect: true
-        rationale: >-
-          Socially significant behaviour with environmental determinants is what this service
-          is for.
-      - id: b
-        text: A learner is described by staff as difficult to work with
-        isCorrect: false
-        rationale: >-
-          A description of staff experience is not a definition of a behaviour or a
-          demonstrated need.
-      - id: c
         text: A family would like general parenting advice
         isCorrect: false
         rationale: >-
           This is outside the scope of a behaviour-analytic service and may suit a different
           referral.
-      - id: d
+      - id: b
         text: A learner has a diagnosis associated with behavioural difficulties
         isCorrect: false
         rationale: >-
           A diagnosis does not establish that this learner has a current behavioural need.
+      - id: c
+        text: A learner's behaviour limits access to education and is maintained by identifiable consequences
+        isCorrect: true
+        rationale: >-
+          Socially significant behaviour with environmental determinants is what this service
+          is for.
+      - id: d
+        text: A learner is described by staff as difficult to work with
+        isCorrect: false
+        rationale: >-
+          A description of staff experience is not a definition of a behaviour or a
+          demonstrated need.
     explanation: >-
       Being clear about what warrants a service protects both the learner and the service.
       Accepting referrals on the basis of a diagnosis or of staff frustration produces
@@ -256,29 +256,29 @@ questions:
       assessed. The appropriate action is:
     options:
       - id: a
-        text: Raise it with the supervisor and support a referral for speech and language assessment
-        isCorrect: true
-        rationale: >-
-          Recognising when another profession is needed, and routing it properly, is part of
-          the role.
-      - id: b
-        text: Add communication targets to the behaviour programme
-        isCorrect: false
-        rationale: >-
-          Adding targets outside the scope of an unassessed area substitutes for the
-          assessment that is needed.
-      - id: c
-        text: Advise the family to seek a speech assessment privately
-        isCorrect: false
-        rationale: >-
-          Giving the family a direction without routing it through the team leaves the service
-          uninvolved in a decision it should support.
-      - id: d
         text: Wait to see whether communication improves as behaviour improves
         isCorrect: false
         rationale: >-
           Waiting delays an assessment that may change what the behaviour programme should
           target at all.
+      - id: b
+        text: Raise it with the supervisor and support a referral for speech and language assessment
+        isCorrect: true
+        rationale: >-
+          Recognising when another profession is needed, and routing it properly, is part of
+          the role.
+      - id: c
+        text: Add communication targets to the behaviour programme
+        isCorrect: false
+        rationale: >-
+          Adding targets outside the scope of an unassessed area substitutes for the
+          assessment that is needed.
+      - id: d
+        text: Advise the family to seek a speech assessment privately
+        isCorrect: false
+        rationale: >-
+          Giving the family a direction without routing it through the team leaves the service
+          uninvolved in a decision it should support.
     explanation: >-
       Behaviour-analytic services and communication assessment are complements, not
       alternatives. Many behaviour referrals turn out to rest on an absent means of asking
@@ -301,26 +301,26 @@ questions:
       Which is the weakest basis for beginning a behaviour reduction programme?
     options:
       - id: a
+        text: The behaviour puts the learner at risk of injury
+        isCorrect: false
+        rationale: >-
+          Risk of harm is among the clearest bases for intervention.
+      - id: b
+        text: The behaviour prevents the learner from eating with their family
+        isCorrect: false
+        rationale: >-
+          Exclusion from ordinary family life is socially significant.
+      - id: c
         text: Staff find the behaviour annoying, though it causes no harm or barrier
         isCorrect: true
         rationale: >-
           Staff preference is not a socially significant basis for reducing someone's
           behaviour.
-      - id: b
+      - id: d
         text: The behaviour prevents the learner from accessing a class they want to attend
         isCorrect: false
         rationale: >-
           A barrier to something the learner wants is a strong basis.
-      - id: c
-        text: The behaviour puts the learner at risk of injury
-        isCorrect: false
-        rationale: >-
-          Risk of harm is among the clearest bases for intervention.
-      - id: d
-        text: The behaviour prevents the learner from eating with their family
-        isCorrect: false
-        rationale: >-
-          Exclusion from ordinary family life is socially significant.
     explanation: >-
       Whose problem the behaviour is deserves an explicit answer. Reducing behaviour that
       inconveniences adults but costs the learner nothing is where this field has
@@ -471,26 +471,26 @@ questions:
       ranking them?
     options:
       - id: a
+        text: Which the assessment showed the largest deficit in
+        isCorrect: false
+        rationale: >-
+          The largest deficit is not necessarily the most consequential one to address.
+      - id: b
+        text: Which the funder is most likely to authorise
+        isCorrect: false
+        rationale: >-
+          Funding is a constraint on delivery, not a basis for clinical priority.
+      - id: c
         text: Which would most improve the learner's access to daily life, including safety
         isCorrect: true
         rationale: >-
           Impact on the learner's life, with safety weighted heavily, is the primary ranking
           criterion.
-      - id: b
+      - id: d
         text: Which can be taught fastest with current resources
         isCorrect: false
         rationale: >-
           Feasibility matters, but ranking by ease produces a programme of easy goals.
-      - id: c
-        text: Which the assessment showed the largest deficit in
-        isCorrect: false
-        rationale: >-
-          The largest deficit is not necessarily the most consequential one to address.
-      - id: d
-        text: Which the funder is most likely to authorise
-        isCorrect: false
-        rationale: >-
-          Funding is a constraint on delivery, not a basis for clinical priority.
     explanation: >-
       Prioritising is where a good assessment becomes a good programme. Safety first, then
       access to ordinary life, then everything else — and feasibility decides sequencing
@@ -516,28 +516,28 @@ questions:
       appropriate response is:
     options:
       - id: a
-        text: Discuss it with the family and adapt the goal to fit their practice
-        isCorrect: true
-        rationale: >-
-          A goal that conflicts with household practice will not be supported at home, and the
-          family's practice is not an obstacle to work around.
-      - id: b
-        text: Teach the standard version and let the family adapt it themselves
-        isCorrect: false
-        rationale: >-
-          This places the work of adaptation on the family and teaches a form they will not
-          use.
-      - id: c
-        text: Drop the goal, since it conflicts with the family's approach
-        isCorrect: false
-        rationale: >-
-          The underlying skill may still be valuable; it is the form that needs to change.
-      - id: d
         text: Teach both versions so the learner can choose
         isCorrect: false
         rationale: >-
           Teaching two forms doubles the cost for no clear benefit and may confuse the
           discrimination.
+      - id: b
+        text: Discuss it with the family and adapt the goal to fit their practice
+        isCorrect: true
+        rationale: >-
+          A goal that conflicts with household practice will not be supported at home, and the
+          family's practice is not an obstacle to work around.
+      - id: c
+        text: Teach the standard version and let the family adapt it themselves
+        isCorrect: false
+        rationale: >-
+          This places the work of adaptation on the family and teaches a form they will not
+          use.
+      - id: d
+        text: Drop the goal, since it conflicts with the family's approach
+        isCorrect: false
+        rationale: >-
+          The underlying skill may still be valuable; it is the form that needs to change.
     explanation: >-
       Most conflicts of this kind are about form rather than about the skill. Adapting the
       form costs nothing and is usually the difference between a goal that is practised at
@@ -562,26 +562,26 @@ questions:
       one does not?
     options:
       - id: a
+        text: How the learner compares with peers of the same age
+        isCorrect: false
+        rationale: >-
+          That is precisely what norm-referenced assessment provides.
+      - id: b
+        text: Whether the learner qualifies for a service
+        isCorrect: false
+        rationale: >-
+          Eligibility usually rests on norm-referenced or diagnostic criteria.
+      - id: c
+        text: The function of the learner's challenging behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by functional assessment, not by a skills inventory.
+      - id: d
         text: Which specific skills the learner does and does not currently perform
         isCorrect: true
         rationale: >-
           A criterion-referenced assessment maps performance against defined skills, which is
           what a teaching programme needs.
-      - id: b
-        text: How the learner compares with peers of the same age
-        isCorrect: false
-        rationale: >-
-          That is precisely what norm-referenced assessment provides.
-      - id: c
-        text: Whether the learner qualifies for a service
-        isCorrect: false
-        rationale: >-
-          Eligibility usually rests on norm-referenced or diagnostic criteria.
-      - id: d
-        text: The function of the learner's challenging behaviour
-        isCorrect: false
-        rationale: >-
-          Function is established by functional assessment, not by a skills inventory.
     explanation: >-
       The two answer different questions and are often confused. A percentile tells you a
       learner is behind; a criterion-referenced map tells you what to teach on Monday.
@@ -647,28 +647,28 @@ questions:
       An ecological assessment of a classroom would most usefully identify:
     options:
       - id: a
-        text: The routines, demands and available reinforcers the learner actually encounters
-        isCorrect: true
-        rationale: >-
-          It describes the environment as it operates, which is what any plan has to work
-          within.
-      - id: b
-        text: The learner's standardised scores across skill areas
-        isCorrect: false
-        rationale: >-
-          Scores describe the learner, not the environment.
-      - id: c
         text: The function of the learner's challenging behaviour
         isCorrect: false
         rationale: >-
           Function requires functional assessment; an environmental description generates
           hypotheses at best.
-      - id: d
+      - id: b
         text: The staff's training history in behavioural procedures
         isCorrect: false
         rationale: >-
           Useful for planning training, but not what an ecological assessment of the setting
           is for.
+      - id: c
+        text: The routines, demands and available reinforcers the learner actually encounters
+        isCorrect: true
+        rationale: >-
+          It describes the environment as it operates, which is what any plan has to work
+          within.
+      - id: d
+        text: The learner's standardised scores across skill areas
+        isCorrect: false
+        rationale: >-
+          Scores describe the learner, not the environment.
     explanation: >-
       Programmes fail in settings more often than they fail in principle. Knowing what the
       day actually contains — when demands come, what is available, who is present — is
@@ -691,28 +691,28 @@ questions:
       The best time to check whether a family finds a proposed procedure acceptable is:
     options:
       - id: a
-        text: Before it begins, and again during implementation
-        isCorrect: true
-        rationale: >-
-          Acceptability shapes whether a procedure is used at all, so it is checked before and
-          monitored after.
-      - id: b
-        text: After the programme is complete, as part of the outcome report
-        isCorrect: false
-        rationale: >-
-          By then the procedure has either been used or quietly abandoned, and the information
-          comes too late.
-      - id: c
         text: Only if the family raises a concern
         isCorrect: false
         rationale: >-
           Families frequently do not raise concerns with professionals, and silence is not
           agreement.
-      - id: d
+      - id: b
         text: At the annual review
         isCorrect: false
         rationale: >-
           An annual cycle is far too slow to catch a procedure that is not acceptable.
+      - id: c
+        text: Before it begins, and again during implementation
+        isCorrect: true
+        rationale: >-
+          Acceptability shapes whether a procedure is used at all, so it is checked before and
+          monitored after.
+      - id: d
+        text: After the programme is complete, as part of the outcome report
+        isCorrect: false
+        rationale: >-
+          By then the procedure has either been used or quietly abandoned, and the information
+          comes too late.
     explanation: >-
       Procedures that a family finds unacceptable are not refused; they are simply not
       used, and the resulting flat data gets attributed to the learner. Asking early is
@@ -735,26 +735,26 @@ questions:
       by the learner is:
     options:
       - id: a
+        text: Paired with each remaining item in turn
+        isCorrect: false
+        rationale: >-
+          That describes a paired-stimulus assessment.
+      - id: b
         text: Removed, and the remaining items re-presented
         isCorrect: true
         rationale: >-
           Selected items are not returned to the array, which yields a ranked hierarchy.
-      - id: b
+      - id: c
         text: Returned to the array before the next trial
         isCorrect: false
         rationale: >-
           That describes multiple stimulus with replacement, which identifies the top item but
           ranks the rest poorly.
-      - id: c
+      - id: d
         text: Presented alone for a fixed access period
         isCorrect: false
         rationale: >-
           That is closer to single-stimulus presentation.
-      - id: d
-        text: Paired with each remaining item in turn
-        isCorrect: false
-        rationale: >-
-          That describes a paired-stimulus assessment.
     explanation: >-
       Without replacement is usually the practical choice: it produces a full hierarchy in
       one pass, which is what a programme needs when the top item will satiate within a
@@ -782,27 +782,27 @@ questions:
       A free-operant preference assessment is most appropriate when:
     options:
       - id: a
+        text: Only two items are being compared
+        isCorrect: false
+        rationale: >-
+          A paired presentation would be the direct way to compare two items.
+      - id: b
         text: The learner becomes distressed when items are removed during structured trials
         isCorrect: true
         rationale: >-
           Free-operant observation involves no removal, so it avoids the distress that
           trial-based formats can cause.
-      - id: b
+      - id: c
         text: A precise ranking of ten items is needed
         isCorrect: false
         rationale: >-
           Free-operant observation gives approach data rather than a precise ranking.
-      - id: c
+      - id: d
         text: The learner has no established preferences
         isCorrect: false
         rationale: >-
           Absence of known preferences is a reason to assess, not a reason to choose this
           format.
-      - id: d
-        text: Only two items are being compared
-        isCorrect: false
-        rationale: >-
-          A paired presentation would be the direct way to compare two items.
     explanation: >-
       The choice of format is partly an assent question. If a learner finds item removal
       distressing, a format that requires removing items is buying a ranking at the cost
@@ -831,28 +831,28 @@ questions:
       toy is delivered for a target response. The correct conclusion is:
     options:
       - id: a
-        text: Preference was identified, but reinforcing effect for this response was not
-        isCorrect: true
-        rationale: >-
-          Preference predicts reinforcer effects imperfectly; the functional test is what
-          settles it.
-      - id: b
         text: The preference assessment was conducted incorrectly
         isCorrect: false
         rationale: >-
           A correctly run assessment can still identify an item that does not reinforce a
           given response.
-      - id: c
+      - id: b
         text: The learner is not motivated to work
         isCorrect: false
         rationale: >-
           This restates the observation as a trait rather than identifying a variable.
-      - id: d
+      - id: c
         text: The response requirement should be increased
         isCorrect: false
         rationale: >-
           Increasing effort when the consequence is not reinforcing makes responding less
           likely, not more.
+      - id: d
+        text: Preference was identified, but reinforcing effect for this response was not
+        isCorrect: true
+        rationale: >-
+          Preference predicts reinforcer effects imperfectly; the functional test is what
+          settles it.
     explanation: >-
       This is why a preference assessment and a reinforcer assessment are two steps.
       Preference narrows the candidates; only a change in the behaviour it follows
@@ -875,28 +875,28 @@ questions:
       rather than once a month?
     options:
       - id: a
-        text: Preferences shift with motivating operations and recent access
-        isCorrect: true
-        rationale: >-
-          What a learner will work for changes with deprivation, satiation and what happened
-          earlier that day.
-      - id: b
         text: It provides better interobserver agreement data
         isCorrect: false
         rationale: >-
           Agreement is a property of the measurement system, not of how often preferences are
           sampled.
-      - id: c
+      - id: b
         text: Monthly assessments cannot rank more than three items
         isCorrect: false
         rationale: >-
           The number of items is unrelated to how often the assessment is run.
-      - id: d
+      - id: c
         text: It satisfies the requirement for continuous measurement
         isCorrect: false
         rationale: >-
           Preference sampling is not what continuous measurement of a target behaviour refers
           to.
+      - id: d
+        text: Preferences shift with motivating operations and recent access
+        isCorrect: true
+        rationale: >-
+          What a learner will work for changes with deprivation, satiation and what happened
+          earlier that day.
     explanation: >-
       A month-old preference list is one of the commonest reasons a session goes badly. A
       two-minute sample at the start is among the cheapest interventions available.
@@ -1017,26 +1017,26 @@ questions:
       condition?
     options:
       - id: a
+        text: To test whether the behaviour is maintained by access to play materials
+        isCorrect: false
+        rationale: >-
+          The control condition is not a test condition; it is the baseline for comparison.
+      - id: b
+        text: To allow the learner to rest between test conditions
+        isCorrect: false
+        rationale: >-
+          Rest is not its function, although the condition is typically benign.
+      - id: c
         text: To provide a comparison in which the behaviour should be least likely
         isCorrect: true
         rationale: >-
           Attention is free, demands are absent and preferred items are available, so elevated
           responding in the test conditions stands out against it.
-      - id: b
+      - id: d
         text: To establish a preference hierarchy before testing
         isCorrect: false
         rationale: >-
           Preference assessment is a separate procedure conducted beforehand.
-      - id: c
-        text: To test whether the behaviour is maintained by access to play materials
-        isCorrect: false
-        rationale: >-
-          The control condition is not a test condition; it is the baseline for comparison.
-      - id: d
-        text: To allow the learner to rest between test conditions
-        isCorrect: false
-        rationale: >-
-          Rest is not its function, although the condition is typically benign.
     explanation: >-
       Interpreting a functional analysis depends entirely on the comparison. Test
       conditions elevated relative to control is the finding; test conditions elevated
@@ -1059,28 +1059,28 @@ questions:
       their supervisor. Their responsibility includes:
     options:
       - id: a
-        text: Running the conditions as written, recording data, and reporting anything unexpected
-        isCorrect: true
-        rationale: >-
-          Implementation with integrity, accurate data and prompt reporting is exactly the
-          assistant analyst's contribution.
-      - id: b
-        text: Deciding when to terminate a condition on clinical grounds
-        isCorrect: false
-        rationale: >-
-          Termination criteria are part of the design and belong to the supervising analyst,
-          except where a safety plan directs otherwise.
-      - id: c
         text: Adjusting the conditions if the behaviour does not appear
         isCorrect: false
         rationale: >-
           Changing conditions mid-analysis without authorisation destroys the comparison and
           is outside the role.
-      - id: d
+      - id: b
         text: Interpreting the results and selecting the intervention
         isCorrect: false
         rationale: >-
           Interpretation and intervention selection are the supervising analyst's decisions.
+      - id: c
+        text: Running the conditions as written, recording data, and reporting anything unexpected
+        isCorrect: true
+        rationale: >-
+          Implementation with integrity, accurate data and prompt reporting is exactly the
+          assistant analyst's contribution.
+      - id: d
+        text: Deciding when to terminate a condition on clinical grounds
+        isCorrect: false
+        rationale: >-
+          Termination criteria are part of the design and belong to the supervising analyst,
+          except where a safety plan directs otherwise.
     explanation: >-
       Functional analyses are the clearest illustration of the boundary: the assistant
       analyst may be the person in the room for every session, and the design, the

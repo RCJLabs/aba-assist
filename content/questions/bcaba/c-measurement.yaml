@@ -69,26 +69,26 @@ questions:
       session would be misleading because:
     options:
       - id: a
+        text: Counts are always less reliable than duration measures
+        isCorrect: false
+        rationale: >-
+          Reliability depends on the definition and the observers, not on the dimension.
+      - id: b
+        text: Counts cannot be collected by a single observer
+        isCorrect: false
+        rationale: >-
+          A single observer can collect counts without difficulty.
+      - id: c
         text: A count ignores the time available for the behaviour to occur
         isCorrect: true
         rationale: >-
           With unequal observation periods, the same rate produces different counts, so counts
           are not comparable across sessions.
-      - id: b
+      - id: d
         text: Counts cannot be graphed on an equal-interval chart
         isCorrect: false
         rationale: >-
           Counts graph perfectly well; the problem is comparability, not plotting.
-      - id: c
-        text: Counts are always less reliable than duration measures
-        isCorrect: false
-        rationale: >-
-          Reliability depends on the definition and the observers, not on the dimension.
-      - id: d
-        text: Counts cannot be collected by a single observer
-        isCorrect: false
-        rationale: >-
-          A single observer can collect counts without difficulty.
     explanation: >-
       Rate exists precisely for this case: dividing by observation time makes unequal
       sessions comparable. Where sessions are a fixed length, count and rate carry the
@@ -151,26 +151,26 @@ questions:
       Which is the best operational definition of "on task"?
     options:
       - id: a
-        text: Eyes oriented to the assigned materials or to the speaker, with hands on the task materials
-        isCorrect: true
-        rationale: >-
-          It names observable features two people could agree on without inferring intent.
-      - id: b
-        text: Paying attention to the assigned work
-        isCorrect: false
-        rationale: >-
-          Paying attention is an inference, and two observers would score it differently.
-      - id: c
         text: Being engaged and interested in the lesson
         isCorrect: false
         rationale: >-
           Engagement and interest are private states, not observable features.
-      - id: d
+      - id: b
         text: Not being disruptive during the lesson
         isCorrect: false
         rationale: >-
           Defining a behaviour by what it is not leaves the observer with no positive
           criterion.
+      - id: c
+        text: Eyes oriented to the assigned materials or to the speaker, with hands on the task materials
+        isCorrect: true
+        rationale: >-
+          It names observable features two people could agree on without inferring intent.
+      - id: d
+        text: Paying attention to the assigned work
+        isCorrect: false
+        rationale: >-
+          Paying attention is an inference, and two observers would score it differently.
     explanation: >-
       The test of a definition is not elegance but agreement: could a new observer, given
       only this sentence, score the same session the same way. Anything requiring a
@@ -192,27 +192,27 @@ questions:
       A definition written purely in terms of topography may be inadequate when:
     options:
       - id: a
+        text: The behaviour occurs in more than one setting
+        isCorrect: false
+        rationale: >-
+          A good topographical definition travels across settings without difficulty.
+      - id: b
         text: The same form of behaviour serves different functions on different occasions
         isCorrect: true
         rationale: >-
           A form-based definition groups occasions that may need different responses, and can
           obscure the relation the plan depends on.
-      - id: b
+      - id: c
         text: The behaviour occurs at a low rate
         isCorrect: false
         rationale: >-
           A low rate makes measurement harder to schedule but does not make a form-based
           definition inadequate.
-      - id: c
+      - id: d
         text: Only one observer is available
         isCorrect: false
         rationale: >-
           Observer availability is a staffing matter, not a property of the definition.
-      - id: d
-        text: The behaviour occurs in more than one setting
-        isCorrect: false
-        rationale: >-
-          A good topographical definition travels across settings without difficulty.
     explanation: >-
       Topographical definitions are usually the right starting point because they are easy
       to agree on. The limitation appears when a plan needs to treat two identical-looking
@@ -276,25 +276,25 @@ questions:
       example of:
     options:
       - id: a
-        text: Product measurement
-        isCorrect: true
-        rationale: >-
-          The behaviour is measured through the lasting effect it produced, after the fact.
-      - id: b
-        text: Direct observation
-        isCorrect: false
-        rationale: >-
-          Direct observation requires watching the behaviour as it occurs.
-      - id: c
         text: Indirect assessment
         isCorrect: false
         rationale: >-
           Indirect assessment gathers information by asking people, not by measuring outcomes.
-      - id: d
+      - id: b
         text: Momentary time sampling
         isCorrect: false
         rationale: >-
           Time sampling records whether behaviour is occurring at specified moments.
+      - id: c
+        text: Product measurement
+        isCorrect: true
+        rationale: >-
+          The behaviour is measured through the lasting effect it produced, after the fact.
+      - id: d
+        text: Direct observation
+        isCorrect: false
+        rationale: >-
+          Direct observation requires watching the behaviour as it occurs.
     explanation: >-
       Product measures are efficient and are the right choice whenever the outcome
       uniquely reflects the behaviour. They fail when someone else could have produced the
@@ -318,27 +318,27 @@ questions:
       how often a behaviour occurs?
     options:
       - id: a
-        text: It depends on recall and estimation rather than on observation
-        isCorrect: true
-        rationale: >-
-          Reports are shaped by memory, salience and recent events, so estimates drift from
-          what observation would show.
-      - id: b
-        text: It cannot identify possible antecedents
-        isCorrect: false
-        rationale: >-
-          Interviews are often quite good at generating hypotheses about antecedents.
-      - id: c
         text: It takes longer than direct observation
         isCorrect: false
         rationale: >-
           Interviews are usually much quicker, which is part of why they are relied on.
-      - id: d
+      - id: b
         text: It cannot be conducted by an assistant analyst
         isCorrect: false
         rationale: >-
           Conducting structured interviews is within an assistant analyst's scope under
           supervision.
+      - id: c
+        text: It depends on recall and estimation rather than on observation
+        isCorrect: true
+        rationale: >-
+          Reports are shaped by memory, salience and recent events, so estimates drift from
+          what observation would show.
+      - id: d
+        text: It cannot identify possible antecedents
+        isCorrect: false
+        rationale: >-
+          Interviews are often quite good at generating hypotheses about antecedents.
     explanation: >-
       Indirect methods are valuable for generating hypotheses and for understanding what
       matters to a family. Treating them as measurement is what produces baselines that
@@ -407,25 +407,25 @@ questions:
       A learner emits 36 responses in a 45-minute session. What is the rate per minute?
     options:
       - id: a
-        text: 0.8 per minute
-        isCorrect: true
-        rationale: >-
-          36 divided by 45 minutes gives 0.8 responses per minute.
-      - id: b
         text: 1.25 per minute
         isCorrect: false
         rationale: >-
           This inverts the division, dividing minutes by responses instead.
-      - id: c
+      - id: b
         text: 3.6 per minute
         isCorrect: false
         rationale: >-
           This uses a 10-minute session rather than the 45 minutes given.
-      - id: d
+      - id: c
         text: 36 per minute
         isCorrect: false
         rationale: >-
           This reports the raw count as though the session lasted one minute.
+      - id: d
+        text: 0.8 per minute
+        isCorrect: true
+        rationale: >-
+          36 divided by 45 minutes gives 0.8 responses per minute.
     explanation: >-
       Rate is count divided by observation time, and the unit must be stated. Reporting
       "0.8" without "per minute" is the most common way a rate becomes uninterpretable
@@ -448,26 +448,26 @@ questions:
       finishes at 10:09:45. The latency and the duration are, respectively:
     options:
       - id: a
+        text: 45 seconds and 7 minutes 45 seconds
+        isCorrect: false
+        rationale: >-
+          This includes the latency inside the duration, which double-counts the waiting time.
+      - id: b
+        text: 7 minutes 45 seconds and 7 minutes
+        isCorrect: false
+        rationale: >-
+          The first figure adds the latency to the duration and labels it latency.
+      - id: c
         text: 45 seconds and 7 minutes
         isCorrect: true
         rationale: >-
           Latency runs from the instruction to the start of the response; duration runs from
           the start to the end.
-      - id: b
+      - id: d
         text: 7 minutes and 45 seconds
         isCorrect: false
         rationale: >-
           This reverses the two measures.
-      - id: c
-        text: 45 seconds and 7 minutes 45 seconds
-        isCorrect: false
-        rationale: >-
-          This includes the latency inside the duration, which double-counts the waiting time.
-      - id: d
-        text: 7 minutes 45 seconds and 7 minutes
-        isCorrect: false
-        rationale: >-
-          The first figure adds the latency to the duration and labels it latency.
     explanation: >-
       Latency and duration answer different questions — how long before starting, and how
       long once started — and a learner can be excellent on one and poor on the other.
@@ -489,25 +489,25 @@ questions:
       Event recording is a poor fit for which behaviour?
     options:
       - id: a
-        text: Rocking that occurs in long continuous bouts with no clear start or end
-        isCorrect: true
-        rationale: >-
-          Without discrete, countable instances there is nothing well defined to tally.
-      - id: b
         text: Raising a hand to answer a question
         isCorrect: false
         rationale: >-
           This has a clear beginning and end and is easily counted.
-      - id: c
+      - id: b
         text: Requesting a break
         isCorrect: false
         rationale: >-
           Each request is a discrete, countable instance.
-      - id: d
+      - id: c
         text: Completing a puzzle piece
         isCorrect: false
         rationale: >-
           Each placement is discrete and countable.
+      - id: d
+        text: Rocking that occurs in long continuous bouts with no clear start or end
+        isCorrect: true
+        rationale: >-
+          Without discrete, countable instances there is nothing well defined to tally.
     explanation: >-
       Event recording needs discrete instances. Continuous or high-rate behaviour is where
       duration or a sampling system earns its place, and forcing a count produces numbers
@@ -530,28 +530,28 @@ questions:
       happens at any point within it. As a result, it tends to:
     options:
       - id: a
-        text: Overestimate the proportion of time the behaviour occurs
-        isCorrect: true
-        rationale: >-
-          A single brief instance marks the whole interval, so the summary exceeds the true
-          occurrence.
-      - id: b
         text: Underestimate the proportion of time the behaviour occurs
         isCorrect: false
         rationale: >-
           Underestimation is characteristic of whole-interval recording, which requires the
           whole interval.
-      - id: c
+      - id: b
         text: Give an unbiased estimate of duration
         isCorrect: false
         rationale: >-
           Momentary time sampling is the system that tends to give a closer estimate of
           duration.
-      - id: d
+      - id: c
         text: Give an exact count of occurrences
         isCorrect: false
         rationale: >-
           Interval systems record whether behaviour occurred, not how many times.
+      - id: d
+        text: Overestimate the proportion of time the behaviour occurs
+        isCorrect: true
+        rationale: >-
+          A single brief instance marks the whole interval, so the summary exceeds the true
+          occurrence.
     explanation: >-
       The bias is systematic, not random, which means it must be stated whenever the data
       is reported. It also means a change of system mid-programme can look like a
@@ -579,29 +579,29 @@ questions:
       Which behaviour and system are best matched?
     options:
       - id: a
-        text: Sustained engagement with a task, measured by whole-interval recording
-        isCorrect: true
-        rationale: >-
-          Whole-interval recording rewards behaviour that continues throughout, which suits a
-          target defined by sustaining it.
-      - id: b
         text: Brief hand-flapping, measured by whole-interval recording
         isCorrect: false
         rationale: >-
           Brief behaviour rarely fills an interval, so it would almost always be scored as
           absent.
-      - id: c
+      - id: b
         text: Sustained engagement, measured by partial-interval recording
         isCorrect: false
         rationale: >-
           Partial interval would score a moment of engagement as a full interval, inflating
           the measure.
-      - id: d
+      - id: c
         text: Brief hand-flapping, measured by duration recording across the session
         isCorrect: false
         rationale: >-
           Duration is workable but demanding for very brief high-rate behaviour, and a
           sampling system is usually the practical choice.
+      - id: d
+        text: Sustained engagement with a task, measured by whole-interval recording
+        isCorrect: true
+        rationale: >-
+          Whole-interval recording rewards behaviour that continues throughout, which suits a
+          target defined by sustaining it.
     explanation: >-
       Choosing a system is choosing a bias you can live with. Whole interval undercounts,
       so it suits behaviour you want more of; partial interval overcounts, so it suits
@@ -630,27 +630,27 @@ questions:
       The most practical system is:
     options:
       - id: a
-        text: Momentary time sampling at fixed intervals
-        isCorrect: true
-        rationale: >-
-          It requires a glance at set moments rather than continuous observation, which is
-          compatible with teaching.
-      - id: b
         text: Continuous duration recording
         isCorrect: false
         rationale: >-
           Continuous recording requires watching throughout, which the staff member cannot do
           while teaching.
-      - id: c
+      - id: b
         text: Event recording of every instance
         isCorrect: false
         rationale: >-
           Counting every instance also requires continuous attention.
-      - id: d
+      - id: c
         text: Permanent product recording
         isCorrect: false
         rationale: >-
           Engagement leaves no product to count afterwards.
+      - id: d
+        text: Momentary time sampling at fixed intervals
+        isCorrect: true
+        rationale: >-
+          It requires a glance at set moments rather than continuous observation, which is
+          compatible with teaching.
     explanation: >-
       Measurement that cannot be collected is worse than a coarser system that can,
       because missing data quietly becomes invented data. Momentary time sampling is the
@@ -674,25 +674,25 @@ questions:
       interval-by-interval agreement?
     options:
       - id: a
-        text: 85%
-        isCorrect: true
-        rationale: >-
-          17 agreements divided by 20 intervals, multiplied by 100, gives 85%.
-      - id: b
-        text: 17%
-        isCorrect: false
-        rationale: >-
-          This reports the number of agreements as though it were a percentage.
-      - id: c
         text: 88%
         isCorrect: false
         rationale: >-
           This does not follow from the figures given.
-      - id: d
+      - id: b
         text: 3%
         isCorrect: false
         rationale: >-
           This reports the number of disagreements rather than the agreement.
+      - id: c
+        text: 85%
+        isCorrect: true
+        rationale: >-
+          17 agreements divided by 20 intervals, multiplied by 100, gives 85%.
+      - id: d
+        text: 17%
+        isCorrect: false
+        rationale: >-
+          This reports the number of agreements as though it were a percentage.
     explanation: >-
       Interval-by-interval agreement is the simplest form and also the most forgiving: it
       counts agreements on non-occurrence, which inflates the figure when behaviour is
@@ -758,26 +758,26 @@ questions:
       room. This is:
     options:
       - id: a
+        text: A confound in the independent variable
+        isCorrect: false
+        rationale: >-
+          The observer is not the intervention, although the effect does threaten the data.
+      - id: b
         text: Reactivity
         isCorrect: true
         rationale: >-
           Reactivity is a change in behaviour produced by the presence of observation itself.
-      - id: b
+      - id: c
         text: Observer drift
         isCorrect: false
         rationale: >-
           Drift is a change in how observers apply a definition, not a change in the learner's
           behaviour.
-      - id: c
+      - id: d
         text: Poor interobserver agreement
         isCorrect: false
         rationale: >-
           Nothing here says two observers disagreed.
-      - id: d
-        text: A confound in the independent variable
-        isCorrect: false
-        rationale: >-
-          The observer is not the intervention, although the effect does threaten the data.
     explanation: >-
       Reactivity is usually managed by letting the observer become a familiar part of the
       setting before data counts. It is also a reason to be careful about drawing
@@ -800,27 +800,27 @@ questions:
       are getting shorter. The most appropriate system is:
     options:
       - id: a
-        text: Duration recording per episode
-        isCorrect: true
-        rationale: >-
-          Episode length is the question, and duration per episode is what answers it
-          directly.
-      - id: b
         text: Partial-interval recording
         isCorrect: false
         rationale: >-
           Partial interval would score any episode as present in an interval, hiding changes
           in length.
-      - id: c
+      - id: b
         text: Event recording
         isCorrect: false
         rationale: >-
           A count would show the number of episodes, not whether they shortened.
-      - id: d
+      - id: c
         text: Permanent product recording
         isCorrect: false
         rationale: >-
           The behaviour leaves no product to measure.
+      - id: d
+        text: Duration recording per episode
+        isCorrect: true
+        rationale: >-
+          Episode length is the question, and duration per episode is what answers it
+          directly.
     explanation: >-
       Selecting a system means asking what change would count as improvement. If the
       intended improvement is shorter episodes, only a system sensitive to length can show
@@ -843,26 +843,26 @@ questions:
       every session, which the setting cannot provide. The appropriate response is:
     options:
       - id: a
+        text: Estimate the missing sessions from the sessions that were recorded
+        isCorrect: false
+        rationale: >-
+          Estimating data and entering it as observation misrepresents the record.
+      - id: b
+        text: Stop measuring until staffing improves
+        isCorrect: false
+        rationale: >-
+          A programme running without any data is the situation measurement exists to prevent.
+      - id: c
         text: Choose a workable system, state its limitations, and record what it can support
         isCorrect: true
         rationale: >-
           Data that is actually collected, with its limits stated, is more use than an ideal
           plan that produces gaps.
-      - id: b
+      - id: d
         text: Keep the ideal plan and accept that data will be missing on most days
         isCorrect: false
         rationale: >-
           Systematically missing data is not a neutral gap; it biases whatever is left.
-      - id: c
-        text: Estimate the missing sessions from the sessions that were recorded
-        isCorrect: false
-        rationale: >-
-          Estimating data and entering it as observation misrepresents the record.
-      - id: d
-        text: Stop measuring until staffing improves
-        isCorrect: false
-        rationale: >-
-          A programme running without any data is the situation measurement exists to prevent.
     explanation: >-
       The logistics of the setting are part of choosing a measurement system, not an
       obstacle to it. What is not negotiable is that the record says what was actually
@@ -886,28 +886,28 @@ questions:
       of concern occurs mostly in the morning. The resulting data is:
     options:
       - id: a
-        text: Not representative, whatever its reliability
-        isCorrect: true
-        rationale: >-
-          Sampling only the period where the behaviour is least likely cannot describe the
-          behaviour as a whole.
-      - id: b
-        text: Representative, because the same activity is sampled each time
-        isCorrect: false
-        rationale: >-
-          Consistency in sampling is not the same as representativeness of the behaviour.
-      - id: c
-        text: Representative, provided agreement is high
-        isCorrect: false
-        rationale: >-
-          Agreement concerns whether two observers scored the same thing, not whether the
-          sample reflects the behaviour.
-      - id: d
         text: Sufficient, because some data is better than none
         isCorrect: false
         rationale: >-
           Data that systematically misses the behaviour can support confident conclusions that
           are wrong, which is worse than none.
+      - id: b
+        text: Not representative, whatever its reliability
+        isCorrect: true
+        rationale: >-
+          Sampling only the period where the behaviour is least likely cannot describe the
+          behaviour as a whole.
+      - id: c
+        text: Representative, because the same activity is sampled each time
+        isCorrect: false
+        rationale: >-
+          Consistency in sampling is not the same as representativeness of the behaviour.
+      - id: d
+        text: Representative, provided agreement is high
+        isCorrect: false
+        rationale: >-
+          Agreement concerns whether two observers scored the same thing, not whether the
+          sample reflects the behaviour.
     explanation: >-
       When and where you measure is a design decision with the same weight as what you
       measure. A sampling schedule chosen for staff convenience will usually describe
@@ -930,26 +930,26 @@ questions:
       across successive sessions of a programme?
     options:
       - id: a
+        text: A bar graph of the total for each phase
+        isCorrect: false
+        rationale: >-
+          A phase total hides the shape of the change and cannot show trend within a phase.
+      - id: b
+        text: A pie chart of response types
+        isCorrect: false
+        rationale: >-
+          A pie chart shows composition at one moment and cannot show change over time.
+      - id: c
+        text: A cumulative record of the first session only
+        isCorrect: false
+        rationale: >-
+          A cumulative record shows within-session rate, not change across sessions.
+      - id: d
         text: An equal-interval line graph with sessions on the horizontal axis
         isCorrect: true
         rationale: >-
           A line graph over successive sessions shows level, trend and variability, which is
           what a decision needs.
-      - id: b
-        text: A bar graph of the total for each phase
-        isCorrect: false
-        rationale: >-
-          A phase total hides the shape of the change and cannot show trend within a phase.
-      - id: c
-        text: A pie chart of response types
-        isCorrect: false
-        rationale: >-
-          A pie chart shows composition at one moment and cannot show change over time.
-      - id: d
-        text: A cumulative record of the first session only
-        isCorrect: false
-        rationale: >-
-          A cumulative record shows within-session rate, not change across sessions.
     explanation: >-
       The equal-interval line graph is the field's default for a reason: it makes the
       three things visual analysis depends on visible at once. Summaries by phase are for
@@ -971,25 +971,25 @@ questions:
       On a cumulative record, a steeper slope indicates:
     options:
       - id: a
-        text: A higher rate of responding
-        isCorrect: true
-        rationale: >-
-          Cumulative records add each response to the running total, so slope is rate.
-      - id: b
-        text: A longer session
-        isCorrect: false
-        rationale: >-
-          Session length is shown along the horizontal axis, not by slope.
-      - id: c
-        text: Greater variability
-        isCorrect: false
-        rationale: >-
-          Variability appears as changes in slope, not as steepness itself.
-      - id: d
         text: A decrease in responding
         isCorrect: false
         rationale: >-
           A decrease flattens the line; a cumulative record never descends.
+      - id: b
+        text: A higher rate of responding
+        isCorrect: true
+        rationale: >-
+          Cumulative records add each response to the running total, so slope is rate.
+      - id: c
+        text: A longer session
+        isCorrect: false
+        rationale: >-
+          Session length is shown along the horizontal axis, not by slope.
+      - id: d
+        text: Greater variability
+        isCorrect: false
+        rationale: >-
+          Variability appears as changes in slope, not as steepness itself.
     explanation: >-
       Cumulative records are unusual in that the line can never go down. Reading slope as
       rate is the whole skill, and it makes within-session changes — pausing, acceleration
@@ -1011,27 +1011,27 @@ questions:
       What is the purpose of a phase change line on a graph?
     options:
       - id: a
+        text: To indicate the mastery criterion
+        isCorrect: false
+        rationale: >-
+          A criterion is usually shown as a horizontal aim line, not a vertical phase line.
+      - id: b
+        text: To join data points across a break in recording
+        isCorrect: false
+        rationale: >-
+          Data paths are deliberately broken across gaps rather than joined.
+      - id: c
         text: To mark the session at which the conditions changed
         isCorrect: true
         rationale: >-
           It shows exactly where one condition ended and another began, so the reader can
           compare them.
-      - id: b
+      - id: d
         text: To separate data collected by different observers
         isCorrect: false
         rationale: >-
           Observer identity is usually noted in a legend or in the record, not by a phase
           line.
-      - id: c
-        text: To indicate the mastery criterion
-        isCorrect: false
-        rationale: >-
-          A criterion is usually shown as a horizontal aim line, not a vertical phase line.
-      - id: d
-        text: To join data points across a break in recording
-        isCorrect: false
-        rationale: >-
-          Data paths are deliberately broken across gaps rather than joined.
     explanation: >-
       Phase lines are drawn between sessions rather than through a data point, and data is
       not connected across them. Both conventions exist so the eye does not read a change
@@ -1054,26 +1054,26 @@ questions:
       intervention now would make it difficult to:
     options:
       - id: a
+        text: Measure the behaviour accurately
+        isCorrect: false
+        rationale: >-
+          Trend in the data has no bearing on measurement accuracy.
+      - id: b
+        text: Calculate interobserver agreement
+        isCorrect: false
+        rationale: >-
+          Agreement is unaffected by the direction of the data path.
+      - id: c
+        text: Identify the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function is established by assessment, not by baseline trend.
+      - id: d
         text: Attribute any further increase to the intervention
         isCorrect: true
         rationale: >-
           Behaviour already rising would likely continue rising, so a further increase is
           ambiguous.
-      - id: b
-        text: Measure the behaviour accurately
-        isCorrect: false
-        rationale: >-
-          Trend in the data has no bearing on measurement accuracy.
-      - id: c
-        text: Calculate interobserver agreement
-        isCorrect: false
-        rationale: >-
-          Agreement is unaffected by the direction of the data path.
-      - id: d
-        text: Identify the function of the behaviour
-        isCorrect: false
-        rationale: >-
-          Function is established by assessment, not by baseline trend.
     explanation: >-
       A baseline trending in the direction of the goal is the classic reason to wait. The
       usual exception is when waiting carries a risk, in which case the limitation goes in
@@ -1139,27 +1139,27 @@ questions:
       Which mastery criterion is most likely to produce a skill that lasts?
     options:
       - id: a
-        text: 90% accuracy across three consecutive sessions with two different instructors
-        isCorrect: true
-        rationale: >-
-          Requiring performance to repeat across sessions and across people builds in evidence
-          of stability and some generality.
-      - id: b
         text: 100% accuracy in a single session
         isCorrect: false
         rationale: >-
           One session cannot distinguish a learned skill from a good day.
-      - id: c
+      - id: b
         text: 80% accuracy across two consecutive sessions with the same instructor
         isCorrect: false
         rationale: >-
           Better than one session, but it says nothing about whether the skill survives a
           change of instructor.
-      - id: d
+      - id: c
         text: Any session in which the learner responds without prompts
         isCorrect: false
         rationale: >-
           A single unprompted response is not a criterion; it is an observation.
+      - id: d
+        text: 90% accuracy across three consecutive sessions with two different instructors
+        isCorrect: true
+        rationale: >-
+          Requiring performance to repeat across sessions and across people builds in evidence
+          of stability and some generality.
     explanation: >-
       A criterion is a prediction that the skill will hold. Building repetition and at
       least one change of condition into it is the cheapest available evidence that the
@@ -1182,26 +1182,26 @@ questions:
       most appropriate response is to:
     options:
       - id: a
+        text: Re-teach each skill when it is lost
+        isCorrect: false
+        rationale: >-
+          Re-teaching treats the symptom and leaves the criterion producing the same result.
+      - id: b
+        text: Lengthen every teaching session
+        isCorrect: false
+        rationale: >-
+          Session length is not the variable identified by the pattern.
+      - id: c
+        text: Stop running maintenance checks, since they disrupt the schedule
+        isCorrect: false
+        rationale: >-
+          The checks are what revealed the problem; removing them hides it.
+      - id: d
         text: Re-examine the mastery criterion, since it is not predicting durability
         isCorrect: true
         rationale: >-
           A criterion that is regularly followed by loss is set too low or too narrowly, and
           evaluating it is part of using it.
-      - id: b
-        text: Re-teach each skill when it is lost
-        isCorrect: false
-        rationale: >-
-          Re-teaching treats the symptom and leaves the criterion producing the same result.
-      - id: c
-        text: Lengthen every teaching session
-        isCorrect: false
-        rationale: >-
-          Session length is not the variable identified by the pattern.
-      - id: d
-        text: Stop running maintenance checks, since they disrupt the schedule
-        isCorrect: false
-        rationale: >-
-          The checks are what revealed the problem; removing them hides it.
     explanation: >-
       Mastery criteria are meant to be evaluated, not only applied. A pattern of mastery
       followed by loss is direct evidence about the criterion, and it is one of the few

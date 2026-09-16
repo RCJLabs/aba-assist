@@ -11,27 +11,27 @@ questions:
       are, in that order:
     options:
       - id: a
-        text: The token board, and the number of independent responses
-        isCorrect: true
-        rationale: >-
-          The independent variable is what the team manipulates; the dependent variable is the
-          behaviour they measure.
-      - id: b
-        text: The number of independent responses, and the token board
-        isCorrect: false
-        rationale: >-
-          This reverses them. The behaviour being counted is what depends on the manipulation.
-      - id: c
         text: The learner, and the number of independent responses
         isCorrect: false
         rationale: >-
           The learner is the participant, not a variable the team sets.
-      - id: d
+      - id: b
         text: The session length, and the token board
         isCorrect: false
         rationale: >-
           Session length is a held-constant condition here, and the token board is what was
           introduced rather than what was measured.
+      - id: c
+        text: The token board, and the number of independent responses
+        isCorrect: true
+        rationale: >-
+          The independent variable is what the team manipulates; the dependent variable is the
+          behaviour they measure.
+      - id: d
+        text: The number of independent responses, and the token board
+        isCorrect: false
+        rationale: >-
+          This reverses them. The behaviour being counted is what depends on the manipulation.
     explanation: >-
       Getting these the right way round is what makes a graph readable: the vertical axis
       carries the dependent variable, and the phase lines mark changes in the independent
@@ -70,27 +70,27 @@ questions:
       the daily schedule. What has happened to the independent variable?
     options:
       - id: a
-        text: It is now confounded, because three changes occurred together
-        isCorrect: true
-        rationale: >-
-          Three simultaneous changes mean any effect cannot be attributed to one of them. That
-          is a confound, not a stronger intervention.
-      - id: b
         text: It has become a package intervention that can be evaluated as a whole
         isCorrect: false
         rationale: >-
           A package can be evaluated as a whole only if it was planned and applied as one
           thing from the start, and the team still could not say which part worked.
-      - id: c
+      - id: b
         text: It is unchanged, because the prompting procedure is still the target
         isCorrect: false
         rationale: >-
           Intent does not isolate a variable. What changed at the same time is what matters.
-      - id: d
+      - id: c
         text: It has become a dependent variable
         isCorrect: false
         rationale: >-
           Nothing here is being measured as an outcome; the manipulation is simply impure.
+      - id: d
+        text: It is now confounded, because three changes occurred together
+        isCorrect: true
+        rationale: >-
+          Three simultaneous changes mean any effect cannot be attributed to one of them. That
+          is a confound, not a stronger intervention.
     explanation: >-
       Confounding is the most common way a good intervention gets credited to the wrong
       thing, or an ineffective one gets kept. If several things must change at once, say
@@ -115,29 +115,29 @@ questions:
       started the same week. This most directly threatens:
     options:
       - id: a
-        text: Internal validity
-        isCorrect: true
-        rationale: >-
-          Internal validity is confidence that the intervention, and not something else,
-          produced the change. A simultaneous event undermines exactly that.
-      - id: b
-        text: External validity
-        isCorrect: false
-        rationale: >-
-          External validity concerns whether a result would hold elsewhere, which is a later
-          question than whether it holds here.
-      - id: c
-        text: Social validity
-        isCorrect: false
-        rationale: >-
-          Social validity concerns whether the goals and outcomes matter to the people
-          involved.
-      - id: d
         text: Treatment integrity
         isCorrect: false
         rationale: >-
           Treatment integrity concerns whether the procedure was delivered as written, which
           is not what the medication affects.
+      - id: b
+        text: Internal validity
+        isCorrect: true
+        rationale: >-
+          Internal validity is confidence that the intervention, and not something else,
+          produced the change. A simultaneous event undermines exactly that.
+      - id: c
+        text: External validity
+        isCorrect: false
+        rationale: >-
+          External validity concerns whether a result would hold elsewhere, which is a later
+          question than whether it holds here.
+      - id: d
+        text: Social validity
+        isCorrect: false
+        rationale: >-
+          Social validity concerns whether the goals and outcomes matter to the people
+          involved.
     explanation: >-
       The distinction is practical: a threat to internal validity means you cannot claim
       your work caused the change, which matters before you recommend continuing it.
@@ -162,29 +162,29 @@ questions:
       confidence that it generalises to other settings?
     options:
       - id: a
-        text: Replication with different learners, staff and settings
-        isCorrect: true
-        rationale: >-
-          External validity in single-case work is built by replication across participants
-          and conditions rather than by a single large sample.
-      - id: b
         text: Increasing the number of sessions with the same four learners
         isCorrect: false
         rationale: >-
           More data on the same four strengthens internal validity, not the case for
           generalising beyond them.
-      - id: c
+      - id: b
         text: Reporting the effect size for the four learners
         isCorrect: false
         rationale: >-
           An effect size describes what happened with these participants; it says nothing
           about other settings.
-      - id: d
+      - id: c
         text: Adding a control group from the same clinic
         isCorrect: false
         rationale: >-
           A control group from the same setting does not address whether the result travels to
           different settings.
+      - id: d
+        text: Replication with different learners, staff and settings
+        isCorrect: true
+        rationale: >-
+          External validity in single-case work is built by replication across participants
+          and conditions rather than by a single large sample.
     explanation: >-
       This is the answer single-case methodology gives to a real criticism. Generality is
       not assumed from one demonstration and is not bought by sample size; it is
@@ -256,28 +256,28 @@ questions:
       own control?
     options:
       - id: a
-        text: The comparison is between conditions for the same person, measured repeatedly
-        isCorrect: true
-        rationale: >-
-          The participant's own responding under one condition is the standard against which
-          their responding under another is judged.
-      - id: b
-        text: The participant chooses which condition to be in
-        isCorrect: false
-        rationale: >-
-          Condition assignment is a design decision; participant choice is a separate matter
-          of assent and preference.
-      - id: c
         text: The participant is compared with others of the same age
         isCorrect: false
         rationale: >-
           That is a normative comparison, which is a group-design logic.
-      - id: d
+      - id: b
         text: Each participant receives every intervention in a fixed order
         isCorrect: false
         rationale: >-
           Order is chosen deliberately in some designs and counterbalanced in others; a fixed
           order is not the defining feature.
+      - id: c
+        text: The comparison is between conditions for the same person, measured repeatedly
+        isCorrect: true
+        rationale: >-
+          The participant's own responding under one condition is the standard against which
+          their responding under another is judged.
+      - id: d
+        text: The participant chooses which condition to be in
+        isCorrect: false
+        rationale: >-
+          Condition assignment is a design decision; participant choice is a separate matter
+          of assent and preference.
     explanation: >-
       Because each person is their own comparison, single-case designs answer the question
       a practitioner actually has: did this work for this person. Repeated measurement is
@@ -300,25 +300,25 @@ questions:
       comparison design?
     options:
       - id: a
-        text: Did this intervention change this learner's behaviour?
-        isCorrect: true
-        rationale: >-
-          Single-case designs are built to detect and demonstrate change within an individual.
-      - id: b
-        text: What is the average effect of this intervention across a population?
-        isCorrect: false
-        rationale: >-
-          Averages across populations are what group designs are built for.
-      - id: c
-        text: How does this intervention compare with a placebo across many participants?
-        isCorrect: false
-        rationale: >-
-          A large placebo comparison is a group-design question.
-      - id: d
         text: What proportion of people benefit from this intervention overall?
         isCorrect: false
         rationale: >-
           A population proportion requires a sample large enough to estimate it.
+      - id: b
+        text: Did this intervention change this learner's behaviour?
+        isCorrect: true
+        rationale: >-
+          Single-case designs are built to detect and demonstrate change within an individual.
+      - id: c
+        text: What is the average effect of this intervention across a population?
+        isCorrect: false
+        rationale: >-
+          Averages across populations are what group designs are built for.
+      - id: d
+        text: How does this intervention compare with a placebo across many participants?
+        isCorrect: false
+        rationale: >-
+          A large placebo comparison is a group-design question.
     explanation: >-
       A group average can hide the fact that some participants got worse. For a
       practitioner deciding whether to continue with one person, the individual
@@ -390,28 +390,28 @@ questions:
       appropriate design is:
     options:
       - id: a
-        text: A multiple baseline across behaviours or settings
-        isCorrect: true
-        rationale: >-
-          A multiple baseline demonstrates control by staggering the start of the
-          intervention, so nothing has to be withdrawn.
-      - id: b
-        text: A reversal design
-        isCorrect: false
-        rationale: >-
-          A reversal requires removing the intervention, which is the situation being avoided.
-      - id: c
         text: A multielement design
         isCorrect: false
         rationale: >-
           Rapid alternation suits comparing conditions, not a skill that is meant to be
           acquired and kept.
-      - id: d
+      - id: b
         text: An AB design
         isCorrect: false
         rationale: >-
           An AB design has no verification, so it cannot demonstrate a functional relation at
           all.
+      - id: c
+        text: A multiple baseline across behaviours or settings
+        isCorrect: true
+        rationale: >-
+          A multiple baseline demonstrates control by staggering the start of the
+          intervention, so nothing has to be withdrawn.
+      - id: d
+        text: A reversal design
+        isCorrect: false
+        rationale: >-
+          A reversal requires removing the intervention, which is the situation being avoided.
     explanation: >-
       Choosing a design is usually a choice about what the situation permits. Irreversible
       skills, ethical objections to withdrawal, and behaviour that must not return are all

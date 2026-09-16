@@ -10,30 +10,30 @@ questions:
       it at home daily, in their first language. The best interpretation is that:
     options:
       - id: a
+        text: The skill is present but not generalized, so generalization should be the goal
+        isCorrect: false
+        rationale: >-
+          That is plausible but premature; the first step is to arrange an assessment
+          condition where the skill could appear.
+      - id: b
+        text: The skill should be taught from scratch in the clinic
+        isCorrect: false
+        rationale: >-
+          Teaching a skill the learner already has wastes time and may look like failure when
+          it stalls.
+      - id: c
         text: The assessment arrangement may not have given the skill an occasion to occur
         isCorrect: true
         rationale: >-
           A skill under different stimulus and language conditions may simply not be
           occasioned by the clinic arrangement, which is a feature of the assessment rather
           than of the child.
-      - id: b
+      - id: d
         text: The caregiver report is unreliable and the direct data should stand
         isCorrect: false
         rationale: >-
           Direct data are stronger evidence about the condition observed, not about all
           conditions, and dismissing the report discards the more informative finding.
-      - id: c
-        text: The skill is present but not generalized, so generalization should be the goal
-        isCorrect: false
-        rationale: >-
-          That is plausible but premature; the first step is to arrange an assessment
-          condition where the skill could appear.
-      - id: d
-        text: The skill should be taught from scratch in the clinic
-        isCorrect: false
-        rationale: >-
-          Teaching a skill the learner already has wastes time and may look like failure when
-          it stalls.
     explanation: >-
       Cultural and contextual variables shape what an assessment can detect. Language,
       materials, who is present and what is ordinary in the setting all determine whether
@@ -73,28 +73,28 @@ questions:
       it:
     options:
       - id: a
-        text: Compares the learner against defined criteria rather than against other people
-        isCorrect: true
-        rationale: >-
-          Criterion-referenced tools say what the learner can and cannot do relative to stated
-          criteria, which is what a teaching programme needs.
-      - id: b
         text: Produces a standard score and percentile rank
         isCorrect: false
         rationale: >-
           Those are products of norm-referenced instruments.
-      - id: c
+      - id: b
         text: Must be administered by a licensed psychologist
         isCorrect: false
         rationale: >-
           Administration requirements vary by instrument and are not what distinguishes the
           two types.
-      - id: d
+      - id: c
         text: Measures behaviour directly rather than by report
         isCorrect: false
         rationale: >-
           Either type can use direct observation or report; the distinction is what the result
           is compared against.
+      - id: d
+        text: Compares the learner against defined criteria rather than against other people
+        isCorrect: true
+        rationale: >-
+          Criterion-referenced tools say what the learner can and cannot do relative to stated
+          criteria, which is what a teaching programme needs.
     explanation: >-
       The purpose of assessment determines the tool. Norm-referenced instruments answer
       how a learner compares with peers, which suits eligibility questions.
@@ -119,29 +119,29 @@ questions:
       appropriate conclusion is:
     options:
       - id: a
-        text: Behaviour-analytic services are not indicated for this concern, and the referral should be redirected
-        isCorrect: true
-        rationale: >-
-          Interpreting assessment includes concluding that services are not needed, and
-          referring on is the appropriate action.
-      - id: b
         text: Begin services and monitor whether the medical treatment resolves the concern
         isCorrect: false
         rationale: >-
           Starting services that are not indicated consumes resources and can attribute a
           medical improvement to the intervention.
-      - id: c
+      - id: b
         text: Begin a functional analysis to be certain
         isCorrect: false
         rationale: >-
           A functional analysis is warranted where a behavioural function is plausible, not to
           rule out what assessment has already accounted for.
-      - id: d
+      - id: c
         text: Accept the referral because the family has requested it
         isCorrect: false
         rationale: >-
           Demand does not establish indication, and accepting on that basis is not in the
           client's interest.
+      - id: d
+        text: Behaviour-analytic services are not indicated for this concern, and the referral should be redirected
+        isCorrect: true
+        rationale: >-
+          Interpreting assessment includes concluding that services are not needed, and
+          referring on is the appropriate action.
     explanation: >-
       Interpreting a referral means deciding whether behaviour-analytic services are
       needed at all and, if so, of what kind. Concluding that they are not is a legitimate
@@ -170,29 +170,29 @@ questions:
       suits acquisition is:
     options:
       - id: a
-        text: Continuous reinforcement
-        isCorrect: true
-        rationale: >-
-          Reinforcing every occurrence produces the fastest acquisition, before thinning for
-          maintenance.
-      - id: b
-        text: A variable-ratio schedule
-        isCorrect: false
-        rationale: >-
-          Variable ratio produces high, persistent rates and suits maintenance, but it is a
-          poor choice while the response is still being acquired.
-      - id: c
-        text: A fixed-interval schedule
-        isCorrect: false
-        rationale: >-
-          Fixed interval produces a scalloped pattern and is unsuited to establishing a new
-          response.
-      - id: d
         text: A variable-interval schedule
         isCorrect: false
         rationale: >-
           Variable interval produces steady moderate rates, useful for maintenance rather than
           acquisition.
+      - id: b
+        text: Continuous reinforcement
+        isCorrect: true
+        rationale: >-
+          Reinforcing every occurrence produces the fastest acquisition, before thinning for
+          maintenance.
+      - id: c
+        text: A variable-ratio schedule
+        isCorrect: false
+        rationale: >-
+          Variable ratio produces high, persistent rates and suits maintenance, but it is a
+          poor choice while the response is still being acquired.
+      - id: d
+        text: A fixed-interval schedule
+        isCorrect: false
+        rationale: >-
+          Fixed interval produces a scalloped pattern and is unsuited to establishing a new
+          response.
     explanation: >-
       Schedule selection follows the phase. Dense, usually continuous, reinforcement
       establishes a response; intermittent schedules maintain it and make it resistant to
@@ -222,29 +222,29 @@ questions:
       direct antecedent arrangement is to:
     options:
       - id: a
+        text: Give free access to the item just before the session
+        isCorrect: false
+        rationale: >-
+          That is an abolishing operation and will make requesting less likely.
+      - id: b
+        text: Increase the reinforcement schedule for requesting
+        isCorrect: false
+        rationale: >-
+          A denser schedule matters once requests occur; it does not create the motivation to
+          request.
+      - id: c
         text: Arrange brief restricted access to the item before the session
         isCorrect: true
         rationale: >-
           Limiting access establishes the item as a reinforcer and makes behaviour that has
           produced it more likely, which is the value-altering and behaviour-altering effect
           of an establishing operation.
-      - id: b
+      - id: d
         text: Place the item in view and tell the learner they may ask for it
         isCorrect: false
         rationale: >-
           This adds a discriminative stimulus and a rule, which signal availability rather
           than raising value; with free prior access the request may still not occur.
-      - id: c
-        text: Give free access to the item just before the session
-        isCorrect: false
-        rationale: >-
-          That is an abolishing operation and will make requesting less likely.
-      - id: d
-        text: Increase the reinforcement schedule for requesting
-        isCorrect: false
-        rationale: >-
-          A denser schedule matters once requests occur; it does not create the motivation to
-          request.
     explanation: >-
       Motivating operations and discriminative stimuli are both antecedents but do
       different work: one changes how much the consequence is worth, the other signals
@@ -276,27 +276,27 @@ questions:
       Matching-to-sample requires a conditional discrimination because:
     options:
       - id: a
+        text: Reinforcement is delivered intermittently
+        isCorrect: false
+        rationale: >-
+          The schedule is unrelated to whether the discrimination is simple or conditional.
+      - id: b
         text: Which comparison is correct depends on the sample presented
         isCorrect: true
         rationale: >-
           The correct response is conditional on another stimulus, which is what makes the
           discrimination conditional rather than simple.
-      - id: b
+      - id: c
         text: Two stimuli must be physically identical
         isCorrect: false
         rationale: >-
           Identity matching is one form, but arbitrary matching uses stimuli with nothing in
           common.
-      - id: c
+      - id: d
         text: The learner must respond within a time limit
         isCorrect: false
         rationale: >-
           Timing is a procedural detail, not what makes the discrimination conditional.
-      - id: d
-        text: Reinforcement is delivered intermittently
-        isCorrect: false
-        rationale: >-
-          The schedule is unrelated to whether the discrimination is simple or conditional.
     explanation: >-
       A simple discrimination has one stimulus signalling reinforcement. A conditional
       discrimination has the meaning of one stimulus depending on another, which is the
@@ -327,28 +327,28 @@ questions:
       discriminations, the prompting approach most likely to suit is:
     options:
       - id: a
-        text: Errorless teaching with most-to-least prompting and a prompt delay
-        isCorrect: true
-        rationale: >-
-          Beginning with enough help to prevent errors and fading systematically minimises the
-          errors that occasion the difficulty.
-      - id: b
-        text: Least-to-most prompting so the learner has the chance to respond independently
-        isCorrect: false
-        rationale: >-
-          Least-to-most deliberately allows errors before help arrives, which is the opposite
-          of what this learner needs.
-      - id: c
-        text: No prompts, with error correction after each mistake
-        isCorrect: false
-        rationale: >-
-          This maximises errors for a learner whose errors are the problem.
-      - id: d
         text: Physical prompting for every trial with no fading plan
         isCorrect: false
         rationale: >-
           Prompting without a fading plan produces prompt dependence and never transfers
           control.
+      - id: b
+        text: Errorless teaching with most-to-least prompting and a prompt delay
+        isCorrect: true
+        rationale: >-
+          Beginning with enough help to prevent errors and fading systematically minimises the
+          errors that occasion the difficulty.
+      - id: c
+        text: Least-to-most prompting so the learner has the chance to respond independently
+        isCorrect: false
+        rationale: >-
+          Least-to-most deliberately allows errors before help arrives, which is the opposite
+          of what this learner needs.
+      - id: d
+        text: No prompts, with error correction after each mistake
+        isCorrect: false
+        rationale: >-
+          This maximises errors for a learner whose errors are the problem.
     explanation: >-
       Prompt hierarchies are chosen for the learner and the skill. Least-to-most preserves
       independence but produces errors; most-to-least and errorless approaches prevent
@@ -381,27 +381,27 @@ questions:
       Video modelling is most likely to be effective when the learner:
     options:
       - id: a
-        text: Has a generalized imitative repertoire and attends to the video
-        isCorrect: true
-        rationale: >-
-          Modelling depends on the learner being able to match a model; without an imitative
-          repertoire the video has nothing to work with.
-      - id: b
         text: Prefers screens to in-person interaction
         isCorrect: false
         rationale: >-
           Preference may aid attending but is not the precondition that makes modelling work.
-      - id: c
+      - id: b
         text: Has failed discrete-trial teaching for the same skill
         isCorrect: false
         rationale: >-
           Prior failure of another method does not predict that modelling will succeed.
-      - id: d
+      - id: c
         text: Can already perform each component in isolation
         isCorrect: false
         rationale: >-
           That is helpful for some chains but is not what makes modelling viable as a teaching
           procedure.
+      - id: d
+        text: Has a generalized imitative repertoire and attends to the video
+        isCorrect: true
+        rationale: >-
+          Modelling depends on the learner being able to match a model; without an imitative
+          repertoire the video has nothing to work with.
     explanation: >-
       Modelling procedures rest on imitation as a response class: the model becomes a
       discriminative stimulus for matching it. Video adds consistency and removes the need
@@ -424,27 +424,27 @@ questions:
       when:
     options:
       - id: a
-        text: The target requires fine timing or fluency that a verbal description cannot capture
-        isCorrect: true
-        rationale: >-
-          Skills defined by their moment-to-moment dynamics have to be shaped by contact with
-          consequences; a rule cannot specify them.
-      - id: b
-        text: The contingency is delayed and rarely contacted
-        isCorrect: false
-        rationale: >-
-          That is precisely where rules are most useful, since direct shaping is impractical.
-      - id: c
         text: The learner has a strong listener repertoire
         isCorrect: false
         rationale: >-
           A strong listener repertoire makes instruction more viable, not less.
-      - id: d
+      - id: b
         text: The behaviour needs to occur immediately for safety reasons
         isCorrect: false
         rationale: >-
           Urgency is a reason to use a rule where the learner can follow one, not a reason
           against it.
+      - id: c
+        text: The target requires fine timing or fluency that a verbal description cannot capture
+        isCorrect: true
+        rationale: >-
+          Skills defined by their moment-to-moment dynamics have to be shaped by contact with
+          consequences; a rule cannot specify them.
+      - id: d
+        text: The contingency is delayed and rarely contacted
+        isCorrect: false
+        rationale: >-
+          That is precisely where rules are most useful, since direct shaping is impractical.
     explanation: >-
       Rules get behaviour started without waiting for consequences to shape it, which
       suits delayed or dangerous contingencies. Their limit is that rule-governed
@@ -468,28 +468,28 @@ questions:
       performs easily and often. The most likely result is:
     options:
       - id: a
-        text: Progress stalls, because the current approximation is being maintained rather than surpassed
-        isCorrect: true
-        rationale: >-
-          Holding the criterion once a response is mastered reinforces staying where the
-          learner is.
-      - id: b
         text: The response becomes more variable, producing better approximations
         isCorrect: false
         rationale: >-
           Variability increases when reinforcement is withheld, not when it continues at the
           current level.
-      - id: c
+      - id: b
         text: The response extinguishes through satiation
         isCorrect: false
         rationale: >-
           Satiation affects the reinforcer's value; it does not explain a stalled shaping
           programme.
-      - id: d
+      - id: c
         text: Generalization to other responses occurs automatically
         isCorrect: false
         rationale: >-
           Nothing about holding the criterion promotes generalization.
+      - id: d
+        text: Progress stalls, because the current approximation is being maintained rather than surpassed
+        isCorrect: true
+        rationale: >-
+          Holding the criterion once a response is mastered reinforces staying where the
+          learner is.
     explanation: >-
       Shaping is differential reinforcement of successive approximations, and both halves
       have to keep moving. Advancing too quickly loses the response; advancing too slowly
@@ -514,26 +514,26 @@ questions:
       sequence because:
     options:
       - id: a
+        text: It avoids the need for prompting
+        isCorrect: false
+        rationale: >-
+          Prompting is used in all chaining formats, including backward.
+      - id: b
         text: Every trial ends with the learner completing the final step and contacting reinforcement
         isCorrect: true
         rationale: >-
           Teaching the last step first means each attempt finishes with success and the
           terminal reinforcer.
-      - id: b
+      - id: c
         text: It requires fewer steps in the task analysis
         isCorrect: false
         rationale: >-
           The task analysis is the same; only the teaching order differs.
-      - id: c
+      - id: d
         text: The first steps are usually the hardest
         isCorrect: false
         rationale: >-
           Difficulty varies by task and is not what recommends backward chaining.
-      - id: d
-        text: It avoids the need for prompting
-        isCorrect: false
-        rationale: >-
-          Prompting is used in all chaining formats, including backward.
     explanation: >-
       The three formats differ in where teaching starts and where the learner contacts
       reinforcement. Forward chaining teaches step one first, backward teaches the last
@@ -609,26 +609,26 @@ questions:
       Under an interdependent group contingency, the reinforcer is delivered when:
     options:
       - id: a
+        text: Any member meets the criterion, for themselves only
+        isCorrect: false
+        rationale: >-
+          This describes an independent arrangement again.
+      - id: b
         text: The group as a whole meets the criterion
         isCorrect: true
         rationale: >-
           Interdependent arrangements make the outcome depend on collective performance.
-      - id: b
+      - id: c
         text: Each member meets the criterion, earning individually
         isCorrect: false
         rationale: >-
           That is an independent group contingency, where each person's outcome depends only
           on their own behaviour.
-      - id: c
+      - id: d
         text: One selected member meets the criterion, for everyone
         isCorrect: false
         rationale: >-
           That is a dependent group contingency, which hinges on one person's performance.
-      - id: d
-        text: Any member meets the criterion, for themselves only
-        isCorrect: false
-        rationale: >-
-          This describes an independent arrangement again.
     explanation: >-
       The three arrangements distribute the contingency differently, and each carries a
       different risk. Dependent and interdependent contingencies can produce peer pressure
@@ -652,29 +652,29 @@ questions:
       skill transfers is the generalization tactic known as:
     options:
       - id: a
-        text: Programming common stimuli
-        isCorrect: true
-        rationale: >-
-          Deliberately sharing stimuli between teaching and natural settings is what this
-          tactic names.
-      - id: b
-        text: Training sufficient exemplars
-        isCorrect: false
-        rationale: >-
-          That means teaching across enough examples that untaught ones are covered, which is
-          a different tactic.
-      - id: c
         text: Teaching loosely
         isCorrect: false
         rationale: >-
           Teaching loosely varies non-critical features during teaching so the skill does not
           depend on any of them.
-      - id: d
+      - id: b
         text: Sequential modification
         isCorrect: false
         rationale: >-
           Sequential modification is teaching in each setting where generalization fails,
           rather than programming for it in advance.
+      - id: c
+        text: Programming common stimuli
+        isCorrect: true
+        rationale: >-
+          Deliberately sharing stimuli between teaching and natural settings is what this
+          tactic names.
+      - id: d
+        text: Training sufficient exemplars
+        isCorrect: false
+        rationale: >-
+          That means teaching across enough examples that untaught ones are covered, which is
+          a different tactic.
     explanation: >-
       Generalization is programmed rather than hoped for, and the tactics are distinct:
       sufficient exemplars, common stimuli, loose training, indiscriminable contingencies
@@ -698,27 +698,27 @@ questions:
       The most durable route to maintenance after teaching ends is usually to:
     options:
       - id: a
+        text: Increase reinforcement magnitude at the end of teaching
+        isCorrect: false
+        rationale: >-
+          A larger reinforcer at the end does not create persistence once it stops.
+      - id: b
+        text: Reteach the skill periodically from baseline
+        isCorrect: false
+        rationale: >-
+          Reteaching is a response to lost maintenance, not a way of producing it.
+      - id: c
         text: Shift the behaviour onto reinforcers that occur naturally in the environment
         isCorrect: true
         rationale: >-
           A behaviour maintained by what the environment already provides does not depend on
           the programme continuing.
-      - id: b
+      - id: d
         text: Keep the programmed reinforcement schedule in place indefinitely
         isCorrect: false
         rationale: >-
           This maintains the behaviour but never ends, and it fails the moment the programme
           does.
-      - id: c
-        text: Increase reinforcement magnitude at the end of teaching
-        isCorrect: false
-        rationale: >-
-          A larger reinforcer at the end does not create persistence once it stops.
-      - id: d
-        text: Reteach the skill periodically from baseline
-        isCorrect: false
-        rationale: >-
-          Reteaching is a response to lost maintenance, not a way of producing it.
     explanation: >-
       Maintenance is programmed by thinning the schedule and by handing the behaviour to
       naturally occurring reinforcement. The test of a successful programme is that it can
@@ -742,28 +742,28 @@ questions:
       precondition is that:
     options:
       - id: a
-        text: The environment the learner is removed from is genuinely reinforcing
-        isCorrect: true
-        rationale: >-
-          Time-out means time out from positive reinforcement; if the setting is not
-          reinforcing, removal is escape and will strengthen the behaviour.
-      - id: b
-        text: The duration is at least several minutes
-        isCorrect: false
-        rationale: >-
-          Longer is not better, and duration is a parameter rather than the precondition.
-      - id: c
-        text: The learner can describe why it is happening
-        isCorrect: false
-        rationale: >-
-          Understanding is desirable but is not what makes the procedure function as
-          punishment.
-      - id: d
         text: It is applied consistently by every adult
         isCorrect: false
         rationale: >-
           Consistency matters for any procedure, but it does not address whether time-out can
           work here at all.
+      - id: b
+        text: The environment the learner is removed from is genuinely reinforcing
+        isCorrect: true
+        rationale: >-
+          Time-out means time out from positive reinforcement; if the setting is not
+          reinforcing, removal is escape and will strengthen the behaviour.
+      - id: c
+        text: The duration is at least several minutes
+        isCorrect: false
+        rationale: >-
+          Longer is not better, and duration is a parameter rather than the precondition.
+      - id: d
+        text: The learner can describe why it is happening
+        isCorrect: false
+        rationale: >-
+          Understanding is desirable but is not what makes the procedure function as
+          punishment.
     explanation: >-
       Punishment procedures carry the heaviest justification burden: demonstrated need,
       less restrictive alternatives tried, consent, oversight and monitoring for side
@@ -794,28 +794,28 @@ questions:
       The main efficiency argument for equivalence-based instruction is that:
     options:
       - id: a
-        text: Teaching a small number of relations yields a larger number that were never taught
-        isCorrect: true
-        rationale: >-
-          Derived relations emerge without instruction, so the taught set is smaller than the
-          resulting repertoire.
-      - id: b
-        text: It removes the need for reinforcement during teaching
-        isCorrect: false
-        rationale: >-
-          The trained relations are still established with reinforcement.
-      - id: c
         text: It works without any prerequisite matching skills
         isCorrect: false
         rationale: >-
           Conditional discrimination is a prerequisite; without it the procedure has nothing
           to build on.
-      - id: d
+      - id: b
         text: It guarantees generalization to natural settings
         isCorrect: false
         rationale: >-
           Derived relations are not the same as generalization across settings, which still
           has to be programmed.
+      - id: c
+        text: Teaching a small number of relations yields a larger number that were never taught
+        isCorrect: true
+        rationale: >-
+          Derived relations emerge without instruction, so the taught set is smaller than the
+          resulting repertoire.
+      - id: d
+        text: It removes the need for reinforcement during teaching
+        isCorrect: false
+        rationale: >-
+          The trained relations are still established with reinforcement.
     explanation: >-
       Equivalence-based instruction exploits the fact that trained relations generate
       untrained ones through symmetry and transitivity. The efficiency is real and
@@ -886,29 +886,29 @@ questions:
       defensible intervention among these is to:
     options:
       - id: a
-        text: Teach and reinforce an appropriate way to request a break, and honour it
-        isCorrect: true
-        rationale: >-
-          A function-based alternative that produces the same outcome as the problem behaviour
-          is the socially valid first choice.
-      - id: b
-        text: Deliver a preferred item when the behaviour does not occur for five minutes
-        isCorrect: false
-        rationale: >-
-          This offers a consequence unrelated to the maintaining one, so it competes poorly
-          with escape.
-      - id: c
-        text: Continue presenting demands until the behaviour stops
-        isCorrect: false
-        rationale: >-
-          That is escape extinction alone, without teaching an alternative, and it carries
-          predictable side effects.
-      - id: d
         text: Remove the demands from the programme
         isCorrect: false
         rationale: >-
           This removes the teaching rather than addressing the behaviour, and the demands
           presumably serve a purpose.
+      - id: b
+        text: Teach and reinforce an appropriate way to request a break, and honour it
+        isCorrect: true
+        rationale: >-
+          A function-based alternative that produces the same outcome as the problem behaviour
+          is the socially valid first choice.
+      - id: c
+        text: Deliver a preferred item when the behaviour does not occur for five minutes
+        isCorrect: false
+        rationale: >-
+          This offers a consequence unrelated to the maintaining one, so it competes poorly
+          with escape.
+      - id: d
+        text: Continue presenting demands until the behaviour stops
+        isCorrect: false
+        rationale: >-
+          That is escape extinction alone, without teaching an alternative, and it carries
+          predictable side effects.
     explanation: >-
       Function-based intervention starts from what the behaviour produces and teaches
       something socially acceptable that produces the same thing. Functional communication
@@ -992,27 +992,27 @@ questions:
       important problem with this goal is that:
     options:
       - id: a
-        text: It is not measurable, so neither party can tell whether it has been met
-        isCorrect: true
-        rationale: >-
-          Supervision goals need the same properties as client goals: observable, measurable
-          and individualized to assessed need.
-      - id: b
-        text: It is too ambitious for a single supervision period
-        isCorrect: false
-        rationale: >-
-          Ambition is not the issue; an unmeasurable goal fails whatever the timescale.
-      - id: c
         text: It should have been chosen by the supervisee
         isCorrect: false
         rationale: >-
           Collaboration is valuable, but a goal chosen collaboratively and stated vaguely is
           still unusable.
-      - id: d
+      - id: b
         text: It duplicates the certification requirements
         isCorrect: false
         rationale: >-
           It does not, and duplicating a requirement would not be the central flaw.
+      - id: c
+        text: It is not measurable, so neither party can tell whether it has been met
+        isCorrect: true
+        rationale: >-
+          Supervision goals need the same properties as client goals: observable, measurable
+          and individualized to assessed need.
+      - id: d
+        text: It is too ambitious for a single supervision period
+        isCorrect: false
+        rationale: >-
+          Ambition is not the issue; an unmeasurable goal fails whatever the timescale.
     explanation: >-
       Supervision is a behaviour-change programme with the supervisee as the learner, and
       the same standards apply. Goals come from assessed skills and the requirements of

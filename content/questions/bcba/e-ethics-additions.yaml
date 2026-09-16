@@ -67,26 +67,26 @@ questions:
       look better than they were. Acting with integrity requires them to:
     options:
       - id: a
+        text: Note the correction in the file for future reference
+        isCorrect: false
+        rationale: >-
+          A file note does not reach the people who acted on the error.
+      - id: b
+        text: Correct it in the next report without comment
+        isCorrect: false
+        rationale: >-
+          A silent correction leaves the earlier claim standing for anybody who read it.
+      - id: c
+        text: Assess whether the error changed any decision first
+        isCorrect: false
+        rationale: >-
+          Whether it changed a decision affects urgency, not whether to correct it.
+      - id: d
         text: Correct the record with everybody who received it
         isCorrect: true
         rationale: >-
           Integrity means the correction goes where the error went, not only into a private
           note.
-      - id: b
-        text: Note the correction in the file for future reference
-        isCorrect: false
-        rationale: >-
-          A file note does not reach the people who acted on the error.
-      - id: c
-        text: Correct it in the next report without comment
-        isCorrect: false
-        rationale: >-
-          A silent correction leaves the earlier claim standing for anybody who read it.
-      - id: d
-        text: Assess whether the error changed any decision first
-        isCorrect: false
-        rationale: >-
-          Whether it changed a decision affects urgency, not whether to correct it.
     explanation: >-
       Integrity is most tested when the error is one nobody has noticed. The standard is
       that the record is accurate to the people who rely on it, which makes the scope of
@@ -109,29 +109,29 @@ questions:
       chiefly by:
     options:
       - id: a
-        text: Reducing the trust that makes services acceptable to families and funders
-        isCorrect: true
-        rationale: >-
-          The profession operates on trust from the people who receive and pay for services,
-          and that is what erodes.
-      - id: b
-        text: Increasing the number of certificants
-        isCorrect: false
-        rationale: >-
-          The number of certificants is unrelated to whether any of them practise
-          ethically.
-      - id: c
         text: Making research harder to publish
         isCorrect: false
         rationale: >-
           Publication is affected by many things, and it is not how unethical practice
           principally damages the field.
-      - id: d
+      - id: b
         text: Raising the cost of certification
         isCorrect: false
         rationale: >-
           Certification costs are set by other factors entirely and are not the harm at
           issue here.
+      - id: c
+        text: Reducing the trust that makes services acceptable to families and funders
+        isCorrect: true
+        rationale: >-
+          The profession operates on trust from the people who receive and pay for services,
+          and that is what erodes.
+      - id: d
+        text: Increasing the number of certificants
+        isCorrect: false
+        rationale: >-
+          The number of certificants is unrelated to whether any of them practise
+          ethically.
     explanation: >-
       Risks run to the client, the profession and the practitioner. The professional-level
       risk is cumulative and slow: each avoidable failure makes the next family more
@@ -155,29 +155,29 @@ questions:
       should:
     options:
       - id: a
-        text: Take it only with training, supervision or consultation appropriate to the new area
-        isCorrect: true
-        rationale: >-
-          Competence can be extended, and the route is training and supervision rather than
-          declining outright or proceeding alone.
-      - id: b
-        text: Decline, because it is outside their established competence
-        isCorrect: false
-        rationale: >-
-          Declining is one option and not the only ethical one; competence boundaries can be
-          extended deliberately.
-      - id: c
         text: Accept, since behavioural principles are the same across populations
         isCorrect: false
         rationale: >-
           Principles generalize; competence with a population and its context does not follow
           automatically.
-      - id: d
+      - id: b
         text: Accept and refer out if difficulties arise
         isCorrect: false
         rationale: >-
           Discovering the gap through a client's difficulties is the outcome this standard
           exists to prevent.
+      - id: c
+        text: Take it only with training, supervision or consultation appropriate to the new area
+        isCorrect: true
+        rationale: >-
+          Competence can be extended, and the route is training and supervision rather than
+          declining outright or proceeding alone.
+      - id: d
+        text: Decline, because it is outside their established competence
+        isCorrect: false
+        rationale: >-
+          Declining is one option and not the only ethical one; competence boundaries can be
+          extended deliberately.
     explanation: >-
       Scope of competence is a boundary that moves, and the standard governs how.
       Extending it deliberately with supervision is legitimate; extending it by taking the
@@ -199,27 +199,27 @@ questions:
       Maintaining competence over a career depends most on:
     options:
       - id: a
-        text: Deliberately following developments in the areas one practises in
-        isCorrect: true
-        rationale: >-
-          Competence decays as the field moves, so it is maintained by tracking the areas
-          actually practised.
-      - id: b
         text: Accumulating the required continuing education units
         isCorrect: false
         rationale: >-
           Units are the minimum mechanism and can be accumulated without touching one's
           practice areas.
-      - id: c
+      - id: b
         text: Years of experience in the role
         isCorrect: false
         rationale: >-
           Experience without updating can entrench outdated practice.
-      - id: d
+      - id: c
         text: Supervising others regularly
         isCorrect: false
         rationale: >-
           Supervising is valuable and is not itself how competence is maintained.
+      - id: d
+        text: Deliberately following developments in the areas one practises in
+        isCorrect: true
+        rationale: >-
+          Competence decays as the field moves, so it is maintained by tracking the areas
+          actually practised.
     explanation: >-
       The requirement is about competence rather than credits. Continuing education is the
       mechanism, and it only serves the standard when it is chosen against what the
@@ -241,27 +241,27 @@ questions:
       Discussing a client while in a shared office where other staff can hear is:
     options:
       - id: a
+        text: Only a concern if a family member might overhear
+        isCorrect: false
+        rationale: >-
+          The obligation does not depend on who happens to be nearby.
+      - id: b
         text: A confidentiality concern even though everybody present is a colleague
         isCorrect: true
         rationale: >-
           Access is limited to those who need the information for the work, not to everybody
           employed nearby.
-      - id: b
+      - id: c
         text: Acceptable, because all present are bound by the same obligations
         isCorrect: false
         rationale: >-
           Shared obligations do not create a need to know.
-      - id: c
+      - id: d
         text: Acceptable if no names are used
         isCorrect: false
         rationale: >-
           Clients are frequently identifiable without names, especially within an
           organisation.
-      - id: d
-        text: Only a concern if a family member might overhear
-        isCorrect: false
-        rationale: >-
-          The obligation does not depend on who happens to be nearby.
     explanation: >-
       Confidentiality operates on need to know rather than on employment. The everyday
       failures are conversational and incidental — corridors, shared offices, open screens
@@ -286,27 +286,27 @@ questions:
       position is that:
     options:
       - id: a
-        text: Anonymisation is harder than it looks and consent should be obtained before posting anything case-derived
-        isCorrect: true
-        rationale: >-
-          Detail sufficient to make a case interesting is often sufficient to identify it
-          within a community.
-      - id: b
-        text: Removing the name makes the post acceptable
-        isCorrect: false
-        rationale: >-
-          Names are rarely what identifies a client in a local community.
-      - id: c
         text: Posting is fine if the family would probably not mind
         isCorrect: false
         rationale: >-
           Assumed consent is not consent.
-      - id: d
+      - id: b
         text: Any clinical post is prohibited outright
         isCorrect: false
         rationale: >-
           Public statements about practice are permitted; what is governed is accuracy and
           confidentiality.
+      - id: c
+        text: Anonymisation is harder than it looks and consent should be obtained before posting anything case-derived
+        isCorrect: true
+        rationale: >-
+          Detail sufficient to make a case interesting is often sufficient to identify it
+          within a community.
+      - id: d
+        text: Removing the name makes the post acceptable
+        isCorrect: false
+        rationale: >-
+          Names are rarely what identifies a client in a local community.
     explanation: >-
       Public statements are governed for two things: truthfulness and confidentiality.
       Case material carries the second risk even when carefully described, because the
@@ -370,27 +370,27 @@ questions:
       An analyst is leaving the organisation in six weeks. Their obligation is to:
     options:
       - id: a
+        text: Continue remotely until a replacement is found
+        isCorrect: false
+        rationale: >-
+          Not required, and may be impractical or unsafe.
+      - id: b
         text: Plan the transition so services continue, with notice and handover
         isCorrect: true
         rationale: >-
           Discontinuation and transition are governed: notice, planning and continuity are
           required rather than optional.
-      - id: b
+      - id: c
         text: Complete current goals before leaving
         isCorrect: false
         rationale: >-
           Rarely possible and not what the obligation requires.
-      - id: c
+      - id: d
         text: Inform the employer and leave handover to them
         isCorrect: false
         rationale: >-
           The analyst has an obligation to the client that the employer's process does not
           discharge.
-      - id: d
-        text: Continue remotely until a replacement is found
-        isCorrect: false
-        rationale: >-
-          Not required, and may be impractical or unsafe.
     explanation: >-
       Ending services responsibly is a named obligation. The failure mode is a departure
       that leaves a client without a plan, and the remedy is notice, a handover and a
@@ -412,26 +412,26 @@ questions:
       Funding for a client ends abruptly. The analyst's obligation is to:
     options:
       - id: a
+        text: Refer the family to appeal and take no further action
+        isCorrect: false
+        rationale: >-
+          An appeal may be worth pursuing and does not discharge the transition obligation.
+      - id: b
         text: Support a transition to whatever is available and document what was recommended
         isCorrect: true
         rationale: >-
           Continuity obligations persist even when the analyst cannot continue providing the
           service.
-      - id: b
+      - id: c
         text: Cease immediately, since the service is unfunded
         isCorrect: false
         rationale: >-
           Stopping without transition is the failure the standard addresses.
-      - id: c
+      - id: d
         text: Continue unpaid indefinitely
         isCorrect: false
         rationale: >-
           Not required and not sustainable.
-      - id: d
-        text: Refer the family to appeal and take no further action
-        isCorrect: false
-        rationale: >-
-          An appeal may be worth pursuing and does not discharge the transition obligation.
     explanation: >-
       Discontinuation happens for reasons outside the analyst's control, and the standard
       governs how it is handled rather than whether it happens. Documented recommendations
@@ -496,26 +496,26 @@ questions:
       relationships is unavoidable. The analyst should:
     options:
       - id: a
+        text: Decline all clients with any community connection
+        isCorrect: false
+        rationale: >-
+          In a small community this would mean declining nearly everybody.
+      - id: b
+        text: Proceed without comment, since it is normal locally
+        isCorrect: false
+        rationale: >-
+          Normality does not remove the risk to judgement.
+      - id: c
+        text: Ask clients to keep the connection private
+        isCorrect: false
+        rationale: >-
+          Concealment makes the situation worse rather than managing it.
+      - id: d
         text: Anticipate the overlaps, set explicit boundaries and document how they are managed
         isCorrect: true
         rationale: >-
           Where a multiple relationship cannot be avoided, the standard is to manage it
           transparently rather than pretend it is absent.
-      - id: b
-        text: Decline all clients with any community connection
-        isCorrect: false
-        rationale: >-
-          In a small community this would mean declining nearly everybody.
-      - id: c
-        text: Proceed without comment, since it is normal locally
-        isCorrect: false
-        rationale: >-
-          Normality does not remove the risk to judgement.
-      - id: d
-        text: Ask clients to keep the connection private
-        isCorrect: false
-        rationale: >-
-          Concealment makes the situation worse rather than managing it.
     explanation: >-
       Not every multiple relationship can be avoided, and the standard accounts for that.
       What distinguishes acceptable practice is anticipation, explicit boundaries and a
@@ -539,27 +539,27 @@ questions:
       family. The more effective approach is generally to:
     options:
       - id: a
+        text: Avoid the topic entirely
+        isCorrect: false
+        rationale: >-
+          Avoidance leaves the family with contradictory advice and no resolution.
+      - id: b
         text: Raise the disagreement with the professional directly and return to the family with a joint position where possible
         isCorrect: true
         rationale: >-
           Working it out between professionals protects the family from adjudicating a
           technical dispute.
-      - id: b
+      - id: c
         text: State the disagreement clearly so the family can decide
         isCorrect: false
         rationale: >-
           Families are entitled to information, and being asked to referee between
           professionals is a different thing.
-      - id: c
+      - id: d
         text: Defer publicly and follow one's own view in practice
         isCorrect: false
         rationale: >-
           That is a covert disagreement, which is worse.
-      - id: d
-        text: Avoid the topic entirely
-        isCorrect: false
-        rationale: >-
-          Avoidance leaves the family with contradictory advice and no resolution.
     explanation: >-
       Communication skill in this situation is about where the disagreement is worked out.
       Families need honest information and not the burden of choosing between
@@ -622,26 +622,26 @@ questions:
       Culturally responsive service delivery requires adapting:
     options:
       - id: a
-        text: Assessment, goals and procedures alike
-        isCorrect: true
-        rationale: >-
-          Responsiveness reaches all three; adapting only one leaves the others imposing.
-      - id: b
         text: Procedures only, since goals are clinically determined
         isCorrect: false
         rationale: >-
           Goals are precisely where family values most need to carry weight.
-      - id: c
+      - id: b
         text: Goals only, since procedures are evidence-based
         isCorrect: false
         rationale: >-
           Evidence-based procedures still have to be acceptable and deliverable in this
           family's context.
-      - id: d
+      - id: c
         text: Communication style only
         isCorrect: false
         rationale: >-
           Style matters least of the four if the goals themselves do not fit.
+      - id: d
+        text: Assessment, goals and procedures alike
+        isCorrect: true
+        rationale: >-
+          Responsiveness reaches all three; adapting only one leaves the others imposing.
     explanation: >-
       Responsiveness that stops at tone is cosmetic. What the standard asks is that the
       assessment can detect what matters here, the goals are ones this family values, and
@@ -709,27 +709,27 @@ questions:
       to:
     options:
       - id: a
-        text: Comply with the local legal requirements as well as the certification standards
-        isCorrect: true
-        rationale: >-
-          Legal and regulatory requirements apply alongside the code, and certification does
-          not substitute for a licence where one is required.
-      - id: b
         text: Rely on certification, which is national
         isCorrect: false
         rationale: >-
           Certification does not override a jurisdiction's licensing law.
-      - id: c
+      - id: b
         text: Practise while the application is pending
         isCorrect: false
         rationale: >-
           Practising without a required licence is not made acceptable by a pending
           application.
-      - id: d
+      - id: c
         text: Follow whichever standard is less restrictive
         isCorrect: false
         rationale: >-
           The more demanding requirement governs.
+      - id: d
+        text: Comply with the local legal requirements as well as the certification standards
+        isCorrect: true
+        rationale: >-
+          Legal and regulatory requirements apply alongside the code, and certification does
+          not substitute for a licence where one is required.
     explanation: >-
       Compliance obligations sit alongside the ethics code. Where a jurisdiction licenses
       the practice, the licence is a legal precondition and the certification is separate,
@@ -752,26 +752,26 @@ questions:
       unnecessary. The appropriate response is to:
     options:
       - id: a
+        text: Decline to serve clients funded that way
+        isCorrect: false
+        rationale: >-
+          A disproportionate response to a documentation disagreement.
+      - id: b
         text: Comply, while raising the concern through the proper channel
         isCorrect: true
         rationale: >-
           Funder requirements are binding, and disagreement is pursued rather than acted on
           unilaterally.
-      - id: b
+      - id: c
         text: Document what is clinically necessary and omit the rest
         isCorrect: false
         rationale: >-
           Unilateral non-compliance with a binding requirement is not an option.
-      - id: c
+      - id: d
         text: Comply and say nothing
         isCorrect: false
         rationale: >-
           Complying is right; a legitimate concern is still worth raising.
-      - id: d
-        text: Decline to serve clients funded that way
-        isCorrect: false
-        rationale: >-
-          A disproportionate response to a documentation disagreement.
     explanation: >-
       Legal, regulatory and funder requirements are constraints practice operates within.
       Where they are burdensome the route is to comply and advocate for change, because
@@ -795,26 +795,26 @@ questions:
       to:
     options:
       - id: a
+        text: Resolve it privately with the affected party only
+        isCorrect: false
+        rationale: >-
+          Making it right with the client is necessary and may not be sufficient.
+      - id: b
+        text: Consult a lawyer before taking any action
+        isCorrect: false
+        rationale: >-
+          Legal advice may be prudent and does not replace addressing harm.
+      - id: c
         text: Address the harm and use the reporting route the code requires
         isCorrect: true
         rationale: >-
           Accountability mechanisms depend on self-report as well as third-party report, and
           addressing harm comes first.
-      - id: b
+      - id: d
         text: Wait to see whether anybody raises it
         isCorrect: false
         rationale: >-
           Waiting is not an accountability mechanism.
-      - id: c
-        text: Resolve it privately with the affected party only
-        isCorrect: false
-        rationale: >-
-          Making it right with the client is necessary and may not be sufficient.
-      - id: d
-        text: Consult a lawyer before taking any action
-        isCorrect: false
-        rationale: >-
-          Legal advice may be prudent and does not replace addressing harm.
     explanation: >-
       The system relies on certificants reporting themselves and one another, which is why
       the standards name the obligation explicitly. Concealment converts a violation into

@@ -69,26 +69,26 @@ questions:
       What makes supervision behaviour-analytic rather than merely regular?
     options:
       - id: a
+        text: It is delivered by a certified analyst
+        isCorrect: false
+        rationale: >-
+          Who delivers it does not determine whether the methods are behavioural.
+      - id: b
+        text: It covers ethics as well as procedures
+        isCorrect: false
+        rationale: >-
+          Content coverage is necessary and is not what makes the method behavioural.
+      - id: c
         text: Performance is measured, taught to criterion, and evaluated with data
         isCorrect: true
         rationale: >-
           Behaviour-analytic supervision applies the same measurement and teaching procedures
           to staff behaviour that it applies to clients.
-      - id: b
+      - id: d
         text: It occurs at a fixed frequency set by the certifying body
         isCorrect: false
         rationale: >-
           Frequency is a requirement; it does not make the content behaviour-analytic.
-      - id: c
-        text: It is delivered by a certified analyst
-        isCorrect: false
-        rationale: >-
-          Who delivers it does not determine whether the methods are behavioural.
-      - id: d
-        text: It covers ethics as well as procedures
-        isCorrect: false
-        rationale: >-
-          Content coverage is necessary and is not what makes the method behavioural.
     explanation: >-
       The test is whether the supervisor could show you data on the supervisee's
       performance. Meetings held reliably, with no measure of what changed, meet the
@@ -112,25 +112,25 @@ questions:
       them with a client. The main problem is:
     options:
       - id: a
-        text: Performance cannot be assessed or improved without observing it
-        isCorrect: true
-        rationale: >-
-          Paperwork shows what was recorded; only observation shows what was done.
-      - id: b
-        text: The meetings are too short
-        isCorrect: false
-        rationale: >-
-          Duration is not what is missing; direct observation is.
-      - id: c
         text: Weekly is too infrequent
         isCorrect: false
         rationale: >-
           Weekly contact is substantial; the gap is in what the contact consists of.
-      - id: d
+      - id: b
         text: Paperwork review is not a permitted supervision activity
         isCorrect: false
         rationale: >-
           Reviewing documentation is legitimate; it is simply not sufficient on its own.
+      - id: c
+        text: Performance cannot be assessed or improved without observing it
+        isCorrect: true
+        rationale: >-
+          Paperwork shows what was recorded; only observation shows what was done.
+      - id: d
+        text: The meetings are too short
+        isCorrect: false
+        rationale: >-
+          Duration is not what is missing; direct observation is.
     explanation: >-
       Observation is the part most easily squeezed out by caseload, and it is the part the
       rest depends on. A supervisee can describe a procedure accurately and still not run
@@ -154,26 +154,26 @@ questions:
       Establishing reciprocal feedback in a supervisory relationship means:
     options:
       - id: a
+        text: Feedback is documented by both parties
+        isCorrect: false
+        rationale: >-
+          Documentation is good practice and is separate from the direction feedback flows.
+      - id: b
         text: The supervisee is expected and able to give feedback to the supervisor too
         isCorrect: true
         rationale: >-
           Feedback travels in both directions, which requires the supervisor to invite it and
           act on it.
-      - id: b
+      - id: c
         text: Feedback is given only when performance falls below criterion
         isCorrect: false
         rationale: >-
           That describes corrective feedback timing, not reciprocity.
-      - id: c
+      - id: d
         text: The supervisee repeats back the feedback they received
         isCorrect: false
         rationale: >-
           Checking understanding is useful but is not what reciprocal means.
-      - id: d
-        text: Feedback is documented by both parties
-        isCorrect: false
-        rationale: >-
-          Documentation is good practice and is separate from the direction feedback flows.
     explanation: >-
       Reciprocity is worth building because the supervisee sees things the supervisor
       cannot — including which of the supervisor's instructions are unworkable in the
@@ -196,28 +196,28 @@ questions:
       useful early step is:
     options:
       - id: a
-        text: Pair observation with reinforcement and build the relationship before increasing demands
-        isCorrect: true
-        rationale: >-
-          If observation is aversive, the supervisee will avoid it, and the information
-          supervision depends on disappears.
-      - id: b
-        text: Increase the frequency of observation until performance improves
-        isCorrect: false
-        rationale: >-
-          More exposure to an aversive event increases avoidance rather than performance.
-      - id: c
         text: Provide written feedback instead of in-person feedback
         isCorrect: false
         rationale: >-
           This avoids the difficulty rather than addressing it and removes the chance to
           clarify.
-      - id: d
+      - id: b
         text: Reassign the supervisee to easier cases
         isCorrect: false
         rationale: >-
           Reassignment may be appropriate later, but it does not address the anxiety about
           observation.
+      - id: c
+        text: Pair observation with reinforcement and build the relationship before increasing demands
+        isCorrect: true
+        rationale: >-
+          If observation is aversive, the supervisee will avoid it, and the information
+          supervision depends on disappears.
+      - id: d
+        text: Increase the frequency of observation until performance improves
+        isCorrect: false
+        rationale: >-
+          More exposure to an aversive event increases avoidance rather than performance.
     explanation: >-
       The same principles apply to staff as to learners. An observation process that
       functions as a punisher produces staff who are hardest to observe when they most
@@ -240,26 +240,26 @@ questions:
       supervisees. The most informative thing to examine is:
     options:
       - id: a
+        text: Whether each supervisee reports feeling supported
+        isCorrect: false
+        rationale: >-
+          Worth asking, and it does not reveal how opportunities were distributed.
+      - id: b
+        text: Whether each supervisee received the same written materials
+        isCorrect: false
+        rationale: >-
+          Identical materials do not address unequal access to observation and experience.
+      - id: c
+        text: Whether each supervisee met their required hours
+        isCorrect: false
+        rationale: >-
+          Meeting an hours requirement says nothing about what those hours contained.
+      - id: d
         text: The distribution of observation time, case complexity and feedback across the five
         isCorrect: true
         rationale: >-
           Equity is a distribution, and these are the resources supervision actually
           allocates.
-      - id: b
-        text: Whether each supervisee reports feeling supported
-        isCorrect: false
-        rationale: >-
-          Worth asking, and it does not reveal how opportunities were distributed.
-      - id: c
-        text: Whether each supervisee received the same written materials
-        isCorrect: false
-        rationale: >-
-          Identical materials do not address unequal access to observation and experience.
-      - id: d
-        text: Whether each supervisee met their required hours
-        isCorrect: false
-        rationale: >-
-          Meeting an hours requirement says nothing about what those hours contained.
     explanation: >-
       Equity claims are testable. Counting who got observed, who got the complex case and
       who got dropped when the week was busy turns an impression into something that can
@@ -283,26 +283,26 @@ questions:
       response is to:
     options:
       - id: a
+        text: Provide the missed content in writing only
+        isCorrect: false
+        rationale: >-
+          This gives that supervisee a lesser form of supervision indefinitely.
+      - id: b
         text: Find out what the barrier is and adjust the arrangement where possible
         isCorrect: true
         rationale: >-
           Attendance patterns often reflect constraints such as caring responsibilities or
           transport rather than commitment.
-      - id: b
+      - id: c
         text: Record the absences and address them as a performance issue
         isCorrect: false
         rationale: >-
           Treating a possible constraint as a performance problem entrenches the inequity.
-      - id: c
+      - id: d
         text: Move all supervision to 8am for consistency
         isCorrect: false
         rationale: >-
           Uniformity that excludes one person is the opposite of equitable.
-      - id: d
-        text: Provide the missed content in writing only
-        isCorrect: false
-        rationale: >-
-          This gives that supervisee a lesser form of supervision indefinitely.
     explanation: >-
       Equity in practice usually looks like asking why before deciding what. Scheduling is
       one of the most common places where an apparently neutral arrangement produces an
@@ -368,26 +368,26 @@ questions:
       supervisee?
     options:
       - id: a
+        text: It is required for the agreement to be valid
+        isCorrect: false
+        rationale: >-
+          Validity requirements vary, and the practical reason stands regardless.
+      - id: b
+        text: It allows the supervisee to evaluate the supervisor formally
+        isCorrect: false
+        rationale: >-
+          Formal evaluation is a separate organisational matter.
+      - id: c
         text: The supervisee depends on the supervisor's availability and responsiveness to perform
         isCorrect: true
         rationale: >-
           A supervisee cannot meet expectations if observations and answers do not arrive, so
           the supervisor's commitments are part of the arrangement.
-      - id: b
+      - id: d
         text: It makes the agreement appear fairer
         isCorrect: false
         rationale: >-
           Appearance is not the reason; dependency is.
-      - id: c
-        text: It is required for the agreement to be valid
-        isCorrect: false
-        rationale: >-
-          Validity requirements vary, and the practical reason stands regardless.
-      - id: d
-        text: It allows the supervisee to evaluate the supervisor formally
-        isCorrect: false
-        rationale: >-
-          Formal evaluation is a separate organisational matter.
     explanation: >-
       A supervisee waiting three weeks for an answer cannot be held to a standard that
       assumed the answer arrived. Naming the supervisor's commitments makes that visible
@@ -452,27 +452,27 @@ questions:
       procedure is to:
     options:
       - id: a
+        text: Review their session notes for that programme
+        isCorrect: false
+        rationale: >-
+          Notes record what was reported, not what was done.
+      - id: b
+        text: Test their knowledge of the underlying principles
+        isCorrect: false
+        rationale: >-
+          Principles knowledge is valuable and does not establish procedural skill.
+      - id: c
         text: Observe them running it with a learner and score it against the steps
         isCorrect: true
         rationale: >-
           Direct observation scored against the procedure's steps measures the performance
           itself.
-      - id: b
+      - id: d
         text: Ask them to describe how they would run it
         isCorrect: false
         rationale: >-
           Describing a procedure and performing it are different repertoires, and the gap is
           common.
-      - id: c
-        text: Review their session notes for that programme
-        isCorrect: false
-        rationale: >-
-          Notes record what was reported, not what was done.
-      - id: d
-        text: Test their knowledge of the underlying principles
-        isCorrect: false
-        rationale: >-
-          Principles knowledge is valuable and does not establish procedural skill.
     explanation: >-
       The say-do gap is the whole reason competency-based assessment exists. Staff who can
       explain a procedure perfectly and run it poorly are common, and only observation
@@ -545,25 +545,25 @@ questions:
       What makes staff training competency-based rather than exposure-based?
     options:
       - id: a
-        text: Training continues until performance meets a stated criterion
-        isCorrect: true
-        rationale: >-
-          The endpoint is defined by performance rather than by hours or sessions completed.
-      - id: b
-        text: Training is delivered by a certified analyst
-        isCorrect: false
-        rationale: >-
-          Who delivers it does not determine the endpoint.
-      - id: c
-        text: Training covers every procedure in the plan
-        isCorrect: false
-        rationale: >-
-          Coverage is about breadth, not about the standard reached.
-      - id: d
         text: Training is documented with attendance records
         isCorrect: false
         rationale: >-
           Attendance records document exposure, which is the alternative being contrasted.
+      - id: b
+        text: Training continues until performance meets a stated criterion
+        isCorrect: true
+        rationale: >-
+          The endpoint is defined by performance rather than by hours or sessions completed.
+      - id: c
+        text: Training is delivered by a certified analyst
+        isCorrect: false
+        rationale: >-
+          Who delivers it does not determine the endpoint.
+      - id: d
+        text: Training covers every procedure in the plan
+        isCorrect: false
+        rationale: >-
+          Coverage is about breadth, not about the standard reached.
     explanation: >-
       The difference shows up in what is recorded. An exposure model records that training
       happened; a competency model records that the person reached criterion, and on what.
@@ -635,27 +635,27 @@ questions:
       Which feedback is most likely to change a supervisee's performance?
     options:
       - id: a
-        text: Specific, delivered soon after the performance, and naming what to do differently
-        isCorrect: true
-        rationale: >-
-          Specificity, immediacy and an actionable alternative are what make feedback
-          function.
-      - id: b
-        text: General encouragement delivered at the weekly meeting
-        isCorrect: false
-        rationale: >-
-          Neither specific nor immediate, and it names nothing to change.
-      - id: c
         text: A written summary at the end of the month
         isCorrect: false
         rationale: >-
           The delay makes it difficult to connect to any particular performance.
-      - id: d
+      - id: b
         text: A comparison with a higher-performing colleague
         isCorrect: false
         rationale: >-
           Social comparison tends to damage the relationship without identifying what to
           change.
+      - id: c
+        text: Specific, delivered soon after the performance, and naming what to do differently
+        isCorrect: true
+        rationale: >-
+          Specificity, immediacy and an actionable alternative are what make feedback
+          function.
+      - id: d
+        text: General encouragement delivered at the weekly meeting
+        isCorrect: false
+        rationale: >-
+          Neither specific nor immediate, and it names nothing to change.
     explanation: >-
       These properties are the same ones that make reinforcement work, which is not a
       coincidence. Feedback is a consequence, and consequences are governed by immediacy
@@ -679,26 +679,26 @@ questions:
       differently. The most appropriate first intervention is:
     options:
       - id: a
+        text: An incentive for correct performance
+        isCorrect: false
+        rationale: >-
+          Incentives do not help when people do not agree on what correct is.
+      - id: b
+        text: Reducing the response effort of the step
+        isCorrect: false
+        rationale: >-
+          Effort may be worth addressing later, once the step itself is agreed.
+      - id: c
         text: Task clarification — restate the step precisely and confirm shared understanding
         isCorrect: true
         rationale: >-
           When people describe the task differently, the specification is the problem rather
           than their motivation.
-      - id: b
+      - id: d
         text: Individual performance feedback for each staff member
         isCorrect: false
         rationale: >-
           Feedback against an unclear standard produces inconsistent correction.
-      - id: c
-        text: An incentive for correct performance
-        isCorrect: false
-        rationale: >-
-          Incentives do not help when people do not agree on what correct is.
-      - id: d
-        text: Reducing the response effort of the step
-        isCorrect: false
-        rationale: >-
-          Effort may be worth addressing later, once the step itself is agreed.
     explanation: >-
       Diagnosing before intervening applies to staff as much as to learners. Task
       clarification is cheap, and it is the right answer whenever the variation is in how
@@ -727,26 +727,26 @@ questions:
       room. The most promising change is:
     options:
       - id: a
+        text: Add the step to the annual appraisal
+        isCorrect: false
+        rationale: >-
+          A distant consequence rarely controls a moment-to-moment behaviour.
+      - id: b
+        text: Require a signature confirming the step was done
+        isCorrect: false
+        rationale: >-
+          Adding a second step raises the total effort rather than lowering it.
+      - id: c
         text: Reduce the response effort by putting the form where the work happens
         isCorrect: true
         rationale: >-
           Effort is a well-established determinant of whether a step is completed, and this is
           directly manipulable.
-      - id: b
+      - id: d
         text: Remind staff at each shift handover
         isCorrect: false
         rationale: >-
           Reminders address memory, not the effort that makes the step costly.
-      - id: c
-        text: Add the step to the annual appraisal
-        isCorrect: false
-        rationale: >-
-          A distant consequence rarely controls a moment-to-moment behaviour.
-      - id: d
-        text: Require a signature confirming the step was done
-        isCorrect: false
-        rationale: >-
-          Adding a second step raises the total effort rather than lowering it.
     explanation: >-
       Response effort is the most reliably overlooked variable in staff performance, and
       usually the cheapest to change. Where a step is skipped by everyone, look at the
@@ -770,26 +770,26 @@ questions:
       skill deficit rather than a performance problem?
     options:
       - id: a
+        text: They report finding the procedure time-consuming
+        isCorrect: false
+        rationale: >-
+          This points to effort or competing demands rather than to a missing skill.
+      - id: b
         text: They cannot perform the procedure correctly even when asked to demonstrate it
         isCorrect: true
         rationale: >-
           If the performance is unavailable under optimal conditions, the skill is the gap.
-      - id: b
+      - id: c
         text: They perform it correctly when observed and not otherwise
         isCorrect: false
         rationale: >-
           Correct performance under observation shows the skill exists; the contingencies
           differ.
-      - id: c
+      - id: d
         text: They describe the procedure accurately
         isCorrect: false
         rationale: >-
           Accurate description does not establish that the performance is available.
-      - id: d
-        text: They report finding the procedure time-consuming
-        isCorrect: false
-        rationale: >-
-          This points to effort or competing demands rather than to a missing skill.
     explanation: >-
       The can-do versus will-do question decides the intervention: training for a skill
       deficit, and a change to the contingencies or the setup for a performance problem.
@@ -818,26 +818,26 @@ questions:
       present. The most likely account is:
     options:
       - id: a
+        text: A skill deficit that appears intermittently
+        isCorrect: false
+        rationale: >-
+          A skill that is reliably present under observation is available.
+      - id: b
+        text: Insufficient knowledge of the underlying principles
+        isCorrect: false
+        rationale: >-
+          Knowledge does not vary with who is in the room.
+      - id: c
+        text: Poor initial training
+        isCorrect: false
+        rationale: >-
+          Training produced a performance that occurs, which is evidence it worked.
+      - id: d
         text: Competing contingencies make the procedure costly when unobserved
         isCorrect: true
         rationale: >-
           The procedure competes with other demands, and only the manager's presence tips the
           balance.
-      - id: b
-        text: A skill deficit that appears intermittently
-        isCorrect: false
-        rationale: >-
-          A skill that is reliably present under observation is available.
-      - id: c
-        text: Insufficient knowledge of the underlying principles
-        isCorrect: false
-        rationale: >-
-          Knowledge does not vary with who is in the room.
-      - id: d
-        text: Poor initial training
-        isCorrect: false
-        rationale: >-
-          Training produced a performance that occurs, which is evidence it worked.
     explanation: >-
       Managing what competes with a procedure — caseload, paperwork, the other eight
       things due that hour — is usually more effective than another round of training the
@@ -901,26 +901,26 @@ questions:
       weekly feedback. The appropriate response is:
     options:
       - id: a
+        text: Conclude the supervisee is unsuitable for the role
+        isCorrect: false
+        rationale: >-
+          The supervision approach has not been varied, so nothing supports that conclusion.
+      - id: b
+        text: Reduce the frequency of feedback
+        isCorrect: false
+        rationale: >-
+          Less of an unsuccessful approach is unlikely to help and removes information.
+      - id: c
         text: Change the supervision approach and state what the change is meant to fix
         isCorrect: true
         rationale: >-
           Supervision that is not producing change should be modified in the same data-based
           way any procedure would be.
-      - id: b
+      - id: d
         text: Continue, since consistency is important in supervision
         isCorrect: false
         rationale: >-
           Consistency in an approach that is not working is persistence without a rationale.
-      - id: c
-        text: Conclude the supervisee is unsuitable for the role
-        isCorrect: false
-        rationale: >-
-          The supervision approach has not been varied, so nothing supports that conclusion.
-      - id: d
-        text: Reduce the frequency of feedback
-        isCorrect: false
-        rationale: >-
-          Less of an unsuccessful approach is unlikely to help and removes information.
     explanation: >-
       Eight weeks of unchanged data is a finding about the supervision, not only about the
       supervisee. Trying a different component — in-situ training, a checklist, reduced

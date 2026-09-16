@@ -65,6 +65,42 @@ describe('the technician question bank', () => {
 	});
 });
 
+describe('where the correct answer sits', () => {
+	/*
+	 * The quiz shuffles option order on every run, so no reader ever sees a positional
+	 * bias. This is about the other audience: for a long time the correct answer was the
+	 * first option in 559 of 603 source questions, which turns a review sitting into a
+	 * sequence of confirmations and leaves the distractors — where the teaching in this
+	 * bank actually is — unread. It would also hand a gameable bank to any future
+	 * consumer of this content that does not shuffle.
+	 *
+	 * The threshold is loose because natural variation is fine and only a systematic bias
+	 * matters. `scripts/balance-question-options.mjs` places each answer from a hash of
+	 * its question id; CI runs it with --check so a new batch cannot reintroduce the
+	 * pattern below the level this aggregate would notice.
+	 */
+	const MAX_SHARE_AT_ONE_POSITION = 0.4;
+
+	for (const credential of ['RBT', 'BCBA', 'BCaBA']) {
+		it(`is spread across the options in the ${credential} bank`, async () => {
+			const questions = await loadQuestions(credential);
+			expect(questions.length).toBeGreaterThan(0);
+
+			const at = new Map<number, number>();
+			for (const q of questions) {
+				const i = q.options.findIndex((o) => o.isCorrect);
+				at.set(i, (at.get(i) ?? 0) + 1);
+			}
+			for (const [position, n] of at) {
+				expect(
+					n / questions.length,
+					`position ${position} holds ${n} of ${questions.length} answers`
+				).toBeLessThanOrEqual(MAX_SHARE_AT_ONE_POSITION);
+			}
+		});
+	}
+});
+
 describe('the technician bank at task level', () => {
 	/*
 	 * The area ratchets above can be met while an individual task carries one question,

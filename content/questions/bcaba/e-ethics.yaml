@@ -10,29 +10,29 @@ questions:
       distress during it. Which core principle most directly governs the decision?
     options:
       - id: a
-        text: Treating others with compassion, dignity and respect
-        isCorrect: true
-        rationale: >-
-          Distress signalled by the learner is information about how they are being treated,
-          and the principle requires it to carry weight against speed of progress.
-      - id: b
-        text: Ensuring competence
-        isCorrect: false
-        rationale: >-
-          Competence concerns whether the practitioner is qualified, which is not what is in
-          question.
-      - id: c
-        text: Behaving with integrity
-        isCorrect: false
-        rationale: >-
-          Integrity concerns honesty and following through on commitments, which is a
-          different issue here.
-      - id: d
         text: Benefiting others
         isCorrect: false
         rationale: >-
           This principle is engaged, but on its own it is what the speed argument appeals to;
           dignity is what it must be weighed against.
+      - id: b
+        text: Treating others with compassion, dignity and respect
+        isCorrect: true
+        rationale: >-
+          Distress signalled by the learner is information about how they are being treated,
+          and the principle requires it to carry weight against speed of progress.
+      - id: c
+        text: Ensuring competence
+        isCorrect: false
+        rationale: >-
+          Competence concerns whether the practitioner is qualified, which is not what is in
+          question.
+      - id: d
+        text: Behaving with integrity
+        isCorrect: false
+        rationale: >-
+          Integrity concerns honesty and following through on commitments, which is a
+          different issue here.
     explanation: >-
       The principles are meant to be weighed rather than ranked once and for all. What an
       assistant analyst should not do is settle this alone: a learner signalling distress
@@ -70,28 +70,28 @@ questions:
       the table each time it is presented. Treating this as assent withdrawal means:
     options:
       - id: a
-        text: Recording it, pausing the demand, and raising it with the supervisor
-        isCorrect: true
-        rationale: >-
-          Assent withdrawal is information about the programme. An assistant analyst records
-          it, stops pressing, and takes it to the person responsible for the plan.
-      - id: b
-        text: Continuing the activity, since consent was given by the guardian
-        isCorrect: false
-        rationale: >-
-          Guardian consent does not override the learner's ongoing signals during a session.
-      - id: c
-        text: Removing the activity permanently from the programme
-        isCorrect: false
-        rationale: >-
-          Discontinuing a programme component is a decision for the supervising analyst, not a
-          unilateral one.
-      - id: d
         text: Waiting for the learner to say the word "no" before stopping
         isCorrect: false
         rationale: >-
           Assent withdrawal is not limited to speech; turning away and pushing materials are
           signals.
+      - id: b
+        text: Recording it, pausing the demand, and raising it with the supervisor
+        isCorrect: true
+        rationale: >-
+          Assent withdrawal is information about the programme. An assistant analyst records
+          it, stops pressing, and takes it to the person responsible for the plan.
+      - id: c
+        text: Continuing the activity, since consent was given by the guardian
+        isCorrect: false
+        rationale: >-
+          Guardian consent does not override the learner's ongoing signals during a session.
+      - id: d
+        text: Removing the activity permanently from the programme
+        isCorrect: false
+        rationale: >-
+          Discontinuing a programme component is a decision for the supervising analyst, not a
+          unilateral one.
     explanation: >-
       Assent is treated as ongoing rather than as something collected once. The practical
       consequence for an assistant analyst is a specific two-step: do not press, and
@@ -116,29 +116,29 @@ questions:
       written. Acting with integrity requires:
     options:
       - id: a
-        text: Correcting the record and reporting the error to the supervisor
-        isCorrect: true
-        rationale: >-
-          Integrity is about accuracy and honesty in records, including when the error is your
-          own and inconvenient.
-      - id: b
         text: Leaving the record, since the session mostly happened as described
         isCorrect: false
         rationale: >-
           A record that misrepresents what occurred is inaccurate regardless of how close it
           was.
-      - id: c
+      - id: b
         text: Amending the record quietly without telling anyone
         isCorrect: false
         rationale: >-
           An undisclosed amendment to a service record creates a second problem on top of the
           first.
-      - id: d
+      - id: c
         text: Waiting to see whether anyone notices
         isCorrect: false
         rationale: >-
           Delay converts an error into a concealment, and records may be billed or relied on
           in the meantime.
+      - id: d
+        text: Correcting the record and reporting the error to the supervisor
+        isCorrect: true
+        rationale: >-
+          Integrity is about accuracy and honesty in records, including when the error is your
+          own and inconvenient.
     explanation: >-
       Service records are used for funding, for clinical decisions and sometimes in legal
       proceedings. The cost of correcting one promptly is almost always smaller than the
@@ -205,28 +205,28 @@ questions:
       running the programme". The appropriate response is:
     options:
       - id: a
+        text: Accept it, since the supervisor approved the programme
+        isCorrect: false
+        rationale: >-
+          Supervisor approval of the programme does not transfer the analyst's role to you.
+      - id: b
         text: Correct the description at the time and state who supervises the programme
         isCorrect: true
         rationale: >-
           Allowing a misdescription of your credential to stand misrepresents both your role
           and who is responsible.
-      - id: b
+      - id: c
         text: Say nothing, since the difference is unlikely to matter to the school
         isCorrect: false
         rationale: >-
           The difference determines who may make plan decisions, which matters a great deal to
           the school.
-      - id: c
+      - id: d
         text: Correct it privately with the head teacher afterwards
         isCorrect: false
         rationale: >-
           The people at the meeting will act on what they heard, so the correction belongs
           there.
-      - id: d
-        text: Accept it, since the supervisor approved the programme
-        isCorrect: false
-        rationale: >-
-          Supervisor approval of the programme does not transfer the analyst's role to you.
     explanation: >-
       This is one of the most common real-world scope failures, and it usually happens by
       drift rather than by claim. Correcting it in the room also tells the school who to
@@ -249,27 +249,27 @@ questions:
       changed now that behaviour has improved. The appropriate response is:
     options:
       - id: a
-        text: Explain that this is outside your scope and direct them to the medical team
-        isCorrect: true
-        rationale: >-
-          Medication decisions belong to the doctor managing them, and the boundary should be
-          stated plainly rather than hedged.
-      - id: b
-        text: Share the behaviour data and let the parent draw their own conclusion
-        isCorrect: false
-        rationale: >-
-          Handing over data in answer to a medical question is an implicit opinion on it.
-      - id: c
-        text: Offer a view, since you see the child more often than the doctor does
-        isCorrect: false
-        rationale: >-
-          Frequency of contact does not confer competence in medicine.
-      - id: d
         text: Ask the supervising analyst to answer the medical question instead
         isCorrect: false
         rationale: >-
           The question is outside the scope of the profession, not only of your role, so
           passing it up does not resolve it.
+      - id: b
+        text: Explain that this is outside your scope and direct them to the medical team
+        isCorrect: true
+        rationale: >-
+          Medication decisions belong to the doctor managing them, and the boundary should be
+          stated plainly rather than hedged.
+      - id: c
+        text: Share the behaviour data and let the parent draw their own conclusion
+        isCorrect: false
+        rationale: >-
+          Handing over data in answer to a medical question is an implicit opinion on it.
+      - id: d
+        text: Offer a view, since you see the child more often than the doctor does
+        isCorrect: false
+        rationale: >-
+          Frequency of contact does not confer competence in medicine.
     explanation: >-
       Knowing where competence ends is itself a competence. The data you hold is genuinely
       useful to the medical team, and the right route is sharing it with consent and
@@ -292,27 +292,27 @@ questions:
       guidance before acting?
     options:
       - id: a
+        text: A data sheet runs out of space
+        isCorrect: false
+        rationale: >-
+          This is a logistical matter requiring no clinical decision.
+      - id: b
         text: The written plan does not cover a behaviour that has begun occurring
         isCorrect: true
         rationale: >-
           Behaviour outside the plan requires a plan decision, which is the supervising
           analyst's to make.
-      - id: b
+      - id: c
         text: A learner is slower than expected on a mastered step
         isCorrect: false
         rationale: >-
           Ordinary variation within a running programme is handled as part of implementation
           and reported at the usual time.
-      - id: c
+      - id: d
         text: A parent asks how the session went
         isCorrect: false
         rationale: >-
           Reporting on a session as delivered is within an assistant analyst's role.
-      - id: d
-        text: A data sheet runs out of space
-        isCorrect: false
-        rationale: >-
-          This is a logistical matter requiring no clinical decision.
     explanation: >-
       The line falls at plan decisions. Implementing, measuring and reporting sit with the
       assistant analyst; deciding what the plan should be, including for behaviour it does
@@ -336,27 +336,27 @@ questions:
       never worked with. The ethically sound course is to:
     options:
       - id: a
-        text: Accept only with supervision, training and a plan to build the competence
-        isCorrect: true
-        rationale: >-
-          Competence can be developed, and the code contemplates doing so with supervision and
-          study rather than refusing outright or pretending.
-      - id: b
         text: Decline outright, since the competence is absent today
         isCorrect: false
         rationale: >-
           Declining is defensible but not required; competence is built this way routinely.
-      - id: c
+      - id: b
         text: Accept, since behavioural principles apply across populations
         isCorrect: false
         rationale: >-
           Principles generalise; the specific knowledge, risks and cultural context do not.
-      - id: d
+      - id: c
         text: Accept and consult colleagues informally as questions arise
         isCorrect: false
         rationale: >-
           Informal consultation is not a substitute for supervision and a structured plan to
           acquire the competence.
+      - id: d
+        text: Accept only with supervision, training and a plan to build the competence
+        isCorrect: true
+        rationale: >-
+          Competence can be developed, and the code contemplates doing so with supervision and
+          study rather than refusing outright or pretending.
     explanation: >-
       Scope of competence is a boundary that moves with training, not a fixed list. What
       makes the move legitimate is that it is planned and supervised before the work
@@ -385,26 +385,26 @@ questions:
       assistant analyst's competence in a new area?
     options:
       - id: a
+        text: Completing an online module and its quiz
+        isCorrect: false
+        rationale: >-
+          A quiz tests recall of the module, not performance with a learner.
+      - id: b
         text: A supervised practicum with feedback on performance in that area
         isCorrect: true
         rationale: >-
           Competence is performance, and performance changes through practice with feedback
           rather than through exposure alone.
-      - id: b
+      - id: c
         text: Attending a conference session on the topic
         isCorrect: false
         rationale: >-
           Useful for awareness, but listening rarely changes what someone can do.
-      - id: c
+      - id: d
         text: Reading the major textbook chapters on the topic
         isCorrect: false
         rationale: >-
           Reading builds knowledge and is a reasonable first step, but it is not practice.
-      - id: d
-        text: Completing an online module and its quiz
-        isCorrect: false
-        rationale: >-
-          A quiz tests recall of the module, not performance with a learner.
     explanation: >-
       The unit requirement and the competence requirement are different things. Units can
       be earned by listening; competence is demonstrated by doing, which is why
@@ -478,28 +478,28 @@ questions:
       Which practice best protects confidential information during a home-based session?
     options:
       - id: a
-        text: Carrying only the data needed for that session, identified by code rather than name
-        isCorrect: true
-        rationale: >-
-          Minimising what is carried and removing identifiers limits the harm if materials are
-          lost or seen.
-      - id: b
-        text: Carrying the full file so all information is available if needed
-        isCorrect: false
-        rationale: >-
-          Carrying everything maximises exposure for a benefit that is rarely realised.
-      - id: c
         text: Storing session notes in a personal phone's notes application
         isCorrect: false
         rationale: >-
           A personal device outside the organisation's control is not an appropriate store for
           client information.
-      - id: d
+      - id: b
         text: Leaving materials in a locked car between sessions
         isCorrect: false
         rationale: >-
           A locked vehicle is not secure storage, and this is a common source of real
           breaches.
+      - id: c
+        text: Carrying only the data needed for that session, identified by code rather than name
+        isCorrect: true
+        rationale: >-
+          Minimising what is carried and removing identifiers limits the harm if materials are
+          lost or seen.
+      - id: d
+        text: Carrying the full file so all information is available if needed
+        isCorrect: false
+        rationale: >-
+          Carrying everything maximises exposure for a benefit that is rarely realised.
     explanation: >-
       Data minimisation is the most reliable protection available to a practitioner
       working across settings, because it reduces the consequence of the failures that
@@ -524,28 +524,28 @@ questions:
       Their obligation is to:
     options:
       - id: a
-        text: Report it as a mandated reporter, according to jurisdiction, without waiting for proof
-        isCorrect: true
-        rationale: >-
-          The standard is reasonable suspicion, and the duty belongs to the individual who
-          holds it.
-      - id: b
-        text: Investigate further until the suspicion is confirmed or resolved
-        isCorrect: false
-        rationale: >-
-          Investigating is not the reporter's role and can delay a report and compromise an
-          inquiry.
-      - id: c
-        text: Report only if the supervising analyst agrees
-        isCorrect: false
-        rationale: >-
-          A mandated reporter's duty is personal and cannot be delegated upwards.
-      - id: d
         text: Raise it with the family first to check the facts
         isCorrect: false
         rationale: >-
           Raising it with the family may place the child at further risk and is not required
           before reporting.
+      - id: b
+        text: Report it as a mandated reporter, according to jurisdiction, without waiting for proof
+        isCorrect: true
+        rationale: >-
+          The standard is reasonable suspicion, and the duty belongs to the individual who
+          holds it.
+      - id: c
+        text: Investigate further until the suspicion is confirmed or resolved
+        isCorrect: false
+        rationale: >-
+          Investigating is not the reporter's role and can delay a report and compromise an
+          inquiry.
+      - id: d
+        text: Report only if the supervising analyst agrees
+        isCorrect: false
+        rationale: >-
+          A mandated reporter's duty is personal and cannot be delegated upwards.
     explanation: >-
       Confidentiality has limits that are set in law rather than by the profession, and
       this is the clearest of them. Telling the supervisor is still appropriate, but as a
@@ -570,26 +570,26 @@ questions:
       Before anything is released, what is required?
     options:
       - id: a
+        text: Confirmation that the school is involved in the child's education
+        isCorrect: false
+        rationale: >-
+          Legitimate interest is not the same as authorisation to receive records.
+      - id: b
+        text: The supervising analyst's verbal agreement
+        isCorrect: false
+        rationale: >-
+          The supervisor cannot consent on the family's behalf.
+      - id: c
         text: Authorisation from the person with legal authority, and release through the proper channel
         isCorrect: true
         rationale: >-
           Release requires appropriate authorisation, and it should go through the
           organisation's process rather than directly from a practitioner.
-      - id: b
+      - id: d
         text: A written request from the school on headed paper
         isCorrect: false
         rationale: >-
           A request does not itself authorise release; consent from the right person does.
-      - id: c
-        text: Confirmation that the school is involved in the child's education
-        isCorrect: false
-        rationale: >-
-          Legitimate interest is not the same as authorisation to receive records.
-      - id: d
-        text: The supervising analyst's verbal agreement
-        isCorrect: false
-        rationale: >-
-          The supervisor cannot consent on the family's behalf.
     explanation: >-
       Requests from other professionals feel routine and are a common route to an
       unauthorised disclosure. Sending it through the organisation's process also creates
@@ -614,28 +614,28 @@ questions:
       care?
     options:
       - id: a
-        text: A written summary of goals, procedures and current data, released with authorisation
-        isCorrect: true
-        rationale: >-
-          The receiving provider needs what was being done and where the learner had reached,
-          and release requires authorisation.
-      - id: b
-        text: A verbal handover call between the two teams
-        isCorrect: false
-        rationale: >-
-          Useful in addition, but a conversation leaves no record the new team can work from.
-      - id: c
         text: Sending the complete raw file without a summary
         isCorrect: false
         rationale: >-
           A raw file without interpretation is difficult to act on and discloses more than is
           needed.
-      - id: d
+      - id: b
         text: Waiting for the new provider to request specific information
         isCorrect: false
         rationale: >-
           A provider who does not know what exists cannot ask for it, and the gap falls on the
           learner.
+      - id: c
+        text: A written summary of goals, procedures and current data, released with authorisation
+        isCorrect: true
+        rationale: >-
+          The receiving provider needs what was being done and where the learner had reached,
+          and release requires authorisation.
+      - id: d
+        text: A verbal handover call between the two teams
+        isCorrect: false
+        rationale: >-
+          Useful in addition, but a conversation leaves no record the new team can work from.
     explanation: >-
       Transitions are where progress is most often lost, and the loss is invisible because
       the new team simply starts from scratch. A summary with authorisation is a small
@@ -658,28 +658,28 @@ questions:
       The assistant analyst should ensure that:
     options:
       - id: a
-        text: Supervision arrangements are documented and unbroken before the change takes effect
-        isCorrect: true
-        rationale: >-
-          Practice depends on supervision being in place, so a gap is a practice problem as
-          well as an administrative one.
-      - id: b
-        text: They continue as before, since the cases are unchanged
-        isCorrect: false
-        rationale: >-
-          Continuing without confirmed supervision leaves the work unsupervised, whatever the
-          caseload looks like.
-      - id: c
         text: The new supervisor re-writes each behaviour plan
         isCorrect: false
         rationale: >-
           Plans are reviewed on their merits; a change of supervisor does not require
           rewriting them.
-      - id: d
+      - id: b
         text: Families are not informed until the new supervisor has settled in
         isCorrect: false
         rationale: >-
           Families are entitled to know who is responsible for their child's programme.
+      - id: c
+        text: Supervision arrangements are documented and unbroken before the change takes effect
+        isCorrect: true
+        rationale: >-
+          Practice depends on supervision being in place, so a gap is a practice problem as
+          well as an administrative one.
+      - id: d
+        text: They continue as before, since the cases are unchanged
+        isCorrect: false
+        rationale: >-
+          Continuing without confirmed supervision leaves the work unsupervised, whatever the
+          caseload looks like.
     explanation: >-
       A supervision gap is easy to fall into because nothing visibly changes on the day.
       It is also one of the things certificants are required to self-report, which makes
@@ -792,28 +792,28 @@ questions:
       programme. The main ethical consideration is:
     options:
       - id: a
-        text: Whether accepting it creates an obligation that could affect future judgement
-        isCorrect: true
-        rationale: >-
-          The risk is that the relationship acquires a second dimension that influences
-          professional decisions.
-      - id: b
-        text: Whether the gift is affordable for the family
-        isCorrect: false
-        rationale: >-
-          Affordability is a kindness consideration, not the professional risk.
-      - id: c
         text: Whether the employer permits gifts
         isCorrect: false
         rationale: >-
           Employer policy matters practically, but the ethical question stands independently
           of it.
-      - id: d
+      - id: b
         text: Whether refusing would offend the family
         isCorrect: false
         rationale: >-
           Cultural context is worth weighing, but it does not settle whether a conflict is
           created.
+      - id: c
+        text: Whether accepting it creates an obligation that could affect future judgement
+        isCorrect: true
+        rationale: >-
+          The risk is that the relationship acquires a second dimension that influences
+          professional decisions.
+      - id: d
+        text: Whether the gift is affordable for the family
+        isCorrect: false
+        rationale: >-
+          Affordability is a kindness consideration, not the professional risk.
     explanation: >-
       Small tokens are usually unremarkable; substantial gifts create an obligation
       whether or not anyone intends one. Where refusal would cause offence in a particular
@@ -881,28 +881,28 @@ questions:
       The most constructive first step is:
     options:
       - id: a
-        text: Meet, state each rationale, and agree how the learner's data will settle it
-        isCorrect: true
-        rationale: >-
-          Making the disagreement explicit and letting the learner's data decide keeps both
-          professions honest and keeps the learner central.
-      - id: b
         text: Defer to the speech therapist on anything involving communication
         isCorrect: false
         rationale: >-
           Automatic deference avoids the disagreement rather than resolving it, and may not
           serve the learner.
-      - id: c
+      - id: b
         text: Continue with the behaviour plan as written and document the disagreement
         isCorrect: false
         rationale: >-
           Documenting is necessary but proceeding without engaging leaves the learner
           receiving inconsistent approaches.
-      - id: d
+      - id: c
         text: Ask the family to choose between the two approaches
         isCorrect: false
         rationale: >-
           Asking a family to arbitrate between professionals places an unfair burden on them.
+      - id: d
+        text: Meet, state each rationale, and agree how the learner's data will settle it
+        isCorrect: true
+        rationale: >-
+          Making the disagreement explicit and letting the learner's data decide keeps both
+          professions honest and keeps the learner central.
     explanation: >-
       Inconsistent prompting across professionals is a real cost to a learner, so the
       disagreement is worth the meeting. Agreeing in advance what data would settle it is
@@ -924,28 +924,28 @@ questions:
       Which practice best reflects cultural humility rather than cultural knowledge alone?
     options:
       - id: a
-        text: Asking the family how a goal fits their household, and revising it on what they say
-        isCorrect: true
-        rationale: >-
-          Humility treats the family as the authority on their own context and lets their
-          answer change the plan.
-      - id: b
-        text: Reading about the family's culture before the first meeting
-        isCorrect: false
-        rationale: >-
-          Preparation is useful, but knowledge about a group does not tell you about this
-          family.
-      - id: c
         text: Applying a standard programme equally to every family
         isCorrect: false
         rationale: >-
           Equal treatment regardless of context is the position humility is meant to correct.
-      - id: d
+      - id: b
         text: Matching the practitioner to the family's background where possible
         isCorrect: false
         rationale: >-
           Shared background does not guarantee shared values, and this cannot be the general
           approach.
+      - id: c
+        text: Asking the family how a goal fits their household, and revising it on what they say
+        isCorrect: true
+        rationale: >-
+          Humility treats the family as the authority on their own context and lets their
+          answer change the plan.
+      - id: d
+        text: Reading about the family's culture before the first meeting
+        isCorrect: false
+        rationale: >-
+          Preparation is useful, but knowledge about a group does not tell you about this
+          family.
     explanation: >-
       The distinction is between knowing about a culture and remaining open to being
       corrected about this family. The second is a practice rather than a body of
@@ -968,29 +968,29 @@ questions:
       decline evening sessions. A culturally humble response is to:
     options:
       - id: a
-        text: Ask what times and arrangements would work, and why evenings do not
-        isCorrect: true
-        rationale: >-
-          The assumption is tested by asking, which frequently reveals a constraint rather
-          than a preference about the programme.
-      - id: b
-        text: Reduce the programme's intensity to match the apparent interest
-        isCorrect: false
-        rationale: >-
-          This acts on the untested assumption and reduces service for a reason that may not
-          exist.
-      - id: c
         text: Record the family as non-adherent in the file
         isCorrect: false
         rationale: >-
           Labelling the family on the basis of an untested inference is both inaccurate and
           consequential.
-      - id: d
+      - id: b
         text: Escalate to the supervisor as a compliance concern
         isCorrect: false
         rationale: >-
           Framing a scheduling constraint as compliance misstates the situation to the person
           who will act on it.
+      - id: c
+        text: Ask what times and arrangements would work, and why evenings do not
+        isCorrect: true
+        rationale: >-
+          The assumption is tested by asking, which frequently reveals a constraint rather
+          than a preference about the programme.
+      - id: d
+        text: Reduce the programme's intensity to match the apparent interest
+        isCorrect: false
+        rationale: >-
+          This acts on the untested assumption and reduces service for a reason that may not
+          exist.
     explanation: >-
       Attributing a scheduling constraint to attitude is one of the most consequential
       everyday errors, because it changes how a family is described in the record and how
@@ -1059,28 +1059,28 @@ questions:
       requires:
     options:
       - id: a
-        text: Examining how opportunities are allocated and distributing them deliberately
-        isCorrect: true
-        rationale: >-
-          Unequal allocation of observation and case complexity is a supervision practice that
-          can be measured and changed.
-      - id: b
         text: Asking the three supervisees whether they feel excluded
         isCorrect: false
         rationale: >-
           Their perception is worth knowing, but the allocation itself is the observable
           issue.
-      - id: c
+      - id: b
         text: Providing the same written materials to all five
         isCorrect: false
         rationale: >-
           Equal materials do not address unequal access to observation and experience.
-      - id: d
+      - id: c
         text: Rotating supervision meetings between the five
         isCorrect: false
         rationale: >-
           Meeting time is only part of it; case allocation and observation are where the
           difference shows.
+      - id: d
+        text: Examining how opportunities are allocated and distributing them deliberately
+        isCorrect: true
+        rationale: >-
+          Unequal allocation of observation and case complexity is a supervision practice that
+          can be measured and changed.
     explanation: >-
       Equity in supervision is a distribution question, and distributions can be counted.
       Who gets observed, who gets the interesting case, and who gets covered when
@@ -1104,28 +1104,28 @@ questions:
       certification:
     options:
       - id: a
+        text: Transfers automatically after a notification period
+        isCorrect: false
+        rationale: >-
+          There is no general automatic transfer; requirements vary by jurisdiction.
+      - id: b
         text: Does not by itself authorise practice; the jurisdiction's licensing law governs
         isCorrect: true
         rationale: >-
           Certification and licensure are separate, and practising without a required licence
           is unlawful regardless of certification.
-      - id: b
+      - id: c
         text: Is sufficient, since certification is national in scope
         isCorrect: false
         rationale: >-
           A national certification does not override a jurisdiction's own licensing
           requirement.
-      - id: c
+      - id: d
         text: Is sufficient if their supervisor holds the local licence
         isCorrect: false
         rationale: >-
           A supervisor's licence does not extend to the supervisee's own requirement to be
           licensed where one applies.
-      - id: d
-        text: Transfers automatically after a notification period
-        isCorrect: false
-        rationale: >-
-          There is no general automatic transfer; requirements vary by jurisdiction.
     explanation: >-
       This catches people who relocate mid-caseload, including those working remotely
       across a boundary. The requirement attaches to where the client is, which is the
@@ -1150,28 +1150,28 @@ questions:
       record needs. The appropriate response is:
     options:
       - id: a
-        text: Meet the funder's format and keep the clinical detail in the record as well
-        isCorrect: true
-        rationale: >-
-          The two requirements are not in conflict; the funder sets a billing format, and the
-          clinical record remains the practitioner's responsibility.
-      - id: b
         text: Use the funder's format alone, since it is what is required
         isCorrect: false
         rationale: >-
           A funder format does not discharge the obligation to keep an adequate clinical
           record.
-      - id: c
+      - id: b
         text: Use the clinical format alone and submit it to the funder
         isCorrect: false
         rationale: >-
           Submitting a non-compliant note risks the claim and may disclose more than the
           funder needs.
-      - id: d
+      - id: c
         text: Ask the funder to change the format
         isCorrect: false
         rationale: >-
           Worth raising eventually, but it does not answer what to do for today's session.
+      - id: d
+        text: Meet the funder's format and keep the clinical detail in the record as well
+        isCorrect: true
+        rationale: >-
+          The two requirements are not in conflict; the funder sets a billing format, and the
+          clinical record remains the practitioner's responsibility.
     explanation: >-
       Regulatory, funding and clinical requirements sit on top of one another rather than
       replacing one another. Treating a funder's minimum as the ceiling is how records

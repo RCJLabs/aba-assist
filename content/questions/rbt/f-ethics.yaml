@@ -11,26 +11,26 @@ questions:
       doing. What is the most appropriate response?
     options:
       - id: a
+        text: Ask the neighbor to keep it between the two of you
+        isCorrect: false
+        rationale: >-
+          Asking for secrecy means a disclosure has already been made.
+      - id: b
         text: Say that you cannot discuss whether anyone is a client or anything about services, and change the subject
         isCorrect: true
         rationale: >-
           Confirming a service relationship is itself a disclosure. A clear, polite
           refusal protects the family and complies with confidentiality standards.
-      - id: b
+      - id: c
         text: Confirm you work with the family but say you cannot share details
         isCorrect: false
         rationale: >-
           Confirming the relationship discloses that the child receives services.
-      - id: c
+      - id: d
         text: Share only positive news since it will not embarrass anyone
         isCorrect: false
         rationale: >-
           Positive information is still protected information.
-      - id: d
-        text: Ask the neighbor to keep it between the two of you
-        isCorrect: false
-        rationale: >-
-          Asking for secrecy means a disclosure has already been made.
     explanation: >-
       Confidentiality covers the fact of services, not just their content. The safest
       response in any public setting is a friendly refusal to confirm or deny, and the
@@ -70,28 +70,28 @@ questions:
       technician do?
     options:
       - id: a
+        text: Accept it this once and ask the family not to do it again
+        isCorrect: false
+        rationale: >-
+          A single acceptance sets an expectation and already crosses the line.
+      - id: b
         text: Politely decline, explain that professional rules limit gifts, and tell the supervisor
         isCorrect: true
         rationale: >-
           Gifts beyond a nominal value are restricted because they create multiple
           relationships and conflicts of interest. Declining kindly and informing the
           supervisor is the expected course.
-      - id: b
+      - id: c
         text: Accept it, since refusing would be rude
         isCorrect: false
         rationale: >-
           Politeness does not override the ethics code, and a refusal can be made
           graciously.
-      - id: c
+      - id: d
         text: Accept it and share it with the rest of the team
         isCorrect: false
         rationale: >-
           Sharing the gift does not remove the problem of having accepted it.
-      - id: d
-        text: Accept it this once and ask the family not to do it again
-        isCorrect: false
-        rationale: >-
-          A single acceptance sets an expectation and already crosses the line.
     explanation: >-
       Both ethics codes restrict gifts from clients and families. The reasons are the
       relationship, not the money: gifts blur the professional boundary and can be felt
@@ -116,27 +116,27 @@ questions:
       Which activity is within the scope of practice of a behavior technician?
     options:
       - id: a
+        text: Interpreting functional-analysis results for a family
+        isCorrect: false
+        rationale: >-
+          Assessment interpretation and communicating results are the analyst's role.
+      - id: b
         text: Implementing a behavior plan as written and collecting the data it specifies
         isCorrect: true
         rationale: >-
           Technicians deliver services designed by their supervisor and record data;
           that is the role.
-      - id: b
+      - id: c
         text: Writing a new behavior plan for a client
         isCorrect: false
         rationale: >-
           Designing plans is the analyst's responsibility.
-      - id: c
+      - id: d
         text: Deciding to discontinue a program that seems ineffective
         isCorrect: false
         rationale: >-
           Continuing, modifying or ending a program is a supervisory decision made from
           data.
-      - id: d
-        text: Interpreting functional-analysis results for a family
-        isCorrect: false
-        rationale: >-
-          Assessment interpretation and communicating results are the analyst's role.
     explanation: >-
       Technicians practice under close supervision and implement rather than design.
       Suggestions and observations are welcome and important, but decisions about
@@ -161,28 +161,28 @@ questions:
       What is the minimum amount of supervision required for that month?
     options:
       - id: a
-        text: 4 hours, which is 5 percent of the service hours
-        isCorrect: true
-        rationale: >-
-          The requirement is at least 5 percent of the hours spent providing services each
-          calendar month; 5 percent of 80 is 4.
-      - id: b
-        text: 1 hour, regardless of hours worked
-        isCorrect: false
-        rationale: >-
-          The minimum is a percentage of service hours, not a fixed hour.
-      - id: c
         text: 8 hours, which is 10 percent
         isCorrect: false
         rationale: >-
           Ten percent is the concentrated-fieldwork figure for analyst trainees, not the
           technician requirement.
-      - id: d
+      - id: b
         text: No minimum, as long as a supervisor is on record
         isCorrect: false
         rationale: >-
           A supervisor on record is necessary but not sufficient; the monthly minimum
           also applies.
+      - id: c
+        text: 4 hours, which is 5 percent of the service hours
+        isCorrect: true
+        rationale: >-
+          The requirement is at least 5 percent of the hours spent providing services each
+          calendar month; 5 percent of 80 is 4.
+      - id: d
+        text: 1 hour, regardless of hours worked
+        isCorrect: false
+        rationale: >-
+          The minimum is a percentage of service hours, not a fixed hour.
     explanation: >-
       Ongoing supervision must be at least 5 percent of service hours each calendar
       month, delivered through at least two real-time contacts, at least one of them
@@ -208,27 +208,27 @@ questions:
       the learner's name. Which is the most appropriate choice?
     options:
       - id: a
+        text: Post with the learner's first initial only
+        isCorrect: false
+        rationale: >-
+          Partial identifiers combined with context are often enough to identify a child.
+      - id: b
+        text: Post and delete it after a day
+        isCorrect: false
+        rationale: >-
+          Anything posted can be copied within seconds.
+      - id: c
         text: Do not post about clients or sessions at all
         isCorrect: true
         rationale: >-
           Even without a name, details of a session can identify a learner to people who
           know them, and client information is not for public posting.
-      - id: b
+      - id: d
         text: Post but blur the learner's face in any photo
         isCorrect: false
         rationale: >-
           A photo of a client, blurred or not, is client information used publicly
           without consent.
-      - id: c
-        text: Post with the learner's first initial only
-        isCorrect: false
-        rationale: >-
-          Partial identifiers combined with context are often enough to identify a child.
-      - id: d
-        text: Post and delete it after a day
-        isCorrect: false
-        rationale: >-
-          Anything posted can be copied within seconds.
     explanation: >-
       Public statements, including social media, must not disclose client information.
       Small details — a setting, a milestone, a date — can identify a learner to people
@@ -253,28 +253,28 @@ questions:
       their supervisor was on leave and nobody was assigned. What should they do?
     options:
       - id: a
-        text: Report the lapse to the certifying board and their organization, and arrange supervision going forward
-        isCorrect: true
-        rationale: >-
-          Supervision noncompliance must be self-reported, and practice cannot continue
-          without a supervisor on record.
-      - id: b
-        text: Say nothing and make up the hours next month
-        isCorrect: false
-        rationale: >-
-          Supervision is required each calendar month and cannot be back-filled, and
-          concealing a lapse is itself a violation.
-      - id: c
         text: Continue working as usual since it was not their fault
         isCorrect: false
         rationale: >-
           Fault does not change the requirement; the technician is responsible for
           ensuring they are supervised.
-      - id: d
+      - id: b
         text: Wait for the supervisor to return and ask them to sign for the month
         isCorrect: false
         rationale: >-
           Signing for supervision that did not happen is falsification.
+      - id: c
+        text: Report the lapse to the certifying board and their organization, and arrange supervision going forward
+        isCorrect: true
+        rationale: >-
+          Supervision noncompliance must be self-reported, and practice cannot continue
+          without a supervisor on record.
+      - id: d
+        text: Say nothing and make up the hours next month
+        isCorrect: false
+        rationale: >-
+          Supervision is required each calendar month and cannot be back-filled, and
+          concealing a lapse is itself a violation.
     explanation: >-
       Technicians share responsibility for meeting supervision requirements at every
       organization where they work. A lapse is self-reported to the board, addressed with
@@ -345,28 +345,28 @@ questions:
       is happening. What is the appropriate action?
     options:
       - id: a
-        text: Make a report to the state's protective-services agency and inform the supervisor
-        isCorrect: true
-        rationale: >-
-          Reasonable suspicion is the reporting standard, the duty is personal, and the
-          report goes to the authorities as well as the supervisor.
-      - id: b
         text: Wait until there is proof before doing anything
         isCorrect: false
         rationale: >-
           Investigating is the agency's job; the reporter's duty begins at suspicion.
-      - id: c
+      - id: b
         text: Tell the supervisor and let them decide whether to report
         isCorrect: false
         rationale: >-
           Informing a supervisor is important but does not by itself discharge a
           mandated reporter's personal legal duty.
-      - id: d
+      - id: c
         text: Ask the household member about the injuries
         isCorrect: false
         rationale: >-
           Confronting a suspected person can endanger the learner and is not the
           technician's role.
+      - id: d
+        text: Make a report to the state's protective-services agency and inform the supervisor
+        isCorrect: true
+        rationale: >-
+          Reasonable suspicion is the reporting standard, the duty is personal, and the
+          report goes to the authorities as well as the supervisor.
     explanation: >-
       Most people who provide services to children are mandated reporters under state
       law. The standard is reasonable suspicion, the duty cannot be delegated to an
@@ -439,28 +439,28 @@ questions:
       to run. What should the technician do before the next session?
     options:
       - id: a
-        text: Ask for training on the procedure, and not run it until competent
-        isCorrect: true
-        rationale: >-
-          Technicians deliver only procedures they have been trained to perform;
-          requesting training is the responsible action.
-      - id: b
-        text: Look it up online and do their best
-        isCorrect: false
-        rationale: >-
-          Self-teaching from unknown sources is not training, and running an unfamiliar
-          procedure risks harm and poor integrity.
-      - id: c
-        text: Run it anyway since the supervisor wrote it
-        isCorrect: false
-        rationale: >-
-          A supervisor's authorship does not make the technician competent to deliver it.
-      - id: d
         text: Skip that part of the plan without telling anyone
         isCorrect: false
         rationale: >-
           Silently omitting a procedure is an unauthorized change and a documentation
           problem.
+      - id: b
+        text: Ask for training on the procedure, and not run it until competent
+        isCorrect: true
+        rationale: >-
+          Technicians deliver only procedures they have been trained to perform;
+          requesting training is the responsible action.
+      - id: c
+        text: Look it up online and do their best
+        isCorrect: false
+        rationale: >-
+          Self-teaching from unknown sources is not training, and running an unfamiliar
+          procedure risks harm and poor integrity.
+      - id: d
+        text: Run it anyway since the supervisor wrote it
+        isCorrect: false
+        rationale: >-
+          A supervisor's authorship does not make the technician competent to deliver it.
     explanation: >-
       Competence is built through training and supervised practice, typically with
       behavioral skills training. A technician who is asked to run something new should
@@ -486,30 +486,30 @@ questions:
       statement best describes how a technician should think about this?
     options:
       - id: a
+        text: The behavior is noncompliance to be worked through
+        isCorrect: false
+        rationale: >-
+          Treating every refusal as noncompliance ignores what the learner is
+          communicating and can damage the relationship.
+      - id: b
+        text: Consent from the parent covers the session, so the learner's reaction does not matter
+        isCorrect: false
+        rationale: >-
+          Consent from a guardian and assent from the learner are different things, and
+          both matter.
+      - id: c
+        text: The technician should end services for the day without telling anyone
+        isCorrect: false
+        rationale: >-
+          Responding to assent withdrawal is done within the plan and reported, not
+          improvised.
+      - id: d
         text: The learner may be withdrawing assent, which is information to act on within the plan and report to the supervisor
         isCorrect: true
         rationale: >-
           Assent is ongoing willingness, communicated in whatever way the learner can.
           Signs of withdrawal are taken seriously, handled as the plan directs, and
           reported.
-      - id: b
-        text: The behavior is noncompliance to be worked through
-        isCorrect: false
-        rationale: >-
-          Treating every refusal as noncompliance ignores what the learner is
-          communicating and can damage the relationship.
-      - id: c
-        text: Consent from the parent covers the session, so the learner's reaction does not matter
-        isCorrect: false
-        rationale: >-
-          Consent from a guardian and assent from the learner are different things, and
-          both matter.
-      - id: d
-        text: The technician should end services for the day without telling anyone
-        isCorrect: false
-        rationale: >-
-          Responding to assent withdrawal is done within the plan and reported, not
-          improvised.
     explanation: >-
       Assent is the learner's own ongoing agreement to participate, shown in behavior
       when it cannot be spoken. The ethics code expects practitioners to attend to it.
@@ -534,30 +534,30 @@ questions:
       but that they have never been shown. What does the ethics code require?
     options:
       - id: a
+        text: 'Ask the caregiver whether they are comfortable with it'
+        isCorrect: false
+        rationale: >-
+          The family’s comfort does not establish competence, and the decision is
+          not theirs to make.
+      - id: b
         text: 'Run it, since it is written in a plan'
         isCorrect: false
         rationale: >-
           A written plan authorises the procedure for that learner; it does not
           establish that this technician has been trained to deliver it.
-      - id: b
+      - id: c
         text: 'Say that they have not been trained on it and ask to be trained before running it'
         isCorrect: true
         rationale: >-
           The code limits delivery to procedures the technician has been trained
           on and has demonstrated they can perform. Saying so is the correct
           professional response.
-      - id: c
+      - id: d
         text: 'Watch a video of the procedure and then run it'
         isCorrect: false
         rationale: >-
           Watching is not the standard. Training normally includes being shown,
           practising and receiving feedback until performance meets criterion.
-      - id: d
-        text: 'Ask the caregiver whether they are comfortable with it'
-        isCorrect: false
-        rationale: >-
-          The family’s comfort does not establish competence, and the decision is
-          not theirs to make.
     explanation: >-
       Competence is established by training and demonstrated performance, not by a
       procedure being written down somewhere. Declining until trained is not
@@ -597,30 +597,30 @@ questions:
       running it unsupervised. Which response fits the code best?
     options:
       - id: a
+        text: 'Refuse to work with that learner at all'
+        isCorrect: false
+        rationale: >-
+          Declining the whole assignment is a larger step than the situation
+          needs, and the procedure is one part of the session.
+      - id: b
+        text: 'Ask another technician to run it instead without telling the supervisor'
+        isCorrect: false
+        rationale: >-
+          Reassigning work informally hides a training need from the person
+          responsible for addressing it.
+      - id: c
         text: 'Run it and hope accuracy improves with practice'
         isCorrect: false
         rationale: >-
           Practising a procedure incorrectly builds an inaccurate performance and
           produces data that misdescribe what the learner actually received.
-      - id: b
+      - id: d
         text: 'Ask for practice with feedback until performance is reliable, and say where they are up to'
         isCorrect: true
         rationale: >-
           Behavioural skills training — instruction, modelling, rehearsal and
           feedback — is the standard, and reporting your own current level is part
           of working under supervision.
-      - id: c
-        text: 'Refuse to work with that learner at all'
-        isCorrect: false
-        rationale: >-
-          Declining the whole assignment is a larger step than the situation
-          needs, and the procedure is one part of the session.
-      - id: d
-        text: 'Ask another technician to run it instead without telling the supervisor'
-        isCorrect: false
-        rationale: >-
-          Reassigning work informally hides a training need from the person
-          responsible for addressing it.
     explanation: >-
       Being partly trained is an ordinary state and the answer is to say so.
       Behavioural skills training exists because being told about a procedure does not
@@ -661,30 +661,30 @@ questions:
       of?
     options:
       - id: a
-        text: 'A monthly conversation about how sessions are going'
-        isCorrect: false
-        rationale: >-
-          Conversation alone omits the observation and the feedback on actual
-          performance that supervision is built around.
-      - id: b
         text: 'Observation of work with a client, feedback on performance, and practice of skills'
         isCorrect: true
         rationale: >-
           Supervision is performance-based: the supervisor watches the technician
           work, gives feedback on what they saw, and builds skills through
           practice.
-      - id: c
+      - id: b
         text: 'A written quiz completed each month'
         isCorrect: false
         rationale: >-
           A quiz tests knowledge rather than performance, and the requirement is
           about what the technician does with a client.
-      - id: d
+      - id: c
         text: 'Reviewing session notes without meeting'
         isCorrect: false
         rationale: >-
           Reviewing paperwork is useful but is not real-time contact and does not
           include observation of the technician working.
+      - id: d
+        text: 'A monthly conversation about how sessions are going'
+        isCorrect: false
+        rationale: >-
+          Conversation alone omits the observation and the feedback on actual
+          performance that supervision is built around.
     explanation: >-
       Supervision is meant to change what happens in sessions, which is why it
       involves being watched with a client and receiving feedback rather than only
@@ -726,31 +726,31 @@ questions:
       with no observation for three months. What should they do?
     options:
       - id: a
-        text: 'Nothing, since contacts did take place'
-        isCorrect: false
-        rationale: >-
-          Contacts happening is not the same as the requirement being met, and
-          observation is a specified part of it.
-      - id: b
         text: 'Raise it with the supervisor in writing and, if it continues, with the organisation'
         isCorrect: true
         rationale: >-
           The technician has an obligation to practise under supervision that
           meets the requirement, and raising a shortfall is part of that rather
           than a complaint about a person.
-      - id: c
+      - id: b
         text: 'Record the contacts as observed so the paperwork is complete'
         isCorrect: false
         rationale: >-
           Recording supervision that did not happen the way it is recorded is
           falsifying a document, which is a far more serious matter than the
           shortfall itself.
-      - id: d
+      - id: c
         text: 'Stop practising immediately without telling anybody'
         isCorrect: false
         rationale: >-
           Withdrawing without notice leaves learners without a technician and does
           not address the problem with anyone who can fix it.
+      - id: d
+        text: 'Nothing, since contacts did take place'
+        isCorrect: false
+        rationale: >-
+          Contacts happening is not the same as the requirement being met, and
+          observation is a specified part of it.
     explanation: >-
       Both the technician and the supervisor carry obligations here. A shortfall
       raised in writing is a problem being managed; one left unraised becomes the
@@ -792,30 +792,30 @@ questions:
       substantial amount. What does the code direct?
     options:
       - id: a
+        text: 'Decline it, explain the rule warmly, and tell the supervisor it was offered'
+        isCorrect: true
+        rationale: >-
+          Gifts of more than nominal value are restricted. Declining kindly,
+          giving the reason once, and reporting it is the complete response.
+      - id: b
+        text: 'Accept it and share it with colleagues'
+        isCorrect: false
+        rationale: >-
+          Sharing it does not change that it was accepted, nor the relationship it
+          creates with the family.
+      - id: c
+        text: 'Accept it if the organisation never finds out'
+        isCorrect: false
+        rationale: >-
+          Concealment converts a boundary question into a dishonesty question and
+          makes the situation considerably worse.
+      - id: d
         text: 'Accept it, because refusing would be rude'
         isCorrect: false
         rationale: >-
           Politeness does not resolve it. Gifts of substantial value create an
           obligation that can affect professional judgement, which is why they are
           limited.
-      - id: b
-        text: 'Decline it, explain the rule warmly, and tell the supervisor it was offered'
-        isCorrect: true
-        rationale: >-
-          Gifts of more than nominal value are restricted. Declining kindly,
-          giving the reason once, and reporting it is the complete response.
-      - id: c
-        text: 'Accept it and share it with colleagues'
-        isCorrect: false
-        rationale: >-
-          Sharing it does not change that it was accepted, nor the relationship it
-          creates with the family.
-      - id: d
-        text: 'Accept it if the organisation never finds out'
-        isCorrect: false
-        rationale: >-
-          Concealment converts a boundary question into a dishonesty question and
-          makes the situation considerably worse.
     explanation: >-
       Both codes limit giving and accepting gifts to items of nominal value, because
       gifts create obligations that sit awkwardly with professional judgement. The
@@ -921,30 +921,30 @@ questions:
       their family eats. What is the appropriate response from the technician?
     options:
       - id: a
-        text: 'Explain that the programme is evidence-based and continue as written'
-        isCorrect: false
-        rationale: >-
-          Citing evidence does not answer the objection, and a programme a family
-          will not run at home is not going to work whatever its evidence base.
-      - id: b
         text: 'Record what the caregiver said and pass it to the supervising analyst promptly'
         isCorrect: true
         rationale: >-
           The family’s values are part of what the goal and the procedure have to
           fit. Relaying it is the technician’s part; adapting the programme is the
           analyst’s.
-      - id: c
+      - id: b
         text: 'Change the routine to match the family’s preference'
         isCorrect: false
         rationale: >-
           Changing a procedure is a programme change, however reasonable the
           reason.
-      - id: d
+      - id: c
         text: 'Ask the family to follow the programme at home and their own routine elsewhere'
         isCorrect: false
         rationale: >-
           Asking a family to set aside their own practice in their own home is not
           an adaptation, and it is not the technician’s request to make.
+      - id: d
+        text: 'Explain that the programme is evidence-based and continue as written'
+        isCorrect: false
+        rationale: >-
+          Citing evidence does not answer the objection, and a programme a family
+          will not run at home is not going to work whatever its evidence base.
     explanation: >-
       Cultural responsiveness means the assessment, the goals and the procedures fit
       the people who have to live with them. A technician’s role is to notice the
@@ -988,31 +988,31 @@ questions:
       of them here?
     options:
       - id: a
+        text: 'Raise it directly with the family as a concern about their commitment'
+        isCorrect: false
+        rationale: >-
+          That confronts a family with a judgement rather than asking what would
+          make participation possible.
+      - id: b
         text: 'Examine the assumption and consider what else could explain the pattern'
         isCorrect: true
         rationale: >-
           Cultural humility is an ongoing self-examining stance. Shift work,
           transport, other children and previous experiences of services all
           produce the same attendance pattern as disinterest.
-      - id: b
+      - id: c
         text: 'Record the family as non-compliant in the session note'
         isCorrect: false
         rationale: >-
           "Non-compliant" is a conclusion about the family rather than an
           observation, and writing it into the record makes the assumption
           durable.
-      - id: c
+      - id: d
         text: 'Reduce the number of goals because the family will not participate'
         isCorrect: false
         rationale: >-
           Changing goals is a programme decision, and here it would be made on the
           basis of an untested assumption.
-      - id: d
-        text: 'Raise it directly with the family as a concern about their commitment'
-        isCorrect: false
-        rationale: >-
-          That confronts a family with a judgement rather than asking what would
-          make participation possible.
     explanation: >-
       The stance the code describes is directed at oneself: noticing an assumption,
       holding it loosely, and finding out. What looks like disinterest is frequently a

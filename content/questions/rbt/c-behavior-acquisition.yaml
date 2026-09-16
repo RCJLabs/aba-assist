@@ -10,28 +10,28 @@ questions:
       instruction?
     options:
       - id: a
-        text: A consequence — reinforcement for a correct response or the program's error-correction step — and then a brief pause before the next trial
-        isCorrect: true
-        rationale: >-
-          Each trial has a clear beginning, a response, a consequence and an inter-trial
-          interval before the next instruction.
-      - id: b
-        text: The same instruction repeated until the learner answers correctly
-        isCorrect: false
-        rationale: >-
-          Repeating the instruction without a consequence blurs the trial and teaches
-          the learner that the first instruction does not count.
-      - id: c
         text: A five-minute break regardless of the response
         isCorrect: false
         rationale: >-
           A long break after every trial is neither a consequence tied to the response
           nor a typical inter-trial interval.
-      - id: d
+      - id: b
         text: Immediate movement to a different program
         isCorrect: false
         rationale: >-
           Switching programs is not part of the trial structure.
+      - id: c
+        text: A consequence — reinforcement for a correct response or the program's error-correction step — and then a brief pause before the next trial
+        isCorrect: true
+        rationale: >-
+          Each trial has a clear beginning, a response, a consequence and an inter-trial
+          interval before the next instruction.
+      - id: d
+        text: The same instruction repeated until the learner answers correctly
+        isCorrect: false
+        rationale: >-
+          Repeating the instruction without a consequence blurs the trial and teaches
+          the learner that the first instruction does not count.
     explanation: >-
       A discrete trial has a discriminative stimulus, an optional prompt, a response, a
       consequence and an inter-trial interval. The consequence differs for correct and
@@ -72,29 +72,29 @@ questions:
       teaching approach is this?
     options:
       - id: a
+        text: Discrete-trial teaching at the table
+        isCorrect: false
+        rationale: >-
+          Discrete-trial teaching is initiated by the technician with a planned
+          instruction, usually with contrived reinforcers.
+      - id: b
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping reinforces successive approximations of a new response form; here a
+          known response is being occasioned and reinforced.
+      - id: c
+        text: Time-out
+        isCorrect: false
+        rationale: >-
+          Nothing is being removed; the learner gains access to what they wanted.
+      - id: d
         text: Naturalistic teaching in the learner's own moment of motivation
         isCorrect: true
         rationale: >-
           The learner's interest set up the teaching opportunity, and the natural
           consequence — getting the blocks — is the reinforcer. That is incidental or
           naturalistic teaching.
-      - id: b
-        text: Discrete-trial teaching at the table
-        isCorrect: false
-        rationale: >-
-          Discrete-trial teaching is initiated by the technician with a planned
-          instruction, usually with contrived reinforcers.
-      - id: c
-        text: Shaping
-        isCorrect: false
-        rationale: >-
-          Shaping reinforces successive approximations of a new response form; here a
-          known response is being occasioned and reinforced.
-      - id: d
-        text: Time-out
-        isCorrect: false
-        rationale: >-
-          Nothing is being removed; the learner gains access to what they wanted.
     explanation: >-
       Naturalistic teaching uses the learner's own initiation and the natural reinforcer.
       Because the learner wants the item, motivation is built in, and because the
@@ -119,27 +119,27 @@ questions:
       window. What should the technician do next?
     options:
       - id: a
-        text: Deliver the verbal prompt and wait the response window again
-        isCorrect: true
-        rationale: >-
-          Least-to-most starts at the least intrusive level and moves up one level at a
-          time only as needed.
-      - id: b
         text: Deliver the physical prompt to make sure the response occurs
         isCorrect: false
         rationale: >-
           Jumping to the most intrusive prompt is most-to-least, not least-to-most, and
           it gives more help than the procedure allows.
-      - id: c
+      - id: b
         text: Repeat the instruction more loudly
         isCorrect: false
         rationale: >-
           A repeated instruction is a new trial, not a prompt level.
-      - id: d
+      - id: c
         text: End the trial and score it as incorrect
         isCorrect: false
         rationale: >-
           The procedure calls for prompting after no response, not for ending the trial.
+      - id: d
+        text: Deliver the verbal prompt and wait the response window again
+        isCorrect: true
+        rationale: >-
+          Least-to-most starts at the least intrusive level and moves up one level at a
+          time only as needed.
     explanation: >-
       In least-to-most prompting the learner first gets a chance to respond
       independently, then increasingly intrusive prompts are added one level at a time
@@ -164,27 +164,27 @@ questions:
       choice?
     options:
       - id: a
+        text: It allows the learner to make errors and learn from them
+        isCorrect: false
+        rationale: >-
+          Allowing errors is the opposite of the reason this procedure is chosen.
+      - id: b
         text: It keeps errors low while the skill is first being learned
         isCorrect: true
         rationale: >-
           Starting with enough help to guarantee a correct response and fading from
           there prevents the learner from practicing errors.
-      - id: b
+      - id: c
         text: It gives the least possible help from the first trial
         isCorrect: false
         rationale: >-
           That describes least-to-most prompting.
-      - id: c
+      - id: d
         text: It removes the need for prompt fading
         isCorrect: false
         rationale: >-
           Fading is built into the procedure; the prompts are reduced across trials as
           the learner succeeds.
-      - id: d
-        text: It allows the learner to make errors and learn from them
-        isCorrect: false
-        rationale: >-
-          Allowing errors is the opposite of the reason this procedure is chosen.
     explanation: >-
       Most-to-least prompting begins with the level of help needed for success and fades
       downward, which is close to errorless. It suits new skills and learners who make
@@ -209,28 +209,28 @@ questions:
       seconds. Which prompt-fading procedure is this?
     options:
       - id: a
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping changes the criterion for reinforcement, not the timing of a prompt.
+      - id: b
         text: Progressive time delay
         isCorrect: true
         rationale: >-
           Delivering the prompt immediately at first and then inserting a growing delay
           before it is progressive time delay.
-      - id: b
+      - id: c
         text: Stimulus fading
         isCorrect: false
         rationale: >-
           Stimulus fading changes a feature of the materials, such as size or color; here
           the timing of a verbal prompt changes.
-      - id: c
+      - id: d
         text: Least-to-most prompting
         isCorrect: false
         rationale: >-
           Least-to-most adds prompt levels within a trial; it does not manipulate the
           delay before a single prompt.
-      - id: d
-        text: Shaping
-        isCorrect: false
-        rationale: >-
-          Shaping changes the criterion for reinforcement, not the timing of a prompt.
     explanation: >-
       Time delay fades a prompt by waiting longer before giving it, so the learner has
       a chance to respond to the natural cue first. Responses that come before the prompt
@@ -344,28 +344,28 @@ questions:
       change to teaching is most likely to help the skill generalize?
     options:
       - id: a
-        text: Teach with many different cups, in different places, with different people
-        isCorrect: true
-        rationale: >-
-          Multiple-exemplar training exposes the learner to the range of stimuli the
-          skill must work with, so responding is not tied to one object.
-      - id: b
         text: Run more trials with the blue cup
         isCorrect: false
         rationale: >-
           More practice with the same stimulus strengthens control by that stimulus
           alone.
-      - id: c
+      - id: b
         text: Stop reinforcing correct labels of the blue cup
         isCorrect: false
         rationale: >-
           Extinction of the correct response does nothing to extend it to new cups.
-      - id: d
+      - id: c
         text: Wait for the skill to generalize on its own
         isCorrect: false
         rationale: >-
           Generalization has to be planned for; hoping is the strategy that reliably
           fails.
+      - id: d
+        text: Teach with many different cups, in different places, with different people
+        isCorrect: true
+        rationale: >-
+          Multiple-exemplar training exposes the learner to the range of stimuli the
+          skill must work with, so responding is not tied to one object.
     explanation: >-
       Stokes and Baer's most dependable strategy for generalization is to train with
       sufficient examples — varied stimuli, settings and people — so that the relevant
@@ -390,27 +390,27 @@ questions:
       explanation?
     options:
       - id: a
-        text: Tokens work only because they can be exchanged for backup reinforcers
-        isCorrect: true
-        rationale: >-
-          A token is a conditioned reinforcer whose value comes from the exchange. With
-          no backup reinforcers the pairing breaks down and the tokens lose their effect.
-      - id: b
         text: The learner does not like stars
         isCorrect: false
         rationale: >-
           Tokens are not meant to be liked for themselves; their value is borrowed from
           what they buy.
-      - id: c
+      - id: b
         text: Too many stars were delivered
         isCorrect: false
         rationale: >-
           The amount is not the issue when nothing can be exchanged.
-      - id: d
+      - id: c
         text: The tasks were too easy
         isCorrect: false
         rationale: >-
           Task difficulty does not explain why the tokens themselves stopped working.
+      - id: d
+        text: Tokens work only because they can be exchanged for backup reinforcers
+        isCorrect: true
+        rationale: >-
+          A token is a conditioned reinforcer whose value comes from the exchange. With
+          no backup reinforcers the pairing breaks down and the tokens lose their effect.
     explanation: >-
       In a token economy the tokens are generalized conditioned reinforcers. They keep
       their value only through regular exchange for backup reinforcers. A system without
@@ -435,28 +435,28 @@ questions:
       best describes what happened?
     options:
       - id: a
-        text: Ratio strain from thinning the schedule too quickly
-        isCorrect: true
-        rationale: >-
-          A large, sudden increase in the response requirement produces a breakdown in
-          responding known as ratio strain.
-      - id: b
         text: Satiation
         isCorrect: false
         rationale: >-
           Satiation comes from too much access to the reinforcer, not too little.
-      - id: c
+      - id: b
         text: Spontaneous recovery
         isCorrect: false
         rationale: >-
           Spontaneous recovery is the return of an extinguished behavior, not the
           collapse of a reinforced one.
-      - id: d
+      - id: c
         text: Stimulus generalization
         isCorrect: false
         rationale: >-
           Generalization concerns responding to new stimuli, not the schedule of
           reinforcement.
+      - id: d
+        text: Ratio strain from thinning the schedule too quickly
+        isCorrect: true
+        rationale: >-
+          A large, sudden increase in the response requirement produces a breakdown in
+          responding known as ratio strain.
     explanation: >-
       Schedules are thinned gradually so behavior continues under leaner reinforcement.
       Thinning too fast produces ratio strain — pausing, erratic responding or stopping
@@ -524,27 +524,27 @@ questions:
       technician says "wave." Which statement best describes this?
     options:
       - id: a
-        text: The instruction has stimulus control over clapping
-        isCorrect: true
-        rationale: >-
-          Clapping occurs in the presence of one instruction and not the other, which is
-          what it means for a stimulus to control a response.
-      - id: b
         text: Clapping is under automatic reinforcement
         isCorrect: false
         rationale: >-
           Nothing here concerns what maintains clapping; it concerns what occasions it.
-      - id: c
+      - id: b
         text: The learner has not yet learned to clap
         isCorrect: false
         rationale: >-
           The learner claps reliably when asked; the skill is present and discriminated.
-      - id: d
+      - id: c
         text: The behavior has generalized to all instructions
         isCorrect: false
         rationale: >-
           Clapping to every instruction would be a failure of discrimination, the
           opposite of what is described.
+      - id: d
+        text: The instruction has stimulus control over clapping
+        isCorrect: true
+        rationale: >-
+          Clapping occurs in the presence of one instruction and not the other, which is
+          what it means for a stimulus to control a response.
     explanation: >-
       Stimulus control means a response is more likely in the presence of a particular
       stimulus because of a history of reinforcement in its presence. Responding to
@@ -614,29 +614,29 @@ questions:
       responding increases when tokens are delivered. What best explains the change?
     options:
       - id: a
-        text: 'The tokens became reinforcing through pairing with established reinforcers'
-        isCorrect: true
-        rationale: >-
-          A conditioned reinforcer works because of a learning history. Repeated
-          exchange for items that already function as reinforcers is that history.
-      - id: b
-        text: 'The tokens satisfied a biological need'
-        isCorrect: false
-        rationale: >-
-          That describes an unconditioned reinforcer, which works without any
-          learning history. A plastic token has no such property.
-      - id: c
-        text: 'The learner became more motivated in general'
-        isCorrect: false
-        rationale: >-
-          Nothing changed about deprivation or the value of anything else. The
-          specific change is that tokens now do something they did not do before.
-      - id: d
         text: 'The instructions were clearer in the second week'
         isCorrect: false
         rationale: >-
           Instruction quality was not what changed. The tokens themselves acquired
           an effect they did not have at the outset.
+      - id: b
+        text: 'The tokens became reinforcing through pairing with established reinforcers'
+        isCorrect: true
+        rationale: >-
+          A conditioned reinforcer works because of a learning history. Repeated
+          exchange for items that already function as reinforcers is that history.
+      - id: c
+        text: 'The tokens satisfied a biological need'
+        isCorrect: false
+        rationale: >-
+          That describes an unconditioned reinforcer, which works without any
+          learning history. A plastic token has no such property.
+      - id: d
+        text: 'The learner became more motivated in general'
+        isCorrect: false
+        rationale: >-
+          Nothing changed about deprivation or the value of anything else. The
+          specific change is that tokens now do something they did not do before.
     explanation: >-
       Unconditioned reinforcers work without a learning history; conditioned
       reinforcers acquire their effect through pairing with things that already
@@ -683,28 +683,28 @@ questions:
       than a token exchangeable for one specific snack?
     options:
       - id: a
+        text: 'It has been paired with punishment'
+        isCorrect: false
+        rationale: >-
+          Pairing with punishment would make it aversive rather than reinforcing.
+      - id: b
         text: 'It takes longer to deliver'
         isCorrect: false
         rationale: >-
           Delivery time is not what maintains the effect, and a slower reinforcer
           is generally worse rather than better.
-      - id: b
+      - id: c
         text: 'Its effect does not depend on the learner being deprived of one particular thing'
         isCorrect: true
         rationale: >-
           A generalized conditioned reinforcer is backed by several reinforcers,
           so satiation on any one of them does not remove its value.
-      - id: c
+      - id: d
         text: 'It is easier for the technician to count'
         isCorrect: false
         rationale: >-
           Counting convenience is a practical matter and has no bearing on why the
           token keeps working.
-      - id: d
-        text: 'It has been paired with punishment'
-        isCorrect: false
-        rationale: >-
-          Pairing with punishment would make it aversive rather than reinforcing.
     explanation: >-
       A generalized conditioned reinforcer is one backed by many different
       reinforcers, which is why money works. Satiation on any single backup does not
@@ -751,30 +751,30 @@ questions:
       being taught five new ones. Which describes the correct arrangement?
     options:
       - id: a
+        text: 'The twenty mastered targets can be dropped entirely'
+        isCorrect: false
+        rationale: >-
+          Skills that are never revisited can be lost. Maintenance exists
+          precisely because mastery at one point does not guarantee mastery later.
+      - id: b
+        text: 'Maintenance means teaching the same targets again from scratch'
+        isCorrect: false
+        rationale: >-
+          Maintenance is a check on retained responding, not a repeat of the
+          teaching sequence.
+      - id: c
         text: 'All twenty-five targets should be run as acquisition trials each session'
         isCorrect: false
         rationale: >-
           Running mastered targets as acquisition wastes teaching time and gives
           the learner mostly-easy trials, which tells nobody anything new.
-      - id: b
+      - id: d
         text: 'The five new targets are acquisition; the twenty mastered ones need periodic maintenance checks'
         isCorrect: true
         rationale: >-
           Acquisition teaches what the learner cannot yet do. Maintenance confirms
           that what was learned is still there, which is a different purpose and a
           much lighter schedule.
-      - id: c
-        text: 'The twenty mastered targets can be dropped entirely'
-        isCorrect: false
-        rationale: >-
-          Skills that are never revisited can be lost. Maintenance exists
-          precisely because mastery at one point does not guarantee mastery later.
-      - id: d
-        text: 'Maintenance means teaching the same targets again from scratch'
-        isCorrect: false
-        rationale: >-
-          Maintenance is a check on retained responding, not a repeat of the
-          teaching sequence.
     explanation: >-
       Acquisition and maintenance answer different questions: can the learner do this
       yet, and does the learner still do it. Confusing them either wastes teaching
@@ -947,29 +947,29 @@ questions:
       prompt, and never before it. What does this pattern most likely indicate?
     options:
       - id: a
-        text: 'The skill has been mastered'
-        isCorrect: false
-        rationale: >-
-          Mastery means responding without the prompt. Perfect accuracy that is
-          entirely prompt-dependent is not mastery of the target response.
-      - id: b
-        text: 'Stimulus control has transferred to the prompt rather than to the natural cue'
-        isCorrect: true
-        rationale: >-
-          The prompt is now what occasions the response. Transfer-of-control
-          procedures exist exactly for this situation.
-      - id: c
-        text: 'The reinforcer is too strong'
-        isCorrect: false
-        rationale: >-
-          Reinforcer strength does not determine which stimulus occasions
-          responding.
-      - id: d
         text: 'The task analysis has too few steps'
         isCorrect: false
         rationale: >-
           Step size affects how teachable each step is, not whether control sits
           with the prompt or the natural cue.
+      - id: b
+        text: 'The skill has been mastered'
+        isCorrect: false
+        rationale: >-
+          Mastery means responding without the prompt. Perfect accuracy that is
+          entirely prompt-dependent is not mastery of the target response.
+      - id: c
+        text: 'Stimulus control has transferred to the prompt rather than to the natural cue'
+        isCorrect: true
+        rationale: >-
+          The prompt is now what occasions the response. Transfer-of-control
+          procedures exist exactly for this situation.
+      - id: d
+        text: 'The reinforcer is too strong'
+        isCorrect: false
+        rationale: >-
+          Reinforcer strength does not determine which stimulus occasions
+          responding.
     explanation: >-
       The goal is responding under the natural discriminative stimulus, not under the
       prompt. Reliable responding that only ever follows the prompt means control has
@@ -1016,30 +1016,30 @@ questions:
       reason for arranging teaching so that errors are unlikely?
     options:
       - id: a
-        text: 'It makes sessions shorter'
-        isCorrect: false
-        rationale: >-
-          Session length is not the point, and errorless arrangements often
-          require more careful setup rather than less.
-      - id: b
         text: 'Repeated errors can become part of the learner’s pattern of responding and are hard to undo'
         isCorrect: true
         rationale: >-
           Errors that are practised get stronger. Arranging teaching so the
           correct response occurs from the start avoids building a competing
           history.
-      - id: c
+      - id: b
         text: 'It removes the need for reinforcement'
         isCorrect: false
         rationale: >-
           Errorless arrangements still reinforce correct responding; what they
           change is how likely an error is.
-      - id: d
+      - id: c
         text: 'It guarantees generalization'
         isCorrect: false
         rationale: >-
           Generalization has to be programmed separately. Nothing about errorless
           teaching produces it on its own.
+      - id: d
+        text: 'It makes sessions shorter'
+        isCorrect: false
+        rationale: >-
+          Session length is not the point, and errorless arrangements often
+          require more careful setup rather than less.
     explanation: >-
       Errorless teaching front-loads assistance so the correct response occurs from
       the first trial, then fades it. The rationale is that practised errors persist
@@ -1086,30 +1086,30 @@ questions:
       technician do next?
     options:
       - id: a
+        text: 'Withhold reinforcement entirely until the full word occurs'
+        isCorrect: false
+        rationale: >-
+          Waiting for the terminal response is not shaping. If the learner could
+          produce it, shaping would not be needed.
+      - id: b
         text: 'Continue reinforcing the first sound until the whole word appears'
         isCorrect: false
         rationale: >-
           Reinforcing the current level indefinitely maintains it rather than
           moving it. Shaping requires the criterion to advance.
-      - id: b
+      - id: c
         text: 'Reinforce responses closer to the target and stop reinforcing the previous approximation'
         isCorrect: true
         rationale: >-
           Shaping works by differential reinforcement of successive
           approximations: the criterion moves and the earlier form stops being
           reinforced.
-      - id: c
+      - id: d
         text: 'Reinforce every vocalisation the learner makes'
         isCorrect: false
         rationale: >-
           Reinforcing everything removes the differential part, and the response
           drifts rather than approaching the target.
-      - id: d
-        text: 'Withhold reinforcement entirely until the full word occurs'
-        isCorrect: false
-        rationale: >-
-          Waiting for the terminal response is not shaping. If the learner could
-          produce it, shaping would not be needed.
     explanation: >-
       Shaping is differential reinforcement of successive approximations. Both halves
       matter: reinforcing the closer form and no longer reinforcing the earlier one.
@@ -1150,28 +1150,28 @@ questions:
       chaining. Which step does the learner perform independently first?
     options:
       - id: a
-        text: 'The first step'
-        isCorrect: false
-        rationale: >-
-          That is forward chaining, which starts at the beginning of the sequence.
-      - id: b
-        text: 'The last step'
-        isCorrect: true
-        rationale: >-
-          Backward chaining teaches the final step first, so every trial ends with
-          the learner completing the chain and contacting the natural reinforcer.
-      - id: c
         text: 'Whichever step is easiest'
         isCorrect: false
         rationale: >-
           That is neither forward nor backward chaining. The order in a chaining
           procedure follows the sequence rather than difficulty.
-      - id: d
+      - id: b
         text: 'All six steps at once'
         isCorrect: false
         rationale: >-
           That is total-task presentation, a third arrangement the program did not
           specify.
+      - id: c
+        text: 'The first step'
+        isCorrect: false
+        rationale: >-
+          That is forward chaining, which starts at the beginning of the sequence.
+      - id: d
+        text: 'The last step'
+        isCorrect: true
+        rationale: >-
+          Backward chaining teaches the final step first, so every trial ends with
+          the learner completing the chain and contacting the natural reinforcer.
     explanation: >-
       Backward chaining teaches the last step first and works backward, so every trial
       finishes with the learner completing the chain. Forward chaining starts at the
@@ -1275,31 +1275,31 @@ questions:
       Which sequence describes a discrete trial as programs usually specify it?
     options:
       - id: a
-        text: 'Instruction, response, consequence, brief pause before the next trial'
-        isCorrect: true
-        rationale: >-
-          A discrete trial has a clear beginning and end: an antecedent, the
-          learner’s response, a programmed consequence, and a short interval
-          separating it from the next.
-      - id: b
         text: 'Continuous teaching with no separation between opportunities'
         isCorrect: false
         rationale: >-
           That is closer to naturalistic teaching in the flow of activity, not the
           discrete structure the question describes.
-      - id: c
+      - id: b
         text: 'Consequence, instruction, response'
         isCorrect: false
         rationale: >-
           A consequence follows a response. Delivering it first would make it an
           antecedent event rather than a consequence.
-      - id: d
+      - id: c
         text: 'Instruction repeated until the learner responds correctly'
         isCorrect: false
         rationale: >-
           Repeating an instruction with no programmed consequence or inter-trial
           interval is not a trial structure, and repeated instructions weaken the
           instruction’s control.
+      - id: d
+        text: 'Instruction, response, consequence, brief pause before the next trial'
+        isCorrect: true
+        rationale: >-
+          A discrete trial has a clear beginning and end: an antecedent, the
+          learner’s response, a programmed consequence, and a short interval
+          separating it from the next.
     explanation: >-
       The structure of a discrete trial — antecedent, response, consequence, inter-
       trial interval — is what makes each opportunity countable and each trial
@@ -1409,29 +1409,29 @@ questions:
       with other staff. What does the program most likely need to arrange?
     options:
       - id: a
-        text: 'More trials in the therapy room'
-        isCorrect: false
-        rationale: >-
-          Additional practice in the setting where the skill already occurs does
-          not address the settings where it does not.
-      - id: b
-        text: 'Teaching across several people, settings and materials'
-        isCorrect: true
-        rationale: >-
-          Generalization is programmed, not assumed. Training with multiple
-          exemplars across people and settings is the standard way to produce it.
-      - id: c
         text: 'A stronger reinforcer in the therapy room'
         isCorrect: false
         rationale: >-
           A stronger reinforcer in one setting makes responding there more likely,
           which is the opposite of what is needed.
-      - id: d
+      - id: b
         text: 'Waiting for the skill to transfer on its own'
         isCorrect: false
         rationale: >-
           Skills taught in one narrow context frequently do not transfer without
           being programmed to.
+      - id: c
+        text: 'More trials in the therapy room'
+        isCorrect: false
+        rationale: >-
+          Additional practice in the setting where the skill already occurs does
+          not address the settings where it does not.
+      - id: d
+        text: 'Teaching across several people, settings and materials'
+        isCorrect: true
+        rationale: >-
+          Generalization is programmed, not assumed. Training with multiple
+          exemplars across people and settings is the standard way to produce it.
     explanation: >-
       Generalization has to be built into teaching rather than hoped for afterwards.
       Multiple exemplars, varied settings and people, and teaching loosely are the
@@ -1478,30 +1478,30 @@ questions:
       technician do?
     options:
       - id: a
+        text: 'Run the system as written and provide the opportunity to earn the fifth token'
+        isCorrect: true
+        rationale: >-
+          The exchange rate is part of the written programme. Running it as
+          specified keeps both the contingency and the data intact.
+      - id: b
+        text: 'Remove a token as a consequence for asking'
+        isCorrect: false
+        rationale: >-
+          Response cost is a punishment component that must be authorised in the
+          written plan. Improvising it is outside the technician’s role.
+      - id: c
+        text: 'Give the break without any tokens'
+        isCorrect: false
+        rationale: >-
+          Delivering the backup reinforcer non-contingently undoes the contingency
+          the token system depends on.
+      - id: d
         text: 'Allow the exchange to avoid escalation'
         isCorrect: false
         rationale: >-
           Changing the exchange rule in the moment teaches that the rule moves
           under pressure, which makes the system less effective for everyone using
           it.
-      - id: b
-        text: 'Run the system as written and provide the opportunity to earn the fifth token'
-        isCorrect: true
-        rationale: >-
-          The exchange rate is part of the written programme. Running it as
-          specified keeps both the contingency and the data intact.
-      - id: c
-        text: 'Remove a token as a consequence for asking'
-        isCorrect: false
-        rationale: >-
-          Response cost is a punishment component that must be authorised in the
-          written plan. Improvising it is outside the technician’s role.
-      - id: d
-        text: 'Give the break without any tokens'
-        isCorrect: false
-        rationale: >-
-          Delivering the backup reinforcer non-contingently undoes the contingency
-          the token system depends on.
     explanation: >-
       A token economy works because the rules are consistent: what earns a token, what
       tokens buy, and at what rate. Changing any of those in the moment is a programme
@@ -1618,28 +1618,28 @@ questions:
       on the card-handing response?
     options:
       - id: a
-        text: 'Positive reinforcement'
-        isCorrect: false
-        rationale: >-
-          Nothing is added following the response. What changes is that the demand
-          is taken away.
-      - id: b
-        text: 'Negative reinforcement'
-        isCorrect: true
-        rationale: >-
-          The response is followed by removal of the demand and the response
-          increases. Removal plus an increase is negative reinforcement.
-      - id: c
-        text: 'Positive punishment'
-        isCorrect: false
-        rationale: >-
-          Punishment would mean the response became less likely. It increased.
-      - id: d
         text: 'Extinction'
         isCorrect: false
         rationale: >-
           Extinction is withholding the maintaining consequence. Here the
           consequence is being delivered reliably.
+      - id: b
+        text: 'Positive reinforcement'
+        isCorrect: false
+        rationale: >-
+          Nothing is added following the response. What changes is that the demand
+          is taken away.
+      - id: c
+        text: 'Negative reinforcement'
+        isCorrect: true
+        rationale: >-
+          The response is followed by removal of the demand and the response
+          increases. Removal plus an increase is negative reinforcement.
+      - id: d
+        text: 'Positive punishment'
+        isCorrect: false
+        rationale: >-
+          Punishment would mean the response became less likely. It increased.
     explanation: >-
       Negative reinforcement is defined by removal of something followed by an
       increase in the response. The word "negative" describes the removal, not whether
@@ -1687,29 +1687,29 @@ questions:
       red and not blue. What role does the blue card now serve?
     options:
       - id: a
-        text: 'A discriminative stimulus for responding'
-        isCorrect: false
-        rationale: >-
-          The red card is the discriminative stimulus for the reinforced response.
-          Blue signals the opposite.
-      - id: b
         text: 'A stimulus in the presence of which the response is not reinforced'
         isCorrect: true
         rationale: >-
           That is an S-delta: a condition signalling that responding will not
           produce reinforcement, so responding under it declines.
-      - id: c
+      - id: b
         text: 'A conditioned reinforcer'
         isCorrect: false
         rationale: >-
           Nothing has paired the blue card with reinforcement; the arrangement is
           designed to do the reverse.
-      - id: d
+      - id: c
         text: 'A motivating operation'
         isCorrect: false
         rationale: >-
           A motivating operation alters the value of a consequence. The blue card
           signals availability, which is a different function.
+      - id: d
+        text: 'A discriminative stimulus for responding'
+        isCorrect: false
+        rationale: >-
+          The red card is the discriminative stimulus for the reinforced response.
+          Blue signals the opposite.
     explanation: >-
       Discrimination training produces differential responding across two conditions:
       the discriminative stimulus signals reinforcement is available for that

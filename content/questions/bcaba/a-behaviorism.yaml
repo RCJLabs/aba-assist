@@ -12,29 +12,29 @@ questions:
     negated: true
     options:
       - id: a
-        text: Control
-        isCorrect: true
-        rationale: >-
-          Control means producing a change in the behaviour by changing the conditions it
-          depends on. Knowing when it happens is not the same as being able to change it.
-      - id: b
-        text: Description
-        isCorrect: false
-        rationale: >-
-          Description is already done: the team can say what the behaviour looks like and how
-          often it occurs.
-      - id: c
-        text: Prediction
-        isCorrect: false
-        rationale: >-
-          Prediction is already done: the team can state the conditions under which the
-          behaviour is more and less likely.
-      - id: d
         text: Replication
         isCorrect: false
         rationale: >-
           Replication is a method used to establish the goals, not one of the three goals a
           natural science of behaviour pursues.
+      - id: b
+        text: Control
+        isCorrect: true
+        rationale: >-
+          Control means producing a change in the behaviour by changing the conditions it
+          depends on. Knowing when it happens is not the same as being able to change it.
+      - id: c
+        text: Description
+        isCorrect: false
+        rationale: >-
+          Description is already done: the team can say what the behaviour looks like and how
+          often it occurs.
+      - id: d
+        text: Prediction
+        isCorrect: false
+        rationale: >-
+          Prediction is already done: the team can state the conditions under which the
+          behaviour is more and less likely.
     explanation: >-
       Description, prediction and control are the three goals, in that order of demands.
       Description says what happens; prediction says when it will happen again; control
@@ -74,28 +74,28 @@ questions:
       than only prediction?
     options:
       - id: a
-        text: Removing and then reinstating the antecedent changes the behaviour both times
-        isCorrect: true
-        rationale: >-
-          Changing a condition and seeing the behaviour follow it, twice, is a demonstration
-          of control rather than of association.
-      - id: b
-        text: The behaviour occurs in 80% of observed sessions
-        isCorrect: false
-        rationale: >-
-          A rate is a description. It says what happened, not what would change it.
-      - id: c
         text: The behaviour is more likely on days the learner slept badly
         isCorrect: false
         rationale: >-
           This is prediction. The relation is observed rather than produced, and sleep was not
           manipulated.
-      - id: d
+      - id: b
         text: Two observers agree on when the behaviour occurred
         isCorrect: false
         rationale: >-
           Observer agreement is a measurement property. It makes the data trustworthy without
           saying anything about causes.
+      - id: c
+        text: Removing and then reinstating the antecedent changes the behaviour both times
+        isCorrect: true
+        rationale: >-
+          Changing a condition and seeing the behaviour follow it, twice, is a demonstration
+          of control rather than of association.
+      - id: d
+        text: The behaviour occurs in 80% of observed sessions
+        isCorrect: false
+        rationale: >-
+          A rate is a description. It says what happened, not what would change it.
     explanation: >-
       Control is demonstrated by manipulation, not by observation. The everyday version of
       this mistake is treating a strong correlate as a cause, which then produces a plan
@@ -120,29 +120,29 @@ questions:
       following?
     options:
       - id: a
-        text: Treating behaviour as a subject matter in its own right, lawful and observable
-        isCorrect: true
-        rationale: >-
-          A natural science studies its subject directly and assumes it is orderly. Behaviour
-          is the subject matter, not an indirect readout of something else.
-      - id: b
         text: Explaining behaviour by the mental states that accompany it
         isCorrect: false
         rationale: >-
           That reverses the commitment: it treats behaviour as evidence about something else
           rather than as the thing being explained.
-      - id: c
+      - id: b
         text: Restricting study to behaviour that can be seen by a second observer
         isCorrect: false
         rationale: >-
           Private events are within the subject matter. What is required is that claims about
           them be disciplined, not that they be excluded.
-      - id: d
+      - id: c
         text: Using only group comparison designs, as other sciences do
         isCorrect: false
         rationale: >-
           Method does not define the commitment, and single-case designs are the field's
           standard tool for showing lawful relations.
+      - id: d
+        text: Treating behaviour as a subject matter in its own right, lawful and observable
+        isCorrect: true
+        rationale: >-
+          A natural science studies its subject directly and assumes it is orderly. Behaviour
+          is the subject matter, not an indirect readout of something else.
     explanation: >-
       The natural-science commitment is what separates this field from approaches that
       treat behaviour as a symptom. It has a practical consequence: the things you change
@@ -214,29 +214,29 @@ questions:
       considered first?
     options:
       - id: a
-        text: That satiation or fatigue has temporarily reduced the value of the reinforcers
-        isCorrect: true
-        rationale: >-
-          A simple, already-established account — a motivating operation has changed — should
-          be ruled out before a broader and vaguer one is adopted.
-      - id: b
-        text: That an underlying language disorder has emerged
-        isCorrect: false
-        rationale: >-
-          This is a larger claim requiring far more evidence, and it is outside an assistant
-          analyst's scope to assert.
-      - id: c
         text: That the learner is choosing not to communicate
         isCorrect: false
         rationale: >-
           This restates the observation as an intention and explains nothing that can be
           changed.
-      - id: d
+      - id: b
         text: That the teaching procedure was never effective
         isCorrect: false
         rationale: >-
           The procedure was effective until the journey, so this contradicts the history
           rather than simplifying it.
+      - id: c
+        text: That satiation or fatigue has temporarily reduced the value of the reinforcers
+        isCorrect: true
+        rationale: >-
+          A simple, already-established account — a motivating operation has changed — should
+          be ruled out before a broader and vaguer one is adopted.
+      - id: d
+        text: That an underlying language disorder has emerged
+        isCorrect: false
+        rationale: >-
+          This is a larger claim requiring far more evidence, and it is outside an assistant
+          analyst's scope to assert.
     explanation: >-
       Parsimony asks for the simplest account that fits, not the most interesting one.
       Here the ordinary explanation is a change in motivating operations, which is both
@@ -261,29 +261,29 @@ questions:
       together?
     options:
       - id: a
-        text: Collecting data on the procedure you believe in, and changing course when it does not work
-        isCorrect: true
-        rationale: >-
-          Empiricism supplies the data; philosophic doubt is the willingness to let the data
-          overturn what you expected.
-      - id: b
-        text: Relying on the judgement of the most experienced person in the room
-        isCorrect: false
-        rationale: >-
-          Experience is useful, but deferring to it in place of data is the opposite of both
-          attitudes.
-      - id: c
         text: Choosing procedures that have published support and not measuring them again
         isCorrect: false
         rationale: >-
           Evidence for a procedure in general is not evidence that it is working for this
           person now, which is what measurement establishes.
-      - id: d
+      - id: b
         text: Withholding judgement until a large sample is available
         isCorrect: false
         rationale: >-
           Single-case methods exist precisely so that decisions about one person can be made
           from that person's data.
+      - id: c
+        text: Collecting data on the procedure you believe in, and changing course when it does not work
+        isCorrect: true
+        rationale: >-
+          Empiricism supplies the data; philosophic doubt is the willingness to let the data
+          overturn what you expected.
+      - id: d
+        text: Relying on the judgement of the most experienced person in the room
+        isCorrect: false
+        rationale: >-
+          Experience is useful, but deferring to it in place of data is the opposite of both
+          attitudes.
     explanation: >-
       These two attitudes only do their work as a pair. Data without doubt gets used to
       confirm what was already believed; doubt without data has nothing to resolve it.
@@ -354,28 +354,28 @@ questions:
       Which statement is an explanatory fiction?
     options:
       - id: a
-        text: 'He hits because he is aggressive.'
-        isCorrect: true
-        rationale: >-
-          The explanation is the behaviour renamed. Nothing new is offered, and there is
-          nothing to change.
-      - id: b
         text: 'He hits when a demand is presented and hitting has ended demands before.'
         isCorrect: false
         rationale: >-
           This names an antecedent and a history of consequences, both of which can be checked
           and changed.
-      - id: c
+      - id: b
         text: 'He hits more on days he arrives without breakfast.'
         isCorrect: false
         rationale: >-
           This identifies a setting event. It may be incomplete, but it points at something
           real.
-      - id: d
+      - id: c
         text: 'He hits at a mean rate of four times per hour.'
         isCorrect: false
         rationale: >-
           This is a measurement, not an explanation, and does not pretend to be one.
+      - id: d
+        text: 'He hits because he is aggressive.'
+        isCorrect: true
+        rationale: >-
+          The explanation is the behaviour renamed. Nothing new is offered, and there is
+          nothing to change.
     explanation: >-
       An explanatory fiction takes a description, turns it into a noun, and then offers
       the noun as the cause. The test is whether the explanation adds anything you could
@@ -400,29 +400,29 @@ questions:
       Rewriting this in radical behaviourist terms would most appropriately produce:
     options:
       - id: a
-        text: A statement of what conditions have and have not followed work completion
-        isCorrect: true
-        rationale: >-
-          It relocates the account to the environment — what happens after work is finished —
-          which is both observable and changeable.
-      - id: b
         text: A statement of the learner's reinforcement history in general terms
         isCorrect: false
         rationale: >-
           Closer, but still too vague to act on; the specific contingency around this task is
           what is needed.
-      - id: c
+      - id: b
         text: A statement that motivation cannot be measured and so cannot be discussed
         isCorrect: false
         rationale: >-
           Radical behaviourism does not refuse to discuss motivation; it analyses it as
           motivating operations and history.
-      - id: d
+      - id: c
         text: A statement of the learner's diagnosis and its known features
         isCorrect: false
         rationale: >-
           A diagnosis describes a group. It does not explain this learner's behaviour, and the
           assistant analyst should not be reasoning from it.
+      - id: d
+        text: A statement of what conditions have and have not followed work completion
+        isCorrect: true
+        rationale: >-
+          It relocates the account to the environment — what happens after work is finished —
+          which is both observable and changeable.
     explanation: >-
       The rewrite is the whole skill. Saying a learner lacks motivation ends the
       conversation. Saying that finishing work has so far produced nothing the learner
@@ -447,27 +447,27 @@ questions:
       no applied aim. This work belongs to:
     options:
       - id: a
+        text: Professional practice guided by behaviour analysis
+        isCorrect: false
+        rationale: >-
+          Professional practice is service delivery to clients, which this is not.
+      - id: b
         text: The experimental analysis of behaviour
         isCorrect: true
         rationale: >-
           Basic laboratory research into behavioural processes is the experimental analysis of
           behaviour.
-      - id: b
+      - id: c
         text: Applied behaviour analysis
         isCorrect: false
         rationale: >-
           Applied work addresses socially significant behaviour in the settings where it
           matters.
-      - id: c
+      - id: d
         text: Behaviourism
         isCorrect: false
         rationale: >-
           Behaviourism is the philosophy of the science, not the research activity itself.
-      - id: d
-        text: Professional practice guided by behaviour analysis
-        isCorrect: false
-        rationale: >-
-          Professional practice is service delivery to clients, which this is not.
     explanation: >-
       The four are commonly confused because they share vocabulary. Philosophy asks what
       the science assumes; the experimental analysis discovers basic processes; applied
@@ -493,28 +493,28 @@ questions:
       Which activity is professional practice rather than applied behaviour analysis?
     options:
       - id: a
-        text: Running a learner's programme and billing a funder for the session
-        isCorrect: true
-        rationale: >-
-          Service delivery to a client, under the rules of a profession, is professional
-          practice. It uses the science without itself being research.
-      - id: b
         text: Using a multiple baseline to test whether a new teaching procedure works
         isCorrect: false
         rationale: >-
           Testing a procedure with an experimental design and socially significant behaviour
           is applied behaviour analysis.
-      - id: c
+      - id: b
         text: Publishing a component analysis of a classroom intervention
         isCorrect: false
         rationale: >-
           Analysis of a socially significant intervention, reported publicly, is applied
           research.
-      - id: d
+      - id: c
         text: Demonstrating that a treatment effect replicates across three learners
         isCorrect: false
         rationale: >-
           Replication across participants is applied research method, not service delivery.
+      - id: d
+        text: Running a learner's programme and billing a funder for the session
+        isCorrect: true
+        rationale: >-
+          Service delivery to a client, under the rules of a profession, is professional
+          practice. It uses the science without itself being research.
     explanation: >-
       The line is often blurred in a working day, which is exactly why the distinction is
       examined. Practice borrows from the applied science; it does not automatically
@@ -537,26 +537,26 @@ questions:
       of behaviour does not?
     options:
       - id: a
+        text: Ethical standards governing certificants
+        isCorrect: false
+        rationale: >-
+          Ethical standards come from the profession, not from the philosophy of the science.
+      - id: b
         text: An account of what the science assumes and what counts as an explanation
         isCorrect: true
         rationale: >-
           Philosophy settles the ground rules: what the subject matter is, and what an
           acceptable explanation looks like.
-      - id: b
+      - id: c
         text: Experimental evidence about basic behavioural processes
         isCorrect: false
         rationale: >-
           That is precisely what the experimental analysis of behaviour contributes.
-      - id: c
+      - id: d
         text: Procedures for changing socially significant behaviour
         isCorrect: false
         rationale: >-
           Those come from applied behaviour analysis.
-      - id: d
-        text: Ethical standards governing certificants
-        isCorrect: false
-        rationale: >-
-          Ethical standards come from the profession, not from the philosophy of the science.
     explanation: >-
       Philosophy is not decoration here. The refusal to accept an inner cause as an
       explanation is a philosophical commitment, and it is what pushes every analysis back
@@ -579,28 +579,28 @@ questions:
       staff member in one room. Which of the defining dimensions is not yet satisfied?
     options:
       - id: a
-        text: Generality
-        isCorrect: true
-        rationale: >-
-          Generality requires that behaviour change last over time, appear in other settings,
-          or spread to other behaviours. None has been shown.
-      - id: b
-        text: Applied
-        isCorrect: false
-        rationale: >-
-          The target — asking for help — is socially significant, so this dimension is
-          satisfied.
-      - id: c
-        text: Behavioural
-        isCorrect: false
-        rationale: >-
-          The skill is observable and measurable, so this dimension is satisfied.
-      - id: d
         text: Effective
         isCorrect: false
         rationale: >-
           The behaviour did change to a meaningful degree with that staff member, so there is
           evidence of effectiveness as far as it goes.
+      - id: b
+        text: Generality
+        isCorrect: true
+        rationale: >-
+          Generality requires that behaviour change last over time, appear in other settings,
+          or spread to other behaviours. None has been shown.
+      - id: c
+        text: Applied
+        isCorrect: false
+        rationale: >-
+          The target — asking for help — is socially significant, so this dimension is
+          satisfied.
+      - id: d
+        text: Behavioural
+        isCorrect: false
+        rationale: >-
+          The skill is observable and measurable, so this dimension is satisfied.
     explanation: >-
       Generality is the dimension most often left to chance, and the one most likely to be
       missing when a programme looks successful in session and invisible at home. It has

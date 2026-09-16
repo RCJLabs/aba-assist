@@ -65,26 +65,26 @@ questions:
       A goal states "will request a break appropriately". What is most obviously missing?
     options:
       - id: a
+        text: The date the goal was written
+        isCorrect: false
+        rationale: >-
+          Useful administratively but not part of what makes the goal measurable.
+      - id: b
         text: A definition of what counts as appropriate, and a performance criterion
         isCorrect: true
         rationale: >-
           "Appropriately" requires a judgement, and no criterion says how often or how well.
-      - id: b
+      - id: c
         text: The setting in which the goal applies
         isCorrect: false
         rationale: >-
           Setting is worth adding, but the undefined term and the missing criterion are the
           larger problems.
-      - id: c
+      - id: d
         text: The reinforcer that will be used
         isCorrect: false
         rationale: >-
           A goal states the target; the procedure states the reinforcer.
-      - id: d
-        text: The date the goal was written
-        isCorrect: false
-        rationale: >-
-          Useful administratively but not part of what makes the goal measurable.
     explanation: >-
       Words like appropriately, consistently and independently are where measurable goals
       quietly stop being measurable. Each needs replacing with what the observer would
@@ -106,26 +106,26 @@ questions:
       Why should a goal statement include the learner's current performance?
     options:
       - id: a
+        text: It determines which reinforcer will be used
+        isCorrect: false
+        rationale: >-
+          Reinforcer selection comes from preference and reinforcer assessment.
+      - id: b
+        text: It establishes the function of the behaviour
+        isCorrect: false
+        rationale: >-
+          Function comes from functional assessment, not from a performance level.
+      - id: c
         text: Without it, the size and significance of the intended change cannot be judged
         isCorrect: true
         rationale: >-
           A target of eight out of ten means something very different from a baseline of seven
           than from a baseline of zero.
-      - id: b
+      - id: d
         text: It is required by every funder
         isCorrect: false
         rationale: >-
           Requirements vary, and the clinical reason stands regardless.
-      - id: c
-        text: It determines which reinforcer will be used
-        isCorrect: false
-        rationale: >-
-          Reinforcer selection comes from preference and reinforcer assessment.
-      - id: d
-        text: It establishes the function of the behaviour
-        isCorrect: false
-        rationale: >-
-          Function comes from functional assessment, not from a performance level.
     explanation: >-
       Goals without a starting point are unreadable a year later, and they make it
       impossible to tell an ambitious goal from a goal that had already been met when it
@@ -198,27 +198,27 @@ questions:
       What does it mean to say a procedure is evidence-based for a particular use?
     options:
       - id: a
+        text: It worked for a similar learner in the same service
+        isCorrect: false
+        rationale: >-
+          A local anecdote is weaker still, though it may be worth investigating.
+      - id: b
         text: Research supports it for that population and purpose, and it is judged against this learner's data
         isCorrect: true
         rationale: >-
           Evidence-based practice combines research support with individual data and the
           client's context, not research alone.
-      - id: b
+      - id: c
         text: It has been published in a peer-reviewed journal at least once
         isCorrect: false
         rationale: >-
           A single publication does not establish an evidence base.
-      - id: c
+      - id: d
         text: It is widely used in the field
         isCorrect: false
         rationale: >-
           Widespread use and evidence are not the same thing, and several common procedures
           are poorly supported.
-      - id: d
-        text: It worked for a similar learner in the same service
-        isCorrect: false
-        rationale: >-
-          A local anecdote is weaker still, though it may be worth investigating.
     explanation: >-
       The definition has three parts for a reason. Research says a procedure is worth
       trying; the learner's own data says whether it is working; the family's context says
@@ -285,27 +285,27 @@ questions:
       this means:
     options:
       - id: a
-        text: Any effect cannot be attributed to a particular component
-        isCorrect: true
-        rationale: >-
-          Simultaneous introduction leaves each component untested individually.
-      - id: b
-        text: The plan is stronger because it addresses several variables
-        isCorrect: false
-        rationale: >-
-          It may be more effective, and it is less informative, which is a real cost over
-          time.
-      - id: c
         text: The plan cannot be effective
         isCorrect: false
         rationale: >-
           Packages are frequently effective; the limitation is on what can be concluded.
-      - id: d
+      - id: b
         text: The plan violates the requirement for treatment integrity
         isCorrect: false
         rationale: >-
           Integrity concerns whether components are delivered as written, not how many there
           are.
+      - id: c
+        text: Any effect cannot be attributed to a particular component
+        isCorrect: true
+        rationale: >-
+          Simultaneous introduction leaves each component untested individually.
+      - id: d
+        text: The plan is stronger because it addresses several variables
+        isCorrect: false
+        rationale: >-
+          It may be more effective, and it is less informative, which is a real cost over
+          time.
     explanation: >-
       Packages are sometimes the right clinical choice, particularly under time pressure.
       The cost is that the service accumulates components nobody can drop, because nobody
@@ -334,28 +334,28 @@ questions:
       plan should:
     options:
       - id: a
-        text: Select the less restrictive procedure
-        isCorrect: true
-        rationale: >-
-          Where effectiveness is comparable, the less restrictive option is required.
-      - id: b
-        text: Select the more restrictive procedure for faster results
-        isCorrect: false
-        rationale: >-
-          Speed is not established here, and it would not justify greater restriction if it
-          were.
-      - id: c
-        text: Alternate between them to compare
-        isCorrect: false
-        rationale: >-
-          Exposing a learner to a more restrictive procedure to make a comparison that is not
-          needed is not justified.
-      - id: d
         text: Let the family choose between them
         isCorrect: false
         rationale: >-
           Family input matters, but the clinician cannot delegate the restrictiveness
           judgement.
+      - id: b
+        text: Select the less restrictive procedure
+        isCorrect: true
+        rationale: >-
+          Where effectiveness is comparable, the less restrictive option is required.
+      - id: c
+        text: Select the more restrictive procedure for faster results
+        isCorrect: false
+        rationale: >-
+          Speed is not established here, and it would not justify greater restriction if it
+          were.
+      - id: d
+        text: Alternate between them to compare
+        isCorrect: false
+        rationale: >-
+          Exposing a learner to a more restrictive procedure to make a comparison that is not
+          needed is not justified.
     explanation: >-
       The least restrictive alternative is a decision rule rather than a preference. It
       applies most strongly precisely when the options are close, because that is when the
@@ -512,28 +512,28 @@ questions:
       weeks, requests should be:
     options:
       - id: a
-        text: Honoured essentially every time they occur
-        isCorrect: true
-        rationale: >-
-          A dense schedule early on establishes the new response as reliable and efficient.
-      - id: b
         text: Honoured on a variable schedule from the start
         isCorrect: false
         rationale: >-
           Thinning too early makes the new response unreliable and the old one competitive
           again.
-      - id: c
+      - id: b
         text: Honoured only when the learner has completed some work
         isCorrect: false
         rationale: >-
           Adding a requirement immediately makes the request less efficient than the behaviour
           it replaces.
-      - id: d
+      - id: c
         text: Honoured only if the learner asks calmly
         isCorrect: false
         rationale: >-
           Adding a form requirement at the outset is a second contingency the learner has not
           been taught.
+      - id: d
+        text: Honoured essentially every time they occur
+        isCorrect: true
+        rationale: >-
+          A dense schedule early on establishes the new response as reliable and efficient.
     explanation: >-
       Thinning comes later, deliberately, and often through a signalled delay. Attaching
       conditions in week one is the most common way functional communication training
@@ -564,26 +564,26 @@ questions:
       introduced?
     options:
       - id: a
+        text: Because reduction procedures are prohibited without one
+        isCorrect: false
+        rationale: >-
+          Not an absolute prohibition, though good practice and most policies require it.
+      - id: b
+        text: Because it makes data collection easier
+        isCorrect: false
+        rationale: >-
+          Data collection is not the reason.
+      - id: c
+        text: Because funders require two goals per plan
+        isCorrect: false
+        rationale: >-
+          Funding structure is not a clinical rationale.
+      - id: d
         text: Otherwise the learner loses a way of producing an outcome and has no alternative
         isCorrect: true
         rationale: >-
           Reducing a behaviour without a replacement removes access to something the learner
           needs without providing another route to it.
-      - id: b
-        text: Because reduction procedures are prohibited without one
-        isCorrect: false
-        rationale: >-
-          Not an absolute prohibition, though good practice and most policies require it.
-      - id: c
-        text: Because it makes data collection easier
-        isCorrect: false
-        rationale: >-
-          Data collection is not the reason.
-      - id: d
-        text: Because funders require two goals per plan
-        isCorrect: false
-        rationale: >-
-          Funding structure is not a clinical rationale.
     explanation: >-
       This is the clinical core of a reduction plan. Removing a behaviour that was working
       for the learner, with nothing in its place, predicts either its return or the
@@ -607,28 +607,28 @@ questions:
       behaviour continues. The most likely reason is:
     options:
       - id: a
+        text: The learner prefers the original behaviour
+        isCorrect: false
+        rationale: >-
+          Preference here is a restatement of the outcome rather than an explanation of it.
+      - id: b
         text: At home the request is less efficient than the original behaviour
         isCorrect: true
         rationale: >-
           If requests are slower, less reliable or more effortful at home, the original
           behaviour remains the better option there.
-      - id: b
+      - id: c
         text: The learner has not generalised the response form
         isCorrect: false
         rationale: >-
           Possible, but the differential outcome across settings points to the consequences
           rather than the form.
-      - id: c
+      - id: d
         text: The home environment is less structured
         isCorrect: false
         rationale: >-
           Structure may contribute, but the analysis still comes back to what each response
           produces.
-      - id: d
-        text: The learner prefers the original behaviour
-        isCorrect: false
-        rationale: >-
-          Preference here is a restatement of the outcome rather than an explanation of it.
     explanation: >-
       When a replacement works in one setting and not another, look at what each response
       produces in each setting rather than at the learner. Usually requests are honoured
@@ -656,26 +656,26 @@ questions:
       Which combination of effects should a plan using extinction anticipate?
     options:
       - id: a
+        text: An increase in the alternative behaviour only
+        isCorrect: false
+        rationale: >-
+          An alternative will increase only if one has been taught and reinforced.
+      - id: b
         text: A temporary increase in rate or intensity, and later reappearance after a pause
         isCorrect: true
         rationale: >-
           Extinction bursts and spontaneous recovery are both well documented and both need a
           planned response.
-      - id: b
+      - id: c
         text: An immediate and permanent reduction
         isCorrect: false
         rationale: >-
           Immediate permanent reduction is not what the literature describes.
-      - id: c
+      - id: d
         text: A gradual reduction with no side effects
         isCorrect: false
         rationale: >-
           Side effects including emotional responding are common.
-      - id: d
-        text: An increase in the alternative behaviour only
-        isCorrect: false
-        rationale: >-
-          An alternative will increase only if one has been taught and reinforced.
     explanation: >-
       Planning for the burst and for recovery is what allows staff to hold the procedure
       at the two moments it is most likely to be abandoned — and abandoning it at either
@@ -700,28 +700,28 @@ questions:
       producing reinforcement. This is best described as:
     options:
       - id: a
-        text: Resurgence
-        isCorrect: true
-        rationale: >-
-          Resurgence is the return of a previously reinforced response when a more recently
-          reinforced one is no longer effective.
-      - id: b
-        text: Spontaneous recovery
-        isCorrect: false
-        rationale: >-
-          Spontaneous recovery follows a period without the behaviour, not a failure of the
-          alternative.
-      - id: c
         text: An extinction burst
         isCorrect: false
         rationale: >-
           A burst is an intensification of the response being extinguished, early in the
           procedure.
-      - id: d
+      - id: b
         text: Behavioural contrast
         isCorrect: false
         rationale: >-
           Contrast is a change in one condition following a change in another.
+      - id: c
+        text: Resurgence
+        isCorrect: true
+        rationale: >-
+          Resurgence is the return of a previously reinforced response when a more recently
+          reinforced one is no longer effective.
+      - id: d
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery follows a period without the behaviour, not a failure of the
+          alternative.
     explanation: >-
       Resurgence is why a replacement behaviour has to keep working. A team that stops
       honouring requests when the schedule gets busy will see the original behaviour
@@ -744,27 +744,27 @@ questions:
       anticipate?
     options:
       - id: a
+        text: Suppression of all untargeted behaviour
+        isCorrect: false
+        rationale: >-
+          Reinforcement strengthens a target; it does not suppress everything else.
+      - id: b
         text: Satiation reducing the reinforcer's effectiveness within a session
         isCorrect: true
         rationale: >-
           Repeated delivery of the same reinforcer reduces its value, which flattens
           responding mid-session.
-      - id: b
+      - id: c
         text: Permanent dependence on external reinforcement
         isCorrect: false
         rationale: >-
           This is a common worry rather than a documented inevitability, and thinning
           addresses it.
-      - id: c
+      - id: d
         text: Loss of the learner's existing skills
         isCorrect: false
         rationale: >-
           Reinforcing one behaviour does not remove others from the repertoire.
-      - id: d
-        text: Suppression of all untargeted behaviour
-        isCorrect: false
-        rationale: >-
-          Reinforcement strengthens a target; it does not suppress everything else.
     explanation: >-
       Satiation is the practical one, and it is easily managed by varying reinforcers and
       sampling preference at the start of a session. Naming the real risk matters more
@@ -789,27 +789,27 @@ questions:
       nothing changed. This pattern is:
     options:
       - id: a
-        text: Behavioural contrast
-        isCorrect: true
-        rationale: >-
-          A change in responding in one condition following a change in the contingencies of
-          another is contrast.
-      - id: b
         text: Stimulus generalization
         isCorrect: false
         rationale: >-
           Generalization would mean the reduction spread to the second setting, not the
           opposite.
-      - id: c
+      - id: b
         text: Resurgence
         isCorrect: false
         rationale: >-
           Resurgence follows the failure of a more recently reinforced alternative.
-      - id: d
+      - id: c
         text: An extinction burst
         isCorrect: false
         rationale: >-
           A burst occurs within the condition where reinforcement was withheld.
+      - id: d
+        text: Behavioural contrast
+        isCorrect: true
+        rationale: >-
+          A change in responding in one condition following a change in the contingencies of
+          another is contrast.
     explanation: >-
       Contrast is a reason to plan across settings rather than one at a time. A reduction
       that simply moves the behaviour somewhere else is not a result the learner benefits
@@ -832,27 +832,27 @@ questions:
       ineffective, the team should first check:
     options:
       - id: a
-        text: Whether the procedure has been delivered as written
-        isCorrect: true
-        rationale: >-
-          A procedure that was not run cannot be evaluated, and low integrity is the most
-          common explanation for flat data.
-      - id: b
-        text: Whether the goal was set too high
-        isCorrect: false
-        rationale: >-
-          Worth reviewing, but it does not explain an absence of any movement.
-      - id: c
-        text: Whether the learner's preferences have changed
-        isCorrect: false
-        rationale: >-
-          Relevant, and still second to whether the procedure was actually delivered.
-      - id: d
         text: Whether a different procedure would work better
         isCorrect: false
         rationale: >-
           Changing procedures before checking integrity risks discarding one that was never
           run.
+      - id: b
+        text: Whether the procedure has been delivered as written
+        isCorrect: true
+        rationale: >-
+          A procedure that was not run cannot be evaluated, and low integrity is the most
+          common explanation for flat data.
+      - id: c
+        text: Whether the goal was set too high
+        isCorrect: false
+        rationale: >-
+          Worth reviewing, but it does not explain an absence of any movement.
+      - id: d
+        text: Whether the learner's preferences have changed
+        isCorrect: false
+        rationale: >-
+          Relevant, and still second to whether the procedure was actually delivered.
     explanation: >-
       Integrity is checked first because it is both the most likely cause and the cheapest
       to establish. Abandoning procedures that were never delivered is how a service
@@ -874,27 +874,27 @@ questions:
       What is the most direct way to measure procedural integrity?
     options:
       - id: a
-        text: Observe sessions against a checklist of the procedure's steps
-        isCorrect: true
-        rationale: >-
-          Direct observation scored against the written steps measures what was actually done.
-      - id: b
-        text: Ask staff whether they followed the plan
-        isCorrect: false
-        rationale: >-
-          Self-report is a weak measure of performance, and not because staff are dishonest.
-      - id: c
         text: Review the learner's outcome data
         isCorrect: false
         rationale: >-
           Outcome data conflates integrity with effectiveness, which is the confusion to
           avoid.
-      - id: d
+      - id: b
         text: Check that staff attended the training
         isCorrect: false
         rationale: >-
           Attendance predicts performance poorly, which is why competency-based training
           exists.
+      - id: c
+        text: Observe sessions against a checklist of the procedure's steps
+        isCorrect: true
+        rationale: >-
+          Direct observation scored against the written steps measures what was actually done.
+      - id: d
+        text: Ask staff whether they followed the plan
+        isCorrect: false
+        rationale: >-
+          Self-report is a weak measure of performance, and not because staff are dishonest.
     explanation: >-
       Integrity is a measure of staff behaviour, and staff behaviour is measured the same
       way any behaviour is. A step checklist also doubles as the feedback tool, which is
@@ -923,25 +923,25 @@ questions:
       quietly changed. This is:
     options:
       - id: a
-        text: Treatment drift
-        isCorrect: true
-        rationale: >-
-          Gradual departure from the written procedure over time is drift.
-      - id: b
         text: Poor initial training
         isCorrect: false
         rationale: >-
           Initial performance was accurate, so training established the skill.
-      - id: c
+      - id: b
         text: A failure of the procedure
         isCorrect: false
         rationale: >-
           The procedure is no longer being run as written, so it has not been tested.
-      - id: d
+      - id: c
         text: Observer drift
         isCorrect: false
         rationale: >-
           Observer drift concerns how data is recorded, not how the procedure is delivered.
+      - id: d
+        text: Treatment drift
+        isCorrect: true
+        rationale: >-
+          Gradual departure from the written procedure over time is drift.
     explanation: >-
       Drift is normal and predictable rather than a staff failing. Periodic integrity
       checks and feedback are what hold a procedure in place; without them, drift is the
@@ -1004,27 +1004,27 @@ questions:
       integrity confirmed at 95%. The appropriate decision is:
     options:
       - id: a
-        text: Modify or replace the procedure, and say what the change is intended to test
-        isCorrect: true
-        rationale: >-
-          With integrity established, the procedure itself is what the data indicts.
-      - id: b
         text: Continue for another four weeks
         isCorrect: false
         rationale: >-
           Continuing an intervention with no effect and confirmed integrity costs the learner
           a month.
-      - id: c
+      - id: b
         text: Lower the goal so progress can be recorded
         isCorrect: false
         rationale: >-
           Changing the target to fit the data misrepresents the outcome.
-      - id: d
+      - id: c
         text: Add a second procedure alongside the first
         isCorrect: false
         rationale: >-
           Adding without removing accumulates untested components and makes the next decision
           harder.
+      - id: d
+        text: Modify or replace the procedure, and say what the change is intended to test
+        isCorrect: true
+        rationale: >-
+          With integrity established, the procedure itself is what the data indicts.
     explanation: >-
       Making the change explicit — what is being altered and what would count as it
       working — is what keeps a sequence of adjustments from becoming an untraceable
@@ -1047,27 +1047,27 @@ questions:
       The main risk is:
     options:
       - id: a
-        text: Abandoning an effective procedure before its effect could appear
-        isCorrect: true
-        rationale: >-
-          Three sessions is rarely enough to distinguish no effect from an effect not yet
-          visible.
-      - id: b
         text: Violating the treatment integrity requirement
         isCorrect: false
         rationale: >-
           Changing a procedure by decision is not an integrity failure, though it does end the
           test.
-      - id: c
+      - id: b
         text: Losing interobserver agreement
         isCorrect: false
         rationale: >-
           Agreement is unaffected by a change of procedure.
-      - id: d
+      - id: c
         text: Reducing the learner's assent to the programme
         isCorrect: false
         rationale: >-
           Possible in principle, but not the main risk in this decision.
+      - id: d
+        text: Abandoning an effective procedure before its effect could appear
+        isCorrect: true
+        rationale: >-
+          Three sessions is rarely enough to distinguish no effect from an effect not yet
+          visible.
     explanation: >-
       Deciding in advance how long a procedure gets, and what would count as a change,
       protects against both the premature switch and the opposite failure of running
@@ -1132,27 +1132,27 @@ questions:
       Why is including a classroom teacher in plan discussions more than a courtesy?
     options:
       - id: a
-        text: They will run the plan in the setting, and their constraints determine whether it works
-        isCorrect: true
-        rationale: >-
-          The person delivering the procedure holds the information that decides its
-          feasibility.
-      - id: b
-        text: It satisfies the requirement for consent
-        isCorrect: false
-        rationale: >-
-          Consent comes from the person with legal authority, not from the teacher.
-      - id: c
-        text: It allows the plan to be shortened
-        isCorrect: false
-        rationale: >-
-          Length is not the issue collaboration addresses.
-      - id: d
         text: It transfers responsibility for outcomes to the school
         isCorrect: false
         rationale: >-
           Collaboration does not move clinical responsibility, and framing it that way would
           be wrong.
+      - id: b
+        text: They will run the plan in the setting, and their constraints determine whether it works
+        isCorrect: true
+        rationale: >-
+          The person delivering the procedure holds the information that decides its
+          feasibility.
+      - id: c
+        text: It satisfies the requirement for consent
+        isCorrect: false
+        rationale: >-
+          Consent comes from the person with legal authority, not from the teacher.
+      - id: d
+        text: It allows the plan to be shortened
+        isCorrect: false
+        rationale: >-
+          Length is not the issue collaboration addresses.
     explanation: >-
       A plan written without the person who will run it is a plan written for a setting
       that does not exist. Their constraints are data about feasibility, not obstacles to
@@ -1174,25 +1174,25 @@ questions:
       Which practice best reflects including a family rather than informing them?
     options:
       - id: a
-        text: Bringing options with trade-offs and deciding together what fits their week
-        isCorrect: true
-        rationale: >-
-          Inclusion means the family's input can change the decision, not just receive it.
-      - id: b
         text: Sending a written summary of the plan before it begins
         isCorrect: false
         rationale: >-
           A summary informs; it does not give the family a part in the decision.
-      - id: c
+      - id: b
         text: Inviting the family to observe a session
         isCorrect: false
         rationale: >-
           Observation is valuable and still not participation in the decision.
-      - id: d
+      - id: c
         text: Asking the family to sign the plan document
         isCorrect: false
         rationale: >-
           A signature records agreement to a decision already made.
+      - id: d
+        text: Bringing options with trade-offs and deciding together what fits their week
+        isCorrect: true
+        rationale: >-
+          Inclusion means the family's input can change the decision, not just receive it.
     explanation: >-
       The test is whether anything in the plan would have been different if the family had
       answered differently. If not, they were informed rather than included.
@@ -1216,28 +1216,28 @@ questions:
       behaviour team, each using different prompting. The most likely consequence is:
     options:
       - id: a
-        text: Slower acquisition, because the prompting the learner contacts is inconsistent
-        isCorrect: true
-        rationale: >-
-          Inconsistent prompting and fading make transfer of stimulus control slower and less
-          reliable.
-      - id: b
         text: Faster generalisation, because the learner meets more variation
         isCorrect: false
         rationale: >-
           Unplanned inconsistency in the teaching procedure is not the same as planned
           variation in stimuli.
-      - id: c
+      - id: b
         text: No effect, since each professional works on different goals
         isCorrect: false
         rationale: >-
           They are prompting the same learner on overlapping skills, so the procedures
           interact.
-      - id: d
+      - id: c
         text: Improved assent, because the learner has more choice
         isCorrect: false
         rationale: >-
           Inconsistency between adults is not learner choice.
+      - id: d
+        text: Slower acquisition, because the prompting the learner contacts is inconsistent
+        isCorrect: true
+        rationale: >-
+          Inconsistent prompting and fading make transfer of stimulus control slower and less
+          reliable.
     explanation: >-
       Coordinating prompting across a team is unglamorous and is often the highest-yield
       thing available. It requires someone to convene the conversation, which is

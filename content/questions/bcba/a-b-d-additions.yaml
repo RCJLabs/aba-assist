@@ -10,27 +10,27 @@ questions:
       with nothing manipulated. This supports:
     options:
       - id: a
-        text: Prediction, but not control
-        isCorrect: true
-        rationale: >-
-          A correlation lets you anticipate one from the other without showing that changing
-          one changes the other.
-      - id: b
-        text: Control, because the relation is consistent
-        isCorrect: false
-        rationale: >-
-          Control requires manipulation; consistency of a correlation does not supply it.
-      - id: c
         text: Description only
         isCorrect: false
         rationale: >-
           The relation between two variables goes beyond describing either one.
-      - id: d
+      - id: b
         text: Replication
         isCorrect: false
         rationale: >-
           Replication is a method for confirming findings rather than a level of
           understanding.
+      - id: c
+        text: Prediction, but not control
+        isCorrect: true
+        rationale: >-
+          A correlation lets you anticipate one from the other without showing that changing
+          one changes the other.
+      - id: d
+        text: Control, because the relation is consistent
+        isCorrect: false
+        rationale: >-
+          Control requires manipulation; consistency of a correlation does not supply it.
     explanation: >-
       Science aims at description, prediction and control, and they are ordered by what
       they license. Correlational work supports prediction; only manipulation supports the
@@ -68,26 +68,26 @@ questions:
       The assumption of determinism in behaviour analysis commits the analyst to:
     options:
       - id: a
+        text: Believing behaviour cannot be changed
+        isCorrect: false
+        rationale: >-
+          Lawfulness is what makes deliberate change possible rather than impossible.
+      - id: b
+        text: Rejecting the existence of private events
+        isCorrect: false
+        rationale: >-
+          Radical behaviourism includes private events rather than denying them.
+      - id: c
+        text: Explaining behaviour by inner states
+        isCorrect: false
+        rationale: >-
+          That is mentalism, which determinism as used here works against.
+      - id: d
         text: Treating behaviour as lawful and its causes as discoverable in the environment
         isCorrect: true
         rationale: >-
           Determinism is the working assumption that behaviour has orderly causes that can be
           found.
-      - id: b
-        text: Believing behaviour cannot be changed
-        isCorrect: false
-        rationale: >-
-          Lawfulness is what makes deliberate change possible rather than impossible.
-      - id: c
-        text: Rejecting the existence of private events
-        isCorrect: false
-        rationale: >-
-          Radical behaviourism includes private events rather than denying them.
-      - id: d
-        text: Explaining behaviour by inner states
-        isCorrect: false
-        rationale: >-
-          That is mentalism, which determinism as used here works against.
     explanation: >-
       The philosophical assumptions do practical work. Determinism is why an unexplained
       behaviour is treated as a gap in the analysis rather than as evidence of something
@@ -201,26 +201,26 @@ questions:
       dimension?
     options:
       - id: a
-        text: Conceptually systematic
-        isCorrect: true
-        rationale: >-
-          Relating procedures to the underlying principles is what this dimension requires.
-      - id: b
         text: Technological
         isCorrect: false
         rationale: >-
           Technological means the description is complete enough to replicate, which is a
           different requirement.
-      - id: c
+      - id: b
         text: Effective
         isCorrect: false
         rationale: >-
           Effectiveness concerns whether the change is large enough to matter.
-      - id: d
+      - id: c
         text: Generality
         isCorrect: false
         rationale: >-
           Generality concerns whether change lasts, spreads and transfers.
+      - id: d
+        text: Conceptually systematic
+        isCorrect: true
+        rationale: >-
+          Relating procedures to the underlying principles is what this dimension requires.
     explanation: >-
       The seven dimensions are separable criteria, and two are easily conflated.
       Technological asks whether somebody else could run it from the description;
@@ -244,26 +244,26 @@ questions:
       practical difference. It fails which dimension?
     options:
       - id: a
+        text: Behavioural
+        isCorrect: false
+        rationale: >-
+          Behavioural concerns measuring behaviour itself rather than a proxy.
+      - id: b
         text: Effective
         isCorrect: true
         rationale: >-
           The dimension requires change large enough to be of practical value, not merely
           detectable.
-      - id: b
+      - id: c
         text: Applied
         isCorrect: false
         rationale: >-
           Applied concerns whether the behaviour is socially important, which it may well be.
-      - id: c
+      - id: d
         text: Analytic
         isCorrect: false
         rationale: >-
           Analytic concerns whether control was demonstrated.
-      - id: d
-        text: Behavioural
-        isCorrect: false
-        rationale: >-
-          Behavioural concerns measuring behaviour itself rather than a proxy.
     explanation: >-
       Effectiveness in this framework is a practical criterion rather than a statistical
       one. A change too small to matter to the people involved fails, which is the
@@ -288,26 +288,26 @@ questions:
       analyst:
     options:
       - id: a
+        text: Choose whichever account is most testable
+        isCorrect: false
+        rationale: >-
+          Testability matters and is a different criterion from simplicity.
+      - id: b
+        text: Prefer the account that fits the most cases
+        isCorrect: false
+        rationale: >-
+          Scope is not what parsimony concerns.
+      - id: c
+        text: Defer to the published literature
+        isCorrect: false
+        rationale: >-
+          The literature informs the analysis rather than replacing the reasoning.
+      - id: d
         text: Rule out the simpler explanations already available
         isCorrect: true
         rationale: >-
           Simple and established accounts are considered first, and complexity is added only
           when they fail.
-      - id: b
-        text: Choose whichever account is most testable
-        isCorrect: false
-        rationale: >-
-          Testability matters and is a different criterion from simplicity.
-      - id: c
-        text: Prefer the account that fits the most cases
-        isCorrect: false
-        rationale: >-
-          Scope is not what parsimony concerns.
-      - id: d
-        text: Defer to the published literature
-        isCorrect: false
-        rationale: >-
-          The literature informs the analysis rather than replacing the reasoning.
     explanation: >-
       Parsimony is a working rule, not a claim that the world is simple. In practice it
       means checking whether an ordinary contingency accounts for the behaviour before
@@ -371,26 +371,26 @@ questions:
       A fixed-interval schedule characteristically produces:
     options:
       - id: a
+        text: A high steady rate with a post-reinforcement pause
+        isCorrect: false
+        rationale: >-
+          That describes fixed ratio.
+      - id: b
+        text: A very high rate with no pausing
+        isCorrect: false
+        rationale: >-
+          That describes variable ratio.
+      - id: c
         text: A pause after reinforcement followed by accelerating responding towards the end of the interval
         isCorrect: true
         rationale: >-
           That pattern, seen as a scallop on a cumulative record, is the signature of fixed
           interval.
-      - id: b
+      - id: d
         text: A steady moderate rate throughout
         isCorrect: false
         rationale: >-
           That is the variable-interval pattern.
-      - id: c
-        text: A high steady rate with a post-reinforcement pause
-        isCorrect: false
-        rationale: >-
-          That describes fixed ratio.
-      - id: d
-        text: A very high rate with no pausing
-        isCorrect: false
-        rationale: >-
-          That describes variable ratio.
     explanation: >-
       The four basic schedules produce four recognisable patterns, and the patterns follow
       from what the schedule makes relevant: time or responses, fixed or variable. Being
@@ -464,26 +464,26 @@ questions:
       training. This demonstrates:
     options:
       - id: a
-        text: Symmetry
-        isCorrect: true
-        rationale: >-
-          Reversal of a trained conditional relation without training is symmetry.
-      - id: b
-        text: Reflexivity
-        isCorrect: false
-        rationale: >-
-          Reflexivity is matching a stimulus to itself.
-      - id: c
         text: Transitivity
         isCorrect: false
         rationale: >-
           Transitivity derives a relation between two stimuli through a shared third.
-      - id: d
+      - id: b
         text: Stimulus generalization
         isCorrect: false
         rationale: >-
           Generalization depends on physical similarity, while equivalence relations are
           arbitrary.
+      - id: c
+        text: Symmetry
+        isCorrect: true
+        rationale: >-
+          Reversal of a trained conditional relation without training is symmetry.
+      - id: d
+        text: Reflexivity
+        isCorrect: false
+        rationale: >-
+          Reflexivity is matching a stimulus to itself.
     explanation: >-
       The three defining relations are tested separately, and each is a different untaught
       outcome. A class is only demonstrated when reflexivity, symmetry and transitivity
@@ -555,26 +555,26 @@ questions:
       with nobody else involved. This is:
     options:
       - id: a
+        text: Automatic reinforcement
+        isCorrect: false
+        rationale: >-
+          Reinforcement would increase the behaviour, and this decreased.
+      - id: b
+        text: Extinction
+        isCorrect: false
+        rationale: >-
+          Extinction withholds a maintaining consequence rather than adding an aversive one.
+      - id: c
         text: Automatic punishment
         isCorrect: true
         rationale: >-
           The punishing consequence is produced by the behaviour itself rather than delivered
           by another person.
-      - id: b
+      - id: d
         text: Socially mediated punishment
         isCorrect: false
         rationale: >-
           Social mediation requires another person to deliver the consequence.
-      - id: c
-        text: Automatic reinforcement
-        isCorrect: false
-        rationale: >-
-          Reinforcement would increase the behaviour, and this decreased.
-      - id: d
-        text: Extinction
-        isCorrect: false
-        rationale: >-
-          Extinction withholds a maintaining consequence rather than adding an aversive one.
     explanation: >-
       The automatic and socially mediated distinction applies to punishment as well as
       reinforcement. It matters because automatic consequences cannot be manipulated by
@@ -603,26 +603,26 @@ questions:
       the trained one. This pattern is:
     options:
       - id: a
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          Response generalization varies the form of the response, not the stimulus.
+      - id: b
+        text: Stimulus equivalence
+        isCorrect: false
+        rationale: >-
+          Equivalence relations are arbitrary rather than based on physical similarity.
+      - id: c
         text: A generalization gradient
         isCorrect: true
         rationale: >-
           Responding graded by similarity to the trained stimulus is what a generalization
           gradient describes.
-      - id: b
+      - id: d
         text: A discrimination gradient reversal
         isCorrect: false
         rationale: >-
           Not a standard term for this pattern.
-      - id: c
-        text: Response generalization
-        isCorrect: false
-        rationale: >-
-          Response generalization varies the form of the response, not the stimulus.
-      - id: d
-        text: Stimulus equivalence
-        isCorrect: false
-        rationale: >-
-          Equivalence relations are arbitrary rather than based on physical similarity.
     explanation: >-
       A gradient shows how tightly stimulus control has been established. A steep gradient
       means narrow control and a flat one means broad control, and which is wanted depends
@@ -645,27 +645,27 @@ questions:
       Alongside a temporary increase in rate, operant extinction commonly produces:
     options:
       - id: a
+        text: Improved stimulus control
+        isCorrect: false
+        rationale: >-
+          Extinction does not sharpen stimulus control as a side effect.
+      - id: b
         text: Increased variability in the form of the response
         isCorrect: true
         rationale: >-
           Novel and previously reinforced forms appear when the usual response stops working,
           which is what makes extinction useful in shaping.
-      - id: b
+      - id: c
         text: Immediate and permanent cessation
         isCorrect: false
         rationale: >-
           Extinction produces gradual decline with characteristic disruption, not immediate
           cessation.
-      - id: c
+      - id: d
         text: A permanent reduction with no recovery
         isCorrect: false
         rationale: >-
           Spontaneous recovery after a break is well documented.
-      - id: d
-        text: Improved stimulus control
-        isCorrect: false
-        rationale: >-
-          Extinction does not sharpen stimulus control as a side effect.
     explanation: >-
       The disruption extinction produces is not only a nuisance. Increased variability is
       what shaping exploits, and resurgence of older forms is what makes relapse
@@ -687,26 +687,26 @@ questions:
       Presenting several easy requests immediately before a difficult one exploits:
     options:
       - id: a
+        text: Response generalization
+        isCorrect: false
+        rationale: >-
+          The responses are different demands rather than untaught forms of one response.
+      - id: b
+        text: Negative reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing is removed contingent on the behaviour.
+      - id: c
         text: Behavioural momentum, by building responding that persists into the harder request
         isCorrect: true
         rationale: >-
           A run of reinforced compliance increases the persistence of responding when the
           harder demand arrives.
-      - id: b
+      - id: d
         text: Stimulus equivalence
         isCorrect: false
         rationale: >-
           No derived relations are involved.
-      - id: c
-        text: Response generalization
-        isCorrect: false
-        rationale: >-
-          The responses are different demands rather than untaught forms of one response.
-      - id: d
-        text: Negative reinforcement
-        isCorrect: false
-        rationale: >-
-          Nothing is removed contingent on the behaviour.
     explanation: >-
       The high-probability request sequence is momentum applied. Its effect depends on the
       easy requests being genuinely high probability and reinforced, and on the difficult
@@ -737,25 +737,25 @@ questions:
       mand because it is:
     options:
       - id: a
-        text: Under the control of a motivating operation and specifies its reinforcer
-        isCorrect: true
-        rationale: >-
-          Mands are evoked by motivation and produce the specific consequence named.
-      - id: b
-        text: Under the control of a nonverbal stimulus
-        isCorrect: false
-        rationale: >-
-          That would make it a tact.
-      - id: c
-        text: A repetition of what somebody else said
-        isCorrect: false
-        rationale: >-
-          That would make it an echoic.
-      - id: d
         text: Evoked by another person's verbal behaviour
         isCorrect: false
         rationale: >-
           Verbal antecedent control without point-to-point correspondence is an intraverbal.
+      - id: b
+        text: Under the control of a motivating operation and specifies its reinforcer
+        isCorrect: true
+        rationale: >-
+          Mands are evoked by motivation and produce the specific consequence named.
+      - id: c
+        text: Under the control of a nonverbal stimulus
+        isCorrect: false
+        rationale: >-
+          That would make it a tact.
+      - id: d
+        text: A repetition of what somebody else said
+        isCorrect: false
+        rationale: >-
+          That would make it an echoic.
     explanation: >-
       The mand is the only verbal operant whose reinforcer is specified by the response
       itself, which is why it is usually taught first: it puts the learner in control of
@@ -865,26 +865,26 @@ questions:
       A reversal design is least appropriate when:
     options:
       - id: a
+        text: The behaviour occurs at a low rate
+        isCorrect: false
+        rationale: >-
+          Low rates complicate measurement rather than ruling out the design.
+      - id: b
+        text: Only one participant is available
+        isCorrect: false
+        rationale: >-
+          Reversal designs are built for single participants.
+      - id: c
+        text: The intervention is expensive
+        isCorrect: false
+        rationale: >-
+          Cost is a practical constraint rather than a design one.
+      - id: d
         text: The behaviour change is irreversible, such as an acquired academic skill
         isCorrect: true
         rationale: >-
           Withdrawal cannot return the behaviour to baseline if the change does not reverse,
           so the design cannot demonstrate control.
-      - id: b
-        text: The behaviour occurs at a low rate
-        isCorrect: false
-        rationale: >-
-          Low rates complicate measurement rather than ruling out the design.
-      - id: c
-        text: Only one participant is available
-        isCorrect: false
-        rationale: >-
-          Reversal designs are built for single participants.
-      - id: d
-        text: The intervention is expensive
-        isCorrect: false
-        rationale: >-
-          Cost is a practical constraint rather than a design one.
     explanation: >-
       Design selection follows from the behaviour and the ethics of withdrawal.
       Irreversible changes and cases where withdrawal would be harmful both point away
@@ -950,26 +950,26 @@ questions:
       The principal threat in an alternating treatments design is:
     options:
       - id: a
+        text: Maturation over a long baseline
+        isCorrect: false
+        rationale: >-
+          Rapid alternation makes maturation a weak competitor.
+      - id: b
+        text: Irreversibility of the behaviour change
+        isCorrect: false
+        rationale: >-
+          That is the reversal design's problem.
+      - id: c
+        text: Inability to compare two interventions
+        isCorrect: false
+        rationale: >-
+          Comparing interventions is precisely what the design is for.
+      - id: d
         text: Carryover between rapidly alternating conditions
         isCorrect: true
         rationale: >-
           Conditions alternating quickly can influence one another, obscuring the difference
           between them.
-      - id: b
-        text: Maturation over a long baseline
-        isCorrect: false
-        rationale: >-
-          Rapid alternation makes maturation a weak competitor.
-      - id: c
-        text: Irreversibility of the behaviour change
-        isCorrect: false
-        rationale: >-
-          That is the reversal design's problem.
-      - id: d
-        text: Inability to compare two interventions
-        isCorrect: false
-        rationale: >-
-          Comparing interventions is precisely what the design is for.
     explanation: >-
       Each design has a characteristic weakness. Alternating treatments compares
       conditions quickly and efficiently, at the cost of multiple-treatment interference,
@@ -1037,26 +1037,26 @@ questions:
       when:
     options:
       - id: a
+        text: A second participant shows the same effect
+        isCorrect: false
+        rationale: >-
+          That is replication across participants.
+      - id: b
+        text: Two observers agree on the data
+        isCorrect: false
+        rationale: >-
+          That is measurement agreement rather than experimental logic.
+      - id: c
         text: Returning to the prior condition returns the data towards the predicted pattern
         isCorrect: true
         rationale: >-
           Verification shows that the baseline prediction would have held, had the
           intervention not been introduced.
-      - id: b
+      - id: d
         text: The intervention is introduced and the data change
         isCorrect: false
         rationale: >-
           That is the departure from prediction rather than its verification.
-      - id: c
-        text: A second participant shows the same effect
-        isCorrect: false
-        rationale: >-
-          That is replication across participants.
-      - id: d
-        text: Two observers agree on the data
-        isCorrect: false
-        rationale: >-
-          That is measurement agreement rather than experimental logic.
     explanation: >-
       The three-step logic is what a reversal design enacts: baseline predicts,
       intervention departs from the prediction, and return to baseline verifies that the
@@ -1078,26 +1078,26 @@ questions:
       A demonstration with weak internal validity but conducted in many ordinary settings:
     options:
       - id: a
+        text: Establishes a functional relation through breadth
+        isCorrect: false
+        rationale: >-
+          Breadth does not substitute for control.
+      - id: b
         text: Cannot support a claim that the intervention caused the change anywhere
         isCorrect: true
         rationale: >-
           Without internal validity there is no established effect to generalize, however many
           settings were involved.
-      - id: b
+      - id: c
         text: Has strong external validity that compensates
         isCorrect: false
         rationale: >-
           Generality of an unestablished effect is not worth anything.
-      - id: c
+      - id: d
         text: Is adequate for applied purposes
         isCorrect: false
         rationale: >-
           Applied work needs to know what produced the change in order to reproduce it.
-      - id: d
-        text: Establishes a functional relation through breadth
-        isCorrect: false
-        rationale: >-
-          Breadth does not substitute for control.
     explanation: >-
       Internal validity is prior. A finding that is not established in one place cannot be
       generalized to many, which is why single-case work invests heavily in control before
@@ -1120,26 +1120,26 @@ questions:
       serious design consequence is that:
     options:
       - id: a
+        text: The baseline must be extended
+        isCorrect: false
+        rationale: >-
+          Extending baseline does not undo a confound introduced with the intervention.
+      - id: b
         text: The independent variable is now two changes, so the effect cannot be attributed to either
         isCorrect: true
         rationale: >-
           Two variables changing together is a confound, and the design cannot separate their
           contributions.
-      - id: b
+      - id: c
         text: The dependent variable becomes unreliable
         isCorrect: false
         rationale: >-
           Measurement of the behaviour is unaffected by the confound.
-      - id: c
+      - id: d
         text: External validity is reduced
         isCorrect: false
         rationale: >-
           The problem is internal rather than about generalizing.
-      - id: d
-        text: The baseline must be extended
-        isCorrect: false
-        rationale: >-
-          Extending baseline does not undo a confound introduced with the intervention.
     explanation: >-
       A confound is another variable changing alongside the independent one. It is the
       commonest reason an applied demonstration cannot support the claim made for it, and
@@ -1163,26 +1163,26 @@ questions:
       Extending a baseline while a harmful behaviour continues raises a conflict between:
     options:
       - id: a
+        text: Internal and external validity
+        isCorrect: false
+        rationale: >-
+          Both concern the evidence rather than the obligation to act.
+      - id: b
+        text: Measurement accuracy and practicality
+        isCorrect: false
+        rationale: >-
+          That is a different trade-off entirely.
+      - id: c
+        text: Reliability and validity
+        isCorrect: false
+        rationale: >-
+          Also a measurement question rather than an ethical one.
+      - id: d
         text: Experimental rigour and the obligation to intervene promptly
         isCorrect: true
         rationale: >-
           A longer baseline strengthens the demonstration while leaving the behaviour
           untreated, which is the tension.
-      - id: b
-        text: Internal and external validity
-        isCorrect: false
-        rationale: >-
-          Both concern the evidence rather than the obligation to act.
-      - id: c
-        text: Measurement accuracy and practicality
-        isCorrect: false
-        rationale: >-
-          That is a different trade-off entirely.
-      - id: d
-        text: Reliability and validity
-        isCorrect: false
-        rationale: >-
-          Also a measurement question rather than an ethical one.
     explanation: >-
       Design decisions in applied work are constrained by obligations to the client. Where
       harm is occurring, the usual resolution is a design that does not require

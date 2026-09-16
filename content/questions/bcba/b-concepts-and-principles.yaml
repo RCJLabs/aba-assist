@@ -11,28 +11,28 @@ questions:
       three movements are best described as:
     options:
       - id: a
-        text: A response class
-        isCorrect: true
-        rationale: >-
-          Different forms that produce the same effect on the environment, and are maintained
-          by the same consequence, make up a response class.
-      - id: b
         text: A stimulus class
         isCorrect: false
         rationale: >-
           A stimulus class is a set of stimuli, not a set of responses.
-      - id: c
+      - id: b
         text: A single response
         isCorrect: false
         rationale: >-
           A response is one instance of behaviour. Three different movements on three
           occasions are three responses.
-      - id: d
+      - id: c
         text: A behavioural chain
         isCorrect: false
         rationale: >-
           A chain is a sequence of linked responses, each producing the conditions for the
           next. These are alternatives, not a sequence.
+      - id: d
+        text: A response class
+        isCorrect: true
+        rationale: >-
+          Different forms that produce the same effect on the environment, and are maintained
+          by the same consequence, make up a response class.
     explanation: >-
       Behaviour is what an organism does; a response is one instance of it; a response
       class groups topographically different responses by their shared function. Grouping
@@ -71,28 +71,28 @@ questions:
       across the street. These three stimuli belong to the same class on the basis of:
     options:
       - id: a
+        text: Response class — they produce the same effect
+        isCorrect: false
+        rationale: >-
+          A response class groups responses, not stimuli.
+      - id: b
         text: Formal similarity — they share physical features
         isCorrect: true
         rationale: >-
           A feature stimulus class is defined by shared physical properties, which is what
           these three share.
-      - id: b
+      - id: c
         text: Temporal relation — they occurred close together in time
         isCorrect: false
         rationale: >-
           That describes a temporal class, where membership comes from occurring at the same
           time rather than from looking alike.
-      - id: c
+      - id: d
         text: Arbitrary relation — they were trained as equivalent
         isCorrect: false
         rationale: >-
           An arbitrary class has no physical property in common; its members relate only
           because training made them relate.
-      - id: d
-        text: Response class — they produce the same effect
-        isCorrect: false
-        rationale: >-
-          A response class groups responses, not stimuli.
     explanation: >-
       Stimulus classes are formed in three ways: by shared physical features, by occurring
       together in time, or arbitrarily through training. Recognising which kind is at work
@@ -115,28 +115,28 @@ questions:
       following weeks, form-handing-in increases. The meeting ending is best described as:
     options:
       - id: a
-        text: Negative reinforcement
-        isCorrect: true
-        rationale: >-
-          Something was removed after the behaviour and the behaviour increased, which is
-          negative reinforcement by operation and by effect.
-      - id: b
-        text: Positive reinforcement
-        isCorrect: false
-        rationale: >-
-          Nothing was added. Positive and negative refer to whether a stimulus was presented
-          or removed, not to whether the outcome is pleasant.
-      - id: c
-        text: Negative punishment
-        isCorrect: false
-        rationale: >-
-          Punishment requires the behaviour to decrease. This behaviour increased.
-      - id: d
         text: Extinction
         isCorrect: false
         rationale: >-
           Extinction is withholding the maintaining consequence, which would decrease the
           behaviour rather than increase it.
+      - id: b
+        text: Negative reinforcement
+        isCorrect: true
+        rationale: >-
+          Something was removed after the behaviour and the behaviour increased, which is
+          negative reinforcement by operation and by effect.
+      - id: c
+        text: Positive reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing was added. Positive and negative refer to whether a stimulus was presented
+          or removed, not to whether the outcome is pleasant.
+      - id: d
+        text: Negative punishment
+        isCorrect: false
+        rationale: >-
+          Punishment requires the behaviour to decrease. This behaviour increased.
     explanation: >-
       Reinforcement and punishment are defined by the effect on future behaviour; positive
       and negative describe only whether something was added or taken away. The two
@@ -159,28 +159,28 @@ questions:
       becomes less frequent over the season. This arrangement is:
     options:
       - id: a
-        text: Negative punishment
-        isCorrect: true
-        rationale: >-
-          A stimulus was removed after the behaviour and the behaviour decreased, which is
-          negative punishment.
-      - id: b
-        text: Positive punishment
-        isCorrect: false
-        rationale: >-
-          Positive punishment presents something after the behaviour. Here something was taken
-          away.
-      - id: c
         text: Negative reinforcement
         isCorrect: false
         rationale: >-
           Reinforcement increases behaviour. Arguing decreased.
-      - id: d
+      - id: b
         text: Response cost only if a token system is in place
         isCorrect: false
         rationale: >-
           Response cost is one form of negative punishment, but the category does not depend
           on tokens being involved.
+      - id: c
+        text: Negative punishment
+        isCorrect: true
+        rationale: >-
+          A stimulus was removed after the behaviour and the behaviour decreased, which is
+          negative punishment.
+      - id: d
+        text: Positive punishment
+        isCorrect: false
+        rationale: >-
+          Positive punishment presents something after the behaviour. Here something was taken
+          away.
     explanation: >-
       The same two dimensions apply to punishment: presented or removed, and the behaviour
       must actually decrease. Labelling a procedure punishment because it looks
@@ -204,28 +204,28 @@ questions:
       maintaining consequence is:
     options:
       - id: a
+        text: Automatic punishment
+        isCorrect: false
+        rationale: >-
+          Punishment would reduce the behaviour. It is persisting.
+      - id: b
         text: Automatic reinforcement
         isCorrect: true
         rationale: >-
           The consequence is produced by the behaviour itself rather than delivered by another
           person, which is what automatic means here.
-      - id: b
+      - id: c
         text: Socially mediated positive reinforcement
         isCorrect: false
         rationale: >-
           Socially mediated consequences require another person to deliver them, and nobody is
           present.
-      - id: c
+      - id: d
         text: Socially mediated negative reinforcement
         isCorrect: false
         rationale: >-
           This would require another person removing a demand or aversive event, which is not
           happening.
-      - id: d
-        text: Automatic punishment
-        isCorrect: false
-        rationale: >-
-          Punishment would reduce the behaviour. It is persisting.
     explanation: >-
       Whether a consequence is socially mediated or automatic is about who delivers it,
       and it cuts across reinforcement and punishment alike. It matters practically
@@ -249,29 +249,29 @@ questions:
       deprivation. This is because money is:
     options:
       - id: a
-        text: A generalized conditioned reinforcer
-        isCorrect: true
-        rationale: >-
-          It acquired its function by being paired with many different reinforcers, so it does
-          not depend on any single state of deprivation.
-      - id: b
-        text: An unconditioned reinforcer
-        isCorrect: false
-        rationale: >-
-          Unconditioned reinforcers function without any learning history. Money plainly
-          requires one.
-      - id: c
         text: A conditioned reinforcer paired with one backup
         isCorrect: false
         rationale: >-
           That describes an ordinary conditioned reinforcer, which remains tied to the state
           relevant to its single backup.
-      - id: d
+      - id: b
         text: An establishing operation
         isCorrect: false
         rationale: >-
           An establishing operation changes the value of a reinforcer; it is not itself the
           reinforcer.
+      - id: c
+        text: A generalized conditioned reinforcer
+        isCorrect: true
+        rationale: >-
+          It acquired its function by being paired with many different reinforcers, so it does
+          not depend on any single state of deprivation.
+      - id: d
+        text: An unconditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          Unconditioned reinforcers function without any learning history. Money plainly
+          requires one.
     explanation: >-
       Reinforcers are sorted by how they got their function: unconditioned ones need no
       history, conditioned ones were paired with an existing reinforcer, and generalized
@@ -349,29 +349,29 @@ questions:
       what would you expect?
     options:
       - id: a
-        text: Respondent extinction — the blink to the tone weakens
-        isCorrect: true
-        rationale: >-
-          Breaking the pairing between a conditioned and an unconditioned stimulus is
-          respondent extinction, and the conditioned response declines.
-      - id: b
         text: Operant extinction — the blink weakens
         isCorrect: false
         rationale: >-
           Operant extinction withholds a consequence that followed a response. Here the
           relation being broken is between two stimuli.
-      - id: c
+      - id: b
         text: Respondent extinction — an extinction burst is expected first
         isCorrect: false
         rationale: >-
           The burst is characteristic of operant extinction. Respondent extinction typically
           produces a gradual decline.
-      - id: d
+      - id: c
         text: Nothing, because elicited responses do not extinguish
         isCorrect: false
         rationale: >-
           Conditioned elicited responses do extinguish when the pairing stops, and can show
           spontaneous recovery afterwards.
+      - id: d
+        text: Respondent extinction — the blink to the tone weakens
+        isCorrect: true
+        rationale: >-
+          Breaking the pairing between a conditioned and an unconditioned stimulus is
+          respondent extinction, and the conditioned response declines.
     explanation: >-
       The word extinction names two different procedures. In operant extinction the
       maintaining consequence is withheld and a burst and increased variability are
@@ -394,29 +394,29 @@ questions:
       A behaviour is said to be under stimulus control when:
     options:
       - id: a
-        text: It is more likely in the presence of a particular stimulus because of a history of differential reinforcement
-        isCorrect: true
-        rationale: >-
-          Stimulus control is the outcome of reinforcement in the presence of one stimulus and
-          not others; the stimulus comes to occasion the response.
-      - id: b
-        text: It occurs whenever the stimulus is present, without exception
-        isCorrect: false
-        rationale: >-
-          Stimulus control is a matter of probability, not certainty. Demanding perfect
-          responding misstates it.
-      - id: c
-        text: The stimulus elicits it automatically
-        isCorrect: false
-        rationale: >-
-          That describes respondent elicitation. Operant stimulus control changes the
-          likelihood of a response rather than eliciting it.
-      - id: d
         text: It is followed by reinforcement every time it occurs
         isCorrect: false
         rationale: >-
           That describes a continuous schedule, which is about the consequence rather than
           about antecedent control.
+      - id: b
+        text: It is more likely in the presence of a particular stimulus because of a history of differential reinforcement
+        isCorrect: true
+        rationale: >-
+          Stimulus control is the outcome of reinforcement in the presence of one stimulus and
+          not others; the stimulus comes to occasion the response.
+      - id: c
+        text: It occurs whenever the stimulus is present, without exception
+        isCorrect: false
+        rationale: >-
+          Stimulus control is a matter of probability, not certainty. Demanding perfect
+          responding misstates it.
+      - id: d
+        text: The stimulus elicits it automatically
+        isCorrect: false
+        rationale: >-
+          That describes respondent elicitation. Operant stimulus control changes the
+          likelihood of a response rather than eliciting it.
     explanation: >-
       A discriminative stimulus does not cause a response; it signals a history in which
       responding in its presence has paid off. That distinction is what keeps antecedent
@@ -440,29 +440,29 @@ questions:
       direct procedure is to:
     options:
       - id: a
-        text: Reinforce responding when red is present and withhold it when blue is present
-        isCorrect: true
-        rationale: >-
-          Differential reinforcement across the two stimuli is exactly what produces a
-          discrimination.
-      - id: b
         text: Present red and blue together until the learner notices the difference
         isCorrect: false
         rationale: >-
           Exposure alone does not establish control; the consequences have to differ across
           the stimuli.
-      - id: c
+      - id: b
         text: Reinforce every response to either card, then fade blue out
         isCorrect: false
         rationale: >-
           Reinforcing both establishes no discrimination, and fading a stimulus out is not the
           same as making it an S-delta.
-      - id: d
+      - id: c
         text: Punish responding to blue
         isCorrect: false
         rationale: >-
           A discrimination can be established without punishment, and withholding
           reinforcement is the less restrictive route.
+      - id: d
+        text: Reinforce responding when red is present and withhold it when blue is present
+        isCorrect: true
+        rationale: >-
+          Differential reinforcement across the two stimuli is exactly what produces a
+          discrimination.
     explanation: >-
       Discrimination training is differential reinforcement across stimuli: reinforce in
       the presence of the discriminative stimulus and withhold in the presence of the
@@ -486,29 +486,29 @@ questions:
       untaught phrasings that serve the same function. This is an example of:
     options:
       - id: a
-        text: Response generalization
-        isCorrect: true
-        rationale: >-
-          Untrained forms of the response emerging and serving the same function is response
-          generalization.
-      - id: b
-        text: Stimulus generalization
-        isCorrect: false
-        rationale: >-
-          Stimulus generalization is the trained response appearing in the presence of
-          untrained but similar stimuli.
-      - id: c
         text: Maintenance
         isCorrect: false
         rationale: >-
           Maintenance is the response persisting over time after teaching ends, not new forms
           appearing.
-      - id: d
+      - id: b
         text: Resurgence
         isCorrect: false
         rationale: >-
           Resurgence is the return of a previously reinforced response when a newer one stops
           working.
+      - id: c
+        text: Response generalization
+        isCorrect: true
+        rationale: >-
+          Untrained forms of the response emerging and serving the same function is response
+          generalization.
+      - id: d
+        text: Stimulus generalization
+        isCorrect: false
+        rationale: >-
+          Stimulus generalization is the trained response appearing in the presence of
+          untrained but similar stimuli.
     explanation: >-
       The two generalizations differ in what varies. Stimulus generalization varies the
       situation and holds the response constant; response generalization varies the
@@ -532,29 +532,29 @@ questions:
       the mastery criterion. This is best described as:
     options:
       - id: a
-        text: Maintenance
-        isCorrect: true
-        rationale: >-
-          Continued performance after the intervention has been withdrawn is maintenance,
-          sometimes called resistance to change over time.
-      - id: b
-        text: Generalization across settings
-        isCorrect: false
-        rationale: >-
-          That would require the skill appearing in untrained settings, which is not what is
-          described.
-      - id: c
-        text: Spontaneous recovery
-        isCorrect: false
-        rationale: >-
-          Spontaneous recovery is the reappearance of an extinguished response after a break,
-          not the persistence of a taught one.
-      - id: d
         text: Behavioural momentum
         isCorrect: false
         rationale: >-
           Momentum describes persistence under changed conditions such as extinction or
           distraction, not persistence over elapsed time after teaching.
+      - id: b
+        text: Maintenance
+        isCorrect: true
+        rationale: >-
+          Continued performance after the intervention has been withdrawn is maintenance,
+          sometimes called resistance to change over time.
+      - id: c
+        text: Generalization across settings
+        isCorrect: false
+        rationale: >-
+          That would require the skill appearing in untrained settings, which is not what is
+          described.
+      - id: d
+        text: Spontaneous recovery
+        isCorrect: false
+        rationale: >-
+          Spontaneous recovery is the reappearance of an extinguished response after a break,
+          not the persistence of a taught one.
     explanation: >-
       Maintenance is the durability of behaviour change over time once the teaching
       contingencies are gone. It is programmed for deliberately — by thinning schedules
@@ -632,27 +632,27 @@ questions:
       experiencing any consequence for doing so. This behaviour is best described as:
     options:
       - id: a
+        text: Imitative
+        isCorrect: false
+        rationale: >-
+          Nothing indicates a model was copied; the control is verbal.
+      - id: b
+        text: Automatically reinforced
+        isCorrect: false
+        rationale: >-
+          The description says nothing about the behaviour producing its own reinforcement.
+      - id: c
         text: Rule-governed
         isCorrect: true
         rationale: >-
           The behaviour is controlled by a verbal description of a contingency rather than by
           direct contact with it.
-      - id: b
+      - id: d
         text: Contingency-shaped
         isCorrect: false
         rationale: >-
           Contingency-shaped behaviour is produced by direct exposure to consequences, which
           has not happened yet.
-      - id: c
-        text: Imitative
-        isCorrect: false
-        rationale: >-
-          Nothing indicates a model was copied; the control is verbal.
-      - id: d
-        text: Automatically reinforced
-        isCorrect: false
-        rationale: >-
-          The description says nothing about the behaviour producing its own reinforcement.
     explanation: >-
       Rules let behaviour come under the control of contingencies too delayed, too rare or
       too dangerous to be shaped directly. The trade-off is that rule-governed behaviour
@@ -676,28 +676,28 @@ questions:
       present. The response is an example of:
     options:
       - id: a
-        text: An intraverbal
-        isCorrect: true
-        rationale: >-
-          The response is under the control of a verbal stimulus and does not match it point
-          to point, which defines the intraverbal.
-      - id: b
-        text: A tact
-        isCorrect: false
-        rationale: >-
-          A tact is controlled by a nonverbal stimulus. No toast or butter is present.
-      - id: c
-        text: An echoic
-        isCorrect: false
-        rationale: >-
-          An echoic has point-to-point correspondence with the verbal stimulus. "Butter" does
-          not repeat "toast".
-      - id: d
         text: A mand
         isCorrect: false
         rationale: >-
           A mand is under the control of a motivating operation and specifies its reinforcer.
           Nothing indicates the learner wants butter.
+      - id: b
+        text: An intraverbal
+        isCorrect: true
+        rationale: >-
+          The response is under the control of a verbal stimulus and does not match it point
+          to point, which defines the intraverbal.
+      - id: c
+        text: A tact
+        isCorrect: false
+        rationale: >-
+          A tact is controlled by a nonverbal stimulus. No toast or butter is present.
+      - id: d
+        text: An echoic
+        isCorrect: false
+        rationale: >-
+          An echoic has point-to-point correspondence with the verbal stimulus. "Butter" does
+          not repeat "toast".
     explanation: >-
       The verbal operants are classified by what controls them, not by what they sound
       like. The same word can be a mand, a tact or an intraverbal depending on the
@@ -723,29 +723,29 @@ questions:
       is under the control of both the animal and the question. This is an example of:
     options:
       - id: a
-        text: Convergent multiple control
-        isCorrect: true
-        rationale: >-
-          A single response controlled by more than one antecedent variable at the same time
-          is convergent multiple control.
-      - id: b
-        text: Divergent multiple control
-        isCorrect: false
-        rationale: >-
-          Divergent control is one variable evoking several different responses, which is the
-          opposite arrangement.
-      - id: c
         text: Pure tact control
         isCorrect: false
         rationale: >-
           A pure tact would be controlled by the nonverbal stimulus alone, with no verbal
           prompt.
-      - id: d
+      - id: b
         text: Autoclitic control
         isCorrect: false
         rationale: >-
           An autoclitic modifies the effect of other verbal behaviour on a listener; it does
           not describe this arrangement.
+      - id: c
+        text: Convergent multiple control
+        isCorrect: true
+        rationale: >-
+          A single response controlled by more than one antecedent variable at the same time
+          is convergent multiple control.
+      - id: d
+        text: Divergent multiple control
+        isCorrect: false
+        rationale: >-
+          Divergent control is one variable evoking several different responses, which is the
+          opposite arrangement.
     explanation: >-
       Verbal behaviour in ordinary use is rarely under a single source of control.
       Convergent control — several variables acting on one response — is the usual case,
@@ -817,29 +817,29 @@ questions:
       What distinguishes observational learning from imitation?
     options:
       - id: a
+        text: Observational learning happens immediately and imitation is always delayed
+        isCorrect: false
+        rationale: >-
+          Both can occur immediately or after a delay; timing is not the distinction.
+      - id: b
+        text: They are the same thing described at different levels
+        isCorrect: false
+        rationale: >-
+          They are different: one depends on the model receiving a consequence, the other on
+          matching the model.
+      - id: c
         text: In observational learning the watcher changes behaviour after seeing the model contact a consequence; imitation is copying the model itself
         isCorrect: true
         rationale: >-
           Observational learning depends on the observed consequence, whereas imitation
           requires only that the response formally match a model that acts as its
           discriminative stimulus.
-      - id: b
+      - id: d
         text: Imitation requires a verbal model and observational learning does not
         isCorrect: false
         rationale: >-
           Imitation concerns formal similarity to a model of any kind, not specifically verbal
           ones.
-      - id: c
-        text: Observational learning happens immediately and imitation is always delayed
-        isCorrect: false
-        rationale: >-
-          Both can occur immediately or after a delay; timing is not the distinction.
-      - id: d
-        text: They are the same thing described at different levels
-        isCorrect: false
-        rationale: >-
-          They are different: one depends on the model receiving a consequence, the other on
-          matching the model.
     explanation: >-
       Imitation is a response class where the behaviour matches a model and the model
       functions as the discriminative stimulus. Observational learning is broader and
@@ -863,29 +863,29 @@ questions:
       teaching selects C when given A. The untaught A–C relation is an instance of:
     options:
       - id: a
-        text: Transitivity
-        isCorrect: true
-        rationale: >-
-          Deriving a relation between two stimuli through a shared third is transitivity, one
-          of the three relations that define stimulus equivalence.
-      - id: b
         text: Reflexivity
         isCorrect: false
         rationale: >-
           Reflexivity is matching a stimulus to itself, which requires no relation between
           different stimuli.
-      - id: c
+      - id: b
         text: Symmetry
         isCorrect: false
         rationale: >-
           Symmetry is the reversal of a trained relation — selecting A given B after being
           taught B given A.
-      - id: d
+      - id: c
         text: Generalization
         isCorrect: false
         rationale: >-
           Generalization depends on physical similarity or shared features. Equivalence
           relations are arbitrary and derived.
+      - id: d
+        text: Transitivity
+        isCorrect: true
+        rationale: >-
+          Deriving a relation between two stimuli through a shared third is transitivity, one
+          of the three relations that define stimulus equivalence.
     explanation: >-
       Equivalence-based instruction gets its efficiency from relations nobody taught:
       train a small number and a larger number emerge. Reflexivity, symmetry and

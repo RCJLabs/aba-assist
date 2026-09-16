@@ -11,29 +11,29 @@ questions:
       of:
     options:
       - id: a
-        text: A product measure
-        isCorrect: true
-        rationale: >-
-          The behaviour is measured by the lasting result it left behind, after the fact,
-          rather than as it happens.
-      - id: b
         text: A direct measure
         isCorrect: false
         rationale: >-
           Direct measurement records the behaviour as it occurs, which is exactly what is not
           possible here.
-      - id: c
+      - id: b
         text: An indirect measure
         isCorrect: false
         rationale: >-
           Indirect measurement asks somebody about the behaviour — an interview or a rating
           scale — rather than counting anything it produced.
-      - id: d
+      - id: c
         text: A discontinuous measure
         isCorrect: false
         rationale: >-
           Discontinuous procedures sample the behaviour while it is happening; they still
           require observing.
+      - id: d
+        text: A product measure
+        isCorrect: true
+        rationale: >-
+          The behaviour is measured by the lasting result it left behind, after the fact,
+          rather than as it happens.
     explanation: >-
       Measures divide into direct observation, permanent product, and indirect report.
       Products are efficient and unobtrusive but blind to how the result was produced, so
@@ -72,28 +72,28 @@ questions:
       a behaviour occurs across sessions, the appropriate measure is:
     options:
       - id: a
-        text: Rate
-        isCorrect: true
-        rationale: >-
-          Dividing count by observation time makes figures from sessions of different lengths
-          comparable.
-      - id: b
-        text: Count
-        isCorrect: false
-        rationale: >-
-          A raw count confounds how often the behaviour happened with how long you watched.
-      - id: c
         text: Percentage of intervals
         isCorrect: false
         rationale: >-
           That is a sampling estimate of time, and it also requires the interval structure to
           be held constant.
-      - id: d
+      - id: b
         text: Trials to criterion
         isCorrect: false
         rationale: >-
           Trials to criterion measures how much teaching a skill took, not how often a
           behaviour occurs.
+      - id: c
+        text: Rate
+        isCorrect: true
+        rationale: >-
+          Dividing count by observation time makes figures from sessions of different lengths
+          comparable.
+      - id: d
+        text: Count
+        isCorrect: false
+        rationale: >-
+          A raw count confounds how often the behaviour happened with how long you watched.
     explanation: >-
       Choosing a measure starts from the question. Where sessions vary in length, count
       alone is uninterpretable and rate is the minimum needed. Reporting a count without
@@ -117,29 +117,29 @@ questions:
       instruction. The dimension to measure is:
     options:
       - id: a
-        text: Latency
-        isCorrect: true
-        rationale: >-
-          Latency is the elapsed time between the onset of a stimulus and the beginning of the
-          response, which is exactly what "how promptly they start" means.
-      - id: b
-        text: Duration
-        isCorrect: false
-        rationale: >-
-          Duration is how long the behaviour lasts once started, which does not answer the
-          question about starting.
-      - id: c
-        text: Interresponse time
-        isCorrect: false
-        rationale: >-
-          Interresponse time is the gap between successive responses, not between a stimulus
-          and a response.
-      - id: d
         text: Rate
         isCorrect: false
         rationale: >-
           Rate counts occurrences per unit time and says nothing about when a response begins
           relative to an instruction.
+      - id: b
+        text: Latency
+        isCorrect: true
+        rationale: >-
+          Latency is the elapsed time between the onset of a stimulus and the beginning of the
+          response, which is exactly what "how promptly they start" means.
+      - id: c
+        text: Duration
+        isCorrect: false
+        rationale: >-
+          Duration is how long the behaviour lasts once started, which does not answer the
+          question about starting.
+      - id: d
+        text: Interresponse time
+        isCorrect: false
+        rationale: >-
+          Interresponse time is the gap between successive responses, not between a stimulus
+          and a response.
     explanation: >-
       The temporal dimensions answer different questions: latency is when it starts,
       duration is how long it lasts, interresponse time is the gap between one instance
@@ -163,28 +163,28 @@ questions:
       recording will:
     options:
       - id: a
-        text: Overestimate the proportion of time the behaviour occupied
-        isCorrect: true
-        rationale: >-
-          Scoring a whole interval for a single brief occurrence inflates the estimate of time
-          engaged.
-      - id: b
-        text: Underestimate the proportion of time
-        isCorrect: false
-        rationale: >-
-          Whole interval recording underestimates; partial interval overestimates.
-      - id: c
         text: Estimate it accurately, because intervals are short
         isCorrect: false
         rationale: >-
           Shortening intervals reduces the bias but does not remove it; the direction of the
           error is built into the rule.
-      - id: d
+      - id: b
         text: Produce the same figure as momentary time sampling
         isCorrect: false
         rationale: >-
           Momentary sampling scores only at the moment the interval ends and is far less
           likely to catch a brief occurrence.
+      - id: c
+        text: Overestimate the proportion of time the behaviour occupied
+        isCorrect: true
+        rationale: >-
+          Scoring a whole interval for a single brief occurrence inflates the estimate of time
+          engaged.
+      - id: d
+        text: Underestimate the proportion of time
+        isCorrect: false
+        rationale: >-
+          Whole interval recording underestimates; partial interval overestimates.
     explanation: >-
       Discontinuous procedures trade accuracy for practicality, and each is biased in a
       known direction: partial interval up, whole interval down, momentary sampling
@@ -214,29 +214,29 @@ questions:
       consistently fail to complete it during busy periods. The best first response is to:
     options:
       - id: a
-        text: Simplify the measure so it can be run accurately in the real setting
-        isCorrect: true
-        rationale: >-
-          A measure that is not actually taken produces no data, so practicality in the
-          setting is part of whether the system works at all.
-      - id: b
-        text: Keep the system and retrain the staff repeatedly
-        isCorrect: false
-        rationale: >-
-          Retraining is worth one attempt, but a system that repeatedly fails under normal
-          conditions is the problem, not the staff.
-      - id: c
         text: Switch to indirect report from the staff
         isCorrect: false
         rationale: >-
           That abandons direct measurement altogether, which is a larger loss than simplifying
           it.
-      - id: d
+      - id: b
         text: Accept the missing data and analyse what was collected
         isCorrect: false
         rationale: >-
           Data missing during busy periods are missing precisely when the behaviour is most
           likely, so the remaining data are biased.
+      - id: c
+        text: Simplify the measure so it can be run accurately in the real setting
+        isCorrect: true
+        rationale: >-
+          A measure that is not actually taken produces no data, so practicality in the
+          setting is part of whether the system works at all.
+      - id: d
+        text: Keep the system and retrain the staff repeatedly
+        isCorrect: false
+        rationale: >-
+          Retraining is worth one attempt, but a system that repeatedly fails under normal
+          conditions is the problem, not the staff.
     explanation: >-
       Measurement has to survive the setting it is used in. An elegant system nobody
       completes yields less than a coarser one everybody does, and data missing
@@ -262,27 +262,27 @@ questions:
       is:
     options:
       - id: a
-        text: Duration
-        isCorrect: true
-        rationale: >-
-          Total or mean duration directly answers how much time the behaviour occupies, which
-          is the question asked.
-      - id: b
-        text: Frequency count
-        isCorrect: false
-        rationale: >-
-          A count of a few long episodes says nothing about how much time they took.
-      - id: c
-        text: Trials to criterion
-        isCorrect: false
-        rationale: >-
-          That measures acquisition of a skill, not the extent of an ongoing behaviour.
-      - id: d
         text: Partial interval recording
         isCorrect: false
         rationale: >-
           It could be used, but it estimates what duration measures directly, and with a known
           upward bias.
+      - id: b
+        text: Duration
+        isCorrect: true
+        rationale: >-
+          Total or mean duration directly answers how much time the behaviour occupies, which
+          is the question asked.
+      - id: c
+        text: Frequency count
+        isCorrect: false
+        rationale: >-
+          A count of a few long episodes says nothing about how much time they took.
+      - id: d
+        text: Trials to criterion
+        isCorrect: false
+        rationale: >-
+          That measures acquisition of a skill, not the extent of an ongoing behaviour.
     explanation: >-
       Selecting a measure means matching three things: the dimension that matters, the
       question being asked, and what the setting can support. Where episodes are long and
@@ -305,27 +305,27 @@ questions:
       Which graph type makes the rate of responding readable as the slope of the line?
     options:
       - id: a
+        text: A bar graph
+        isCorrect: false
+        rationale: >-
+          Bar graphs compare discrete values across conditions and have no meaningful slope.
+      - id: b
+        text: A scatterplot of time of day
+        isCorrect: false
+        rationale: >-
+          A scatterplot shows when a behaviour tends to occur, not its rate as a slope.
+      - id: c
         text: A cumulative record
         isCorrect: true
         rationale: >-
           On a cumulative graph each point adds to the previous total, so a steeper slope is a
           higher rate and a flat line is no responding.
-      - id: b
+      - id: d
         text: A standard line graph of daily counts
         isCorrect: false
         rationale: >-
           On a non-cumulative line graph the height of each point is the count; slope between
           points is a change in count, not a rate.
-      - id: c
-        text: A bar graph
-        isCorrect: false
-        rationale: >-
-          Bar graphs compare discrete values across conditions and have no meaningful slope.
-      - id: d
-        text: A scatterplot of time of day
-        isCorrect: false
-        rationale: >-
-          A scatterplot shows when a behaviour tends to occur, not its rate as a slope.
     explanation: >-
       Graph type is chosen for what it makes visible. Cumulative records turn rate into
       slope, standard line graphs show level and trend over sessions, bar graphs compare
@@ -349,28 +349,28 @@ questions:
       to examine its effect on disruption, the independent variable is:
     options:
       - id: a
-        text: The attention condition the therapist manipulates
-        isCorrect: true
-        rationale: >-
-          The independent variable is the one the experimenter changes deliberately.
-      - id: b
-        text: The rate of disruption
-        isCorrect: false
-        rationale: >-
-          That is the dependent variable — what is measured to see whether the manipulation
-          had an effect.
-      - id: c
-        text: The therapist
-        isCorrect: false
-        rationale: >-
-          The person delivering the condition is held constant here rather than being what is
-          manipulated.
-      - id: d
         text: The setting in which the sessions occur
         isCorrect: false
         rationale: >-
           Unless it is deliberately varied, the setting is a constant, and if it varied
           without being controlled it would be a confound.
+      - id: b
+        text: The attention condition the therapist manipulates
+        isCorrect: true
+        rationale: >-
+          The independent variable is the one the experimenter changes deliberately.
+      - id: c
+        text: The rate of disruption
+        isCorrect: false
+        rationale: >-
+          That is the dependent variable — what is measured to see whether the manipulation
+          had an effect.
+      - id: d
+        text: The therapist
+        isCorrect: false
+        rationale: >-
+          The person delivering the condition is held constant here rather than being what is
+          manipulated.
     explanation: >-
       Every demonstration of a functional relation rests on saying clearly which variable
       was changed and which was measured. Naming them precisely is also how confounds
@@ -443,29 +443,29 @@ questions:
       the principal advantage of a single-case design over a group comparison is that it:
     options:
       - id: a
-        text: Demonstrates the effect within the individual, who serves as their own control
-        isCorrect: true
-        rationale: >-
-          The comparison is between conditions for one person, so the finding is about that
-          person rather than about an average.
-      - id: b
-        text: Requires fewer statistical assumptions and so is more rigorous in general
-        isCorrect: false
-        rationale: >-
-          Rigour comes from experimental control, not from avoiding statistics, and neither
-          design is more rigorous in general.
-      - id: c
-        text: Establishes external validity more readily
-        isCorrect: false
-        rationale: >-
-          Generalizing from a small number of participants is the weaker side of single-case
-          work, addressed by replication.
-      - id: d
         text: Removes the need for repeated measurement
         isCorrect: false
         rationale: >-
           Single-case designs depend on repeated measurement across conditions; it is their
           central requirement.
+      - id: b
+        text: Demonstrates the effect within the individual, who serves as their own control
+        isCorrect: true
+        rationale: >-
+          The comparison is between conditions for one person, so the finding is about that
+          person rather than about an average.
+      - id: c
+        text: Requires fewer statistical assumptions and so is more rigorous in general
+        isCorrect: false
+        rationale: >-
+          Rigour comes from experimental control, not from avoiding statistics, and neither
+          design is more rigorous in general.
+      - id: d
+        text: Establishes external validity more readily
+        isCorrect: false
+        rationale: >-
+          Generalizing from a small number of participants is the weaker side of single-case
+          work, addressed by replication.
     explanation: >-
       Group designs answer questions about average effects across people and can hide the
       individual for whom nothing worked. Single-case designs answer whether this
@@ -492,29 +492,29 @@ questions:
       effect. The most serious weakness is:
     options:
       - id: a
-        text: The baseline trend already predicted the change, so a functional relation is not demonstrated
-        isCorrect: true
-        rationale: >-
-          An unstable baseline heading in the direction of the predicted effect cannot support
-          the claim that the intervention produced it.
-      - id: b
         text: Three data points are always too few
         isCorrect: false
         rationale: >-
           The number matters less than stability; three stable points can be adequate while
           ten unstable ones are not.
-      - id: c
+      - id: b
         text: There is no interobserver agreement reported
         isCorrect: false
         rationale: >-
           That is a real reporting gap, but it does not by itself undermine the logic of the
           demonstration the way the trend does.
-      - id: d
+      - id: c
         text: A reversal was not conducted
         isCorrect: false
         rationale: >-
           A reversal would strengthen the demonstration, but many designs establish control
           without one.
+      - id: d
+        text: The baseline trend already predicted the change, so a functional relation is not demonstrated
+        isCorrect: true
+        rationale: >-
+          An unstable baseline heading in the direction of the predicted effect cannot support
+          the claim that the intervention produced it.
     explanation: >-
       Reading a single-case graph means asking whether the data rule out the alternatives.
       A baseline trending towards the expected effect leaves maturation and ordinary
@@ -541,29 +541,29 @@ questions:
       decision?
     options:
       - id: a
-        text: Benefiting others
-        isCorrect: true
-        rationale: >-
-          The obligation to work for the benefit of the client is what makes continuing an
-          ineffective programme a problem, whatever its popularity.
-      - id: b
-        text: Behaving with integrity
-        isCorrect: false
-        rationale: >-
-          Integrity is engaged if the analyst misrepresents the results, but the decision
-          itself turns on the client's benefit.
-      - id: c
         text: Treating others with compassion, dignity and respect
         isCorrect: false
         rationale: >-
           This supports taking the family's view seriously, but it does not settle whether to
           continue something ineffective.
-      - id: d
+      - id: b
         text: Ensuring competence
         isCorrect: false
         rationale: >-
           Competence concerns whether the analyst is equipped to do the work, which is not
           what is in question.
+      - id: c
+        text: Benefiting others
+        isCorrect: true
+        rationale: >-
+          The obligation to work for the benefit of the client is what makes continuing an
+          ineffective programme a problem, whatever its popularity.
+      - id: d
+        text: Behaving with integrity
+        isCorrect: false
+        rationale: >-
+          Integrity is engaged if the analyst misrepresents the results, but the decision
+          itself turns on the client's benefit.
     explanation: >-
       The code is built on four core principles, and most practice dilemmas involve more
       than one pulling in different directions. Naming which principle is doing the work —
@@ -587,28 +587,28 @@ questions:
       violation for a certificant?
     options:
       - id: a
-        text: Action by the certifying board against the certification itself
-        isCorrect: true
-        rationale: >-
-          The board administers the code and can sanction, suspend or revoke certification.
-      - id: b
         text: Automatic loss of a state licence
         isCorrect: false
         rationale: >-
           Licensure is separate from certification; a board action may prompt review but does
           not itself remove a licence.
-      - id: c
+      - id: b
         text: Criminal prosecution
         isCorrect: false
         rationale: >-
           Some conduct is also criminal, but ethics enforcement is a professional mechanism,
           not a criminal one.
-      - id: d
+      - id: c
         text: Mandatory retraining by the employer
         isCorrect: false
         rationale: >-
           An employer may require this, but it is not the accountability mechanism attached to
           the code.
+      - id: d
+        text: Action by the certifying board against the certification itself
+        isCorrect: true
+        rationale: >-
+          The board administers the code and can sanction, suspend or revoke certification.
     explanation: >-
       Unethical conduct carries risk to clients first, and then to the profession and the
       practitioner. It is worth knowing which mechanism is which: employer discipline,
@@ -632,28 +632,28 @@ questions:
       defensible choice is to:
     options:
       - id: a
-        text: Use the organisation's approved secure system, even if it is slower
-        isCorrect: true
-        rationale: >-
-          Approved systems exist because they meet the legal and contractual requirements the
-          analyst is bound by, and convenience does not alter those.
-      - id: b
-        text: Send it from a personal email account with the client's initials instead of a name
-        isCorrect: false
-        rationale: >-
-          Initials are not de-identification, and the channel remains outside the
-          organisation's safeguards.
-      - id: c
         text: Send it through a consumer messaging app the supervisor already uses
         isCorrect: false
         rationale: >-
           Familiarity is not a safeguard, and the data would leave the systems the
           organisation is accountable for.
-      - id: d
+      - id: b
         text: Photograph the data sheet and store it on a personal device until returning
         isCorrect: false
         rationale: >-
           This creates an unprotected copy on a device outside the organisation's control.
+      - id: c
+        text: Use the organisation's approved secure system, even if it is slower
+        isCorrect: true
+        rationale: >-
+          Approved systems exist because they meet the legal and contractual requirements the
+          analyst is bound by, and convenience does not alter those.
+      - id: d
+        text: Send it from a personal email account with the client's initials instead of a name
+        isCorrect: false
+        rationale: >-
+          Initials are not de-identification, and the channel remains outside the
+          organisation's safeguards.
     explanation: >-
       Confidentiality obligations follow the information rather than the setting, and they
       apply across records, conversations, technology and public places. The practical
@@ -678,28 +678,28 @@ questions:
       most effective initial response is to:
     options:
       - id: a
-        text: Stop presenting, ask what they are seeing, and reflect it back before continuing
-        isCorrect: true
-        rationale: >-
-          Establishing that the concern has been understood is what makes anything said
-          afterwards usable; continuing to present confirms the complaint.
-      - id: b
-        text: Restate the data more clearly, since the disagreement is factual
-        isCorrect: false
-        rationale: >-
-          Repeating the same content more loudly is the behaviour being objected to, and
-          rarely changes the outcome.
-      - id: c
         text: Offer to reschedule so everybody can calm down
         isCorrect: false
         rationale: >-
           This may be needed eventually, but ending the meeting first treats the concern as an
           obstacle rather than information.
-      - id: d
+      - id: b
         text: Explain the clinical reasoning in more technical detail
         isCorrect: false
         rationale: >-
           Added technical detail widens the gap the caregiver is describing.
+      - id: c
+        text: Stop presenting, ask what they are seeing, and reflect it back before continuing
+        isCorrect: true
+        rationale: >-
+          Establishing that the concern has been understood is what makes anything said
+          afterwards usable; continuing to present confirms the complaint.
+      - id: d
+        text: Restate the data more clearly, since the disagreement is factual
+        isCorrect: false
+        rationale: >-
+          Repeating the same content more loudly is the behaviour being objected to, and
+          rarely changes the outcome.
     explanation: >-
       Interpersonal skill is a named part of the analyst role rather than a soft extra. A
       caregiver who does not feel heard will not implement a plan, so the communication is
@@ -722,29 +722,29 @@ questions:
       select. The culturally responsive response is to:
     options:
       - id: a
-        text: Build goals around what the family values, within what the evidence supports
-        isCorrect: true
-        rationale: >-
-          Adapting goals and procedures to the client's values and context is what cultural
-          responsiveness means in practice.
-      - id: b
-        text: Explain why the standard goals are evidence-based and proceed with them
-        isCorrect: false
-        rationale: >-
-          Evidence tells you what works for a goal; it does not choose the goal, and imposing
-          one is the failure being described.
-      - id: c
         text: Select the goals the funder is most likely to approve
         isCorrect: false
         rationale: >-
           Funder preference is a constraint to work within, not a substitute for the family's
           values.
-      - id: d
+      - id: b
         text: Defer the decision until the family has completed a values questionnaire
         isCorrect: false
         rationale: >-
           Assessment is useful, but deferring the conversation is not the same as responding
           to what the family has already said.
+      - id: c
+        text: Build goals around what the family values, within what the evidence supports
+        isCorrect: true
+        rationale: >-
+          Adapting goals and procedures to the client's values and context is what cultural
+          responsiveness means in practice.
+      - id: d
+        text: Explain why the standard goals are evidence-based and proceed with them
+        isCorrect: false
+        rationale: >-
+          Evidence tells you what works for a goal; it does not choose the goal, and imposing
+          one is the failure being described.
     explanation: >-
       Cultural responsiveness shows up in the goals chosen and the procedures used, not
       only in tone. Social validity has always required that goals be acceptable to the
@@ -769,27 +769,27 @@ questions:
       ready for independence. The most appropriate action is to:
     options:
       - id: a
-        text: Examine the decisions against objective criteria and data, and change the process
-        isCorrect: true
-        rationale: >-
-          Countering bias means checking the judgements against something external and
-          altering how the decisions are made.
-      - id: b
-        text: Rely on intuition less and delay all independence decisions
-        isCorrect: false
-        rationale: >-
-          Delaying decisions uniformly harms everybody and does not address the pattern.
-      - id: c
         text: Ask the supervisees whether they feel treated fairly and act on that
         isCorrect: false
         rationale: >-
           Their view is worth having, but it places the burden on the people affected and does
           not test the judgements.
-      - id: d
+      - id: b
         text: Note it and monitor whether the pattern continues
         isCorrect: false
         rationale: >-
           Monitoring without changing anything allows a known problem to keep operating.
+      - id: c
+        text: Examine the decisions against objective criteria and data, and change the process
+        isCorrect: true
+        rationale: >-
+          Countering bias means checking the judgements against something external and
+          altering how the decisions are made.
+      - id: d
+        text: Rely on intuition less and delay all independence decisions
+        isCorrect: false
+        rationale: >-
+          Delaying decisions uniformly harms everybody and does not address the pattern.
     explanation: >-
       Bias is not avoided by intending to be fair. The behaviour-analytic response is the
       one applied everywhere else: define the judgement operationally, measure it, compare
@@ -812,27 +812,27 @@ questions:
       reporting obligation is triggered by:
     options:
       - id: a
-        text: Reasonable suspicion, without needing to confirm it first
-        isCorrect: true
-        rationale: >-
-          Mandated reporting statutes are built on suspicion precisely so that reporters are
-          not asked to investigate.
-      - id: b
-        text: Confirmation by a second professional
-        isCorrect: false
-        rationale: >-
-          Requiring corroboration would delay reports the statute intends to be prompt.
-      - id: c
         text: The supervisor agreeing that a report should be made
         isCorrect: false
         rationale: >-
           Telling the supervisor is appropriate, but the legal duty attaches to the individual
           mandated reporter.
-      - id: d
+      - id: b
         text: Consent from the caregiver
         isCorrect: false
         rationale: >-
           Consent is not required and seeking it may place the child at greater risk.
+      - id: c
+        text: Reasonable suspicion, without needing to confirm it first
+        isCorrect: true
+        rationale: >-
+          Mandated reporting statutes are built on suspicion precisely so that reporters are
+          not asked to investigate.
+      - id: d
+        text: Confirmation by a second professional
+        isCorrect: false
+        rationale: >-
+          Requiring corroboration would delay reports the statute intends to be prompt.
     explanation: >-
       Legal and regulatory obligations sit alongside the ethics code and sometimes ahead
       of it. Mandated reporting is the clearest case: the standard is suspicion rather

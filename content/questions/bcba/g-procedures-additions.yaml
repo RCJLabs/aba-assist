@@ -9,28 +9,28 @@ questions:
       Increasing the magnitude of a reinforcer is most likely to help when:
     options:
       - id: a
-        text: The behaviour competes with another source of reinforcement
-        isCorrect: true
-        rationale: >-
-          Where allocation is split between two sources, changing relative magnitude shifts
-          the balance.
-      - id: b
-        text: The learner has not yet acquired the response
-        isCorrect: false
-        rationale: >-
-          Acquisition is helped by schedule density and prompting, not by making an occasional
-          reinforcer larger.
-      - id: c
-        text: The reinforcer is already delivered continuously
-        isCorrect: false
-        rationale: >-
-          Continuous delivery means the constraint is elsewhere, not in magnitude.
-      - id: d
         text: The behaviour is maintained automatically
         isCorrect: false
         rationale: >-
           A socially delivered reinforcer competes poorly with automatic reinforcement
           regardless of size.
+      - id: b
+        text: The behaviour competes with another source of reinforcement
+        isCorrect: true
+        rationale: >-
+          Where allocation is split between two sources, changing relative magnitude shifts
+          the balance.
+      - id: c
+        text: The learner has not yet acquired the response
+        isCorrect: false
+        rationale: >-
+          Acquisition is helped by schedule density and prompting, not by making an occasional
+          reinforcer larger.
+      - id: d
+        text: The reinforcer is already delivered continuously
+        isCorrect: false
+        rationale: >-
+          Continuous delivery means the constraint is elsewhere, not in magnitude.
     explanation: >-
       Reinforcer parameters — rate, immediacy, magnitude and quality — are the dials the
       matching law describes. Which one to turn depends on what is limiting the behaviour,
@@ -69,27 +69,27 @@ questions:
       interval, the interval restarts:
     options:
       - id: a
-        text: Each time the target behaviour occurs
-        isCorrect: true
-        rationale: >-
-          A resetting arrangement begins the interval again whenever the behaviour happens,
-          requiring a full interval free of it.
-      - id: b
         text: Each time reinforcement is delivered
         isCorrect: false
         rationale: >-
           That is true of both resetting and non-resetting variants, so it is not the
           distinguishing feature.
-      - id: c
+      - id: b
         text: At the start of each session only
         isCorrect: false
         rationale: >-
           That describes neither variant.
-      - id: d
+      - id: c
         text: When the learner requests a break
         isCorrect: false
         rationale: >-
           Nothing in the procedure ties the interval to a request.
+      - id: d
+        text: Each time the target behaviour occurs
+        isCorrect: true
+        rationale: >-
+          A resetting arrangement begins the interval again whenever the behaviour happens,
+          requiring a full interval free of it.
     explanation: >-
       Resetting and fixed-interval variants of this procedure differ in what the learner
       has to do to contact reinforcement. Resetting is more demanding and can produce long
@@ -153,26 +153,26 @@ questions:
       The exchange ratio in a token economy most directly controls:
     options:
       - id: a
+        text: How many backup items must be offered
+        isCorrect: false
+        rationale: >-
+          The number of backups is a separate design choice.
+      - id: b
+        text: Whether the system is a group contingency
+        isCorrect: false
+        rationale: >-
+          Group versus individual is an independent dimension.
+      - id: c
         text: How much work a backup reinforcer costs, and so how hard tokens are worked for
         isCorrect: true
         rationale: >-
           The exchange ratio sets the price, which determines responding much as a ratio
           schedule does.
-      - id: b
+      - id: d
         text: Whether tokens are conditioned reinforcers
         isCorrect: false
         rationale: >-
           Conditioning comes from pairing with backups, not from the ratio.
-      - id: c
-        text: How many backup items must be offered
-        isCorrect: false
-        rationale: >-
-          The number of backups is a separate design choice.
-      - id: d
-        text: Whether the system is a group contingency
-        isCorrect: false
-        rationale: >-
-          Group versus individual is an independent dimension.
     explanation: >-
       Designing a token system means setting what earns a token, what tokens buy, the
       exchange ratio and the exchange schedule. The ratio is the price, and pricing it
@@ -201,28 +201,28 @@ questions:
       This arrangement uses:
     options:
       - id: a
+        text: Neither, since it is a consequence procedure
+        isCorrect: false
+        rationale: >-
+          Everything described happens before the behaviour.
+      - id: b
         text: Both a motivating operation and a discriminative stimulus
         isCorrect: true
         rationale: >-
           Visibility of the item raises its value and signals availability, so both antecedent
           functions are operating.
-      - id: b
+      - id: c
         text: A motivating operation only
         isCorrect: false
         rationale: >-
           The item being visible also signals the conditions of availability, which is a
           discriminative function.
-      - id: c
+      - id: d
         text: A discriminative stimulus only
         isCorrect: false
         rationale: >-
           Restricted access also changes how much the item is worth, which is a motivational
           effect.
-      - id: d
-        text: Neither, since it is a consequence procedure
-        isCorrect: false
-        rationale: >-
-          Everything described happens before the behaviour.
     explanation: >-
       Antecedent arrangements often engage both functions at once. Separating them matters
       when a procedure stops working: if value is the problem, restricted access helps; if
@@ -253,26 +253,26 @@ questions:
       establishes:
     options:
       - id: a
+        text: A tact
+        isCorrect: false
+        rationale: >-
+          A tact is speaker behaviour under control of a nonverbal stimulus.
+      - id: b
+        text: An echoic
+        isCorrect: false
+        rationale: >-
+          An echoic repeats the verbal stimulus rather than selecting an item.
+      - id: c
+        text: A simple discrimination
+        isCorrect: false
+        rationale: >-
+          It is conditional, because the correct selection changes with the word presented.
+      - id: d
         text: Listener responding under conditional control of the spoken word
         isCorrect: true
         rationale: >-
           Which item is correct depends on the word given, which is a conditional
           discrimination in the listener repertoire.
-      - id: b
-        text: A tact
-        isCorrect: false
-        rationale: >-
-          A tact is speaker behaviour under control of a nonverbal stimulus.
-      - id: c
-        text: An echoic
-        isCorrect: false
-        rationale: >-
-          An echoic repeats the verbal stimulus rather than selecting an item.
-      - id: d
-        text: A simple discrimination
-        isCorrect: false
-        rationale: >-
-          It is conditional, because the correct selection changes with the word presented.
     explanation: >-
       Listener and speaker repertoires are taught separately and do not automatically
       transfer. Framing selection tasks as conditional discriminations is what connects
@@ -296,27 +296,27 @@ questions:
       A within-stimulus prompt differs from an extra-stimulus prompt in that it:
     options:
       - id: a
-        text: Alters a feature of the teaching stimulus itself rather than adding something
-        isCorrect: true
-        rationale: >-
-          Exaggerating the relevant feature of the stimulus is a within-stimulus prompt;
-          pointing at it is extra-stimulus.
-      - id: b
-        text: Is delivered physically rather than verbally
-        isCorrect: false
-        rationale: >-
-          The distinction is about the stimulus, not the modality of delivery.
-      - id: c
         text: Requires the learner to respond faster
         isCorrect: false
         rationale: >-
           Timing is unrelated to the distinction.
-      - id: d
+      - id: b
         text: Cannot be faded
         isCorrect: false
         rationale: >-
           Within-stimulus prompts are faded by returning the feature to normal, which is
           stimulus fading.
+      - id: c
+        text: Alters a feature of the teaching stimulus itself rather than adding something
+        isCorrect: true
+        rationale: >-
+          Exaggerating the relevant feature of the stimulus is a within-stimulus prompt;
+          pointing at it is extra-stimulus.
+      - id: d
+        text: Is delivered physically rather than verbally
+        isCorrect: false
+        rationale: >-
+          The distinction is about the stimulus, not the modality of delivery.
     explanation: >-
       Prompt taxonomy matters because it determines how fading proceeds. Within-stimulus
       prompts fade by restoring the natural stimulus, which tends to transfer control more
@@ -345,26 +345,26 @@ questions:
       Progressive time delay is preferred over constant time delay when:
     options:
       - id: a
+        text: The skill is a chain rather than a discrete response
+        isCorrect: false
+        rationale: >-
+          Both variants are used with chains and discrete responses alike.
+      - id: b
+        text: The prompt is physical rather than verbal
+        isCorrect: false
+        rationale: >-
+          Prompt modality does not determine which delay variant fits.
+      - id: c
         text: The learner needs a gradual increase in the opportunity to respond independently
         isCorrect: true
         rationale: >-
           Lengthening the delay in steps eases the transition from prompted to independent
           responding.
-      - id: b
+      - id: d
         text: Errors must be prevented entirely
         isCorrect: false
         rationale: >-
           Neither variant prevents all errors, and constant delay is not more errorless.
-      - id: c
-        text: The skill is a chain rather than a discrete response
-        isCorrect: false
-        rationale: >-
-          Both variants are used with chains and discrete responses alike.
-      - id: d
-        text: The prompt is physical rather than verbal
-        isCorrect: false
-        rationale: >-
-          Prompt modality does not determine which delay variant fits.
     explanation: >-
       Time delay transfers control from the prompt to the natural stimulus by inserting a
       pause. Constant delay jumps to a fixed interval; progressive delay lengthens it
@@ -386,26 +386,26 @@ questions:
       Shaping differs from prompting and fading in that shaping:
     options:
       - id: a
+        text: Applies only to motor behaviour
+        isCorrect: false
+        rationale: >-
+          Shaping applies across repertoires, including verbal behaviour.
+      - id: b
+        text: Cannot be combined with prompting
+        isCorrect: false
+        rationale: >-
+          The two are frequently combined in practice.
+      - id: c
         text: Changes the criterion for reinforcement as responding changes
         isCorrect: true
         rationale: >-
           Shaping moves what counts as reinforceable; prompting supplies help and then removes
           it.
-      - id: b
+      - id: d
         text: Requires no reinforcement
         isCorrect: false
         rationale: >-
           Differential reinforcement is the mechanism of shaping.
-      - id: c
-        text: Applies only to motor behaviour
-        isCorrect: false
-        rationale: >-
-          Shaping applies across repertoires, including verbal behaviour.
-      - id: d
-        text: Cannot be combined with prompting
-        isCorrect: false
-        rationale: >-
-          The two are frequently combined in practice.
     explanation: >-
       Both build a response that is not there, by different routes. Prompting supplies the
       response and removes support; shaping waits for approximations and reinforces closer
@@ -433,26 +433,26 @@ questions:
       Before teaching a chain, the task analysis should be validated by:
     options:
       - id: a
+        text: Counting the number of steps against a published standard
+        isCorrect: false
+        rationale: >-
+          There is no standard number; the right granularity depends on the learner.
+      - id: b
+        text: Confirming the funder accepts the format
+        isCorrect: false
+        rationale: >-
+          Administrative acceptance is unrelated to whether the analysis is correct.
+      - id: c
         text: Observing a competent performer or running it yourself to check the steps and their order
         isCorrect: true
         rationale: >-
           A task analysis written without checking against real performance frequently omits
           or misorders steps.
-      - id: b
+      - id: d
         text: Asking the learner which steps they find hard
         isCorrect: false
         rationale: >-
           Useful later, and not how the step list is validated.
-      - id: c
-        text: Counting the number of steps against a published standard
-        isCorrect: false
-        rationale: >-
-          There is no standard number; the right granularity depends on the learner.
-      - id: d
-        text: Confirming the funder accepts the format
-        isCorrect: false
-        rationale: >-
-          Administrative acceptance is unrelated to whether the analysis is correct.
     explanation: >-
       The task analysis is the programme in a chaining procedure, so its accuracy
       determines everything downstream. Validating it against real performance, and
@@ -475,27 +475,27 @@ questions:
       taught:
     options:
       - id: a
+        text: Using a free-operant arrangement with no instruction
+        isCorrect: false
+        rationale: >-
+          Absence of instruction is not what naturalistic teaching means.
+      - id: b
         text: In a naturalistic arrangement, in the routines where it is needed
         isCorrect: true
         rationale: >-
           Teaching where and when the skill is required builds the natural stimulus control it
           depends on.
-      - id: b
+      - id: c
         text: In massed discrete trials until fluent, then generalized
         isCorrect: false
         rationale: >-
           Massed trials build the response under conditions unlike the ones it must occur in,
           which then needs undoing.
-      - id: c
+      - id: d
         text: Only after the learner masters it in isolation
         isCorrect: false
         rationale: >-
           Isolation-first is a choice rather than a requirement and often costs transfer.
-      - id: d
-        text: Using a free-operant arrangement with no instruction
-        isCorrect: false
-        rationale: >-
-          Absence of instruction is not what naturalistic teaching means.
     explanation: >-
       Format selection weighs teaching efficiency against the conditions the skill must
       eventually occur under. Discrete trials build responses quickly; naturalistic
@@ -615,26 +615,26 @@ questions:
       Making the reinforcement schedule indiscriminable supports maintenance because:
     options:
       - id: a
+        text: It converts the response into a rule
+        isCorrect: false
+        rationale: >-
+          Nothing about the tactic establishes rule control.
+      - id: b
         text: The learner cannot tell when reinforcement is available, so responding persists across conditions
         isCorrect: true
         rationale: >-
           Uncertainty about availability is what makes responding resistant to the change from
           teaching to natural conditions.
-      - id: b
+      - id: c
         text: It increases the total amount of reinforcement
         isCorrect: false
         rationale: >-
           It typically reduces the total while maintaining responding.
-      - id: c
+      - id: d
         text: It prevents satiation entirely
         isCorrect: false
         rationale: >-
           Satiation is addressed by other means and is not what this tactic targets.
-      - id: d
-        text: It converts the response into a rule
-        isCorrect: false
-        rationale: >-
-          Nothing about the tactic establishes rule control.
     explanation: >-
       Indiscriminable contingencies are one of the generalization and maintenance tactics:
       intermittent, unsignalled reinforcement makes the shift out of teaching less
@@ -656,26 +656,26 @@ questions:
       Response cost differs from time-out in that response cost:
     options:
       - id: a
+        text: Is a form of positive punishment
+        isCorrect: false
+        rationale: >-
+          Both are negative punishment, since both involve removal.
+      - id: b
+        text: Requires the behaviour to be dangerous
+        isCorrect: false
+        rationale: >-
+          Neither procedure is restricted to dangerous behaviour by definition.
+      - id: c
+        text: Does not reduce behaviour
+        isCorrect: false
+        rationale: >-
+          If it did not reduce behaviour it would not be punishment at all.
+      - id: d
         text: Removes an earned reinforcer rather than access to the reinforcing environment
         isCorrect: true
         rationale: >-
           Losing tokens or points is the removal of something earned; time-out removes access
           to the setting for a period.
-      - id: b
-        text: Is a form of positive punishment
-        isCorrect: false
-        rationale: >-
-          Both are negative punishment, since both involve removal.
-      - id: c
-        text: Requires the behaviour to be dangerous
-        isCorrect: false
-        rationale: >-
-          Neither procedure is restricted to dangerous behaviour by definition.
-      - id: d
-        text: Does not reduce behaviour
-        isCorrect: false
-        rationale: >-
-          If it did not reduce behaviour it would not be punishment at all.
     explanation: >-
       Both are negative punishment and differ in what is removed. Response cost needs
       something earned to remove, which is why it usually accompanies a token system, and
@@ -698,26 +698,26 @@ questions:
       reach is usually:
     options:
       - id: a
+        text: Improved generalization of the target
+        isCorrect: false
+        rationale: >-
+          Punishment does not produce generalization as a side effect.
+      - id: b
+        text: Increased rule-governed behaviour
+        isCorrect: false
+        rationale: >-
+          Not a documented effect of punishment procedures.
+      - id: c
         text: Avoidance of the person or setting associated with the procedure
         isCorrect: true
         rationale: >-
           The person delivering it can become a conditioned aversive stimulus, which damages
           the working relationship broadly.
-      - id: b
+      - id: d
         text: Temporary increase in the punished behaviour
         isCorrect: false
         rationale: >-
           A burst is characteristic of extinction rather than punishment.
-      - id: c
-        text: Improved generalization of the target
-        isCorrect: false
-        rationale: >-
-          Punishment does not produce generalization as a side effect.
-      - id: d
-        text: Increased rule-governed behaviour
-        isCorrect: false
-        rationale: >-
-          Not a documented effect of punishment procedures.
     explanation: >-
       Side effects of punishment include emotional responding, aggression, escape and
       avoidance, and modelling of punitive practice by observers. Avoidance of the person

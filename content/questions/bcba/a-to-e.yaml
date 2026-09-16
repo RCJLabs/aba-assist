@@ -12,28 +12,28 @@ questions:
       does this demonstration most directly achieve?
     options:
       - id: a
+        text: Replication
+        isCorrect: false
+        rationale: >-
+          Replication is a method for confirming findings, not one of the three goals.
+      - id: b
         text: Control
         isCorrect: true
         rationale: >-
           Producing a change in behavior by manipulating a variable is control, the
           highest level of scientific understanding and the one experiments establish.
-      - id: b
+      - id: c
         text: Description
         isCorrect: false
         rationale: >-
           Description is a systematic account of what is observed; it does not involve
           manipulating anything.
-      - id: c
+      - id: d
         text: Prediction
         isCorrect: false
         rationale: >-
           Prediction is knowing that one event tends to accompany another; it is what a
           correlation supports, short of control.
-      - id: d
-        text: Replication
-        isCorrect: false
-        rationale: >-
-          Replication is a method for confirming findings, not one of the three goals.
     explanation: >-
       Science aims at description, prediction and control. A demonstrated functional
       relation — behavior changes when and only when the variable is changed — achieves
@@ -74,28 +74,28 @@ questions:
       being withdrawn. Which attitude of science is the analyst applying?
     options:
       - id: a
-        text: Parsimony
-        isCorrect: true
-        rationale: >-
-          Ruling out the simpler, environmental explanation before accepting a complex
-          inner one is the principle of parsimony.
-      - id: b
         text: Determinism
         isCorrect: false
         rationale: >-
           Determinism is the assumption that behavior has causes at all; it does not say
           which causes to try first.
-      - id: c
+      - id: b
         text: Replication
         isCorrect: false
         rationale: >-
           Replication concerns repeating a result, not choosing between explanations.
-      - id: d
+      - id: c
         text: Philosophic doubt
         isCorrect: false
         rationale: >-
           Philosophic doubt is the readiness to revise conclusions; parsimony is about
           the order in which explanations are considered.
+      - id: d
+        text: Parsimony
+        isCorrect: true
+        rationale: >-
+          Ruling out the simpler, environmental explanation before accepting a complex
+          inner one is the principle of parsimony.
     explanation: >-
       Parsimony directs the scientist to exhaust simple accounts before reaching for
       complex or hypothetical ones. In practice it keeps analysis anchored to observable
@@ -119,30 +119,30 @@ questions:
       client's report that they feel anxious before sessions?
     options:
       - id: a
+        text: Feelings cannot be studied scientifically and should be ignored
+        isCorrect: false
+        rationale: >-
+          That is the methodological position, which radical behaviorism explicitly
+          rejected.
+      - id: b
+        text: The anxiety causes the avoidance, so treatment should target the anxiety directly
+        isCorrect: false
+        rationale: >-
+          Using one behavior to explain another, without reference to the environment,
+          is the mentalistic account radical behaviorism argues against.
+      - id: c
+        text: The report is unreliable and should be disregarded
+        isCorrect: false
+        rationale: >-
+          Verbal reports of private events are data, and behavior analysts take them
+          seriously while analyzing what controls them.
+      - id: d
         text: The feeling is a private event — behavior in its own right, with environmental causes worth analyzing — but it is not itself the cause of the avoidance
         isCorrect: true
         rationale: >-
           Radical behaviorism includes private events as behavior subject to the same
           principles and looks to the environment for the causes of both the feeling and
           the public behavior.
-      - id: b
-        text: Feelings cannot be studied scientifically and should be ignored
-        isCorrect: false
-        rationale: >-
-          That is the methodological position, which radical behaviorism explicitly
-          rejected.
-      - id: c
-        text: The anxiety causes the avoidance, so treatment should target the anxiety directly
-        isCorrect: false
-        rationale: >-
-          Using one behavior to explain another, without reference to the environment,
-          is the mentalistic account radical behaviorism argues against.
-      - id: d
-        text: The report is unreliable and should be disregarded
-        isCorrect: false
-        rationale: >-
-          Verbal reports of private events are data, and behavior analysts take them
-          seriously while analyzing what controls them.
     explanation: >-
       Radical behaviorism does not deny thoughts and feelings; it treats them as private
       behavior with the same kinds of causes as public behavior, and it declines to use
@@ -167,28 +167,28 @@ questions:
       schedules of reinforcement. Which branch of behavior analysis is this?
     options:
       - id: a
+        text: Behaviorism
+        isCorrect: false
+        rationale: >-
+          Behaviorism is the philosophy of the science, not a research program.
+      - id: b
         text: The experimental analysis of behavior
         isCorrect: true
         rationale: >-
           Basic research on the principles of behavior under controlled conditions,
           without concern for social significance, is the experimental analysis of
           behavior.
-      - id: b
+      - id: c
         text: Applied behavior analysis
         isCorrect: false
         rationale: >-
           Applied work addresses socially important behavior in people's lives.
-      - id: c
+      - id: d
         text: Behavior-analytic service delivery
         isCorrect: false
         rationale: >-
           Service delivery is the practice of applying established procedures with
           clients.
-      - id: d
-        text: Behaviorism
-        isCorrect: false
-        rationale: >-
-          Behaviorism is the philosophy of the science, not a research program.
     explanation: >-
       The field has a philosophy (behaviorism), a basic science (the experimental analysis
       of behavior), an applied science (applied behavior analysis) and a practice
@@ -215,29 +215,29 @@ questions:
       this description fail?
     options:
       - id: a
+        text: Effective
+        isCorrect: false
+        rationale: >-
+          Effectiveness concerns the size of the change produced, which cannot be judged
+          from the description alone.
+      - id: b
+        text: Generality
+        isCorrect: false
+        rationale: >-
+          Generality concerns whether the change lasts and spreads.
+      - id: c
         text: Technological
         isCorrect: true
         rationale: >-
           The technological dimension requires procedures to be described precisely
           enough that a trained reader could replicate them. This description gives no
           procedure at all.
-      - id: b
+      - id: d
         text: Applied
         isCorrect: false
         rationale: >-
           Whether the target is socially important is a separate question from whether
           the procedure is described.
-      - id: c
-        text: Effective
-        isCorrect: false
-        rationale: >-
-          Effectiveness concerns the size of the change produced, which cannot be judged
-          from the description alone.
-      - id: d
-        text: Generality
-        isCorrect: false
-        rationale: >-
-          Generality concerns whether the change lasts and spreads.
     explanation: >-
       Baer, Wolf and Risley's technological dimension is the requirement that procedures
       be fully specified. A description that cannot be replicated fails it regardless of
@@ -262,27 +262,27 @@ questions:
       best described as a motivating operation?
     options:
       - id: a
+        text: The juice
+        isCorrect: false
+        rationale: >-
+          The juice is the reinforcer whose value the motivating operation altered.
+      - id: b
         text: The hot afternoon outside
         isCorrect: true
         rationale: >-
           Heat and exertion raise the value of a drink and make asking more likely; that
           is a value-altering, behavior-altering effect — a motivating operation.
-      - id: b
+      - id: c
         text: The parent standing by the fridge
         isCorrect: false
         rationale: >-
           The parent signals that a request can be granted; that is a discriminative
           function, about availability rather than value.
-      - id: c
+      - id: d
         text: The child's request
         isCorrect: false
         rationale: >-
           The request is the behavior, not an antecedent variable.
-      - id: d
-        text: The juice
-        isCorrect: false
-        rationale: >-
-          The juice is the reinforcer whose value the motivating operation altered.
     explanation: >-
       Motivating operations change how much a consequence is wanted; discriminative
       stimuli signal whether it is available. The heat made juice valuable; the parent by
@@ -308,30 +308,30 @@ questions:
       responding with little or no post-reinforcement pause?
     options:
       - id: a
+        text: Fixed interval
+        isCorrect: false
+        rationale: >-
+          Fixed-interval schedules produce a scallop: little responding early in the
+          interval and acceleration toward its end.
+      - id: b
+        text: Continuous reinforcement
+        isCorrect: false
+        rationale: >-
+          Continuous reinforcement establishes behavior quickly but is prone to
+          satiation and rapid extinction rather than steady high rates.
+      - id: c
         text: Variable ratio
         isCorrect: true
         rationale: >-
           Because the number of responses required varies around an average, there is no
           predictable point at which responding is pointless, so responding stays high
           and steady.
-      - id: b
+      - id: d
         text: Fixed ratio
         isCorrect: false
         rationale: >-
           Fixed-ratio schedules produce high rates but with a characteristic pause after
           each reinforcer.
-      - id: c
-        text: Fixed interval
-        isCorrect: false
-        rationale: >-
-          Fixed-interval schedules produce a scallop: little responding early in the
-          interval and acceleration toward its end.
-      - id: d
-        text: Continuous reinforcement
-        isCorrect: false
-        rationale: >-
-          Continuous reinforcement establishes behavior quickly but is prone to
-          satiation and rapid extinction rather than steady high rates.
     explanation: >-
       Each simple schedule has a characteristic response pattern. Variable-ratio
       schedules produce the highest, steadiest responding and the greatest resistance to
@@ -355,28 +355,28 @@ questions:
       account best describes how the crying was acquired?
     options:
       - id: a
+        text: Rule-governed behavior — the child was told dogs are dangerous
+        isCorrect: false
+        rationale: >-
+          No rule was given; the response was acquired through direct pairing.
+      - id: b
+        text: Observational learning — the child saw another child cry at a dog
+        isCorrect: false
+        rationale: >-
+          The child's own startling experience, not a model, produced the change.
+      - id: c
         text: Respondent conditioning — the sight of a dog was paired with a startling event and now elicits the response
         isCorrect: true
         rationale: >-
           A previously neutral stimulus acquired the ability to elicit a reflexive
           response through pairing; the response is elicited by an antecedent, not
           maintained by a consequence.
-      - id: b
+      - id: d
         text: Operant conditioning — crying was reinforced by attention from adults
         isCorrect: false
         rationale: >-
           Nothing in the description involves a consequence that strengthened crying;
           it involves a pairing that now elicits it.
-      - id: c
-        text: Rule-governed behavior — the child was told dogs are dangerous
-        isCorrect: false
-        rationale: >-
-          No rule was given; the response was acquired through direct pairing.
-      - id: d
-        text: Observational learning — the child saw another child cry at a dog
-        isCorrect: false
-        rationale: >-
-          The child's own startling experience, not a model, produced the change.
     explanation: >-
       Respondent conditioning produces elicited responses controlled by antecedent
       stimuli through pairing. Operant behavior is controlled by consequences. Crying can
@@ -453,26 +453,26 @@ questions:
       property of stimulus equivalence does the untrained A→C performance demonstrate?
     options:
       - id: a
-        text: Transitivity
-        isCorrect: true
-        rationale: >-
-          Deriving A→C from trained A→B and B→C is transitivity.
-      - id: b
         text: Symmetry
         isCorrect: false
         rationale: >-
           Symmetry would be the reversal of a trained relation, such as B→A.
-      - id: c
+      - id: b
         text: Reflexivity
         isCorrect: false
         rationale: >-
           Reflexivity is matching a stimulus to itself.
-      - id: d
+      - id: c
         text: Stimulus generalization
         isCorrect: false
         rationale: >-
           Generalization is responding to physically similar stimuli; the spoken word,
           printed word and picture share no physical features.
+      - id: d
+        text: Transitivity
+        isCorrect: true
+        rationale: >-
+          Deriving A→C from trained A→B and B→C is transitivity.
     explanation: >-
       Equivalence is demonstrated by reflexivity (A→A), symmetry (B→A after A→B) and
       transitivity (A→C after A→B and B→C). Teaching a few relations and testing for the
@@ -544,27 +544,27 @@ questions:
       most appropriate decision?
     options:
       - id: a
-        text: Continue baseline until the trend stabilizes, because a decreasing baseline cannot show that treatment caused a further decrease
-        isCorrect: true
-        rationale: >-
-          A baseline already moving in the therapeutic direction predicts improvement
-          without treatment, so any post-treatment decrease would be uninterpretable.
-      - id: b
         text: Start treatment immediately to take advantage of the momentum
         isCorrect: false
         rationale: >-
           Starting now sacrifices the ability to attribute change to treatment.
-      - id: c
+      - id: b
         text: Start treatment because six sessions is always enough baseline
         isCorrect: false
         rationale: >-
           Baseline length is determined by stability and trend, not by a fixed count.
-      - id: d
+      - id: c
         text: Abandon the target because the behavior is resolving on its own
         isCorrect: false
         rationale: >-
           A short-term trend does not show the behavior will reach acceptable levels or
           stay there; it shows the baseline is not yet ready.
+      - id: d
+        text: Continue baseline until the trend stabilizes, because a decreasing baseline cannot show that treatment caused a further decrease
+        isCorrect: true
+        rationale: >-
+          A baseline already moving in the therapeutic direction predicts improvement
+          without treatment, so any post-treatment decrease would be uninterpretable.
     explanation: >-
       Visual analysis of baseline looks for stability and for trend direction. A baseline
       trending toward the intended outcome is extended, if it is safe to do so, until the
@@ -590,28 +590,28 @@ questions:
       the most defensible conclusion?
     options:
       - id: a
-        text: The plan has not yet been tested, because it was not delivered as designed
-        isCorrect: true
-        rationale: >-
-          Outcome data can only be attributed to a plan that was actually implemented.
-          At 40% integrity the intervention in effect was something else.
-      - id: b
         text: The plan is ineffective and should be replaced
         isCorrect: false
         rationale: >-
           Nothing about the plan's effectiveness can be concluded from four weeks of
           largely incorrect implementation.
-      - id: c
+      - id: b
         text: The function of the behavior was misidentified
         isCorrect: false
         rationale: >-
           The assessment may or may not be right; the integrity data do not bear on it
           either way.
-      - id: d
+      - id: c
         text: Integrity data are irrelevant when outcomes are poor
         isCorrect: false
         rationale: >-
           Integrity data are precisely what make poor outcomes interpretable.
+      - id: d
+        text: The plan has not yet been tested, because it was not delivered as designed
+        isCorrect: true
+        rationale: >-
+          Outcome data can only be attributed to a plan that was actually implemented.
+          At 40% integrity the intervention in effect was something else.
     explanation: >-
       Treatment integrity measurement is how the independent variable is verified. When
       integrity is low, the first decision is about implementation — retraining,
@@ -681,26 +681,26 @@ questions:
       Which definition of "aggression" is most adequate for data collection?
     options:
       - id: a
+        text: Being aggressive toward peers or adults
+        isCorrect: false
+        rationale: >-
+          It restates the label without saying what the observer would see.
+      - id: b
+        text: Physical acts that upset other students
+        isCorrect: false
+        rationale: >-
+          It depends on other people's reactions, which vary from moment to moment.
+      - id: c
         text: Any instance of the student's open hand or fist making forceful contact with another person's body
         isCorrect: true
         rationale: >-
           It describes observable movement and its result, sets a boundary, and two
           observers could apply it the same way.
-      - id: b
+      - id: d
         text: Any behavior that is hostile or intended to hurt someone
         isCorrect: false
         rationale: >-
           Intent and hostility are inferences, not observations.
-      - id: c
-        text: Being aggressive toward peers or adults
-        isCorrect: false
-        rationale: >-
-          It restates the label without saying what the observer would see.
-      - id: d
-        text: Physical acts that upset other students
-        isCorrect: false
-        rationale: >-
-          It depends on other people's reactions, which vary from moment to moment.
     explanation: >-
       An operational definition is observable, complete and unambiguous: it says what
       counts and, by implication, what does not. Definitions that lean on intent or on
@@ -724,28 +724,28 @@ questions:
     negated: true
     options:
       - id: a
-        text: Teaching a child to read sight words
-        isCorrect: true
-        rationale: >-
-          A learned skill does not disappear when teaching is withdrawn, so there is no
-          reversal to observe. Multiple-baseline designs suit irreversible targets.
-      - id: b
-        text: Reducing out-of-seat behavior with noncontingent attention
-        isCorrect: false
-        rationale: >-
-          Behavior maintained by a consequence typically returns when the consequence is
-          withdrawn, which a reversal can show.
-      - id: c
         text: Increasing a worker's productivity with a token system
         isCorrect: false
         rationale: >-
           Productivity is likely to fall when tokens are withdrawn, making a reversal
           feasible.
-      - id: d
+      - id: b
         text: Reducing talking-out with a group contingency
         isCorrect: false
         rationale: >-
           Talking-out is likely to return when the contingency is removed.
+      - id: c
+        text: Teaching a child to read sight words
+        isCorrect: true
+        rationale: >-
+          A learned skill does not disappear when teaching is withdrawn, so there is no
+          reversal to observe. Multiple-baseline designs suit irreversible targets.
+      - id: d
+        text: Reducing out-of-seat behavior with noncontingent attention
+        isCorrect: false
+        rationale: >-
+          Behavior maintained by a consequence typically returns when the consequence is
+          withdrawn, which a reversal can show.
     explanation: >-
       Reversal designs require behavior that will change back when treatment is
       withdrawn. Skills, once learned, generally do not, and there are also cases where
@@ -771,28 +771,28 @@ questions:
       and 3, where treatment has not yet begun. What does this pattern suggest?
     options:
       - id: a
-        text: Experimental control has not been demonstrated; something other than the treatment may explain the change, or the effect generalized across settings
-        isCorrect: true
-        rationale: >-
-          The logic of the design depends on untreated baselines staying stable until
-          treatment reaches them. Simultaneous change weakens the demonstration.
-      - id: b
         text: The treatment is unusually powerful
         isCorrect: false
         rationale: >-
           It may be, but the design can no longer show that the treatment, rather than a
           coincident event, produced the change.
-      - id: c
+      - id: b
         text: The design worked as intended
         isCorrect: false
         rationale: >-
           The intended pattern is staggered change, one baseline at a time.
-      - id: d
+      - id: c
         text: Treatment should be withdrawn from setting 1
         isCorrect: false
         rationale: >-
           A reversal is a different design and may not be appropriate; the issue is
           interpreting what happened.
+      - id: d
+        text: Experimental control has not been demonstrated; something other than the treatment may explain the change, or the effect generalized across settings
+        isCorrect: true
+        rationale: >-
+          The logic of the design depends on untreated baselines staying stable until
+          treatment reaches them. Simultaneous change weakens the demonstration.
     explanation: >-
       A multiple baseline demonstrates control when each baseline changes only when its
       treatment begins. Change in untreated baselines is a threat to that logic, whether
@@ -820,27 +820,27 @@ questions:
       validity does the classmate's departure represent?
     options:
       - id: a
+        text: Ratio strain
+        isCorrect: false
+        rationale: >-
+          Ratio strain is a schedule effect, not a validity threat.
+      - id: b
         text: A confounding event coinciding with the treatment
         isCorrect: true
         rationale: >-
           An outside event that occurs alongside the intervention and could account for
           the change is a confound, sometimes called a history threat.
-      - id: b
+      - id: c
         text: Observer drift
         isCorrect: false
         rationale: >-
           Observer drift is a change in how the behavior is scored, not an outside
           event.
-      - id: c
+      - id: d
         text: Reactivity
         isCorrect: false
         rationale: >-
           Reactivity is behavior change caused by being observed.
-      - id: d
-        text: Ratio strain
-        isCorrect: false
-        rationale: >-
-          Ratio strain is a schedule effect, not a validity threat.
     explanation: >-
       Internal validity is threatened by any variable that changes along with the
       treatment. Single-case designs control such threats through replication — a
@@ -865,29 +865,29 @@ questions:
       same skill within a few weeks. Which design is most suitable?
     options:
       - id: a
-        text: A multielement (alternating treatments) design
-        isCorrect: true
-        rationale: >-
-          Rapidly alternating the two procedures and comparing the separation between
-          their data paths is exactly what the multielement design does.
-      - id: b
-        text: A reversal design
-        isCorrect: false
-        rationale: >-
-          A reversal compares treatment with no treatment and would take longer; it is
-          not designed for comparing two active procedures.
-      - id: c
         text: A changing criterion design
         isCorrect: false
         rationale: >-
           A changing criterion steps a performance requirement; it does not compare
           procedures.
-      - id: d
+      - id: b
         text: A multiple baseline across behaviors
         isCorrect: false
         rationale: >-
           A multiple baseline demonstrates the effect of one intervention across targets;
           it does not directly compare two.
+      - id: c
+        text: A multielement (alternating treatments) design
+        isCorrect: true
+        rationale: >-
+          Rapidly alternating the two procedures and comparing the separation between
+          their data paths is exactly what the multielement design does.
+      - id: d
+        text: A reversal design
+        isCorrect: false
+        rationale: >-
+          A reversal compares treatment with no treatment and would take longer; it is
+          not designed for comparing two active procedures.
     explanation: >-
       The multielement design alternates conditions quickly, often session by session,
       and compares them by the separation of their data paths. It is the design for
@@ -910,26 +910,26 @@ questions:
       In an A-B-A-B design, what is the role of the second A phase?
     options:
       - id: a
+        text: To replicate the treatment effect
+        isCorrect: false
+        rationale: >-
+          Replication of the treatment effect is the role of the second B phase.
+      - id: b
+        text: To collect interobserver agreement data
+        isCorrect: false
+        rationale: >-
+          Agreement data are collected across all phases, not in one phase specifically.
+      - id: c
         text: To verify the prediction made from the first baseline by showing behavior returns toward baseline levels when treatment is withdrawn
         isCorrect: true
         rationale: >-
           Baseline logic involves prediction, verification and replication; the return
           to baseline verifies that the first baseline's prediction still holds.
-      - id: b
+      - id: d
         text: To give the participant a rest from treatment
         isCorrect: false
         rationale: >-
           The withdrawal serves the experimental logic, not participant comfort.
-      - id: c
-        text: To replicate the treatment effect
-        isCorrect: false
-        rationale: >-
-          Replication of the treatment effect is the role of the second B phase.
-      - id: d
-        text: To collect interobserver agreement data
-        isCorrect: false
-        rationale: >-
-          Agreement data are collected across all phases, not in one phase specifically.
     explanation: >-
       Single-case designs demonstrate control through baseline logic: the first baseline
       predicts what would happen without treatment, the return to baseline verifies that
@@ -953,29 +953,29 @@ questions:
       child's soccer coach. Which response best manages the situation?
     options:
       - id: a
+        text: Offer the parent a discount on services to keep things friendly
+        isCorrect: false
+        rationale: >-
+          A financial favor adds a second conflict of interest.
+      - id: b
         text: Recognize the multiple relationship, discuss it openly, and arrange for another analyst to take the case if the relationship could affect judgment
         isCorrect: true
         rationale: >-
           The code requires practitioners to identify and avoid or resolve multiple
           relationships that could impair objectivity, with transparency about the
           conflict.
-      - id: b
+      - id: c
         text: Continue without mentioning it, since soccer is unrelated to services
         isCorrect: false
         rationale: >-
           Undisclosed overlapping relationships are exactly what the standards guard
           against.
-      - id: c
+      - id: d
         text: Pull the analyst's child from the soccer team
         isCorrect: false
         rationale: >-
           The analyst's family should not bear the cost; the professional relationship
           is the one to manage.
-      - id: d
-        text: Offer the parent a discount on services to keep things friendly
-        isCorrect: false
-        rationale: >-
-          A financial favor adds a second conflict of interest.
     explanation: >-
       Multiple relationships are not always avoidable, especially in small communities.
       The obligation is to recognize them, disclose them, and resolve them in the client's
@@ -1047,28 +1047,28 @@ questions:
       practice is consistent with the ethics code?
     options:
       - id: a
-        text: Do not solicit testimonials from current clients; any testimonial used must be from a former client with informed consent and clear disclosure
-        isCorrect: true
-        rationale: >-
-          The code prohibits soliciting testimonials from current clients because of the
-          power imbalance, and it sets conditions on how others may be used.
-      - id: b
-        text: Ask current families to write reviews in exchange for a session discount
-        isCorrect: false
-        rationale: >-
-          Soliciting from current clients, and offering an incentive, both violate the
-          public-statement standards.
-      - id: c
         text: Use quotes without names, so consent is not needed
         isCorrect: false
         rationale: >-
           Anonymizing does not remove the consent requirement or the solicitation
           problem.
-      - id: d
+      - id: b
         text: Write generic testimonials in-house and attribute them to families
         isCorrect: false
         rationale: >-
           Fabricated statements are false public statements.
+      - id: c
+        text: Do not solicit testimonials from current clients; any testimonial used must be from a former client with informed consent and clear disclosure
+        isCorrect: true
+        rationale: >-
+          The code prohibits soliciting testimonials from current clients because of the
+          power imbalance, and it sets conditions on how others may be used.
+      - id: d
+        text: Ask current families to write reviews in exchange for a session discount
+        isCorrect: false
+        rationale: >-
+          Soliciting from current clients, and offering an incentive, both violate the
+          public-statement standards.
     explanation: >-
       Public statements must be truthful, must not exploit clients, and must respect
       consent. Current clients cannot freely refuse a request from the people providing
@@ -1139,29 +1139,29 @@ questions:
       a family whose background differs from the analyst's?
     options:
       - id: a
-        text: Asking the family what daily routines, goals and interactions matter to them, and examining the analyst's own assumptions before proposing targets
-        isCorrect: true
-        rationale: >-
-          Cultural humility is an ongoing stance of learning from the family and
-          self-examination, rather than applying assumptions about their culture.
-      - id: b
         text: Applying what the analyst read about the family's culture to predict their preferences
         isCorrect: false
         rationale: >-
           General knowledge about a group is not knowledge about this family, and
           applying it as a template is the assumption humility avoids.
-      - id: c
+      - id: b
         text: Treating every family the same way to be fair
         isCorrect: false
         rationale: >-
           Uniform treatment ignores differences in values and context that affect what
           goals and procedures fit.
-      - id: d
+      - id: c
         text: Avoiding any discussion of culture so as not to offend
         isCorrect: false
         rationale: >-
           Silence leaves the analyst's assumptions unexamined and the family's values
           unheard.
+      - id: d
+        text: Asking the family what daily routines, goals and interactions matter to them, and examining the analyst's own assumptions before proposing targets
+        isCorrect: true
+        rationale: >-
+          Cultural humility is an ongoing stance of learning from the family and
+          self-examination, rather than applying assumptions about their culture.
     explanation: >-
       Cultural humility differs from cultural competence in being a continuous practice
       rather than a body of facts: learning from each family, noticing one's own biases,

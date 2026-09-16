@@ -11,28 +11,28 @@ questions:
       Which preference assessment is this?
     options:
       - id: a
-        text: Multiple-stimulus without replacement
-        isCorrect: true
-        rationale: >-
-          Removing each chosen item and re-presenting the rest is the defining feature of
-          the without-replacement format. The order of selection gives the ranking.
-      - id: b
-        text: Multiple-stimulus with replacement
-        isCorrect: false
-        rationale: >-
-          In the with-replacement format the chosen item is returned to the array and the
-          unchosen items are swapped out.
-      - id: c
         text: Paired-stimulus
         isCorrect: false
         rationale: >-
           Paired-stimulus presents items two at a time, not as an array of five.
-      - id: d
+      - id: b
         text: Free-operant observation
         isCorrect: false
         rationale: >-
           Free-operant assessment gives free access to everything at once and times
           engagement; nothing is chosen or removed.
+      - id: c
+        text: Multiple-stimulus without replacement
+        isCorrect: true
+        rationale: >-
+          Removing each chosen item and re-presenting the rest is the defining feature of
+          the without-replacement format. The order of selection gives the ranking.
+      - id: d
+        text: Multiple-stimulus with replacement
+        isCorrect: false
+        rationale: >-
+          In the with-replacement format the chosen item is returned to the array and the
+          unchosen items are swapped out.
     explanation: >-
       Multiple-stimulus without replacement presents an array, removes each selected item
       and re-presents the remainder. It is fast, gives a full ranking, and is widely used
@@ -76,29 +76,29 @@ questions:
       ranked at the end?
     options:
       - id: a
-        text: By how many times each item was chosen across all of its pairings
-        isCorrect: true
-        rationale: >-
-          Every item is paired with every other item, and the number of times each was
-          selected produces the ranking.
-      - id: b
         text: By how long the learner played with each item
         isCorrect: false
         rationale: >-
           Engagement time is the measure in a free-operant assessment, not a
           paired-stimulus one.
-      - id: c
+      - id: b
         text: By the order in which items were removed from the array
         isCorrect: false
         rationale: >-
           Selection order is how a multiple-stimulus-without-replacement assessment ranks
           items.
-      - id: d
+      - id: c
         text: By the caregiver's report of what the learner likes
         isCorrect: false
         rationale: >-
           Caregiver report is an indirect method and is not part of a paired-stimulus
           assessment.
+      - id: d
+        text: By how many times each item was chosen across all of its pairings
+        isCorrect: true
+        rationale: >-
+          Every item is paired with every other item, and the number of times each was
+          selected produces the ranking.
     explanation: >-
       The paired-stimulus format presents every possible pair and records the choice in
       each. Items are ranked by selection count. It is thorough and produces a clear
@@ -167,29 +167,29 @@ questions:
       occurrence, which set of information should be recorded?
     options:
       - id: a
-        text: What happened just before, what the learner did, and what happened just after
-        isCorrect: true
-        rationale: >-
-          ABC recording captures the antecedent, the behavior and the consequence for
-          each occurrence, in the setting where it happened.
-      - id: b
-        text: The technician's opinion of why the learner screamed
-        isCorrect: false
-        rationale: >-
-          ABC data are observations, not interpretations. The supervisor draws conclusions
-          from the pattern across many entries.
-      - id: c
-        text: Only how many times screaming occurred
-        isCorrect: false
-        rationale: >-
-          A count says nothing about the events around the behavior, which is the point
-          of ABC recording.
-      - id: d
         text: The learner's mood at the start of the day
         isCorrect: false
         rationale: >-
           A general mood rating is not an antecedent to a specific occurrence and is not
           objective.
+      - id: b
+        text: What happened just before, what the learner did, and what happened just after
+        isCorrect: true
+        rationale: >-
+          ABC recording captures the antecedent, the behavior and the consequence for
+          each occurrence, in the setting where it happened.
+      - id: c
+        text: The technician's opinion of why the learner screamed
+        isCorrect: false
+        rationale: >-
+          ABC data are observations, not interpretations. The supervisor draws conclusions
+          from the pattern across many entries.
+      - id: d
+        text: Only how many times screaming occurred
+        isCorrect: false
+        rationale: >-
+          A count says nothing about the events around the behavior, which is the point
+          of ABC recording.
     explanation: >-
       ABC recording is a descriptive-assessment method: for each occurrence the observer
       writes down the antecedent, the behavior and the consequence. Over many entries the
@@ -213,28 +213,28 @@ questions:
       What distinguishes a functional analysis from ABC recording?
     options:
       - id: a
-        text: A functional analysis deliberately arranges conditions to test what maintains the behavior
-        isCorrect: true
-        rationale: >-
-          In a functional analysis, antecedents and consequences are manipulated across
-          conditions so the behavior's function can be demonstrated rather than inferred.
-      - id: b
-        text: ABC recording is more accurate than a functional analysis
-        isCorrect: false
-        rationale: >-
-          ABC data show correlations only; a functional analysis is the method that
-          demonstrates function.
-      - id: c
         text: A functional analysis is done by the technician alone
         isCorrect: false
         rationale: >-
           Functional analyses are designed and interpreted by the supervising analyst;
           technicians may assist by running conditions as instructed.
-      - id: d
+      - id: b
         text: ABC recording requires a clinic setting
         isCorrect: false
         rationale: >-
           ABC recording is done in the natural setting where the behavior occurs.
+      - id: c
+        text: A functional analysis deliberately arranges conditions to test what maintains the behavior
+        isCorrect: true
+        rationale: >-
+          In a functional analysis, antecedents and consequences are manipulated across
+          conditions so the behavior's function can be demonstrated rather than inferred.
+      - id: d
+        text: ABC recording is more accurate than a functional analysis
+        isCorrect: false
+        rationale: >-
+          ABC data show correlations only; a functional analysis is the method that
+          demonstrates function.
     explanation: >-
       Descriptive methods such as ABC recording observe the behavior under natural
       conditions and reveal patterns. A functional analysis changes conditions on purpose
@@ -261,28 +261,28 @@ questions:
       the attention condition. Which describes the technician's role appropriately?
     options:
       - id: a
-        text: Run the condition exactly as the supervisor specified and record the data
-        isCorrect: true
-        rationale: >-
-          Technicians assist with assessments by implementing procedures as designed and
-          collecting data; the design and interpretation belong to the analyst.
-      - id: b
         text: Decide which conditions to run based on what seems most likely
         isCorrect: false
         rationale: >-
           Choosing conditions is part of designing the analysis, which is outside the
           technician's scope.
-      - id: c
+      - id: b
         text: Stop the condition early if the behavior does not appear
         isCorrect: false
         rationale: >-
           Session length is part of the design. Ending early changes the comparison
           across conditions.
-      - id: d
+      - id: c
         text: Interpret the results and tell the family the function
         isCorrect: false
         rationale: >-
           Interpreting assessment results and communicating them is the analyst's role.
+      - id: d
+        text: Run the condition exactly as the supervisor specified and record the data
+        isCorrect: true
+        rationale: >-
+          Technicians assist with assessments by implementing procedures as designed and
+          collecting data; the design and interpretation belong to the analyst.
     explanation: >-
       The technician's part in behavior assessment is assisting: running procedures as
       written and collecting accurate data. Designing the assessment, deciding when it is
@@ -308,27 +308,27 @@ questions:
       function is most consistent with this pattern?
     options:
       - id: a
-        text: Escape from demands
-        isCorrect: true
-        rationale: >-
-          The behavior starts when a task is presented and ends when it is removed; the
-          removal of the demand is the likely maintaining consequence.
-      - id: b
-        text: Access to attention
-        isCorrect: false
-        rationale: >-
-          Nothing in the pattern involves attention being delivered after the crying.
-      - id: c
         text: Access to a tangible item
         isCorrect: false
         rationale: >-
           No item is delivered after the behavior.
-      - id: d
+      - id: b
         text: Automatic reinforcement
         isCorrect: false
         rationale: >-
           Automatically maintained behavior happens regardless of what others do; this
           behavior tracks the presence and removal of a demand.
+      - id: c
+        text: Escape from demands
+        isCorrect: true
+        rationale: >-
+          The behavior starts when a task is presented and ends when it is removed; the
+          removal of the demand is the likely maintaining consequence.
+      - id: d
+        text: Access to attention
+        isCorrect: false
+        rationale: >-
+          Nothing in the pattern involves attention being delivered after the crying.
     explanation: >-
       When a behavior reliably begins with a demand and ends with its removal, escape is
       the most consistent hypothesis. A technician can notice and record this pattern;
@@ -352,29 +352,29 @@ questions:
       learner's aggression is most likely. Which type of assessment is this?
     options:
       - id: a
+        text: Preference assessment
+        isCorrect: false
+        rationale: >-
+          Preference assessments identify potential reinforcers, not the variables
+          maintaining problem behavior.
+      - id: b
         text: Indirect assessment
         isCorrect: true
         rationale: >-
           Interviews, checklists and rating scales completed by people who know the
           learner are indirect methods: they gather reports about behavior rather than
           observations of it.
-      - id: b
+      - id: c
         text: Descriptive assessment
         isCorrect: false
         rationale: >-
           Descriptive assessment involves direct observation of the behavior in its
           natural setting.
-      - id: c
+      - id: d
         text: Functional analysis
         isCorrect: false
         rationale: >-
           A functional analysis arranges and compares conditions experimentally.
-      - id: d
-        text: Preference assessment
-        isCorrect: false
-        rationale: >-
-          Preference assessments identify potential reinforcers, not the variables
-          maintaining problem behavior.
     explanation: >-
       Indirect assessment gathers information from informants — caregivers, teachers,
       records. It is fast and useful for planning, but its results are reports, so they
@@ -446,27 +446,27 @@ questions:
       main purpose of this assessment?
     options:
       - id: a
-        text: To identify which skills to teach and in what order
-        isCorrect: true
-        rationale: >-
-          Skills assessments map what the learner can do against a set of criteria so
-          that teaching targets can be chosen.
-      - id: b
-        text: To identify why the learner engages in problem behavior
-        isCorrect: false
-        rationale: >-
-          That is the purpose of a functional assessment.
-      - id: c
         text: To rank the learner's preferred items
         isCorrect: false
         rationale: >-
           That is a preference assessment.
-      - id: d
+      - id: b
         text: To compare the learner with other children the same age
         isCorrect: false
         rationale: >-
           Skills assessments used in programming are criterion-referenced, not
           comparisons with other children.
+      - id: c
+        text: To identify which skills to teach and in what order
+        isCorrect: true
+        rationale: >-
+          Skills assessments map what the learner can do against a set of criteria so
+          that teaching targets can be chosen.
+      - id: d
+        text: To identify why the learner engages in problem behavior
+        isCorrect: false
+        rationale: >-
+          That is the purpose of a functional assessment.
     explanation: >-
       A skills assessment identifies present skills and gaps across areas such as
       communication, play and self-care. Its output is a set of teaching targets. It is
@@ -490,30 +490,30 @@ questions:
       assessment. The learner selects the first item. What happens next?
     options:
       - id: a
+        text: 'The item is paired with each remaining item in turn'
+        isCorrect: false
+        rationale: >-
+          That is a paired-stimulus assessment, which presents two items at a
+          time.
+      - id: b
         text: 'All items are returned to the array and the trial repeats'
         isCorrect: false
         rationale: >-
           Returning every item describes multiple stimulus with replacement, which
           is a different procedure and produces a different ranking.
-      - id: b
+      - id: c
         text: 'The selected item is removed and the remaining items are presented again'
         isCorrect: true
         rationale: >-
           Without replacement means the chosen item does not return, so the
           procedure produces a ranked hierarchy rather than repeated selection of
           one favourite.
-      - id: c
+      - id: d
         text: 'The session ends and the selection is recorded as the preferred item'
         isCorrect: false
         rationale: >-
           Ending after one selection identifies a single item and gives no
           information about the rest of the array.
-      - id: d
-        text: 'The item is paired with each remaining item in turn'
-        isCorrect: false
-        rationale: >-
-          That is a paired-stimulus assessment, which presents two items at a
-          time.
     explanation: >-
       Multiple stimulus without replacement removes each selected item, so the learner
       works down the array and the result is a ranking. With replacement, one strongly
@@ -558,30 +558,30 @@ questions:
       written the way the procedure requires?
     options:
       - id: a
-        text: 'Antecedent — wanted attention. Behaviour — acting out. Consequence — got what he wanted.'
-        isCorrect: false
-        rationale: >-
-          Every column here is an interpretation rather than an observation, and
-          none of it could be verified by somebody else watching.
-      - id: b
         text: 'Antecedent — instruction to put the tablet away. Behaviour — pushed it off the table. Consequence — adult retrieved it and stepped away.'
         isCorrect: true
         rationale: >-
           Each column describes what an observer could see and hear, with no claim
           about why. That is what makes the record usable for identifying a
           pattern.
-      - id: c
+      - id: b
         text: 'Antecedent — frustration building. Behaviour — meltdown. Consequence — calmed down.'
         isCorrect: false
         rationale: >-
           "Building", "meltdown" and "calmed down" are all inferences, and
           different recorders would apply them differently.
-      - id: d
+      - id: c
         text: 'Antecedent — none. Behaviour — aggression. Consequence — none.'
         isCorrect: false
         rationale: >-
           Recording nothing in two of three columns loses the information the
           procedure exists to capture.
+      - id: d
+        text: 'Antecedent — wanted attention. Behaviour — acting out. Consequence — got what he wanted.'
+        isCorrect: false
+        rationale: >-
+          Every column here is an interpretation rather than an observation, and
+          none of it could be verified by somebody else watching.
     explanation: >-
       ABC recording is a descriptive assessment: it records what was observed before,
       during and after, in terms somebody else could verify. Interpreting the pattern

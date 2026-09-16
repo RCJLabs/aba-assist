@@ -10,27 +10,27 @@ questions:
       recorded. The most important implication is that:
     options:
       - id: a
+        text: The intervention should be excluded from consideration
+        isCorrect: false
+        rationale: >-
+          Excluding it on no evidence is as unsupported as adopting it.
+      - id: b
+        text: The previous team was negligent and should be reported
+        isCorrect: false
+        rationale: >-
+          Poor documentation is a quality problem to note, not automatically a reportable one.
+      - id: c
         text: Nothing can be concluded about whether it worked, and it should not be ruled in or out on that history
         isCorrect: true
         rationale: >-
           Absent data mean absent evidence; treating the period as a failed trial or a success
           are both unsupported.
-      - id: b
+      - id: d
         text: The intervention failed, or data would have been kept
         isCorrect: false
         rationale: >-
           Missing data are common for reasons unrelated to outcome and cannot be read as
           failure.
-      - id: c
-        text: The intervention should be excluded from consideration
-        isCorrect: false
-        rationale: >-
-          Excluding it on no evidence is as unsupported as adopting it.
-      - id: d
-        text: The previous team was negligent and should be reported
-        isCorrect: false
-        rationale: >-
-          Poor documentation is a quality problem to note, not automatically a reportable one.
     explanation: >-
       What a record does not contain is part of what a review produces. An untested period
       is a gap in the history, and the useful output is knowing which questions the new
@@ -68,26 +68,26 @@ questions:
       behaviour. Assessment effort should go first to:
     options:
       - id: a
+        text: Caregiver interview about developmental history
+        isCorrect: false
+        rationale: >-
+          History may be useful context but does not measure the behaviour in question.
+      - id: b
         text: Direct measurement of the referral behaviour
         isCorrect: true
         rationale: >-
           The behaviour that prompted the referral has no data at all, so it is where the gap
           is largest and the question most urgent.
-      - id: b
+      - id: c
         text: Repeating the skills assessment to confirm it
         isCorrect: false
         rationale: >-
           Repeating existing data is the lowest-yield use of assessment time.
-      - id: c
+      - id: d
         text: A full preference assessment
         isCorrect: false
         rationale: >-
           Preference information will be needed but does not answer the referral question.
-      - id: d
-        text: Caregiver interview about developmental history
-        isCorrect: false
-        rationale: >-
-          History may be useful context but does not measure the behaviour in question.
     explanation: >-
       Reviewing records is how assessment gets prioritised. Effort goes where the
       uncertainty is greatest and the question most consequential, which is normally the
@@ -199,27 +199,27 @@ questions:
       assessment is that it:
     options:
       - id: a
-        text: Shows what the learner does under known conditions, rather than what somebody remembers
-        isCorrect: true
-        rationale: >-
-          Observation fixes the conditions and records the behaviour as it happens, which
-          report cannot do.
-      - id: b
         text: Takes less time
         isCorrect: false
         rationale: >-
           Direct observation usually takes considerably more time.
-      - id: c
+      - id: b
         text: Removes the need for a criterion-referenced tool
         isCorrect: false
         rationale: >-
           Observation and the tool are complementary; the tool supplies the criteria.
-      - id: d
+      - id: c
         text: Eliminates reactivity
         isCorrect: false
         rationale: >-
           Being observed can itself change behaviour, which is a limitation of observation
           rather than an advantage.
+      - id: d
+        text: Shows what the learner does under known conditions, rather than what somebody remembers
+        isCorrect: true
+        rationale: >-
+          Observation fixes the conditions and records the behaviour as it happens, which
+          report cannot do.
     explanation: >-
       Report and observation answer different questions and disagree for informative
       reasons. Report covers more situations and time; observation is accurate about the
@@ -336,26 +336,26 @@ questions:
       assessment generally:
     options:
       - id: a
+        text: Works better for learners with limited scanning skills
+        isCorrect: false
+        rationale: >-
+          An array demands more scanning than a pair, not less.
+      - id: b
+        text: Identifies the function of behaviour
+        isCorrect: false
+        rationale: >-
+          Preference assessments identify potential reinforcers, not function.
+      - id: c
         text: Produces a similar hierarchy in less time
         isCorrect: true
         rationale: >-
           Presenting an array and removing selections yields a ranking far more quickly than
           exhaustive pairing.
-      - id: b
+      - id: d
         text: Produces a more reliable hierarchy
         isCorrect: false
         rationale: >-
           Paired presentation is generally regarded as producing the more reliable ranking.
-      - id: c
-        text: Works better for learners with limited scanning skills
-        isCorrect: false
-        rationale: >-
-          An array demands more scanning than a pair, not less.
-      - id: d
-        text: Identifies the function of behaviour
-        isCorrect: false
-        rationale: >-
-          Preference assessments identify potential reinforcers, not function.
     explanation: >-
       The trade-off across formats is reliability against time and learner demands.
       Knowing which was used matters when reading somebody else's hierarchy, because the
@@ -386,28 +386,28 @@ questions:
       contingently does not increase the target behaviour. The correct conclusion is:
     options:
       - id: a
-        text: Preference does not guarantee reinforcer effect, and a reinforcer assessment is needed
-        isCorrect: true
-        rationale: >-
-          Preference predicts reinforcer value imperfectly; whether a consequence reinforces
-          is an empirical question about the behaviour.
-      - id: b
-        text: The preference assessment was run incorrectly
-        isCorrect: false
-        rationale: >-
-          A correctly run assessment can still identify an item that does not function as a
-          reinforcer for this response.
-      - id: c
         text: The learner is being non-compliant
         isCorrect: false
         rationale: >-
           That explains nothing and is not a behaviour-analytic account.
-      - id: d
+      - id: b
         text: The item has lost value through satiation, necessarily
         isCorrect: false
         rationale: >-
           Satiation is one possible explanation among several and is not established by the
           description.
+      - id: c
+        text: Preference does not guarantee reinforcer effect, and a reinforcer assessment is needed
+        isCorrect: true
+        rationale: >-
+          Preference predicts reinforcer value imperfectly; whether a consequence reinforces
+          is an empirical question about the behaviour.
+      - id: d
+        text: The preference assessment was run incorrectly
+        isCorrect: false
+        rationale: >-
+          A correctly run assessment can still identify an item that does not function as a
+          reinforcer for this response.
     explanation: >-
       Preference and reinforcer effect are different things measured in different ways.
       The only test of a reinforcer is whether contingent delivery increases the
@@ -431,26 +431,26 @@ questions:
       A scatterplot is the descriptive tool best suited to answering:
     options:
       - id: a
+        text: Whether two observers agree
+        isCorrect: false
+        rationale: >-
+          That is an agreement question, unrelated to the tool.
+      - id: b
         text: Whether the behaviour clusters at particular times of day or activities
         isCorrect: true
         rationale: >-
           Plotting occurrence against time slots across days is what exposes temporal
           patterns.
-      - id: b
+      - id: c
         text: What consequence maintains the behaviour
         isCorrect: false
         rationale: >-
           That requires ABC data or a functional analysis; a scatterplot shows when, not why.
-      - id: c
+      - id: d
         text: How long each episode lasts
         isCorrect: false
         rationale: >-
           Duration is measured directly; a scatterplot records occurrence within intervals.
-      - id: d
-        text: Whether two observers agree
-        isCorrect: false
-        rationale: >-
-          That is an agreement question, unrelated to the tool.
     explanation: >-
       Descriptive assessment tools answer different questions. Scatterplots expose
       temporal patterning, ABC recording proposes antecedent and consequence relations,
@@ -520,27 +520,27 @@ questions:
       The most reasonable interpretation is:
     options:
       - id: a
-        text: The behaviour may be automatically maintained, or the conditions did not capture the relevant variables
-        isCorrect: true
-        rationale: >-
-          Undifferentiated results are consistent with automatic maintenance and with an
-          analysis that failed to arrange the operative conditions.
-      - id: b
         text: The behaviour has no function
         isCorrect: false
         rationale: >-
           All behaviour is maintained by something; an inconclusive analysis is a statement
           about the analysis.
-      - id: c
+      - id: b
         text: The learner is not a candidate for behaviour-analytic services
         isCorrect: false
         rationale: >-
           This does not follow at all.
-      - id: d
+      - id: c
         text: Multiple functions have been ruled out
         isCorrect: false
         rationale: >-
           Undifferentiated data rule nothing out, which is the point.
+      - id: d
+        text: The behaviour may be automatically maintained, or the conditions did not capture the relevant variables
+        isCorrect: true
+        rationale: >-
+          Undifferentiated results are consistent with automatic maintenance and with an
+          analysis that failed to arrange the operative conditions.
     explanation: >-
       Reading a functional analysis includes reading a failure to differentiate. The usual
       next steps are to extend sessions, add an alone or ignore condition, refine the
@@ -563,27 +563,27 @@ questions:
       The control condition in a standard functional analysis is designed so that:
     options:
       - id: a
-        text: Reinforcers are freely available and demands are absent, so the behaviour has no reason to occur
-        isCorrect: true
-        rationale: >-
-          The control provides a baseline of low responding against which the test conditions
-          are compared.
-      - id: b
         text: Every possible reinforcer is withheld
         isCorrect: false
         rationale: >-
           That describes an extinction arrangement, not a control condition.
-      - id: c
+      - id: b
         text: The behaviour is punished so it does not interfere
         isCorrect: false
         rationale: >-
           Punishment has no place in the control condition and would confound the comparison.
-      - id: d
+      - id: c
         text: Conditions match the natural environment exactly
         isCorrect: false
         rationale: >-
           The control is deliberately arranged rather than naturalistic; fidelity to the
           natural setting is the descriptive assessment's job.
+      - id: d
+        text: Reinforcers are freely available and demands are absent, so the behaviour has no reason to occur
+        isCorrect: true
+        rationale: >-
+          The control provides a baseline of low responding against which the test conditions
+          are compared.
     explanation: >-
       A functional analysis works by comparison. Each test condition isolates one
       candidate consequence while the control removes the reasons for the behaviour to
@@ -612,27 +612,27 @@ questions:
       The analyst should:
     options:
       - id: a
+        text: Reassess in six months before concluding anything
+        isCorrect: false
+        rationale: >-
+          Delay is not warranted where the assessment already supports a conclusion.
+      - id: b
         text: Say so in the report and support a referral to the appropriate service
         isCorrect: true
         rationale: >-
           Interpreting results includes concluding that behaviour-analytic services are not
           the right answer, and helping the client get to what is.
-      - id: b
+      - id: c
         text: Offer services anyway while the family pursues the referral
         isCorrect: false
         rationale: >-
           Delivering services that are not indicated is not made acceptable by a parallel
           referral.
-      - id: c
+      - id: d
         text: Decline further contact once the report is delivered
         isCorrect: false
         rationale: >-
           An abrupt end without supporting the transition fails the continuity obligation.
-      - id: d
-        text: Reassess in six months before concluding anything
-        isCorrect: false
-        rationale: >-
-          Delay is not warranted where the assessment already supports a conclusion.
     explanation: >-
       Interpreting a referral means deciding whether services are needed and of what kind.
       Concluding that they are not is a legitimate result, and handling the handover well
@@ -743,25 +743,25 @@ questions:
       A behavioural cusp is best described as a skill that:
     options:
       - id: a
-        text: Exposes the learner to new environments, contingencies and learning opportunities
-        isCorrect: true
-        rationale: >-
-          That consequence — opening access to further learning — is what defines a cusp.
-      - id: b
         text: Is a prerequisite for a more complex skill in a task analysis
         isCorrect: false
         rationale: >-
           That is a component skill, which need not open new environments.
-      - id: c
+      - id: b
         text: Generalizes to untrained settings without programming
         isCorrect: false
         rationale: >-
           That is generalization, a different property.
-      - id: d
+      - id: c
         text: Can be taught in a small number of trials
         isCorrect: false
         rationale: >-
           Ease of teaching has nothing to do with whether a skill is a cusp.
+      - id: d
+        text: Exposes the learner to new environments, contingencies and learning opportunities
+        isCorrect: true
+        rationale: >-
+          That consequence — opening access to further learning — is what defines a cusp.
     explanation: >-
       Cusps and pivotal behaviours are both arguments for prioritising one goal over
       another: a cusp opens new environments, a pivotal behaviour produces change across
@@ -786,27 +786,27 @@ questions:
       analyst's first choice. The best response is to:
     options:
       - id: a
-        text: Include the family's priority and discuss sequencing openly
-        isCorrect: true
-        rationale: >-
-          Goals the family values are more likely to be supported, and social validity
-          requires their priorities to carry weight.
-      - id: b
         text: Proceed with the clinical priority and revisit the family's later
         isCorrect: false
         rationale: >-
           Deferring the family's goal without discussion is how plans lose the people who have
           to run them.
-      - id: c
+      - id: b
         text: Work on all ten simultaneously
         isCorrect: false
         rationale: >-
           Spreading effort across ten goals is a way of achieving none.
-      - id: d
+      - id: c
         text: Ask the family to choose from the analyst's top three
         isCorrect: false
         rationale: >-
           Constraining the choice to the analyst's list is a version of not listening.
+      - id: d
+        text: Include the family's priority and discuss sequencing openly
+        isCorrect: true
+        rationale: >-
+          Goals the family values are more likely to be supported, and social validity
+          requires their priorities to carry weight.
     explanation: >-
       Social validity was defined around goals, procedures and outcomes being acceptable
       to the people affected. Prioritisation is where that is decided in practice, and it
@@ -828,26 +828,26 @@ questions:
       ABC recording most directly produces:
     options:
       - id: a
+        text: A demonstrated functional relation
+        isCorrect: false
+        rationale: >-
+          That requires manipulation, which observational recording does not involve.
+      - id: b
+        text: A ranked reinforcer hierarchy
+        isCorrect: false
+        rationale: >-
+          That is what preference assessment produces.
+      - id: c
+        text: A measure of treatment integrity
+        isCorrect: false
+        rationale: >-
+          Integrity is measured against a procedure being run, not by ABC recording.
+      - id: d
         text: Hypotheses about antecedents and consequences to test
         isCorrect: true
         rationale: >-
           It generates candidate relations that a functional analysis can then test
           experimentally.
-      - id: b
-        text: A demonstrated functional relation
-        isCorrect: false
-        rationale: >-
-          That requires manipulation, which observational recording does not involve.
-      - id: c
-        text: A ranked reinforcer hierarchy
-        isCorrect: false
-        rationale: >-
-          That is what preference assessment produces.
-      - id: d
-        text: A measure of treatment integrity
-        isCorrect: false
-        rationale: >-
-          Integrity is measured against a procedure being run, not by ABC recording.
     explanation: >-
       Descriptive assessment narrows the field before experimental work begins. Its output
       is a set of plausible relations, and its most common misuse is reporting one of them
@@ -870,26 +870,26 @@ questions:
       An ecological assessment differs from a standard skills assessment in that it:
     options:
       - id: a
+        text: Replaces the need for preference assessment
+        isCorrect: false
+        rationale: >-
+          It answers a different question and does not substitute for one.
+      - id: b
         text: Examines the settings the learner moves through and what those settings demand
         isCorrect: true
         rationale: >-
           It assesses the environments and their requirements rather than only the learner's
           repertoire.
-      - id: b
+      - id: c
         text: Uses only indirect methods
         isCorrect: false
         rationale: >-
           It commonly includes direct observation of the settings.
-      - id: c
+      - id: d
         text: Is restricted to home settings
         isCorrect: false
         rationale: >-
           It spans whatever settings are relevant.
-      - id: d
-        text: Replaces the need for preference assessment
-        isCorrect: false
-        rationale: >-
-          It answers a different question and does not substitute for one.
     explanation: >-
       Assessing the environment alongside the learner is what makes goals fit the life the
       learner actually leads. A skill list drawn from a curriculum with no reference to
@@ -1044,30 +1044,30 @@ questions:
       assessment format most likely to yield usable information is:
     options:
       - id: a
+        text: Multiple-stimulus without replacement
+        isCorrect: false
+        rationale: >-
+          An array demands more selection and more scanning than a pair, so it is a poorer
+          fit rather than a better one.
+      - id: b
+        text: Caregiver questionnaire alone
+        isCorrect: false
+        rationale: >-
+          Report is a reasonable starting point but is not a preference assessment, and it
+          is least reliable for learners whose preferences are unclear to others.
+      - id: c
         text: Single-stimulus presentation
         isCorrect: true
         rationale: >-
           Presenting one item at a time asks only whether the learner approaches it, which
           is the least demanding question and the one a learner who does not choose can
           still answer.
-      - id: b
+      - id: d
         text: Paired-stimulus presentation
         isCorrect: false
         rationale: >-
           Pairing requires choosing between two items, which is exactly what this learner
           does not do.
-      - id: c
-        text: Multiple-stimulus without replacement
-        isCorrect: false
-        rationale: >-
-          An array demands more selection and more scanning than a pair, so it is a poorer
-          fit rather than a better one.
-      - id: d
-        text: Caregiver questionnaire alone
-        isCorrect: false
-        rationale: >-
-          Report is a reasonable starting point but is not a preference assessment, and it
-          is least reliable for learners whose preferences are unclear to others.
     explanation: >-
       Formats differ in what they demand of the learner as well as in what they yield.
       Single-stimulus gives approach data rather than a ranking, which is less information
@@ -1096,26 +1096,26 @@ questions:
       target behaviour. The principal reason for this arrangement is to:
     options:
       - id: a
+        text: Avoid the need for a functional analysis altogether
+        isCorrect: false
+        rationale: >-
+          It is a functional analysis, conducted with a different dependent measure.
+      - id: b
         text: Limit how often the behaviour is evoked while still allowing conditions to be compared
         isCorrect: true
         rationale: >-
           Latency to the first response carries the comparison, so each condition needs the
           behaviour to occur only once rather than repeatedly.
-      - id: b
+      - id: c
         text: Produce a higher rate of responding for analysis
         isCorrect: false
         rationale: >-
           Ending at the first occurrence produces fewer responses, not more.
-      - id: c
+      - id: d
         text: Remove the need for a control condition
         isCorrect: false
         rationale: >-
           Latency-based analyses still compare test conditions against a control.
-      - id: d
-        text: Avoid the need for a functional analysis altogether
-        isCorrect: false
-        rationale: >-
-          It is a functional analysis, conducted with a different dependent measure.
     explanation: >-
       Where evoking a behaviour repeatedly is the objection, latency rather than rate can
       carry the comparison. The experimental logic is unchanged — differentiated conditions

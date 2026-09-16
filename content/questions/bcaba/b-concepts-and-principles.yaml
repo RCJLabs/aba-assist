@@ -11,28 +11,28 @@ questions:
       described as:
     options:
       - id: a
+        text: A stimulus class
+        isCorrect: false
+        rationale: >-
+          A stimulus class groups stimuli. These are responses.
+      - id: b
         text: One response class
         isCorrect: true
         rationale: >-
           Forms that differ topographically but produce the same effect, maintained by the
           same consequence, make up a response class.
-      - id: b
+      - id: c
         text: Three response classes
         isCorrect: false
         rationale: >-
           They share a function and a maintaining consequence, so they belong to one class
           rather than three.
-      - id: c
+      - id: d
         text: A behavioural chain
         isCorrect: false
         rationale: >-
           A chain is a sequence in which each link produces the conditions for the next. These
           are alternatives, not steps.
-      - id: d
-        text: A stimulus class
-        isCorrect: false
-        rationale: >-
-          A stimulus class groups stimuli. These are responses.
     explanation: >-
       Grouping by function is what stops a plan from playing whack-a-mole. Reduce tapping
       alone and the class still has two members available; treat the class and you are
@@ -112,27 +112,27 @@ questions:
       find something red. The red items function as:
     options:
       - id: a
+        text: A stimulus chain
+        isCorrect: false
+        rationale: >-
+          The items are alternatives presented on separate occasions, not a sequence.
+      - id: b
         text: A stimulus class sharing a common feature
         isCorrect: true
         rationale: >-
           Stimuli grouped by a shared physical property form a feature stimulus class, and
           responding transfers across its members.
-      - id: b
+      - id: c
         text: A response class
         isCorrect: false
         rationale: >-
           A response class groups responses. These are objects presented to the learner.
-      - id: c
+      - id: d
         text: An arbitrary stimulus class
         isCorrect: false
         rationale: >-
           An arbitrary class has no shared physical property; its members go together only by
           training or convention.
-      - id: d
-        text: A stimulus chain
-        isCorrect: false
-        rationale: >-
-          The items are alternatives presented on separate occasions, not a sequence.
     explanation: >-
       The feature-versus-arbitrary distinction predicts how easily responding will spread.
       Colour supports spread on its own; a class like "things that cost money" has to be
@@ -154,25 +154,25 @@ questions:
       Which is an example of a single stimulus rather than a stimulus class?
     options:
       - id: a
-        text: The specific bell that rings at 10:15 in one classroom
-        isCorrect: true
-        rationale: >-
-          One particular event, on one occasion, in one setting, is a single stimulus.
-      - id: b
         text: Adult voices giving instructions
         isCorrect: false
         rationale: >-
           This groups many different events by a shared function, which makes it a class.
-      - id: c
+      - id: b
         text: Written words naming animals
         isCorrect: false
         rationale: >-
           This is a set of stimuli grouped together, so it is a class.
-      - id: d
+      - id: c
         text: Signals that a break is available
         isCorrect: false
         rationale: >-
           Several different events sharing one function form a class.
+      - id: d
+        text: The specific bell that rings at 10:15 in one classroom
+        isCorrect: true
+        rationale: >-
+          One particular event, on one occasion, in one setting, is a single stimulus.
     explanation: >-
       The distinction becomes practical when a skill is taught to a single stimulus and
       then fails everywhere else. If teaching used one bell, the learner may have learned
@@ -195,27 +195,27 @@ questions:
       noisy. These two are, respectively:
     options:
       - id: a
+        text: Both operant
+        isCorrect: false
+        rationale: >-
+          A flinch to a sudden loud noise is a reflexive response to an antecedent stimulus.
+      - id: b
         text: Respondent and operant
         isCorrect: true
         rationale: >-
           The flinch is elicited by a stimulus; the request is emitted and maintained by its
           consequences.
-      - id: b
+      - id: c
         text: Operant and respondent
         isCorrect: false
         rationale: >-
           This reverses them. A flinch to a sudden noise is elicited, not selected by
           consequences.
-      - id: c
+      - id: d
         text: Both respondent
         isCorrect: false
         rationale: >-
           Asking for headphones is maintained by what it produces, which makes it operant.
-      - id: d
-        text: Both operant
-        isCorrect: false
-        rationale: >-
-          A flinch to a sudden loud noise is a reflexive response to an antecedent stimulus.
     explanation: >-
       The same episode usually contains both. Treating an elicited response as though it
       were maintained by attention leads to a plan aimed at the wrong process — and to a
@@ -238,28 +238,28 @@ questions:
       tone alone produces a blink, is:
     options:
       - id: a
-        text: Respondent conditioning
-        isCorrect: true
-        rationale: >-
-          A previously neutral stimulus comes to elicit a response through pairing with an
-          eliciting stimulus.
-      - id: b
-        text: Operant conditioning
-        isCorrect: false
-        rationale: >-
-          No consequence follows a response to select it; the change is in what the antecedent
-          elicits.
-      - id: c
-        text: Shaping
-        isCorrect: false
-        rationale: >-
-          Shaping reinforces successive approximations to a target response.
-      - id: d
         text: Stimulus generalization
         isCorrect: false
         rationale: >-
           Generalization is responding spreading to similar stimuli, not a new eliciting
           relation being established.
+      - id: b
+        text: Respondent conditioning
+        isCorrect: true
+        rationale: >-
+          A previously neutral stimulus comes to elicit a response through pairing with an
+          eliciting stimulus.
+      - id: c
+        text: Operant conditioning
+        isCorrect: false
+        rationale: >-
+          No consequence follows a response to select it; the change is in what the antecedent
+          elicits.
+      - id: d
+        text: Shaping
+        isCorrect: false
+        rationale: >-
+          Shaping reinforces successive approximations to a target response.
     explanation: >-
       The same pairing logic appears in applied work whenever a neutral person or setting
       becomes associated with something aversive. Recognising it as respondent explains
@@ -282,27 +282,27 @@ questions:
       room, and ear-covering becomes more frequent over following weeks. This is:
     options:
       - id: a
-        text: Negative reinforcement
-        isCorrect: true
-        rationale: >-
-          A stimulus was removed after the behaviour and the behaviour increased, which is the
-          definition.
-      - id: b
-        text: Positive reinforcement
-        isCorrect: false
-        rationale: >-
-          Nothing was added; noise was removed.
-      - id: c
         text: Negative punishment
         isCorrect: false
         rationale: >-
           Punishment would mean the behaviour decreased, and it increased.
-      - id: d
+      - id: b
         text: Extinction
         isCorrect: false
         rationale: >-
           Extinction is withholding the maintaining consequence, which is the opposite of what
           happened.
+      - id: c
+        text: Negative reinforcement
+        isCorrect: true
+        rationale: >-
+          A stimulus was removed after the behaviour and the behaviour increased, which is the
+          definition.
+      - id: d
+        text: Positive reinforcement
+        isCorrect: false
+        rationale: >-
+          Nothing was added; noise was removed.
     explanation: >-
       Positive and negative describe whether something was added or removed, never whether
       the outcome was good or bad. Here the arrangement is both effective reinforcement
@@ -325,27 +325,27 @@ questions:
       during it. What is missing from this claim?
     options:
       - id: a
-        text: Evidence that the behaviour it follows increases in future
-        isCorrect: true
-        rationale: >-
-          Reinforcement is defined by its effect on future behaviour. Without that, the claim
-          is about apparent enjoyment.
-      - id: b
-        text: Evidence that the learner prefers the task to other tasks
-        isCorrect: false
-        rationale: >-
-          Preference is useful information but is still not the defining test.
-      - id: c
         text: A formal preference assessment
         isCorrect: false
         rationale: >-
           A preference assessment identifies candidates; it does not establish a reinforcement
           effect either.
-      - id: d
+      - id: b
         text: Confirmation that the task is age-appropriate
         isCorrect: false
         rationale: >-
           Age-appropriateness is a separate consideration and does not bear on the definition.
+      - id: c
+        text: Evidence that the behaviour it follows increases in future
+        isCorrect: true
+        rationale: >-
+          Reinforcement is defined by its effect on future behaviour. Without that, the claim
+          is about apparent enjoyment.
+      - id: d
+        text: Evidence that the learner prefers the task to other tasks
+        isCorrect: false
+        rationale: >-
+          Preference is useful information but is still not the defining test.
     explanation: >-
       This is the most common everyday error in the vocabulary: calling something a
       reinforcer because it looks pleasant. The functional definition is what keeps the
@@ -371,26 +371,26 @@ questions:
       behaviour, and the behaviour decreases. This describes:
     options:
       - id: a
-        text: Negative punishment
-        isCorrect: true
-        rationale: >-
-          A stimulus was removed after the behaviour and the behaviour decreased.
-      - id: b
-        text: Positive punishment
-        isCorrect: false
-        rationale: >-
-          Nothing was added; access was removed.
-      - id: c
-        text: Negative reinforcement
-        isCorrect: false
-        rationale: >-
-          Reinforcement would mean the behaviour increased.
-      - id: d
         text: Extinction
         isCorrect: false
         rationale: >-
           Extinction involves withholding the maintaining reinforcer, not removing an
           unrelated amount of preferred time.
+      - id: b
+        text: Negative punishment
+        isCorrect: true
+        rationale: >-
+          A stimulus was removed after the behaviour and the behaviour decreased.
+      - id: c
+        text: Positive punishment
+        isCorrect: false
+        rationale: >-
+          Nothing was added; access was removed.
+      - id: d
+        text: Negative reinforcement
+        isCorrect: false
+        rationale: >-
+          Reinforcement would mean the behaviour increased.
     explanation: >-
       Naming the procedure correctly matters because negative punishment procedures
       usually carry authorisation and oversight requirements that reinforcement-based
@@ -415,28 +415,28 @@ questions:
       over eight weeks. Technically, what should be concluded?
     options:
       - id: a
-        text: The procedure is not functioning as punishment for this learner
-        isCorrect: true
-        rationale: >-
-          Punishment is defined by a decrease in future behaviour. No decrease means the
-          consequence is not a punisher here.
-      - id: b
-        text: The procedure needs to be applied more intensely
-        isCorrect: false
-        rationale: >-
-          Escalating a procedure that is not working is exactly the reasoning that produces
-          harm without benefit.
-      - id: c
-        text: The learner is resistant to punishment
-        isCorrect: false
-        rationale: >-
-          This explains nothing and relocates the problem into the learner.
-      - id: d
         text: The procedure is working but slowly
         isCorrect: false
         rationale: >-
           Eight weeks with no decrease is evidence against the effect, not evidence of a slow
           one.
+      - id: b
+        text: The procedure is not functioning as punishment for this learner
+        isCorrect: true
+        rationale: >-
+          Punishment is defined by a decrease in future behaviour. No decrease means the
+          consequence is not a punisher here.
+      - id: c
+        text: The procedure needs to be applied more intensely
+        isCorrect: false
+        rationale: >-
+          Escalating a procedure that is not working is exactly the reasoning that produces
+          harm without benefit.
+      - id: d
+        text: The learner is resistant to punishment
+        isCorrect: false
+        rationale: >-
+          This explains nothing and relocates the problem into the learner.
     explanation: >-
       The functional definition cuts both ways: it prevents calling a pleasant thing a
       reinforcer, and it prevents calling an unpleasant thing a punisher. The second case
@@ -462,26 +462,26 @@ questions:
       else happening. The most likely contingency is:
     options:
       - id: a
+        text: Socially mediated positive reinforcement
+        isCorrect: false
+        rationale: >-
+          Nobody is present to mediate a consequence.
+      - id: b
+        text: Socially mediated negative reinforcement
+        isCorrect: false
+        rationale: >-
+          No demand or aversive stimulus is being removed by another person.
+      - id: c
+        text: Operant extinction
+        isCorrect: false
+        rationale: >-
+          Nothing is being withheld; the behaviour is occurring and continuing.
+      - id: d
         text: Automatic reinforcement
         isCorrect: true
         rationale: >-
           The behaviour produces its own consequence directly, without another person
           delivering anything.
-      - id: b
-        text: Socially mediated positive reinforcement
-        isCorrect: false
-        rationale: >-
-          Nobody is present to mediate a consequence.
-      - id: c
-        text: Socially mediated negative reinforcement
-        isCorrect: false
-        rationale: >-
-          No demand or aversive stimulus is being removed by another person.
-      - id: d
-        text: Operant extinction
-        isCorrect: false
-        rationale: >-
-          Nothing is being withheld; the behaviour is occurring and continuing.
     explanation: >-
       The distinction decides what an intervention can even reach. Socially mediated
       behaviour can be addressed by changing what people do; automatically reinforced
@@ -563,26 +563,26 @@ questions:
       Tokens exchangeable for a range of different items and activities function as:
     options:
       - id: a
+        text: A conditioned punisher
+        isCorrect: false
+        rationale: >-
+          Tokens here are delivered to strengthen behaviour, not to reduce it.
+      - id: b
+        text: A discriminative stimulus
+        isCorrect: false
+        rationale: >-
+          A token may also signal availability, but its role here is as a consequence.
+      - id: c
         text: A generalized conditioned reinforcer
         isCorrect: true
         rationale: >-
           Backed by many different reinforcers, a token retains its effect across many
           motivating conditions.
-      - id: b
+      - id: d
         text: An unconditioned reinforcer
         isCorrect: false
         rationale: >-
           Unconditioned reinforcers are effective without a learning history; tokens are not.
-      - id: c
-        text: A conditioned punisher
-        isCorrect: false
-        rationale: >-
-          Tokens here are delivered to strengthen behaviour, not to reduce it.
-      - id: d
-        text: A discriminative stimulus
-        isCorrect: false
-        rationale: >-
-          A token may also signal availability, but its role here is as a consequence.
     explanation: >-
       The breadth of the backup set is what makes a token system robust to satiation. A
       token backed by one snack stops working the moment the learner has had enough of
@@ -611,27 +611,27 @@ questions:
       item. The word alone now reduces the behaviour it follows. The word has become:
     options:
       - id: a
-        text: A conditioned punisher
-        isCorrect: true
-        rationale: >-
-          Its suppressing effect was acquired through pairing rather than being present from
-          the start.
-      - id: b
-        text: An unconditioned punisher
-        isCorrect: false
-        rationale: >-
-          Unconditioned punishers suppress behaviour without a pairing history.
-      - id: c
-        text: A conditioned reinforcer
-        isCorrect: false
-        rationale: >-
-          It reduces the behaviour it follows rather than strengthening it.
-      - id: d
         text: A motivating operation
         isCorrect: false
         rationale: >-
           It is functioning as a consequence, not as something that alters the value of a
           consequence.
+      - id: b
+        text: A conditioned punisher
+        isCorrect: true
+        rationale: >-
+          Its suppressing effect was acquired through pairing rather than being present from
+          the start.
+      - id: c
+        text: An unconditioned punisher
+        isCorrect: false
+        rationale: >-
+          Unconditioned punishers suppress behaviour without a pairing history.
+      - id: d
+        text: A conditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          It reduces the behaviour it follows rather than strengthening it.
     explanation: >-
       Conditioned punishers accumulate quietly in a setting — a tone, a name said a
       certain way, a staff member approaching. Noticing them matters, because their
@@ -654,28 +654,28 @@ questions:
       little post-reinforcement pausing?
     options:
       - id: a
-        text: Variable ratio
-        isCorrect: true
-        rationale: >-
-          Reinforcement after an unpredictable number of responses maintains high, steady
-          responding.
-      - id: b
-        text: Fixed interval
-        isCorrect: false
-        rationale: >-
-          Fixed interval produces a scalloped pattern, with pausing after reinforcement and
-          acceleration towards the end of the interval.
-      - id: c
-        text: Fixed ratio
-        isCorrect: false
-        rationale: >-
-          Fixed ratio produces high rates but with a distinct pause after each reinforcer.
-      - id: d
         text: Variable interval
         isCorrect: false
         rationale: >-
           Variable interval produces steady responding, but at a lower rate than variable
           ratio.
+      - id: b
+        text: Variable ratio
+        isCorrect: true
+        rationale: >-
+          Reinforcement after an unpredictable number of responses maintains high, steady
+          responding.
+      - id: c
+        text: Fixed interval
+        isCorrect: false
+        rationale: >-
+          Fixed interval produces a scalloped pattern, with pausing after reinforcement and
+          acceleration towards the end of the interval.
+      - id: d
+        text: Fixed ratio
+        isCorrect: false
+        rationale: >-
+          Fixed ratio produces high rates but with a distinct pause after each reinforcer.
     explanation: >-
       Schedule effects are examined because they predict what a plan will look like in
       practice. A fixed ratio that is too large produces exactly the pause a team then
@@ -704,26 +704,26 @@ questions:
       four minutes has passed. This is a:
     options:
       - id: a
+        text: Continuous reinforcement
+        isCorrect: false
+        rationale: >-
+          Continuous reinforcement follows every response.
+      - id: b
         text: Variable interval schedule
         isCorrect: true
         rationale: >-
           Reinforcement depends on time passing, and the amount of time varies around an
           average.
-      - id: b
+      - id: c
         text: Variable ratio schedule
         isCorrect: false
         rationale: >-
           A ratio schedule depends on the number of responses, not on time.
-      - id: c
+      - id: d
         text: Fixed interval schedule
         isCorrect: false
         rationale: >-
           A fixed interval uses the same duration every time rather than an average.
-      - id: d
-        text: Continuous reinforcement
-        isCorrect: false
-        rationale: >-
-          Continuous reinforcement follows every response.
     explanation: >-
       Interval schedules make rate largely irrelevant beyond one response after the
       interval ends, which is why they suit maintaining a behaviour rather than building
@@ -795,29 +795,29 @@ questions:
       more forceful than before. The most likely account is:
     options:
       - id: a
-        text: An extinction burst, which is a common early effect
-        isCorrect: true
-        rationale: >-
-          A temporary increase in rate, magnitude or variability is a well-documented early
-          effect of withholding a reinforcer.
-      - id: b
-        text: That the function was misidentified
-        isCorrect: false
-        rationale: >-
-          Possible, but a burst is expected under a correct extinction procedure, so an
-          increase alone is not evidence of error.
-      - id: c
         text: That the procedure is being implemented too strictly
         isCorrect: false
         rationale: >-
           Inconsistent implementation is more likely to prolong the behaviour than to produce
           a burst.
-      - id: d
+      - id: b
         text: Spontaneous recovery
         isCorrect: false
         rationale: >-
           Spontaneous recovery is a reappearance after a period without the behaviour, not an
           immediate intensification.
+      - id: c
+        text: An extinction burst, which is a common early effect
+        isCorrect: true
+        rationale: >-
+          A temporary increase in rate, magnitude or variability is a well-documented early
+          effect of withholding a reinforcer.
+      - id: d
+        text: That the function was misidentified
+        isCorrect: false
+        rationale: >-
+          Possible, but a burst is expected under a correct extinction procedure, so an
+          increase alone is not evidence of error.
     explanation: >-
       Knowing to expect the burst is the difference between holding a plan and abandoning
       it at the worst possible moment — because giving in during a burst reinforces the
@@ -842,26 +842,26 @@ questions:
       only that person has ever provided it. That staff member's presence functions as:
     options:
       - id: a
+        text: A motivating operation
+        isCorrect: false
+        rationale: >-
+          Their presence signals availability rather than altering how much help is wanted.
+      - id: b
+        text: An unconditioned reinforcer
+        isCorrect: false
+        rationale: >-
+          Their presence is an antecedent here, not a consequence delivered after behaviour.
+      - id: c
+        text: A conditioned punisher
+        isCorrect: false
+        rationale: >-
+          Nothing suggests responding is suppressed in their presence; it is more likely.
+      - id: d
         text: A discriminative stimulus
         isCorrect: true
         rationale: >-
           Their presence signals that the response will be reinforced, and responding occurs
           in their presence.
-      - id: b
-        text: A motivating operation
-        isCorrect: false
-        rationale: >-
-          Their presence signals availability rather than altering how much help is wanted.
-      - id: c
-        text: An unconditioned reinforcer
-        isCorrect: false
-        rationale: >-
-          Their presence is an antecedent here, not a consequence delivered after behaviour.
-      - id: d
-        text: A conditioned punisher
-        isCorrect: false
-        rationale: >-
-          Nothing suggests responding is suppressed in their presence; it is more likely.
     explanation: >-
       This narrow stimulus control is one of the commonest failure modes in a teaching
       programme, and it is not a learner problem: the behaviour was reinforced in one
@@ -930,29 +930,29 @@ questions:
       classroom, including strangers. This illustrates:
     options:
       - id: a
-        text: Stimulus generalization, where a discrimination is also needed
-        isCorrect: true
-        rationale: >-
-          Responding has spread across similar stimuli, which is generalization; the goal now
-          requires teaching the discrimination as well.
-      - id: b
         text: Failure of the teaching procedure
         isCorrect: false
         rationale: >-
           The skill was acquired and spread. What is missing is the discrimination, which is a
           further teaching target.
-      - id: c
+      - id: b
         text: Response generalization
         isCorrect: false
         rationale: >-
           Response generalization is the appearance of untrained forms of the response, not
           responding to new stimuli.
-      - id: d
+      - id: c
         text: Stimulus discrimination
         isCorrect: false
         rationale: >-
           Discrimination would mean responding differently to different adults, which is what
           is absent.
+      - id: d
+        text: Stimulus generalization, where a discrimination is also needed
+        isCorrect: true
+        rationale: >-
+          Responding has spread across similar stimuli, which is generalization; the goal now
+          requires teaching the discrimination as well.
     explanation: >-
       Generalization and discrimination are two sides of the same process, and a programme
       needs both specified. Asking only for generalization produces exactly this outcome,
@@ -980,27 +980,27 @@ questions:
       Which is the clearest example of an unconditioned motivating operation?
     options:
       - id: a
-        text: Several hours without water increasing the value of a drink
-        isCorrect: true
-        rationale: >-
-          Deprivation of water alters the value of water as a reinforcer with no learning
-          history required.
-      - id: b
         text: A token board increasing the value of tokens
         isCorrect: false
         rationale: >-
           Tokens acquire their value through pairing, so any related operation is conditioned.
-      - id: c
+      - id: b
         text: A written schedule signalling that a break is coming
         isCorrect: false
         rationale: >-
           That is an antecedent signalling availability, which is stimulus control rather than
           a motivating operation.
-      - id: d
+      - id: c
         text: Praise increasing the value of adult attention
         isCorrect: false
         rationale: >-
           The value of social attention is largely established through a learning history.
+      - id: d
+        text: Several hours without water increasing the value of a drink
+        isCorrect: true
+        rationale: >-
+          Deprivation of water alters the value of water as a reinforcer with no learning
+          history required.
     explanation: >-
       Unconditioned motivating operations are few and predictable: food, water, sleep,
       temperature, pain. They are also the ones most often ignored in a plan, and a
@@ -1025,27 +1025,27 @@ questions:
       never experienced its consequences. Their behaviour is best described as:
     options:
       - id: a
+        text: Respondent
+        isCorrect: false
+        rationale: >-
+          The behaviour is emitted and controlled by its stated consequences, not elicited.
+      - id: b
         text: Rule-governed
         isCorrect: true
         rationale: >-
           The behaviour is controlled by a verbal statement of the contingency rather than by
           direct contact with it.
-      - id: b
+      - id: c
         text: Contingency-shaped
         isCorrect: false
         rationale: >-
           Contingency-shaped behaviour is produced by direct contact with consequences over
           time, which has not happened.
-      - id: c
+      - id: d
         text: Automatically reinforced
         isCorrect: false
         rationale: >-
           Nothing suggests the behaviour produces its own consequence directly.
-      - id: d
-        text: Respondent
-        isCorrect: false
-        rationale: >-
-          The behaviour is emitted and controlled by its stated consequences, not elicited.
     explanation: >-
       The distinction predicts a common pattern: rule-governed performance is fast to
       establish and can be insensitive to what actually happens, which is why observation
@@ -1068,27 +1068,27 @@ questions:
       drink for two hours. This verbal operant is a:
     options:
       - id: a
+        text: Echoic
+        isCorrect: false
+        rationale: >-
+          An echoic repeats what was just said, and nothing was said to the learner.
+      - id: b
         text: Mand
         isCorrect: true
         rationale: >-
           It is under the control of a motivating operation and is reinforced by the item
           named.
-      - id: b
+      - id: c
         text: Tact
         isCorrect: false
         rationale: >-
           A tact is under the control of a non-verbal stimulus and is reinforced socially, not
           by the item.
-      - id: c
+      - id: d
         text: Intraverbal
         isCorrect: false
         rationale: >-
           An intraverbal is controlled by other verbal behaviour, and none preceded this.
-      - id: d
-        text: Echoic
-        isCorrect: false
-        rationale: >-
-          An echoic repeats what was just said, and nothing was said to the learner.
     explanation: >-
       Mands are classified by their antecedent and consequence, not by their form. The
       same word is a mand here and a tact if the learner says it while simply seeing juice

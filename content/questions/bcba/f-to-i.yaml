@@ -11,26 +11,26 @@ questions:
       supported?
     options:
       - id: a
+        text: The analysis is inconclusive because the play condition was low
+        isCorrect: false
+        rationale: >-
+          The play condition is the control and is expected to be low.
+      - id: b
         text: The behavior is likely maintained by automatic reinforcement
         isCorrect: true
         rationale: >-
           Behavior that persists when no one is present to deliver consequences, and is
           low when social consequences are available, points to automatic reinforcement.
-      - id: b
+      - id: c
         text: The behavior is maintained by escape from demands
         isCorrect: false
         rationale: >-
           Escape-maintained behavior would be elevated in the demand condition.
-      - id: c
+      - id: d
         text: The behavior is maintained by attention
         isCorrect: false
         rationale: >-
           Attention-maintained behavior would be elevated in the attention condition.
-      - id: d
-        text: The analysis is inconclusive because the play condition was low
-        isCorrect: false
-        rationale: >-
-          The play condition is the control and is expected to be low.
     explanation: >-
       Each functional-analysis condition tests one contingency; the control (play)
       condition provides a comparison. Elevated responding only when alone is the
@@ -71,28 +71,28 @@ questions:
       minutes. Which format is the best fit?
     options:
       - id: a
-        text: Multiple-stimulus without replacement
-        isCorrect: true
-        rationale: >-
-          It produces a complete ranking in a few brief trials and suits a learner who
-          can scan an array and tolerate removal.
-      - id: b
         text: Paired-stimulus
         isCorrect: false
         rationale: >-
           Eight items require 28 pairs, which will not fit in ten minutes.
-      - id: c
+      - id: b
         text: Single-stimulus
         isCorrect: false
         rationale: >-
           Presenting items one at a time gives approach data but no comparison between
           items, so it ranks poorly.
-      - id: d
+      - id: c
         text: Free-operant observation
         isCorrect: false
         rationale: >-
           Free-operant assessment identifies what the learner engages with but often
           yields engagement with only one or two items rather than a full ranking.
+      - id: d
+        text: Multiple-stimulus without replacement
+        isCorrect: true
+        rationale: >-
+          It produces a complete ranking in a few brief trials and suits a learner who
+          can scan an array and tolerate removal.
     explanation: >-
       Preference-assessment formats trade thoroughness, time and demands on the learner.
       Multiple-stimulus without replacement is the efficient choice for a complete
@@ -125,29 +125,29 @@ questions:
       alone?
     options:
       - id: a
+        text: The data are useless without a functional analysis
+        isCorrect: false
+        rationale: >-
+          Descriptive data are valuable for generating hypotheses and designing the
+          analysis; they are simply not conclusive.
+      - id: b
         text: Attention is a plausible hypothesis for the function, but the correlation does not demonstrate it
         isCorrect: true
         rationale: >-
           Descriptive data show what follows the behavior, not what maintains it. Adults
           may attend to aggression whatever its function. A functional analysis tests
           the hypothesis.
-      - id: b
+      - id: c
         text: The function is attention, so a treatment can be designed
         isCorrect: false
         rationale: >-
           A consequence that reliably follows a behavior is not necessarily the one
           maintaining it.
-      - id: c
+      - id: d
         text: The behavior is automatically reinforced because adults are not the cause
         isCorrect: false
         rationale: >-
           Nothing in the data suggests automatic reinforcement.
-      - id: d
-        text: The data are useless without a functional analysis
-        isCorrect: false
-        rationale: >-
-          Descriptive data are valuable for generating hypotheses and designing the
-          analysis; they are simply not conclusive.
     explanation: >-
       Descriptive assessment reveals correlations under natural conditions. Because
       nothing is manipulated, it cannot separate the consequence that happens to follow a
@@ -218,29 +218,29 @@ questions:
       medical problems, what should the analyst do first?
     options:
       - id: a
+        text: Rely on the caregiver's summary instead of reading the records
+        isCorrect: false
+        rationale: >-
+          Caregiver report is useful but incomplete; records contain information
+          caregivers may not know or recall.
+      - id: b
+        text: Skip the records because prior providers may have been wrong
+        isCorrect: false
+        rationale: >-
+          Prior records are data to be weighed, not ignored.
+      - id: c
         text: Review available medical, educational and prior treatment records to identify variables that might affect the behavior or the assessment
         isCorrect: true
         rationale: >-
           Records may reveal medical conditions, medications or prior treatments that
           change how the behavior should be assessed or that require medical consultation
           first.
-      - id: b
+      - id: d
         text: Begin a functional analysis immediately to save time
         isCorrect: false
         rationale: >-
           Starting an experimental analysis without knowing the history risks missing a
           medical cause and can be unsafe.
-      - id: c
-        text: Rely on the caregiver's summary instead of reading the records
-        isCorrect: false
-        rationale: >-
-          Caregiver report is useful but incomplete; records contain information
-          caregivers may not know or recall.
-      - id: d
-        text: Skip the records because prior providers may have been wrong
-        isCorrect: false
-        rationale: >-
-          Prior records are data to be weighed, not ignored.
     explanation: >-
       Assessment begins with what is already known. Records review can reveal medical
       contributors that require referral before behavioral assessment, prior treatments
@@ -265,29 +265,29 @@ questions:
       most appropriate to start with?
     options:
       - id: a
-        text: Shorter than the average time between occurrences, such as 2 to 3 minutes
-        isCorrect: true
-        rationale: >-
-          The initial interval should be short enough that the learner frequently
-          contacts reinforcement; it is then lengthened as the behavior decreases.
-      - id: b
-        text: Much longer than baseline, such as 20 minutes, to set a high standard
-        isCorrect: false
-        rationale: >-
-          A long initial interval means the learner rarely earns reinforcement and the
-          procedure has no effect.
-      - id: c
         text: Exactly the baseline interval of 4 minutes
         isCorrect: false
         rationale: >-
           Matching the baseline interval gives roughly a coin-flip chance of
           reinforcement, which is a weak start.
-      - id: d
+      - id: b
         text: A random interval unrelated to baseline
         isCorrect: false
         rationale: >-
           The interval is derived from baseline data so that success is likely from the
           beginning.
+      - id: c
+        text: Shorter than the average time between occurrences, such as 2 to 3 minutes
+        isCorrect: true
+        rationale: >-
+          The initial interval should be short enough that the learner frequently
+          contacts reinforcement; it is then lengthened as the behavior decreases.
+      - id: d
+        text: Much longer than baseline, such as 20 minutes, to set a high standard
+        isCorrect: false
+        rationale: >-
+          A long initial interval means the learner rarely earns reinforcement and the
+          procedure has no effect.
     explanation: >-
       DRO intervals are set from baseline interresponse times so that reinforcement is
       contacted often at first, then gradually increased. Starting too long is the most
@@ -312,28 +312,28 @@ questions:
       What is the main risk, and what adjustment addresses it?
     options:
       - id: a
-        text: Accidental reinforcement of the target behavior; add a brief delay so attention is not delivered immediately after an occurrence
-        isCorrect: true
-        rationale: >-
-          Time-based delivery can coincide with the behavior and strengthen it. A short
-          omission or delay contingency after an occurrence is the standard safeguard.
-      - id: b
-        text: Satiation on attention; make the schedule leaner
-        isCorrect: false
-        rationale: >-
-          Satiation is the intended effect of noncontingent reinforcement, not a risk.
-      - id: c
-        text: Extinction burst; stop the procedure
-        isCorrect: false
-        rationale: >-
-          Noncontingent reinforcement usually reduces bursting compared with extinction
-          alone.
-      - id: d
         text: Ratio strain; deliver attention more often
         isCorrect: false
         rationale: >-
           Ratio strain concerns response requirements, which a time-based schedule does
           not have.
+      - id: b
+        text: Accidental reinforcement of the target behavior; add a brief delay so attention is not delivered immediately after an occurrence
+        isCorrect: true
+        rationale: >-
+          Time-based delivery can coincide with the behavior and strengthen it. A short
+          omission or delay contingency after an occurrence is the standard safeguard.
+      - id: c
+        text: Satiation on attention; make the schedule leaner
+        isCorrect: false
+        rationale: >-
+          Satiation is the intended effect of noncontingent reinforcement, not a risk.
+      - id: d
+        text: Extinction burst; stop the procedure
+        isCorrect: false
+        rationale: >-
+          Noncontingent reinforcement usually reduces bursting compared with extinction
+          alone.
     explanation: >-
       Noncontingent reinforcement reduces behavior by abolishing the motivation for it,
       but because delivery is independent of behavior it can accidentally follow the
@@ -358,27 +358,27 @@ questions:
       prompt to the picture itself?
     options:
       - id: a
+        text: Reinforcing only responses that occur after the point
+        isCorrect: false
+        rationale: >-
+          That strengthens dependence on the prompt.
+      - id: b
+        text: Removing the point abruptly and correcting errors
+        isCorrect: false
+        rationale: >-
+          Abrupt removal produces errors; fading is gradual by design.
+      - id: c
         text: Progressive time delay, inserting a growing pause between the picture and the point
         isCorrect: true
         rationale: >-
           Delaying the prompt gives the learner the chance to respond to the natural
           stimulus first; responses that come before the prompt show transfer.
-      - id: b
+      - id: d
         text: Increasing the size of the correct card each session
         isCorrect: false
         rationale: >-
           Enlarging the card adds a stimulus prompt rather than fading the existing
           response prompt.
-      - id: c
-        text: Reinforcing only responses that occur after the point
-        isCorrect: false
-        rationale: >-
-          That strengthens dependence on the prompt.
-      - id: d
-        text: Removing the point abruptly and correcting errors
-        isCorrect: false
-        rationale: >-
-          Abrupt removal produces errors; fading is gradual by design.
     explanation: >-
       Transfer of stimulus control is the goal of every prompting procedure. Time delay
       fades a response prompt along the dimension of time, stimulus fading along a
@@ -402,28 +402,28 @@ questions:
       Which element is essential when designing a token economy?
     options:
       - id: a
-        text: A specified exchange schedule and a menu of backup reinforcers the tokens can be traded for
-        isCorrect: true
-        rationale: >-
-          Tokens acquire and keep their value through exchange; without backups and a
-          schedule for exchanging them, the tokens are not reinforcers.
-      - id: b
         text: Tokens that are themselves highly preferred items
         isCorrect: false
         rationale: >-
           Tokens are meant to be neutral objects whose value is conditioned; preferred
           objects as tokens invite consumption rather than exchange.
-      - id: c
+      - id: b
         text: A rule that tokens can never be lost once earned
         isCorrect: false
         rationale: >-
           Whether response cost is included is a design choice, not a requirement.
-      - id: d
+      - id: c
         text: Delivering tokens on a fixed-interval schedule regardless of behavior
         isCorrect: false
         rationale: >-
           Tokens are delivered contingent on target behavior; noncontingent delivery is a
           different procedure.
+      - id: d
+        text: A specified exchange schedule and a menu of backup reinforcers the tokens can be traded for
+        isCorrect: true
+        rationale: >-
+          Tokens acquire and keep their value through exchange; without backups and a
+          schedule for exchanging them, the tokens are not reinforcers.
     explanation: >-
       A token economy specifies the target behaviors, the tokens, the backup reinforcers,
       the exchange rate and schedule, and a plan for thinning. The exchange system is what
@@ -447,29 +447,29 @@ questions:
       should the analyst prepare staff for, and how?
     options:
       - id: a
+        text: Generalization to other settings; no action needed
+        isCorrect: false
+        rationale: >-
+          Extinction effects do not automatically generalize, and behavioral contrast in
+          other settings is possible.
+      - id: b
         text: A temporary increase in the behavior and possible emotional responding; train staff to maintain the procedure consistently and specify a safety plan
         isCorrect: true
         rationale: >-
           Bursting and emotional or aggressive responding are documented side effects.
           Preparation means consistency, a plan for unsafe escalation, and often
           combining extinction with reinforcement of an alternative.
-      - id: b
+      - id: c
         text: Immediate elimination of the behavior; no preparation is needed
         isCorrect: false
         rationale: >-
           Extinction produces gradual reduction, typically with an initial increase.
-      - id: c
+      - id: d
         text: Satiation on attention; reduce attention across the day
         isCorrect: false
         rationale: >-
           Satiation is not an effect of extinction, and reducing attention generally
           would be harmful.
-      - id: d
-        text: Generalization to other settings; no action needed
-        isCorrect: false
-        rationale: >-
-          Extinction effects do not automatically generalize, and behavioral contrast in
-          other settings is possible.
     explanation: >-
       Extinction and punishment both carry emotional and elicited side effects. Plans
       anticipate them by combining extinction with differential or noncontingent
@@ -595,27 +595,27 @@ questions:
       appropriate first response?
     options:
       - id: a
+        text: Remove the step from the plan
+        isCorrect: false
+        rationale: >-
+          Immediacy of reinforcement is likely central to the plan's effectiveness.
+      - id: b
+        text: Conclude the plan is ineffective
+        isCorrect: false
+        rationale: >-
+          The plan has not been delivered as designed, so its effectiveness is unknown.
+      - id: c
         text: Treat it as a performance problem rather than a knowledge problem — rehearse the step with feedback and check whether the setting makes three-second delivery feasible
         isCorrect: true
         rationale: >-
           The staff member knows the step, so instruction alone will not help. Practice
           with feedback and a look at environmental barriers address the actual problem.
-      - id: b
+      - id: d
         text: Retrain the entire plan from the beginning
         isCorrect: false
         rationale: >-
           Five of six steps are at 95%; retraining everything wastes time and does not
           target the problem.
-      - id: c
-        text: Remove the step from the plan
-        isCorrect: false
-        rationale: >-
-          Immediacy of reinforcement is likely central to the plan's effectiveness.
-      - id: d
-        text: Conclude the plan is ineffective
-        isCorrect: false
-        rationale: >-
-          The plan has not been delivered as designed, so its effectiveness is unknown.
     explanation: >-
       Integrity data guide decisions about implementers: a skill deficit calls for
       training, a performance problem with a known skill calls for practice, feedback and
@@ -643,26 +643,26 @@ questions:
       should the analyst do?
     options:
       - id: a
+        text: Discontinue all services for the learner
+        isCorrect: false
+        rationale: >-
+          One ineffective program is not grounds for ending services.
+      - id: b
         text: Modify the program — for example, the prompting procedure, the reinforcer, or the target's prerequisites — and continue measuring
         isCorrect: true
         rationale: >-
           Well-implemented programs that produce no change are revised; the decision is
           made from the data rather than from hope or habit.
-      - id: b
+      - id: c
         text: Continue unchanged for another three months
         isCorrect: false
         rationale: >-
           Continuing an ineffective program without change costs the learner time.
-      - id: c
+      - id: d
         text: Retrain staff on the program
         isCorrect: false
         rationale: >-
           Integrity is already high; the problem is the program, not its delivery.
-      - id: d
-        text: Discontinue all services for the learner
-        isCorrect: false
-        rationale: >-
-          One ineffective program is not grounds for ending services.
     explanation: >-
       Outcome data with adequate integrity are the basis for continuing, modifying or
       discontinuing an intervention. A flat trend after a reasonable trial period calls
@@ -687,29 +687,29 @@ questions:
       items. Which action best reflects the analyst's obligation to collaborate?
     options:
       - id: a
+        text: Continue the sign program because behavior analysis has stronger evidence
+        isCorrect: false
+        rationale: >-
+          Asserting disciplinary superiority is not collaboration and leaves the learner
+          with conflicting teaching.
+      - id: b
+        text: Tell the family to choose which professional to keep
+        isCorrect: false
+        rationale: >-
+          Forcing the family to choose shifts a professional problem onto them.
+      - id: c
+        text: Quietly adopt the picture system without discussion
+        isCorrect: false
+        rationale: >-
+          Changing the plan without coordination or consent is neither collaboration nor
+          good practice.
+      - id: d
         text: Meet with the speech-language pathologist, with consent, to agree on a single communication approach and coordinate the programs
         isCorrect: true
         rationale: >-
           Two competing communication systems for the same function confuse the learner.
           Collaboration means coordinating goals with other professionals in the
           learner's life.
-      - id: b
-        text: Continue the sign program because behavior analysis has stronger evidence
-        isCorrect: false
-        rationale: >-
-          Asserting disciplinary superiority is not collaboration and leaves the learner
-          with conflicting teaching.
-      - id: c
-        text: Tell the family to choose which professional to keep
-        isCorrect: false
-        rationale: >-
-          Forcing the family to choose shifts a professional problem onto them.
-      - id: d
-        text: Quietly adopt the picture system without discussion
-        isCorrect: false
-        rationale: >-
-          Changing the plan without coordination or consent is neither collaboration nor
-          good practice.
     explanation: >-
       The ethics code requires collaboration with other professionals in the client's
       best interest. Communication systems are a common point of conflict, and the
@@ -779,27 +779,27 @@ questions:
       remedy follows from a function-based analysis of the performance problem?
     options:
       - id: a
-        text: Remove the environmental barrier by providing reliable access to the notes system
-        isCorrect: true
-        rationale: >-
-          The technician has the skill and has shown it before; the problem is an
-          antecedent and resource barrier, which training would not fix.
-      - id: b
-        text: Retrain the technician on how to write notes
-        isCorrect: false
-        rationale: >-
-          A skill the person already demonstrates is not a training problem.
-      - id: c
         text: Issue a written warning
         isCorrect: false
         rationale: >-
           Punishing a performance that the environment prevents is unfair and
           ineffective.
-      - id: d
+      - id: b
         text: Add a bonus for timely notes
         isCorrect: false
         rationale: >-
           Incentives do not help when the person cannot access the system.
+      - id: c
+        text: Remove the environmental barrier by providing reliable access to the notes system
+        isCorrect: true
+        rationale: >-
+          The technician has the skill and has shown it before; the problem is an
+          antecedent and resource barrier, which training would not fix.
+      - id: d
+        text: Retrain the technician on how to write notes
+        isCorrect: false
+        rationale: >-
+          A skill the person already demonstrates is not a training problem.
     explanation: >-
       Performance diagnostics distinguish skill deficits from problems of antecedents,
       resources and consequences. The remedy follows the diagnosis: training for
@@ -822,27 +822,27 @@ questions:
       Which feedback statement to a supervisee is most likely to improve performance?
     options:
       - id: a
-        text: A specific statement of what was done correctly, one specific change to make, how to make it, and when the supervisor will check again
-        isCorrect: true
-        rationale: >-
-          Effective feedback is specific, timely, balanced between correct and needed
-          performance, and followed up.
-      - id: b
         text: '"Good job today — keep it up."'
         isCorrect: false
         rationale: >-
           General praise does not tell the supervisee what to repeat.
-      - id: c
+      - id: b
         text: A list of every error observed across the whole month
         isCorrect: false
         rationale: >-
           A delayed list of errors is overwhelming and too far from the performance to
           change it.
-      - id: d
+      - id: c
         text: '"You know what you did wrong; fix it."'
         isCorrect: false
         rationale: >-
           It assumes the supervisee can identify and correct the problem without help.
+      - id: d
+        text: A specific statement of what was done correctly, one specific change to make, how to make it, and when the supervisor will check again
+        isCorrect: true
+        rationale: >-
+          Effective feedback is specific, timely, balanced between correct and needed
+          performance, and followed up.
     explanation: >-
       Feedback is the core supervisory behavior. The evidence favors feedback that is
       specific, delivered soon after the performance, includes both what to keep and what
@@ -866,27 +866,27 @@ questions:
       direct observation and feedback rather than in occasional meetings?
     options:
       - id: a
+        text: Being able to assign more clients to each technician
+        isCorrect: false
+        rationale: >-
+          Caseload is not the aim of supervision.
+      - id: b
         text: Higher treatment integrity and better client outcomes, because implementation improves with observation and feedback
         isCorrect: true
         rationale: >-
           Supervision's purpose is client welfare through competent implementation;
           observation and feedback are what change performance.
-      - id: b
+      - id: c
         text: Fewer supervision hours to document
         isCorrect: false
         rationale: >-
           Documentation burden does not change with format, and reducing supervision is
           not a benefit.
-      - id: c
+      - id: d
         text: Meeting the minimum percentage requirement more easily
         isCorrect: false
         rationale: >-
           Meeting minimums is a floor, not the reason supervision matters.
-      - id: d
-        text: Being able to assign more clients to each technician
-        isCorrect: false
-        rationale: >-
-          Caseload is not the aim of supervision.
     explanation: >-
       Effective supervision improves supervisee skills, treatment integrity, client
       outcomes and staff retention; poor supervision produces drift, harm and ethical

@@ -15,30 +15,30 @@ questions:
       Which value should be recorded as the rate per hour?
     options:
       - id: a
+        text: '8 per hour'
+        isCorrect: false
+        rationale: >-
+          This would be the result of scaling in the wrong direction. A rate per hour
+          from a 40-minute count must be larger than the count, not smaller.
+      - id: b
+        text: '0.3 per hour'
+        isCorrect: false
+        rationale: >-
+          0.3 is the rate per minute. It has to be multiplied by 60 to give a rate per
+          hour.
+      - id: c
         text: '12 per hour'
         isCorrect: false
         rationale: >-
           Twelve is the count for 40 minutes. Rate has to be converted to the time unit
           asked for, and 40 minutes is not an hour.
-      - id: b
+      - id: d
         text: '18 per hour'
         isCorrect: true
         rationale: >-
           Twelve in 40 minutes is 0.3 per minute, which is 18 per 60 minutes. Dividing
           count by time and scaling to the unit is what makes sessions of different
           lengths comparable.
-      - id: c
-        text: '8 per hour'
-        isCorrect: false
-        rationale: >-
-          This would be the result of scaling in the wrong direction. A rate per hour
-          from a 40-minute count must be larger than the count, not smaller.
-      - id: d
-        text: '0.3 per hour'
-        isCorrect: false
-        rationale: >-
-          0.3 is the rate per minute. It has to be multiplied by 60 to give a rate per
-          hour.
     explanation: >-
       Rate is count divided by observation time. Twelve responses in 40 minutes is 12/40
       = 0.3 per minute, and 0.3 × 60 = 18 per hour. Reporting rate rather than raw count
@@ -78,30 +78,30 @@ questions:
       time spent talking out, the partial-interval data will most likely be:
     options:
       - id: a
+        text: Exactly accurate
+        isCorrect: false
+        rationale: >-
+          Any interval method is a sample and carries a known bias; only continuous
+          duration recording would capture the true time.
+      - id: b
+        text: Impossible to predict
+        isCorrect: false
+        rationale: >-
+          The direction of the bias is predictable from how the method scores an
+          interval, which is why the method is chosen deliberately.
+      - id: c
         text: An overestimate
         isCorrect: true
         rationale: >-
           Partial-interval recording scores the whole interval if the behavior occurs at
           any point in it, so a single brief response fills a 10-second interval and the
           percentage of intervals overstates the time the behavior actually occupied.
-      - id: b
+      - id: d
         text: An underestimate
         isCorrect: false
         rationale: >-
           Underestimation is the characteristic bias of whole-interval recording, which
           requires the behavior to last the entire interval to be scored.
-      - id: c
-        text: Exactly accurate
-        isCorrect: false
-        rationale: >-
-          Any interval method is a sample and carries a known bias; only continuous
-          duration recording would capture the true time.
-      - id: d
-        text: Impossible to predict
-        isCorrect: false
-        rationale: >-
-          The direction of the bias is predictable from how the method scores an
-          interval, which is why the method is chosen deliberately.
     explanation: >-
       Partial-interval recording marks an interval as positive if the behavior occurred
       at any point during it. Brief responses therefore count for whole intervals, and the
@@ -127,29 +127,29 @@ questions:
       procedure best fits?
     options:
       - id: a
+        text: Permanent-product recording
+        isCorrect: false
+        rationale: >-
+          Engagement leaves no lasting product to inspect afterward.
+      - id: b
         text: Whole-interval recording
         isCorrect: true
         rationale: >-
           Whole-interval recording scores an interval only if the behavior lasted the
           entire interval, so brief engagement is not credited. It suits behavior meant
           to increase in duration.
-      - id: b
+      - id: c
         text: Partial-interval recording
         isCorrect: false
         rationale: >-
           Partial-interval would credit an interval for even a second of engagement,
           which is exactly what the supervisor wants to avoid.
-      - id: c
+      - id: d
         text: Frequency recording
         isCorrect: false
         rationale: >-
           A count of how many times engagement started says nothing about how long it
           lasted.
-      - id: d
-        text: Permanent-product recording
-        isCorrect: false
-        rationale: >-
-          Engagement leaves no lasting product to inspect afterward.
     explanation: >-
       Whole-interval recording tends to underestimate behavior, which is the safe
       direction of error when a behavior is meant to increase: the learner is credited
@@ -175,30 +175,30 @@ questions:
       is this?
     options:
       - id: a
+        text: Latency recording
+        isCorrect: false
+        rationale: >-
+          Latency measures the delay from an instruction to the start of a response,
+          which is not what is being recorded here.
+      - id: b
         text: Momentary time sampling
         isCorrect: true
         rationale: >-
           Recording whether the behavior is occurring at the instant each interval ends,
           and nothing in between, is momentary time sampling. It is the least demanding
           method for someone who is also teaching.
-      - id: b
+      - id: c
         text: Whole-interval recording
         isCorrect: false
         rationale: >-
           Whole-interval requires watching the entire interval to confirm the behavior
           never stopped; this technician only looks at the end.
-      - id: c
+      - id: d
         text: Duration recording
         isCorrect: false
         rationale: >-
           Duration recording times how long each episode lasts, which this procedure
           does not do.
-      - id: d
-        text: Latency recording
-        isCorrect: false
-        rationale: >-
-          Latency measures the delay from an instruction to the start of a response,
-          which is not what is being recorded here.
     explanation: >-
       Momentary time sampling records only whether the behavior is occurring at the
       moment each interval ends. Because the observer need not watch continuously, it is
@@ -223,27 +223,27 @@ questions:
       away toys after being told to clean up. Which dimension is being measured?
     options:
       - id: a
-        text: Latency
-        isCorrect: true
-        rationale: >-
-          The time from the instruction to the start of the response is latency.
-      - id: b
-        text: Duration
-        isCorrect: false
-        rationale: >-
-          Duration would be how long the clean-up lasted once it started, not how long
-          it took to begin.
-      - id: c
         text: Interresponse time
         isCorrect: false
         rationale: >-
           Interresponse time is the gap between two responses of the same kind, not the
           gap between an instruction and a response.
-      - id: d
+      - id: b
         text: Rate
         isCorrect: false
         rationale: >-
           Rate is count per unit of time; nothing is being counted here.
+      - id: c
+        text: Latency
+        isCorrect: true
+        rationale: >-
+          The time from the instruction to the start of the response is latency.
+      - id: d
+        text: Duration
+        isCorrect: false
+        rationale: >-
+          Duration would be how long the clean-up lasted once it started, not how long
+          it took to begin.
     explanation: >-
       Latency is the time between an antecedent — here, the instruction — and the
       beginning of the response. Duration starts once the response begins. Confusing the
@@ -267,28 +267,28 @@ questions:
       are compared. What is the main purpose of this comparison?
     options:
       - id: a
+        text: To decide the learner's next target
+        isCorrect: false
+        rationale: >-
+          Target selection comes from assessment results, not from observer agreement.
+      - id: b
         text: To check whether the behavior definition is being applied consistently
         isCorrect: true
         rationale: >-
           Interobserver agreement estimates whether two people using the same definition
           get the same data. Low agreement points to a vague definition or observer drift.
-      - id: b
+      - id: c
         text: To find out whether the intervention is working
         isCorrect: false
         rationale: >-
           Whether the intervention works is judged from the graph across conditions, not
           from agreement between two observers on one session.
-      - id: c
+      - id: d
         text: To evaluate the technician's job performance
         isCorrect: false
         rationale: >-
           Agreement is about the measurement system. A supervisor may use it in
           feedback, but its purpose is data quality.
-      - id: d
-        text: To decide the learner's next target
-        isCorrect: false
-        rationale: >-
-          Target selection comes from assessment results, not from observer agreement.
     explanation: >-
       Interobserver agreement is a check on the believability of the data: if two
       independent observers do not agree, the data cannot be trusted regardless of what
@@ -359,27 +359,27 @@ questions:
       dashed line most likely indicate?
     options:
       - id: a
-        text: A change in the condition, such as the start of treatment
-        isCorrect: true
-        rationale: >-
-          A vertical phase-change line marks the point where conditions changed. Points
-          are deliberately not connected across it so each condition can be read on its own.
-      - id: b
         text: A day when the learner was absent
         isCorrect: false
         rationale: >-
           Absences are usually shown by a gap in the data path, not by a vertical line
           across the whole graph.
-      - id: c
+      - id: b
         text: The goal level for the behavior
         isCorrect: false
         rationale: >-
           A goal or criterion level is drawn as a horizontal line, not a vertical one.
-      - id: d
+      - id: c
         text: An error in the graph
         isCorrect: false
         rationale: >-
           The line is a standard convention, not a mistake.
+      - id: d
+        text: A change in the condition, such as the start of treatment
+        isCorrect: true
+        rationale: >-
+          A vertical phase-change line marks the point where conditions changed. Points
+          are deliberately not connected across it so each condition can be read on its own.
     explanation: >-
       Phase-change lines are the standard way of marking a change in conditions on a
       behavior graph. Reading them correctly is the first step in visual analysis,
@@ -403,27 +403,27 @@ questions:
       Which of the following is an example of continuous measurement?
     options:
       - id: a
-        text: Tallying every request the learner makes during the session
-        isCorrect: true
-        rationale: >-
-          Recording every instance of the behavior for the whole session is continuous
-          measurement; count and rate are continuous measures.
-      - id: b
         text: Noting at the end of each minute whether any requesting occurred
         isCorrect: false
         rationale: >-
           Scoring intervals is discontinuous: it samples the behavior rather than
           recording each instance.
-      - id: c
+      - id: b
         text: Checking whether the learner is requesting when a timer sounds
         isCorrect: false
         rationale: >-
           That is momentary time sampling, a discontinuous method.
-      - id: d
+      - id: c
         text: Asking the parent how often the learner requested at home
         isCorrect: false
         rationale: >-
           A caregiver's report is an indirect measure, not a direct one of either kind.
+      - id: d
+        text: Tallying every request the learner makes during the session
+        isCorrect: true
+        rationale: >-
+          Recording every instance of the behavior for the whole session is continuous
+          measurement; count and rate are continuous measures.
     explanation: >-
       Continuous measurement records every occurrence of the target behavior during the
       observation. Discontinuous methods — interval recording and time sampling — record
@@ -449,28 +449,28 @@ questions:
       be compared. Which measure answers that question directly?
     options:
       - id: a
+        text: Duration of each session
+        isCorrect: false
+        rationale: >-
+          Session length says nothing about learning.
+      - id: b
         text: Trials to criterion
         isCorrect: true
         rationale: >-
           Trials to criterion counts the opportunities needed to reach a set performance
           standard, which is exactly what is being asked.
-      - id: b
+      - id: c
         text: Percentage correct per session
         isCorrect: false
         rationale: >-
           Percentage correct describes accuracy on one day; it does not say how long
           mastery took.
-      - id: c
+      - id: d
         text: Rate of correct responses
         isCorrect: false
         rationale: >-
           Rate describes how fast responses come, not how many were needed to master
           the word.
-      - id: d
-        text: Duration of each session
-        isCorrect: false
-        rationale: >-
-          Session length says nothing about learning.
     explanation: >-
       Trials to criterion is a measure of how quickly a skill is acquired. When it falls
       across successive targets — the fourth word taking far fewer trials than the first
@@ -496,31 +496,31 @@ questions:
       does that best?
     options:
       - id: a
-        text: 'Becomes frustrated by difficult work'
-        isCorrect: false
-        rationale: >-
-          This names a private state and a presumed cause. Neither is observable,
-          so two recorders would still disagree about when it happened.
-      - id: b
-        text: 'Pushes materials away, or says "no" or "stop", within ten seconds of an instruction'
-        isCorrect: true
-        rationale: >-
-          It names what the behaviour looks like, what counts as an instance, and
-          when the window opens and closes. Two people can apply it without
-          discussing it.
-      - id: c
-        text: 'Shows signs of frustration during demands'
-        isCorrect: false
-        rationale: >-
-          "Signs of" leaves each recorder to decide which signs count, which is
-          exactly the disagreement an operational definition exists to remove.
-      - id: d
         text: 'Is unable to cope with the task presented'
         isCorrect: false
         rationale: >-
           This is an interpretation of why rather than a description of what. It
           also cannot be counted, because there is no moment at which it starts or
           stops.
+      - id: b
+        text: 'Becomes frustrated by difficult work'
+        isCorrect: false
+        rationale: >-
+          This names a private state and a presumed cause. Neither is observable,
+          so two recorders would still disagree about when it happened.
+      - id: c
+        text: 'Pushes materials away, or says "no" or "stop", within ten seconds of an instruction'
+        isCorrect: true
+        rationale: >-
+          It names what the behaviour looks like, what counts as an instance, and
+          when the window opens and closes. Two people can apply it without
+          discussing it.
+      - id: d
+        text: 'Shows signs of frustration during demands'
+        isCorrect: false
+        rationale: >-
+          "Signs of" leaves each recorder to decide which signs count, which is
+          exactly the disagreement an operational definition exists to remove.
     explanation: >-
       An operational definition says what the behaviour looks like, not what it means.
       The test is whether two independent observers watching the same session would
@@ -561,31 +561,31 @@ questions:
       totals depending on who recorded. What is the definition most clearly missing?
     options:
       - id: a
+        text: 'An example from the learner’s history'
+        isCorrect: false
+        rationale: >-
+          An example can help train a recorder, but the disagreement here is
+          structural: the definition itself gives no boundary between instances.
+      - id: b
+        text: 'The name of the person who wrote it'
+        isCorrect: false
+        rationale: >-
+          Authorship is a documentation matter. It has no bearing on whether two
+          people applying the definition would record the same thing.
+      - id: c
         text: 'A statement of why the behaviour occurs'
         isCorrect: false
         rationale: >-
           Function is established through assessment and is not part of a
           measurement definition. Adding it would not help two recorders agree on
           when to start a timer.
-      - id: b
+      - id: d
         text: 'A rule for when one instance ends and the next begins'
         isCorrect: true
         rationale: >-
           Without an offset rule and a minimum gap, one recorder scores a two-
           minute episode and another scores nine short ones. That is where the
           duration totals diverge.
-      - id: c
-        text: 'An example from the learner’s history'
-        isCorrect: false
-        rationale: >-
-          An example can help train a recorder, but the disagreement here is
-          structural: the definition itself gives no boundary between instances.
-      - id: d
-        text: 'The name of the person who wrote it'
-        isCorrect: false
-        rationale: >-
-          Authorship is a documentation matter. It has no bearing on whether two
-          people applying the definition would record the same thing.
     explanation: >-
       A usable definition needs onset and offset criteria. For duration and for count
       alike, the question "when does one instance stop and the next start" has to have
@@ -625,30 +625,30 @@ questions:
       2, 3, 4, 3. How should a technician describe this baseline to their supervisor?
     options:
       - id: a
+        text: 'A decreasing trend'
+        isCorrect: false
+        rationale: >-
+          A decreasing trend would show the values falling across the condition.
+          The last session is the same as the first.
+      - id: b
         text: 'An increasing trend'
         isCorrect: false
         rationale: >-
           An increasing trend means the data are moving upward across the
           condition. These values return to the same range every session with no
           direction.
-      - id: b
+      - id: c
         text: 'Stable, with no trend'
         isCorrect: true
         rationale: >-
           The values vary within a narrow band and end where they started. That is
           what makes a baseline usable as a comparison for whatever comes next.
-      - id: c
+      - id: d
         text: 'Highly variable'
         isCorrect: false
         rationale: >-
           Variability this small — two to four — is ordinary session-to-session
           noise rather than the kind of swing that makes an average meaningless.
-      - id: d
-        text: 'A decreasing trend'
-        isCorrect: false
-        rationale: >-
-          A decreasing trend would show the values falling across the condition.
-          The last session is the same as the first.
     explanation: >-
       Reading a graph starts with level, trend and variability. Here the level sits
       around three, there is no direction, and the spread is narrow. A flat baseline
@@ -689,33 +689,33 @@ questions:
       report about what the graph shows?
     options:
       - id: a
-        text: 'The teaching produced a clear increase'
-        isCorrect: false
-        rationale: >-
-          The increase was already happening before teaching began, at the same
-          rate. The graph cannot separate teaching from whatever was already
-          producing the rise.
-      - id: b
-        text: 'The learner improved, and this graph cannot show why'
-        isCorrect: true
-        rationale: >-
-          Both statements are true and both matter. Improvement is real;
-          attributing it to the teaching is not supported when the baseline was
-          already moving that way.
-      - id: c
         text: 'The teaching had no effect'
         isCorrect: false
         rationale: >-
           The graph does not show that either. It shows a comparison that cannot
           distinguish the two explanations, which is different from showing that
           one of them is false.
-      - id: d
+      - id: b
         text: 'The baseline was too short'
         isCorrect: false
         rationale: >-
           Length is not the problem — nine sessions is a reasonable baseline. The
           problem is the direction it was already heading when the condition
           changed.
+      - id: c
+        text: 'The teaching produced a clear increase'
+        isCorrect: false
+        rationale: >-
+          The increase was already happening before teaching began, at the same
+          rate. The graph cannot separate teaching from whatever was already
+          producing the rise.
+      - id: d
+        text: 'The learner improved, and this graph cannot show why'
+        isCorrect: true
+        rationale: >-
+          Both statements are true and both matter. Improvement is real;
+          attributing it to the teaching is not supported when the baseline was
+          already moving that way.
     explanation: >-
       A baseline moving in the direction treatment is meant to produce makes a later
       improvement uninterpretable, because the same result would have occurred anyway.
@@ -756,29 +756,29 @@ questions:
       for?
     options:
       - id: a
-        text: 'Count each occurrence as it happens for the whole 30 minutes'
-        isCorrect: true
-        rationale: >-
-          Recording every instance across the whole observation is continuous
-          measurement, which is what "every instance" requires.
-      - id: b
-        text: 'Check at the end of each minute and record whether it is happening then'
-        isCorrect: false
-        rationale: >-
-          That is momentary time sampling. It estimates the proportion of moments
-          rather than counting instances, so it cannot answer "how many".
-      - id: c
         text: 'Record whether it happened at all in each five-minute block'
         isCorrect: false
         rationale: >-
           That is partial-interval recording. It produces a number of intervals,
           not a count of responses, and it usually overestimates duration.
-      - id: d
+      - id: b
         text: 'Record the first and last occurrence only'
         isCorrect: false
         rationale: >-
           This captures neither a count nor a duration. It says when the behaviour
           bracketed the session, which answers a question nobody asked.
+      - id: c
+        text: 'Count each occurrence as it happens for the whole 30 minutes'
+        isCorrect: true
+        rationale: >-
+          Recording every instance across the whole observation is continuous
+          measurement, which is what "every instance" requires.
+      - id: d
+        text: 'Check at the end of each minute and record whether it is happening then'
+        isCorrect: false
+        rationale: >-
+          That is momentary time sampling. It estimates the proportion of moments
+          rather than counting instances, so it cannot answer "how many".
     explanation: >-
       Continuous measurement records every occurrence; discontinuous measurement
       samples. They answer different questions and are not interchangeable, so the
@@ -886,30 +886,30 @@ questions:
       circumstance most threatens the accuracy of that measure?
     options:
       - id: a
+        text: 'The worksheet has ten problems rather than twenty'
+        isCorrect: false
+        rationale: >-
+          The number of opportunities changes the denominator, which is handled by
+          reporting a percentage rather than a raw count.
+      - id: b
+        text: 'The learner completes it faster than last week'
+        isCorrect: false
+        rationale: >-
+          A change in speed is a result worth noticing, not a threat to the
+          accuracy of the count.
+      - id: c
         text: 'The worksheets are stored in a folder'
         isCorrect: false
         rationale: >-
           Storage is a documentation matter. It does not change whether the
           product reflects the learner’s behaviour.
-      - id: b
+      - id: d
         text: 'A parent helps the learner finish the worksheet after the session'
         isCorrect: true
         rationale: >-
           The product is then not a record of the learner’s responding. Permanent
           product only measures the behaviour when nothing else could have
           produced the same result.
-      - id: c
-        text: 'The worksheet has ten problems rather than twenty'
-        isCorrect: false
-        rationale: >-
-          The number of opportunities changes the denominator, which is handled by
-          reporting a percentage rather than a raw count.
-      - id: d
-        text: 'The learner completes it faster than last week'
-        isCorrect: false
-        rationale: >-
-          A change in speed is a result worth noticing, not a threat to the
-          accuracy of the count.
     explanation: >-
       The central assumption of permanent-product recording is that the product could
       only have been produced by the behaviour being measured. Anything that breaks
@@ -950,30 +950,30 @@ questions:
       the same day instead?
     options:
       - id: a
+        text: 'Paper records may be discarded once entered'
+        isCorrect: false
+        rationale: >-
+          Retention rules are set by the employer and the funder, and usually
+          require the original to be kept regardless of when it was entered.
+      - id: b
+        text: 'It reduces the number of trials that must be run'
+        isCorrect: false
+        rationale: >-
+          Entry timing has no effect on how many teaching trials the program
+          specifies.
+      - id: c
         text: 'It makes the graph look tidier'
         isCorrect: false
         rationale: >-
           Appearance is not a reason. The graph plots the same values whenever
           they are entered.
-      - id: b
+      - id: d
         text: 'Decisions get made on data that are days out of date, and detail is lost'
         isCorrect: true
         rationale: >-
           A supervisor reviewing on Tuesday sees last week. Anything needing a
           note from memory — a disruption, an illness, a missed block — has faded
           by Friday.
-      - id: c
-        text: 'Paper records may be discarded once entered'
-        isCorrect: false
-        rationale: >-
-          Retention rules are set by the employer and the funder, and usually
-          require the original to be kept regardless of when it was entered.
-      - id: d
-        text: 'It reduces the number of trials that must be run'
-        isCorrect: false
-        rationale: >-
-          Entry timing has no effect on how many teaching trials the program
-          specifies.
     explanation: >-
       Data entered late are data nobody can act on. The clinical cost is decisions
       made on a stale picture; the accuracy cost is the contextual detail that only
@@ -1013,30 +1013,30 @@ questions:
       a third. What does this most directly indicate?
     options:
       - id: a
+        text: 'One technician should stop collecting data'
+        isCorrect: false
+        rationale: >-
+          The disagreement locates a problem in the system rather than in a
+          person, and the fix is normally a clearer definition or more training.
+      - id: b
         text: 'The learner behaved inconsistently'
         isCorrect: false
         rationale: >-
           Both observers watched the same session. A difference between their
           records is about the measurement, not about the learner.
-      - id: b
+      - id: c
         text: 'The measurement system is not producing dependable data yet'
         isCorrect: true
         rationale: >-
           Disagreement of that size usually means the definition, the recording
           procedure or the training is not yet good enough for the numbers to be
           trusted.
-      - id: c
+      - id: d
         text: 'The intervention is not working'
         isCorrect: false
         rationale: >-
           Nothing here is about the effect of an intervention. It is about whether
           the data describing it can be believed.
-      - id: d
-        text: 'One technician should stop collecting data'
-        isCorrect: false
-        rationale: >-
-          The disagreement locates a problem in the system rather than in a
-          person, and the fix is normally a clearer definition or more training.
     explanation: >-
       Interobserver agreement checks the measurement, not the learner and not the
       intervention. Low agreement means the numbers are not yet dependable, and the
@@ -1078,30 +1078,30 @@ questions:
       definition has not changed. What is the most likely explanation?
     options:
       - id: a
-        text: 'The learner’s behaviour has changed topography'
-        isCorrect: false
-        rationale: >-
-          Possible, but it would affect both observers similarly. A gap that opens
-          between two recorders points at the recording rather than the behaviour.
-      - id: b
         text: 'The experienced technician’s application of the definition has gradually shifted'
         isCorrect: true
         rationale: >-
           Observer drift is exactly this: a definition applied slightly more
           loosely each month until the record no longer matches the written rule.
           It is gradual and invisible from the inside.
-      - id: c
+      - id: b
         text: 'The data sheet has too many columns'
         isCorrect: false
         rationale: >-
           A cluttered sheet causes errors from the first day rather than a slow
           divergence over six months.
-      - id: d
+      - id: c
         text: 'The second observer is undertrained'
         isCorrect: false
         rationale: >-
           Possible, but the pattern — good agreement that decays over time with
           the same person — is the signature of drift in the experienced recorder.
+      - id: d
+        text: 'The learner’s behaviour has changed topography'
+        isCorrect: false
+        rationale: >-
+          Possible, but it would affect both observers similarly. A gap that opens
+          between two recorders points at the recording rather than the behaviour.
     explanation: >-
       Observer drift is the slow, unnoticed change in how a definition is applied.
       Periodic agreement checks exist to catch it, because the person drifting is by
@@ -1142,30 +1142,30 @@ questions:
       all of them. How will the data compare with the true amount of on-task time?
     options:
       - id: a
+        text: 'They will be accurate'
+        isCorrect: false
+        rationale: >-
+          Whole-interval data are systematically low whenever the behaviour is
+          interrupted, which is the situation described here.
+      - id: b
+        text: 'They will vary randomly around the true value'
+        isCorrect: false
+        rationale: >-
+          The error is directional rather than random: it always goes the same
+          way, which is what makes it a bias rather than noise.
+      - id: c
         text: 'They will underestimate it'
         isCorrect: true
         rationale: >-
           Whole interval only scores an interval when the behaviour occupied all
           of it. A brief glance away costs the whole interval, so the score falls
           well below the true proportion.
-      - id: b
+      - id: d
         text: 'They will overestimate it'
         isCorrect: false
         rationale: >-
           Overestimation is the bias of partial-interval recording, where any
           occurrence scores the entire interval.
-      - id: c
-        text: 'They will be accurate'
-        isCorrect: false
-        rationale: >-
-          Whole-interval data are systematically low whenever the behaviour is
-          interrupted, which is the situation described here.
-      - id: d
-        text: 'They will vary randomly around the true value'
-        isCorrect: false
-        rationale: >-
-          The error is directional rather than random: it always goes the same
-          way, which is what makes it a bias rather than noise.
     explanation: >-
       Each sampling procedure is wrong in a known direction. Whole interval
       underestimates, partial interval overestimates, and momentary time sampling is
