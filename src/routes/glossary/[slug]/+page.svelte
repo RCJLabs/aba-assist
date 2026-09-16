@@ -3,6 +3,7 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { CATEGORY_LABELS } from '$lib/content/load.js';
+	import { settingLabel } from '@aba/content-schema/runtime';
 	import { errataUrl } from '$lib/config.js';
 	import type { PageData } from './$types';
 
@@ -57,12 +58,25 @@
 		<p>{term.definition.plain}</p>
 	</section>
 
+	<!--
+		Two lists that look alike and mean opposite things.
+
+		Scrolled into, mid-page, they were four paragraphs with a coloured edge and a
+		heading somewhere above — and the reader who lands on a non-example first reads it
+		as an example. The mark says which on every item, the heading still says it in
+		words, and the colour is the third signal rather than the only one.
+	-->
 	<section>
 		<h2>Example{term.examples.length > 1 ? 's' : ''}</h2>
 		<ul class="examples">
 			{#each term.examples as ex, i (i)}
 				<li>
-					<p>{ex.text}</p>
+					<p class="text">
+						<span class="mark" aria-hidden="true">✓</span>
+						{ex.text}
+						{#if settingLabel(ex.setting)}<span class="where">{settingLabel(ex.setting)}</span
+							>{/if}
+					</p>
 					{#if ex.why}<p class="why">{ex.why}</p>{/if}
 				</li>
 			{/each}
@@ -74,7 +88,12 @@
 		<ul class="examples non">
 			{#each term.nonExamples as ex, i (i)}
 				<li>
-					<p>{ex.text}</p>
+					<p class="text">
+						<span class="mark" aria-hidden="true">✗</span>
+						{ex.text}
+						{#if settingLabel(ex.setting)}<span class="where">{settingLabel(ex.setting)}</span
+							>{/if}
+					</p>
 					{#if ex.why}<p class="why">{ex.why}</p>{/if}
 				</li>
 			{/each}
@@ -190,13 +209,42 @@
 	}
 
 	.examples li {
-		border-left: 4px solid var(--border);
+		border-left: 4px solid var(--accent);
 		padding-left: 0.85rem;
 		margin-bottom: 0.85rem;
 	}
 
 	.examples.non li {
-		border-left-color: var(--caution-border);
+		border-left-color: var(--stop-border);
+	}
+
+	.examples .text {
+		margin: 0;
+	}
+
+	/*
+	 * Sized and spaced rather than coloured alone. The tick and the cross carry the
+	 * contrast on their shape first, which is what survives a greyscale screen, forced
+	 * colours, and the eight percent of men who would read two shades of the same thing.
+	 */
+	.mark {
+		font-weight: 700;
+		margin-right: 0.15rem;
+		color: var(--accent);
+	}
+	.examples.non .mark {
+		color: var(--stop-border);
+	}
+
+	.where {
+		display: inline-block;
+		margin-left: 0.3rem;
+		padding: 0 0.4rem;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		white-space: nowrap;
 	}
 
 	.why {

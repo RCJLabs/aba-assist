@@ -23,6 +23,12 @@ export {
 	PHYSICAL_CONTACT_LEXICON,
 	CLINICAL_DECISION_LEXICON
 } from './lexicons.js';
+export {
+	SETTING_LABELS,
+	SETTING_VALUES,
+	settingLabel,
+	type ExampleSetting
+} from './settings.js';
 export { SEARCH_FIELDS, searchOptions, type AbaSearchOptions } from './search-options.js';
 
 /**

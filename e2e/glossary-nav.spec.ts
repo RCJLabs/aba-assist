@@ -76,3 +76,58 @@ test('the category heading stays on screen while its terms scroll past', async (
 	await head.getByRole('link', { name: 'Index' }).click();
 	await expect(index(page)).toBeInViewport();
 });
+
+/**
+ * Telling an example from a non-example.
+ *
+ * Two lists that look alike and mean opposite things, read mid-page by somebody who has
+ * scrolled past the heading. The mark has to say which on every item, and it has to be
+ * the third signal rather than the only one.
+ */
+test.describe('examples and non-examples', () => {
+	test('every item says which kind it is, in a mark and in the heading', async ({ page }) => {
+		await page.goto('/glossary/negative-reinforcement');
+
+		const examples = page.locator('.examples:not(.non) li');
+		const non = page.locator('.examples.non li');
+		await expect(examples.first()).toBeVisible();
+		await expect(non.first()).toBeVisible();
+
+		for (const li of await examples.all()) {
+			await expect(li.locator('.mark')).toHaveText('✓');
+		}
+		for (const li of await non.all()) {
+			await expect(li.locator('.mark')).toHaveText('✗');
+		}
+
+		// The words carry it too, so the mark is never the only reading.
+		await expect(page.getByRole('heading', { name: /^Examples?$/ })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /^Not negative reinforcement$/ })
+		).toBeVisible();
+	});
+
+	test('the mark is decoration, not something to read aloud', async ({ page }) => {
+		await page.goto('/glossary/negative-reinforcement');
+		/*
+		 * A screen reader announcing "tick" before each example adds noise to a list the
+		 * heading has already named. The mark is for the eye that skipped the heading.
+		 */
+		await expect(page.locator('.examples .mark').first()).toHaveAttribute(
+			'aria-hidden',
+			'true'
+		);
+	});
+
+	test('an example says where it happens, and stays quiet when it could be anywhere', async ({
+		page
+	}) => {
+		await page.goto('/glossary/negative-reinforcement');
+		await expect(page.locator('.examples .where').first()).toHaveText(/at |in /);
+
+		// Every example on this entry could happen anywhere, so none of them claims a place.
+		await page.goto('/glossary/level');
+		await expect(page.locator('.examples li').first()).toBeVisible();
+		await expect(page.locator('.examples .where')).toHaveCount(0);
+	});
+});

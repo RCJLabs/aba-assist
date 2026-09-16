@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SETTING_VALUES } from './settings.js';
 
 export const Slug = z
 	.string()
@@ -83,7 +84,8 @@ export const ContentLicense = z.enum([
 export const Tier = z.enum(['free', 'pro']);
 export type Tier = z.infer<typeof Tier>;
 
-export const Setting = z.enum(['home', 'clinic', 'school', 'community', 'telehealth', 'any']);
+// Built from the shared list, so the enum and the labels the app renders cannot drift.
+export const Setting = z.enum(SETTING_VALUES);
 
 export const Review = z.strictObject({
 	status: ReviewStatus,
