@@ -40,26 +40,49 @@ telling you this is twenty-one minutes of work. It is not.
 **The tier model is wrong here and should be treated as wrong.** Budget by claim count,
 not by row count, or split these into per-domain and per-section rows before reviewing.
 
-## 2. Every one of those 852 traces to a document with no retrieval record
+## 2. CORRECTION — the sources were supplied, and the facts check out
 
-All 69 entries in `content/_registry/sources.yaml` have `retrieved: null`. The seven
-items above rest entirely on BACB publications — the three Test Content Outlines, the two
-handbooks, the two ethics codes — and `bacb.com` is not reachable from the environment
-this content was produced in.
+An earlier version of this document said the 852 assertions rested on documents nobody
+could show they had read, and that approving them would sign an unbackable attestation.
+**That was wrong.** The primary documents were supplied directly: all three Test Content
+Outlines, both handbooks, both ethics codes, the Initial Competency Assessment. The
+`retrieved: null` in `sources.yaml` is a missing metadata field, not missing provenance.
 
-The credential files additionally carry **72 page-level locators** (`Ongoing Supervision,
-pp. 16-17`, `Professional Development, p. 30`, and so on) which are rendered to readers
-on `/exams/[id]`, the glossary, scenarios and ethics pages.
+`npm run content:verify -- --sources=<path>` now checks the machine-readable facts against
+those documents. Current result: **68 facts checked, 0 disagreeing** — every task code in
+all three outlines (237 of them), every domain name, every exam weight, both exam formats,
+all 114 ethics standard numbers, and contiguous numbering in all nine code sections.
 
-**Do not approve these seven until that is settled.** Approving them signs an attestation
-that those pages say what the app says they say. If the page numbers were produced without
-the documents in hand, that signature is worth less than no signature at all, and it is
-the same failure the self-review guard exists to prevent — arrived at by a different road.
+What is still worth a person's eye is the prose those facts hang on: our restatement of
+what each task or standard _means_, which a string match cannot check.
 
-They are required kinds, so the gate cannot open without them. **This question is on the
-critical path, not beside it.**
+## 3. What the terminology document can and cannot be used for
 
-## 3. The sample rate barely matters
+`ABA_Termonology.pdf` states on its first page: _"Definitions cited from: Cooper J.O,
+Heron T.E, Heward W.L. Applied behavior analysis (2nd ed.)"_. It is a compilation of
+verbatim Cooper, Heron & Heward definitions.
+
+`sources.yaml` marks that book `quotationAllowed: false`, with the note _"NOT a drafting
+source. Its glossary must never be copied, excerpted, or closely paraphrased."_ So it
+cannot be used to write or to reword a definition, and no content file references it —
+which is correct.
+
+It **can** be used as a contradiction check: read it, then read ours, and ask whether they
+mean the same thing. Checking you are not wrong against a reference is not copying it.
+
+Used that way it has already found real gaps. These concepts appear in the reference and
+nowhere in our glossary:
+
+- **evocative effect** and **abative effect** — the two MO effects on behaviour
+- **value-altering**, **behavior-altering** and **function-altering effect**
+- **functionally equivalent** — load-bearing for functional communication training
+- **contrived** vs **naturally existing contingency**
+
+The MO effect terms are the significant ones: motivating operations are on all three
+outlines, and a glossary that defines the MO without naming its effects is teaching half
+of it.
+
+## 4. The sample rate barely matters
 
 | Rate          | Terms read | Total items | Hours |
 | ------------- | ---------- | ----------- | ----- |
@@ -80,7 +103,7 @@ roughly doubles it.
 **Recommendation: raise it to 50%, or leave it at 25%. Do not lower it.** The time is not
 where the dial is.
 
-## 4. Read these first, whatever order the queue offers
+## 5. Read these first, whatever order the queue offers
 
 **The twelve escalation cards.** Roughly 36 minutes, and the items where being wrong costs
 most:
@@ -106,7 +129,7 @@ _wording_ are right for a real workplace.
 **Then the fifteen tier-A items resting on a single citation**, notably the seizure card
 and the suicidal-statement card.
 
-## 5. What has never been read by anyone
+## 6. What has never been read by anyone
 
 - **603 questions**, roughly 2,400 option rationales. Tier B, and wrong answers with
   confident explanations are the defining complaint about every competing app. None of
@@ -115,7 +138,7 @@ and the suicidal-statement card.
 - **60 scenarios**, of which 48 are guidance rather than escalation.
 - **249 glossary terms**, of which the gate path reads 54 at the default rate.
 
-## 6. Two workflow hazards
+## 7. Two workflow hazards
 
 **The sample draw is seeded by content version.** A draw is labelled
 `term:acquisition@1640942f2fb9:9-of-34`. Change any content file and the version changes
@@ -125,7 +148,7 @@ start a review pass and the moment you apply the export.
 **Decisions live in one browser's IndexedDB.** One device, and do not clear site data
 before exporting.
 
-## 7. The loop, verified
+## 8. The loop, verified
 
 Exercised end to end on 2026-09-16 and reverted:
 
