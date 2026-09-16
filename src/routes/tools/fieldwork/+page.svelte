@@ -218,8 +218,9 @@
 				</dl>
 				{#if progress.forfeited > 0}
 					<p class="hint">
-						Hours below a month's floor never count, and hours above its ceiling are dropped.
-						That is the gap between what you logged and what is credited above.
+						A month that misses a requirement is adjusted rather than simply kept or lost, and
+						each requirement has its own adjustment. That is the gap between what you logged
+						and what is credited above; each month below says which one applied.
 					</p>
 				{/if}
 				<ul class="ratios">
@@ -227,7 +228,10 @@
 						<li>
 							<strong>{r.label}</strong>
 							<span class="detail">
-								{r.value}% across everything logged, against {r.percent}% required.
+								{r.value}% across everything logged, against {r.percent}% required{r.scope ===
+								'month'
+									? ' in each month — see the months below, not this total.'
+									: ' across the whole experience.'}
 							</span>
 						</li>
 					{/each}
@@ -355,6 +359,7 @@
 								</span>
 							</h3>
 							<p class="kind">{m.type === 'concentrated' ? 'Concentrated' : 'Supervised'}</p>
+							{#if s.creditNote}<p class="credit-note">{s.creditNote}</p>{/if}
 							<ul class="checks">
 								{#each s.checks as c (c.id)}
 									<li data-met={String(c.met)}>
@@ -568,6 +573,12 @@
 		font-size: 0.85rem;
 		color: var(--text-muted);
 	}
+	.credit-note {
+		margin: 0 0 0.5rem;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+	}
+
 	.checks {
 		list-style: none;
 		margin: 0;

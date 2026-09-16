@@ -120,9 +120,7 @@ test('a full month counts, and hours above the ceiling do not', async ({ page })
 	await expect(page.locator('.stats')).toContainText('20');
 });
 
-test('the two unsettled ratios are reported as figures, never as verdicts', async ({
-	page
-}) => {
+test('the monthly ratio is judged and the cumulative one is not', async ({ page }) => {
 	await open(page);
 	await startPeriod(page);
 
@@ -136,16 +134,19 @@ test('the two unsettled ratios are reported as figures, never as verdicts', asyn
 	});
 
 	const month = page.locator('.month').first();
-	// Both ratios are well short, and the month is still not marked short on their account.
-	await expect(month).toHaveAttribute('data-standing', 'met');
+	// Individual supervision is a monthly requirement, so a month at 17% is short — and
+	// only 2 of the 6 supervised hours survive the group cap, which supports 40 hours.
+	await expect(month).toHaveAttribute('data-standing', 'short');
+	await expect(month.locator('.checks').first()).toContainText('50% individual supervision');
+	await expect(month).toContainText('40 credited');
+	await expect(month.locator('.credit-note')).toContainText('5% supervision minimum');
 
+	// Unrestricted activity is measured across the whole experience, so a light month is
+	// not a lost one and gets no verdict here.
 	const figures = month.locator('.figures');
-	await expect(figures).toContainText('Individual supervision');
 	await expect(figures).toContainText('Unrestricted activity');
-	await expect(figures).toContainText(
-		'has not verified whether that is checked per month or across the whole experience'
-	);
-	// A figure carries no pass/fail mark.
+	await expect(figures).toContainText('across the whole experience, not this month');
+	await expect(figures).not.toContainText('Individual supervision');
 	await expect(figures.locator('li[data-met]')).toHaveCount(0);
 });
 

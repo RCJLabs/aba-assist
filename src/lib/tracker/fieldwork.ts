@@ -83,6 +83,8 @@ export interface FieldworkMonthSummary {
 	standing: Standing;
 	/** Hours this month contributes toward the total, after the multiplier. */
 	creditedHours: number;
+	/** Why the credit is less than the hours logged, in our words. Null when it is not. */
+	creditNote: string | null;
 }
 
 const EPSILON = 1e-9;
@@ -111,6 +113,88 @@ export function creditedHours(
 }
 
 /**
+ * What a month of fieldwork is actually worth.
+ *
+ * The handbook does not simply void a month that misses a requirement — it gives a
+ * different adjustment for each one, and the differences are large. Missing the
+ * observation costs the whole month. Missing half the required contacts costs half the
+ * hours. Falling short on the supervision percentage costs only the independent hours
+ * above what the percentage supports. Guessing "it all counts" overstates somebody's
+ * progress by hundreds of hours; guessing "none of it counts" sends them to redo work
+ * they already own.
+ *
+ * Concentrated fieldwork is the exception the handbook states outright: those hours may
+ * not be prorated or adjusted. We read that as covering the three remedies below, so a
+ * concentrated month that misses any of them is worth nothing — there is no adjustment
+ * available to bring it into compliance. The monthly ceiling still applies, because a cap
+ * everyone is subject to is not a remedy for a deficient month. Where those two readings
+ * differ we take the lower number: telling somebody they are further along than they are
+ * is the error that costs them a year.
+ */
+function eligibleHours(
+	m: FieldworkMonthInput,
+	rules: FieldworkRuleset,
+	opts: {
+		concentrated: boolean;
+		observationMet: boolean;
+		needPercent: number;
+		needContacts: number;
+		countableSupervision: number;
+	}
+): { hours: number; note: string | null } {
+	if (!opts.observationMet) {
+		return { hours: 0, note: 'No observation with a client, so no hours count this month.' };
+	}
+	if (m.totalHours + EPSILON < rules.monthlyMinHours) {
+		return {
+			hours: 0,
+			note: `Below the ${rules.monthlyMinHours}-hour floor, so no hours count this month.`
+		};
+	}
+
+	const capped = Math.min(m.totalHours, rules.monthlyMaxHours);
+	const notes: string[] = [];
+	if (m.totalHours > rules.monthlyMaxHours + EPSILON) {
+		notes.push(`the ${rules.monthlyMaxHours}-hour ceiling`);
+	}
+
+	const requiredSupervision = (capped * opts.needPercent) / 100;
+	const percentShort = opts.countableSupervision + EPSILON < requiredSupervision;
+	const contactsShort = m.contacts < opts.needContacts;
+	const groupExcess = m.supervisionHours > opts.countableSupervision + EPSILON;
+
+	if (opts.concentrated && (percentShort || contactsShort || groupExcess)) {
+		return {
+			hours: 0,
+			note: 'Concentrated hours may not be prorated or adjusted, so a month that misses a requirement counts for nothing.'
+		};
+	}
+
+	/*
+	 * Each remedy is stated against the month's own total, so they are worked out
+	 * independently and the smallest wins rather than compounding. Two shortfalls are not
+	 * twice the penalty; the binding one is the penalty.
+	 */
+	let hours = capped;
+	if (percentShort) {
+		hours = Math.min(hours, (opts.countableSupervision * 100) / opts.needPercent);
+		notes.push(`the ${opts.needPercent}% supervision minimum`);
+	}
+	if (contactsShort) {
+		hours = Math.min(hours, (capped * m.contacts) / opts.needContacts);
+		notes.push(`${m.contacts} of ${opts.needContacts} supervisor contacts`);
+	}
+	if (groupExcess) {
+		notes.push('group supervision above half the supervised hours');
+	}
+
+	return {
+		hours: round(hours),
+		note: notes.length === 0 ? null : `Reduced by ${notes.join(', ')}.`
+	};
+}
+
+/**
  * Check one month.
  *
  * The monthly floor is a real requirement and not advice: hours in a month below it do
@@ -128,8 +212,21 @@ export function summariseFieldworkMonth(
 		? rules.concentratedObservationMinutes
 		: rules.observationMinutes;
 
+	/*
+	 * Group supervision may not exceed half the supervised hours, and the handbook's remedy
+	 * is to cut the group hours back until it does. So the percentage is worked out against
+	 * what survives that cut, not against everything logged — otherwise a month of nothing
+	 * but group meetings would read as fully supervised.
+	 */
+	const countableSupervision = Math.min(m.supervisionHours, 2 * m.individualSupervisionHours);
 	const requiredSupervision = round((m.totalHours * needPercent) / 100);
-	const supervisionPercent = pct(m.supervisionHours, m.totalHours);
+	const supervisionPercent = pct(countableSupervision, m.totalHours);
+	const observationMet =
+		needMinutes === null
+			? m.observedWithClient
+			: m.observationMinutes + EPSILON >= needMinutes;
+
+	const monthRatios = req.ratios.filter((r) => r.scopeVerified && r.scope === 'month');
 
 	const checks: Check[] = [
 		{
@@ -148,8 +245,11 @@ export function summariseFieldworkMonth(
 		{
 			id: 'supervision-percent',
 			label: `${needPercent}% supervised`,
-			met: m.supervisionHours + EPSILON >= requiredSupervision,
-			detail: `${round(m.supervisionHours)} of ${requiredSupervision} hours needed (${supervisionPercent}%).`
+			met: countableSupervision + EPSILON >= requiredSupervision,
+			detail:
+				countableSupervision + EPSILON < m.supervisionHours
+					? `${round(countableSupervision)} of ${requiredSupervision} hours needed (${supervisionPercent}%), counting only the group hours that individual supervision supports.`
+					: `${round(countableSupervision)} of ${requiredSupervision} hours needed (${supervisionPercent}%).`
 		},
 		{
 			id: 'contacts',
@@ -161,15 +261,33 @@ export function summariseFieldworkMonth(
 			? {
 					id: 'observation',
 					label: 'Observed with a client',
-					met: m.observedWithClient,
-					detail: m.observedWithClient ? 'Yes.' : 'Not yet this month.'
+					met: observationMet,
+					detail: observationMet ? 'Yes.' : 'Not yet this month — without it no hours count.'
 				}
 			: {
 					id: 'observation',
 					label: `${needMinutes} minutes observed`,
-					met: m.observationMinutes + EPSILON >= needMinutes,
+					met: observationMet,
 					detail: `${m.observationMinutes} of ${needMinutes} minutes.`
-				}
+				},
+		/*
+		 * A ratio the handbook states per supervisory period is a monthly requirement like
+		 * any other, so it is judged here rather than reported as a figure. The ones stated
+		 * across the whole experience stay out of the month entirely — a light month is not
+		 * a failed month when the rule is cumulative.
+		 */
+		...monthRatios.map((ratio): Check => {
+			const value =
+				ratio.id === 'individual-supervision'
+					? pct(m.individualSupervisionHours, m.supervisionHours)
+					: pct(m.unrestrictedHours, m.totalHours);
+			return {
+				id: ratio.id,
+				label: `${ratio.percent}% ${ratio.label.toLowerCase()}`,
+				met: value + EPSILON >= ratio.percent,
+				detail: `${value}% of ${ratio.of} this month.`
+			};
+		})
 	];
 
 	/*
@@ -180,19 +298,29 @@ export function summariseFieldworkMonth(
 	 * their supervisor over nothing; the reverse would let a real problem pass. Neither is
 	 * a guess worth making.
 	 */
-	const figures: Figure[] = req.ratios.map((ratio) => {
-		const value =
-			ratio.id === 'individual-supervision'
-				? pct(m.individualSupervisionHours, m.supervisionHours)
-				: pct(m.unrestrictedHours, m.totalHours);
-		return {
-			id: ratio.id,
-			label: ratio.label,
-			detail: `${value}% of ${ratio.of} this month.`,
-			note: ratio.scopeVerified
-				? `At least ${ratio.percent}%.`
-				: `At least ${ratio.percent}% is required, but this app has not verified whether that is checked per month or across the whole experience. Ask your supervisor.`
-		};
+	const figures: Figure[] = req.ratios
+		.filter((ratio) => !(ratio.scopeVerified && ratio.scope === 'month'))
+		.map((ratio) => {
+			const value =
+				ratio.id === 'individual-supervision'
+					? pct(m.individualSupervisionHours, m.supervisionHours)
+					: pct(m.unrestrictedHours, m.totalHours);
+			return {
+				id: ratio.id,
+				label: ratio.label,
+				detail: `${value}% of ${ratio.of} this month.`,
+				note: !ratio.scopeVerified
+					? `At least ${ratio.percent}% is required, but this app has not verified whether that is checked per month or across the whole experience. Ask your supervisor.`
+					: `At least ${ratio.percent}% is required across the whole experience, not this month, so a light month here is not a lost one.`
+			};
+		});
+
+	const eligible = eligibleHours(m, rules, {
+		concentrated,
+		observationMet,
+		needPercent,
+		needContacts,
+		countableSupervision
 	});
 
 	return {
@@ -205,14 +333,8 @@ export function summariseFieldworkMonth(
 			: checks.some((c) => c.met === null)
 				? 'unknown'
 				: 'met',
-		// A month below the floor contributes nothing, which is the whole point of the floor.
-		creditedHours:
-			m.totalHours + EPSILON >= rules.monthlyMinHours
-				? creditedHours(
-						{ type: m.type, totalHours: Math.min(m.totalHours, rules.monthlyMaxHours) },
-						req
-					)
-				: 0
+		creditedHours: creditedHours({ type: m.type, totalHours: eligible.hours }, req),
+		creditNote: eligible.note
 	};
 }
 
@@ -226,8 +348,18 @@ export interface FieldworkProgress {
 	monthsShort: number;
 	/** Hours logged that will not count, and why that is worth seeing. */
 	forfeited: number;
-	/** Cumulative ratios, which are safe to state whatever the scope turns out to be. */
-	ratios: { id: string; label: string; value: number; percent: number; met: boolean }[];
+	/**
+	 * Cumulative ratios. A ratio the handbook checks per month carries no cumulative
+	 * verdict — the months hold that — so `met` is null and the page says where to look.
+	 */
+	ratios: {
+		id: string;
+		label: string;
+		value: number;
+		percent: number;
+		met: boolean | null;
+		scope: 'month' | 'total' | null;
+	}[];
 	/** Null until a start date is known. */
 	deadline: string | null;
 	daysRemaining: number | null;
@@ -272,7 +404,8 @@ export function summariseFieldwork(
 			label: r.label,
 			value,
 			percent: r.percent,
-			met: value + EPSILON >= r.percent
+			met: r.scope === 'month' ? null : value + EPSILON >= r.percent,
+			scope: r.scope
 		};
 	});
 

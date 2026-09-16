@@ -221,6 +221,28 @@ for (const doc of CODE_DOCS) {
 	}
 }
 
+/**
+ * Every locator inside one `requirements` entry, including the nested ones.
+ *
+ * A fieldwork requirement carries locators three levels down — on itself, on each ruleset,
+ * and on each ratio — and those nested ones point at the pages that decide whether a month
+ * of somebody's fieldwork counted. They are worth checking precisely because nobody reads
+ * them in passing the way they read a sentence on a page.
+ */
+function requirementLocators(name, req, path = name) {
+	const out = [];
+	if (typeof req.locator === 'string') out.push([path, req.locator]);
+	for (const [key, value] of Object.entries(req)) {
+		if (key === 'locator' || !value || typeof value !== 'object') continue;
+		for (const [i, entry] of (Array.isArray(value) ? value : [value]).entries()) {
+			if (!entry || typeof entry !== 'object') continue;
+			const id = entry.id ?? (Array.isArray(value) ? i : key);
+			out.push(...requirementLocators(name, entry, `${path}.${key}[${id}]`));
+		}
+	}
+	return out;
+}
+
 // ------------------------------------------------- credential page locators
 
 /**
@@ -263,18 +285,26 @@ for (const doc of HANDBOOKS) {
 	};
 
 	/*
-	 * Only prose items carry a checkable claim.
+	 * Prose items carry a checkable claim in both directions: the heading has to be on the
+	 * cited page, and the figures in the sentence have to appear in the document.
 	 *
-	 * The machine-readable `requirements` block was included here at first and produced
-	 * nothing but noise: stringifying it drags in the locator text itself, the numbers
-	 * belonging to sibling requirements, and the day and month of an ISO date as separate
-	 * two-digit figures. Those values are already checked properly by the outline and
-	 * ethics passes above, so this one sticks to the sentences a reader actually sees.
+	 * The machine-readable `requirements` block gets the heading check only. Its figures
+	 * produced nothing but noise when they were included — stringifying it drags in the
+	 * locator text itself, the numbers belonging to sibling requirements, and the day and
+	 * month of an ISO date as separate two-digit figures. But the heading check is exactly
+	 * as meaningful there as anywhere, and these are the numbers the tracker does
+	 * arithmetic with, so leaving them entirely unchecked was the wrong trade.
 	 */
 	const items = [];
 	for (const section of cred.sections ?? []) {
 		for (const item of section.items ?? []) {
-			if (item.locator) items.push(item);
+			if (item.locator) items.push({ ...item, checkFigures: true });
+		}
+	}
+	for (const [name, req] of Object.entries(cred.requirements ?? {})) {
+		if (!req) continue;
+		for (const [label, locator] of requirementLocators(name, req)) {
+			items.push({ label, value: '', locator, checkFigures: false });
 		}
 	}
 
@@ -318,6 +348,7 @@ for (const doc of HANDBOOKS) {
 		 * never prints the 85. The second is a number with no support anywhere, which is
 		 * the only one worth stopping for.
 		 */
+		if (!item.checkFigures) continue;
 		const absent = figures(String(item.value)).filter((n) => !body.includes(n));
 		const nowhere = absent.filter((n) => !whole.includes(n));
 		if (nowhere.length > 0) {

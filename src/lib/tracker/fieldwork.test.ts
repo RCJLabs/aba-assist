@@ -56,18 +56,18 @@ const REQ: FieldworkRequirement = {
 			label: 'Individual supervision',
 			percent: 50,
 			of: 'the supervision you received',
-			scopeVerified: false,
-			scope: null,
-			locator: 'Overview, p. 14'
+			scopeVerified: true,
+			scope: 'month',
+			locator: 'Individual Supervision, p. 20'
 		},
 		{
 			id: 'unrestricted',
 			label: 'Unrestricted activity',
 			percent: 60,
 			of: 'all fieldwork hours',
-			scopeVerified: false,
-			scope: null,
-			locator: 'Overview, p. 14'
+			scopeVerified: true,
+			scope: 'total',
+			locator: 'Types of Fieldwork Activity, p. 17'
 		}
 	],
 	excluded: ['Conferences']
@@ -126,14 +126,32 @@ describe('summariseFieldworkMonth', () => {
 	it('holds concentrated fieldwork to a higher bar and pays it more', () => {
 		// 10% rather than 5%, six contacts rather than four — and 1.33 hours of credit.
 		const s = summariseFieldworkMonth(
+			month({
+				type: 'concentrated',
+				supervisionHours: 10,
+				individualSupervisionHours: 5,
+				contacts: 6
+			}),
+			REQ,
+			CURRENT
+		);
+		expect(s.standing).toBe('met');
+		expect(check(s, 'supervision-percent').detail).toContain('of 10 hours needed');
+		expect(s.creditedHours).toBe(133);
+	});
+
+	it('pays a deficient concentrated month NOTHING, because it cannot be adjusted', () => {
+		// The handbook allows the adjustments below only for Supervised Fieldwork, so a
+		// concentrated month that misses a requirement has no remedy left to it.
+		const s = summariseFieldworkMonth(
 			month({ type: 'concentrated', supervisionHours: 6, contacts: 4 }),
 			REQ,
 			CURRENT
 		);
 		expect(check(s, 'supervision-percent').met).toBe(false);
-		expect(check(s, 'supervision-percent').detail).toContain('of 10 hours needed');
 		expect(check(s, 'contacts').met).toBe(false);
-		expect(s.creditedHours).toBe(133);
+		expect(s.creditedHours).toBe(0);
+		expect(s.creditNote).toMatch(/may not be prorated or adjusted/);
 	});
 
 	it('switches to counting observation minutes under the 2027 rules', () => {
@@ -149,7 +167,14 @@ describe('summariseFieldworkMonth', () => {
 
 	it('raises the ceiling and lowers the concentrated percentage in 2027', () => {
 		const s = summariseFieldworkMonth(
-			month({ totalHours: 150, type: 'concentrated', supervisionHours: 11.25 }),
+			// Individual supervision has to keep pace, or the group cap binds before the
+			// percentage does and the test would be measuring the wrong rule.
+			month({
+				totalHours: 150,
+				type: 'concentrated',
+				supervisionHours: 11.25,
+				individualSupervisionHours: 6
+			}),
 			REQ,
 			R2027
 		);
@@ -157,19 +182,91 @@ describe('summariseFieldworkMonth', () => {
 		expect(check(s, 'supervision-percent').met).toBe(true);
 	});
 
-	it('reports the two unsettled ratios as figures, never as a verdict', () => {
-		// Calling a light month a failed month when the rule may be cumulative would send
-		// somebody to argue with a supervisor over nothing.
+	it('judges the monthly ratio and leaves the cumulative one alone', () => {
+		// The handbook settles both scopes and they differ: individual supervision is a
+		// monthly test, unrestricted activity is measured across the whole experience. A
+		// light month of unrestricted work is not a failed month, so it gets no verdict.
 		const s = summariseFieldworkMonth(
-			month({ unrestrictedHours: 10, individualSupervisionHours: 0 }),
+			month({ unrestrictedHours: 10, supervisionHours: 6, individualSupervisionHours: 1 }),
 			REQ,
 			CURRENT
 		);
-		expect(s.standing).toBe('met');
+		expect(check(s, 'individual-supervision').met).toBe(false);
 		expect(s.checks.map((c) => c.id)).not.toContain('unrestricted');
 		const unrestricted = s.figures.find((f) => f.id === 'unrestricted')!;
 		expect(unrestricted.detail).toBe('10% of all fieldwork hours this month.');
-		expect(unrestricted.note).toMatch(/has not verified whether/);
+		expect(unrestricted.note).toMatch(/across the whole experience, not this month/);
+	});
+});
+
+/*
+ * The handbook gives a different adjustment for each requirement a month can miss, and the
+ * differences decide hundreds of hours. One test per row, because the rows are what the
+ * app is claiming to know.
+ */
+describe("the handbook's monthly adjustments", () => {
+	it('pays NOTHING for a month with no observation of the trainee with a client', () => {
+		const s = summariseFieldworkMonth(month({ observedWithClient: false }), REQ, CURRENT);
+		expect(s.creditedHours).toBe(0);
+		expect(s.creditNote).toMatch(/No observation with a client/);
+	});
+
+	it('prorates a month by the fraction of required contacts that happened', () => {
+		// The handbook's own worked example: 2 of 4 contacts and 110 hours gives 55.
+		const s = summariseFieldworkMonth(
+			month({ totalHours: 110, supervisionHours: 8, contacts: 2 }),
+			REQ,
+			CURRENT
+		);
+		expect(check(s, 'contacts').met).toBe(false);
+		expect(s.creditedHours).toBe(55);
+		expect(s.creditNote).toMatch(/2 of 4 supervisor contacts/);
+	});
+
+	it('cuts a month back to the hours its supervision actually supports', () => {
+		// 3 hours of supervision supports 60 hours at 5%, not the 100 that were logged.
+		const s = summariseFieldworkMonth(
+			month({ totalHours: 100, supervisionHours: 3, individualSupervisionHours: 2 }),
+			REQ,
+			CURRENT
+		);
+		expect(check(s, 'supervision-percent').met).toBe(false);
+		expect(s.creditedHours).toBe(60);
+		expect(s.creditNote).toMatch(/5% supervision minimum/);
+	});
+
+	it('does not count group supervision beyond what individual supervision supports', () => {
+		// 10 hours logged but only 1 individual, so 2 hours count — enough for 40 hours.
+		const s = summariseFieldworkMonth(
+			month({ totalHours: 100, supervisionHours: 10, individualSupervisionHours: 1 }),
+			REQ,
+			CURRENT
+		);
+		expect(check(s, 'supervision-percent').met).toBe(false);
+		expect(check(s, 'supervision-percent').detail).toMatch(/counting only the group hours/);
+		expect(s.creditedHours).toBe(40);
+	});
+
+	it('takes the binding adjustment rather than compounding two of them', () => {
+		// Each remedy is stated against the month's own total. 2 of 4 contacts gives 50, and
+		// 4 hours of supervision supports 80; the smaller one is the answer, not 40.
+		const s = summariseFieldworkMonth(
+			month({
+				totalHours: 100,
+				supervisionHours: 4,
+				individualSupervisionHours: 3,
+				contacts: 2
+			}),
+			REQ,
+			CURRENT
+		);
+		expect(s.creditedHours).toBe(50);
+	});
+
+	it('leaves a compliant month entirely alone', () => {
+		const s = summariseFieldworkMonth(month(), REQ, CURRENT);
+		expect(s.creditedHours).toBe(100);
+		expect(s.creditNote).toBeNull();
 	});
 });
 
@@ -209,9 +306,12 @@ describe('summariseFieldwork', () => {
 		const unrestricted = p.ratios.find((r) => r.id === 'unrestricted')!;
 		expect(unrestricted.value).toBe(60);
 		expect(unrestricted.met).toBe(true);
+		// A cumulative 50% is no defence against a month that was 20%, so the total carries
+		// the figure and refuses the verdict. The months hold that one.
 		const individual = p.ratios.find((r) => r.id === 'individual-supervision')!;
 		expect(individual.value).toBe(50);
-		expect(individual.met).toBe(true);
+		expect(individual.met).toBeNull();
+		expect(individual.scope).toBe('month');
 	});
 
 	it('counts down the five-year window from the start date', () => {
