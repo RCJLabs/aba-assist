@@ -22,7 +22,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
-    "test": "vitest run",
+    "test": "npm run content:build && vitest run",
     "test:unit": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",

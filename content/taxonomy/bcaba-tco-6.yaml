@@ -212,7 +212,17 @@ domains:
           how deprivation and satiation change the value of a consequence.
         plainSummary: Explain how going without something, or having lots of it, changes how much it is worth.
         keywords: [UMO, deprivation, satiation, value-altering]
-        termRefs: [motivating-operation, deprivation, satiation, establishing-operation]
+        termRefs:
+          [
+            motivating-operation,
+            deprivation,
+            satiation,
+            establishing-operation,
+            value-altering-effect,
+            behavior-altering-effect,
+            evocative-effect,
+            abative-effect
+          ]
         attestation: *att
       - code: B.13
         ourSummary: >-
