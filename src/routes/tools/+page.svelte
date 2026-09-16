@@ -4,6 +4,8 @@
 	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
 	import { developmentCsv, fieldworkCsv, supervisionCsv } from '$lib/tracker/csv.js';
 	import { downloadBlob } from '$lib/util/download.js';
+	import FigureRows from '$lib/components/FigureRows.svelte';
+	import { NO_FIGURE, type Figure } from '$lib/ui/figures.js';
 
 	onMount(() => void tracker.load());
 
@@ -18,8 +20,150 @@
 	const cycleSummary = $derived(cycle ? tracker.summaryFor(cycle) : null);
 	const months = $derived(tracker.months);
 	const thisMonth = $derived(todayIso().slice(0, 7));
-	const short = $derived(months.filter((m) => m.standing === 'short').length);
 	const fieldwork = $derived(tracker.period ? tracker.fieldworkProgress : null);
+
+	/*
+	 * The hub's figures, in the same form as the ones on the home page.
+	 *
+	 * These were three chips per card with a bare number each and no room for the sentence
+	 * that makes a number readable — and two of them were coloured red for states that are
+	 * not problems. A cycle sixteen months from its deadline is not "short"; a month with
+	 * no service hours entered is not failing. Both now say what they are.
+	 *
+	 * The rows carry no link: the card's own heading is already the way in, and a nested
+	 * link to the same page is a second tab stop saying the same thing.
+	 */
+	const supervisionFigures = $derived.by((): Figure[] => {
+		const current = months.find((m) => m.month === thisMonth);
+		const where = current ? tracker.workplaceLabel(current.workplaceId) : null;
+
+		const thisMonthRow: Figure = current
+			? current.standing === 'unknown'
+				? {
+						id: 'month',
+						label: `This month at ${where}`,
+						detail: 'Enter the hours you delivered and the percentage can be worked out.',
+						value: NO_FIGURE,
+						tone: 'unknown',
+						note: 'not checked',
+						href: null
+					}
+				: current.standing === 'short'
+					? {
+							id: 'month',
+							label: `This month at ${where}`,
+							detail: `Not met yet: ${current.checks
+								.filter((c) => c.met === false)
+								.map((c) => c.label)
+								.join(', ')}.`,
+							value: percentOf(current),
+							tone: 'short',
+							note: 'short',
+							href: null
+						}
+					: {
+							id: 'month',
+							label: `This month at ${where}`,
+							detail: 'Every monthly rule met.',
+							value: percentOf(current),
+							tone: 'neutral',
+							note: null,
+							href: null
+						}
+			: {
+					id: 'month',
+					label: 'This month',
+					detail: 'Nothing logged yet.',
+					value: NO_FIGURE,
+					tone: 'unknown',
+					note: 'not started',
+					href: null
+				};
+
+		return [
+			thisMonthRow,
+			{
+				id: 'months',
+				label: 'Months logged',
+				detail: 'Counted per organisation, because the rule is written per organisation.',
+				value: String(months.length),
+				tone: 'neutral',
+				note: null,
+				href: null
+			},
+			{
+				id: 'contacts',
+				label: 'Contacts logged',
+				detail: 'Every real-time contact you have recorded, across all months.',
+				value: String(tracker.entries.length),
+				tone: 'neutral',
+				note: null,
+				href: null
+			}
+		];
+	});
+
+	/** The supervised share of the hours delivered, where the hours are known. */
+	function percentOf(m: { supervisedHours: number; serviceHours: number | null }): string {
+		if (!m.serviceHours) return NO_FIGURE;
+		return `${Math.round((m.supervisedHours / m.serviceHours) * 1000) / 10}%`;
+	}
+
+	const developmentFigures = $derived.by((): Figure[] => {
+		const c = cycleSummary;
+		if (!c) return [];
+		const when = c.expired
+			? 'the cycle has ended'
+			: `${c.daysRemaining} ${c.daysRemaining === 1 ? 'day' : 'days'} left in the cycle`;
+		// There is no grace period and nothing carries over, so a cycle that ended still
+		// owing units is the one state here that cannot be recovered from.
+		const missedIt = c.remaining > 0 && c.expired;
+		return [
+			{
+				id: 'earned',
+				label: 'Earned this cycle',
+				detail: c.remaining > 0 ? `${c.remaining} still needed · ${when}` : `All in · ${when}`,
+				value: `${c.earned} of ${c.required}`,
+				tone: missedIt ? 'short' : 'neutral',
+				note: missedIt ? 'cycle ended' : null,
+				href: null
+			}
+		];
+	});
+
+	const fieldworkFigures = $derived.by((): Figure[] => {
+		const f = fieldwork;
+		if (!f) return [];
+		return [
+			{
+				id: 'credited',
+				label: 'Hours credited',
+				detail: `Of ${f.required}, counting only months that met their floor.`,
+				value: String(f.credited),
+				tone: 'neutral',
+				note: null,
+				href: null
+			},
+			{
+				id: 'short',
+				label: 'Months below the floor',
+				detail: 'A month below its floor does not count at all, however many hours it holds.',
+				value: String(f.monthsShort),
+				tone: f.monthsShort > 0 ? 'short' : 'neutral',
+				note: f.monthsShort > 0 ? 'forfeited' : null,
+				href: null
+			},
+			{
+				id: 'window',
+				label: 'Days left in the window',
+				detail: f.deadline ? `The period closes on ${f.deadline}.` : 'No start date set yet.',
+				value: f.daysRemaining === null ? NO_FIGURE : String(f.daysRemaining),
+				tone: f.expired ? 'short' : 'neutral',
+				note: f.expired ? 'window closed' : null,
+				href: null
+			}
+		];
+	});
 
 	function exportSupervision() {
 		const s = tracker.snapshot();
@@ -85,7 +229,7 @@
 		</select>
 	</div>
 
-	<div class="cards">
+	<div class="cards" data-tracker={tracker.status}>
 		<article class="card">
 			<h2><a href={resolve('/tools/supervision')}>Supervision log</a></h2>
 			{#if tracker.supervisionRequirement}
@@ -105,30 +249,7 @@
 					what your month has to reach. Log the contacts; check the threshold in your handbook.
 				</p>
 			{/if}
-			<dl class="stats">
-				<div>
-					<dt>Months logged</dt>
-					<dd>{months.length}</dd>
-				</div>
-				<div>
-					<dt>Months short</dt>
-					<dd class:bad={short > 0}>{short}</dd>
-				</div>
-				<div>
-					<dt>Contacts</dt>
-					<dd>{tracker.entries.length}</dd>
-				</div>
-			</dl>
-			{#if months.length > 0}
-				{@const current = months.find((m) => m.month === thisMonth)}
-				{#if current}
-					<p class="now">
-						This month at {tracker.workplaceLabel(current.workplaceId)}:
-						{#if current.standing === 'met'}on track{:else if current.standing === 'short'}short{:else}waiting
-							on your service hours{/if}.
-					</p>
-				{/if}
-			{/if}
+			<FigureRows rows={supervisionFigures} label="Supervision figures" />
 		</article>
 
 		<article class="card">
@@ -146,25 +267,8 @@
 					you earned without scoring it against a total.
 				</p>
 			{/if}
-			{#if cycleSummary}
-				<dl class="stats">
-					<div>
-						<dt>Earned</dt>
-						<dd>{cycleSummary.earned} / {cycleSummary.required}</dd>
-					</div>
-					<div>
-						<dt>Days left</dt>
-						<dd class:bad={cycleSummary.daysRemaining < 60}>
-							{cycleSummary.expired ? 'Ended' : cycleSummary.daysRemaining}
-						</dd>
-					</div>
-					<div>
-						<dt>Standing</dt>
-						<dd class:bad={cycleSummary.standing === 'short'}>
-							{cycleSummary.standing === 'met' ? 'Complete' : 'In progress'}
-						</dd>
-					</div>
-				</dl>
+			{#if developmentFigures.length > 0}
+				<FigureRows rows={developmentFigures} label="Development figures" />
 			{:else}
 				<p class="now">No cycle set up yet.</p>
 			{/if}
@@ -178,23 +282,8 @@
 					one calendar month at a time. A month below its floor does not count at all.
 				</p>
 			{/if}
-			{#if fieldwork}
-				<dl class="stats">
-					<div>
-						<dt>Credited</dt>
-						<dd>{fieldwork.credited}</dd>
-					</div>
-					<div>
-						<dt>Months short</dt>
-						<dd class:bad={fieldwork.monthsShort > 0}>{fieldwork.monthsShort}</dd>
-					</div>
-					<div>
-						<dt>Days left</dt>
-						<dd class:bad={fieldwork.daysRemaining !== null && fieldwork.daysRemaining < 90}>
-							{fieldwork.daysRemaining ?? '—'}
-						</dd>
-					</div>
-				</dl>
+			{#if fieldworkFigures.length > 0}
+				<FigureRows rows={fieldworkFigures} label="Fieldwork figures" />
 			{:else}
 				<p class="now">Not tracking a fieldwork period yet.</p>
 			{/if}
@@ -300,27 +389,6 @@
 	.card h2 {
 		margin-top: 0;
 		font-size: 1.15rem;
-	}
-	.stats {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		margin: 0.75rem 0 0;
-	}
-	.stats div {
-		min-width: 5rem;
-	}
-	.stats dt {
-		font-size: 0.85rem;
-		color: var(--text-muted);
-	}
-	.stats dd {
-		margin: 0;
-		font-size: 1.25rem;
-		font-weight: 700;
-	}
-	.bad {
-		color: var(--stop-text);
 	}
 	.now {
 		color: var(--text-muted);

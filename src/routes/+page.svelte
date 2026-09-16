@@ -15,6 +15,7 @@
 	import { search, type SearchHit } from '$lib/state/search.svelte.js';
 	import { EMPTY, loadStrip, type HomeStrip } from '$lib/home/strip.js';
 	import ExamDial from '$lib/components/ExamDial.svelte';
+	import FigureRows from '$lib/components/FigureRows.svelte';
 	import { examDates } from '$lib/state/examDate.svelte.js';
 	import { daysUntil, domainCoverage, type CoverageDomain } from '$lib/study/coverage.js';
 
@@ -105,6 +106,16 @@
 	 * app's main way of reaching people.
 	 */
 	let strip = $state<HomeStrip>(EMPTY);
+	/*
+	 * Whether storage has answered yet.
+	 *
+	 * Not shown to anybody — the point of the deferred load is that the page is already
+	 * complete without it. It exists because "the figures are still loading" and "there
+	 * are no figures to show" render identically, and without a way to tell them apart a
+	 * test can only race a timeout. Same reasoning as `data-search-status` on the search
+	 * form and `data-attempt` on the quiz results.
+	 */
+	let stripStatus = $state<'loading' | 'ready'>('loading');
 
 	async function refreshStrip() {
 		const credential = filters.refCredential ?? 'RBT';
@@ -117,8 +128,10 @@
 				examWeightPercent: d.examWeightPercent,
 				examItems: d.examItems,
 				tasks: d.tasks.map((t) => ({ code: t.code }))
-			}))
+			})),
+			filters.refCredential !== null
 		);
+		stripStatus = 'ready';
 	}
 
 	onMount(() => {
@@ -128,8 +141,6 @@
 		examDates.hydrate();
 		void refreshStrip();
 	});
-
-	const hasStrip = $derived(strip.dueCards > 0 || strip.weakest !== null);
 
 	/*
 	 * The dial.
@@ -304,15 +315,15 @@
 			moment later — so a first-time visitor and a search engine both get a complete
 			map of the exam rather than a spinner.
 		-->
-		<section class="cockpit" aria-labelledby="cockpit-h">
+		<section class="cockpit" aria-labelledby="cockpit-h" data-strip={stripStatus}>
 			<h2 id="cockpit-h">Where you are on the {dialCredential} outline</h2>
 
 			<ExamDial credential={dialCredential} domains={dialDomains} {days} />
 
 			<p class="caption">
-				Each arc is one content area, sized by how much of the exam it is worth and filled by
-				how many of its tasks you have been asked about. A full ring means every area has been
-				covered once — it is a map of where you have been, not a prediction about the paper.
+				Each arc is one content area, sized by what it is worth on the exam and filled by how
+				many of its tasks you have been asked about. A full ring means you have covered every
+				area once — it is a map, not a prediction.
 			</p>
 
 			<details class="when">
@@ -333,21 +344,8 @@
 				</div>
 			</details>
 
-			{#if hasStrip}
-				<div class="strip">
-					{#if strip.dueCards > 0}
-						<a href={resolve('/study')}>
-							<strong>{strip.dueCards}</strong>
-							<span>{strip.dueCards === 1 ? 'card due' : 'cards due'}</span>
-						</a>
-					{/if}
-					{#if strip.weakest}
-						<a href={resolve('/plan')}>
-							<strong>{Math.round(strip.weakest.accuracy * 100)}%</strong>
-							<span>in {strip.weakest.name} — your weakest area</span>
-						</a>
-					{/if}
-				</div>
+			{#if strip.rows.length > 0}
+				<FigureRows rows={strip.rows} label="Where you stand" />
 			{/if}
 		</section>
 	{:else}
@@ -357,33 +355,20 @@
 			an exam nobody named, so this points at the control that names one instead. It is
 			one sentence, and it makes the dial discoverable without presuming.
 		-->
-		<section class="cockpit pick" aria-labelledby="pick-h">
+		<section class="cockpit pick" aria-labelledby="pick-h" data-strip={stripStatus}>
 			<h2 id="pick-h">Studying for an exam?</h2>
 			<p class="caption">
 				Pick RBT, BCaBA or BCBA above. This is where you will see how much of that exam's
 				outline you have covered — area by area, each one sized by how much of the paper it is
 				worth.
 			</p>
-		</section>
-	{/if}
-
-	{#if hasStrip && !dialCredential}
-		<!--
-			The due queue and the weakest area are about work already done rather than about
-			an exam, so they are still worth saying with no mode chosen.
-		-->
-		<section class="strip" aria-label="Where you left off">
-			{#if strip.dueCards > 0}
-				<a href={resolve('/study')}>
-					<strong>{strip.dueCards}</strong>
-					<span>{strip.dueCards === 1 ? 'card due' : 'cards due'}</span>
-				</a>
-			{/if}
-			{#if strip.weakest}
-				<a href={resolve('/plan')}>
-					<strong>{Math.round(strip.weakest.accuracy * 100)}%</strong>
-					<span>in {strip.weakest.name} — your weakest area</span>
-				</a>
+			<!--
+				The figures stay either way. The month's supervision and the development cycle
+				are about a credential already held rather than about an exam being studied
+				for, so they are still worth saying to somebody who has not named a paper.
+			-->
+			{#if strip.rows.length > 0}
+				<FigureRows rows={strip.rows} label="Where you stand" />
 			{/if}
 		</section>
 	{/if}
@@ -637,38 +622,6 @@
 		margin: 0;
 		font-size: 0.8rem;
 		color: var(--text-muted);
-	}
-
-	.strip {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.cockpit .strip {
-		margin: 0.75rem 0 0;
-	}
-	.strip a {
-		flex: 1 1 8rem;
-		display: flex;
-		gap: 0.5rem;
-		align-items: baseline;
-		min-height: var(--tap);
-		padding: 0.5rem 0.75rem;
-		border: 1px solid var(--border);
-		border-left: 4px solid var(--accent);
-		border-radius: var(--radius);
-		background: var(--surface-raised);
-		text-decoration: none;
-		color: var(--text);
-	}
-	.strip strong {
-		font-size: 1.25rem;
-	}
-	.strip span {
-		color: var(--text-muted);
-		font-size: 0.9rem;
 	}
 
 	h1 {

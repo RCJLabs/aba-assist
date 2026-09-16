@@ -77,7 +77,7 @@ test('the caption says the arcs are weighted, and that a full ring is not a pred
 	await page.goto('/');
 	await chooseRBT(page);
 	const caption = page.locator('.cockpit .caption');
-	await expect(caption).toContainText('sized by how much of the exam it is worth');
+	await expect(caption).toContainText('sized by what it is worth on the exam');
 	await expect(caption).toContainText('not a prediction');
 });
 
@@ -86,7 +86,9 @@ test('with no exam date the centre holds the task count instead of a countdown',
 }) => {
 	await page.goto('/');
 	await chooseRBT(page);
-	await expect(page.locator('.cockpit')).not.toContainText(/days left/i);
+	// Scoped to the ring, not the card: a figure row below it may legitimately mention
+	// days left in the month, and what is being asserted here is the centre of the dial.
+	await expect(page.locator('.cockpit svg')).not.toContainText(/days left/i);
 	await expect(page.locator('.big')).toHaveText('0');
 	await expect(page.locator('.unit')).toHaveText('of 43 tasks');
 	await expect(page.locator('.count')).toHaveCount(0);
