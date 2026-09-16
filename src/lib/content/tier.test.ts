@@ -10,6 +10,7 @@ function item(over: Partial<ReviewItem> = {}): ReviewItem {
 		subtitle: 'principles',
 		status: 'in-review',
 		category: 'principles',
+		gate: null,
 		href: null,
 		fields: [{ label: 'Technical definition', lines: ['An ordinary definition of a thing.'] }],
 		citations: [],

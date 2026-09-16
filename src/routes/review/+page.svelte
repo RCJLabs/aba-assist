@@ -16,6 +16,7 @@
 	const item = $derived(review.current);
 	const decision = $derived(item ? review.decisions[item.id] : undefined);
 	const counts = $derived(review.counts);
+	const gate = $derived(review.gate);
 	const tiers: ReviewTier[] = ['A', 'B', 'C'];
 	const meta = $derived(item ? review.metaFor(item) : null);
 
@@ -114,8 +115,93 @@
 	</dl>
 
 	<!--
-		Tier first, because the queue is otherwise four hundred items in no particular
-		order and the only rational way through it is hardest-consequence-first.
+		The release gate, before the tiers.
+
+		The backlog is the wrong number to lead with. What stands between this app and a
+		reader is four small complete-or-nothing kinds and a floor on the glossary, and
+		that is normally a couple of dozen entries rather than the hundreds below. Leading
+		with the backlog made the queue look like a wall; leading with this makes it a
+		path with a stated end.
+	-->
+	<section class="gate" aria-labelledby="gate-heading" data-gate={gate.met ? 'met' : 'open'}>
+		<h2 id="gate-heading">Getting this published</h2>
+
+		{#if gate.met}
+			<p class="verdict good">
+				The content files clear the release gate. The next build will publish as a release and
+				let search engines in.
+			</p>
+		{:else}
+			<p class="verdict">
+				<strong>{gate.remaining}</strong>
+				{gate.remaining === 1 ? 'entry stands' : 'entries stand'} between this app and an indexed
+				site. Everything else is withheld from a release rather than blocking it, so the backlog
+				below is not the wall.
+			</p>
+		{/if}
+
+		<ul class="reqs">
+			{#each gate.requirements as r (r.id)}
+				<li data-req={r.id} class:done={r.remaining === 0}>
+					<span class="req-label">{r.label}</span>
+					<span class="req-count">
+						{r.approved} of {r.total}
+						{#if r.remaining === 0}
+							<span class="flag ok">complete</span>
+						{:else if r.pending > 0}
+							<span class="flag">{r.pending} pending export</span>
+						{/if}
+					</span>
+				</li>
+			{/each}
+			<li data-req="terms" class:done={gate.floor.remaining === 0}>
+				<span class="req-label">{gate.floor.label}</span>
+				<span class="req-count">
+					{gate.floor.approved} of {gate.floor.needed}
+					{#if gate.floor.remaining === 0}
+						<span class="flag ok">complete</span>
+					{:else if gate.floor.pending > 0}
+						<span class="flag">{gate.floor.pending} pending export</span>
+					{/if}
+				</span>
+			</li>
+		</ul>
+
+		{#if !gate.met}
+			<div class="gate-actions">
+				<!--
+					A toggle, so the label stays put and aria-pressed carries the state. Flipping
+					the label as well would have a screen reader announce "Reviewing everything,
+					pressed", which says the opposite of what is happening.
+				-->
+				<button
+					type="button"
+					data-gate-toggle
+					class:active={review.gateOnly}
+					aria-pressed={review.gateOnly}
+					onclick={() => review.setGateOnly(!review.gateOnly)}
+				>
+					Review only what the gate needs
+				</button>
+				{#if gate.metAfterExport}
+					<p class="verdict good" role="status">
+						Every entry the gate needs is decided here. Export and apply the decisions and the
+						next build is a release.
+					</p>
+				{/if}
+			</div>
+		{/if}
+
+		<p class="gate-note" role="note">
+			Decisions made here have not reached the content files, so a build cannot see them yet.
+			The counts above read the files; anything marked pending is waiting on an export.
+		</p>
+	</section>
+
+	<!--
+		Tier next, because the rest of the queue is otherwise hundreds of items in no
+		particular order and the only rational way through it is
+		hardest-consequence-first.
 	-->
 	<div class="tiers" role="group" aria-label="Review tier">
 		{#each tiers as t (t)}
@@ -389,6 +475,89 @@
 {/if}
 
 <style>
+	/* The gate leads, so it is the one block on the page with a border. */
+	.gate {
+		border: 1px solid var(--border);
+		border-left-width: 4px;
+		border-radius: var(--radius);
+		padding: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.gate[data-gate='met'] {
+		border-left-color: var(--go-border, var(--accent));
+	}
+
+	.gate[data-gate='open'] {
+		border-left-color: var(--caution-border, var(--border));
+	}
+
+	.gate h2 {
+		font-size: 1.05rem;
+		margin: 0 0 0.5rem;
+	}
+
+	.verdict {
+		margin: 0 0 0.6rem;
+	}
+
+	.verdict strong {
+		font-size: 1.3rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.reqs {
+		list-style: none;
+		margin: 0 0 0.6rem;
+		padding: 0;
+	}
+
+	.reqs li {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.3rem 0.75rem;
+		padding: 0.35rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.req-count {
+		font-variant-numeric: tabular-nums;
+		color: var(--text-muted);
+	}
+
+	/* Never colour alone: a finished requirement says "complete" as well. */
+	.reqs li.done .req-count {
+		color: var(--text);
+		font-weight: 600;
+	}
+
+	.flag {
+		display: inline-block;
+		margin-left: 0.4rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		padding: 0.05rem 0.4rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+
+	.gate-actions button {
+		width: 100%;
+		min-height: var(--tap);
+		font-weight: 600;
+	}
+
+	.gate-actions button.active {
+		box-shadow: inset 0 0 0 2px var(--accent);
+	}
+
+	.gate-note {
+		margin: 0.6rem 0 0;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+
 	.tiers {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));

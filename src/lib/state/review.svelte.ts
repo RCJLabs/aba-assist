@@ -8,6 +8,7 @@ import {
 } from '$lib/db/index.js';
 import { loadReviewItems, type ReviewItem } from '$lib/content/reviewable.js';
 import { contentVersion } from '$lib/content/load.js';
+import { gateFor, gatesRelease, type Gate } from '$lib/content/release.js';
 import {
 	batchFor,
 	MINUTES_PER_ITEM,
@@ -39,6 +40,14 @@ class Review {
 	decisions = $state<Record<string, ReviewDecision>>({});
 	kind = $state<ReviewableKind | 'all'>('all');
 	tier = $state<ReviewTier | 'all'>('A');
+	/**
+	 * Show only what a release is waiting on.
+	 *
+	 * Off by default, because the ordinary job is reviewing content. On, it reduces the
+	 * queue to the entries that stand between a preview build and an indexed one, which
+	 * is normally a couple of dozen rather than the whole backlog.
+	 */
+	gateOnly = $state(false);
 	/**
 	 * Fraction of each glossary batch drawn for reading.
 	 *
@@ -96,11 +105,19 @@ class Review {
 		return this.#meta.get(item.id) ?? { tier: 'C' as ReviewTier, reason: '', batch: null };
 	}
 
+	/** How far the content files are from being publishable. */
+	get gate(): Gate {
+		return gateFor(this.items, this.decisions);
+	}
+
 	get queue(): ReviewItem[] {
 		const inSample = this.samples;
 		return this.items.filter((i) => {
 			const meta = this.metaFor(i);
-			if (this.tier !== 'all' && meta.tier !== this.tier) return false;
+			// The gate filter overrides the tier, because it is a different question:
+			// not "how closely must this be read" but "is a release waiting on it".
+			if (this.gateOnly && !gatesRelease(i)) return false;
+			if (!this.gateOnly && this.tier !== 'all' && meta.tier !== this.tier) return false;
 			if (this.kind !== 'all' && i.kind !== this.kind) return false;
 			if (this.hideDecided && this.decisions[i.id]) return false;
 			/*
@@ -214,6 +231,11 @@ class Review {
 			total: all.length,
 			decided: all.filter((i) => this.decisions[i.id]).length
 		};
+	}
+
+	setGateOnly(on: boolean): void {
+		this.gateOnly = on;
+		this.index = 0;
 	}
 
 	setKind(kind: ReviewableKind | 'all'): void {

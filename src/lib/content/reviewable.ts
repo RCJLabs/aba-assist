@@ -43,6 +43,14 @@ export interface ReviewItem {
 	 * and the sampling both key off it and a display string is not an interface.
 	 */
 	category: string | null;
+	/**
+	 * Which release-gate requirement this item belongs to, if any.
+	 *
+	 * Carried rather than derived from `kind`, because the gate requires escalation cards
+	 * complete and not every scenario. Null for the growable kinds, which are withheld
+	 * individually rather than blocking a release.
+	 */
+	gate: string | null;
 	/** Where to read it as a reader would. Null for items with no page of their own. */
 	href: string | null;
 	fields: ReviewField[];
@@ -70,6 +78,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			items.push({
 				id: t.id,
 				kind: 'term',
+				gate: null,
 				title: t.term,
 				subtitle: `${category}${t.aliases.length ? ` · also: ${t.aliases.join(', ')}` : ''}`,
 				status: t.review.status,
@@ -130,6 +139,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			subtitle: s.kind === 'guidance' ? 'Everyday situation' : 'Stop and escalate',
 			status: s.review.status,
 			category: null,
+			gate: s.kind === 'guidance' ? null : 'escalation',
 			href: resolve('/scenarios/[slug]', { slug: s.id }),
 			fields,
 			citations: s.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
@@ -143,6 +153,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			items.push({
 				id: q.id,
 				kind: 'question',
+				gate: null,
 				title: q.stem,
 				subtitle: `${q.credential} ${q.taskRef.code} · ${q.cognitiveLevel} · difficulty ${q.difficulty}`,
 				status: q.review.status,
@@ -176,6 +187,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: t.id,
 			kind: 'ethics-topic',
+			gate: null,
 			title: t.ourLabel,
 			subtitle: `${t.appliesTo.join(', ')} · ${t.gloss}`,
 			status: t.review.status,
@@ -202,6 +214,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: g.id,
 			kind: 'practice-guide',
+			gate: null,
 			title: g.title,
 			subtitle: `${g.audience.join(', ')} · ${g.gloss}`,
 			status: g.review.status,
@@ -233,6 +246,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: g.id,
 			kind: 'graph',
+			gate: null,
 			title: g.title,
 			subtitle: `${g.design} · ${g.gloss}`,
 			status: g.review.status,
@@ -273,6 +287,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: c.id,
 			kind: 'ethics-code',
+			gate: 'ethics-code',
 			title: c.shortName,
 			subtitle: `Effective ${c.effectiveDate} · ${c.appliesTo.join(', ')}`,
 			status: c.review.status,
@@ -310,6 +325,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: c.id,
 			kind: 'credential',
+			gate: 'credential',
 			title: `${c.credential} requirements`,
 			subtitle: `From the ${c.handbookVersion} handbook`,
 			status: c.review.status,
@@ -334,6 +350,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 		items.push({
 			id: o.id,
 			kind: 'outline',
+			gate: 'outline',
 			title: `${o.credential} Test Content Outline (${o.edition} ed.)`,
 			subtitle: `Effective ${o.effectiveDate} · ${o.domains.length} domains · ${o.totalTasks} tasks`,
 			status: o.review.status,

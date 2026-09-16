@@ -67,15 +67,11 @@ export const RELEASE_REQUIRES_COMPLETE = [
 ] as const;
 
 /**
- * How much of the glossary has to be approved before a build is allowed to call itself a
- * release and let search engines in.
- *
- * A thin public glossary is worse than none: it indexes badly, and first impressions of a
- * reference tool are hard to retake. The number is the build plan's own figure for the
- * core vocabulary rather than anything derived, so it is a judgement — argue with it and
- * change it, but change it on purpose.
+ * Re-exported from the Zod-free half, which is where the review queue reads it from.
+ * One definition, so the number the build enforces and the number the page shows cannot
+ * drift apart.
  */
-export const RELEASE_MINIMUM_TERMS = 150;
+export { RELEASE_MINIMUM_TERMS } from './release.js';
 
 export const ContentLicense = z.enum([
 	'CC-BY-SA-4.0',

@@ -39,3 +39,9 @@ export const METHOD_LABELS: Record<AssessmentMethod, string> = {
 	'role-play': 'Role-play',
 	interview: 'Interview'
 };
+
+export {
+	RELEASE_REQUIRED_KINDS,
+	RELEASE_MINIMUM_TERMS,
+	type ReleaseRequiredKind
+} from './release.js';
