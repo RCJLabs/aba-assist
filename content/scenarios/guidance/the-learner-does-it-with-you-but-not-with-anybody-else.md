@@ -5,21 +5,21 @@ title: The skill works with you and nowhere else
 situation: >-
   The learner performs the skill with you, in your usual room, with your materials. With
   another person, in another room, or with different materials, it does not appear. The
-  programme says mastered.
+  program says mastered.
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: []
 steps:
   - text: >-
-      Check whether the programme has generalisation steps, and whether they have been run.
+      Check whether the program has generalization steps, and whether they have been run.
     rationale: >-
       Working in one place with one person is what teaching produces unless something is
       done deliberately to spread it.
   - text: >-
-      Run the generalisation steps as written — other people, other settings, other
+      Run the generalization steps as written — other people, other settings, other
       materials, in the order specified.
     rationale: >-
-      Which dimension to vary first is part of the programme design. Varying everything at
+      Which dimension to vary first is part of the program design. Varying everything at
       once usually produces failure that teaches nothing.
   - text: >-
       Take data with the other person or in the other setting, rather than assuming.
@@ -36,12 +36,12 @@ whatNotToDo:
     Do not mark a target mastered on the strength of sessions with one person in one
     place.
   - >-
-    Do not invent your own generalisation plan.
+    Do not invent your own generalization plan.
   - >-
     Do not conclude the learner is being difficult with somebody else.
 whenToEscalate:
   - >-
-    Tell your supervisor if the programme has no generalisation steps.
+    Tell your supervisor if the program has no generalization steps.
   - >-
     Tell your supervisor if a skill has not transferred after the planned steps have been
     run.

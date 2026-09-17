@@ -671,7 +671,7 @@
 		{#if quiz.ranOutOfTime}
 			<p class="warn" role="note">
 				<strong>Time ran out.</strong> Questions you did not reach are counted wrong, which is what
-				happens on the day. Pace is a skill worth practising separately from content.
+				happens on the day. Pace is a skill worth practicing separately from content.
 			</p>
 		{/if}
 		{#if quiz.plan}

@@ -3,9 +3,9 @@ id: you-are-asked-to-work-outside-your-role
 kind: guidance
 title: You are asked to do something that belongs to the analyst
 situation: >-
-  Somebody asks you to write a programme, run an assessment, decide a goal, change a
+  Somebody asks you to write a program, run an assessment, decide a goal, change a
   criterion, attend a meeting and give a clinical opinion, or train another technician on
-  a procedure. It is meant as a compliment, or it is meant as a favour, or the team is
+  a procedure. It is meant as a compliment, or it is meant as a favor, or the team is
   short-staffed and somebody has to.
 setting: any
 audience: [RBT, BCaBA]
@@ -33,7 +33,7 @@ steps:
       Repeated requests are a pattern the analyst needs to see, and a plain contemporaneous
       note is what makes a pattern visible later.
 whatNotToDo:
-  - Do not write or modify a programme, even a small change, even a sensible one.
+  - Do not write or modify a program, even a small change, even a sensible one.
   - Do not give an opinion about a diagnosis, a medication, or whether services should continue.
   - Do not sign anything attesting to somebody else's competence.
   - Do not accept the request because refusing feels rude — the responsibility for your work sits with your supervisor either way.
@@ -43,7 +43,7 @@ whenToEscalate:
     If a supervisor is the person asking you to work outside your role, that goes above
     them, and both ethics codes expect it to.
 termRefs: [scope-of-practice, scope-of-competence, supervision, behavior-intervention-plan]
-ethicsRefs: [staying-in-your-role, competence-before-you-practise, raising-an-ethics-concern]
+ethicsRefs: [staying-in-your-role, competence-before-you-practice, raising-an-ethics-concern]
 tags: [scope-of-practice, workplace, ethics]
 taskRefs:
   - { credential: RBT, code: F.2 }

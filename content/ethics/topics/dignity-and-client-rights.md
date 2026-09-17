@@ -31,11 +31,11 @@ whatThisLooksLike:
   - Offering a choice of two activities where the program allows it.
   - Pausing when a learner signals distress, and recording it for the supervisor.
   - Talking to a learner about what is happening next, whether or not they speak.
-  - Not discussing a learner's toileting or behaviour where others can hear.
+  - Not discussing a learner's toileting or behavior where others can hear.
 commonPitfalls:
-  - Reading every refusal as a behaviour to be worked through.
+  - Reading every refusal as a behavior to be worked through.
   - Assuming consent from a guardian settles whether to continue in the moment.
-  - Prioritising trial counts over the learner's evident state.
+  - Prioritizing trial counts over the learner's evident state.
   - Talking about someone in the third person while they are sitting there.
 ifYouAreUnsure: >-
   Treat a signal of withdrawal as real, respond the way the plan directs, and report the

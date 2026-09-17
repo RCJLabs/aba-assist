@@ -12,7 +12,7 @@ definition:
   plain: >-
     When something matters more right now, a person does more of what has got them that
     thing before. Miss lunch and you ask for a snack more often.
-  gloss: More of the behaviour right now, because the thing is worth more
+  gloss: More of the behavior right now, because the thing is worth more
 examples:
   - text: >-
       A learner has not had a drink all morning. During the session they sign for water
@@ -23,7 +23,7 @@ examples:
       A task is put in front of a learner who finds it hard. Requests for a break go up
       sharply while the task is there.
     setting: school
-    why: The demand raised the value of escape, so the behaviour that has produced escape increased.
+    why: The demand raised the value of escape, so the behavior that has produced escape increased.
 nonExamples:
   - text: >-
       A learner signs for water more often after being taught the sign. That is a change
@@ -38,7 +38,7 @@ seeAlso: [motivating-operation, establishing-operation, behavior-altering-effect
 searchBoost: 1.2
 flashcard:
   mnemonic: >-
-    Evocative evokes: the behaviour comes out more, right now.
+    Evocative evokes: the behavior comes out more, right now.
 taskRefs:
   - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: B.15 }
@@ -70,7 +70,7 @@ provenance:
   updated: '2026-09-16'
 ---
 
-Candidates lose marks here by confusing this with a discriminative stimulus, because
-both are followed by more behaviour. The question to ask is _why_ the behaviour went up.
+Candidates lose points here by confusing this with a discriminative stimulus, because
+both are followed by more behavior. The question to ask is _why_ the behavior went up.
 If the learner now wants the thing more, that is evocative. If the learner has learned
 that asking works at this moment, that is discrimination.

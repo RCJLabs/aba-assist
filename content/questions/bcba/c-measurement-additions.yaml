@@ -9,13 +9,13 @@ questions:
       The clearest test of whether a definition is operational is that:
     options:
       - id: a
-        text: It describes the behaviour in behavioural terminology
+        text: It describes the behavior in behavioral terminology
         isCorrect: false
         rationale: >-
           Technical vocabulary can be entirely vague, and plain wording can be perfectly
           precise.
       - id: b
-        text: It names the likely function of the behaviour
+        text: It names the likely function of the behavior
         isCorrect: false
         rationale: >-
           Function belongs in the analysis rather than in the definition of the response.
@@ -66,7 +66,7 @@ questions:
       Reporting only a percentage correct can mislead most seriously when:
     options:
       - id: a
-        text: The behaviour has a long duration
+        text: The behavior has a long duration
         isCorrect: false
         rationale: >-
           Duration is a different dimension and not what a percentage of opportunities
@@ -114,7 +114,7 @@ questions:
           It counts the opportunities needed to reach mastery, which is a measure of
           acquisition efficiency.
       - id: b
-        text: How often the behaviour occurs in a day
+        text: How often the behavior occurs in a day
         isCorrect: false
         rationale: >-
           How often something happens per unit time is a rate question, not an acquisition
@@ -132,7 +132,7 @@ questions:
     explanation: >-
       Measures answer questions. Trials to criterion is the natural dependent variable
       when comparing teaching procedures, because what is at issue is how efficiently each
-      produced the skill rather than how often the behaviour occurred.
+      produced the skill rather than how often the behavior occurred.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [trials-to-criterion, discrete-trial-training, percentage]
@@ -159,7 +159,7 @@ questions:
         isCorrect: true
         rationale: >-
           Interresponse time measures the gap between responses, which is exactly what such a
-          programme changes.
+          program changes.
       - id: c
         text: Reduce how long each episode lasts
         isCorrect: false
@@ -173,7 +173,7 @@ questions:
           Time from instruction to the start of responding is latency, not the gap between
           responses.
     explanation: >-
-      Each temporal measure lines up with a kind of programme. Where the intervention
+      Each temporal measure lines up with a kind of program. Where the intervention
       targets the pacing of responses rather than their number, interresponse time is the
       measure that will show the change.
     cognitiveLevel: application
@@ -196,29 +196,29 @@ questions:
         text: Sustained engagement that should occupy the entire interval
         isCorrect: true
         rationale: >-
-          Scoring only when the behaviour lasts the whole interval suits behaviour you want
-          continuous.
+          Scoring only when the behavior lasts the whole interval suits behavior that
+          should be continuous.
       - id: b
-        text: A brief behaviour you want to see less of
+        text: A brief behavior the plan aims to reduce
         isCorrect: false
         rationale: >-
           Partial interval suits that, because a single brief occurrence scores the whole
           interval.
       - id: c
-        text: A behaviour with a clear onset and offset you want timed
+        text: A behavior with a clear onset and offset that could be timed directly
         isCorrect: false
         rationale: >-
           Where onset and offset are clear, duration measures the thing directly and more
           accurately.
       - id: d
-        text: A behaviour that occurs a handful of times a day
+        text: A behavior that occurs a handful of times a day
         isCorrect: false
         rationale: >-
-          A simple count is both easier and more accurate for low-frequency behaviour.
+          A simple count is both easier and more accurate for low-frequency behavior.
     explanation: >-
       The choice between interval methods follows from what you want the data to be
-      sensitive to. Whole interval underestimates and so suits behaviour you want more of;
-      partial interval overestimates and so suits behaviour you want less of.
+      sensitive to. Whole interval underestimates and so suits behavior you want more of;
+      partial interval overestimates and so suits behavior you want less of.
     cognitiveLevel: application
     difficulty: 3
     termRefs:
@@ -274,7 +274,7 @@ questions:
     taskRef: { credential: BCBA, code: C.8 }
     type: single-best-answer
     stem: >-
-      A measure produces highly consistent numbers that do not reflect the behaviour of
+      A measure produces highly consistent numbers that do not reflect the behavior of
       interest. This measure is:
     options:
       - id: a
@@ -300,7 +300,7 @@ questions:
           can have the first without the second.
     explanation: >-
       Reliability and validity are separable, and consistency is the more seductive of the
-      two because it looks like rigour. A precisely recorded measure of the wrong thing
+      two because it looks like rigor. A precisely recorded measure of the wrong thing
       produces a clean graph that answers no question anybody asked.
     cognitiveLevel: analysis
     difficulty: 3
@@ -359,34 +359,34 @@ questions:
     taskRef: { credential: BCBA, code: C.9 }
     type: single-best-answer
     stem: >-
-      For a behaviour that occurs roughly twice a week and matters a great deal, the
+      For a behavior that occurs roughly twice a week and matters a great deal, the
       appropriate measurement system is:
     options:
       - id: a
         text: A count of every occurrence, with the observation period recorded
         isCorrect: true
         rationale: >-
-          Low-frequency behaviour is best captured by counting every instance; sampling would
+          Low-frequency behavior is best captured by counting every instance; sampling would
           miss most of them.
       - id: b
         text: Partial interval recording across sessions
         isCorrect: false
         rationale: >-
-          Sampling a rare behaviour produces mostly empty intervals and a poor estimate of
+          Sampling a rare behavior produces mostly empty intervals and a poor estimate of
           anything.
       - id: c
         text: Momentary time sampling
         isCorrect: false
         rationale: >-
-          The chance of a momentary sample coinciding with a rare behaviour is very low.
+          The chance of a momentary sample coinciding with a rare behavior is very low.
       - id: d
         text: Mean duration per session
         isCorrect: false
         rationale: >-
-          With so few occurrences a mean is unstable and says very little about the behaviour.
+          With so few occurrences a mean is unstable and says very little about the behavior.
     explanation: >-
-      Frequency of the behaviour drives the choice of system. Sampling exists to make
-      high-rate or continuous behaviour tractable; applied to rare behaviour it discards
+      Frequency of the behavior drives the choice of system. Sampling exists to make
+      high-rate or continuous behavior tractable; applied to rare behavior it discards
       almost all the information there is.
     cognitiveLevel: application
     difficulty: 3
@@ -417,10 +417,10 @@ questions:
           Visual analysis depends on the display, so inconsistent scaling misrepresents the
           size of the effect.
       - id: c
-        text: Is acceptable if both axes are labelled
+        text: Is acceptable if both axes are labeled
         isCorrect: false
         rationale: >-
-          Labelling the axes does not prevent the visual impression from misleading a reader.
+          Labeling the axes does not prevent the visual impression from misleading a reader.
       - id: d
         text: Improves readability when the ranges differ
         isCorrect: false
@@ -471,7 +471,7 @@ questions:
         rationale: >-
           A criterion is normally drawn as a horizontal aim line across the condition.
     explanation: >-
-      The conventions of a behavioural line graph are load-bearing rather than decorative:
+      The conventions of a behavioral line graph are load-bearing rather than decorative:
       the data path breaks at condition changes, phase lines mark them, and sessions with
       no data leave a gap rather than being joined across.
     cognitiveLevel: recall
@@ -505,7 +505,7 @@ questions:
         text: Variability means the measurement is inaccurate
         isCorrect: false
         rationale: >-
-          Variability may be genuine behaviour rather than any fault in the measurement.
+          Variability may be genuine behavior rather than any fault in the measurement.
       - id: d
         text: Variable data cannot be graphed
         isCorrect: false
@@ -542,7 +542,7 @@ questions:
         isCorrect: false
         rationale: >-
           Visual analysis of level, trend and variability is the standard method for this
-          judgement.
+          judgment.
       - id: c
         text: There is evidence of an effect, expressed as a change in direction rather than in level
         isCorrect: true
@@ -658,7 +658,7 @@ questions:
     taskRef: { credential: BCBA, code: C.7 }
     type: single-best-answer
     stem: >-
-      An observer's presence changes the behaviour being measured. This is:
+      An observer's presence changes the behavior being measured. This is:
     options:
       - id: a
         text: Observer drift
@@ -680,7 +680,7 @@ questions:
         text: Reactivity, which threatens the validity of what was recorded
         isCorrect: true
         rationale: >-
-          Reactivity is behaviour changing because it is being observed, and it makes the data
+          Reactivity is behavior changing because it is being observed, and it makes the data
           less representative.
     explanation: >-
       Reactivity, drift and agreement are three different measurement threats. Reactivity
@@ -709,7 +709,7 @@ questions:
         rationale: >-
           Gradual divergence in how a definition is applied is exactly what drift describes.
       - id: b
-        text: The behaviour has genuinely become harder to observe
+        text: The behavior has genuinely become harder to observe
         isCorrect: false
         rationale: >-
           Possible, but not the first explanation for a slow decline in agreement over months.
@@ -722,7 +722,7 @@ questions:
         text: Reactivity has increased
         isCorrect: false
         rationale: >-
-          Reactivity changes the behaviour being recorded rather than the agreement between
+          Reactivity changes the behavior being recorded rather than the agreement between
           two observers.
     explanation: >-
       Drift is slow and invisible without periodic checks, which is why agreement is
@@ -743,7 +743,7 @@ questions:
     taskRef: { credential: BCBA, code: C.9 }
     type: single-best-answer
     stem: >-
-      Measuring both rate and duration of the same behaviour is justified when:
+      Measuring both rate and duration of the same behavior is justified when:
     options:
       - id: a
         text: The funder requires two data streams
@@ -751,7 +751,7 @@ questions:
         rationale: >-
           That is an administrative reason rather than a measurement one.
       - id: b
-        text: The behaviour could change on either dimension and both matter
+        text: The behavior could change on either dimension and both matter
         isCorrect: true
         rationale: >-
           Where an intervention might reduce how often or how long, measuring one alone can

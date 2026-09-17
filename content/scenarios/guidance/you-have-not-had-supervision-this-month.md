@@ -4,7 +4,7 @@ kind: guidance
 title: The month is nearly over and you have had no supervision
 situation: >-
   It is the twenty-sixth. Looking back at the calendar, none of the contacts that were
-  meant to happen this month did — they were cancelled, or rescheduled into nothing, or
+  meant to happen this month did — they were canceled, or rescheduled into nothing, or
   simply never arranged. You have been delivering services the whole time.
 setting: any
 audience: [RBT, BCaBA]
@@ -13,12 +13,12 @@ steps:
   - text: Work out where you actually stand before you raise it — hours delivered this month, contacts that did happen, and which requirements are unmet.
     rationale: >-
       The requirement is a percentage of the hours you delivered, counted per calendar
-      month and per organisation. A specific number is a conversation; a vague worry is not.
+      month and per organization. A specific number is a conversation; a vague worry is not.
   - text: Ask your supervisor in writing for the remaining contacts before the month ends, naming the dates you are available.
     rationale: >-
       A calendar month does not extend, and a written request is the record that you asked
       in time.
-  - text: If your organisation has a requirements coordinator, copy them in.
+  - text: If your organization has a requirements coordinator, copy them in.
     rationale: >-
       Making sure the requirements are met is specifically their job, and they can schedule
       across supervisors in a way you cannot.

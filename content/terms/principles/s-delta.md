@@ -14,7 +14,7 @@ definition:
   gloss: A stimulus that signals reinforcement is unavailable
 examples:
   - text: >-
-      A "closed" sign on the snack cupboard. Asking for a snack while it is up has never
+      A "closed" sign on the snack cabinet. Asking for a snack while it is up has never
       produced one, so asking stops when the sign is up.
     setting: home
 nonExamples:

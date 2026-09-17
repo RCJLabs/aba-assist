@@ -6,17 +6,17 @@ category: supervision
 definition:
   technical: >-
     Teaching the people who are with a client outside sessions to run the parts of a
-    programme that belong in their day, using the same competency-based methods used
-    with staff: instruction, modelling, rehearsal and feedback to a stated criterion.
+    program that belong in their day, using the same competency-based methods used
+    with staff: instruction, modeling, rehearsal and feedback to a stated criterion.
     Where it is skipped, skills reliably fail to appear outside the teaching setting and
     the failure is attributed to the client.
   plain: >-
-    Teaching families to run the plan at home. They practise it and get feedback.
+    Teaching families to run the plan at home. They practice it and get feedback.
     Telling them is not enough.
-  gloss: Teaching families to run a programme, to a stated standard
+  gloss: Teaching families to run a program, to a stated standard
 examples:
   - text: >-
-      A parent practises the prompting sequence with the practitioner present and
+      A parent practices the prompting sequence with the practitioner present and
       receives feedback until they meet criterion twice.
     setting: home
 nonExamples:

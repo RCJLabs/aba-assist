@@ -15,7 +15,7 @@ ourSummary: >-
   within 30 days of becoming aware of them. The categories are broadly: violations of the
   ethics code; supervision non-compliance; investigations naming you or a company you own
   or run; certain legal and disciplinary outcomes; and health conditions or substance use
-  disorders that genuinely affect your ability to practise safely. Changes to your name,
+  disorders that genuinely affect your ability to practice safely. Changes to your name,
   address and email are also required within 30 days. Two things people get wrong: this is
   separate from reporting someone else's alleged violation, which is a different process;
   and the board's published guidance says that when you are unsure whether something

@@ -28,7 +28,7 @@ questions:
           They share a function and a maintaining consequence, so they belong to one class
           rather than three.
       - id: d
-        text: A behavioural chain
+        text: A behavioral chain
         isCorrect: false
         rationale: >-
           A chain is a sequence in which each link produces the conditions for the next. These
@@ -66,30 +66,30 @@ questions:
     taskRef: { credential: BCaBA, code: B.1 }
     type: single-best-answer
     stem: >-
-      Which is the best behavioural definition of "behaviour" for measurement purposes?
+      Which is the best behavioral definition of "behavior" for measurement purposes?
     options:
       - id: a
         text: Activity of a living organism that can be observed and measured
         isCorrect: true
         rationale: >-
-          Behaviour is what an organism does, stated so that it can be seen and counted.
+          Behavior is what an organism does, stated so that it can be seen and counted.
       - id: b
         text: Any action a person takes deliberately
         isCorrect: false
         rationale: >-
-          Deliberateness is an inference and excludes a great deal of behaviour that is
+          Deliberateness is an inference and excludes a great deal of behavior that is
           clearly measurable.
       - id: c
         text: The outward expression of an internal state
         isCorrect: false
         rationale: >-
-          This makes behaviour evidence about something else rather than the subject matter
+          This makes behavior evidence about something else rather than the subject matter
           itself.
       - id: d
         text: Anything a person does that causes a problem for others
         isCorrect: false
         rationale: >-
-          That defines a social judgement about behaviour, not behaviour.
+          That defines a social judgment about behavior, not behavior.
     explanation: >-
       The definition has to be usable by a second observer, which is why observability and
       measurability are in it and intention is not. Everything downstream — data, graphs,
@@ -108,7 +108,7 @@ questions:
     taskRef: { credential: BCaBA, code: B.2 }
     type: single-best-answer
     stem: >-
-      A learner responds correctly to a red mug, a red ball and a red jumper when asked to
+      A learner responds correctly to a red mug, a red ball and a red shirt when asked to
       find something red. The red items function as:
     options:
       - id: a
@@ -135,7 +135,7 @@ questions:
           training or convention.
     explanation: >-
       The feature-versus-arbitrary distinction predicts how easily responding will spread.
-      Colour supports spread on its own; a class like "things that cost money" has to be
+      Color supports spread on its own; a class like "things that cost money" has to be
       built deliberately.
     cognitiveLevel: application
     difficulty: 2
@@ -192,7 +192,7 @@ questions:
     type: single-best-answer
     stem: >-
       A learner flinches when a door slams, and also asks for headphones when the room is
-      noisy. These two are, respectively:
+      noisy. These two are best classified as:
     options:
       - id: a
         text: Both operant
@@ -262,7 +262,7 @@ questions:
           Shaping reinforces successive approximations to a target response.
     explanation: >-
       The same pairing logic appears in applied work whenever a neutral person or setting
-      becomes associated with something aversive. Recognising it as respondent explains
+      becomes associated with something aversive. Recognizing it as respondent explains
       why simply reinforcing approach often is not enough.
     cognitiveLevel: recall
     difficulty: 2
@@ -285,7 +285,7 @@ questions:
         text: Negative punishment
         isCorrect: false
         rationale: >-
-          Punishment would mean the behaviour decreased, and it increased.
+          Punishment would mean the behavior decreased, and it increased.
       - id: b
         text: Extinction
         isCorrect: false
@@ -296,7 +296,7 @@ questions:
         text: Negative reinforcement
         isCorrect: true
         rationale: >-
-          A stimulus was removed after the behaviour and the behaviour increased, which is the
+          A stimulus was removed after the behavior and the behavior increased, which is the
           definition.
       - id: d
         text: Positive reinforcement
@@ -336,10 +336,10 @@ questions:
         rationale: >-
           Age-appropriateness is a separate consideration and does not bear on the definition.
       - id: c
-        text: Evidence that the behaviour it follows increases in future
+        text: Evidence that the behavior it follows increases in future
         isCorrect: true
         rationale: >-
-          Reinforcement is defined by its effect on future behaviour. Without that, the claim
+          Reinforcement is defined by its effect on future behavior. Without that, the claim
           is about apparent enjoyment.
       - id: d
         text: Evidence that the learner prefers the task to other tasks
@@ -368,7 +368,7 @@ questions:
     type: single-best-answer
     stem: >-
       Minutes are removed from a learner's free-choice time following a specific
-      behaviour, and the behaviour decreases. This describes:
+      behavior, and the behavior decreases. This describes:
     options:
       - id: a
         text: Extinction
@@ -380,7 +380,7 @@ questions:
         text: Negative punishment
         isCorrect: true
         rationale: >-
-          A stimulus was removed after the behaviour and the behaviour decreased.
+          A stimulus was removed after the behavior and the behavior decreased.
       - id: c
         text: Positive punishment
         isCorrect: false
@@ -390,10 +390,10 @@ questions:
         text: Negative reinforcement
         isCorrect: false
         rationale: >-
-          Reinforcement would mean the behaviour increased.
+          Reinforcement would mean the behavior increased.
     explanation: >-
       Naming the procedure correctly matters because negative punishment procedures
-      usually carry authorisation and oversight requirements that reinforcement-based
+      usually carry authorization and oversight requirements that reinforcement-based
       procedures do not, and those requirements attach to what the procedure is rather
       than what it is called.
     cognitiveLevel: application
@@ -411,7 +411,7 @@ questions:
     taskRef: { credential: BCaBA, code: B.5 }
     type: single-best-answer
     stem: >-
-      A team reports using a punishment procedure, but the behaviour has not decreased
+      A team reports using a punishment procedure, but the behavior has not decreased
       over eight weeks. Technically, what should be concluded?
     options:
       - id: a
@@ -424,7 +424,7 @@ questions:
         text: The procedure is not functioning as punishment for this learner
         isCorrect: true
         rationale: >-
-          Punishment is defined by a decrease in future behaviour. No decrease means the
+          Punishment is defined by a decrease in future behavior. No decrease means the
           consequence is not a punisher here.
       - id: c
         text: The procedure needs to be applied more intensely
@@ -475,17 +475,17 @@ questions:
         text: Operant extinction
         isCorrect: false
         rationale: >-
-          Nothing is being withheld; the behaviour is occurring and continuing.
+          Nothing is being withheld; the behavior is occurring and continuing.
       - id: d
         text: Automatic reinforcement
         isCorrect: true
         rationale: >-
-          The behaviour produces its own consequence directly, without another person
+          The behavior produces its own consequence directly, without another person
           delivering anything.
     explanation: >-
       The distinction decides what an intervention can even reach. Socially mediated
-      behaviour can be addressed by changing what people do; automatically reinforced
-      behaviour usually requires changing what the behaviour produces or what competes
+      behavior can be addressed by changing what people do; automatically reinforced
+      behavior usually requires changing what the behavior produces or what competes
       with it.
     cognitiveLevel: application
     difficulty: 2
@@ -513,31 +513,31 @@ questions:
       automatic one?
     options:
       - id: a
-        text: The behaviour is far more frequent when an adult is nearby than when alone
+        text: The behavior is far more frequent when an adult is nearby than when alone
         isCorrect: true
         rationale: >-
           A large difference tied to the presence of a person who can deliver a consequence
           points to social mediation.
       - id: b
-        text: The behaviour occurs at a steady rate regardless of who is present
+        text: The behavior occurs at a steady rate regardless of who is present
         isCorrect: false
         rationale: >-
           Insensitivity to the presence of others is more consistent with automatic
           reinforcement.
       - id: c
-        text: The behaviour has a consistent topography
+        text: The behavior has a consistent topography
         isCorrect: false
         rationale: >-
           Topography does not indicate function; the same form can serve different functions.
       - id: d
-        text: The behaviour began after a change of school
+        text: The behavior began after a change of school
         isCorrect: false
         rationale: >-
           A historical correlate suggests when something started, not what maintains it now.
     explanation: >-
-      Alone-condition data is the cheapest useful discrimination available in descriptive
-      assessment. It does not settle function on its own, but a behaviour that nearly
-      stops when no one is present is telling you something.
+      Alone-condition data give the cheapest useful discrimination available in
+      descriptive assessment. They do not settle function on their own, but a behavior
+      that nearly stops when no one is present is telling the team something.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs:
@@ -566,7 +566,7 @@ questions:
         text: A conditioned punisher
         isCorrect: false
         rationale: >-
-          Tokens here are delivered to strengthen behaviour, not to reduce it.
+          Tokens here are delivered to strengthen behavior, not to reduce it.
       - id: b
         text: A discriminative stimulus
         isCorrect: false
@@ -608,7 +608,7 @@ questions:
     type: single-best-answer
     stem: >-
       A particular word, previously neutral, has been paired with the loss of a preferred
-      item. The word alone now reduces the behaviour it follows. The word has become:
+      item. The word alone now reduces the behavior it follows. The word has become:
     options:
       - id: a
         text: A motivating operation
@@ -626,12 +626,12 @@ questions:
         text: An unconditioned punisher
         isCorrect: false
         rationale: >-
-          Unconditioned punishers suppress behaviour without a pairing history.
+          Unconditioned punishers suppress behavior without a pairing history.
       - id: d
         text: A conditioned reinforcer
         isCorrect: false
         rationale: >-
-          It reduces the behaviour it follows rather than strengthening it.
+          It reduces the behavior it follows rather than strengthening it.
     explanation: >-
       Conditioned punishers accumulate quietly in a setting — a tone, a name said a
       certain way, a staff member approaching. Noticing them matters, because their
@@ -670,7 +670,7 @@ questions:
         isCorrect: false
         rationale: >-
           Fixed interval produces a scalloped pattern, with pausing after reinforcement and
-          acceleration towards the end of the interval.
+          acceleration toward the end of the interval.
       - id: d
         text: Fixed ratio
         isCorrect: false
@@ -726,7 +726,7 @@ questions:
           A fixed interval uses the same duration every time rather than an average.
     explanation: >-
       Interval schedules make rate largely irrelevant beyond one response after the
-      interval ends, which is why they suit maintaining a behaviour rather than building
+      interval ends, which is why they suit maintaining a behavior rather than building
       one.
     cognitiveLevel: application
     difficulty: 2
@@ -756,17 +756,17 @@ questions:
         isCorrect: true
         rationale: >-
           The maintaining reinforcer — attention — is no longer delivered following the
-          behaviour.
+          behavior.
       - id: b
         text: Negative punishment
         isCorrect: false
         rationale: >-
           Nothing is being removed contingently; a consequence is simply no longer delivered.
       - id: c
-        text: Differential reinforcement of other behaviour
+        text: Differential reinforcement of other behavior
         isCorrect: false
         rationale: >-
-          That would require reinforcement delivered for the absence of the behaviour, which
+          That would require reinforcement delivered for the absence of the behavior, which
           is not described.
       - id: d
         text: Response cost
@@ -775,7 +775,7 @@ questions:
           Response cost removes an amount of something the learner already has.
     explanation: >-
       Extinction is defined by the reinforcer that is withheld, which is why it depends
-      entirely on knowing the function. Withholding attention from behaviour maintained by
+      entirely on knowing the function. Withholding attention from behavior maintained by
       escape is not extinction at all.
     cognitiveLevel: application
     difficulty: 2
@@ -791,20 +791,20 @@ questions:
     taskRef: { credential: BCaBA, code: B.9 }
     type: single-best-answer
     stem: >-
-      Two days after an extinction procedure begins, the behaviour is more frequent and
+      Two days after an extinction procedure begins, the behavior is more frequent and
       more forceful than before. The most likely account is:
     options:
       - id: a
         text: That the procedure is being implemented too strictly
         isCorrect: false
         rationale: >-
-          Inconsistent implementation is more likely to prolong the behaviour than to produce
+          Inconsistent implementation is more likely to prolong the behavior than to produce
           a burst.
       - id: b
         text: Spontaneous recovery
         isCorrect: false
         rationale: >-
-          Spontaneous recovery is a reappearance after a period without the behaviour, not an
+          Spontaneous recovery is a reappearance after a period without the behavior, not an
           immediate intensification.
       - id: c
         text: An extinction burst, which is a common early effect
@@ -850,7 +850,7 @@ questions:
         text: An unconditioned reinforcer
         isCorrect: false
         rationale: >-
-          Their presence is an antecedent here, not a consequence delivered after behaviour.
+          Their presence is an antecedent here, not a consequence delivered after behavior.
       - id: c
         text: A conditioned punisher
         isCorrect: false
@@ -864,7 +864,7 @@ questions:
           in their presence.
     explanation: >-
       This narrow stimulus control is one of the commonest failure modes in a teaching
-      programme, and it is not a learner problem: the behaviour was reinforced in one
+      program, and it is not a learner problem: the behavior was reinforced in one
       person's presence and nowhere else.
     cognitiveLevel: application
     difficulty: 2
@@ -954,7 +954,7 @@ questions:
           Responding has spread across similar stimuli, which is generalization; the goal now
           requires teaching the discrimination as well.
     explanation: >-
-      Generalization and discrimination are two sides of the same process, and a programme
+      Generalization and discrimination are two sides of the same process, and a program
       needs both specified. Asking only for generalization produces exactly this outcome,
       and it can have safety consequences.
     cognitiveLevel: analysis
@@ -985,10 +985,10 @@ questions:
         rationale: >-
           Tokens acquire their value through pairing, so any related operation is conditioned.
       - id: b
-        text: A written schedule signalling that a break is coming
+        text: A written schedule signaling that a break is coming
         isCorrect: false
         rationale: >-
-          That is an antecedent signalling availability, which is stimulus control rather than
+          That is an antecedent signaling availability, which is stimulus control rather than
           a motivating operation.
       - id: c
         text: Praise increasing the value of adult attention
@@ -1022,30 +1022,30 @@ questions:
     type: single-best-answer
     stem: >-
       A new staff member follows a written protocol correctly on their first shift, having
-      never experienced its consequences. Their behaviour is best described as:
+      never experienced its consequences. Their behavior is best described as:
     options:
       - id: a
         text: Respondent
         isCorrect: false
         rationale: >-
-          The behaviour is emitted and controlled by its stated consequences, not elicited.
+          The behavior is emitted and controlled by its stated consequences, not elicited.
       - id: b
         text: Rule-governed
         isCorrect: true
         rationale: >-
-          The behaviour is controlled by a verbal statement of the contingency rather than by
+          The behavior is controlled by a verbal statement of the contingency rather than by
           direct contact with it.
       - id: c
         text: Contingency-shaped
         isCorrect: false
         rationale: >-
-          Contingency-shaped behaviour is produced by direct contact with consequences over
+          Contingency-shaped behavior is produced by direct contact with consequences over
           time, which has not happened.
       - id: d
         text: Automatically reinforced
         isCorrect: false
         rationale: >-
-          Nothing suggests the behaviour produces its own consequence directly.
+          Nothing suggests the behavior produces its own consequence directly.
     explanation: >-
       The distinction predicts a common pattern: rule-governed performance is fast to
       establish and can be insensitive to what actually happens, which is why observation
@@ -1064,8 +1064,8 @@ questions:
     taskRef: { credential: BCaBA, code: B.14 }
     type: single-best-answer
     stem: >-
-      A learner says "juice" while reaching towards a locked fridge, having had nothing to
-      drink for two hours. This verbal operant is a:
+      A learner says "juice" while reaching toward a locked fridge, having had nothing to
+      drink for two hours. Which verbal operant is this?
     options:
       - id: a
         text: Echoic
@@ -1088,7 +1088,7 @@ questions:
         text: Intraverbal
         isCorrect: false
         rationale: >-
-          An intraverbal is controlled by other verbal behaviour, and none preceded this.
+          An intraverbal is controlled by other verbal behavior, and none preceded this.
     explanation: >-
       Mands are classified by their antecedent and consequence, not by their form. The
       same word is a mand here and a tact if the learner says it while simply seeing juice
@@ -1110,7 +1110,7 @@ questions:
     type: single-best-answer
     stem: >-
       An adult says "You brush your..." and the learner says "teeth". The learner's
-      response is an:
+      response is which verbal operant?
     options:
       - id: a
         text: Intraverbal

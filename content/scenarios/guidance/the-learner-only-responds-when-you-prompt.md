@@ -11,10 +11,10 @@ audience: [RBT, BCaBA, BCBA]
 riskFlags: []
 steps:
   - text: >-
-      Check the prompt-fading procedure the programme specifies, and whether you have been
+      Check the prompt-fading procedure the program specifies, and whether you have been
       running it.
     rationale: >-
-      Most programmes already name how prompts come off. Prompt dependence is often a fading
+      Most programs already name how prompts come off. Prompt dependence is often a fading
       step that quietly stopped being run.
   - text: >-
       Watch your own timing. Prompting before the learner has had a chance to respond is the
@@ -49,7 +49,7 @@ whenToEscalate:
   - >-
     Tell your supervisor if independent responding is not increasing over sessions.
   - >-
-    Ask your supervisor if the programme does not specify how prompts should be faded.
+    Ask your supervisor if the program does not specify how prompts should be faded.
 termRefs:
   [
     prompt-fading,

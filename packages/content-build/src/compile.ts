@@ -37,6 +37,7 @@ import {
 	checkExamCoverage,
 	checkPlainLanguage,
 	checkReviewStatus,
+	checkHouseStyle,
 	checkRights,
 	checkSchema,
 	checkScenarioSafety
@@ -297,7 +298,9 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			termFiles.set(value.id, parsed.file);
 			terms.push(value);
 
-			push(...checkRights(value, termProse(value), sources, parsed.file));
+			const prose = termProse(value);
+			push(...checkRights(value, prose, sources, parsed.file));
+			push(...checkHouseStyle([...prose, value.term], parsed.file));
 			push(...checkReviewStatus(value.review, channel, parsed.file));
 			push(...checkPlainLanguage(value.definition.plain, 'definition.plain', parsed.file));
 		}
@@ -342,6 +345,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 			const prose = scenarioProse(value);
 			push(...checkRights(value, prose, sources, parsed.file));
+			push(...checkHouseStyle(prose, parsed.file));
 			push(
 				...checkScenarioSafety(value as unknown as Record<string, unknown>, prose, parsed.file)
 			);
@@ -392,6 +396,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 			const prose = guideProse(value);
 			push(...checkRights(value, prose, sources, parsed.file));
+			push(...checkHouseStyle(prose, parsed.file));
 			push(...checkReviewStatus(value.review, channel, parsed.file));
 			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', parsed.file));
 			/*
@@ -445,6 +450,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 
 			const prose = graphProse(value);
 			push(...checkRights(value, prose, sources, file));
+			push(...checkHouseStyle(prose, file));
 			push(...checkReviewStatus(value.review, channel, file));
 			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', file));
 			/*
@@ -510,6 +516,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			// No citations array: the whole document cites one source, named at the top.
 			// The prose still goes through the verbatim and inline-quote heuristics.
 			push(...checkRights({}, prose, sources, file));
+			push(...checkHouseStyle(prose, file));
 			if (!sources.has(value.sourceId)) {
 				push(
 					error(
@@ -561,7 +568,9 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 				questionFiles.set(q.id, file);
 				questions.push(q);
 
-				push(...checkRights(q, questionProse(q), sources, file));
+				const qProse = questionProse(q);
+				push(...checkRights(q, qProse, sources, file));
+				push(...checkHouseStyle(qProse, file));
 				push(...checkReviewStatus(q.review, channel, file));
 				push(
 					...checkScenarioSafety({ kind: 'question' }, questionProse(q), file).filter(
@@ -619,6 +628,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			];
 			// No citations block here: the handbook itself is the single source, named by id.
 			push(...checkRights({}, prose, sources, file));
+			push(...checkHouseStyle(prose, file));
 		}
 	}
 
@@ -698,7 +708,9 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			}
 			topicFiles.set(value.id, parsed.file);
 			ethicsTopics.push(value);
-			push(...checkRights(value, topicProse(value), sources, parsed.file));
+			const topicText = topicProse(value);
+			push(...checkRights(value, topicText, sources, parsed.file));
+			push(...checkHouseStyle(topicText, parsed.file));
 			push(...checkReviewStatus(value.review, channel, parsed.file));
 			push(...checkPlainLanguage(value.plainSummary, 'plainSummary', parsed.file));
 			push(

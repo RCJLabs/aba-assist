@@ -6,12 +6,12 @@ category: ethics
 definition:
   technical: >-
     A situation in which a practitioner holds a professional role with someone and also
-    another role — social, financial, or personal — that could impair judgement, create a
+    another role — social, financial, or personal — that could impair judgment, create a
     conflict of interest, or risk exploitation. The concern is the risk to objectivity and
     to the other person, not whether anyone intends harm.
   plain: >-
     Having a second kind of relationship with someone you work with, such as friend,
-    neighbour, or business contact. The worry is that it can cloud judgement, even when
+    neighbor, or business contact. The worry is that it can cloud judgment, even when
     nobody means any harm.
   gloss: A second role alongside the professional one
 examples:

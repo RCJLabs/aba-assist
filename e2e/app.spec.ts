@@ -181,7 +181,7 @@ test('search finds situations, ethics topics, guides and exam tasks', async ({ p
 
 	const results = page.locator('.results li');
 	// The situation and the ethics topic both answer this, and neither is a definition.
-	await expect(results.filter({ hasText: 'Gifts, meals and favours' })).toHaveCount(1);
+	await expect(results.filter({ hasText: 'Gifts, meals and favors' })).toHaveCount(1);
 	await expect(
 		results.filter({ has: page.locator('[data-kind="scenario"]') })
 	).not.toHaveCount(0);
@@ -209,7 +209,7 @@ test('a search hit links to the right page for its kind', async ({ page }) => {
 
 	await page
 		.locator('.results li')
-		.filter({ hasText: 'Gifts, meals and favours' })
+		.filter({ hasText: 'Gifts, meals and favors' })
 		.locator('a')
 		.click();
 	await expect(page).toHaveURL(/\/ethics\/gifts\/?$/);

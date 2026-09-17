@@ -1,7 +1,7 @@
 ---
 id: you-are-asked-to-stop-a-behavior-that-harms-nobody
 kind: guidance
-title: Somebody asks you to stop a behaviour that is not a problem for anyone
+title: Somebody asks you to stop a behavior that is not a problem for anyone
 situation: >-
   A caregiver, teacher or colleague asks you to stop the learner doing something that is
   not in the plan and is not causing a problem — rocking, flapping, repeating a phrase,
@@ -13,10 +13,10 @@ steps:
   - text: >-
       Run the plan. If it is not a target in the plan, it is not yours to change.
     rationale: >-
-      A technician implements the programme that exists. Adding a target on request, however
+      A technician implements the program that exists. Adding a target on request, however
       small, is designing treatment.
   - text: >-
-      Say that plainly, without arguing about whether the behaviour matters.
+      Say that plainly, without arguing about whether the behavior matters.
     rationale: >-
       The disagreement about whether it should be a target belongs with the supervisor, and
       trying to settle it yourself rarely settles it.
@@ -26,14 +26,14 @@ steps:
       The request may be reasonable, and it may not be. Either way the person who can decide
       needs to know it was made.
   - text: >-
-      If the behaviour is interfering with something the plan does target, record that
+      If the behavior is interfering with something the plan does target, record that
       specifically.
     rationale: >-
-      Interference is an observation the supervisor can act on. Finding a behaviour odd is
+      Interference is an observation the supervisor can act on. Finding a behavior odd is
       not.
 whatNotToDo:
   - >-
-    Do not start suppressing a behaviour because somebody asked you to.
+    Do not start suppressing a behavior because somebody asked you to.
   - >-
     Do not tell the person they are wrong to find it difficult.
   - >-

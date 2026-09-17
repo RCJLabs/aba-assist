@@ -14,7 +14,7 @@ steps:
   - text: Decline the personal connection kindly and without a long explanation, and give the reason once.
     rationale: >-
       A short, warm, consistent answer — that you keep work contact through work channels
-      for every family — is easier to give and easier to hear than a case-by-case judgement.
+      for every family — is easier to give and easier to hear than a case-by-case judgment.
   - text: Move anything genuinely useful onto the official channel — the agency phone, the agency email, the scheduled contact.
     rationale: >-
       Families usually want to be able to reach somebody, not to be your friend. Meeting
@@ -23,7 +23,7 @@ steps:
     rationale: >-
       Working privately with the same learner usually crosses a contractual restriction and
       always creates a second relationship, with a supervisor who does not know it exists.
-  - text: Check what your employer's policy actually says about contact outside sessions, and follow that rather than your own judgement.
+  - text: Check what your employer's policy actually says about contact outside sessions, and follow that rather than your own judgment.
     rationale: >-
       This is one of the few places where an employer's rule and the code point the same
       way, and quoting the policy takes the personal sting out of the answer.
@@ -39,7 +39,7 @@ whatNotToDo:
 whenToEscalate:
   - Tell your supervisor about any offer of private work, money, or a gift of significant value.
   - >-
-    If a personal relationship already exists — a neighbour, a relative, somebody from your
+    If a personal relationship already exists — a neighbor, a relative, somebody from your
     own community — say so before the assignment starts rather than afterwards.
 termRefs: [dual-relationship, conflict-of-interest, confidentiality, public-statement]
 ethicsRefs:

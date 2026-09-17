@@ -12,3 +12,4 @@ export * from './graph.js';
 export * from './compiled.js';
 export * from './search-options.js';
 export * from './competency.js';
+export * from './house-style.js';

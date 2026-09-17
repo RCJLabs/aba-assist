@@ -27,7 +27,7 @@ nonExamples:
       which is learner-led rather than trial-based.
     setting: home
   - text: >-
-      Practising a skill once at the end of a session with no defined trial structure or
+      Practicing a skill once at the end of a session with no defined trial structure or
       recording.
     setting: any
 contrastWith: [naturalistic-teaching]
@@ -60,4 +60,4 @@ provenance:
 ---
 
 The format is a tool, not a philosophy. How many trials, which skills, and how assent is
-honoured within them are decisions written into the plan by the supervising analyst.
+honored within them are decisions written into the plan by the supervising analyst.

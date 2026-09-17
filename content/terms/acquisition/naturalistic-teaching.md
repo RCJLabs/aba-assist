@@ -63,4 +63,4 @@ provenance:
 ---
 
 Because the reinforcer is the natural outcome, motivation does much of the work here —
-which is why this format is often easier to generalise beyond the teaching setting.
+which is why this format is often easier to generalize beyond the teaching setting.

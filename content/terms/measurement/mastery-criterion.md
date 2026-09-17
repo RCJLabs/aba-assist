@@ -16,7 +16,7 @@ definition:
   gloss: The stated standard at which a skill counts as learned
 examples:
   - text: >-
-      Ninety per cent accuracy across three consecutive sessions with two different
+      Ninety percent accuracy across three consecutive sessions with two different
       instructors, before the target moves to maintenance.
     setting: clinic
 nonExamples:

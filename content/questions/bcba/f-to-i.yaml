@@ -819,26 +819,28 @@ questions:
     taskRef: { credential: BCBA, code: I.2 }
     type: single-best-answer
     stem: >-
-      Which feedback statement to a supervisee is most likely to improve performance?
+      Which feedback to a supervisee is most likely to improve performance?
     options:
       - id: a
-        text: '"Good job today — keep it up."'
+        text: Warm general praise at the end of the session, with nothing named
         isCorrect: false
         rationale: >-
           General praise does not tell the supervisee what to repeat.
       - id: b
-        text: A list of every error observed across the whole month
+        text: A written list of every error seen over the past month, sent at month end
         isCorrect: false
         rationale: >-
           A delayed list of errors is overwhelming and too far from the performance to
           change it.
       - id: c
-        text: '"You know what you did wrong; fix it."'
+        text: A prompt to work out what went wrong and fix it before the next session
         isCorrect: false
         rationale: >-
           It assumes the supervisee can identify and correct the problem without help.
       - id: d
-        text: A specific statement of what was done correctly, one specific change to make, how to make it, and when the supervisor will check again
+        text: >-
+          One thing done well, one specific change with how to make it, and a time to
+          check again
         isCorrect: true
         rationale: >-
           Effective feedback is specific, timely, balanced between correct and needed

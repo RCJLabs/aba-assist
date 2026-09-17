@@ -99,7 +99,7 @@ sources:
     quotationAllowed: false
     notes: >-
       Effective 2026-01-01. Domain names, task codes, counts and exam weights are facts
-      and are modelled freely. The document's wording is not reproduced — we link to it.
+      and are modeled freely. The document's wording is not reproduced — we link to it.
 
   - id: bacb-rbt-ica-2026
     kind: standard
@@ -112,7 +112,7 @@ sources:
     notes: >-
       Version 01/2026, effective 2026-01-01. Task numbering, section names, task labels,
       the permitted assessment methods and the procedural rules are facts about a
-      published requirement and are modelled freely. The document's wording is not
+      published requirement and are modeled freely. The document's wording is not
       reproduced — we link to it.
 
   - id: bacb-ethics-code-2022
@@ -141,7 +141,7 @@ sources:
       the 08/2024 update on 2026-09-15: three sections, 29 standards numbered 1.01-1.12,
       2.01-2.10 and 3.01-3.07, sharing the analyst code's four core principles.
 
-  # ------------------------------------------------------- public domain / open licence
+  # ------------------------------------------------------- public domain / open license
   - id: usdoe-restraint-seclusion
     kind: organization-publication
     title: Restraint and Seclusion — Resource Document
@@ -295,7 +295,7 @@ sources:
     publisher: Appleton-Century-Crofts
     rights: all-rights-reserved
     quotationAllowed: false
-    notes: The original catalogue of simple and compound schedules and their response patterns.
+    notes: The original catalog of simple and compound schedules and their response patterns.
 
   - id: wolf-1978
     kind: journal-article

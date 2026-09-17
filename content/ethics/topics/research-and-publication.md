@@ -31,7 +31,7 @@ commonPitfalls:
   - Reporting only the participants whose data were clean.
   - Reusing your own earlier text without citation.
 ifYouAreUnsure: >-
-  Ask whether you intend to generalise or disseminate the findings. If yes, treat it as
+  Ask whether you intend to generalize or disseminate the findings. If yes, treat it as
   research and get review before you start rather than at submission.
 termRefs:
   [evidence-based-practice, confidentiality, informed-consent, single-case-design, replication]

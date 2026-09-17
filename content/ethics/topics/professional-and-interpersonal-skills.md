@@ -19,7 +19,7 @@ sectionRefs:
 ourSummary: >-
   The technician outline treats interpersonal skill as an ethics task, not a soft extra,
   and it names the components: accepting feedback, listening actively, seeking input, and
-  collaborating. The reason is that these behaviours are what make the rest of the system
+  collaborating. The reason is that these behaviors are what make the rest of the system
   work. A technician who takes feedback well gets better supervision. One who asks
   questions surfaces problems while they are small. One who collaborates with a teacher or
   a speech therapist stops a learner being taught two contradictory things. The analyst

@@ -58,6 +58,6 @@ provenance:
   updated: '2026-09-14'
 ---
 
-Shaping requires judgement about when to raise the bar. Moving too fast loses the
+Shaping requires judgment about when to raise the bar. Moving too fast loses the
 behavior; moving too slowly makes the old approximation the new ceiling. Where that line
 sits for a given learner is a clinical decision.

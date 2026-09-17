@@ -13,7 +13,7 @@ sectionRefs:
 ourSummary: >-
   The rule is to use the least intrusive intervention likely to be effective, and to reach
   for more restrictive ones only after reinforcement-based options have been tried or
-  ruled out — and then with extra authorisation, training and oversight. Punishment-based
+  ruled out — and then with extra authorization, training and oversight. Punishment-based
   components, anything that removes access, and anything involving physical contact all
   sit at the restrictive end. Whether they may be used at all is governed by the person's
   written plan, your employer's policy, your certified training and state law, in that
@@ -29,7 +29,7 @@ plainSummary: >-
   approval, training and oversight. Some are governed by law, not by preference.
 whatThisLooksLike:
   - Antecedent changes and differential reinforcement tried before anything punitive is considered.
-  - A plan that names exactly what is authorised, by whom, and under what conditions.
+  - A plan that names exactly what is authorized, by whom, and under what conditions.
   - Staff who deliver a restrictive component having current, hands-on certification in it.
   - Every use documented and reviewed, not just the ones that went badly.
 commonPitfalls:
@@ -40,7 +40,7 @@ commonPitfalls:
   - Searching for how to restrain or seclude somebody rather than calling for the help
     your employer's crisis protocol names.
 ifYouAreUnsure: >-
-  Do not proceed. Ask your supervisor what the plan actually authorises and what your
+  Do not proceed. Ask your supervisor what the plan actually authorizes and what your
   employer's policy requires, and get trained before you are alone with someone whose plan
   includes anything restrictive.
 termRefs:
@@ -62,7 +62,7 @@ taskRefs:
 citations:
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference
-    locator: Minimising risk of behaviour-change interventions
+    locator: Minimizing Risk of Behavior-Change Interventions
   - sourceId: abai-restraint-position-2010
     useType: fact-reference
   - sourceId: usdoe-restraint-seclusion

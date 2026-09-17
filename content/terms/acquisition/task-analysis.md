@@ -15,7 +15,7 @@ definition:
   gloss: A skill broken into ordered, teachable steps
 examples:
   - text: >-
-      Hand washing written as eleven steps, from turning on the tap through to drying and
+      Hand washing written as eleven steps, from turning on the faucet through to drying and
       turning it off.
     setting: school
   - text: >-
@@ -60,6 +60,6 @@ provenance:
   updated: '2026-09-14'
 ---
 
-If several staff run the same programme slightly differently, the task analysis is usually
+If several staff run the same program slightly differently, the task analysis is usually
 where to look first. Steps that read clearly to the person who wrote them can still be
 ambiguous to everyone else.

@@ -44,7 +44,7 @@
 
 	const KINDS: { value: UnitKind; label: string }[] = [
 		{ value: 'learning', label: 'Authorized learning event' },
-		{ value: 'in-service', label: 'Behaviour-analytic in-service' },
+		{ value: 'in-service', label: 'Behavior-analytic in-service' },
 		{ value: 'university-course', label: 'University course' },
 		{ value: 'teaching', label: 'Teaching or instructing' },
 		{ value: 'scholarship', label: 'Scholarship' }
@@ -176,7 +176,7 @@
 						>{stray.length}
 						{stray.length === 1 ? 'entry is' : 'entries are'} dated outside this cycle.</strong
 					>
-					Nothing carries forward, so {stray.length === 1 ? 'it' : 'they'} will not count towards
+					Nothing carries forward, so {stray.length === 1 ? 'it' : 'they'} will not count toward
 					it.
 				</p>
 			{/if}
@@ -222,7 +222,7 @@
 						</select>
 					</div>
 					<div class="field">
-						<label for="{uid}-topic">Counts towards</label>
+						<label for="{uid}-topic">Counts toward</label>
 						<select id="{uid}-topic" bind:value={topic}>
 							<option value="general">The general total</option>
 							<option value="ethics">Ethics</option>

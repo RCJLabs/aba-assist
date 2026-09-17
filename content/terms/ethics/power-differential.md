@@ -7,7 +7,7 @@ definition:
   technical: >-
     The unequal authority in a supervisory relationship, where one party controls
     sign-off, hours, assignment and reference. It shapes what a supervisee will say,
-    decline or report, which makes consent and candour in that relationship things the
+    decline or report, which makes consent and candor in that relationship things the
     supervisor has to actively create rather than assume from an absence of complaints.
   plain: >-
     The supervisor holds the power in the relationship. That changes what a supervisee

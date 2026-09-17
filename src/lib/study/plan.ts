@@ -152,7 +152,7 @@ export function actions(
 			out.push({
 				kind: 'drill',
 				letter: s.letter,
-				title: `Practise ${s.name}`,
+				title: `Practice ${s.name}`,
 				detail: `${Math.round(s.accuracy * 100)}% over ${s.answered} answers, and it is worth ${s.weight ?? '?'}% of the paper.`,
 				weight: share(s) * (WEAK_BELOW - s.accuracy) * 4
 			});

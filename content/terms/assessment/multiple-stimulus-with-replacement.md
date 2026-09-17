@@ -9,11 +9,11 @@ definition:
     A preference assessment in which an array is presented, the person selects an item,
     the selected item is put back into the array, the positions are rearranged, and the
     whole array is presented again. Every item stays available on every trial. That
-    identifies the top preference quickly, and because a strong favourite can be chosen
+    identifies the top preference quickly, and because a strong favorite can be chosen
     every time it says little about the ranking of the rest.
   plain: >-
     Lay out several items and let the person pick. The picked item goes back and
-    everything is shuffled for the next round. Fast at finding the favourite, weak at
+    everything is shuffled for the next round. Fast at finding the favorite, weak at
     ranking the rest.
   gloss: An array where every item stays available each round
 examples:

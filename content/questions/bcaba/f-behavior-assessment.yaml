@@ -13,16 +13,16 @@ questions:
         text: They can reveal conditions and history that change what the assessment should look for
         isCorrect: true
         rationale: >-
-          Prior assessments, medical conditions and past programmes narrow the search and flag
+          Prior assessments, medical conditions and past programs narrow the search and flag
           risks before anyone begins observing.
       - id: b
-        text: They provide the baseline data the programme will be evaluated against
+        text: They provide the baseline data the program will be evaluated against
         isCorrect: false
         rationale: >-
-          Records rarely contain data comparable to what the programme will collect; a
+          Records rarely contain data comparable to what the program will collect; a
           baseline must usually be taken.
       - id: c
-        text: They establish the function of the behaviour
+        text: They establish the function of the behavior
         isCorrect: false
         rationale: >-
           Function is established by assessment, not by reading a file.
@@ -33,7 +33,7 @@ questions:
           A funder may require it, but that is not why it matters clinically.
     explanation: >-
       A record review is cheap and frequently decisive: a documented medical condition, a
-      previous programme that failed, or a recent change of placement will reshape the
+      previous program that failed, or a recent change of placement will reshape the
       assessment before the first observation.
     cognitiveLevel: application
     difficulty: 2
@@ -69,7 +69,7 @@ questions:
       infections. The appropriate first step is:
     options:
       - id: a
-        text: Assume the infections are unrelated, since the behaviour continues now
+        text: Assume the infections are unrelated, since the behavior continues now
         isCorrect: false
         rationale: >-
           Continuation does not rule out a recurring or ongoing medical contributor.
@@ -78,7 +78,7 @@ questions:
         isCorrect: true
         rationale: >-
           A possible medical contributor must be addressed by the medical team; proceeding as
-          though it is purely behavioural risks missing pain.
+          though it is purely behavioral risks missing pain.
       - id: c
         text: Begin a functional analysis immediately to establish the function
         isCorrect: false
@@ -86,12 +86,12 @@ questions:
           Running an analysis before a possible pain contributor is addressed exposes the
           learner to conditions that may worsen it.
       - id: d
-        text: Record the coincidence and continue the behavioural assessment unchanged
+        text: Record the coincidence and continue the behavioral assessment unchanged
         isCorrect: false
         rationale: >-
           Noting it without acting on it leaves the most likely explanation untested.
     explanation: >-
-      Behaviour that begins alongside a medical event is the standard case for referral
+      Behavior that begins alongside a medical event is the standard case for referral
       first. The assistant analyst's role is to surface it clearly and promptly, not to
       evaluate the medical question.
     cognitiveLevel: analysis
@@ -105,12 +105,12 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
-  - id: bcaba-f1-prior-programmes
+  - id: bcaba-f1-prior-programs
     credential: BCaBA
     taskRef: { credential: BCaBA, code: F.1 }
     type: single-best-answer
     stem: >-
-      A file shows a previous programme that used the same procedure now being proposed,
+      A file shows a previous program that used the same procedure now being proposed,
       and it did not work. The most useful response is:
     options:
       - id: a
@@ -137,7 +137,7 @@ questions:
         rationale: >-
           More time applied to an unexamined failure is a common way to lose another term.
     explanation: >-
-      Failed prior programmes are among the most informative things in a file and the most
+      Failed prior programs are among the most informative things in a file and the most
       often skipped. Very frequently the failure was integrity, which is a staffing
       problem rather than a procedure problem.
     cognitiveLevel: analysis
@@ -169,10 +169,10 @@ questions:
           It may be, but currency is a smaller problem than not knowing what the conclusion
           was based on.
       - id: b
-        text: It cannot be shared without authorisation
+        text: It cannot be shared without authorization
         isCorrect: false
         rationale: >-
-          Authorisation is a procedural requirement, not a limitation on the content's value.
+          Authorization is a procedural requirement, not a limitation on the content's value.
       - id: c
         text: It will use different terminology
         isCorrect: false
@@ -208,35 +208,35 @@ questions:
     taskRef: { credential: BCaBA, code: F.2 }
     type: single-best-answer
     stem: >-
-      Which situation most clearly warrants behaviour-analytic services?
+      Which situation most clearly warrants behavior-analytic services?
     options:
       - id: a
         text: A family would like general parenting advice
         isCorrect: false
         rationale: >-
-          This is outside the scope of a behaviour-analytic service and may suit a different
+          This is outside the scope of a behavior-analytic service and may suit a different
           referral.
       - id: b
-        text: A learner has a diagnosis associated with behavioural difficulties
+        text: A learner has a diagnosis associated with behavioral difficulties
         isCorrect: false
         rationale: >-
-          A diagnosis does not establish that this learner has a current behavioural need.
+          A diagnosis does not establish that this learner has a current behavioral need.
       - id: c
-        text: A learner's behaviour limits access to education and is maintained by identifiable consequences
+        text: A learner's behavior limits access to education and is maintained by identifiable consequences
         isCorrect: true
         rationale: >-
-          Socially significant behaviour with environmental determinants is what this service
+          Socially significant behavior with environmental determinants is what this service
           is for.
       - id: d
         text: A learner is described by staff as difficult to work with
         isCorrect: false
         rationale: >-
-          A description of staff experience is not a definition of a behaviour or a
+          A description of staff experience is not a definition of a behavior or a
           demonstrated need.
     explanation: >-
       Being clear about what warrants a service protects both the learner and the service.
       Accepting referrals on the basis of a diagnosis or of staff frustration produces
-      programmes that have no target.
+      programs that have no target.
     cognitiveLevel: application
     difficulty: 2
     termRefs:
@@ -256,19 +256,19 @@ questions:
       assessed. The appropriate action is:
     options:
       - id: a
-        text: Wait to see whether communication improves as behaviour improves
+        text: Wait to see whether communication improves as behavior improves
         isCorrect: false
         rationale: >-
-          Waiting delays an assessment that may change what the behaviour programme should
+          Waiting delays an assessment that may change what the behavior program should
           target at all.
       - id: b
         text: Raise it with the supervisor and support a referral for speech and language assessment
         isCorrect: true
         rationale: >-
-          Recognising when another profession is needed, and routing it properly, is part of
+          Recognizing when another profession is needed, and routing it properly, is part of
           the role.
       - id: c
-        text: Add communication targets to the behaviour programme
+        text: Add communication targets to the behavior program
         isCorrect: false
         rationale: >-
           Adding targets outside the scope of an unassessed area substitutes for the
@@ -280,8 +280,8 @@ questions:
           Giving the family a direction without routing it through the team leaves the service
           uninvolved in a decision it should support.
     explanation: >-
-      Behaviour-analytic services and communication assessment are complements, not
-      alternatives. Many behaviour referrals turn out to rest on an absent means of asking
+      Behavior-analytic services and communication assessment are complements, not
+      alternatives. Many behavior referrals turn out to rest on an absent means of asking
       for things, which is a finding another profession has to make.
     cognitiveLevel: application
     difficulty: 2
@@ -298,31 +298,31 @@ questions:
     taskRef: { credential: BCaBA, code: F.2 }
     type: single-best-answer
     stem: >-
-      Which is the weakest basis for beginning a behaviour reduction programme?
+      Which is the weakest basis for beginning a behavior reduction program?
     options:
       - id: a
-        text: The behaviour puts the learner at risk of injury
+        text: The behavior puts the learner at risk of injury
         isCorrect: false
         rationale: >-
           Risk of harm is among the clearest bases for intervention.
       - id: b
-        text: The behaviour prevents the learner from eating with their family
+        text: The behavior prevents the learner from eating with their family
         isCorrect: false
         rationale: >-
           Exclusion from ordinary family life is socially significant.
       - id: c
-        text: Staff find the behaviour annoying, though it causes no harm or barrier
+        text: Staff find the behavior annoying, though it causes no harm or barrier
         isCorrect: true
         rationale: >-
           Staff preference is not a socially significant basis for reducing someone's
-          behaviour.
+          behavior.
       - id: d
-        text: The behaviour prevents the learner from accessing a class they want to attend
+        text: The behavior prevents the learner from accessing a class they want to attend
         isCorrect: false
         rationale: >-
           A barrier to something the learner wants is a strong basis.
     explanation: >-
-      Whose problem the behaviour is deserves an explicit answer. Reducing behaviour that
+      Whose problem the behavior is deserves an explicit answer. Reducing behavior that
       inconveniences adults but costs the learner nothing is where this field has
       historically done harm.
     cognitiveLevel: analysis
@@ -350,7 +350,7 @@ questions:
           Service intensity is a clinical recommendation, and it rests on assessment and on
           what the family can sustain.
       - id: b
-        text: Is set by the funder's standard authorisation
+        text: Is set by the funder's standard authorization
         isCorrect: false
         rationale: >-
           Funding constrains what can be delivered; it should not determine what is clinically
@@ -384,7 +384,7 @@ questions:
     taskRef: { credential: BCaBA, code: F.3 }
     type: single-best-answer
     stem: >-
-      Which target is most likely to function as a behavioural cusp?
+      Which target is most likely to function as a behavioral cusp?
     options:
       - id: a
         text: Requesting items and help, which opens access to people and activities
@@ -393,7 +393,7 @@ questions:
           A cusp opens the learner to new environments and contingencies, and requesting does
           exactly that.
       - id: b
-        text: Sorting coloured blocks to criterion
+        text: Sorting colored blocks to criterion
         isCorrect: false
         rationale: >-
           A discrete skill with little effect on what else becomes available.
@@ -432,7 +432,7 @@ questions:
         text: Their preferences and responses are gathered in other ways and shape the goal
         isCorrect: true
         rationale: >-
-          Choice-making, approach and avoidance, and assent behaviour all carry information
+          Choice-making, approach and avoidance, and assent behavior all carry information
           about what the learner wants.
       - id: b
         text: The guardian selects the goals on the learner's behalf
@@ -451,7 +451,7 @@ questions:
           This mistakes a formality for the substance, and is not available to this learner.
     explanation: >-
       A learner who does not speak still expresses preference constantly. Treating
-      approach, avoidance and choice as data is what keeps a programme from being designed
+      approach, avoidance and choice as data is what keeps a program from being designed
       entirely by people other than the person it is for.
     cognitiveLevel: analysis
     difficulty: 3
@@ -462,7 +462,7 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
-  - id: bcaba-f3-prioritising
+  - id: bcaba-f3-prioritizing
     credential: BCaBA
     taskRef: { credential: BCaBA, code: F.3 }
     type: single-best-answer
@@ -476,7 +476,7 @@ questions:
         rationale: >-
           The largest deficit is not necessarily the most consequential one to address.
       - id: b
-        text: Which the funder is most likely to authorise
+        text: Which the funder is most likely to authorize
         isCorrect: false
         rationale: >-
           Funding is a constraint on delivery, not a basis for clinical priority.
@@ -490,9 +490,9 @@ questions:
         text: Which can be taught fastest with current resources
         isCorrect: false
         rationale: >-
-          Feasibility matters, but ranking by ease produces a programme of easy goals.
+          Feasibility matters, but ranking by ease produces a program of easy goals.
     explanation: >-
-      Prioritising is where a good assessment becomes a good programme. Safety first, then
+      Prioritizing is where a good assessment becomes a good program. Safety first, then
       access to ordinary life, then everything else — and feasibility decides sequencing
       rather than importance.
     cognitiveLevel: application
@@ -540,7 +540,7 @@ questions:
           The underlying skill may still be valuable; it is the form that needs to change.
     explanation: >-
       Most conflicts of this kind are about form rather than about the skill. Adapting the
-      form costs nothing and is usually the difference between a goal that is practised at
+      form costs nothing and is usually the difference between a goal that is practiced at
       home and one that is not.
     cognitiveLevel: application
     difficulty: 3
@@ -558,7 +558,7 @@ questions:
     taskRef: { credential: BCaBA, code: F.4 }
     type: single-best-answer
     stem: >-
-      What does a criterion-referenced skills assessment tell you that a norm-referenced
+      What does a criterion-referenced skills assessment show that a norm-referenced
       one does not?
     options:
       - id: a
@@ -572,7 +572,7 @@ questions:
         rationale: >-
           Eligibility usually rests on norm-referenced or diagnostic criteria.
       - id: c
-        text: The function of the learner's challenging behaviour
+        text: The function of the learner's challenging behavior
         isCorrect: false
         rationale: >-
           Function is established by functional assessment, not by a skills inventory.
@@ -581,7 +581,7 @@ questions:
         isCorrect: true
         rationale: >-
           A criterion-referenced assessment maps performance against defined skills, which is
-          what a teaching programme needs.
+          what a teaching program needs.
     explanation: >-
       The two answer different questions and are often confused. A percentile tells you a
       learner is behind; a criterion-referenced map tells you what to teach on Monday.
@@ -647,13 +647,13 @@ questions:
       An ecological assessment of a classroom would most usefully identify:
     options:
       - id: a
-        text: The function of the learner's challenging behaviour
+        text: The function of the learner's challenging behavior
         isCorrect: false
         rationale: >-
           Function requires functional assessment; an environmental description generates
           hypotheses at best.
       - id: b
-        text: The staff's training history in behavioural procedures
+        text: The staff's training history in behavioral procedures
         isCorrect: false
         rationale: >-
           Useful for planning training, but not what an ecological assessment of the setting
@@ -665,12 +665,12 @@ questions:
           It describes the environment as it operates, which is what any plan has to work
           within.
       - id: d
-        text: The learner's standardised scores across skill areas
+        text: The learner's standardized scores across skill areas
         isCorrect: false
         rationale: >-
           Scores describe the learner, not the environment.
     explanation: >-
-      Programmes fail in settings more often than they fail in principle. Knowing what the
+      Programs fail in settings more often than they fail in principle. Knowing what the
       day actually contains — when demands come, what is available, who is present — is
       what makes a plan survivable.
     cognitiveLevel: application
@@ -708,14 +708,14 @@ questions:
           Acceptability shapes whether a procedure is used at all, so it is checked before and
           monitored after.
       - id: d
-        text: After the programme is complete, as part of the outcome report
+        text: After the program is complete, as part of the outcome report
         isCorrect: false
         rationale: >-
           By then the procedure has either been used or quietly abandoned, and the information
           comes too late.
     explanation: >-
       Procedures that a family finds unacceptable are not refused; they are simply not
-      used, and the resulting flat data gets attributed to the learner. Asking early is
+      used, and the resulting flat data get attributed to the learner. Asking early is
       much cheaper than diagnosing that later.
     cognitiveLevel: application
     difficulty: 2
@@ -757,7 +757,7 @@ questions:
           That is closer to single-stimulus presentation.
     explanation: >-
       Without replacement is usually the practical choice: it produces a full hierarchy in
-      one pass, which is what a programme needs when the top item will satiate within a
+      one pass, which is what a program needs when the top item will satiate within a
       session.
     cognitiveLevel: recall
     difficulty: 2
@@ -855,7 +855,7 @@ questions:
           settles it.
     explanation: >-
       This is why a preference assessment and a reinforcer assessment are two steps.
-      Preference narrows the candidates; only a change in the behaviour it follows
+      Preference narrows the candidates; only a change in the behavior it follows
       establishes a reinforcer.
     cognitiveLevel: analysis
     difficulty: 3
@@ -889,7 +889,7 @@ questions:
         text: It satisfies the requirement for continuous measurement
         isCorrect: false
         rationale: >-
-          Preference sampling is not what continuous measurement of a target behaviour refers
+          Preference sampling is not what continuous measurement of a target behavior refers
           to.
       - id: d
         text: Preferences shift with motivating operations and recent access
@@ -926,13 +926,13 @@ questions:
           Interviews are efficient at narrowing the field; they do not establish function on
           their own.
       - id: b
-        text: Establish the function of the behaviour
+        text: Establish the function of the behavior
         isCorrect: false
         rationale: >-
           Function is established by direct observation and, where needed, experimental
           analysis.
       - id: c
-        text: Provide the baseline measure of the behaviour
+        text: Provide the baseline measure of the behavior
         isCorrect: false
         rationale: >-
           Baselines require direct measurement, not recalled estimates.
@@ -966,29 +966,29 @@ questions:
     taskRef: { credential: BCaBA, code: F.6 }
     type: single-best-answer
     stem: >-
-      ABC data collected across two weeks shows that attention follows the behaviour in
+      ABC data collected across two weeks show that attention follows the behavior in
       most instances. What can be concluded?
     options:
       - id: a
-        text: Attention often follows the behaviour, which is a correlation rather than a function
+        text: Attention often follows the behavior, which is a correlation rather than a function
         isCorrect: true
         rationale: >-
-          Descriptive data shows what follows the behaviour; it cannot show what maintains it,
+          Descriptive data show what follows the behavior; they cannot show what maintains it,
           because nothing was manipulated.
       - id: b
-        text: The behaviour is maintained by attention
+        text: The behavior is maintained by attention
         isCorrect: false
         rationale: >-
           This treats a correlation as a demonstrated function, which descriptive data cannot
           support.
       - id: c
-        text: Attention should be withheld following the behaviour
+        text: Attention should be withheld following the behavior
         isCorrect: false
         rationale: >-
           An intervention decision on descriptive data alone risks running extinction on the
           wrong reinforcer.
       - id: d
-        text: The behaviour has multiple functions
+        text: The behavior has multiple functions
         isCorrect: false
         rationale: >-
           Nothing in the data speaks to multiple functions one way or the other.
@@ -1017,7 +1017,7 @@ questions:
       condition?
     options:
       - id: a
-        text: To test whether the behaviour is maintained by access to play materials
+        text: To test whether the behavior is maintained by access to play materials
         isCorrect: false
         rationale: >-
           The control condition is not a test condition; it is the baseline for comparison.
@@ -1027,7 +1027,7 @@ questions:
         rationale: >-
           Rest is not its function, although the condition is typically benign.
       - id: c
-        text: To provide a comparison in which the behaviour should be least likely
+        text: To provide a comparison in which the behavior should be least likely
         isCorrect: true
         rationale: >-
           Attention is free, demands are absent and preferred items are available, so elevated
@@ -1059,10 +1059,10 @@ questions:
       their supervisor. Their responsibility includes:
     options:
       - id: a
-        text: Adjusting the conditions if the behaviour does not appear
+        text: Adjusting the conditions if the behavior does not appear
         isCorrect: false
         rationale: >-
-          Changing conditions mid-analysis without authorisation destroys the comparison and
+          Changing conditions mid-analysis without authorization destroys the comparison and
           is outside the role.
       - id: b
         text: Interpreting the results and selecting the intervention

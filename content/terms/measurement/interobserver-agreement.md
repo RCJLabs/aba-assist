@@ -12,7 +12,7 @@ definition:
     sessions rather than all of them.
   plain: >-
     Two people watch the same session and record it separately, then compare. If they
-    mostly agree, the data is probably about the learner and not about who was watching.
+    mostly agree, the data are probably about the learner and not about who was watching.
   gloss: Two observers recording the same session and comparing
 examples:
   - text: >-

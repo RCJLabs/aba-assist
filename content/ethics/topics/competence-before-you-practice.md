@@ -1,5 +1,5 @@
 ---
-id: competence-before-you-practise
+id: competence-before-you-practice
 ourLabel: Only doing what you have been trained to do
 gloss: Your credential says what you may do; training says what you should
 appliesTo: [RBT, BCaBA, BCBA]
@@ -30,11 +30,11 @@ whatThisLooksLike:
   - A new procedure appears in a plan, and you ask to be trained on it before the next session.
   - You say plainly that you have never run a preference assessment of that type.
   - An analyst gets supervision from a specialist before accepting a case outside their experience.
-  - You practise a procedure in a role play before doing it with a learner.
+  - You practice a procedure in a role play before doing it with a learner.
 commonPitfalls:
   - Reading about a procedure and counting that as training.
   - Running something unfamiliar because the supervisor wrote it, as if authorship transferred competence.
-  - Quietly skipping the part of a plan you are unsure about, which is both an unauthorised change and a documentation problem.
+  - Quietly skipping the part of a plan you are unsure about, which is both an unauthorized change and a documentation problem.
   - Assuming competence with one learner transfers to a learner who is nothing like them.
 ifYouAreUnsure: >-
   Tell your supervisor which specific step you have not been trained on, and ask for

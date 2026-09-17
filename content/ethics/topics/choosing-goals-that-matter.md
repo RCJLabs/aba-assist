@@ -12,9 +12,9 @@ sectionRefs:
     standardNumbers: ['3.12']
 ourSummary: >-
   Selecting what to work on is an ethical act before it is a technical one. The test is
-  social significance: does changing this behaviour improve the person's life, in their
+  social significance: does changing this behavior improve the person's life, in their
   own and their family's terms, rather than making them more convenient to manage? Goals
-  are prioritised by risk first, then by how much they open up for the person — skills
+  are prioritized by risk first, then by how much they open up for the person — skills
   that unlock access to new environments and further learning earn their place — and
   always against the family's values and context. Interventions are then chosen on the
   evidence, the client's preferences, and whether the setting can actually deliver them.
@@ -25,11 +25,11 @@ plainSummary: >-
   first. Pick methods the family wants and the setting can really carry out.
 whatThisLooksLike:
   - Asking a family what a good day looks like before writing goals.
-  - Prioritising a skill that gives a person access to more of their community.
+  - Prioritizing a skill that gives a person access to more of their community.
   - Choosing between two well-supported procedures on which one the classroom can run correctly.
   - Dropping a goal that turns out to serve the setting rather than the person.
 commonPitfalls:
-  - Targeting behaviour that is merely unusual rather than harmful or limiting.
+  - Targeting behavior that is merely unusual rather than harmful or limiting.
   - Treating compliance itself as a goal.
   - Choosing the procedure the team already knows over the one that fits.
   - Measuring success only in graphs, without asking whether anything improved for the person.

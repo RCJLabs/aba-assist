@@ -19,7 +19,7 @@ escalation:
   immediateSafetyNote: >-
     Your first duty is that everyone in the room is safe, yourself included. If you have
     not completed your employer's certified training for restrictive procedures, and the
-    learner's written plan does not authorise one, say out loud that you are not trained
+    learner's written plan does not authorize one, say out loud that you are not trained
     for this and get your supervisor on the phone. Not being trained is a reason, not an
     excuse, and saying so is the correct professional answer.
   mandatedReporterNote: null
@@ -32,7 +32,7 @@ escalation:
   documentation:
     - Write down who asked you, exactly what was asked, and the time.
     - Write down what you said and who you contacted.
-    - Write down what the learner's written plan authorises, if you have seen it.
+    - Write down what the learner's written plan authorizes, if you have seen it.
     - Use your employer's incident form, and keep to what you observed rather than what you concluded.
     - Tell your supervising analyst the same day, in writing, even if they were the one who asked.
   consultYourPolicy: true

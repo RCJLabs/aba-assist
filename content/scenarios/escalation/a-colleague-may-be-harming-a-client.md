@@ -49,7 +49,7 @@ citations:
     locator: Responsibilities to clients and reporting obligations
   - sourceId: bacb-ethics-code-2022
     useType: fact-reference
-    locator: Responding to unethical behaviour of others
+    locator: Responding to unethical behavior of others
   - sourceId: capta
     useType: fact-reference
 attestation:

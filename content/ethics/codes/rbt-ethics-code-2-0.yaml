@@ -21,7 +21,7 @@ totalStandards: 29
 standardsVerified: true
 
 ourOverview: >-
-  The conduct rules every behaviour technician agrees to when they certify, and every
+  The conduct rules every behavior technician agrees to when they certify, and every
   applicant agrees to before they do. It is shorter and more concrete than the analyst
   code because the role is narrower: a technician delivers services designed by someone
   else, under supervision, and most of the code follows from that. Breaking it is
@@ -76,14 +76,14 @@ sections:
     ourSummary: >-
       Your general conduct as a certificant: being truthful, following the law and your
       employer's rules, staying inside your role and your training, avoiding relationships
-      that compromise your judgement, and noticing when something about your own situation
+      that compromise your judgment, and noticing when something about your own situation
       is affecting your work. Twelve standards.
     standards:
       - number: '1.01'
         ourLabel: Be honest, and do not lead others into dishonesty
         ourSummary: >-
           Tell the truth at work, and do not create situations that push anyone else into
-          fraudulent, illegal or unethical behaviour. Follow the law and the rules of the
+          fraudulent, illegal or unethical behavior. Follow the law and the rules of the
           people you answer to: the certifying board, your employer and your supervisor.
       - number: '1.02'
         ourLabel: Behave professionally and own your commitments
@@ -93,10 +93,10 @@ sections:
           commitment, work it out with your supervisor in the client's interest rather
           than quietly letting it slide.
       - number: '1.03'
-        ourLabel: Practise only in a defined role, under close supervision
+        ourLabel: Practice only in a defined role, under close supervision
         ourSummary: >-
           Your certification lets you provide services inside a role somebody has defined,
-          with ongoing close supervision. It is not a licence to work independently, and
+          with ongoing close supervision. It is not a license to work independently, and
           work outside a defined role is not covered by it.
       - number: '1.04'
         ourLabel: Never be your supervisor's employer
@@ -187,7 +187,7 @@ sections:
         ourSummary: >-
           The standard covers training and supervision as much as it covers sessions. When
           a supervisor gives you feedback, act on it: performance feedback is part of the
-          job, not a judgement about you.
+          job, not a judgment about you.
       - number: '2.04'
         ourLabel: Do not use unfamiliar procedures or work with unfamiliar populations
         ourSummary: >-
@@ -197,7 +197,7 @@ sections:
       - number: '2.05'
         ourLabel: Restrictive and punishment-based procedures need a written plan first
         ourSummary: >-
-          You implement one only when it is written into a documented behaviour-change plan
+          You implement one only when it is written into a documented behavior-change plan
           and only after your supervisor has verified you are competent to run it. Both
           conditions, every time.
       - number: '2.06'
@@ -211,7 +211,7 @@ sections:
         ourSummary: >-
           If you learn that somebody is breaching a client's legal rights, or that they
           are at risk of harm, take action: tell your supervisor, follow your
-          organisation's policy, and document it. Some situations require contacting an
+          organization's policy, and document it. Some situations require contacting an
           outside authority as well.
       - number: '2.08'
         ourLabel: Protect confidentiality and privacy
@@ -250,14 +250,14 @@ sections:
       - number: '3.02'
         ourLabel: Be accurate with the board and with your supervisor
         ourSummary: >-
-          If you realise you submitted something inaccurate to the certifying board,
+          If you realize you submitted something inaccurate to the certifying board,
           contact them immediately to fix it. If it went to your supervisor or employer,
           correct it with them and work out whether the board needs to hear about it too.
       - number: '3.03'
         ourLabel: Do not cheat, and do not help anyone else cheat
         ourSummary: >-
           On competency assessments and on examinations. Follow the rules of the board and
-          its testing centres, including the ones about falsifying information and about
+          its testing centers, including the ones about falsifying information and about
           collecting, using or passing on examination content.
       - number: '3.04'
         ourLabel: Self-report the events that have to be reported, within 30 days
@@ -283,7 +283,7 @@ sections:
           Check your board account regularly — monthly is the example the code gives — so
           your name, email and address stay correct. If your certification status changes,
           tell your supervisor within 24 hours and comply with what that status means for
-          practising, billing and using the title.
+          practicing, billing and using the title.
 
 review:
   status: in-review
@@ -292,7 +292,7 @@ review:
   reviewedBy: null
   reviewedOn: null
   changeNote: >-
-    Rewritten from the code document itself; all 29 standards now modelled with our own
+    Rewritten from the code document itself; all 29 standards now modeled with our own
     labels and summaries, and the four core principles corrected.
 
 provenance:

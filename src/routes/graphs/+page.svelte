@@ -20,7 +20,7 @@
 	<title>Reading graphs — ABA Assist</title>
 	<meta
 		name="description"
-		content="Line graphs of behaviour explained one at a time: the parts of a graph, level, trend, variability, a reversal design and a multiple baseline. Every graph has a data table and a written description."
+		content="Line graphs of behavior explained one at a time: the parts of a graph, level, trend, variability, a reversal design and a multiple baseline. Every graph has a data table and a written description."
 	/>
 </svelte:head>
 
@@ -32,7 +32,7 @@
 	table underneath.
 </p>
 <p class="note">
-	Every graph here is invented. Real behaviour data belong to the person they were collected
+	Every graph here is invented. Real behavior data belong to the person they were collected
 	from, and none of it is in this app.
 </p>
 

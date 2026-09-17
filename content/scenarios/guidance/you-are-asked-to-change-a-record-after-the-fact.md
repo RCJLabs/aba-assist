@@ -30,7 +30,7 @@ steps:
       attached to your name and your certification rather than your employer's.
   - text: Put the request and your answer in writing, to yourself if to nobody else.
     rationale: >-
-      If this ever comes back, the contemporaneous note is the whole of your defence.
+      If this ever comes back, the contemporaneous note is the whole of your defense.
 whatNotToDo:
   - Do not change a submitted record and say nothing about it.
   - Do not add data for trials that were not run, or times that were not worked.

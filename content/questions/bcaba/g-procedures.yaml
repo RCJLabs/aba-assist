@@ -7,18 +7,18 @@ questions:
     type: single-best-answer
     stem: >-
       Attention is delivered on a fixed-time schedule regardless of what the learner is
-      doing. Attention-maintained behaviour decreases. The most likely reason is:
+      doing. Attention-maintained behavior decreases. The most likely reason is:
     options:
       - id: a
-        text: The behaviour has been placed on extinction
+        text: The behavior has been placed on extinction
         isCorrect: false
         rationale: >-
           Extinction withholds the reinforcer; here it is being delivered more, not less.
       - id: b
-        text: The behaviour has been punished
+        text: The behavior has been punished
         isCorrect: false
         rationale: >-
-          Nothing is delivered contingent on the behaviour, and nothing is removed.
+          Nothing is delivered contingent on the behavior, and nothing is removed.
       - id: c
         text: A discrimination has been established between conditions
         isCorrect: false
@@ -28,7 +28,7 @@ questions:
         text: The motivating operation for attention has been weakened
         isCorrect: true
         rationale: >-
-          Freely available attention reduces its momentary value, so behaviour that produces
+          Freely available attention reduces its momentary value, so behavior that produces
           it becomes less likely.
     explanation: >-
       Time-based delivery works mostly through motivation rather than through
@@ -70,24 +70,24 @@ questions:
         text: Strengthening of the correct response, since the praise was earned
         isCorrect: false
         rationale: >-
-          Intent does not determine which behaviour a consequence follows.
+          Intent does not determine which behavior a consequence follows.
       - id: b
         text: No effect, since the delay was short
         isCorrect: false
         rationale: >-
-          Even short delays can be enough for a different behaviour to intervene, especially
+          Even short delays can be enough for a different behavior to intervene, especially
           early in learning.
       - id: c
         text: Punishment of the correct response
         isCorrect: false
         rationale: >-
           Praise is not functioning as a punisher; it is simply landing on the wrong
-          behaviour.
+          behavior.
       - id: d
         text: Reinforcement of whatever the learner was doing at the moment praise arrived
         isCorrect: true
         rationale: >-
-          Consequences act on behaviour occurring close to them in time, not on what was
+          Consequences act on behavior occurring close to them in time, not on what was
           intended.
     explanation: >-
       Immediacy is one of the few implementation details that reliably decides whether
@@ -199,7 +199,7 @@ questions:
     taskRef: { credential: BCaBA, code: G.3 }
     type: single-best-answer
     stem: >-
-      A learner responds correctly only when a staff member leans towards the materials.
+      A learner responds correctly only when a staff member leans toward the materials.
       This suggests:
     options:
       - id: a
@@ -226,7 +226,7 @@ questions:
     explanation: >-
       Inadvertent prompts are extremely common and usually invisible to the person
       providing them. They show up as a skill that collapses the moment a different staff
-      member runs the programme.
+      member runs the program.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [stimulus-control, prompt, transfer-of-stimulus-control, discriminative-stimulus]
@@ -253,7 +253,7 @@ questions:
         text: To satisfy the requirement for random presentation
         isCorrect: false
         rationale: >-
-          Randomisation for its own sake is not the reason; preventing a position bias is.
+          Randomization for its own sake is not the reason; preventing a position bias is.
       - id: c
         text: To prevent position becoming the controlling stimulus instead of the sample
         isCorrect: true
@@ -377,10 +377,10 @@ questions:
         rationale: >-
           Responding occurs reliably under prompt, so the consequence is working.
       - id: b
-        text: The learner has not generalised the skill
+        text: The learner has not generalized the skill
         isCorrect: false
         rationale: >-
-          Generalisation concerns new settings and stimuli; this is a transfer-of-control
+          Generalization concerns new settings and stimuli; this is a transfer-of-control
           failure in the taught setting.
       - id: c
         text: The prompt has not been faded, so it has remained the controlling stimulus
@@ -412,14 +412,14 @@ questions:
     taskRef: { credential: BCaBA, code: G.6 }
     type: single-best-answer
     stem: >-
-      Before using video modelling to teach a skill, the most important prerequisite to
+      Before using video modeling to teach a skill, the most important prerequisite to
       check is:
     options:
       - id: a
         text: That the learner attends to the video and can imitate what is shown
         isCorrect: true
         rationale: >-
-          Modelling depends on a generalised imitative repertoire; without it, the video
+          Modeling depends on a generalized imitative repertoire; without it, the video
           teaches nothing.
       - id: b
         text: That the video is professionally produced
@@ -437,7 +437,7 @@ questions:
         rationale: >-
           Model similarity can help but is not a prerequisite for the procedure to function.
     explanation: >-
-      The prerequisite is the point: teams sometimes adopt video modelling for a learner
+      The prerequisite is the point: teams sometimes adopt video modeling for a learner
       who does not yet imitate, and then conclude the procedure does not work rather than
       that it was not applicable.
     cognitiveLevel: application
@@ -461,7 +461,7 @@ questions:
         isCorrect: false
         rationale: >-
           Rules are in fact one of the main ways delayed consequences gain control over
-          behaviour.
+          behavior.
       - id: b
         text: The learner has no history with the consequences the rule describes
         isCorrect: true
@@ -630,7 +630,8 @@ questions:
       Before teaching from a task analysis, the most useful validation step is:
     options:
       - id: a
-        text: Perform the sequence yourself, or watch a competent performer, and revise the steps
+        text: >-
+          Perform the sequence, or watch a competent performer, and revise the steps
         isCorrect: true
         rationale: >-
           Performing or observing the chain reveals missing steps and wrong ordering that a
@@ -654,7 +655,7 @@ questions:
           steps.
     explanation: >-
       Most task analyses fail on a missing step that is obvious once performed — turning
-      the tap off, closing the lid. Ten minutes of doing it yourself prevents weeks of a
+      the faucet off, closing the lid. Ten minutes of doing it yourself prevents weeks of a
       chain that cannot complete.
     cognitiveLevel: application
     difficulty: 2
@@ -670,7 +671,7 @@ questions:
     taskRef: { credential: BCaBA, code: G.10 }
     type: single-best-answer
     stem: >-
-      For a learner with very little verbal behaviour, there is a strong argument for
+      For a learner with very little verbal behavior, there is a strong argument for
       teaching mands early because:
     options:
       - id: a
@@ -685,7 +686,7 @@ questions:
         rationale: >-
           Difficulty of articulation depends on the word, not on the operant class.
       - id: c
-        text: Mands generalise automatically to tacts
+        text: Mands generalize automatically to tacts
         isCorrect: false
         rationale: >-
           Transfer across operants is not automatic and often has to be taught explicitly.
@@ -697,7 +698,7 @@ questions:
     explanation: >-
       Teaching requesting first is also an ethical argument as much as a technical one: it
       gives the learner a way to influence their environment, which often reduces the
-      behaviour that was doing that job.
+      behavior that was doing that job.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [mand, tact, verbal-behavior, functional-communication-training]
@@ -718,11 +719,11 @@ questions:
       one. A transfer procedure would:
     options:
       - id: a
-        text: Reinforce any vocalisation in the presence of the ball
+        text: Reinforce any vocalization in the presence of the ball
         isCorrect: false
         rationale: >-
           Reinforcing any sound does not build the specific tact and may strengthen unrelated
-          vocalisation.
+          vocalization.
       - id: b
         text: Present the ball, prompt the echoic, then re-present the ball alone
         isCorrect: true
@@ -741,7 +742,7 @@ questions:
           Waiting without a prompt offers no route to the response and risks a long
           unproductive pause.
     explanation: >-
-      Transfer-of-control trials are the everyday mechanics of verbal behaviour teaching,
+      Transfer-of-control trials are the everyday mechanics of verbal behavior teaching,
       and the final re-presentation is the part most often skipped — which leaves the
       learner with a strong echoic and no tact.
     cognitiveLevel: application
@@ -818,7 +819,7 @@ questions:
         rationale: >-
           Nothing is delivered or removed contingent on refusal.
       - id: c
-        text: Extinguishing escape-maintained behaviour
+        text: Extinguishing escape-maintained behavior
         isCorrect: false
         rationale: >-
           No maintaining reinforcer is being withheld.
@@ -939,10 +940,10 @@ questions:
       the whole group meets the criterion. The main risk is:
     options:
       - id: a
-        text: The contingency cannot be applied to academic behaviour
+        text: The contingency cannot be applied to academic behavior
         isCorrect: false
         rationale: >-
-          It applies readily to academic behaviour.
+          It applies readily to academic behavior.
       - id: b
         text: Staff cannot monitor individual performance
         isCorrect: false
@@ -962,7 +963,7 @@ questions:
     explanation: >-
       Group contingencies are efficient and can build cooperation; they also concentrate
       social consequences on whoever struggles most. Setting an achievable criterion and
-      monitoring peer behaviour is what keeps them safe.
+      monitoring peer behavior is what keeps them safe.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [group-contingency, dignity, social-validity]
@@ -985,7 +986,7 @@ questions:
         rationale: >-
           Duration should fit the goal; short contracts are often more effective.
       - id: b
-        text: A specific statement of the behaviour, the consequence, and who does what
+        text: A specific statement of the behavior, the consequence, and who does what
         isCorrect: true
         rationale: >-
           A contract only functions if both parties can tell without argument whether the
@@ -1003,7 +1004,7 @@ questions:
     explanation: >-
       Contracts fail on vagueness far more often than on the reinforcer. If either party
       can reasonably dispute whether the terms were met, the contract is generating
-      conflict rather than behaviour change.
+      conflict rather than behavior change.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [assent, operational-definition, premack-principle, informed-consent]
@@ -1018,19 +1019,19 @@ questions:
     taskRef: { credential: BCaBA, code: G.16 }
     type: single-best-answer
     stem: >-
-      A learner is taught to record their own on-task behaviour at set intervals. A common
+      A learner is taught to record their own on-task behavior at set intervals. A common
       early benefit of this is that:
     options:
       - id: a
         text: It removes the need for staff to collect data
         isCorrect: false
         rationale: >-
-          Staff data is still needed, at minimum to check the accuracy of self-recording.
+          Staff data are still needed, at minimum to check the accuracy of self-recording.
       - id: b
         text: It guarantees accurate measurement
         isCorrect: false
         rationale: >-
-          Self-recorded data requires accuracy checks, which is a known limitation.
+          Self-recorded data require accuracy checks, which is a known limitation.
       - id: c
         text: It eliminates the need for reinforcement
         isCorrect: false
@@ -1038,7 +1039,7 @@ questions:
           Self-management procedures usually still arrange consequences, sometimes
           self-delivered.
       - id: d
-        text: Self-recording itself often changes the behaviour being recorded
+        text: Self-recording itself often changes the behavior being recorded
         isCorrect: true
         rationale: >-
           Reactivity to self-monitoring frequently produces improvement before any other
@@ -1061,7 +1062,7 @@ questions:
     taskRef: { credential: BCaBA, code: G.17 }
     type: single-best-answer
     stem: >-
-      Which strategy programmes for generalisation by building a link between the teaching
+      Which strategy programs for generalization by building a link between the teaching
       and the target setting?
     options:
       - id: a
@@ -1087,7 +1088,7 @@ questions:
         rationale: >-
           A denser schedule speeds acquisition rather than promoting transfer.
     explanation: >-
-      Programming common stimuli is among the cheapest generalisation strategies
+      Programming common stimuli is among the cheapest generalization strategies
       available: use the same cup, the same table, the same instruction wording the target
       setting uses.
     cognitiveLevel: application
@@ -1112,9 +1113,9 @@ questions:
         text: Maintenance
         isCorrect: false
         rationale: >-
-          Maintenance is the persistence of behaviour over time after teaching ends.
+          Maintenance is the persistence of behavior over time after teaching ends.
       - id: b
-        text: Behavioural contrast
+        text: Behavioral contrast
         isCorrect: false
         rationale: >-
           Contrast is a change in responding in one condition following a change in another.
@@ -1148,8 +1149,8 @@ questions:
     taskRef: { credential: BCaBA, code: G.18 }
     type: single-best-answer
     stem: >-
-      Differential reinforcement of an alternative behaviour is run while the problem
-      behaviour still occasionally produces its maintaining reinforcer. The likely result
+      Differential reinforcement of an alternative behavior is run while the problem
+      behavior still occasionally produces its maintaining reinforcer. The likely result
       is:
     options:
       - id: a
@@ -1162,7 +1163,7 @@ questions:
         text: A faster reduction, because the learner has two options
         isCorrect: false
         rationale: >-
-          Continued reinforcement of the problem behaviour works against reduction.
+          Continued reinforcement of the problem behavior works against reduction.
       - id: c
         text: An immediate extinction burst
         isCorrect: false
@@ -1172,11 +1173,11 @@ questions:
         text: Slower and less complete reduction, because both responses still pay off
         isCorrect: true
         rationale: >-
-          With the problem behaviour still intermittently reinforced, it remains in
+          With the problem behavior still intermittently reinforced, it remains in
           competition and becomes more persistent.
     explanation: >-
       This is the most common real-world implementation gap: the alternative is
-      reinforced, and the problem behaviour is still reinforced too, often by a different
+      reinforced, and the problem behavior is still reinforced too, often by a different
       person. Intermittent reinforcement then makes it harder to change than before.
     cognitiveLevel: analysis
     difficulty: 4
@@ -1202,16 +1203,16 @@ questions:
       cannot occur at the same time. The appropriate procedure is:
     options:
       - id: a
-        text: Differential reinforcement of other behaviour
+        text: Differential reinforcement of other behavior
         isCorrect: false
         rationale: >-
-          DRO reinforces the absence of the behaviour over an interval, without specifying
+          DRO reinforces the absence of the behavior over an interval, without specifying
           what occurs instead.
       - id: b
         text: Differential reinforcement of low rates
         isCorrect: false
         rationale: >-
-          DRL reduces a behaviour to a lower rate rather than replacing it with an
+          DRL reduces a behavior to a lower rate rather than replacing it with an
           incompatible one.
       - id: c
         text: Differential reinforcement of high rates
@@ -1219,7 +1220,7 @@ questions:
         rationale: >-
           DRH increases a rate, which is the opposite of the goal.
       - id: d
-        text: Differential reinforcement of incompatible behaviour
+        text: Differential reinforcement of incompatible behavior
         isCorrect: true
         rationale: >-
           Reinforcing sitting, which cannot occur simultaneously with leaving the seat, is
@@ -1264,7 +1265,7 @@ questions:
           Training is necessary but does not by itself justify choosing a restrictive
           procedure.
       - id: c
-        text: The behaviour has occurred for more than six months
+        text: The behavior has occurred for more than six months
         isCorrect: false
         rationale: >-
           Duration alone does not establish that a restrictive procedure is warranted.
@@ -1275,7 +1276,7 @@ questions:
           A request for speed is not a clinical justification, though the family's views
           matter to the decision.
     explanation: >-
-      Selecting, authorising and overseeing restrictive procedures is the supervising
+      Selecting, authorizing and overseeing restrictive procedures is the supervising
       analyst's decision, within the employer's policy and the law. An assistant analyst's
       part is to know what the safeguards are and to say when they have not been met.
     cognitiveLevel: analysis
@@ -1307,8 +1308,8 @@ questions:
         text: Escape and avoidance of the person or setting associated with the procedure
         isCorrect: true
         rationale: >-
-          Suppression can generalise to the people and places present, damaging the
-          relationship the programme depends on.
+          Suppression can generalize to the people and places present, damaging the
+          relationship the program depends on.
       - id: b
         text: Permanent loss of the punished response from the repertoire
         isCorrect: false
@@ -1316,18 +1317,18 @@ questions:
           Suppression is typically not permanent; responding commonly recovers when conditions
           change.
       - id: c
-        text: Improved generalisation of the alternative behaviour
+        text: Improved generalization of the alternative behavior
         isCorrect: false
         rationale: >-
-          Punishment does not teach the alternative and does not improve its generalisation.
+          Punishment does not teach the alternative and does not improve its generalization.
       - id: d
-        text: A reduced need to measure the behaviour
+        text: A reduced need to measure the behavior
         isCorrect: false
         rationale: >-
           Restrictive procedures require more measurement and oversight, not less.
     explanation: >-
       The side effects are part of why the safeguards exist. A procedure that suppresses
-      behaviour while making the learner avoid the staff member delivering it has traded
+      behavior while making the learner avoid the staff member delivering it has traded
       one problem for a larger one.
     cognitiveLevel: analysis
     difficulty: 4
@@ -1350,7 +1351,7 @@ questions:
       schedule should be:
     options:
       - id: a
-        text: Thinned gradually towards an intermittent schedule
+        text: Thinned gradually toward an intermittent schedule
         isCorrect: true
         rationale: >-
           Intermittent reinforcement produces responding that persists when reinforcement is

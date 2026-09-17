@@ -5,7 +5,7 @@ title: Your data do not match the other observer
 situation: >-
   Two of you recorded the same session and the numbers are different — sometimes very
   different. One of you has counted something the other did not, or you have drawn the
-  line between behaviours in different places.
+  line between behaviors in different places.
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: []
@@ -28,7 +28,7 @@ steps:
   - text: >-
       Report the disagreement to your supervisor rather than settling it between yourselves.
     rationale: >-
-      The definition is part of the programme, and rewriting it is the supervisor's to do.
+      The definition is part of the program, and rewriting it is the supervisor's to do.
   - text: >-
       Keep taking data the way the definition says until you are told otherwise.
     rationale: >-
@@ -36,9 +36,9 @@ steps:
       across the change.
 whatNotToDo:
   - >-
-    Do not adjust your figures towards the other observer's.
+    Do not adjust your figures toward the other observer's.
   - >-
-    Do not agree a private working definition between you.
+    Do not agree on a private working definition between you.
   - >-
     Do not discard the session's data.
 whenToEscalate:

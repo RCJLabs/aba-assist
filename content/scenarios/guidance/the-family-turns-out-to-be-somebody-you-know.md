@@ -1,9 +1,9 @@
 ---
 id: the-family-turns-out-to-be-somebody-you-know
 kind: guidance
-title: You realise you already know the family outside work
+title: You realize you already know the family outside work
 situation: >-
-  You are assigned to a learner and recognise the family — a neighbour, somebody from
+  You are assigned to a learner and recognize the family — a neighbor, somebody from
   your gym or place of worship, a friend of a relative. Or somebody you already work
   with turns out to be connected to your own life.
 setting: any
@@ -16,17 +16,17 @@ steps:
       A second relationship is manageable when it is known about and difficult when it comes
       out later, and the difference is usually who raised it.
   - text: >-
-      Describe the connection accurately rather than minimising it.
+      Describe the connection accurately rather than minimizing it.
     rationale: >-
       Whether a connection matters depends on how close and how visible it is, and that
-      judgement needs the real detail.
+      judgment needs the real detail.
   - text: >-
       Keep the two relationships separate until you are told how to handle it.
     rationale: >-
-      What makes a second relationship a problem is information and favours crossing between
+      What makes a second relationship a problem is information and favors crossing between
       the roles, and that starts small.
   - text: >-
-      Expect that you may be reassigned, and that this is not a judgement about you.
+      Expect that you may be reassigned, and that this is not a judgment about you.
     rationale: >-
       Reassignment is the ordinary answer to a conflict nobody did anything wrong to create.
 whatNotToDo:
@@ -38,7 +38,7 @@ whatNotToDo:
     Do not accept social invitations from the family while the question is open.
 whenToEscalate:
   - >-
-    Tell your supervisor as soon as you realise, and before you continue if the connection
+    Tell your supervisor as soon as you realize, and before you continue if the connection
     is close.
   - >-
     Tell your supervisor if the family raises the outside connection with you.

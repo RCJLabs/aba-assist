@@ -3,7 +3,7 @@ id: you-are-asked-to-drive-a-learner-in-your-car
 kind: guidance
 title: Somebody asks you to drive the learner in your own car
 situation: >-
-  A caregiver, a colleague, or the learner themselves asks you to give the learner a lift
+  A caregiver, a colleague, or the learner themselves asks you to give the learner a ride
   in your own vehicle. It would be convenient, and the reason sounds sensible.
 setting: community
 audience: [RBT, BCaBA, BCBA]

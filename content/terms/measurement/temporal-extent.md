@@ -5,16 +5,16 @@ aliases: [temporal extent of behavior]
 category: measurement
 definition:
   technical: >-
-    The property that every instance of behaviour occupies some amount of time. It is what
+    The property that every instance of behavior occupies some amount of time. It is what
     duration measures, and it is the property in play whenever the question is how long
     something went on rather than how many times it happened.
   plain: >-
-    Behaviour takes time. That is what lets you measure how long it lasted.
-  gloss: Behaviour lasts a length of time, so it can be timed
+    Behavior takes time. That is what lets you measure how long it lasted.
+  gloss: Behavior lasts a length of time, so it can be timed
 examples:
   - text: >-
       A learner stays in their seat for 11 minutes. The measure is a length of time
-      because the property being quantified is how long the behaviour occupied.
+      because the property being quantified is how long the behavior occupied.
     setting: school
     why: Duration is the dimensional quantity that measures temporal extent.
   - text: >-
@@ -29,7 +29,7 @@ nonExamples:
     setting: school
   - text: >-
       Four seconds between an instruction and the first response. That is temporal locus —
-      when the behaviour happened relative to something else, not how long it lasted.
+      when the behavior happened relative to something else, not how long it lasted.
     setting: clinic
 contrastWith: [repeatability, temporal-locus]
 seeAlso: [duration, momentary-time-sampling]
@@ -47,7 +47,7 @@ attestation:
   aiAssisted: true
   consulted: >-
     Written from the measurement framework in Johnston and Pennypacker, where the
-    fundamental properties of behaviour are set out. No textbook glossary consulted.
+    fundamental properties of behavior are set out. No textbook glossary consulted.
 review:
   status: in-review
   authoredBy: claude

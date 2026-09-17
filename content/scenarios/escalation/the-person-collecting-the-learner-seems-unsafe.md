@@ -19,7 +19,7 @@ escalation:
     - parent-guardian
   immediateSafetyNote: >-
     Keep the learner with you and in sight while you make a call. You do not have to
-    resolve this by yourself and you do not have to announce a judgement to the person in
+    resolve this by yourself and you do not have to announce a judgment to the person in
     front of you — a delay of a few minutes while you reach your supervisor is reasonable,
     ordinary, and far easier to defend afterwards than a handover you were uneasy about.
   mandatedReporterNote: >-
@@ -33,7 +33,7 @@ escalation:
     decided at the door.
   documentation:
     - Record the time, who arrived, and what you observed that concerned you.
-    - Describe behaviour rather than labelling a state, so what you saw and heard is what is on record.
+    - Describe behavior rather than labeling a state, so what you saw and heard is what is on record.
     - Record who you contacted, when, and what you were told to do.
     - Record what actually happened at the end, including who left with the learner.
   consultYourPolicy: true

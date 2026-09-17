@@ -165,7 +165,7 @@
 
 	<p class="note">
 		This is a timer, not a data sheet. Nothing you tap here is saved — copy the totals onto
-		whatever form your organisation uses before you leave the page.
+		whatever form your organization uses before you leave the page.
 	</p>
 {:else}
 	<section class="run" aria-labelledby="run-heading">

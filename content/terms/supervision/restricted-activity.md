@@ -5,22 +5,22 @@ aliases: [restricted hours]
 category: supervision
 definition:
   technical: >-
-    Fieldwork time spent delivering behaviour-analytic services directly to a client —
-    the work a technician does. It counts towards certification fieldwork but is capped
+    Fieldwork time spent delivering behavior-analytic services directly to a client —
+    the work a technician does. It counts toward certification fieldwork but is capped
     as a proportion of the total, because a trainee who only ever delivers services
-    never practises the analyst work the credential is for.
+    never practices the analyst work the credential is for.
   plain: >-
     Fieldwork hours spent working directly with a client. They count, but only up to a
     limit.
   gloss: Fieldwork spent delivering services directly to a client
 examples:
   - text: >-
-      Running a learner's programme for an hour is recorded as restricted, and counts
+      Running a learner's program for an hour is recorded as restricted, and counts
       within the allowed proportion.
     setting: clinic
 nonExamples:
   - text: >-
-      Writing a behaviour plan or analysing a learner's data, which is analyst work
+      Writing a behavior plan or analyzing a learner's data, which is analyst work
       rather than direct delivery.
     setting: clinic
 contrastWith: [unrestricted-activity]

@@ -8,6 +8,7 @@ import {
 	RESTRICTED_PROCEDURE_LEXICON,
 	REQUIRED_CONTACTS,
 	RISK_LEXICON,
+	houseStyleHits,
 	type Channel,
 	type Citation,
 	type Source
@@ -295,6 +296,38 @@ export function checkReviewStatus(
 		}
 	}
 
+	return issues;
+}
+
+/**
+ * House style: one spelling per word, and the American one.
+ *
+ * This exists because the mixture happened. The corpus reached 805 "behaviour" against
+ * 768 "behavior" before anybody counted, with both spellings inside single questions,
+ * and the only thing that made it visible was a script. A rule that runs on every build
+ * is the difference between fixing that once and fixing it every six months.
+ *
+ * An error rather than a warning, and for the same reason the other content rules are:
+ * a warning on 900 occurrences is a warning nobody reads. The lexicon is deliberately
+ * conservative — see `house-style.ts` for what is left out and why — so a hit is a hit.
+ */
+export function checkHouseStyle(prose: string[], file: string): Issue[] {
+	const issues: Issue[] = [];
+	const seen = new Set<string>();
+	for (const text of prose) {
+		for (const { found, expected } of houseStyleHits(text ?? '')) {
+			const key = found.toLowerCase();
+			if (seen.has(key)) continue;
+			seen.add(key);
+			issues.push(
+				error(
+					'editorial/house-style',
+					`"${found}" — this corpus is written in American English, for American credentials. Use "${expected}".`,
+					file
+				)
+			);
+		}
+	}
 	return issues;
 }
 

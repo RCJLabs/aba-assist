@@ -18,26 +18,26 @@ steps:
       the next attempt to communicate is usually a larger one.
   - text: >-
       Do what the plan says about assent and about declining. Many plans now say explicitly
-      what to honour and what to prompt through.
+      what to honor and what to prompt through.
     rationale: >-
-      Whether a particular refusal is honoured is a clinical decision that has already been
+      Whether a particular refusal is honored is a clinical decision that has already been
       made. Your job is to find it, not to remake it.
   - text: >-
       If the plan allows a choice, offer one — a different order, a different material, a
       break that has been agreed.
     rationale: >-
-      Choice is often built into a programme precisely so that the learner has a way to
+      Choice is often built into a program precisely so that the learner has a way to
       influence the session that is not refusal under pressure.
   - text: >-
       Record that the learner declined, and what happened before it.
     rationale: >-
       Refusal that is only ever handled and never recorded is invisible to the person
-      reviewing the programme.
+      reviewing the program.
   - text: >-
       Notice whether refusal is becoming the pattern rather than the exception, and say so.
     rationale: >-
-      A programme a learner consistently declines is telling you something about the
-      programme.
+      A program a learner consistently declines is telling you something about the
+      program.
 whatNotToDo:
   - >-
     Do not physically move the learner or their hands through the task.
@@ -50,7 +50,7 @@ whenToEscalate:
     Tell your supervisor if the plan does not say how to respond when the learner
     declines.
   - >-
-    Raise it with your supervisor if the learner is declining most of a programme, or far
+    Raise it with your supervisor if the learner is declining most of a program, or far
     more than they used to.
 termRefs:
   [assent, dignity, mand, escape-extinction, unrestricted-activity, function-of-behavior]

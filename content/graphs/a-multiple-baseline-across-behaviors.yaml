@@ -1,5 +1,5 @@
-id: a-multiple-baseline-across-behaviours
-title: A multiple baseline across behaviours
+id: a-multiple-baseline-across-behaviors
+title: A multiple baseline across behaviors
 gloss: Three staggered starts, and why the stagger is the whole argument
 audience: [BCaBA, BCBA, RBT]
 fictional: true
@@ -134,7 +134,7 @@ readings:
     phaseId: null
     text: >-
       Each tier stays flat until its own teaching starts, and only then climbs. Three
-      times, at three different points, the behaviour changed when and only when the
+      times, at three different points, the behavior changed when and only when the
       teaching reached it.
   - id: untouched
     feature: level
@@ -160,14 +160,14 @@ longDescription: >-
   and each tier only begins to climb after its own line.
 teaching: >-
   A multiple baseline gets its evidence from timing rather than from withdrawal. The
-  argument runs: if teaching is what causes the change, then each behaviour should change
+  argument runs: if teaching is what causes the change, then each behavior should change
   when its own teaching starts and not before. Staggering the starts is what makes that
   testable, and it is also what rules out the boring explanations — a child who is simply
   getting older, or a family who changed something at home, would improve on all three
   targets at once rather than in the order the teaching happened to reach them. The
   untouched tiers are doing real work while they sit flat, which is why a baseline that
   runs for twelve sessions is not wasted time. This design suits skills, where a reversal
-  is impossible, and behaviour where withdrawing a working procedure would not be
+  is impossible, and behavior where withdrawing a working procedure would not be
   acceptable.
 plainSummary: >-
   Three skills are shown, one above the other. Teaching starts on each one at a different

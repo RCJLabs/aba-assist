@@ -35,7 +35,7 @@
 
 <h1>Ethics</h1>
 <p class="lede">
-	Both certification ethics codes, organised by the question you actually have — can I accept
+	Both certification ethics codes, organized by the question you actually have — can I accept
 	this, can I say that, who do I tell — rather than by standard number. Each topic says what
 	the obligation is, what it looks like on an ordinary day, and where people get caught.
 </p>

@@ -23,7 +23,7 @@ questions:
         text: Improves self-help skills across the school day
         isCorrect: false
         rationale: >-
-          This names a domain rather than a behaviour and gives no criterion.
+          This names a domain rather than a behavior and gives no criterion.
       - id: d
         text: Demonstrates increased confidence in dressing tasks
         isCorrect: false
@@ -73,7 +73,7 @@ questions:
         text: A definition of what counts as appropriate, and a performance criterion
         isCorrect: true
         rationale: >-
-          "Appropriately" requires a judgement, and no criterion says how often or how well.
+          "Appropriately" requires a judgment, and no criterion says how often or how well.
       - id: c
         text: The setting in which the goal applies
         isCorrect: false
@@ -111,7 +111,7 @@ questions:
         rationale: >-
           Reinforcer selection comes from preference and reinforcer assessment.
       - id: b
-        text: It establishes the function of the behaviour
+        text: It establishes the function of the behavior
         isCorrect: false
         rationale: >-
           Function comes from functional assessment, not from a performance level.
@@ -148,24 +148,24 @@ questions:
       follows most directly from that finding?
     options:
       - id: a
-        text: Teaching and honouring a break request, with demands adjusted
+        text: Teaching and honoring a break request, with demands adjusted
         isCorrect: true
         rationale: >-
-          It gives the learner an efficient way to obtain the same consequence the behaviour
+          It gives the learner an efficient way to obtain the same consequence the behavior
           was producing.
       - id: b
         text: A token system for preferred items
         isCorrect: false
         rationale: >-
-          Access to items does not address a consequence the behaviour was producing through
+          Access to items does not address a consequence the behavior was producing through
           escape.
       - id: c
-        text: Increased attention for periods without the behaviour
+        text: Increased attention for periods without the behavior
         isCorrect: false
         rationale: >-
           Attention is not the maintaining consequence identified.
       - id: d
-        text: Removing the preferred item following the behaviour
+        text: Removing the preferred item following the behavior
         isCorrect: false
         rationale: >-
           A consequence unrelated to the identified function, and a restrictive one at that.
@@ -221,7 +221,7 @@ questions:
           are poorly supported.
     explanation: >-
       The definition has three parts for a reason. Research says a procedure is worth
-      trying; the learner's own data says whether it is working; the family's context says
+      trying; the learner's own data say whether it is working; the family's context says
       whether it can be sustained.
     cognitiveLevel: analysis
     difficulty: 3
@@ -250,7 +250,7 @@ questions:
         text: Trial the alternative for a week and compare the data
         isCorrect: false
         rationale: >-
-          Running an unauthorised procedure is outside scope and contaminates the existing
+          Running an unauthorized procedure is outside scope and contaminates the existing
           data.
       - id: c
         text: Continue with the plan and say nothing
@@ -338,7 +338,7 @@ questions:
         isCorrect: false
         rationale: >-
           Family input matters, but the clinician cannot delegate the restrictiveness
-          judgement.
+          judgment.
       - id: b
         text: Select the less restrictive procedure
         isCorrect: true
@@ -402,7 +402,7 @@ questions:
           Appropriately involving a sibling can improve feasibility, within reason.
     explanation: >-
       Plans are usually abandoned rather than refused, and the abandonment is invisible.
-      Writing for the household that exists, rather than an idealised one, is what makes
+      Writing for the household that exists, rather than an idealized one, is what makes
       the data mean something.
     cognitiveLevel: analysis
     difficulty: 3
@@ -460,13 +460,13 @@ questions:
     taskRef: { credential: BCaBA, code: H.4 }
     type: single-best-answer
     stem: >-
-      What is the most important property of a replacement behaviour?
+      What is the most important property of a replacement behavior?
     options:
       - id: a
-        text: It produces the same consequence as the behaviour it replaces, at least as easily
+        text: It produces the same consequence as the behavior it replaces, at least as easily
         isCorrect: true
         rationale: >-
-          If the replacement is harder or slower to the same outcome, the original behaviour
+          If the replacement is harder or slower to the same outcome, the original behavior
           remains the better option for the learner.
       - id: b
         text: It is socially acceptable to staff and family
@@ -475,7 +475,7 @@ questions:
           Acceptability matters, but a socially acceptable response that does not work will
           not be used.
       - id: c
-        text: It is physically incompatible with the target behaviour
+        text: It is physically incompatible with the target behavior
         isCorrect: false
         rationale: >-
           Incompatibility is one useful option, not the defining property.
@@ -503,7 +503,7 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
-  - id: bcaba-h4-fct-honouring
+  - id: bcaba-h4-fct-honoring
     credential: BCaBA
     taskRef: { credential: BCaBA, code: H.4 }
     type: single-best-answer
@@ -512,30 +512,30 @@ questions:
       weeks, requests should be:
     options:
       - id: a
-        text: Honoured on a variable schedule from the start
+        text: Honored on a variable schedule from the start
         isCorrect: false
         rationale: >-
           Thinning too early makes the new response unreliable and the old one competitive
           again.
       - id: b
-        text: Honoured only when the learner has completed some work
+        text: Honored only when the learner has completed some work
         isCorrect: false
         rationale: >-
-          Adding a requirement immediately makes the request less efficient than the behaviour
+          Adding a requirement immediately makes the request less efficient than the behavior
           it replaces.
       - id: c
-        text: Honoured only if the learner asks calmly
+        text: Honored only if the learner asks calmly
         isCorrect: false
         rationale: >-
           Adding a form requirement at the outset is a second contingency the learner has not
           been taught.
       - id: d
-        text: Honoured essentially every time they occur
+        text: Honored essentially every time they occur
         isCorrect: true
         rationale: >-
           A dense schedule early on establishes the new response as reliable and efficient.
     explanation: >-
-      Thinning comes later, deliberately, and often through a signalled delay. Attaching
+      Thinning comes later, deliberately, and often through a signaled delay. Attaching
       conditions in week one is the most common way functional communication training
       fails.
     cognitiveLevel: application
@@ -560,7 +560,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.4 }
     type: single-best-answer
     stem: >-
-      Why should a replacement behaviour be identified before a reduction procedure is
+      Why should a replacement behavior be identified before a reduction procedure is
       introduced?
     options:
       - id: a
@@ -582,10 +582,10 @@ questions:
         text: Otherwise the learner loses a way of producing an outcome and has no alternative
         isCorrect: true
         rationale: >-
-          Reducing a behaviour without a replacement removes access to something the learner
+          Reducing a behavior without a replacement removes access to something the learner
           needs without providing another route to it.
     explanation: >-
-      This is the clinical core of a reduction plan. Removing a behaviour that was working
+      This is the clinical core of a reduction plan. Removing a behavior that was working
       for the learner, with nothing in its place, predicts either its return or the
       emergence of something worse.
     cognitiveLevel: application
@@ -604,21 +604,21 @@ questions:
     type: single-best-answer
     stem: >-
       A taught replacement request is used at school but not at home, where the original
-      behaviour continues. The most likely reason is:
+      behavior continues. The most likely reason is:
     options:
       - id: a
-        text: The learner prefers the original behaviour
+        text: The learner prefers the original behavior
         isCorrect: false
         rationale: >-
           Preference here is a restatement of the outcome rather than an explanation of it.
       - id: b
-        text: At home the request is less efficient than the original behaviour
+        text: At home the request is less efficient than the original behavior
         isCorrect: true
         rationale: >-
           If requests are slower, less reliable or more effortful at home, the original
-          behaviour remains the better option there.
+          behavior remains the better option there.
       - id: c
-        text: The learner has not generalised the response form
+        text: The learner has not generalized the response form
         isCorrect: false
         rationale: >-
           Possible, but the differential outcome across settings points to the consequences
@@ -631,7 +631,7 @@ questions:
           produces.
     explanation: >-
       When a replacement works in one setting and not another, look at what each response
-      produces in each setting rather than at the learner. Usually requests are honoured
+      produces in each setting rather than at the learner. Usually requests are honored
       promptly in one place and not in the other.
     cognitiveLevel: analysis
     difficulty: 4
@@ -656,7 +656,7 @@ questions:
       Which combination of effects should a plan using extinction anticipate?
     options:
       - id: a
-        text: An increase in the alternative behaviour only
+        text: An increase in the alternative behavior only
         isCorrect: false
         rationale: >-
           An alternative will increase only if one has been taught and reinforced.
@@ -679,7 +679,7 @@ questions:
     explanation: >-
       Planning for the burst and for recovery is what allows staff to hold the procedure
       at the two moments it is most likely to be abandoned — and abandoning it at either
-      point reinforces a worse version of the behaviour.
+      point reinforces a worse version of the behavior.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [extinction-burst, spontaneous-recovery, extinction, resurgence]
@@ -696,7 +696,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.5 }
     type: single-best-answer
     stem: >-
-      A previously reduced behaviour reappears when the newly taught replacement stops
+      A previously reduced behavior reappears when the newly taught replacement stops
       producing reinforcement. This is best described as:
     options:
       - id: a
@@ -706,7 +706,7 @@ questions:
           A burst is an intensification of the response being extinguished, early in the
           procedure.
       - id: b
-        text: Behavioural contrast
+        text: Behavioral contrast
         isCorrect: false
         rationale: >-
           Contrast is a change in one condition following a change in another.
@@ -720,11 +720,11 @@ questions:
         text: Spontaneous recovery
         isCorrect: false
         rationale: >-
-          Spontaneous recovery follows a period without the behaviour, not a failure of the
+          Spontaneous recovery follows a period without the behavior, not a failure of the
           alternative.
     explanation: >-
-      Resurgence is why a replacement behaviour has to keep working. A team that stops
-      honouring requests when the schedule gets busy will see the original behaviour
+      Resurgence is why a replacement behavior has to keep working. A team that stops
+      honoring requests when the schedule gets busy will see the original behavior
       return, and will usually attribute it to the learner.
     cognitiveLevel: analysis
     difficulty: 4
@@ -744,7 +744,7 @@ questions:
       anticipate?
     options:
       - id: a
-        text: Suppression of all untargeted behaviour
+        text: Suppression of all untargeted behavior
         isCorrect: false
         rationale: >-
           Reinforcement strengthens a target; it does not suppress everything else.
@@ -764,7 +764,7 @@ questions:
         text: Loss of the learner's existing skills
         isCorrect: false
         rationale: >-
-          Reinforcing one behaviour does not remove others from the repertoire.
+          Reinforcing one behavior does not remove others from the repertoire.
     explanation: >-
       Satiation is the practical one, and it is easily managed by varying reinforcers and
       sampling preference at the start of a session. Naming the real risk matters more
@@ -785,7 +785,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.5 }
     type: single-best-answer
     stem: >-
-      A behaviour is reduced successfully in one classroom and increases in another where
+      A behavior is reduced successfully in one classroom and increases in another where
       nothing changed. This pattern is:
     options:
       - id: a
@@ -805,14 +805,14 @@ questions:
         rationale: >-
           A burst occurs within the condition where reinforcement was withheld.
       - id: d
-        text: Behavioural contrast
+        text: Behavioral contrast
         isCorrect: true
         rationale: >-
           A change in responding in one condition following a change in the contingencies of
           another is contrast.
     explanation: >-
       Contrast is a reason to plan across settings rather than one at a time. A reduction
-      that simply moves the behaviour somewhere else is not a result the learner benefits
+      that simply moves the behavior somewhere else is not a result the learner benefits
       from.
     cognitiveLevel: analysis
     difficulty: 4
@@ -828,7 +828,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.6 }
     type: single-best-answer
     stem: >-
-      Data shows no progress after three weeks. Before concluding the procedure is
+      Data show no progress after three weeks. Before concluding the procedure is
       ineffective, the team should first check:
     options:
       - id: a
@@ -877,7 +877,7 @@ questions:
         text: Review the learner's outcome data
         isCorrect: false
         rationale: >-
-          Outcome data conflates integrity with effectiveness, which is the confusion to
+          Outcome data conflate integrity with effectiveness, which is the confusion to
           avoid.
       - id: b
         text: Check that staff attended the training
@@ -896,8 +896,8 @@ questions:
         rationale: >-
           Self-report is a weak measure of performance, and not because staff are dishonest.
     explanation: >-
-      Integrity is a measure of staff behaviour, and staff behaviour is measured the same
-      way any behaviour is. A step checklist also doubles as the feedback tool, which is
+      Integrity is a measure of staff behavior, and staff behavior is measured the same
+      way any behavior is. A step checklist also doubles as the feedback tool, which is
       why it is worth writing carefully.
     cognitiveLevel: application
     difficulty: 2
@@ -936,7 +936,7 @@ questions:
         text: Observer drift
         isCorrect: false
         rationale: >-
-          Observer drift concerns how data is recorded, not how the procedure is delivered.
+          Observer drift concerns how data are recorded, not how the procedure is delivered.
       - id: d
         text: Treatment drift
         isCorrect: true
@@ -963,10 +963,12 @@ questions:
       Why must progress and procedural integrity be tracked separately?
     options:
       - id: a
-        text: Flat data means something different depending on whether the procedure was delivered
+        text: >-
+          Flat data mean something different depending on whether the procedure was
+          delivered
         isCorrect: true
         rationale: >-
-          With integrity high, flat data indicts the procedure; with integrity low, it indicts
+          With integrity high, flat data indict the procedure; with integrity low, they indict
           implementation.
       - id: b
         text: Funders require two separate reports
@@ -974,12 +976,12 @@ questions:
         rationale: >-
           Reporting requirements are not the reason.
       - id: c
-        text: Integrity data is collected by a different person
+        text: Integrity data are collected by a different person
         isCorrect: false
         rationale: >-
           Who collects it is a logistical matter.
       - id: d
-        text: Progress data is more reliable than integrity data
+        text: Progress data are more reliable than integrity data
         isCorrect: false
         rationale: >-
           Neither is inherently more reliable; they answer different questions.
@@ -1024,7 +1026,7 @@ questions:
         text: Modify or replace the procedure, and say what the change is intended to test
         isCorrect: true
         rationale: >-
-          With integrity established, the procedure itself is what the data indicts.
+          With integrity established, the procedure itself is what the data indict.
     explanation: >-
       Making the change explicit — what is being altered and what would count as it
       working — is what keeps a sequence of adjustments from becoming an untraceable
@@ -1043,7 +1045,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.7 }
     type: single-best-answer
     stem: >-
-      A team changes a procedure after three sessions because the data has not yet moved.
+      A team changes a procedure after three sessions because the data have not yet moved.
       The main risk is:
     options:
       - id: a
@@ -1058,7 +1060,7 @@ questions:
         rationale: >-
           Agreement is unaffected by a change of procedure.
       - id: c
-        text: Reducing the learner's assent to the programme
+        text: Reducing the learner's assent to the program
         isCorrect: false
         rationale: >-
           Possible in principle, but not the main risk in this decision.
@@ -1086,7 +1088,7 @@ questions:
     taskRef: { credential: BCaBA, code: H.7 }
     type: single-best-answer
     stem: >-
-      The data clearly supports modifying a procedure. An assistant analyst's role at this
+      The data clearly support modifying a procedure. An assistant analyst's role at this
       point is to:
     options:
       - id: a
@@ -1098,7 +1100,7 @@ questions:
         text: Implement the modification and document it
         isCorrect: false
         rationale: >-
-          Implementing a plan change without authorisation is outside scope, however well
+          Implementing a plan change without authorization is outside scope, however well
           supported.
       - id: c
         text: Wait for the supervisor to notice the pattern
@@ -1213,10 +1215,10 @@ questions:
     type: single-best-answer
     stem: >-
       A learner receives support from a teaching assistant, a speech therapist and a
-      behaviour team, each using different prompting. The most likely consequence is:
+      behavior team, each using different prompting. The most likely consequence is:
     options:
       - id: a
-        text: Faster generalisation, because the learner meets more variation
+        text: Faster generalization, because the learner meets more variation
         isCorrect: false
         rationale: >-
           Unplanned inconsistency in the teaching procedure is not the same as planned

@@ -19,8 +19,8 @@ async function openTools(page: Page, path = '/tools'): Promise<void> {
 }
 
 async function addWorkplace(page: Page, label: string): Promise<void> {
-	await page.getByLabel('Organisation name', { exact: true }).first().fill(label);
-	await page.getByRole('button', { name: /^Add organisation$/ }).click();
+	await page.getByLabel('Organization name', { exact: true }).first().fill(label);
+	await page.getByRole('button', { name: /^Add organization$/ }).click();
 	await expect(page.getByRole('heading', { name: 'Log a contact' })).toBeVisible();
 }
 
@@ -229,15 +229,15 @@ test('the note guides show the elements, the phrasing pairs, and who decides', a
 	await expect(page.locator('.who')).toHaveCount(2);
 	await expect(page.locator('.who').first()).toContainText(/employer|funder/i);
 
-	// Ticking is scratch paper: it is reported, and it does not survive leaving the page.
+	// Checking boxes is scratch paper: it is reported, and it does not survive leaving the page.
 	const progress = page.getByRole('status');
-	await expect(progress).toContainText('0 of 9 ticked');
+	await expect(progress).toContainText('0 of 9 checked');
 	await page.locator('.items input[type="checkbox"]').first().check();
-	await expect(progress).toContainText('1 of 9 ticked');
+	await expect(progress).toContainText('1 of 9 checked');
 
 	await page.goto('/tools');
 	await page.goto('/tools/notes');
-	await expect(page.getByRole('status')).toContainText('0 of 9 ticked');
+	await expect(page.getByRole('status')).toContainText('0 of 9 checked');
 });
 
 test('the phrasing guide labels each side in words, not only by colour', async ({ page }) => {

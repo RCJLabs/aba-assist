@@ -5,7 +5,7 @@ aliases: [attrition]
 category: supervision
 definition:
   technical: >-
-    The rate at which staff leave and are replaced, which in behaviour-analytic services
+    The rate at which staff leave and are replaced, which in behavior-analytic services
     is both an outcome of supervision quality and a cause of poor client outcomes. Every
     departure resets a learner's relationships and the team's procedural integrity,
     which is why turnover belongs in a supervisor's data rather than only in a

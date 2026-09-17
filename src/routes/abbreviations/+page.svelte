@@ -24,7 +24,7 @@
 	<title>Abbreviations — ABA Assist</title>
 	<meta
 		name="description"
-		content="What the abbreviations in applied behaviour analysis stand for: MO, SD, DRO, MSWO, FCT, IOA and the rest, each linked to the full entry. Works offline."
+		content="What the abbreviations in applied behavior analysis stand for: MO, SD, DRO, MSWO, FCT, IOA and the rest, each linked to the full entry. Works offline."
 	/>
 </svelte:head>
 

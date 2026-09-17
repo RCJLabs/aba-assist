@@ -3,8 +3,8 @@ id: other-people-are-in-the-room-during-a-telehealth-session
 kind: guidance
 title: Other people are within earshot of a telehealth session
 situation: >-
-  During a video session you realise somebody else is in the room or nearby — a sibling,
-  a relative, a neighbour — and they can hear what is being said. You may also be
+  During a video session you realize somebody else is in the room or nearby — a sibling,
+  a relative, a neighbor — and they can hear what is being said. You may also be
   somewhere others can hear your side of it.
 setting: telehealth
 audience: [RBT, BCaBA, BCBA]
@@ -26,7 +26,7 @@ steps:
       what you say out loud if it does.
     rationale: >-
       Whose privacy is at stake is the family's call within the limits of the plan, not an
-      independent judgement for the technician.
+      independent judgment for the technician.
   - text: >-
       Avoid saying anything about the learner's progress, difficulties or history that you
       would not say in front of them.

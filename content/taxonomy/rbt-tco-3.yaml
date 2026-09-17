@@ -39,9 +39,9 @@ domains:
     tasks:
       - code: A.1
         ourSummary: >-
-          Record every occurrence of a behaviour as the program specifies, using count,
+          Record every occurrence of a behavior as the program specifies, using count,
           rate, duration, latency or the gap between responses.
-        plainSummary: Measure every time the behaviour happens, and how long or how fast.
+        plainSummary: Measure every time the behavior happens, and how long or how fast.
         keywords: [frequency, rate, duration, latency, interresponse time, continuous]
         termRefs:
           [continuous-measurement, frequency-and-rate, duration, latency, interresponse-time]
@@ -54,9 +54,9 @@ domains:
             written without reproducing the document's wording.
       - code: A.2
         ourSummary: >-
-          Run sampling procedures that check for the behaviour during or at the end of set
+          Run sampling procedures that check for the behavior during or at the end of set
           intervals rather than recording every instance.
-        plainSummary: Check for the behaviour at set times instead of counting every one.
+        plainSummary: Check for the behavior at set times instead of counting every one.
         keywords: [partial interval, whole interval, momentary time sampling, discontinuous]
         termRefs:
           [
@@ -68,9 +68,9 @@ domains:
         attestation: *att
       - code: A.3
         ourSummary: >-
-          Measure a behaviour by counting the lasting result it left behind rather than by
+          Measure a behavior by counting the lasting result it left behind rather than by
           watching it happen.
-        plainSummary: Count what the behaviour left behind, like finished worksheets.
+        plainSummary: Count what the behavior left behind, like finished worksheets.
         keywords: [permanent product, outcome recording]
         termRefs: [permanent-product]
         attestation: *att
@@ -84,9 +84,9 @@ domains:
         attestation: *att
       - code: A.5
         ourSummary: >-
-          State what a behaviour and the situation around it look like in terms two people
+          State what a behavior and the situation around it look like in terms two people
           could observe and score the same way.
-        plainSummary: Describe behaviour so anyone watching would score it the same.
+        plainSummary: Describe behavior so anyone watching would score it the same.
         keywords: [operational definition, observable, measurable]
         termRefs: [operational-definition, topography, objective-language]
         attestation: *att
@@ -94,15 +94,15 @@ domains:
         ourSummary: >-
           Turn raw session data into the summary the program asks for, such as a rate, an
           average duration or a percentage.
-        plainSummary: Do the maths on your data — rate, average, percentage.
-        keywords: [rate, mean duration, percentage, summarising data]
+        plainSummary: Do the math on your data — rate, average, percentage.
+        keywords: [rate, mean duration, percentage, summarizing data]
         termRefs: [frequency-and-rate, percentage, count, duration]
         attestation: *att
       - code: A.7
         ourSummary: >-
-          Read a graph for the direction the data are heading, and say whether the behaviour
+          Read a graph for the direction the data are heading, and say whether the behavior
           is rising, falling or flat.
-        plainSummary: Look at a graph and say which way the behaviour is going.
+        plainSummary: Look at a graph and say which way the behavior is going.
         keywords: [trend, visual analysis, level, variability]
         termRefs: [trend, visual-analysis, level, variability]
         attestation: *att
@@ -121,7 +121,7 @@ domains:
     examWeightPercent: 11
     examItems: 8
     ourDescription: >-
-      The technician's part in finding out why a behaviour happens and what a learner
+      The technician's part in finding out why a behavior happens and what a learner
       prefers — assisting with preference assessments and functional assessment
       procedures that a supervisor designs and interprets.
     tasks:
@@ -154,7 +154,7 @@ domains:
         ourSummary: >-
           Assist with the parts of a functional assessment a technician may run, including
           descriptive recording and conditions of a functional analysis.
-        plainSummary: Help with the assessments that work out why a behaviour happens.
+        plainSummary: Help with the assessments that work out why a behavior happens.
         keywords: [functional assessment, descriptive assessment, functional analysis, ABC]
         termRefs:
           [
@@ -173,7 +173,7 @@ domains:
     examItems: 19
     ourDescription: >-
       Teaching new skills. The largest domain on the exam: teaching procedures, prompting
-      and prompt fading, chaining, generalisation and maintenance, and running programmes
+      and prompt fading, chaining, generalization and maintenance, and running programs
       the way they are written.
     tasks:
       - code: C.1
@@ -276,7 +276,7 @@ domains:
         ourSummary: >-
           Run the steps that make a skill work beyond the teaching setting — across people,
           places and materials — as the program directs.
-        plainSummary: Practise the skill with different people, places and materials.
+        plainSummary: Practice the skill with different people, places and materials.
         keywords: [generalization, multiple exemplars, across settings, teaching loosely]
         termRefs:
           [
@@ -298,8 +298,8 @@ domains:
       - code: C.10
         ourSummary: >-
           Reinforce closer and closer versions of a target response, moving the criterion as
-          the program specifies, to build a behaviour that does not yet occur.
-        plainSummary: Build a new behaviour by rewarding closer and closer attempts.
+          the program specifies, to build a behavior that does not yet occur.
+        plainSummary: Build a new behavior by rewarding closer and closer attempts.
         keywords: [shaping, successive approximations, differential reinforcement]
         termRefs: [shaping]
         attestation: *att
@@ -323,15 +323,15 @@ domains:
     examWeightPercent: 19
     examItems: 14
     ourDescription: >-
-      Implementing the reduction side of a behaviour plan as written — antecedent
+      Implementing the reduction side of a behavior plan as written — antecedent
       strategies, differential reinforcement, extinction, and the technician's role in
       following a plan they did not design and may not modify.
     tasks:
       - code: D.1
         ourSummary: >-
-          Recognise the usual reasons a behaviour keeps happening: attention, escape,
-          access to something, or a consequence the behaviour produces by itself.
-        plainSummary: Know the four common reasons behaviour keeps happening.
+          Recognize the usual reasons a behavior keeps happening: attention, escape,
+          access to something, or a consequence the behavior produces by itself.
+        plainSummary: Know the four common reasons behavior keeps happening.
         keywords: [function, attention, escape, tangible, automatic]
         termRefs:
           [
@@ -343,7 +343,7 @@ domains:
         attestation: *att
       - code: D.2
         ourSummary: >-
-          Run the strategies that change what happens before a behaviour — free access,
+          Run the strategies that change what happens before a behavior — free access,
           easy requests first, or reducing demands — as the plan specifies.
         plainSummary: Run the "before it happens" strategies the plan sets out.
         keywords: [antecedent intervention, NCR, high-probability sequence, demand fading]
@@ -362,9 +362,9 @@ domains:
         attestation: *att
       - code: D.3
         ourSummary: >-
-          Reinforce the behaviour the plan names — an alternative, an incompatible one, the
+          Reinforce the behavior the plan names — an alternative, an incompatible one, the
           absence of the target, or a lower rate — and withhold for the target.
-        plainSummary: Reward the behaviour the plan names instead of the problem behaviour.
+        plainSummary: Reward the behavior the plan names instead of the problem behavior.
         keywords: [DRO, DRA, DRI, DRL, FCT, differential reinforcement]
         termRefs:
           [
@@ -378,17 +378,17 @@ domains:
         attestation: *att
       - code: D.4
         ourSummary: >-
-          Withhold the consequence that has been maintaining a behaviour, exactly as the
+          Withhold the consequence that has been maintaining a behavior, exactly as the
           plan specifies and consistently every time.
-        plainSummary: Stop the behaviour from working, the way the plan says, every time.
+        plainSummary: Stop the behavior from working, the way the plan says, every time.
         keywords: [extinction, planned ignoring, escape extinction, sensory extinction]
         termRefs: [extinction, planned-ignoring, escape-extinction, sensory-extinction]
         attestation: *att
       - code: D.5
         ourSummary: >-
-          Deliver the punishment-based components a plan authorises, such as time away from
+          Deliver the punishment-based components a plan authorizes, such as time away from
           reinforcement, only as written and only where permitted.
-        plainSummary: Run any punishment steps only exactly as the plan authorises them.
+        plainSummary: Run any punishment steps only exactly as the plan authorizes them.
         keywords: [punishment, time-out, response cost, restrictive procedures]
         termRefs:
           [
@@ -403,7 +403,7 @@ domains:
       - code: D.6
         ourSummary: >-
           Describe the side effects that come with extinction and with punishment — bursts,
-          new forms of the behaviour, old behaviour returning, and emotional reactions.
+          new forms of the behavior, old behavior returning, and emotional reactions.
         plainSummary: Know what else happens when extinction or punishment is used.
         keywords:
           [
@@ -446,7 +446,7 @@ domains:
       - code: E.2
         ourSummary: >-
           Ask the supervisor for clinical direction when you need it, promptly and through
-          the route your organisation uses, and say what is most urgent.
+          the route your organization uses, and say what is most urgent.
         plainSummary: Ask your supervisor for direction quickly, through the right channel.
         keywords: [clinical direction, chain of command, training needs, data irregularities]
         termRefs: [supervision, scope-of-practice, scope-of-competence, treatment-integrity]
@@ -479,7 +479,7 @@ domains:
     tasks:
       - code: F.1
         ourSummary: >-
-          Recognise the principles the technician ethics code is built on — benefiting
+          Recognize the principles the technician ethics code is built on — benefiting
           others, treating people with compassion, dignity and respect, and acting with
           integrity — and use them to decide what to do.
         plainSummary: Know the core principles behind the code and use them to decide.
@@ -502,18 +502,18 @@ domains:
         attestation: *att
       - code: F.3
         ourSummary: >-
-          Practise only while a qualified supervisor is on record for you and the required
+          Practice only while a qualified supervisor is on record for you and the required
           amount and structure of supervision is actually happening.
-        plainSummary: Only practise while you really are being supervised as required.
+        plainSummary: Only practice while you really are being supervised as required.
         keywords: [ongoing supervision, supervisor requirements, 5 percent, inactive]
         termRefs: [supervision, self-reporting, scope-of-practice]
         attestation: *att
       - code: F.4
         ourSummary: >-
-          Recognise what good supervision consists of — being shown, practising, getting
+          Recognize what good supervision consists of — being shown, practicing, getting
           feedback, and being observed with a client — and take part in it.
         plainSummary: Know what good supervision looks like and take part in it.
-        keywords: [BST, modelling, rehearsal, feedback, observation]
+        keywords: [BST, modeling, rehearsal, feedback, observation]
         termRefs:
           [
             behavioral-skills-training,
@@ -540,7 +540,7 @@ domains:
         attestation: *att
       - code: F.7
         ourSummary: >-
-          Recognise the kinds of second relationship that create a conflict, the harm they
+          Recognize the kinds of second relationship that create a conflict, the harm they
           risk, and what to do when one cannot be avoided.
         plainSummary: Spot second relationships that cause problems and handle them.
         keywords: [multiple relationships, dual relationships, conflict of interest]

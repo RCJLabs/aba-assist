@@ -17,7 +17,7 @@ definition:
 examples:
   - text: >-
       A supervisee arranges consultation with a specialist in an area their supervisor
-      does not practise, with the supervisor's knowledge.
+      does not practice, with the supervisor's knowledge.
     setting: clinic
 nonExamples:
   - text: >-

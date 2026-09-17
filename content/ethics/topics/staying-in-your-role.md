@@ -11,7 +11,7 @@ sectionRefs:
     section: '2'
     standardNumbers: ['2.04', '2.06']
 ourSummary: >-
-  A technician delivers behaviour-analytic services designed by a supervisor who remains
+  A technician delivers behavior-analytic services designed by a supervisor who remains
   responsible for that work. That single fact decides most day-to-day ethics questions.
   Running the plan as written, collecting the data it specifies, and reporting what you
   observe are inside the role. Writing or modifying a plan, deciding to drop a procedure,
@@ -44,7 +44,7 @@ scenarioRefs:
   ]
 relatedTopics:
   [
-    competence-before-you-practise,
+    competence-before-you-practice,
     reporting-to-your-supervisor,
     professional-and-interpersonal-skills
   ]

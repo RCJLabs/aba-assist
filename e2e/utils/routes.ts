@@ -39,5 +39,5 @@ export const ROUTES = [
 	'/graphs',
 	'/review',
 	'/graphs/anatomy-of-a-line-graph',
-	'/graphs/a-multiple-baseline-across-behaviours'
+	'/graphs/a-multiple-baseline-across-behaviors'
 ] as const;

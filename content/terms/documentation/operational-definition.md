@@ -14,7 +14,7 @@ definition:
   gloss: Describing behavior by what can be seen and counted
 examples:
   - text: >-
-      Leaves the assigned area without permission and moves more than two metres from the
+      Leaves the assigned area without permission and moves more than two meters from the
       table.
     setting: school
     why: Two observers could agree on this without guessing at intent.
@@ -22,7 +22,7 @@ examples:
     setting: school
 nonExamples:
   - text: >-
-      Is defiant. Two observers would score this differently because it names a judgement
+      Is defiant. Two observers would score this differently because it names a judgment
       rather than a movement.
     setting: any
   - text: >-

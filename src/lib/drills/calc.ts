@@ -36,7 +36,7 @@ export const DRILL_KINDS: DrillKindInfo[] = [
 		id: 'rate',
 		label: 'Rate',
 		blurb:
-			'How often the behaviour happened per unit of time: the count divided by how long you observed.',
+			'How often the behavior happened per unit of time: the count divided by how long you observed.',
 		taskRefs: ['A.6'],
 		termId: 'frequency-and-rate'
 	},
@@ -132,7 +132,7 @@ const round1 = (n: number) => Math.round(n * 10) / 10;
 const pct = (n: number) => Math.round(n);
 
 /** Behaviours the problems are about, so the wording is not always the same sentence. */
-const BEHAVIOURS = [
+const BEHAVIORS = [
 	'hand raising',
 	'requesting with a picture card',
 	'leaving the seat',
@@ -152,10 +152,10 @@ function makeRate(rng: Rng): Drill {
 	const rates = [0.5, 1, 1.5, 2, 2.5, 3, 4].filter((r) => Number.isInteger(r * minutes));
 	const perMinute = pick(rates, rng);
 	const count = perMinute * minutes;
-	const behaviour = pick(BEHAVIOURS, rng);
+	const behavior = pick(BEHAVIORS, rng);
 	return {
 		kind: 'rate',
-		question: `You observed ${behaviour} for the whole session and counted every occurrence. What was the rate, per minute?`,
+		question: `You observed ${behavior} for the whole session and counted every occurrence. What was the rate, per minute?`,
 		given: [
 			{ label: 'Occurrences counted', value: String(count) },
 			{ label: 'Observation length', value: `${minutes} minutes` }
@@ -210,7 +210,7 @@ function makeMean(kind: 'mean-duration' | 'mean-latency', rng: Rng): Drill {
 		given: [
 			{ label: duration ? 'Episodes recorded' : 'Instructions given', value: String(n) },
 			{
-				label: duration ? 'Total time in the behaviour' : 'Total waiting time',
+				label: duration ? 'Total time in the behavior' : 'Total waiting time',
 				value: `${total} seconds`
 			}
 		],
@@ -219,7 +219,7 @@ function makeMean(kind: 'mean-duration' | 'mean-latency', rng: Rng): Drill {
 		tolerance: 0.05,
 		working: [
 			duration
-				? 'Mean duration is the total time in the behaviour divided by how many episodes there were.'
+				? 'Mean duration is the total time in the behavior divided by how many episodes there were.'
 				: 'Mean latency is the total of the waits divided by how many instructions there were.',
 			`${total} ÷ ${n} = ${total / n} seconds.`,
 			'An average hides the spread: several short episodes and one very long one can give the same mean as several middling ones.'
@@ -334,7 +334,7 @@ function makeIoaMeanCount(rng: Rng): Drill {
 			'Work out agreement inside each interval first — smaller ÷ larger × 100 — then average those figures.',
 			`Per interval: ${perInterval.map((p) => `${p}%`).join(', ')}.`,
 			`Mean: (${perInterval.join(' + ')}) ÷ ${n} = ${pct(mean)}%.`,
-			'Averaging inside the intervals stops an over-count in one part of the session cancelling out an under-count in another.'
+			'Averaging inside the intervals stops an over-count in one part of the session canceling out an under-count in another.'
 		]
 	};
 }
@@ -378,7 +378,7 @@ function makeIoaInterval(rng: Rng): Drill {
 		working: [
 			'Count the intervals the two observers scored the same way — whether that was occurred or did not occur — and divide by the number of intervals.',
 			`${agreements} ÷ ${n} × 100 = ${pct((100 * agreements) / n)}%.`,
-			'On a behaviour that is rare, two observers can agree on almost every interval simply by both scoring nothing, which is why occurrence-only agreement is often reported as well.'
+			'On a behavior that is rare, two observers can agree on almost every interval simply by both scoring nothing, which is why occurrence-only agreement is often reported as well.'
 		]
 	};
 }

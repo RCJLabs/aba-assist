@@ -59,24 +59,24 @@ questions:
       tier: free
       version: 1
       updated: '2026-09-15'
-  - id: bcba-f1-prioritise-gaps
+  - id: bcba-f1-prioritize-gaps
     credential: BCBA
     taskRef: { credential: BCBA, code: F.1 }
     type: single-best-answer
     stem: >-
       After a record review the analyst has partial skill data but nothing on the referral
-      behaviour. Assessment effort should go first to:
+      behavior. Assessment effort should go first to:
     options:
       - id: a
         text: Caregiver interview about developmental history
         isCorrect: false
         rationale: >-
-          History may be useful context but does not measure the behaviour in question.
+          History may be useful context but does not measure the behavior in question.
       - id: b
-        text: Direct measurement of the referral behaviour
+        text: Direct measurement of the referral behavior
         isCorrect: true
         rationale: >-
-          The behaviour that prompted the referral has no data at all, so it is where the gap
+          The behavior that prompted the referral has no data at all, so it is where the gap
           is largest and the question most urgent.
       - id: c
         text: Repeating the skills assessment to confirm it
@@ -89,9 +89,9 @@ questions:
         rationale: >-
           Preference information will be needed but does not answer the referral question.
     explanation: >-
-      Reviewing records is how assessment gets prioritised. Effort goes where the
+      Reviewing records is how assessment gets prioritized. Effort goes where the
       uncertainty is greatest and the question most consequential, which is normally the
-      behaviour that caused somebody to refer.
+      behavior that caused somebody to refer.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [functional-behavior-assessment, descriptive-assessment, skills-assessment]
@@ -151,7 +151,7 @@ questions:
     taskRef: { credential: BCBA, code: F.2 }
     type: single-best-answer
     stem: >-
-      A standardised tool was normed on a population very unlike the client. Using it, the
+      A standardized tool was normed on a population very unlike the client. Using it, the
       analyst should:
     options:
       - id: a
@@ -162,10 +162,10 @@ questions:
           meaningful, so the interpretation has to say so and lean on data that do not depend
           on it.
       - id: b
-        text: Use the scores as they stand, since the tool is standardised
+        text: Use the scores as they stand, since the tool is standardized
         isCorrect: false
         rationale: >-
-          Standardisation does not make a norm sample apply to everybody.
+          Standardization does not make a norm sample apply to everybody.
       - id: c
         text: Discard the tool entirely
         isCorrect: false
@@ -176,7 +176,7 @@ questions:
         text: Adjust the scores to compensate
         isCorrect: false
         rationale: >-
-          Informal adjustment of standardised scores has no defensible basis.
+          Informal adjustment of standardized scores has no defensible basis.
     explanation: >-
       Contextual variables reach into the instruments themselves. Naming the limitation in
       the report is what lets the reader weigh it, and it is more honest than either using
@@ -212,13 +212,13 @@ questions:
         text: Eliminates reactivity
         isCorrect: false
         rationale: >-
-          Being observed can itself change behaviour, which is a limitation of observation
+          Being observed can itself change behavior, which is a limitation of observation
           rather than an advantage.
       - id: d
         text: Shows what the learner does under known conditions, rather than what somebody remembers
         isCorrect: true
         rationale: >-
-          Observation fixes the conditions and records the behaviour as it happens, which
+          Observation fixes the conditions and records the behavior as it happens, which
           report cannot do.
     explanation: >-
       Report and observation answer different questions and disagree for informative
@@ -246,7 +246,7 @@ questions:
         text: Follow the tool's administration rules for basals and ceilings rather than improvising
         isCorrect: true
         rationale: >-
-          Standardised administration is what makes the result interpretable against the
+          Standardized administration is what makes the result interpretable against the
           criteria.
       - id: b
         text: Prompt the item until the learner succeeds, then move on
@@ -262,7 +262,7 @@ questions:
         text: Skip to the items the caregiver says the learner can do
         isCorrect: false
         rationale: >-
-          Selecting items by expectation biases the assessment towards confirming the report.
+          Selecting items by expectation biases the assessment toward confirming the report.
     explanation: >-
       The value of a criterion-referenced tool is that everybody administering it does the
       same thing, so results mean the same thing. Departing from the administration rules
@@ -341,7 +341,7 @@ questions:
         rationale: >-
           An array demands more scanning than a pair, not less.
       - id: b
-        text: Identifies the function of behaviour
+        text: Identifies the function of behavior
         isCorrect: false
         rationale: >-
           Preference assessments identify potential reinforcers, not function.
@@ -383,13 +383,13 @@ questions:
     type: single-best-answer
     stem: >-
       A preference assessment identifies an item as highly preferred, but using it
-      contingently does not increase the target behaviour. The correct conclusion is:
+      contingently does not increase the target behavior. The correct conclusion is:
     options:
       - id: a
         text: The learner is being non-compliant
         isCorrect: false
         rationale: >-
-          That explains nothing and is not a behaviour-analytic account.
+          That explains nothing and is not a behavior-analytic account.
       - id: b
         text: The item has lost value through satiation, necessarily
         isCorrect: false
@@ -401,7 +401,7 @@ questions:
         isCorrect: true
         rationale: >-
           Preference predicts reinforcer value imperfectly; whether a consequence reinforces
-          is an empirical question about the behaviour.
+          is an empirical question about the behavior.
       - id: d
         text: The preference assessment was run incorrectly
         isCorrect: false
@@ -411,7 +411,7 @@ questions:
     explanation: >-
       Preference and reinforcer effect are different things measured in different ways.
       The only test of a reinforcer is whether contingent delivery increases the
-      behaviour, which is why reinforcer assessment exists as a separate procedure.
+      behavior, which is why reinforcer assessment exists as a separate procedure.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs: [preference-assessment, reinforcer-assessment, reinforcer, satiation]
@@ -436,13 +436,13 @@ questions:
         rationale: >-
           That is an agreement question, unrelated to the tool.
       - id: b
-        text: Whether the behaviour clusters at particular times of day or activities
+        text: Whether the behavior clusters at particular times of day or activities
         isCorrect: true
         rationale: >-
           Plotting occurrence against time slots across days is what exposes temporal
           patterns.
       - id: c
-        text: What consequence maintains the behaviour
+        text: What consequence maintains the behavior
         isCorrect: false
         rationale: >-
           That requires ABC data or a functional analysis; a scatterplot shows when, not why.
@@ -474,16 +474,16 @@ questions:
       A trial-based functional analysis is most useful when:
     options:
       - id: a
-        text: The behaviour must be assessed within ongoing classroom routines rather than in isolated sessions
+        text: The behavior must be assessed within ongoing classroom routines rather than in isolated sessions
         isCorrect: true
         rationale: >-
           Trial-based formats embed brief test and control segments in the natural routine,
           which suits settings where extended analogue sessions are impractical.
       - id: b
-        text: The behaviour is dangerous and must not be evoked at all
+        text: The behavior is dangerous and must not be evoked at all
         isCorrect: false
         rationale: >-
-          Any functional analysis evokes the behaviour; safety is addressed by design and by
+          Any functional analysis evokes the behavior; safety is addressed by design and by
           latency-based variants, not by the trial-based format alone.
       - id: c
         text: No control condition is available
@@ -491,13 +491,13 @@ questions:
         rationale: >-
           Trial-based analyses include control segments; they are shortened, not removed.
       - id: d
-        text: The behaviour occurs at very high rates
+        text: The behavior occurs at very high rates
         isCorrect: false
         rationale: >-
           High rates suit standard analogue formats perfectly well.
     explanation: >-
       Functional analysis variations exist to fit constraints: brief formats for limited
-      time, latency-based for behaviour that should be evoked only once per session,
+      time, latency-based for behavior that should be evoked only once per session,
       trial-based for embedding in routines. The logic is identical; what changes is the
       arrangement.
     cognitiveLevel: analysis
@@ -520,16 +520,16 @@ questions:
       The most reasonable interpretation is:
     options:
       - id: a
-        text: The behaviour has no function
+        text: The behavior has no function
         isCorrect: false
         rationale: >-
-          All behaviour is maintained by something; an inconclusive analysis is a statement
+          All behavior is maintained by something; an inconclusive analysis is a statement
           about the analysis.
       - id: b
-        text: The learner is not a candidate for behaviour-analytic services
+        text: The learner is not a candidate for behavior-analytic services
         isCorrect: false
         rationale: >-
-          An inconclusive analysis is a reason to assess differently, not a judgement
+          An inconclusive analysis is a reason to assess differently, not a judgment
           about whether the learner should receive services at all.
       - id: c
         text: Multiple functions have been ruled out
@@ -537,7 +537,7 @@ questions:
         rationale: >-
           Undifferentiated data rule nothing out, which is the point.
       - id: d
-        text: The behaviour may be automatically maintained, or the conditions did not capture the relevant variables
+        text: The behavior may be automatically maintained, or the conditions did not capture the relevant variables
         isCorrect: true
         rationale: >-
           Undifferentiated results are consistent with automatic maintenance and with an
@@ -569,7 +569,7 @@ questions:
         rationale: >-
           That describes an extinction arrangement, not a control condition.
       - id: b
-        text: The behaviour is punished so it does not interfere
+        text: The behavior is punished so it does not interfere
         isCorrect: false
         rationale: >-
           Punishment has no place in the control condition and would confound the comparison.
@@ -580,14 +580,14 @@ questions:
           The control is deliberately arranged rather than naturalistic; fidelity to the
           natural setting is the descriptive assessment's job.
       - id: d
-        text: Reinforcers are freely available and demands are absent, so the behaviour has no reason to occur
+        text: Reinforcers are freely available and demands are absent, so the behavior has no reason to occur
         isCorrect: true
         rationale: >-
           The control provides a baseline of low responding against which the test conditions
           are compared.
     explanation: >-
       A functional analysis works by comparison. Each test condition isolates one
-      candidate consequence while the control removes the reasons for the behaviour to
+      candidate consequence while the control removes the reasons for the behavior to
       occur, so differentiation between them is what identifies the maintaining variable.
     cognitiveLevel: analysis
     difficulty: 3
@@ -621,7 +621,7 @@ questions:
         text: Say so in the report and support a referral to the appropriate service
         isCorrect: true
         rationale: >-
-          Interpreting results includes concluding that behaviour-analytic services are not
+          Interpreting results includes concluding that behavior-analytic services are not
           the right answer, and helping the client get to what is.
       - id: c
         text: Offer services anyway while the family pursues the referral
@@ -665,7 +665,7 @@ questions:
         text: Choose the more common function and treat that
         isCorrect: false
         rationale: >-
-          This leaves the behaviour in the other setting untreated and may make it worse.
+          This leaves the behavior in the other setting untreated and may make it worse.
       - id: c
         text: Conclude the assessment is unreliable
         isCorrect: false
@@ -722,7 +722,7 @@ questions:
         rationale: >-
           Appearance of attending is not the same as a skill that benefits the learner.
     explanation: >-
-      Prioritising goals asks who benefits and what the skill opens up. A behavioural cusp
+      Prioritizing goals asks who benefits and what the skill opens up. A behavioral cusp
       — a skill that exposes the learner to new contingencies and new learning — is the
       strongest case, and adult convenience is the weakest.
     cognitiveLevel: analysis
@@ -741,7 +741,7 @@ questions:
     taskRef: { credential: BCBA, code: F.8 }
     type: single-best-answer
     stem: >-
-      A behavioural cusp is best described as a skill that:
+      A behavioral cusp is best described as a skill that:
     options:
       - id: a
         text: Is a prerequisite for a more complex skill in a task analysis
@@ -764,8 +764,8 @@ questions:
         rationale: >-
           That consequence — opening access to further learning — is what defines a cusp.
     explanation: >-
-      Cusps and pivotal behaviours are both arguments for prioritising one goal over
-      another: a cusp opens new environments, a pivotal behaviour produces change across
+      Cusps and pivotal behaviors are both arguments for prioritizing one goal over
+      another: a cusp opens new environments, a pivotal behavior produces change across
       many untrained responses. Both answer the question of which goal buys the most.
     cognitiveLevel: recall
     difficulty: 3
@@ -810,7 +810,7 @@ questions:
           requires their priorities to carry weight.
     explanation: >-
       Social validity was defined around goals, procedures and outcomes being acceptable
-      to the people affected. Prioritisation is where that is decided in practice, and it
+      to the people affected. Prioritization is where that is decided in practice, and it
       is a negotiation rather than a clinical determination made alone.
     cognitiveLevel: application
     difficulty: 3
@@ -997,13 +997,13 @@ questions:
       depends on:
     options:
       - id: a
-        text: The function of the behaviour and the skills assessment together
+        text: The function of the behavior and the skills assessment together
         isCorrect: true
         rationale: >-
-          What to do follows from why the behaviour occurs and what the learner can already
+          What to do follows from why the behavior occurs and what the learner can already
           do.
       - id: b
-        text: The intensity the funder will authorise
+        text: The intensity the funder will authorize
         isCorrect: false
         rationale: >-
           Funding constrains delivery but should not determine clinical indication.
@@ -1016,7 +1016,7 @@ questions:
         text: The severity of the diagnosis
         isCorrect: false
         rationale: >-
-          Diagnosis is not what behaviour-analytic service selection is built on.
+          Diagnosis is not what behavior-analytic service selection is built on.
     explanation: >-
       Interpretation joins the two halves of assessment. Function determines what the
       intervention has to replace or alter; the skills profile determines what can be
@@ -1094,7 +1094,7 @@ questions:
     type: single-best-answer
     stem: >-
       A latency-based functional analysis ends each session at the first occurrence of the
-      target behaviour. The principal reason for this arrangement is to:
+      target behavior. The principal reason for this arrangement is to:
     options:
       - id: a
         text: Avoid the need for a functional analysis altogether
@@ -1102,11 +1102,11 @@ questions:
         rationale: >-
           It is a functional analysis, conducted with a different dependent measure.
       - id: b
-        text: Limit how often the behaviour is evoked while still allowing conditions to be compared
+        text: Limit how often the behavior is evoked while still allowing conditions to be compared
         isCorrect: true
         rationale: >-
           Latency to the first response carries the comparison, so each condition needs the
-          behaviour to occur only once rather than repeatedly.
+          behavior to occur only once rather than repeatedly.
       - id: c
         text: Produce a higher rate of responding for analysis
         isCorrect: false
@@ -1118,9 +1118,9 @@ questions:
         rationale: >-
           Latency-based analyses still compare test conditions against a control.
     explanation: >-
-      Where evoking a behaviour repeatedly is the objection, latency rather than rate can
+      Where evoking a behavior repeatedly is the objection, latency rather than rate can
       carry the comparison. The experimental logic is unchanged — differentiated conditions
-      against a control — and what changes is how much of the behaviour the analysis has to
+      against a control — and what changes is how much of the behavior the analysis has to
       produce to reach a conclusion.
     cognitiveLevel: analysis
     difficulty: 4

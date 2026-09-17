@@ -177,7 +177,7 @@ describe('the graphs actually shipped', () => {
 	});
 
 	it('describes the multiple baseline as three staggered tiers', () => {
-		const mb = graphById('a-multiple-baseline-across-behaviours');
+		const mb = graphById('a-multiple-baseline-across-behaviors');
 		expect(mb).toBeDefined();
 		const frames = panels(mb!);
 		expect(frames).toHaveLength(3);

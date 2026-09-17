@@ -6,27 +6,27 @@ category: measurement
 definition:
   technical: >-
     The property that instances of a response class can occur again and again, so they can
-    be counted. It is a characteristic of behaviour itself rather than a way of recording
+    be counted. It is a characteristic of behavior itself rather than a way of recording
     it, and it is what makes count, rate and celeration possible at all.
   plain: >-
-    Behaviour happens over and over, so you can count how many times. That is what lets
+    Behavior happens over and over, so you can count how many times. That is what lets
     you talk about how often something happens.
-  gloss: Behaviour happens again and again, so it can be counted
+  gloss: Behavior happens again and again, so it can be counted
 examples:
   - text: >-
       A learner raises their hand eleven times in a lesson. Each instance is a separate,
       countable occurrence of the same response class.
     setting: school
-    why: Counting only makes sense because the behaviour recurs.
+    why: Counting only makes sense because the behavior recurs.
   - text: >-
       A technician records 14 requests across a session and converts it to a rate per
-      minute. Both figures rest on the behaviour being repeatable.
+      minute. Both figures rest on the behavior being repeatable.
     setting: clinic
     why: Rate is a count over time, so it inherits the property.
 nonExamples:
   - text: >-
       "Count" itself is not repeatability. Count is the dimensional quantity — the number
-      you write down — and repeatability is the property of behaviour that makes that
+      you write down — and repeatability is the property of behavior that makes that
       number meaningful.
     setting: clinic
   - text: >-
@@ -49,7 +49,7 @@ attestation:
   aiAssisted: true
   consulted: >-
     Written from the measurement framework in Johnston and Pennypacker, where the
-    fundamental properties of behaviour are set out. No textbook glossary consulted.
+    fundamental properties of behavior are set out. No textbook glossary consulted.
 review:
   status: in-review
   authoredBy: claude
@@ -63,7 +63,7 @@ provenance:
   updated: '2026-09-16'
 ---
 
-Behaviour has three fundamental properties, and every measure in the field is a way of
+Behavior has three fundamental properties, and every measure in the field is a way of
 quantifying one of them: repeatability, temporal extent and temporal locus. Knowing which
 property a question is about tells you which measure can answer it, which is a faster
 route to the right procedure than remembering a list.

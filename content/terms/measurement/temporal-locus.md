@@ -5,13 +5,13 @@ aliases: [temporal locus of behavior]
 category: measurement
 definition:
   technical: >-
-    The property that every instance of behaviour occurs at a point in time, and so stands
+    The property that every instance of behavior occurs at a point in time, and so stands
     in a temporal relation to other events. It is what latency and interresponse time
     measure — one against a preceding stimulus, the other against the previous response.
   plain: >-
-    Behaviour happens at a moment. So you can time when it happened, against some other
+    Behavior happens at a moment. So you can time when it happened, against some other
     event.
-  gloss: Behaviour occurs at a point in time, so it can be located
+  gloss: Behavior occurs at a point in time, so it can be located
 examples:
   - text: >-
       Six seconds pass between an instruction and the learner starting to respond. The
@@ -48,7 +48,7 @@ attestation:
   aiAssisted: true
   consulted: >-
     Written from the measurement framework in Johnston and Pennypacker, where the
-    fundamental properties of behaviour are set out. No textbook glossary consulted.
+    fundamental properties of behavior are set out. No textbook glossary consulted.
 review:
   status: in-review
   authoredBy: claude

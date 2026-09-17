@@ -84,7 +84,7 @@ readings:
     phaseId: baseline-two
     text: >-
       When the treatment is withdrawn the refusals come back to where they were. This is
-      the part that does the work: the behaviour tracked the condition rather than the
+      the part that does the work: the behavior tracked the condition rather than the
       calendar.
   - id: replication
     feature: phase-change
@@ -96,8 +96,8 @@ readings:
     feature: design
     phaseId: null
     text: >-
-      A reversal only works where the behaviour can return to baseline, which is why it
-      suits behaviour maintained by the current arrangement and not a skill somebody has
+      A reversal only works where the behavior can return to baseline, which is why it
+      suits behavior maintained by the current arrangement and not a skill somebody has
       learned. You cannot unlearn tying a shoelace to check that the teaching worked.
 longDescription: >-
   A line graph of task refusals per session across twenty-four sessions in four
@@ -110,15 +110,15 @@ longDescription: >-
 teaching: >-
   A reversal design answers the question an AB graph cannot: did the condition cause the
   change, or did something else happen to change at the same time. Turning the treatment
-  off and watching the behaviour come back, then turning it on and watching it go again,
-  is hard to explain any other way. Two features carry the argument — the behaviour
+  off and watching the behavior come back, then turning it on and watching it go again,
+  is hard to explain any other way. Two features carry the argument — the behavior
   tracks the condition each time, and the effect is replicated within the same graph.
   There are real reasons not to use one, and they are not technical: withdrawing
-  something that is working has a cost to the person, and for dangerous behaviour the
+  something that is working has a cost to the person, and for dangerous behavior the
   cost can be unacceptable. Whether a reversal is appropriate is a decision for the
   supervising analyst and the team, not a reading a technician makes from a graph.
 plainSummary: >-
-  The plan went on, then off, then on again. The behaviour went down, back up, then down
+  The plan went on, then off, then on again. The behavior went down, back up, then down
   again. It followed the plan each time. That is strong evidence the plan is what changed
   it. But taking away something that works has a cost.
 termRefs: [phase-change-line, baseline, visual-analysis, level]

@@ -28,14 +28,14 @@ steps:
       changed is what it produces.
   - text: Record what happened so the pattern is visible.
     rationale: >-
-      Whether shops stay in the programme is decided from data, not from how the trip felt.
+      Whether shops stay in the program is decided from data, not from how the trip felt.
 whatNotToDo:
   - >-
     Do not buy the item to end the episode.
   - >-
     Do not negotiate, or explain at length why the answer is no.
   - >-
-    Do not add a consequence the plan has not authorised.
+    Do not add a consequence the plan has not authorized.
 whenToEscalate:
   - >-
     Tell your supervisor if this happens on most trips, or if the plan has no procedure for

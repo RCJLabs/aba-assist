@@ -1,7 +1,7 @@
 ---
 id: behavior-altering-effect
 term: Behavior-Altering Effect
-aliases: [behavior altering, behaviour-altering effect]
+aliases: [behavior altering]
 category: principles
 definition:
   technical: >-
@@ -13,7 +13,7 @@ definition:
   plain: >-
     Whether a person is doing more or less of something at this moment, because of how
     much the thing they get for it is worth right now.
-  gloss: More or less of the behaviour right now
+  gloss: More or less of the behavior right now
 examples:
   - text: >-
       After a long wait with no attention, a learner calls out to the adult far more often
@@ -31,7 +31,7 @@ nonExamples:
       appearing because it was taught is not a motivating operation acting on frequency.
     setting: clinic
   - text: >-
-      Behaviour drops after several sessions in which it no longer produces anything. That
+      Behavior drops after several sessions in which it no longer produces anything. That
       is extinction working over time, not a change in present value.
     setting: school
 contrastWith: [value-altering-effect]

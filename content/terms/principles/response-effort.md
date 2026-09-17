@@ -11,12 +11,12 @@ definition:
     practitioner can change directly, in either direction, without adding a consequence
     at all.
   plain: >-
-    How much work a behaviour takes. Given two ways to get the same result, people take
+    How much work a behavior takes. Given two ways to get the same result, people take
     the easier one.
   gloss: How much work a response takes, which changes how often it occurs
 examples:
   - text: >-
-      Data sheets are moved from a cupboard down the corridor to the table where
+      Data sheets are moved from a cabinet down the hallway to the table where
       sessions run, and completion rises without any retraining.
     setting: clinic
 nonExamples:

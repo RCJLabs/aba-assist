@@ -40,10 +40,10 @@ whatNotToDo:
   - >-
     Do not take over running the classroom.
   - >-
-    Do not hand over the behaviour plan or any document about the learner without checking
+    Do not hand over the behavior plan or any document about the learner without checking
     who may see it.
   - >-
-    Do not drop the programme for the day because the room is unsettled.
+    Do not drop the program for the day because the room is unsettled.
 whenToEscalate:
   - >-
     Tell your supervisor the same day if you could not run the session as written.

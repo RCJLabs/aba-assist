@@ -67,7 +67,7 @@ provenance:
 ---
 
 Cheap, fast and well supported, which is why it turns up throughout performance management
-in behaviour-analytic organisations. It is also the procedure most easily done badly: what
+in behavior-analytic organizations. It is also the procedure most easily done badly: what
 gets posted is a choice, and posting the wrong measure will improve the wrong thing.
 
 Whose data go up is an ethical question as much as a technical one. Posting by code rather

@@ -1,7 +1,7 @@
 ---
 id: what-good-supervision-looks-like
 ourLabel: What supervision should actually consist of
-gloss: Being shown, practising, getting feedback, being observed
+gloss: Being shown, practicing, getting feedback, being observed
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
   - codeId: rbt-ethics-code-2-0
@@ -11,18 +11,18 @@ sectionRefs:
     section: '4'
     standardNumbers: ['4.01', '4.03', '4.04', '4.06', '4.08', '4.10']
 ourSummary: >-
-  Supervision that works has a recognisable shape: the supervisor explains the skill,
-  demonstrates it, has you practise it, and gives specific feedback, repeating the
+  Supervision that works has a recognizable shape: the supervisor explains the skill,
+  demonstrates it, has you practice it, and gives specific feedback, repeating the
   practice until you meet a standard — and then observes you doing it with a real client.
   That package is the best-supported method for getting procedures implemented correctly,
-  and telling alone is its weakest part. For technicians, recognising effective
+  and telling alone is its weakest part. For technicians, recognizing effective
   supervision practices is its own exam task, because a technician who knows what good
   supervision looks like can ask for it. For analysts, delivering it is an obligation:
   supervise only within your competence, take on only as many people as you can genuinely
   oversee, observe them with clients, document it, and evaluate whether your supervision
   is actually changing anything.
 plainSummary: >-
-  Good supervision means being shown how, practising it, and getting clear feedback —
+  Good supervision means being shown how, practicing it, and getting clear feedback —
   then being watched with a real client. Being told once is not enough.
 whatThisLooksLike:
   - Your supervisor demonstrates the procedure, then watches you try it and tells you exactly what to change.
@@ -50,7 +50,7 @@ scenarioRefs: [you-ran-a-step-of-the-program-incorrectly]
 relatedTopics:
   [
     working-under-supervision,
-    competence-before-you-practise,
+    competence-before-you-practice,
     professional-and-interpersonal-skills
   ]
 taskRefs:
@@ -70,7 +70,7 @@ attestation:
   noVerbatimSource: true
   aiAssisted: true
   consulted: >-
-    Written from the behavioural-skills-training literature and the supervision standards of
+    Written from the behavioral-skills-training literature and the supervision standards of
     the analyst code, in our own words.
 review:
   status: in-review
@@ -86,6 +86,6 @@ provenance:
 ---
 
 There is a real workforce problem behind this task. Survey research on technicians
-supporting severe problem behaviour has found large minorities reporting no initial
+supporting severe problem behavior has found large minorities reporting no initial
 training for it and supervision consisting of verbal feedback only. Knowing what
 supervision is supposed to look like is the first step in asking for it.

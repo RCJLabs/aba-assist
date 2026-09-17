@@ -26,7 +26,7 @@
 	</p>
 	{#if warnings.length > 0}
 		<!--
-			A warning, not a block. This app cannot tell a person's name from a programme's,
+			A warning, not a block. This app cannot tell a person's name from a program's,
 			and a blocker that fires on "Safety Care" teaches people to work around it.
 		-->
 		<ul class="warn" role="status">

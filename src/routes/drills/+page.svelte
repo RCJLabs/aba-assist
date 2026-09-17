@@ -67,13 +67,13 @@
 
 {#if drill === null}
 	<p class="lede">
-		The exam asks you to work figures out, not only to recognise them. These problems are
+		The exam asks you to work figures out, not only to recognize them. These problems are
 		generated, so they do not run out and you never get the same one twice. Every answer comes
 		with the working.
 	</p>
 
 	<fieldset>
-		<legend>What to practise</legend>
+		<legend>What to practice</legend>
 		<ul class="kinds">
 			{#each DRILL_KINDS as k (k.id)}
 				<li>

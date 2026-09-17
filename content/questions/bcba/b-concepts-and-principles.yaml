@@ -7,7 +7,7 @@ questions:
     type: single-best-answer
     stem: >-
       A learner opens a door by pushing it with a hand, with a shoulder, and once with a
-      foot. All three are followed by the door opening. In behaviour-analytic terms, the
+      foot. All three are followed by the door opening. In behavior-analytic terms, the
       three movements are best described as:
     options:
       - id: a
@@ -19,10 +19,10 @@ questions:
         text: A single response
         isCorrect: false
         rationale: >-
-          A response is one instance of behaviour. Three different movements on three
+          A response is one instance of behavior. Three different movements on three
           occasions are three responses.
       - id: c
-        text: A behavioural chain
+        text: A behavioral chain
         isCorrect: false
         rationale: >-
           A chain is a sequence of linked responses, each producing the conditions for the
@@ -34,7 +34,7 @@ questions:
           Different forms that produce the same effect on the environment, and are maintained
           by the same consequence, make up a response class.
     explanation: >-
-      Behaviour is what an organism does; a response is one instance of it; a response
+      Behavior is what an organism does; a response is one instance of it; a response
       class groups topographically different responses by their shared function. Grouping
       by function rather than by form is what lets a plan target "opening the door"
       instead of one particular movement.
@@ -95,7 +95,7 @@ questions:
           because training made them relate.
     explanation: >-
       Stimulus classes are formed in three ways: by shared physical features, by occurring
-      together in time, or arbitrarily through training. Recognising which kind is at work
+      together in time, or arbitrarily through training. Recognizing which kind is at work
       matters because only the third needs explicit teaching to hold together.
     cognitiveLevel: application
     difficulty: 2
@@ -119,12 +119,12 @@ questions:
         isCorrect: false
         rationale: >-
           Extinction is withholding the maintaining consequence, which would decrease the
-          behaviour rather than increase it.
+          behavior rather than increase it.
       - id: b
         text: Negative reinforcement
         isCorrect: true
         rationale: >-
-          Something was removed after the behaviour and the behaviour increased, which is
+          Something was removed after the behavior and the behavior increased, which is
           negative reinforcement by operation and by effect.
       - id: c
         text: Positive reinforcement
@@ -136,9 +136,9 @@ questions:
         text: Negative punishment
         isCorrect: false
         rationale: >-
-          Punishment requires the behaviour to decrease. This behaviour increased.
+          Punishment requires the behavior to decrease. This behavior increased.
     explanation: >-
-      Reinforcement and punishment are defined by the effect on future behaviour; positive
+      Reinforcement and punishment are defined by the effect on future behavior; positive
       and negative describe only whether something was added or taken away. The two
       dimensions are independent, which is why "negative" never means unpleasant.
     cognitiveLevel: application
@@ -162,7 +162,7 @@ questions:
         text: Negative reinforcement
         isCorrect: false
         rationale: >-
-          Reinforcement increases behaviour. Arguing decreased.
+          Reinforcement increases behavior. Arguing decreased.
       - id: b
         text: Response cost only if a token system is in place
         isCorrect: false
@@ -173,17 +173,17 @@ questions:
         text: Negative punishment
         isCorrect: true
         rationale: >-
-          A stimulus was removed after the behaviour and the behaviour decreased, which is
+          A stimulus was removed after the behavior and the behavior decreased, which is
           negative punishment.
       - id: d
         text: Positive punishment
         isCorrect: false
         rationale: >-
-          Positive punishment presents something after the behaviour. Here something was taken
+          Positive punishment presents something after the behavior. Here something was taken
           away.
     explanation: >-
-      The same two dimensions apply to punishment: presented or removed, and the behaviour
-      must actually decrease. Labelling a procedure punishment because it looks
+      The same two dimensions apply to punishment: presented or removed, and the behavior
+      must actually decrease. Labeling a procedure punishment because it looks
       unpleasant, without checking the effect, is the most common error in this area.
     cognitiveLevel: application
     difficulty: 2
@@ -207,12 +207,12 @@ questions:
         text: Automatic punishment
         isCorrect: false
         rationale: >-
-          Punishment would reduce the behaviour. It is persisting.
+          Punishment would reduce the behavior. It is persisting.
       - id: b
         text: Automatic reinforcement
         isCorrect: true
         rationale: >-
-          The consequence is produced by the behaviour itself rather than delivered by another
+          The consequence is produced by the behavior itself rather than delivered by another
           person, which is what automatic means here.
       - id: c
         text: Socially mediated positive reinforcement
@@ -229,7 +229,7 @@ questions:
     explanation: >-
       Whether a consequence is socially mediated or automatic is about who delivers it,
       and it cuts across reinforcement and punishment alike. It matters practically
-      because a behaviour maintained automatically cannot be placed on extinction by
+      because a behavior maintained automatically cannot be placed on extinction by
       changing what other people do.
     cognitiveLevel: application
     difficulty: 3
@@ -322,10 +322,10 @@ questions:
         isCorrect: false
         rationale: >-
           A mixed schedule alternates components like a multiple schedule but without
-          signalling which is in force.
+          signaling which is in force.
     explanation: >-
       Compound schedules differ on two questions: are the components simultaneous or
-      successive, and are they signalled. Concurrent schedules are the arrangement behind
+      successive, and are they signaled. Concurrent schedules are the arrangement behind
       choice and the matching law, which is why they underpin most of what is said about
       reinforcer allocation.
     cognitiveLevel: recall
@@ -345,8 +345,8 @@ questions:
     type: single-best-answer
     stem: >-
       A tone was repeatedly paired with a puff of air, and the tone came to elicit a
-      blink. The tone is now presented many times with no puff. What is happening, and
-      what would you expect?
+      blink. The tone is now presented many times with no puff. What process is this,
+      and what should be expected?
     options:
       - id: a
         text: Operant extinction — the blink weakens
@@ -391,7 +391,7 @@ questions:
     taskRef: { credential: BCBA, code: B.11 }
     type: single-best-answer
     stem: >-
-      A behaviour is said to be under stimulus control when:
+      A behavior is said to be under stimulus control when:
     options:
       - id: a
         text: It is followed by reinforcement every time it occurs
@@ -532,7 +532,7 @@ questions:
       the mastery criterion. This is best described as:
     options:
       - id: a
-        text: Behavioural momentum
+        text: Behavioral momentum
         isCorrect: false
         rationale: >-
           Momentum describes persistence under changed conditions such as extinction or
@@ -556,9 +556,9 @@ questions:
           Spontaneous recovery is the reappearance of an extinguished response after a break,
           not the persistence of a taught one.
     explanation: >-
-      Maintenance is the durability of behaviour change over time once the teaching
+      Maintenance is the durability of behavior change over time once the teaching
       contingencies are gone. It is programmed for deliberately — by thinning schedules
-      and handing the behaviour over to naturally occurring reinforcement — rather than
+      and handing the behavior over to naturally occurring reinforcement — rather than
       being a property the skill has by itself.
     cognitiveLevel: recall
     difficulty: 2
@@ -581,7 +581,7 @@ questions:
         text: An abolishing operation
         isCorrect: true
         rationale: >-
-          It decreased the value of food as a reinforcer and decreased behaviour that has
+          It decreased the value of food as a reinforcer and decreased behavior that has
           produced food, which are the two effects of an abolishing operation.
       - id: b
         text: An establishing operation
@@ -598,11 +598,11 @@ questions:
         text: A conditioned punisher
         isCorrect: false
         rationale: >-
-          Nothing here suppresses behaviour by following it; the meal changed motivation
+          Nothing here suppresses behavior by following it; the meal changed motivation
           before the fact.
     explanation: >-
       Motivating operations have two effects at once: they change how valuable a
-      consequence is, and they change how likely the behaviour that produces it is.
+      consequence is, and they change how likely the behavior that produces it is.
       Establishing operations raise both, abolishing operations lower both. The contrast
       with the discriminative stimulus is availability versus value.
     cognitiveLevel: application
@@ -629,7 +629,7 @@ questions:
     type: single-best-answer
     stem: >-
       A new employee follows a written safety procedure correctly on the first day, before
-      experiencing any consequence for doing so. This behaviour is best described as:
+      experiencing any consequence for doing so. This behavior is best described as:
     options:
       - id: a
         text: Imitative
@@ -640,22 +640,22 @@ questions:
         text: Automatically reinforced
         isCorrect: false
         rationale: >-
-          The description says nothing about the behaviour producing its own reinforcement.
+          The description says nothing about the behavior producing its own reinforcement.
       - id: c
         text: Rule-governed
         isCorrect: true
         rationale: >-
-          The behaviour is controlled by a verbal description of a contingency rather than by
+          The behavior is controlled by a verbal description of a contingency rather than by
           direct contact with it.
       - id: d
         text: Contingency-shaped
         isCorrect: false
         rationale: >-
-          Contingency-shaped behaviour is produced by direct exposure to consequences, which
+          Contingency-shaped behavior is produced by direct exposure to consequences, which
           has not happened yet.
     explanation: >-
-      Rules let behaviour come under the control of contingencies too delayed, too rare or
-      too dangerous to be shaped directly. The trade-off is that rule-governed behaviour
+      Rules let behavior come under the control of contingencies too delayed, too rare or
+      too dangerous to be shaped directly. The trade-off is that rule-governed behavior
       can be insensitive to what the contingencies actually do, which is why it is not
       always the better route.
     cognitiveLevel: application
@@ -732,7 +732,7 @@ questions:
         text: Autoclitic control
         isCorrect: false
         rationale: >-
-          An autoclitic modifies the effect of other verbal behaviour on a listener; it does
+          An autoclitic modifies the effect of other verbal behavior on a listener; it does
           not describe this arrangement.
       - id: c
         text: Convergent multiple control
@@ -747,9 +747,9 @@ questions:
           Divergent control is one variable evoking several different responses, which is the
           opposite arrangement.
     explanation: >-
-      Verbal behaviour in ordinary use is rarely under a single source of control.
+      Verbal behavior in ordinary use is rarely under a single source of control.
       Convergent control — several variables acting on one response — is the usual case,
-      and recognising it explains why a response that appears in one arrangement may not
+      and recognizing it explains why a response that appears in one arrangement may not
       appear when a supporting variable is removed.
     cognitiveLevel: analysis
     difficulty: 4
@@ -795,8 +795,8 @@ questions:
           Nothing about reinforcement density removes the burst; if anything a richer history
           makes the disruption more marked.
     explanation: >-
-      Behavioural momentum treats persistence under changed conditions as analogous to
-      mass. It explains why a well-reinforced problem behaviour is hard to shift, and it
+      Behavioral momentum treats persistence under changed conditions as analogous to
+      mass. It explains why a well-reinforced problem behavior is hard to shift, and it
       is the reasoning behind high-probability request sequences.
     cognitiveLevel: analysis
     difficulty: 4
@@ -828,7 +828,7 @@ questions:
           They are different: one depends on the model receiving a consequence, the other on
           matching the model.
       - id: c
-        text: In observational learning the watcher changes behaviour after seeing the model contact a consequence; imitation is copying the model itself
+        text: In observational learning the watcher changes behavior after seeing the model contact a consequence; imitation is copying the model itself
         isCorrect: true
         rationale: >-
           Observational learning depends on the observed consequence, whereas imitation
@@ -841,10 +841,10 @@ questions:
           Imitation concerns formal similarity to a model of any kind, not specifically verbal
           ones.
     explanation: >-
-      Imitation is a response class where the behaviour matches a model and the model
+      Imitation is a response class where the behavior matches a model and the model
       functions as the discriminative stimulus. Observational learning is broader and
       hinges on what the observer sees happen to the model, which is why it can change
-      behaviour the observer never performed.
+      behavior the observer never performed.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [imitation, observational-learning, modeling, discriminative-stimulus]

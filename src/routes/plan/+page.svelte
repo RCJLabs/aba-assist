@@ -73,7 +73,7 @@
 				Answer some practice questions and this fills in. It needs about as many answers in
 				each area as the real paper asks there before it will report a number for that area.
 			</p>
-			<a class="button primary" href={resolve('/quiz')}>Start practising</a>
+			<a class="button primary" href={resolve('/quiz')}>Start practicing</a>
 		</section>
 	{:else}
 		<section class="summary">
@@ -85,7 +85,7 @@
 						.summary.answered}
 					{plan.summary.answered === 1 ? 'answer' : 'answers'}. There is no overall figure
 					until every area has been sampled — an average over whichever areas you happened to
-					practise says more about your choice of practice than about what you know.
+					practice says more about your choice of practice than about what you know.
 				</p>
 			{:else}
 				<p>
@@ -105,7 +105,7 @@
 			{#if plan.next.length === 0}
 				<p class="hint">
 					Nothing is weak, nothing is due and every area has been sampled. Keep the cards
-					ticking over and sit a simulation when you want the pace.
+					moving and take a simulation when you want the pace.
 				</p>
 			{:else}
 				<ol class="actions">
@@ -116,7 +116,7 @@
 								<span class="detail">{a.detail}</span>
 							</div>
 							<button type="button" onclick={() => take(a)}>
-								{#if a.kind === 'review-due'}Review{:else if a.kind === 'learn-terms'}Learn{:else if a.kind === 'simulate'}Simulate{:else}Practise{/if}
+								{#if a.kind === 'review-due'}Review{:else if a.kind === 'learn-terms'}Learn{:else if a.kind === 'simulate'}Simulate{:else}Practice{/if}
 							</button>
 						</li>
 					{/each}

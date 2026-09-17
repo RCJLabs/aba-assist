@@ -12,7 +12,7 @@ definition:
   plain: >-
     When something matters less right now, a person does less of what has got them that
     thing before. Finish a big meal and you stop asking for food.
-  gloss: Less of the behaviour right now, because the thing is worth less
+  gloss: Less of the behavior right now, because the thing is worth less
 examples:
   - text: >-
       A learner spends twenty minutes on a preferred tablet game. For the rest of the
@@ -23,7 +23,7 @@ examples:
       A learner is given free attention every two minutes. Calling out to the adult
       becomes much less frequent while that is running.
     setting: school
-    why: Attention is freely available, so it is worth less and the behaviour that earned it falls.
+    why: Attention is freely available, so it is worth less and the behavior that earned it falls.
 nonExamples:
   - text: >-
       A learner stops asking for the tablet after several sessions in which asking never
@@ -38,7 +38,7 @@ seeAlso: [motivating-operation, abolishing-operation, behavior-altering-effect]
 searchBoost: 1.2
 flashcard:
   mnemonic: >-
-    Abative abates: the behaviour dies down, right now.
+    Abative abates: the behavior dies down, right now.
 taskRefs:
   - { credential: RBT, code: D.2 }
   - { credential: BCBA, code: B.15 }
@@ -71,6 +71,6 @@ provenance:
 ---
 
 This is the effect behind non-contingent reinforcement working. Nothing has been taught
-and nothing has been taken away; the thing the behaviour was for is already available, so
-for now the behaviour has less reason to happen. That is also why the effect stops when
+and nothing has been taken away; the thing the behavior was for is already available, so
+for now the behavior has less reason to happen. That is also why the effect stops when
 the free access stops.

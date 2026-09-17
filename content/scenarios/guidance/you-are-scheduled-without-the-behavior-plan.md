@@ -4,13 +4,13 @@ kind: guidance
 title: You are scheduled with a learner whose plan you have never seen
 situation: >-
   You have been put on a session — a cover shift, a new client, a reassignment — and
-  nobody has given you the programme, the data sheets or the written plan. You are
+  nobody has given you the program, the data sheets or the written plan. You are
   expected to start in an hour, and the person who scheduled you is treating it as routine.
 setting: any
 audience: [RBT, BCaBA]
 riskFlags: []
 steps:
-  - text: Ask for the written plan and the programmes before the session, in writing, from whoever scheduled you.
+  - text: Ask for the written plan and the programs before the session, in writing, from whoever scheduled you.
     rationale: >-
       Asking in writing costs nothing and means the request exists afterwards. Most of the
       time the documents are simply sitting somewhere nobody thought to send.
@@ -33,7 +33,7 @@ steps:
       gap and a false record.
 whatNotToDo:
   - Do not guess at a procedure because you have run something similar with another learner.
-  - Do not run a behaviour reduction procedure you have not been trained on for this learner, under any circumstances.
+  - Do not run a behavior reduction procedure you have not been trained on for this learner, under any circumstances.
   - Do not record data against targets you were not actually running.
 whenToEscalate:
   - >-
@@ -41,7 +41,7 @@ whenToEscalate:
     even if the session went perfectly well.
   - If working without documents becomes normal where you are, raise it as a systems problem in writing.
 termRefs: [behavior-intervention-plan, treatment-integrity, scope-of-competence, supervision]
-ethicsRefs: [competence-before-you-practise, working-under-supervision, staying-in-your-role]
+ethicsRefs: [competence-before-you-practice, working-under-supervision, staying-in-your-role]
 tags: [workplace, scope-of-practice, preparation]
 taskRefs:
   - { credential: RBT, code: F.2 }
@@ -57,7 +57,7 @@ attestation:
   noVerbatimSource: true
   aiAssisted: true
   consulted: >-
-    Written from the technician ethics code's competence provisions and the behavioural
+    Written from the technician ethics code's competence provisions and the behavioral
     staff-training literature, in our own words.
 review:
   status: in-review

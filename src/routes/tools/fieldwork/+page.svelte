@@ -112,7 +112,7 @@
 {#if tracker.status === 'unavailable'}
 	<p class="warn">This needs local storage and the browser has blocked it.</p>
 {:else if !req || !rules}
-	<p class="lede">No fieldwork requirement is modelled yet.</p>
+	<p class="lede">No fieldwork requirement is modeled yet.</p>
 {:else}
 	<p class="lede">
 		Fieldwork is verified one calendar month at a time, and a month that misses a requirement
@@ -346,7 +346,7 @@
 					id="{uid}-note"
 					bind:value={note}
 					label="Anything worth remembering about this month"
-					placeholder="Two weeks of the month were unrestricted — programme writing and graphing."
+					placeholder="Two weeks of the month were unrestricted — program writing and graphing."
 				/>
 
 				<button type="submit" class="button primary">Save month</button>

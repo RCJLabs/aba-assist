@@ -3,7 +3,7 @@ id: you-are-asked-what-you-think-in-a-school-meeting
 kind: guidance
 title: You are asked for your opinion in a meeting about the learner
 situation: >-
-  You are in a meeting — a review, a planning meeting, a conversation in the corridor
+  You are in a meeting — a review, a planning meeting, a conversation in the hallway
   afterwards — and somebody asks what you think. You see this learner more than anybody
   else in the room does.
 setting: school
@@ -19,12 +19,12 @@ steps:
       Say plainly when a question is one for the supervising analyst, and offer to pass it
       on.
     rationale: >-
-      Recommending a change, interpreting why a behaviour happens, or agreeing a new goal
+      Recommending a change, interpreting why a behavior happens, or agreeing a new goal
       are decisions above the technician role, however reasonable the question.
   - text: >-
       Avoid explaining causes, even when you have a strong hunch about one.
     rationale: >-
-      Why a behaviour happens is an assessment question. A confident guess from the person
+      Why a behavior happens is an assessment question. A confident guess from the person
       who sees the learner most tends to be taken as settled.
   - text: >-
       Write down what was asked and what was decided, and tell your supervisor.
@@ -32,7 +32,7 @@ steps:
       Decisions made in meetings reach the plan only if somebody carries them back.
 whatNotToDo:
   - >-
-    Do not agree to a change to the programme in the meeting.
+    Do not agree to a change to the program in the meeting.
   - >-
     Do not offer a view on diagnosis, medication, or placement.
   - >-

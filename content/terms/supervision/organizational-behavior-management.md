@@ -6,15 +6,15 @@ abbreviation: OBM
 category: supervision
 definition:
   technical: >-
-    The application of behaviour-analytic principles to the performance of people at
-    work: analysing what antecedents and consequences maintain staff behaviour and
+    The application of behavior-analytic principles to the performance of people at
+    work: analyzing what antecedents and consequences maintain staff behavior and
     arranging them deliberately. It supplies the field's account of supervision — a
     performance problem has a function, and the remedy follows from the function rather
     than from seniority or exhortation.
   plain: >-
-    Using behaviour analysis on how people work, not just on clients. Staff behaviour
+    Using behavior analysis on how people work, not just on clients. Staff behavior
     has causes too.
-  gloss: Behaviour analysis applied to performance at work
+  gloss: Behavior analysis applied to performance at work
 examples:
   - text: >-
       A missed recording step is traced to where the forms are kept, and the forms are

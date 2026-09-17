@@ -41,9 +41,9 @@
 		}`;
 		const { reducedPercent: reduced, reducedAfterServiceHours: after } = req;
 		if (reduced == null || after == null) {
-			return `${req.monthlyPercent}% of the hours you deliver each month, at every organisation, with ${contacts}.`;
+			return `${req.monthlyPercent}% of the hours you deliver each month, at every organization, with ${contacts}.`;
 		}
-		return `${req.monthlyPercent}% of the hours you deliver each month for your first ${after.toLocaleString()} hours of practice, then ${reduced}% — at every organisation, with ${contacts}.`;
+		return `${req.monthlyPercent}% of the hours you deliver each month for your first ${after.toLocaleString()} hours of practice, then ${reduced}% — at every organization, with ${contacts}.`;
 	});
 
 	/*
@@ -109,7 +109,7 @@
 			{
 				id: 'months',
 				label: 'Months logged',
-				detail: 'Counted per organisation, because the rule is written per organisation.',
+				detail: 'Counted per organization, because the rule is written per organization.',
 				value: String(months.length),
 				tone: 'neutral',
 				note: null,
@@ -296,7 +296,7 @@
 				</p>
 			{:else}
 				<p>
-					No unit requirement is modelled for this credential yet, so the ledger records what
+					No unit requirement is modeled for this credential yet, so the ledger records what
 					you earned without scoring it against a total.
 				</p>
 			{/if}

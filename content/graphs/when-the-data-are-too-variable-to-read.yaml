@@ -92,7 +92,7 @@ teaching: >-
   Variability is how much the data bounce around within a condition, and it decides how
   much any average is worth. Here the mean went up by about six minutes, which would look
   like a clear result in a table and looks like almost nothing on the graph. That gap
-  between the table and the graph is the reason behaviour analysis reads graphs at all.
+  between the table and the graph is the reason behavior analysis reads graphs at all.
   Heavy variability is also information rather than noise: something is systematically
   different between the high sessions and the low ones, and the pattern in this graph —
   alternating almost session by session — is the shape that usually points at a variable

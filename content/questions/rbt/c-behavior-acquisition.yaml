@@ -135,7 +135,7 @@ questions:
         rationale: >-
           The procedure calls for prompting after no response, not for ending the trial.
       - id: d
-        text: Deliver the verbal prompt and wait the response window again
+        text: Deliver the verbal prompt and wait through the response window again
         isCorrect: true
         rationale: >-
           Least-to-most starts at the least intrusive level and moves up one level at a
@@ -565,7 +565,7 @@ questions:
     type: single-best-answer
     stem: >-
       Before teaching hand washing, the supervisor writes out each separate step in
-      order — turn on the tap, wet hands, apply soap, and so on. What is this document?
+      order — turn on the faucet, wet hands, apply soap, and so on. What is this document?
     options:
       - id: a
         text: A task analysis
@@ -609,7 +609,7 @@ questions:
     taskRef: { credential: RBT, code: C.2 }
     type: single-best-answer
     stem: >-
-      A token board is introduced. At first the tokens have no effect on the learner’s
+      A token board is introduced. At first the tokens have no effect on the learner's
       responding. After two weeks of tokens being exchanged for preferred items,
       responding increases when tokens are delivered. What best explains the change?
     options:
@@ -660,7 +660,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -728,7 +728,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -790,7 +790,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -861,7 +861,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -924,7 +924,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -973,7 +973,7 @@ questions:
     explanation: >-
       The goal is responding under the natural discriminative stimulus, not under the
       prompt. Reliable responding that only ever follows the prompt means control has
-      landed in the wrong place, and the written plan’s fading or delay procedure is
+      landed in the wrong place, and the written plan's fading or delay procedure is
       what moves it.
     cognitiveLevel: analysis
     difficulty: 3
@@ -993,7 +993,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1016,10 +1016,10 @@ questions:
       reason for arranging teaching so that errors are unlikely?
     options:
       - id: a
-        text: 'Repeated errors can become part of the learner’s pattern of responding and are hard to undo'
+        text: "Repeated errors can become part of the learner's pattern of responding and are hard to undo"
         isCorrect: true
         rationale: >-
-          Errors that are practised get stronger. Arranging teaching so the
+          Errors that are practiced get stronger. Arranging teaching so the
           correct response occurs from the start avoids building a competing
           history.
       - id: b
@@ -1042,7 +1042,7 @@ questions:
           require more careful setup rather than less.
     explanation: >-
       Errorless teaching front-loads assistance so the correct response occurs from
-      the first trial, then fades it. The rationale is that practised errors persist
+      the first trial, then fades it. The rationale is that practiced errors persist
       and that the frustration of repeated failure is itself a cost worth avoiding.
     cognitiveLevel: analysis
     difficulty: 3
@@ -1062,7 +1062,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1105,7 +1105,7 @@ questions:
           approximations: the criterion moves and the earlier form stops being
           reinforced.
       - id: d
-        text: 'Reinforce every vocalisation the learner makes'
+        text: 'Reinforce every vocalization the learner makes'
         isCorrect: false
         rationale: >-
           Reinforcing everything removes the differential part, and the response
@@ -1113,7 +1113,7 @@ questions:
     explanation: >-
       Shaping is differential reinforcement of successive approximations. Both halves
       matter: reinforcing the closer form and no longer reinforcing the earlier one.
-      How quickly the criterion moves is set by the program and by the learner’s
+      How quickly the criterion moves is set by the program and by the learner's
       responding.
     cognitiveLevel: application
     difficulty: 3
@@ -1127,7 +1127,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1217,13 +1217,13 @@ questions:
         text: 'Break that step into smaller steps'
         isCorrect: false
         rationale: >-
-          Changing the task analysis is a programme change. It may well be the
-          right answer, but it is the analyst’s to make.
+          Changing the task analysis is a program change. It may well be the
+          right answer, but it is the analyst's to make.
       - id: b
         text: 'Record the pattern and report it to the supervisor'
         isCorrect: true
         rationale: >-
-          The technician’s job is to run the written analysis and report what the
+          The technician's job is to run the written analysis and report what the
           data show. A single failing step is exactly the observation an analyst
           needs.
       - id: c
@@ -1231,7 +1231,7 @@ questions:
         isCorrect: false
         rationale: >-
           Skipping a step changes the chain being taught and produces data that do
-          not describe the programme as written.
+          not describe the program as written.
       - id: d
         text: 'Complete that step for the learner every time without recording it'
         isCorrect: false
@@ -1241,7 +1241,7 @@ questions:
     explanation: >-
       A step that consistently fails usually means it is too large or needs a
       different prompt, and both are revisions to the written task analysis. Noticing
-      and reporting it is within the technician’s role; rewriting it is not.
+      and reporting it is within the technician's role; rewriting it is not.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [task-analysis, chaining, treatment-integrity, scope-of-practice]
@@ -1253,7 +1253,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1292,13 +1292,13 @@ questions:
         rationale: >-
           Repeating an instruction with no programmed consequence or inter-trial
           interval is not a trial structure, and repeated instructions weaken the
-          instruction’s control.
+          instruction's control.
       - id: d
         text: 'Instruction, response, consequence, brief pause before the next trial'
         isCorrect: true
         rationale: >-
           A discrete trial has a clear beginning and end: an antecedent, the
-          learner’s response, a programmed consequence, and a short interval
+          learner's response, a programmed consequence, and a short interval
           separating it from the next.
     explanation: >-
       The structure of a discrete trial — antecedent, response, consequence,
@@ -1322,7 +1322,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1350,12 +1350,12 @@ questions:
         isCorrect: false
         rationale: >-
           That converts a naturalistic opportunity into a discrete trial
-          arrangement the programme did not call for.
+          arrangement the program did not call for.
       - id: b
-        text: 'Use the learner’s own interest in the container as the teaching opportunity'
+        text: "Use the learner's own interest in the container as the teaching opportunity"
         isCorrect: true
         rationale: >-
-          Naturalistic teaching follows the learner’s motivation and teaches in
+          Naturalistic teaching follows the learner's motivation and teaches in
           the moment it occurs, which is what makes the reinforcer directly
           relevant.
       - id: c
@@ -1374,7 +1374,7 @@ questions:
       Naturalistic teaching uses what the learner is already motivated by, so the
       consequence for responding is the thing they wanted rather than an arbitrary
       reinforcer. Which arrangement to use, and when, is specified by the written
-      programme.
+      program.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [naturalistic-teaching, incidental-teaching, motivating-operation, mand]
@@ -1386,7 +1386,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1435,7 +1435,7 @@ questions:
     explanation: >-
       Generalization has to be built into teaching rather than hoped for afterwards.
       Multiple exemplars, varied settings and people, and teaching loosely are the
-      usual tactics, and they are written into the programme rather than improvised.
+      usual tactics, and they are written into the program rather than improvised.
     cognitiveLevel: application
     difficulty: 2
     termRefs:
@@ -1454,7 +1454,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1481,14 +1481,14 @@ questions:
         text: 'Run the system as written and provide the opportunity to earn the fifth token'
         isCorrect: true
         rationale: >-
-          The exchange rate is part of the written programme. Running it as
+          The exchange rate is part of the written program. Running it as
           specified keeps both the contingency and the data intact.
       - id: b
         text: 'Remove a token as a consequence for asking'
         isCorrect: false
         rationale: >-
-          Response cost is a punishment component that must be authorised in the
-          written plan. Improvising it is outside the technician’s role.
+          Response cost is a punishment component that must be authorized in the
+          written plan. Improvising it is outside the technician's role.
       - id: c
         text: 'Give the break without any tokens'
         isCorrect: false
@@ -1504,7 +1504,7 @@ questions:
           it.
     explanation: >-
       A token economy works because the rules are consistent: what earns a token, what
-      tokens buy, and at what rate. Changing any of those in the moment is a programme
+      tokens buy, and at what rate. Changing any of those in the moment is a program
       change, and both the clinical effect and the data depend on it not happening.
     cognitiveLevel: application
     difficulty: 2
@@ -1524,7 +1524,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1551,7 +1551,7 @@ questions:
         text: 'The toy is not currently functioning as a reinforcer for that response'
         isCorrect: true
         rationale: >-
-          A reinforcer is defined by its effect on behaviour. High preference
+          A reinforcer is defined by its effect on behavior. High preference
           predicts reinforcer value but does not guarantee it, and responding is
           the test.
       - id: b
@@ -1574,7 +1574,7 @@ questions:
           consequence were reinforcing it.
     explanation: >-
       Preference assessments predict; they do not define. Something is a reinforcer
-      only if delivering it makes the behaviour more likely, and a preferred item that
+      only if delivering it makes the behavior more likely, and a preferred item that
       does not do so needs a reinforcer assessment rather than another week of trying.
     cognitiveLevel: analysis
     difficulty: 3
@@ -1594,7 +1594,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1644,7 +1644,7 @@ questions:
       Negative reinforcement is defined by removal of something followed by an
       increase in the response. The word "negative" describes the removal, not whether
       the arrangement is undesirable — a break card taught this way is one of the most
-      common replacement behaviours in the field.
+      common replacement behaviors in the field.
     cognitiveLevel: application
     difficulty: 2
     termRefs:
@@ -1663,7 +1663,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1690,7 +1690,7 @@ questions:
         text: 'A stimulus in the presence of which the response is not reinforced'
         isCorrect: true
         rationale: >-
-          That is an S-delta: a condition signalling that responding will not
+          That is an S-delta: a condition signaling that responding will not
           produce reinforcement, so responding under it declines.
       - id: b
         text: 'A conditioned reinforcer'
@@ -1733,7 +1733,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-acquisition literature;
+        Original question written from the primary behavior-acquisition literature;
         no examination material consulted.
     review:
       status: in-review

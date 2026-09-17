@@ -1,13 +1,13 @@
 ---
 id: scope-of-practice
 term: Scope of Practice
-aliases: [scope, practising within scope, boundaries of competence]
+aliases: [scope, practicing within scope, boundaries of competence]
 category: ethics
 definition:
   technical: >-
-    The range of activities a person is qualified and authorised to perform, set by their
+    The range of activities a person is qualified and authorized to perform, set by their
     credential, their training, and their supervisor's direction. For technicians it
-    centres on implementing plans as written; designing, modifying, discontinuing, and
+    centers on implementing plans as written; designing, modifying, discontinuing, and
     interpreting them sit with the supervising analyst, who remains responsible for the
     work.
   plain: >-
@@ -16,10 +16,10 @@ definition:
   gloss: What your role and training allow you to do
 examples:
   - text: >-
-      A technician runs a programme exactly as written and reports that it no longer seems
+      A technician runs a program exactly as written and reports that it no longer seems
       to be working.
     setting: clinic
-    why: Reporting is in scope; changing the programme is not.
+    why: Reporting is in scope; changing the program is not.
   - text: >-
       A technician tells their supervisor they have not been trained on a procedure before
       being asked to run it.

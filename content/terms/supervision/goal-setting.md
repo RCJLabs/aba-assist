@@ -10,7 +10,7 @@ definition:
     intervention, and it is routinely combined with feedback, because a goal with no
     information about progress toward it has little to act on.
   plain: >-
-    Agree a specific number to aim for, not "do better". Then show progress against it.
+    Agree on a specific number to aim for, not "do better". Then show progress against it.
   gloss: Naming a specific level of performance to reach
 examples:
   - text: >-
@@ -62,7 +62,7 @@ provenance:
   updated: '2026-09-16'
 ---
 
-The supervision task list asks for goals that are measurable, individualised and matched
+The supervision task list asks for goals that are measurable, individualized and matched
 to what the supervisee still needs to learn — which rules out both the goal everyone gets
 and the goal copied from last year.
 

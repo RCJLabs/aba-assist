@@ -18,11 +18,11 @@ steps:
     rationale: >-
       Following the written plan is never the wrong answer, and an existing instruction is
       direction you already have.
-  - text: If nothing written covers it, do the safe, ordinary, unremarkable thing and change nothing about the programme.
+  - text: If nothing written covers it, do the safe, ordinary, unremarkable thing and change nothing about the program.
     rationale: >-
       Pausing a target costs a session of data. Improvising a new procedure costs the
       integrity of the whole comparison and may teach something nobody intended.
-  - text: Use your organisation's backup route — a second analyst, the clinical director, whoever the on-call arrangement names.
+  - text: Use your organization's backup route — a second analyst, the clinical director, whoever the on-call arrangement names.
     rationale: >-
       Your employer is required to keep supervision available. Not being able to reach
       anybody is a scheduling problem for them to fix, not a gap for you to fill.
@@ -37,7 +37,7 @@ whatNotToDo:
 whenToEscalate:
   - >-
     If you cannot reach any qualified supervisor at all and this is becoming a pattern,
-    raise it with your employer in writing — practising without supervision on record puts
+    raise it with your employer in writing — practicing without supervision on record puts
     your own certification at risk.
   - Anything involving danger or injury is a different situation entirely and does not wait for a call back.
 termRefs: [supervision, behavior-intervention-plan, treatment-integrity, scope-of-practice]

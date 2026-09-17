@@ -32,9 +32,9 @@ commonPitfalls:
   - Delaying the announcement to avoid unsettling families, which removes the time to plan.
   - Treating a file as a handover.
   - Taking records with you when you go.
-  - Continuing services that are no longer needed because the funding is authorised.
+  - Continuing services that are no longer needed because the funding is authorized.
 ifYouAreUnsure: >-
-  Ask your supervisor what your organisation's notice and transition process requires, and
+  Ask your supervisor what your organization's notice and transition process requires, and
   start it earlier than feels necessary. The families need the lead time more than you do.
 termRefs: [continuity-of-care, collaboration, self-reporting, session-note]
 scenarioRefs: []

@@ -24,7 +24,7 @@ questions:
         text: Latency
         isCorrect: false
         rationale: >-
-          Latency measures the time from a signal to the start of the behaviour, not how long
+          Latency measures the time from a signal to the start of the behavior, not how long
           it continues.
       - id: d
         text: Interresponse time
@@ -79,7 +79,7 @@ questions:
         rationale: >-
           A single observer can collect counts without difficulty.
       - id: c
-        text: A count ignores the time available for the behaviour to occur
+        text: A count ignores the time available for the behavior to occur
         isCorrect: true
         rationale: >-
           With unequal observation periods, the same rate produces different counts, so counts
@@ -159,7 +159,7 @@ questions:
         text: Not being disruptive during the lesson
         isCorrect: false
         rationale: >-
-          Defining a behaviour by what it is not leaves the observer with no positive
+          Defining a behavior by what it is not leaves the observer with no positive
           criterion.
       - id: c
         text: Eyes oriented to the assigned materials or to the speaker, with hands on the task materials
@@ -174,7 +174,7 @@ questions:
     explanation: >-
       The test of a definition is not elegance but agreement: could a new observer, given
       only this sentence, score the same session the same way. Anything requiring a
-      judgement about what the learner meant fails it.
+      judgment about what the learner meant fails it.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [operational-definition, objective-language, interobserver-agreement, topography]
@@ -192,18 +192,18 @@ questions:
       A definition written purely in terms of topography may be inadequate when:
     options:
       - id: a
-        text: The behaviour occurs in more than one setting
+        text: The behavior occurs in more than one setting
         isCorrect: false
         rationale: >-
           A good topographical definition travels across settings without difficulty.
       - id: b
-        text: The same form of behaviour serves different functions on different occasions
+        text: The same form of behavior serves different functions on different occasions
         isCorrect: true
         rationale: >-
           A form-based definition groups occasions that may need different responses, and can
           obscure the relation the plan depends on.
       - id: c
-        text: The behaviour occurs at a low rate
+        text: The behavior occurs at a low rate
         isCorrect: false
         rationale: >-
           A low rate makes measurement harder to schedule but does not make a form-based
@@ -238,12 +238,12 @@ questions:
         text: Whether the definition is specific enough to be applied the same way
         isCorrect: true
         rationale: >-
-          Low agreement most often reflects a definition that leaves room for judgement.
+          Low agreement most often reflects a definition that leaves room for judgment.
       - id: b
         text: Whether the learner behaved unusually that day
         isCorrect: false
         rationale: >-
-          The learner's behaviour does not explain why two people watching it disagreed.
+          The learner's behavior does not explain why two people watching it disagreed.
       - id: c
         text: Whether the intervention is working
         isCorrect: false
@@ -253,7 +253,7 @@ questions:
         text: Whether the graph is scaled correctly
         isCorrect: false
         rationale: >-
-          Scaling affects how data looks, not whether the two records agree.
+          Scaling affects how data look, not whether the two records agree.
     explanation: >-
       Agreement is a property of the measurement system, and the definition is the part of
       it most often at fault. Retraining observers on a vague definition raises agreement
@@ -284,20 +284,20 @@ questions:
         text: Momentary time sampling
         isCorrect: false
         rationale: >-
-          Time sampling records whether behaviour is occurring at specified moments.
+          Time sampling records whether behavior is occurring at specified moments.
       - id: c
         text: Product measurement
         isCorrect: true
         rationale: >-
-          The behaviour is measured through the lasting effect it produced, after the fact.
+          The behavior is measured through the lasting effect it produced, after the fact.
       - id: d
         text: Direct observation
         isCorrect: false
         rationale: >-
-          Direct observation requires watching the behaviour as it occurs.
+          Direct observation requires watching the behavior as it occurs.
     explanation: >-
       Product measures are efficient and are the right choice whenever the outcome
-      uniquely reflects the behaviour. They fail when someone else could have produced the
+      uniquely reflects the behavior. They fail when someone else could have produced the
       product, which is worth checking before relying on them.
     cognitiveLevel: recall
     difficulty: 1
@@ -315,7 +315,7 @@ questions:
     type: single-best-answer
     stem: >-
       What is the main limitation of relying on a caregiver interview as the measure of
-      how often a behaviour occurs?
+      how often a behavior occurs?
     options:
       - id: a
         text: It takes longer than direct observation
@@ -369,7 +369,7 @@ questions:
         text: The concern is how a learner completes a task, not whether it gets completed
         isCorrect: true
         rationale: >-
-          A product cannot show the process; only observation of the behaviour itself can.
+          A product cannot show the process; only observation of the behavior itself can.
       - id: b
         text: The concern is how many problems a learner answers correctly
         isCorrect: false
@@ -486,7 +486,7 @@ questions:
     taskRef: { credential: BCaBA, code: C.4 }
     type: single-best-answer
     stem: >-
-      Event recording is a poor fit for which behaviour?
+      Event recording is a poor fit for which behavior?
     options:
       - id: a
         text: Raising a hand to answer a question
@@ -509,7 +509,7 @@ questions:
         rationale: >-
           Without discrete, countable instances there is nothing well defined to tally.
     explanation: >-
-      Event recording needs discrete instances. Continuous or high-rate behaviour is where
+      Event recording needs discrete instances. Continuous or high-rate behavior is where
       duration or a sampling system earns its place, and forcing a count produces numbers
       nobody can defend.
     cognitiveLevel: analysis
@@ -526,11 +526,11 @@ questions:
     taskRef: { credential: BCaBA, code: C.5 }
     type: single-best-answer
     stem: >-
-      Partial-interval recording scores an interval as an occurrence if the behaviour
+      Partial-interval recording scores an interval as an occurrence if the behavior
       happens at any point within it. As a result, it tends to:
     options:
       - id: a
-        text: Underestimate the proportion of time the behaviour occurs
+        text: Underestimate the proportion of time the behavior occurs
         isCorrect: false
         rationale: >-
           Underestimation is characteristic of whole-interval recording, which requires the
@@ -545,17 +545,17 @@ questions:
         text: Give an exact count of occurrences
         isCorrect: false
         rationale: >-
-          Interval systems record whether behaviour occurred, not how many times.
+          Interval systems record whether behavior occurred, not how many times.
       - id: d
-        text: Overestimate the proportion of time the behaviour occurs
+        text: Overestimate the proportion of time the behavior occurs
         isCorrect: true
         rationale: >-
           A single brief instance marks the whole interval, so the summary exceeds the true
           occurrence.
     explanation: >-
       The bias is systematic, not random, which means it must be stated whenever the data
-      is reported. It also means a change of system mid-programme can look like a
-      behaviour change when nothing has changed.
+      are reported. It also means a change of system mid-program can look like a
+      behavior change when nothing has changed.
     cognitiveLevel: recall
     difficulty: 2
     termRefs:
@@ -576,13 +576,13 @@ questions:
     taskRef: { credential: BCaBA, code: C.5 }
     type: single-best-answer
     stem: >-
-      Which behaviour and system are best matched?
+      Which behavior and system are best matched?
     options:
       - id: a
         text: Brief hand-flapping, measured by whole-interval recording
         isCorrect: false
         rationale: >-
-          Brief behaviour rarely fills an interval, so it would almost always be scored as
+          Brief behavior rarely fills an interval, so it would almost always be scored as
           absent.
       - id: b
         text: Sustained engagement, measured by partial-interval recording
@@ -594,18 +594,18 @@ questions:
         text: Brief hand-flapping, measured by duration recording across the session
         isCorrect: false
         rationale: >-
-          Duration is workable but demanding for very brief high-rate behaviour, and a
+          Duration is workable but demanding for very brief high-rate behavior, and a
           sampling system is usually the practical choice.
       - id: d
         text: Sustained engagement with a task, measured by whole-interval recording
         isCorrect: true
         rationale: >-
-          Whole-interval recording rewards behaviour that continues throughout, which suits a
+          Whole-interval recording rewards behavior that continues throughout, which suits a
           target defined by sustaining it.
     explanation: >-
       Choosing a system is choosing a bias you can live with. Whole interval undercounts,
-      so it suits behaviour you want more of; partial interval overcounts, so it suits
-      behaviour you want less of and would rather not miss.
+      so it suits behavior you want more of; partial interval overcounts, so it suits
+      behavior you want less of and would rather not miss.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs:
@@ -653,7 +653,7 @@ questions:
           compatible with teaching.
     explanation: >-
       Measurement that cannot be collected is worse than a coarser system that can,
-      because missing data quietly becomes invented data. Momentary time sampling is the
+      because missing data quietly become invented data. Momentary time sampling is the
       usual answer when one person has to do two jobs.
     cognitiveLevel: application
     difficulty: 2
@@ -696,7 +696,7 @@ questions:
           This reports the number of agreements as though it were a percentage.
     explanation: >-
       Interval-by-interval agreement is the simplest form and also the most forgiving: it
-      counts agreements on non-occurrence, which inflates the figure when behaviour is
+      counts agreements on non-occurrence, which inflates the figure when behavior is
       rare. Knowing that is part of reading the number.
     cognitiveLevel: application
     difficulty: 2
@@ -727,10 +727,10 @@ questions:
         rationale: >-
           The new observer was trained, which is what makes the discrepancy informative.
       - id: c
-        text: The behaviour has changed
+        text: The behavior has changed
         isCorrect: false
         rationale: >-
-          All three scored the same sessions, so the behaviour is held constant.
+          All three scored the same sessions, so the behavior is held constant.
       - id: d
         text: The definition is too specific
         isCorrect: false
@@ -755,7 +755,7 @@ questions:
     taskRef: { credential: BCaBA, code: C.6 }
     type: single-best-answer
     stem: >-
-      A learner's behaviour changes noticeably whenever an unfamiliar observer is in the
+      A learner's behavior changes noticeably whenever an unfamiliar observer is in the
       room. This is:
     options:
       - id: a
@@ -767,13 +767,13 @@ questions:
         text: Reactivity
         isCorrect: true
         rationale: >-
-          Reactivity is a change in behaviour produced by the presence of observation itself.
+          Reactivity is a change in behavior produced by the presence of observation itself.
       - id: c
         text: Observer drift
         isCorrect: false
         rationale: >-
           Drift is a change in how observers apply a definition, not a change in the learner's
-          behaviour.
+          behavior.
       - id: d
         text: Poor interobserver agreement
         isCorrect: false
@@ -781,7 +781,7 @@ questions:
           Nothing here says two observers disagreed.
     explanation: >-
       Reactivity is usually managed by letting the observer become a familiar part of the
-      setting before data counts. It is also a reason to be careful about drawing
+      setting before data count. It is also a reason to be careful about drawing
       conclusions from the first session of anything.
     cognitiveLevel: recall
     difficulty: 2
@@ -797,7 +797,7 @@ questions:
     taskRef: { credential: BCaBA, code: C.7 }
     type: single-best-answer
     stem: >-
-      A behaviour occurs in long episodes, and the team needs to know whether the episodes
+      A behavior occurs in long episodes, and the team needs to know whether the episodes
       are getting shorter. The most appropriate system is:
     options:
       - id: a
@@ -815,7 +815,7 @@ questions:
         text: Permanent product recording
         isCorrect: false
         rationale: >-
-          The behaviour leaves no product to measure.
+          The behavior leaves no product to measure.
       - id: d
         text: Duration recording per episode
         isCorrect: true
@@ -852,7 +852,7 @@ questions:
         text: Stop measuring until staffing improves
         isCorrect: false
         rationale: >-
-          A programme running without any data is the situation measurement exists to prevent.
+          A program running without any data is the situation measurement exists to prevent.
       - id: c
         text: Choose a workable system, state its limitations, and record what it can support
         isCorrect: true
@@ -863,7 +863,7 @@ questions:
         text: Keep the ideal plan and accept that data will be missing on most days
         isCorrect: false
         rationale: >-
-          Systematically missing data is not a neutral gap; it biases whatever is left.
+          Systematically missing data are not a neutral gap; they bias whatever is left.
     explanation: >-
       The logistics of the setting are part of choosing a measurement system, not an
       obstacle to it. What is not negotiable is that the record says what was actually
@@ -883,32 +883,32 @@ questions:
     taskRef: { credential: BCaBA, code: C.7 }
     type: single-best-answer
     stem: >-
-      Sessions are always recorded during the same afternoon activity, but the behaviour
-      of concern occurs mostly in the morning. The resulting data is:
+      Sessions are always recorded during the same afternoon activity, but the behavior
+      of concern occurs mostly in the morning. The resulting data are:
     options:
       - id: a
-        text: Sufficient, because some data is better than none
+        text: Sufficient, because some data are better than none
         isCorrect: false
         rationale: >-
-          Data that systematically misses the behaviour can support confident conclusions that
+          Data that systematically misses the behavior can support confident conclusions that
           are wrong, which is worse than none.
       - id: b
         text: Not representative, whatever its reliability
         isCorrect: true
         rationale: >-
-          Sampling only the period where the behaviour is least likely cannot describe the
-          behaviour as a whole.
+          Sampling only the period where the behavior is least likely cannot describe the
+          behavior as a whole.
       - id: c
         text: Representative, because the same activity is sampled each time
         isCorrect: false
         rationale: >-
-          Consistency in sampling is not the same as representativeness of the behaviour.
+          Consistency in sampling is not the same as representativeness of the behavior.
       - id: d
         text: Representative, provided agreement is high
         isCorrect: false
         rationale: >-
           Agreement concerns whether two observers scored the same thing, not whether the
-          sample reflects the behaviour.
+          sample reflects the behavior.
     explanation: >-
       When and where you measure is a design decision with the same weight as what you
       measure. A sampling schedule chosen for staff convenience will usually describe
@@ -928,7 +928,7 @@ questions:
     type: single-best-answer
     stem: >-
       Which display is most appropriate for showing how a learner's responding changed
-      across successive sessions of a programme?
+      across successive sessions of a program?
     options:
       - id: a
         text: A bar graph of the total for each phase
@@ -1034,9 +1034,9 @@ questions:
           Observer identity is usually noted in a legend or in the record, not by a phase
           line.
     explanation: >-
-      Phase lines are drawn between sessions rather than through a data point, and data is
-      not connected across them. Both conventions exist so the eye does not read a change
-      that the data does not contain.
+      Phase lines are drawn between sessions rather than through a data point, and data
+      are not connected across them. Both conventions exist so the eye does not read a
+      change that the data do not contain.
     cognitiveLevel: recall
     difficulty: 2
     termRefs: [phase-change-line, line-graph, visual-analysis, baseline]
@@ -1051,11 +1051,11 @@ questions:
     taskRef: { credential: BCaBA, code: C.9 }
     type: single-best-answer
     stem: >-
-      Baseline data shows a clear upward trend in the target behaviour. Introducing an
+      Baseline data show a clear upward trend in the target behavior. Introducing an
       intervention now would make it difficult to:
     options:
       - id: a
-        text: Measure the behaviour accurately
+        text: Measure the behavior accurately
         isCorrect: false
         rationale: >-
           Trend in the data has no bearing on measurement accuracy.
@@ -1065,7 +1065,7 @@ questions:
         rationale: >-
           Agreement is unaffected by the direction of the data path.
       - id: c
-        text: Identify the function of the behaviour
+        text: Identify the function of the behavior
         isCorrect: false
         rationale: >-
           Function is established by assessment, not by baseline trend.
@@ -1073,7 +1073,7 @@ questions:
         text: Attribute any further increase to the intervention
         isCorrect: true
         rationale: >-
-          Behaviour already rising would likely continue rising, so a further increase is
+          Behavior already rising would likely continue rising, so a further increase is
           ambiguous.
     explanation: >-
       A baseline trending in the direction of the goal is the classic reason to wait. The
@@ -1106,7 +1106,7 @@ questions:
         text: The intervention works, because some sessions are near zero
         isCorrect: false
         rationale: >-
-          Selecting the favourable sessions is not analysis; the range is the finding.
+          Selecting the favorable sessions is not analysis; the range is the finding.
       - id: c
         text: The intervention has failed and should be withdrawn
         isCorrect: false

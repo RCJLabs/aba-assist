@@ -50,7 +50,7 @@
 		<p class="who" role="note">{checklist.whoDecides}</p>
 
 		<p class="progress" role="status">
-			{checkedCount} of {checklist.items.length} ticked. This is scratch paper — nothing here is
+			{checkedCount} of {checklist.items.length} checked. This is scratch paper — nothing here is
 			saved, on purpose.
 		</p>
 

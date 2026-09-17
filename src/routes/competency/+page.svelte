@@ -59,9 +59,9 @@
 	</p>
 
 	<p class="caution" role="note">
-		<strong>This is your own judgement, not an assessment.</strong> Ticking every box here certifies
+		<strong>This is your own judgment, not an assessment.</strong> Checking every box here certifies
 		nothing. The assessment is a qualified assessor watching you do these things and signing the
-		official form — this page is only somewhere to keep track of what you have practised.
+		official form — this page is only somewhere to keep track of what you have practiced.
 	</p>
 
 	{#each a.sections as section (section.id)}
@@ -129,7 +129,7 @@
 										<p class="ours">
 											Ours, not the assessor's. We have no access to a scoring rubric and this
 											is not one — it is what we think doing the task well looks like, written
-											so there is something specific to practise. Your assessor works from the
+											so there is something specific to practice. Your assessor works from the
 											packet.
 										</p>
 									</div>

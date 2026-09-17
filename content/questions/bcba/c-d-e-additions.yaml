@@ -14,25 +14,25 @@ questions:
         text: A direct measure
         isCorrect: false
         rationale: >-
-          Direct measurement records the behaviour as it occurs, which is exactly what is not
+          Direct measurement records the behavior as it occurs, which is exactly what is not
           possible here.
       - id: b
         text: An indirect measure
         isCorrect: false
         rationale: >-
-          Indirect measurement asks somebody about the behaviour — an interview or a rating
+          Indirect measurement asks somebody about the behavior — an interview or a rating
           scale — rather than counting anything it produced.
       - id: c
         text: A discontinuous measure
         isCorrect: false
         rationale: >-
-          Discontinuous procedures sample the behaviour while it is happening; they still
+          Discontinuous procedures sample the behavior while it is happening; they still
           require observing.
       - id: d
         text: A product measure
         isCorrect: true
         rationale: >-
-          The behaviour is measured by the lasting result it left behind, after the fact,
+          The behavior is measured by the lasting result it left behind, after the fact,
           rather than as it happens.
     explanation: >-
       Measures divide into direct observation, permanent product, and indirect report.
@@ -69,7 +69,7 @@ questions:
     type: single-best-answer
     stem: >-
       Observation sessions vary in length from ten to forty minutes. To compare how often
-      a behaviour occurs across sessions, the appropriate measure is:
+      a behavior occurs across sessions, the appropriate measure is:
     options:
       - id: a
         text: Percentage of intervals
@@ -82,7 +82,7 @@ questions:
         isCorrect: false
         rationale: >-
           Trials to criterion measures how much teaching a skill took, not how often a
-          behaviour occurs.
+          behavior occurs.
       - id: c
         text: Rate
         isCorrect: true
@@ -93,7 +93,7 @@ questions:
         text: Count
         isCorrect: false
         rationale: >-
-          A raw count confounds how often the behaviour happened with how long you watched.
+          A raw count confounds how often the behavior happened with how long you watched.
     explanation: >-
       Choosing a measure starts from the question. Where sessions vary in length, count
       alone is uninterpretable and rate is the minimum needed. Reporting a count without
@@ -132,7 +132,7 @@ questions:
         text: Duration
         isCorrect: false
         rationale: >-
-          Duration is how long the behaviour lasts once started, which does not answer the
+          Duration is how long the behavior lasts once started, which does not answer the
           question about starting.
       - id: d
         text: Interresponse time
@@ -159,7 +159,7 @@ questions:
     taskRef: { credential: BCBA, code: C.5 }
     type: single-best-answer
     stem: >-
-      A behaviour occurs briefly once in most ten-second intervals. Partial interval
+      A behavior occurs briefly once in most ten-second intervals. Partial interval
       recording will:
     options:
       - id: a
@@ -175,7 +175,7 @@ questions:
           Momentary sampling scores only at the moment the interval ends and is far less
           likely to catch a brief occurrence.
       - id: c
-        text: Overestimate the proportion of time the behaviour occupied
+        text: Overestimate the proportion of time the behavior occupied
         isCorrect: true
         rationale: >-
           Scoring a whole interval for a single brief occurrence inflates the estimate of time
@@ -188,7 +188,7 @@ questions:
     explanation: >-
       Discontinuous procedures trade accuracy for practicality, and each is biased in a
       known direction: partial interval up, whole interval down, momentary sampling
-      roughly unbiased for time on average but noisy for brief behaviour. Knowing the
+      roughly unbiased for time on average but noisy for brief behavior. Knowing the
       direction is what lets you read somebody else's data honestly.
     cognitiveLevel: analysis
     difficulty: 3
@@ -220,10 +220,10 @@ questions:
           That abandons direct measurement altogether, which is a larger loss than simplifying
           it.
       - id: b
-        text: Accept the missing data and analyse what was collected
+        text: Accept the missing data and analyze what was collected
         isCorrect: false
         rationale: >-
-          Data missing during busy periods are missing precisely when the behaviour is most
+          Data missing during busy periods are missing precisely when the behavior is most
           likely, so the remaining data are biased.
       - id: c
         text: Simplify the measure so it can be run accurately in the real setting
@@ -257,7 +257,7 @@ questions:
     taskRef: { credential: BCBA, code: C.9 }
     type: single-best-answer
     stem: >-
-      A behaviour occurs in long episodes of varying length, a few times a day, and the
+      A behavior occurs in long episodes of varying length, a few times a day, and the
       referral question is how much of the day it occupies. The best measurement system
       is:
     options:
@@ -271,7 +271,7 @@ questions:
         text: Duration
         isCorrect: true
         rationale: >-
-          Total or mean duration directly answers how much time the behaviour occupies, which
+          Total or mean duration directly answers how much time the behavior occupies, which
           is the question asked.
       - id: c
         text: Frequency count
@@ -282,7 +282,7 @@ questions:
         text: Trials to criterion
         isCorrect: false
         rationale: >-
-          That measures acquisition of a skill, not the extent of an ongoing behaviour.
+          That measures acquisition of a skill, not the extent of an ongoing behavior.
     explanation: >-
       Selecting a measure means matching three things: the dimension that matters, the
       question being asked, and what the setting can support. Where episodes are long and
@@ -313,7 +313,7 @@ questions:
         text: A scatterplot of time of day
         isCorrect: false
         rationale: >-
-          A scatterplot shows when a behaviour tends to occur, not its rate as a slope.
+          A scatterplot shows when a behavior tends to occur, not its rate as a slope.
       - id: c
         text: A cumulative record
         isCorrect: true
@@ -330,7 +330,7 @@ questions:
       Graph type is chosen for what it makes visible. Cumulative records turn rate into
       slope, standard line graphs show level and trend over sessions, bar graphs compare
       conditions, and scatterplots expose temporal patterns. All of them need correctly
-      labelled axes and marked condition changes.
+      labeled axes and marked condition changes.
     cognitiveLevel: recall
     difficulty: 3
     termRefs: [cumulative-record, line-graph, bar-graph, scatterplot, phase-change-line]
@@ -458,7 +458,7 @@ questions:
         text: Requires fewer statistical assumptions and so is more rigorous in general
         isCorrect: false
         rationale: >-
-          Rigour comes from experimental control, not from avoiding statistics, and neither
+          Rigor comes from experimental control, not from avoiding statistics, and neither
           design is more rigorous in general.
       - id: d
         text: Establishes external validity more readily
@@ -469,7 +469,7 @@ questions:
     explanation: >-
       Group designs answer questions about average effects across people and can hide the
       individual for whom nothing worked. Single-case designs answer whether this
-      intervention changed this behaviour for this person, which is usually the applied
+      intervention changed this behavior for this person, which is usually the applied
       question, at the cost of needing replication for reach.
     cognitiveLevel: analysis
     difficulty: 3
@@ -517,7 +517,7 @@ questions:
           the claim that the intervention produced it.
     explanation: >-
       Reading a single-case graph means asking whether the data rule out the alternatives.
-      A baseline trending towards the expected effect leaves maturation and ordinary
+      A baseline trending toward the expected effect leaves maturation and ordinary
       improvement as live explanations, which is why stability, not merely length, is the
       criterion for moving to the next phase.
     cognitiveLevel: analysis
@@ -536,7 +536,7 @@ questions:
     taskRef: { credential: BCBA, code: E.1 }
     type: single-best-answer
     stem: >-
-      An analyst is asked to continue a programme that a family likes but that the data
+      An analyst is asked to continue a program that a family likes but that the data
       show is not working. Which core ethical principle most directly bears on the
       decision?
     options:
@@ -557,7 +557,7 @@ questions:
         isCorrect: true
         rationale: >-
           The obligation to work for the benefit of the client is what makes continuing an
-          ineffective programme a problem, whatever its popularity.
+          ineffective program a problem, whatever its popularity.
       - id: d
         text: Behaving with integrity
         isCorrect: false
@@ -587,11 +587,11 @@ questions:
       violation for a certificant?
     options:
       - id: a
-        text: Automatic loss of a state licence
+        text: Automatic loss of a state license
         isCorrect: false
         rationale: >-
           Licensure is separate from certification; a board action may prompt review but does
-          not itself remove a licence.
+          not itself remove a license.
       - id: b
         text: Criminal prosecution
         isCorrect: false
@@ -628,7 +628,7 @@ questions:
     taskRef: { credential: BCBA, code: E.4 }
     type: single-best-answer
     stem: >-
-      An analyst needs to send session data to a supervisor while travelling. The most
+      An analyst needs to send session data to a supervisor while traveling. The most
       defensible choice is to:
     options:
       - id: a
@@ -636,14 +636,14 @@ questions:
         isCorrect: false
         rationale: >-
           Familiarity is not a safeguard, and the data would leave the systems the
-          organisation is accountable for.
+          organization is accountable for.
       - id: b
         text: Photograph the data sheet and store it on a personal device until returning
         isCorrect: false
         rationale: >-
-          This creates an unprotected copy on a device outside the organisation's control.
+          This creates an unprotected copy on a device outside the organization's control.
       - id: c
-        text: Use the organisation's approved secure system, even if it is slower
+        text: Use the organization's approved secure system, even if it is slower
         isCorrect: true
         rationale: >-
           Approved systems exist because they meet the legal and contractual requirements the
@@ -653,11 +653,11 @@ questions:
         isCorrect: false
         rationale: >-
           Initials are not de-identification, and the channel remains outside the
-          organisation's safeguards.
+          organization's safeguards.
     explanation: >-
       Confidentiality obligations follow the information rather than the setting, and they
       apply across records, conversations, technology and public places. The practical
-      test is whether the route is one the organisation has approved and can account for.
+      test is whether the route is one the organization has approved and can account for.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [confidentiality, hipaa, session-note]
@@ -698,7 +698,7 @@ questions:
         text: Restate the data more clearly, since the disagreement is factual
         isCorrect: false
         rationale: >-
-          Repeating the same content more loudly is the behaviour being objected to, and
+          Repeating the same content more loudly is the behavior being objected to, and
           rarely changes the outcome.
     explanation: >-
       Interpersonal skill is a named part of the analyst role rather than a soft extra. A
@@ -773,7 +773,7 @@ questions:
         isCorrect: false
         rationale: >-
           Their view is worth having, but it places the burden on the people affected and does
-          not test the judgements.
+          not test the judgments.
       - id: b
         text: Note it and monitor whether the pattern continues
         isCorrect: false
@@ -783,7 +783,7 @@ questions:
         text: Examine the decisions against objective criteria and data, and change the process
         isCorrect: true
         rationale: >-
-          Countering bias means checking the judgements against something external and
+          Countering bias means checking the judgments against something external and
           altering how the decisions are made.
       - id: d
         text: Rely on intuition less and delay all independence decisions
@@ -791,8 +791,8 @@ questions:
         rationale: >-
           Delaying decisions uniformly harms everybody and does not address the pattern.
     explanation: >-
-      Bias is not avoided by intending to be fair. The behaviour-analytic response is the
-      one applied everywhere else: define the judgement operationally, measure it, compare
+      Bias is not avoided by intending to be fair. The behavior-analytic response is the
+      one applied everywhere else: define the judgment operationally, measure it, compare
       it against criteria, and change the arrangement that produced the pattern.
     cognitiveLevel: application
     difficulty: 3

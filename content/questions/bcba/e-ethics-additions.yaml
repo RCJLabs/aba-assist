@@ -13,7 +13,7 @@ questions:
         text: Take the request seriously and plan the pause and return with them
         isCorrect: true
         rationale: >-
-          Respecting the family's judgement about their own capacity, while planning
+          Respecting the family's judgment about their own capacity, while planning
           continuity, is what the principle asks for.
       - id: b
         text: Explain the clinical cost of pausing and ask them to continue
@@ -26,7 +26,7 @@ questions:
         rationale: >-
           Discharge is a much larger step than a pause and abandons continuity.
       - id: d
-        text: Reduce to the minimum the funder will authorise without asking
+        text: Reduce to the minimum the funder will authorize without asking
         isCorrect: false
         rationale: >-
           Deciding for them, even helpfully, is what the principle rules out.
@@ -63,7 +63,7 @@ questions:
     taskRef: { credential: BCBA, code: E.1 }
     type: single-best-answer
     stem: >-
-      An analyst realises a report they submitted contained an error that made outcomes
+      An analyst realizes a report they submitted contained an error that made outcomes
       look better than they were. Acting with integrity requires them to:
     options:
       - id: a
@@ -130,12 +130,12 @@ questions:
         text: Increasing the number of certificants
         isCorrect: false
         rationale: >-
-          The number of certificants is unrelated to whether any of them practise
+          The number of certificants is unrelated to whether any of them practice
           ethically.
     explanation: >-
       Risks run to the client, the profession and the practitioner. The professional-level
       risk is cumulative and slow: each avoidable failure makes the next family more
-      sceptical, and the field is already contested by the people it serves.
+      skeptical, and the field is already contested by the people it serves.
     cognitiveLevel: recall
     difficulty: 2
     termRefs: [ethics-code, social-validity, public-statement]
@@ -151,11 +151,11 @@ questions:
     type: single-best-answer
     stem: >-
       An analyst experienced with young children is asked to take a case involving an
-      adult with a very different presentation. Practising within competence means they
+      adult with a very different presentation. Practicing within competence means they
       should:
     options:
       - id: a
-        text: Accept, since behavioural principles are the same across populations
+        text: Accept, since behavioral principles are the same across populations
         isCorrect: false
         rationale: >-
           Principles generalize; competence with a population and its context does not follow
@@ -215,11 +215,11 @@ questions:
         rationale: >-
           Supervising is valuable and is not itself how competence is maintained.
       - id: d
-        text: Deliberately following developments in the areas one practises in
+        text: Deliberately following developments in the areas one practices in
         isCorrect: true
         rationale: >-
           Competence decays as the field moves, so it is maintained by tracking the areas
-          actually practised.
+          actually practiced.
     explanation: >-
       The requirement is about competence rather than credits. Continuing education is the
       mechanism, and it only serves the standard when it is chosen against what the
@@ -261,10 +261,10 @@ questions:
         isCorrect: false
         rationale: >-
           Clients are frequently identifiable without names, especially within an
-          organisation.
+          organization.
     explanation: >-
       Confidentiality operates on need to know rather than on employment. The everyday
-      failures are conversational and incidental — corridors, shared offices, open screens
+      failures are conversational and incidental — hallways, shared offices, open screens
       — rather than deliberate disclosures.
     cognitiveLevel: application
     difficulty: 2
@@ -282,7 +282,7 @@ questions:
     taskRef: { credential: BCBA, code: E.5 }
     type: single-best-answer
     stem: >-
-      An analyst wants to post an anonymised case success on social media. The safest
+      An analyst wants to post an anonymized case success on social media. The safest
       position is that:
     options:
       - id: a
@@ -297,7 +297,7 @@ questions:
           Public statements about practice are permitted; what is governed is accuracy and
           confidentiality.
       - id: c
-        text: Anonymisation is harder than it looks and consent should be obtained before posting anything case-derived
+        text: Anonymization is harder than it looks and consent should be obtained before posting anything case-derived
         isCorrect: true
         rationale: >-
           Detail sufficient to make a case interesting is often sufficient to identify it
@@ -345,7 +345,7 @@ questions:
           Solicited testimonials from current clients are specifically restricted because of
           the relationship.
       - id: d
-        text: Compare favourably with named local providers
+        text: Compare favorably with named local providers
         isCorrect: false
         rationale: >-
           Disparaging comparisons are not defensible public statements.
@@ -367,7 +367,7 @@ questions:
     taskRef: { credential: BCBA, code: E.6 }
     type: single-best-answer
     stem: >-
-      An analyst is leaving the organisation in six weeks. Their obligation is to:
+      An analyst is leaving the organization in six weeks. Their obligation is to:
     options:
       - id: a
         text: Continue remotely until a replacement is found
@@ -450,7 +450,7 @@ questions:
     taskRef: { credential: BCBA, code: E.7 }
     type: single-best-answer
     stem: >-
-      A family offers to trade a service they provide for behaviour-analytic sessions. The
+      A family offers to trade a service they provide for behavior-analytic sessions. The
       main concern is that:
     options:
       - id: a
@@ -463,7 +463,7 @@ questions:
         text: Bartering is always prohibited
         isCorrect: false
         rationale: >-
-          It is restricted and scrutinised rather than absolutely forbidden.
+          It is restricted and scrutinized rather than absolutely forbidden.
       - id: c
         text: The family cannot afford services otherwise
         isCorrect: false
@@ -476,7 +476,7 @@ questions:
           An administrative matter rather than the ethical one.
     explanation: >-
       Multiple relationships are judged by whether they risk exploitation or impaired
-      judgement. Bartering carries both: the valuation is disputable and the second
+      judgment. Bartering carries both: the valuation is disputable and the second
       relationship persists alongside the clinical one.
     cognitiveLevel: application
     difficulty: 3
@@ -504,7 +504,7 @@ questions:
         text: Proceed without comment, since it is normal locally
         isCorrect: false
         rationale: >-
-          Normality does not remove the risk to judgement.
+          Normality does not remove the risk to judgment.
       - id: c
         text: Ask clients to keep the connection private
         isCorrect: false
@@ -665,10 +665,10 @@ questions:
       Bias most plausibly affects assessment through:
     options:
       - id: a
-        text: Which behaviours are noticed and recorded as problems in the first place
+        text: Which behaviors are noticed and recorded as problems in the first place
         isCorrect: true
         rationale: >-
-          What gets defined as a problem is a judgement, and it is where assumptions enter
+          What gets defined as a problem is a judgment, and it is where assumptions enter
           earliest and least visibly.
       - id: b
         text: The arithmetic of scoring
@@ -676,7 +676,7 @@ questions:
         rationale: >-
           Scoring is mechanical once the data exist.
       - id: c
-        text: The reliability of standardised instruments
+        text: The reliability of standardized instruments
         isCorrect: false
         rationale: >-
           Instrument reliability is a psychometric property rather than a route for the
@@ -689,7 +689,7 @@ questions:
     explanation: >-
       Bias enters upstream of measurement. By the time something is being counted, the
       decision that it was worth counting has already been made, and that decision carries
-      assumptions about what ordinary behaviour looks like.
+      assumptions about what ordinary behavior looks like.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -714,10 +714,10 @@ questions:
         rationale: >-
           Certification does not override a jurisdiction's licensing law.
       - id: b
-        text: Practise while the application is pending
+        text: Practice while the application is pending
         isCorrect: false
         rationale: >-
-          Practising without a required licence is not made acceptable by a pending
+          Practicing without a required license is not made acceptable by a pending
           application.
       - id: c
         text: Follow whichever standard is less restrictive
@@ -729,10 +729,10 @@ questions:
         isCorrect: true
         rationale: >-
           Legal and regulatory requirements apply alongside the code, and certification does
-          not substitute for a licence where one is required.
+          not substitute for a license where one is required.
     explanation: >-
       Compliance obligations sit alongside the ethics code. Where a jurisdiction licenses
-      the practice, the licence is a legal precondition and the certification is separate,
+      the practice, the license is a legal precondition and the certification is separate,
       and the analyst is responsible for knowing which apply.
     cognitiveLevel: application
     difficulty: 2

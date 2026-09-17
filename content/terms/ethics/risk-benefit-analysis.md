@@ -6,7 +6,7 @@ category: ethics
 definition:
   technical: >-
     A documented weighing of the harms a proposed intervention may cause against the
-    harms of leaving the behaviour unaddressed, including the risks of doing nothing. It
+    harms of leaving the behavior unaddressed, including the risks of doing nothing. It
     is required before restrictive procedures and is the record that shows why a less
     restrictive option was judged insufficient rather than simply skipped.
   plain: >-

@@ -26,12 +26,12 @@ questions:
         isCorrect: true
         rationale: >-
           The independent variable is what the team manipulates; the dependent variable is the
-          behaviour they measure.
+          behavior they measure.
       - id: d
         text: The number of independent responses, and the token board
         isCorrect: false
         rationale: >-
-          This reverses them. The behaviour being counted is what depends on the manipulation.
+          This reverses them. The behavior being counted is what depends on the manipulation.
     explanation: >-
       Getting these the right way round is what makes a graph readable: the vertical axis
       carries the dependent variable, and the phase lines mark changes in the independent
@@ -111,7 +111,7 @@ questions:
     taskRef: { credential: BCaBA, code: D.2 }
     type: single-best-answer
     stem: >-
-      A learner's behaviour improves during an intervention, but a new medication was
+      A learner's behavior improves during an intervention, but a new medication was
       started the same week. This most directly threatens:
     options:
       - id: a
@@ -159,14 +159,14 @@ questions:
     type: single-best-answer
     stem: >-
       A procedure worked for four learners in one clinic. What would most increase
-      confidence that it generalises to other settings?
+      confidence that it generalizes to other settings?
     options:
       - id: a
         text: Increasing the number of sessions with the same four learners
         isCorrect: false
         rationale: >-
           More data on the same four strengthens internal validity, not the case for
-          generalising beyond them.
+          generalizing beyond them.
       - id: b
         text: Reporting the effect size for the four learners
         isCorrect: false
@@ -305,7 +305,7 @@ questions:
         rationale: >-
           A population proportion requires a sample large enough to estimate it.
       - id: b
-        text: Did this intervention change this learner's behaviour?
+        text: Did this intervention change this learner's behavior?
         isCorrect: true
         rationale: >-
           Single-case designs are built to detect and demonstrate change within an individual.
@@ -347,7 +347,7 @@ questions:
         text: Reveals trend and variability that two measurements would hide
         isCorrect: true
         rationale: >-
-          Two points cannot show whether behaviour was already improving, or how much it
+          Two points cannot show whether behavior was already improving, or how much it
           bounces from day to day.
       - id: b
         text: Removes the need for a baseline condition
@@ -367,7 +367,7 @@ questions:
           rather than the advantage in question.
     explanation: >-
       A pre-post pair can make a rising baseline look like a treatment effect. Continuous
-      data makes the shape of the behaviour visible, which is what a decision has to be
+      data make the shape of the behavior visible, which is what a decision has to be
       based on.
     cognitiveLevel: analysis
     difficulty: 3
@@ -402,7 +402,7 @@ questions:
           An AB design has no verification, so it cannot demonstrate a functional relation at
           all.
       - id: c
-        text: A multiple baseline across behaviours or settings
+        text: A multiple baseline across behaviors or settings
         isCorrect: true
         rationale: >-
           A multiple baseline demonstrates control by staggering the start of the
@@ -414,7 +414,7 @@ questions:
           A reversal requires removing the intervention, which is the situation being avoided.
     explanation: >-
       Choosing a design is usually a choice about what the situation permits. Irreversible
-      skills, ethical objections to withdrawal, and behaviour that must not return are all
+      skills, ethical objections to withdrawal, and behavior that must not return are all
       reasons a multiple baseline is the practical answer.
     cognitiveLevel: application
     difficulty: 3
@@ -441,12 +441,12 @@ questions:
         isCorrect: true
         rationale: >-
           A changing criterion design raises the performance requirement in steps and looks
-          for behaviour to track each new criterion.
+          for behavior to track each new criterion.
       - id: b
         text: Multiple baseline
         isCorrect: false
         rationale: >-
-          A multiple baseline staggers the introduction of one intervention across behaviours,
+          A multiple baseline staggers the introduction of one intervention across behaviors,
           settings or people.
       - id: c
         text: Multielement
@@ -460,7 +460,7 @@ questions:
           A reversal withdraws and reinstates the intervention, which is not what happens
           here.
     explanation: >-
-      Experimental control is shown when behaviour changes at each step and not between
+      Experimental control is shown when behavior changes at each step and not between
       them, which is why the steps must be large enough to see and why an occasional step
       back down is sometimes built in.
     cognitiveLevel: application
@@ -478,7 +478,7 @@ questions:
     type: single-best-answer
     stem: >-
       Two prompting procedures are alternated in a rapidly changing sequence across
-      sessions, each signalled by a different coloured folder. This arrangement is a:
+      sessions, each signaled by a different colored folder. This arrangement is a:
     options:
       - id: a
         text: Multielement design
@@ -500,9 +500,9 @@ questions:
         text: Multiple baseline design
         isCorrect: false
         rationale: >-
-          No staggered introduction across behaviours, settings or participants is described.
+          No staggered introduction across behaviors, settings or participants is described.
     explanation: >-
-      The coloured folders are not decoration: without a signal for which condition is in
+      The colored folders are not decoration: without a signal for which condition is in
       effect, the two procedures can blur into one, which is the main threat this design
       has to manage.
     cognitiveLevel: application
@@ -529,7 +529,7 @@ questions:
           One baseline and one intervention phase leaves the prediction untested, so any other
           event occurring at the same time remains a live explanation.
       - id: b
-        text: It cannot show whether behaviour changed at all
+        text: It cannot show whether behavior changed at all
         isCorrect: false
         rationale: >-
           It can show change perfectly well; what it cannot show is what caused the change.
@@ -540,10 +540,10 @@ questions:
           An AB design is the least demanding arrangement there is; brevity is why it is
           tempting.
       - id: d
-        text: It can only be used with academic behaviour
+        text: It can only be used with academic behavior
         isCorrect: false
         rationale: >-
-          There is no restriction on the kind of behaviour it can be applied to.
+          There is no restriction on the kind of behavior it can be applied to.
     explanation: >-
       AB is worth understanding precisely because it is what most services actually run.
       It is useful for monitoring and it is not an experiment, and treating it as one is
@@ -588,7 +588,7 @@ questions:
         text: A functional analysis
         isCorrect: false
         rationale: >-
-          A functional analysis tests the maintaining consequences of behaviour, not the parts
+          A functional analysis tests the maintaining consequences of behavior, not the parts
           of a treatment package.
     explanation: >-
       Component analyses matter in service delivery because packages accumulate parts that

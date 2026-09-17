@@ -33,7 +33,7 @@ whatThisLooksLike:
   - Reporting any injury, to a client or to yourself, the same day however minor.
 commonPitfalls:
   - Trying to manage a crisis alone to avoid making a fuss.
-  - Treating a behaviour plan as if it overrode a medical one.
+  - Treating a behavior plan as if it overrode a medical one.
   - Waiting for certainty before making a mandated report.
   - Leaving the incident report until tomorrow, when the detail has gone.
 ifYouAreUnsure: >-

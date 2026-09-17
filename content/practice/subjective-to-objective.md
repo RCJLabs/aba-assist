@@ -8,7 +8,7 @@ ourSummary: >-
   Most weak documentation is not careless, it is compressed. Writing that a session went
   badly is a summary of everything you noticed, and by the next morning it is the only
   thing left. The fix is a habit rather than a vocabulary: before writing a word about
-  behaviour, ask whether a second person watching the same session would have written the
+  behavior, ask whether a second person watching the same session would have written the
   same thing. If they might not, the sentence is carrying your interpretation, and the
   interpretation is the part your supervisor needs to make rather than inherit. Objective
   language is also what makes a record defensible — it is much harder to argue with a
@@ -17,8 +17,8 @@ plainSummary: >-
   Write what you saw and heard, not what you think it meant. A good test: could someone
   else watching the same session have written the same sentence?
 whoDecides: >-
-  Your supervisor decides what a behaviour means and what to do about it. Your job in the
-  note is to describe it accurately enough that they can. Where your organisation has its
+  Your supervisor decides what a behavior means and what to do about it. Your job in the
+  note is to describe it accurately enough that they can. Where your organization has its
   own wording conventions, follow those.
 pairs:
   - id: bad-day
@@ -27,7 +27,7 @@ pairs:
       Left the work area 7 times in a 2-hour session, compared with 2 and 3 times in the
       previous two sessions. Each absence lasted under a minute.
     why: >-
-      Rough is a judgement about the whole session. A count and a comparison say what
+      Rough is a judgment about the whole session. A count and a comparison say what
       changed and let a supervisor see a trend rather than a mood.
   - id: manipulative
     vague: She was being manipulative to get out of work.
@@ -46,7 +46,7 @@ pairs:
       Refused hides both the measure and the response to prompting, which is usually the
       part that matters for the next session.
   - id: aggressive
-    vague: Was aggressive towards staff.
+    vague: Was aggressive toward staff.
     objective: >-
       Hit the table with an open hand 3 times and pushed a chair over. No contact with
       staff, no injuries.
@@ -59,8 +59,8 @@ pairs:
       Cried and lay on the floor for about 6 minutes, timed from the instruction to the
       first response to a prompt.
     why: >-
-      Tantrum is a label for a set of behaviours, and for ages is not a duration. Timing
-      one episode is more useful than characterising a hundred.
+      Tantrum is a label for a set of behaviors, and for ages is not a duration. Timing
+      one episode is more useful than characterizing a hundred.
   - id: good-session
     vague: Great session, he did really well.
     objective: >-
@@ -76,9 +76,9 @@ pairs:
       he selected without hesitation the previous session but declined twice today.
     why: >-
       Tired is an inference about an internal state. What you actually observed is
-      behaviour, and the change in what worked as a reinforcer is the clinically useful bit.
+      behavior, and the change in what worked as a reinforcer is the clinically useful bit.
   - id: attention-seeking
-    vague: Attention-seeking behaviour throughout.
+    vague: Attention-seeking behavior throughout.
     objective: >-
       Called out to the therapist 15 times during independent work. Each instance was
       followed by a look and a brief response from an adult in the room.
@@ -95,12 +95,12 @@ pairs:
       Sensory is a guess at a maintaining variable dressed as an observation. Describing
       when it happened and what was going on is a technician's proper contribution.
   - id: caregiver-uncooperative
-    vague: Mum was uncooperative.
+    vague: Mom was uncooperative.
     objective: >-
-      The caregiver said she had not been able to run the evening programme this week and
+      The caregiver said she had not been able to run the evening program this week and
       asked whether it could be shortened.
     why: >-
-      Uncooperative is a characterisation of a person, and it will read badly to everybody
+      Uncooperative is a characterization of a person, and it will read badly to everybody
       who sees the record later, including that person. What was said is both fairer and
       more useful.
   - id: nonverbal
@@ -111,10 +111,10 @@ pairs:
     why: >-
       Nonverbal describes a person rather than an observation, and it is often inaccurate.
       Naming the modality respects how the person actually communicates.
-  - id: better-behaviour
-    vague: Behaviour was better today.
+  - id: better-behavior
+    vague: Behavior was better today.
     objective: >-
-      2 instances of the target behaviour, against a running average of 6 over the last
+      2 instances of the target behavior, against a running average of 6 over the last
       five sessions.
     why: >-
       Better than what is the question the sentence leaves open. A comparison answers it
@@ -125,12 +125,12 @@ pairs:
       Stayed at the table for both 20-minute blocks and requested a break twice using the
       break card rather than leaving.
     why: >-
-      Effort is not observable. Using the replacement behaviour instead of the old one is,
+      Effort is not observable. Using the replacement behavior instead of the old one is,
       and it is the thing the plan is trying to teach.
   - id: no-problems
     vague: No problems.
     objective: >-
-      No instances of the target behaviour. Ran all four programmes as written.
+      No instances of the target behavior. Ran all four programs as written.
     why: >-
       No problems could mean a good session or a session where nothing was run. Saying
       which protects you.

@@ -27,7 +27,7 @@ steps:
       Tell your supervisor either way, describing what you saw rather than what you
       concluded.
     rationale: >-
-      Consistency across everybody who runs the programme is what the supervisor is
+      Consistency across everybody who runs the program is what the supervisor is
       accountable for, and they cannot fix what they cannot see.
   - text: >-
       Keep running the plan as written yourself.
@@ -71,7 +71,7 @@ attestation:
   noVerbatimSource: true
   aiAssisted: true
   consulted: >-
-    Written from the behavioural-skills-training and treatment-integrity literature and
+    Written from the behavioral-skills-training and treatment-integrity literature and
     the technician ethics code on reporting.
 review:
   status: in-review

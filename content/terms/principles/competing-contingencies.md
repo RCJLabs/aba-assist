@@ -5,14 +5,14 @@ aliases: [competing reinforcement]
 category: principles
 definition:
   technical: >-
-    Reinforcement available for behaviour other than the target, which works against the
+    Reinforcement available for behavior other than the target, which works against the
     intended contingency. In service settings the competing contingency is usually
     mundane — another task due, a colleague waiting, a faster route to the same outcome
     — and identifying it explains performance that neither training nor motivation
     accounts for.
   plain: >-
     Other pay-offs for doing something else. They pull against what the plan wants.
-  gloss: Reinforcement for other behaviour that works against the plan
+  gloss: Reinforcement for other behavior that works against the plan
 examples:
   - text: >-
       A staff member runs a procedure correctly when observed and not otherwise, because

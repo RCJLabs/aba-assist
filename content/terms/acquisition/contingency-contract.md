@@ -1,19 +1,19 @@
 ---
 id: contingency-contract
 term: Contingency Contract
-aliases: [behavioral contract, behaviour contract]
+aliases: [behavioral contract]
 category: acquisition
 definition:
   technical: >-
-    A written agreement stating a target behaviour, the consequence that will follow it,
+    A written agreement stating a target behavior, the consequence that will follow it,
     and who is responsible for what, agreed with the person rather than imposed on them.
     Its effectiveness rests on specificity: if either party can reasonably dispute
-    whether the terms were met, the contract generates conflict rather than behaviour
+    whether the terms were met, the contract generates conflict rather than behavior
     change.
   plain: >-
     A written deal that says what someone will do and what happens when they do it,
     agreed with them.
-  gloss: A written, agreed statement of behaviour and consequence
+  gloss: A written, agreed statement of behavior and consequence
 examples:
   - text: >-
       A student and teacher agree in writing that thirty minutes of reading earns choice

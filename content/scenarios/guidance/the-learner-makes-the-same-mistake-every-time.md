@@ -10,7 +10,7 @@ audience: [RBT, BCaBA, BCBA]
 riskFlags: []
 steps:
   - text: >-
-      Check that you are running the correction procedure the programme specifies, in full,
+      Check that you are running the correction procedure the program specifies, in full,
       every time.
     rationale: >-
       Correction procedures are easy to shorten under time pressure, and a half-run
@@ -47,7 +47,7 @@ whenToEscalate:
   - >-
     Tell your supervisor when the same error persists across sessions.
   - >-
-    Ask your supervisor if the programme does not specify what to do after an error.
+    Ask your supervisor if the program does not specify what to do after an error.
 termRefs:
   [
     error-correction,

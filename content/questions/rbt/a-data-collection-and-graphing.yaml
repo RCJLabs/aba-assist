@@ -512,7 +512,7 @@ questions:
         text: 'Pushes materials away, or says "no" or "stop", within ten seconds of an instruction'
         isCorrect: true
         rationale: >-
-          It names what the behaviour looks like, what counts as an instance, and
+          It names what the behavior looks like, what counts as an instance, and
           when the window opens and closes. Two people can apply it without
           discussing it.
       - id: d
@@ -522,7 +522,7 @@ questions:
           "Signs of" leaves each recorder to decide which signs count, which is
           exactly the disagreement an operational definition exists to remove.
     explanation: >-
-      An operational definition says what the behaviour looks like, not what it means.
+      An operational definition says what the behavior looks like, not what it means.
       The test is whether two independent observers watching the same session would
       produce the same record — which needs an observable topography, a clear onset
       and offset, and no reference to an internal state or a presumed cause.
@@ -556,12 +556,12 @@ questions:
     taskRef: { credential: RBT, code: A.5 }
     type: single-best-answer
     stem: >-
-      A definition of "screaming" reads: "any vocalisation above conversational
+      A definition of "screaming" reads: "any vocalization above conversational
       volume". A technician finds that some sessions produce wildly different duration
       totals depending on who recorded. What is the definition most clearly missing?
     options:
       - id: a
-        text: 'An example from the learner’s history'
+        text: "An example from the learner's history"
         isCorrect: false
         rationale: >-
           An example can help train a recorder, but the disagreement here is
@@ -573,7 +573,7 @@ questions:
           Authorship is a documentation matter. It has no bearing on whether two
           people applying the definition would record the same thing.
       - id: c
-        text: 'A statement of why the behaviour occurs'
+        text: 'A statement of why the behavior occurs'
         isCorrect: false
         rationale: >-
           Function is established through assessment and is not part of a
@@ -621,7 +621,7 @@ questions:
     taskRef: { credential: RBT, code: A.7 }
     type: single-best-answer
     stem: >-
-      Across eight baseline sessions a learner’s independent responses are 3, 2, 4, 3,
+      Across eight baseline sessions a learner's independent responses are 3, 2, 4, 3,
       2, 3, 4, 3. How should a technician describe this baseline to their supervisor?
     options:
       - id: a
@@ -765,7 +765,7 @@ questions:
         text: 'Record the first and last occurrence only'
         isCorrect: false
         rationale: >-
-          This captures neither a count nor a duration. It says when the behaviour
+          This captures neither a count nor a duration. It says when the behavior
           bracketed the session, which answers a question nobody asked.
       - id: c
         text: 'Count each occurrence as it happens for the whole 30 minutes'
@@ -830,7 +830,7 @@ questions:
           Looking leaves nothing behind. Once the moment has passed there is no
           lasting result to count, so it has to be observed as it happens.
       - id: b
-        text: 'Number of maths problems completed on a worksheet'
+        text: 'Number of math problems completed on a worksheet'
         isCorrect: true
         rationale: >-
           The worksheet is the lasting result. It can be counted after the session
@@ -848,9 +848,9 @@ questions:
           Latency is a time between two events and can only be captured while both
           are happening.
     explanation: >-
-      Permanent-product recording measures the lasting result of a behaviour rather
-      than the behaviour itself. It is efficient and easy to check, but it only works
-      where the behaviour reliably leaves something behind and where nothing else
+      Permanent-product recording measures the lasting result of a behavior rather
+      than the behavior itself. It is efficient and easy to check, but it only works
+      where the behavior reliably leaves something behind and where nothing else
       could have produced it.
     cognitiveLevel: application
     difficulty: 2
@@ -902,17 +902,17 @@ questions:
         isCorrect: false
         rationale: >-
           Storage is a documentation matter. It does not change whether the
-          product reflects the learner’s behaviour.
+          product reflects the learner's behavior.
       - id: d
         text: 'A parent helps the learner finish the worksheet after the session'
         isCorrect: true
         rationale: >-
-          The product is then not a record of the learner’s responding. Permanent
-          product only measures the behaviour when nothing else could have
+          The product is then not a record of the learner's responding. Permanent
+          product only measures the behavior when nothing else could have
           produced the same result.
     explanation: >-
       The central assumption of permanent-product recording is that the product could
-      only have been produced by the behaviour being measured. Anything that breaks
+      only have been produced by the behavior being measured. Anything that breaks
       that assumption — help, sharing, a product carried over from another setting —
       makes the number wrong in a way the number itself does not reveal.
     cognitiveLevel: analysis
@@ -977,7 +977,7 @@ questions:
     explanation: >-
       Data entered late are data nobody can act on. The clinical cost is decisions
       made on a stale picture; the accuracy cost is the contextual detail that only
-      exists in somebody’s memory for a few hours. Both are reasons the transfer
+      exists in somebody's memory for a few hours. Both are reasons the transfer
       belongs at the end of the session rather than the end of the week.
     cognitiveLevel: analysis
     difficulty: 2
@@ -1078,7 +1078,7 @@ questions:
       definition has not changed. What is the most likely explanation?
     options:
       - id: a
-        text: 'The experienced technician’s application of the definition has gradually shifted'
+        text: "The experienced technician's application of the definition has gradually shifted"
         isCorrect: true
         rationale: >-
           Observer drift is exactly this: a definition applied slightly more
@@ -1097,11 +1097,11 @@ questions:
           Possible, but the pattern — good agreement that decays over time with
           the same person — is the signature of drift in the experienced recorder.
       - id: d
-        text: 'The learner’s behaviour has changed topography'
+        text: "The learner's behavior has changed topography"
         isCorrect: false
         rationale: >-
           Possible, but it would affect both observers similarly. A gap that opens
-          between two recorders points at the recording rather than the behaviour.
+          between two recorders points at the recording rather than the behavior.
     explanation: >-
       Observer drift is the slow, unnoticed change in how a definition is applied.
       Periodic agreement checks exist to catch it, because the person drifting is by
@@ -1137,7 +1137,7 @@ questions:
     taskRef: { credential: RBT, code: A.2 }
     type: single-best-answer
     stem: >-
-      A program uses 30-second whole-interval recording for on-task behaviour. The
+      A program uses 30-second whole-interval recording for on-task behavior. The
       learner is on task for most of each interval but glances away briefly in nearly
       all of them. How will the data compare with the true amount of on-task time?
     options:
@@ -1145,7 +1145,7 @@ questions:
         text: 'They will be accurate'
         isCorrect: false
         rationale: >-
-          Whole-interval data are systematically low whenever the behaviour is
+          Whole-interval data are systematically low whenever the behavior is
           interrupted, which is the situation described here.
       - id: b
         text: 'They will vary randomly around the true value'
@@ -1157,7 +1157,7 @@ questions:
         text: 'They will underestimate it'
         isCorrect: true
         rationale: >-
-          Whole interval only scores an interval when the behaviour occupied all
+          Whole interval only scores an interval when the behavior occupied all
           of it. A brief glance away costs the whole interval, so the score falls
           well below the true proportion.
       - id: d

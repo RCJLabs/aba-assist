@@ -5,15 +5,15 @@ aliases: [context renewal, ABA renewal]
 category: reduction
 definition:
   technical: >-
-    The return of a behaviour that was reduced under treatment when the context changes
+    The return of a behavior that was reduced under treatment when the context changes
     — most often when the learner moves from the setting where treatment was conducted
-    to the setting where the behaviour was originally reinforced. The treatment did not
+    to the setting where the behavior was originally reinforced. The treatment did not
     fail; its effects were bound to the context in which it was delivered, which is why
     programming across contexts is a design decision rather than an afterthought.
   plain: >-
-    A behaviour coming back when the person moves to a different place, even though
+    A behavior coming back when the person moves to a different place, even though
     treatment worked where it was run.
-  gloss: A reduced behaviour returning when the context changes
+  gloss: A reduced behavior returning when the context changes
 examples:
   - text: >-
       Aggression stays near zero in the clinic for two months and returns in the first
@@ -21,7 +21,7 @@ examples:
     setting: school
 nonExamples:
   - text: >-
-      A behaviour increasing in the same setting immediately after reinforcement is
+      A behavior increasing in the same setting immediately after reinforcement is
       withheld, which is an extinction burst.
     setting: clinic
 contrastWith: [reinstatement, resurgence]

@@ -385,7 +385,7 @@
 		</div>
 	{:else}
 		<p class="done">
-			Nothing left in this selection. Change the filter, untick "hide decided", or export
+			Nothing left in this selection. Change the filter, uncheck "hide decided", or export
 			below.
 		</p>
 	{/if}

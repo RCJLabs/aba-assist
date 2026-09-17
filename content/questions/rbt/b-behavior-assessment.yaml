@@ -507,7 +507,7 @@ questions:
         rationale: >-
           Without replacement means the chosen item does not return, so the
           procedure produces a ranked hierarchy rather than repeated selection of
-          one favourite.
+          one favorite.
       - id: d
         text: 'The session ends and the selection is recorded as the preferred item'
         isCorrect: false
@@ -558,26 +558,26 @@ questions:
       written the way the procedure requires?
     options:
       - id: a
-        text: 'Antecedent — instruction to put the tablet away. Behaviour — pushed it off the table. Consequence — adult retrieved it and stepped away.'
+        text: 'Antecedent — instruction to put the tablet away. Behavior — pushed it off the table. Consequence — adult retrieved it and stepped away.'
         isCorrect: true
         rationale: >-
           Each column describes what an observer could see and hear, with no claim
           about why. That is what makes the record usable for identifying a
           pattern.
       - id: b
-        text: 'Antecedent — frustration building. Behaviour — meltdown. Consequence — calmed down.'
+        text: 'Antecedent — frustration building. Behavior — meltdown. Consequence — calmed down.'
         isCorrect: false
         rationale: >-
           "Building", "meltdown" and "calmed down" are all inferences, and
           different recorders would apply them differently.
       - id: c
-        text: 'Antecedent — none. Behaviour — aggression. Consequence — none.'
+        text: 'Antecedent — none. Behavior — aggression. Consequence — none.'
         isCorrect: false
         rationale: >-
           Recording nothing in two of three columns loses the information the
           procedure exists to capture.
       - id: d
-        text: 'Antecedent — wanted attention. Behaviour — acting out. Consequence — got what he wanted.'
+        text: 'Antecedent — wanted attention. Behavior — acting out. Consequence — got what he wanted.'
         isCorrect: false
         rationale: >-
           Every column here is an interpretation rather than an observation, and
@@ -585,7 +585,7 @@ questions:
     explanation: >-
       ABC recording is a descriptive assessment: it records what was observed before,
       during and after, in terms somebody else could verify. Interpreting the pattern
-      is the analyst’s job, and interpretation written into the columns makes that job
+      is the analyst's job, and interpretation written into the columns makes that job
       harder rather than easier.
     cognitiveLevel: application
     difficulty: 2

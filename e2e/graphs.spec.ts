@@ -59,7 +59,7 @@ test('the data path is broken at every phase change', async ({ page }) => {
 });
 
 test('a multiple baseline is drawn as staggered tiers, not one frame', async ({ page }) => {
-	await page.goto('/graphs/a-multiple-baseline-across-behaviours');
+	await page.goto('/graphs/a-multiple-baseline-across-behaviors');
 
 	const frames = page.locator('svg.frame');
 	await expect(frames).toHaveCount(3);
@@ -109,14 +109,14 @@ test('search finds a graph by what it teaches', async ({ page }) => {
 	await page.getByLabel('Search terms').fill('multiple baseline');
 	// The index loads on first use, so the handover only happens once something is typed.
 	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
-	const hit = page.locator('.results a', { hasText: 'A multiple baseline across behaviours' });
+	const hit = page.locator('.results a', { hasText: 'A multiple baseline across behaviors' });
 	await expect(hit).toBeVisible();
 	await hit.click();
 	await expect(page.getByRole('heading', { level: 1 })).toContainText('multiple baseline');
 });
 
 test('the graphs have no accessibility violations with the table open', async ({ page }) => {
-	await page.goto('/graphs/a-multiple-baseline-across-behaviours');
+	await page.goto('/graphs/a-multiple-baseline-across-behaviors');
 	await page.getByText('The numbers behind this graph').click();
 	await expect(page.locator('table').first()).toBeVisible();
 	await expectNoA11yViolations(page);

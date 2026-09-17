@@ -9,13 +9,13 @@ questions:
       Increasing the magnitude of a reinforcer is most likely to help when:
     options:
       - id: a
-        text: The behaviour is maintained automatically
+        text: The behavior is maintained automatically
         isCorrect: false
         rationale: >-
           A socially delivered reinforcer competes poorly with automatic reinforcement
           regardless of size.
       - id: b
-        text: The behaviour competes with another source of reinforcement
+        text: The behavior competes with another source of reinforcement
         isCorrect: true
         rationale: >-
           Where allocation is split between two sources, changing relative magnitude shifts
@@ -33,7 +33,7 @@ questions:
           Continuous delivery means the constraint is elsewhere, not in magnitude.
     explanation: >-
       Reinforcer parameters — rate, immediacy, magnitude and quality — are the dials the
-      matching law describes. Which one to turn depends on what is limiting the behaviour,
+      matching law describes. Which one to turn depends on what is limiting the behavior,
       and magnitude matters most where something else is competing for the same
       responding.
     cognitiveLevel: analysis
@@ -65,7 +65,7 @@ questions:
     taskRef: { credential: BCBA, code: G.2 }
     type: single-best-answer
     stem: >-
-      In a differential reinforcement of other behaviour procedure with a resetting
+      In a differential reinforcement of other behavior procedure with a resetting
       interval, the interval restarts:
     options:
       - id: a
@@ -85,15 +85,15 @@ questions:
         rationale: >-
           Nothing in the procedure ties the interval to a request.
       - id: d
-        text: Each time the target behaviour occurs
+        text: Each time the target behavior occurs
         isCorrect: true
         rationale: >-
-          A resetting arrangement begins the interval again whenever the behaviour happens,
+          A resetting arrangement begins the interval again whenever the behavior happens,
           requiring a full interval free of it.
     explanation: >-
       Resetting and fixed-interval variants of this procedure differ in what the learner
       has to do to contact reinforcement. Resetting is more demanding and can produce long
-      unreinforced stretches, which is the parameter to watch when the behaviour is
+      unreinforced stretches, which is the parameter to watch when the behavior is
       frequent.
     cognitiveLevel: analysis
     difficulty: 3
@@ -115,9 +115,9 @@ questions:
         text: Gradually lengthening the interval between deliveries
         isCorrect: true
         rationale: >-
-          Stretching the schedule is how the procedure is faded towards something sustainable.
+          Stretching the schedule is how the procedure is faded toward something sustainable.
       - id: b
-        text: Making delivery contingent on the target behaviour
+        text: Making delivery contingent on the target behavior
         isCorrect: false
         rationale: >-
           That converts it into a contingent procedure entirely and abandons the arrangement.
@@ -132,7 +132,7 @@ questions:
         rationale: >-
           Changing the reinforcer is not thinning.
     explanation: >-
-      Time-based delivery works by weakening the relation between the behaviour and its
+      Time-based delivery works by weakening the relation between the behavior and its
       consequence, and by reducing motivation. Thinning it means lengthening the interval
       on a plan, and doing so too fast is the usual way the procedure fails.
     cognitiveLevel: application
@@ -204,7 +204,7 @@ questions:
         text: Neither, since it is a consequence procedure
         isCorrect: false
         rationale: >-
-          Everything described happens before the behaviour.
+          Everything described happens before the behavior.
       - id: b
         text: Both a motivating operation and a discriminative stimulus
         isCorrect: true
@@ -256,7 +256,7 @@ questions:
         text: A tact
         isCorrect: false
         rationale: >-
-          A tact is speaker behaviour under control of a nonverbal stimulus.
+          A tact is speaker behavior under control of a nonverbal stimulus.
       - id: b
         text: An echoic
         isCorrect: false
@@ -386,10 +386,10 @@ questions:
       Shaping differs from prompting and fading in that shaping:
     options:
       - id: a
-        text: Applies only to motor behaviour
+        text: Applies only to motor behavior
         isCorrect: false
         rationale: >-
-          Shaping applies across repertoires, including verbal behaviour.
+          Shaping applies across repertoires, including verbal behavior.
       - id: b
         text: Cannot be combined with prompting
         isCorrect: false
@@ -443,7 +443,9 @@ questions:
         rationale: >-
           Administrative acceptance is unrelated to whether the analysis is correct.
       - id: c
-        text: Observing a competent performer or running it yourself to check the steps and their order
+        text: >-
+          Observing a competent performer, or performing the chain, to check the steps
+          and their order
         isCorrect: true
         rationale: >-
           A task analysis written without checking against real performance frequently omits
@@ -454,7 +456,7 @@ questions:
         rationale: >-
           Useful later, and not how the step list is validated.
     explanation: >-
-      The task analysis is the programme in a chaining procedure, so its accuracy
+      The task analysis is the program in a chaining procedure, so its accuracy
       determines everything downstream. Validating it against real performance, and
       setting granularity to the learner, is the step most often skipped.
     cognitiveLevel: application
@@ -637,8 +639,8 @@ questions:
           Satiation is addressed by other means and is not what this tactic targets.
     explanation: >-
       Indiscriminable contingencies are one of the generalization and maintenance tactics:
-      intermittent, unsignalled reinforcement makes the shift out of teaching less
-      detectable, so the behaviour does not stop when the programme does.
+      intermittent, unsignaled reinforcement makes the shift out of teaching less
+      detectable, so the behavior does not stop when the program does.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs: [intermittent-reinforcement, maintenance, schedule-thinning, generalization]
@@ -661,15 +663,15 @@ questions:
         rationale: >-
           Both are negative punishment, since both involve removal.
       - id: b
-        text: Requires the behaviour to be dangerous
+        text: Requires the behavior to be dangerous
         isCorrect: false
         rationale: >-
-          Neither procedure is restricted to dangerous behaviour by definition.
+          Neither procedure is restricted to dangerous behavior by definition.
       - id: c
-        text: Does not reduce behaviour
+        text: Does not reduce behavior
         isCorrect: false
         rationale: >-
-          If it did not reduce behaviour it would not be punishment at all.
+          If it did not reduce behavior it would not be punishment at all.
       - id: d
         text: Removes an earned reinforcer rather than access to the reinforcing environment
         isCorrect: true
@@ -703,7 +705,7 @@ questions:
         rationale: >-
           Punishment does not produce generalization as a side effect.
       - id: b
-        text: Increased rule-governed behaviour
+        text: Increased rule-governed behavior
         isCorrect: false
         rationale: >-
           Not a documented effect of punishment procedures.
@@ -714,14 +716,14 @@ questions:
           The person delivering it can become a conditioned aversive stimulus, which damages
           the working relationship broadly.
       - id: d
-        text: Temporary increase in the punished behaviour
+        text: Temporary increase in the punished behavior
         isCorrect: false
         rationale: >-
           A burst is characteristic of extinction rather than punishment.
     explanation: >-
       Side effects of punishment include emotional responding, aggression, escape and
-      avoidance, and modelling of punitive practice by observers. Avoidance of the person
-      delivering it is the one that reaches every other programme they run.
+      avoidance, and modeling of punitive practice by observers. Avoidance of the person
+      delivering it is the one that reaches every other program they run.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:

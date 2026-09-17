@@ -5,15 +5,15 @@ aliases: [self-monitoring, self-control]
 category: acquisition
 definition:
   technical: >-
-    Procedures in which the person applies behaviour-change tactics to their own
-    behaviour — setting goals, recording their own performance, arranging their own
-    antecedents and consequences. Self-recording alone frequently changes the behaviour
+    Procedures in which the person applies behavior-change tactics to their own
+    behavior — setting goals, recording their own performance, arranging their own
+    antecedents and consequences. Self-recording alone frequently changes the behavior
     being recorded, which makes it a low-cost first step as well as a transfer of
-    control to the person whose behaviour it is.
+    control to the person whose behavior it is.
   plain: >-
-    Teaching people to track their own behaviour and reward themselves for it. They run
+    Teaching people to track their own behavior and reward themselves for it. They run
     it, not staff.
-  gloss: Applying behaviour-change tactics to one's own behaviour
+  gloss: Applying behavior-change tactics to one's own behavior
 examples:
   - text: >-
       A learner marks a card each time a timer sounds and they are working, and
@@ -21,7 +21,7 @@ examples:
     setting: school
 nonExamples:
   - text: >-
-      A staff member recording the learner's on-task behaviour and telling them the
+      A staff member recording the learner's on-task behavior and telling them the
       total afterwards.
     setting: school
 seeAlso: [reactivity, contingency-contract, dignity, assent]

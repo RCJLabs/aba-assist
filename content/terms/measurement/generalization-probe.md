@@ -1,7 +1,7 @@
 ---
 id: generalization-probe
 term: Generalization Probe
-aliases: [generalisation probe]
+aliases: []
 category: measurement
 definition:
   technical: >-

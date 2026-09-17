@@ -116,7 +116,7 @@
 {:else}
 	{#if req}
 		<p class="lede">
-			Each calendar month, at each organisation: at least {req.monthlyPercent}% of the hours
+			Each calendar month, at each organization: at least {req.monthlyPercent}% of the hours
 			you delivered, across at least {req.contactsPerMonth} real-time contacts, of which at least
 			{req.observedContactsPerMonth} includes the supervisor watching you work with a client and
 			at least {req.individualContactsPerMonth} is one-to-one. Groups may be up to {req.groupMax}
@@ -132,10 +132,10 @@
 	{#if tracker.workplaces.length === 0}
 		<section class="setup">
 			<h2>Start with where you work</h2>
-			<p>The requirement is per organisation, so each one is counted separately.</p>
+			<p>The requirement is per organization, so each one is counted separately.</p>
 			<form onsubmit={addWorkplace}>
 				<div class="field">
-					<label for="{uid}-wp">Organisation name</label>
+					<label for="{uid}-wp">Organization name</label>
 					<input
 						id="{uid}-wp"
 						type="text"
@@ -143,7 +143,7 @@
 						placeholder="Riverside Clinic"
 					/>
 				</div>
-				<button type="submit" class="button primary">Add organisation</button>
+				<button type="submit" class="button primary">Add organization</button>
 			</form>
 		</section>
 	{:else}
@@ -167,7 +167,7 @@
 						/>
 					</div>
 					<div class="field">
-						<label for="{uid}-place">Organisation</label>
+						<label for="{uid}-place">Organization</label>
 						<select id="{uid}-place" bind:value={workplaceId}>
 							{#each tracker.workplaces as w (w.id)}
 								<option value={w.id}>{w.label}</option>
@@ -210,7 +210,7 @@
 					id="{uid}-note"
 					bind:value={note}
 					label="What the contact covered"
-					placeholder="Reviewed the data sheet for the escape condition; practised error correction."
+					placeholder="Reviewed the data sheet for the escape condition; practiced error correction."
 				/>
 
 				<button type="submit" class="button primary">Log contact</button>
@@ -220,7 +220,7 @@
 		<section>
 			<h2>Hours you delivered</h2>
 			<p class="hint">
-				The denominator of the percentage. Enter it once a month, per organisation — until you
+				The denominator of the percentage. Enter it once a month, per organization — until you
 				do, this app will say it cannot work the percentage out rather than guess.
 			</p>
 			<form onsubmit={saveHours}>
@@ -230,7 +230,7 @@
 						<input id="{uid}-hmonth" type="month" bind:value={hoursMonth} required />
 					</div>
 					<div class="field">
-						<label for="{uid}-hplace">Organisation</label>
+						<label for="{uid}-hplace">Organization</label>
 						<select id="{uid}-hplace" bind:value={hoursWorkplaceId}>
 							{#each tracker.workplaces as w (w.id)}
 								<option value={w.id}>{w.label}</option>
@@ -255,10 +255,10 @@
 		</section>
 
 		<section>
-			<h2>Add an organisation</h2>
+			<h2>Add an organization</h2>
 			<form onsubmit={addWorkplace} class="inline">
 				<div class="field">
-					<label for="{uid}-wp2">Organisation name</label>
+					<label for="{uid}-wp2">Organization name</label>
 					<input id="{uid}-wp2" type="text" bind:value={workplaceLabel} />
 				</div>
 				<button type="submit" class="button">Add</button>

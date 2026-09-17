@@ -11,18 +11,20 @@ questions:
       doing. What is the most appropriate response?
     options:
       - id: a
-        text: Ask the neighbor to keep it between the two of you
+        text: Ask the neighbor to keep it between the two of them
         isCorrect: false
         rationale: >-
           Asking for secrecy means a disclosure has already been made.
       - id: b
-        text: Say that you cannot discuss whether anyone is a client or anything about services, and change the subject
+        text: >-
+          Say that they cannot discuss whether anyone is a client, or anything about the
+          services provided, and change the subject
         isCorrect: true
         rationale: >-
           Confirming a service relationship is itself a disclosure. A clear, polite
           refusal protects the family and complies with confidentiality standards.
       - id: c
-        text: Confirm you work with the family but say you cannot share details
+        text: Confirm they work with the family but say they cannot share details
         isCorrect: false
         rationale: >-
           Confirming the relationship discloses that the child receives services.
@@ -530,20 +532,20 @@ questions:
     taskRef: { credential: RBT, code: F.2 }
     type: single-best-answer
     stem: >-
-      A technician is asked to run a procedure that appears in another learner’s plan
+      A technician is asked to run a procedure that appears in another learner's plan
       but that they have never been shown. What does the ethics code require?
     options:
       - id: a
         text: 'Ask the caregiver whether they are comfortable with it'
         isCorrect: false
         rationale: >-
-          The family’s comfort does not establish competence, and the decision is
+          The family's comfort does not establish competence, and the decision is
           not theirs to make.
       - id: b
         text: 'Run it, since it is written in a plan'
         isCorrect: false
         rationale: >-
-          A written plan authorises the procedure for that learner; it does not
+          A written plan authorizes the procedure for that learner; it does not
           establish that this technician has been trained to deliver it.
       - id: c
         text: 'Say that they have not been trained on it and ask to be trained before running it'
@@ -557,7 +559,7 @@ questions:
         isCorrect: false
         rationale: >-
           Watching is not the standard. Training normally includes being shown,
-          practising and receiving feedback until performance meets criterion.
+          practicing and receiving feedback until performance meets criterion.
     explanation: >-
       Competence is established by training and demonstrated performance, not by a
       procedure being written down somewhere. Declining until trained is not
@@ -565,7 +567,7 @@ questions:
     cognitiveLevel: application
     difficulty: 2
     termRefs: [scope-of-competence, behavioral-skills-training, supervision, scope-of-practice]
-    ethicsRefs: [competence-before-you-practise, staying-in-your-role]
+    ethicsRefs: [competence-before-you-practice, staying-in-your-role]
     citations:
       - sourceId: bacb-rbt-ethics-code-2
         useType: fact-reference
@@ -612,24 +614,24 @@ questions:
         text: 'Run it and hope accuracy improves with practice'
         isCorrect: false
         rationale: >-
-          Practising a procedure incorrectly builds an inaccurate performance and
+          Practicing a procedure incorrectly builds an inaccurate performance and
           produces data that misdescribe what the learner actually received.
       - id: d
         text: 'Ask for practice with feedback until performance is reliable, and say where they are up to'
         isCorrect: true
         rationale: >-
-          Behavioural skills training — instruction, modelling, rehearsal and
+          Behavioral skills training — instruction, modeling, rehearsal and
           feedback — is the standard, and reporting your own current level is part
           of working under supervision.
     explanation: >-
       Being partly trained is an ordinary state and the answer is to say so.
-      Behavioural skills training exists because being told about a procedure does not
+      Behavioral skills training exists because being told about a procedure does not
       reliably produce competent performance of it, and rehearsal with feedback does.
     cognitiveLevel: application
     difficulty: 3
     termRefs:
       [behavioral-skills-training, scope-of-competence, performance-feedback, supervision]
-    ethicsRefs: [competence-before-you-practise, working-under-supervision]
+    ethicsRefs: [competence-before-you-practice, working-under-supervision]
     citations:
       - sourceId: bacb-rbt-ethics-code-2
         useType: fact-reference
@@ -722,14 +724,14 @@ questions:
     taskRef: { credential: RBT, code: F.4 }
     type: single-best-answer
     stem: >-
-      A technician’s supervision contacts have consisted only of brief phone calls
+      A technician's supervision contacts have consisted only of brief phone calls
       with no observation for three months. What should they do?
     options:
       - id: a
-        text: 'Raise it with the supervisor in writing and, if it continues, with the organisation'
+        text: 'Raise it with the supervisor in writing and, if it continues, with the organization'
         isCorrect: true
         rationale: >-
-          The technician has an obligation to practise under supervision that
+          The technician has an obligation to practice under supervision that
           meets the requirement, and raising a shortfall is part of that rather
           than a complaint about a person.
       - id: b
@@ -740,7 +742,7 @@ questions:
           falsifying a document, which is a far more serious matter than the
           shortfall itself.
       - id: c
-        text: 'Stop practising immediately without telling anybody'
+        text: 'Stop practicing immediately without telling anybody'
         isCorrect: false
         rationale: >-
           Withdrawing without notice leaves learners without a technician and does
@@ -754,7 +756,7 @@ questions:
     explanation: >-
       Both the technician and the supervisor carry obligations here. A shortfall
       raised in writing is a problem being managed; one left unraised becomes the
-      technician’s problem at recertification, when the application asks them
+      technician's problem at recertification, when the application asks them
       directly.
     cognitiveLevel: application
     difficulty: 3
@@ -804,7 +806,7 @@ questions:
           Sharing it does not change that it was accepted, nor the relationship it
           creates with the family.
       - id: c
-        text: 'Accept it if the organisation never finds out'
+        text: 'Accept it if the organization never finds out'
         isCorrect: false
         rationale: >-
           Concealment converts a boundary question into a dishonesty question and
@@ -814,11 +816,11 @@ questions:
         isCorrect: false
         rationale: >-
           Politeness does not resolve it. Gifts of substantial value create an
-          obligation that can affect professional judgement, which is why they are
+          obligation that can affect professional judgment, which is why they are
           limited.
     explanation: >-
       Both codes limit giving and accepting gifts to items of nominal value, because
-      gifts create obligations that sit awkwardly with professional judgement. The
+      gifts create obligations that sit awkwardly with professional judgment. The
       practical answer is a warm, consistent, brief refusal and a note to the
       supervisor, which also protects the technician.
     cognitiveLevel: application
@@ -874,12 +876,12 @@ questions:
         isCorrect: false
         rationale: >-
           Contact time does not transfer the responsibility for the procedure,
-          which remains the supervisor’s.
+          which remains the supervisor's.
       - id: d
         text: 'Ask a colleague which of the two is right'
         isCorrect: false
         rationale: >-
-          A third technician cannot settle a question about a programme neither of
+          A third technician cannot settle a question about a program neither of
           them is responsible for.
     explanation: >-
       Receiving feedback, asking questions and working through a disagreement are
@@ -917,38 +919,38 @@ questions:
     taskRef: { credential: RBT, code: F.10 }
     type: single-best-answer
     stem: >-
-      A caregiver explains that a mealtime routine in the programme conflicts with how
+      A caregiver explains that a mealtime routine in the program conflicts with how
       their family eats. What is the appropriate response from the technician?
     options:
       - id: a
         text: 'Record what the caregiver said and pass it to the supervising analyst promptly'
         isCorrect: true
         rationale: >-
-          The family’s values are part of what the goal and the procedure have to
-          fit. Relaying it is the technician’s part; adapting the programme is the
-          analyst’s.
+          The family's values are part of what the goal and the procedure have to
+          fit. Relaying it is the technician's part; adapting the program is the
+          analyst's.
       - id: b
-        text: 'Change the routine to match the family’s preference'
+        text: "Change the routine to match the family's preference"
         isCorrect: false
         rationale: >-
-          Changing a procedure is a programme change, however reasonable the
+          Changing a procedure is a program change, however reasonable the
           reason.
       - id: c
-        text: 'Ask the family to follow the programme at home and their own routine elsewhere'
+        text: 'Ask the family to follow the program at home and their own routine elsewhere'
         isCorrect: false
         rationale: >-
           Asking a family to set aside their own practice in their own home is not
-          an adaptation, and it is not the technician’s request to make.
+          an adaptation, and it is not the technician's request to make.
       - id: d
-        text: 'Explain that the programme is evidence-based and continue as written'
+        text: 'Explain that the program is evidence-based and continue as written'
         isCorrect: false
         rationale: >-
-          Citing evidence does not answer the objection, and a programme a family
+          Citing evidence does not answer the objection, and a program a family
           will not run at home is not going to work whatever its evidence base.
     explanation: >-
       Cultural responsiveness means the assessment, the goals and the procedures fit
-      the people who have to live with them. A technician’s role is to notice the
-      mismatch and get it to the analyst quickly, with the family’s own words rather
+      the people who have to live with them. A technician's role is to notice the
+      mismatch and get it to the analyst quickly, with the family's own words rather
       than a summary of them.
     cognitiveLevel: application
     difficulty: 3
@@ -991,7 +993,7 @@ questions:
         text: 'Raise it directly with the family as a concern about their commitment'
         isCorrect: false
         rationale: >-
-          That confronts a family with a judgement rather than asking what would
+          That confronts a family with a judgment rather than asking what would
           make participation possible.
       - id: b
         text: 'Examine the assumption and consider what else could explain the pattern'
@@ -1011,7 +1013,7 @@ questions:
         text: 'Reduce the number of goals because the family will not participate'
         isCorrect: false
         rationale: >-
-          Changing goals is a programme decision, and here it would be made on the
+          Changing goals is a program decision, and here it would be made on the
           basis of an untested assumption.
     explanation: >-
       The stance the code describes is directed at oneself: noticing an assumption,

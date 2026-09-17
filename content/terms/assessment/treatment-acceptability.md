@@ -21,7 +21,7 @@ examples:
     setting: home
 nonExamples:
   - text: >-
-      Asking about acceptability in the final report, once the programme has already
+      Asking about acceptability in the final report, once the program has already
       finished.
     setting: any
 seeAlso: [social-validity, contextual-fit, assent, informed-consent]

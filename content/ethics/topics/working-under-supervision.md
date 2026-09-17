@@ -1,7 +1,7 @@
 ---
 id: working-under-supervision
-ourLabel: Practising only while you are properly supervised
-gloss: Supervision is a condition of practising, not an add-on
+ourLabel: Practicing only while you are properly supervised
+gloss: Supervision is a condition of practicing, not an add-on
 appliesTo: [RBT]
 sectionRefs:
   - codeId: rbt-ethics-code-2-0
@@ -11,13 +11,13 @@ sectionRefs:
     section: '3'
     standardNumbers: ['3.01']
 ourSummary: >-
-  A technician may practise only while a qualified supervisor is on record with the
+  A technician may practice only while a qualified supervisor is on record with the
   certifying board and the required supervision is actually happening: at least 5% of the
   hours you spend delivering services each calendar month, across at least two real-time
   contacts, at least one of them individual, with at least one including the supervisor
-  observing you working with a client. That applies separately at every organisation
+  observing you working with a client. That applies separately at every organization
   where you work. The responsibility is shared: your supervisor has obligations, and so
-  do you. If the supervision stops happening you are inactive, may not bill or practise,
+  do you. If the supervision stops happening you are inactive, may not bill or practice,
   and the lapse must be self-reported. Substantial non-compliance can end a
   certification, with a six-month bar on reapplying.
 plainSummary: >-
@@ -31,7 +31,7 @@ commonPitfalls:
   - Treating supervision as your supervisor's paperwork problem rather than a condition of your own certification.
   - Counting a scheduling meeting or a training day as supervision; it must be client-focused.
   - Letting a month pass unsupervised and planning to make it up later, which the requirements do not allow.
-  - Working at a second organisation without separate supervision there.
+  - Working at a second organization without separate supervision there.
 ifYouAreUnsure: >-
   Ask your supervisor to walk through the current month's hours with you. If you find a
   gap, report it to the board rather than hoping it goes unnoticed; a self-reported lapse
@@ -42,7 +42,7 @@ relatedTopics:
   [
     what-good-supervision-looks-like,
     telling-the-board-about-yourself,
-    competence-before-you-practise
+    competence-before-you-practice
   ]
 taskRefs:
   - { credential: RBT, code: F.3 }

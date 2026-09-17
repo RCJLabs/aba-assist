@@ -15,13 +15,13 @@ ourSummary: >-
   rather than paperwork: passing on what the team raises, asking for clinical direction,
   and reporting variables that might be affecting progress — each of them promptly. In
   practice there is a same-day list and an everything-else list. Same day: any injury,
-  however minor; new or escalating behaviour; a caregiver request to change the plan; a
+  however minor; new or escalating behavior; a caregiver request to change the plan; a
   crisis or incident; a mistake you made in running a procedure; anything that stopped you
   delivering the plan; and anything that might be affecting the learner from outside, such
   as illness, a medication change, or a change in routine. Everything else goes to your
   regular supervision contact.
 plainSummary: >-
-  Report injuries, new or worse behaviour, plan-change requests, your own errors, and
+  Report injuries, new or worse behavior, plan-change requests, your own errors, and
   outside events like illness on the same day. Save routine matters for supervision.
 whatThisLooksLike:
   - Messaging your supervisor before you leave, not at the next scheduled meeting.

@@ -154,6 +154,92 @@ describe('copyright guard, end to end', () => {
 	});
 });
 
+describe('house style, end to end', () => {
+	it('REJECTS a British spelling in a definition', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					definition: {
+						technical:
+							'A change in the environment that alters how likely a behaviour is to occur again.',
+						plain: 'A short and easy way to say the same thing so a new reader can follow it.',
+						gloss: 'A short summary line'
+					}
+				})
+			)
+		});
+		expect(rules(r)).toContain('editorial/house-style');
+	});
+
+	it('names the American spelling it wants, so the fix needs no lookup', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					definition: {
+						technical:
+							'A written programme the team follows, kept the same across everyone who runs it.',
+						plain: 'A short and easy way to say the same thing so a new reader can follow it.',
+						gloss: 'A short summary line'
+					}
+				})
+			)
+		});
+		const said = r.errors
+			.filter((i) => i.rule === 'editorial/house-style')
+			.map((i) => i.message)
+			.join(' ');
+		expect(said).toContain('"program"');
+	});
+
+	it('LEAVES ALONE words that are spelled the same in both varieties', async () => {
+		/*
+		 * The rule is only worth having if it never fires on correct prose. These four are
+		 * the ones a naive -ise/-lled pattern gets wrong: two verbs that are -ise
+		 * everywhere, one plural noun, and a participle American English also doubles.
+		 */
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					definition: {
+						technical:
+							'The supervisor will advise and revise the plan once the functional analyses are controlled and the steps are programmed.',
+						plain: 'A short and easy way to say the same thing so a new reader can follow it.',
+						gloss: 'A short summary line'
+					}
+				})
+			)
+		});
+		expect(rules(r)).not.toContain('editorial/house-style');
+	});
+
+	it('REJECTS an idiom that names the wrong country, not only a spelling', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(
+				term({
+					definition: {
+						technical:
+							'The first step of the chain is turning on the tap, and the last is drying both hands.',
+						plain: 'A short and easy way to say the same thing so a new reader can follow it.',
+						gloss: 'A short summary line',
+						...{}
+					},
+					examples: [
+						{
+							text: 'A conversation about a learner held in the car park where families can hear it.',
+							setting: 'clinic'
+						}
+					]
+				})
+			)
+		});
+		const said = r.errors
+			.filter((i) => i.rule === 'editorial/house-style')
+			.map((i) => i.message)
+			.join(' ');
+		expect(said).toContain('parking lot');
+	});
+});
+
 describe('safety guard, end to end', () => {
 	const scenarioBase = {
 		id: 'a-scenario',
@@ -250,7 +336,7 @@ describe('safety guard, end to end', () => {
 			'scenarios/a-scenario.md': frontmatter(
 				restraintCard({
 					situation:
-						'Your supervisor shows you how to hold the client from behind and asks you to practise it on a colleague first.'
+						'Your supervisor shows you how to hold the client from behind and asks you to practice it on a colleague first.'
 				})
 			)
 		});
@@ -758,7 +844,7 @@ describe('the search index', () => {
 			stopAndEscalate: true,
 			contacts: ['supervising-bcba', 'emergency-services-911'],
 			immediateSafetyNote:
-				'Make sure everybody is physically safe, and get the help your organisation protocol names.',
+				'Make sure everybody is physically safe, and get the help your organization protocol names.',
 			mandatedReporterNote: null,
 			documentation: ['Write down what happened and when, as soon as it is safe to do so.'],
 			legalNote: 'Your employer and your state decide what has to happen next.',
@@ -833,7 +919,7 @@ describe('practice guides', () => {
 		plainSummary:
 			'A note is a health record and a bill. Write it right after the session, and cover the same points each time.',
 		whoDecides:
-			'Your employer and your funder set the real requirements, and they differ. Use your organisation template and ask your supervisor.',
+			'Your employer and your funder set the real requirements, and they differ. Use your organization template and ask your supervisor.',
 		citations: [{ sourceId: 'open-source-doc', useType: 'fact-reference' }],
 		attestation,
 		review,
@@ -914,7 +1000,7 @@ describe('practice guides', () => {
 			'practice/session-note-elements.md': frontmatter(
 				checklist({
 					whoDecides:
-						'Where a behaviour looks medication-related, note the dosage and say whether it should be titrated before the next session.'
+						'Where a behavior looks medication-related, note the dosage and say whether it should be titrated before the next session.'
 				})
 			)
 		});
@@ -930,7 +1016,7 @@ describe('practice guides', () => {
 					pairs: [
 						{
 							id: 'aggressive',
-							vague: 'Was aggressive towards staff.',
+							vague: 'Was aggressive toward staff.',
 							objective:
 								'Hit the table with an open hand 3 times and pushed a chair over. No contact with staff, and nobody was injured.',
 							why: 'Aggressive covers everything from a raised voice to an injury, so name what happened.'
@@ -947,7 +1033,7 @@ describe('practice guides', () => {
 							vague: 'Had a tantrum for ages.',
 							objective:
 								'Cried and lay on the floor for about 6 minutes, timed from the instruction.',
-							why: 'For ages is not a duration, and tantrum is a label for a set of behaviours.'
+							why: 'For ages is not a duration, and tantrum is a label for a set of behaviors.'
 						},
 						{
 							id: 'refused',
@@ -1167,7 +1253,7 @@ sourceId: open-source-doc
 officialUrl: https://example.org/codes
 totalStandards: 29
 standardsVerified: false
-ourOverview: The conduct rules every behaviour technician agrees to when they certify, and applicants before them.
+ourOverview: The conduct rules every behavior technician agrees to when they certify, and applicants before them.
 corePrinciples:
   - number: 1
     ourLabel: Do good, and avoid doing harm
@@ -1215,7 +1301,7 @@ review: { status: in-review`
 	function topic(overrides: Record<string, unknown> = {}) {
 		return {
 			id: 'gifts',
-			ourLabel: 'Gifts, meals and favours',
+			ourLabel: 'Gifts, meals and favors',
 			gloss: 'Why a small thank-you is a bigger problem than it looks',
 			appliesTo: ['RBT'],
 			sectionRefs: [{ codeId: 'rbt-ethics-code-2-0', section: '1' }],
@@ -1224,7 +1310,7 @@ review: { status: in-review`
 			plainSummary:
 				'Gifts change a working relationship, even small ones. Know the rule before it happens, and tell your supervisor.',
 			whatThisLooksLike: [
-				'Knowing your organisation gift rule before a holiday arrives.',
+				'Knowing your organization gift rule before a holiday arrives.',
 				'Thanking a family warmly and explaining the limits you work under.'
 			],
 			commonPitfalls: ['Accepting just this once, which sets an expectation for next time.'],

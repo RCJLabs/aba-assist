@@ -17,14 +17,14 @@ plainSummary: >-
   session. Cover the same points every time, and use your employer's form.
 whoDecides: >-
   Your employer, your funder and your state set the actual requirements, and they differ.
-  Use your organisation's template and ask your supervisor what your funders expect. This
+  Use your organization's template and ask your supervisor what your funders expect. This
   app cannot know any of that, so treat the list as a prompt rather than as a standard.
 items:
   - id: identifiers
     label: Who, when and where — by code, not by name
     why: >-
       Every note needs to be attributable to a session: the client identifier your
-      organisation uses, the date, the start and end times, the setting, and who was
+      organization uses, the date, the start and end times, the setting, and who was
       present by role. Times matter because they are what a funder checks against the
       claim, and a note whose times do not match the billed units is the single most
       common audit finding.
@@ -39,7 +39,7 @@ items:
   - id: goals
     label: The programs or goals you actually ran
     why: >-
-      Name them the way the behaviour plan names them, so the note lines up with the plan a
+      Name them the way the behavior plan names them, so the note lines up with the plan a
       supervisor or auditor will read beside it. If a planned program did not run, say so
       and say why, rather than leaving a silence that reads as an omission.
     example: Ran the tacting program and the two mand targets; did not run the toileting program because the session was at school.
@@ -62,14 +62,14 @@ items:
     label: Anything unusual, and anything that changed
     why: >-
       A missed medication, a new person in the house, a schedule change, an illness, a
-      first occurrence of a behaviour — these are the things that explain a data point
+      first occurrence of a behavior — these are the things that explain a data point
       three weeks from now. They are also the things nobody remembers by the next morning.
     example: null
   - id: incidents
     label: Injuries and incidents, and the separate report they trigger
     why: >-
       Any injury to the learner, to you or to anybody else goes in the note and also into
-      whatever incident process your organisation runs, the same day. The two are not
+      whatever incident process your organization runs, the same day. The two are not
       interchangeable, and a note that mentions an injury with no matching report is a gap
       somebody will ask about.
     example: null
@@ -80,11 +80,11 @@ items:
       It costs nothing and it is the part of a note colleagues actually read.
     example: Break card was used four times in the second hour; worth checking whether the demand density is too high late in the session.
   - id: timeliness
-    label: Written and submitted inside your organisation's window
+    label: Written and submitted inside your organization's window
     why: >-
       Both codes treat timeliness as an obligation rather than a preference, and memory for
       detail is mostly gone within a day. A late note is also a late claim, which can cost
-      the client their authorisation rather than costing you anything.
+      the client their authorization rather than costing you anything.
     example: null
     usuallyRequired: true
 termRefs:

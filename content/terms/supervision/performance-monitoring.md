@@ -15,7 +15,7 @@ definition:
   gloss: Ongoing measurement of how staff actually perform
 examples:
   - text: >-
-      Each staff member is observed on one programme a fortnight and scored against the
+      Each staff member is observed on one program every two weeks and scored against the
       step list, with the score shown to them.
     setting: clinic
 nonExamples:

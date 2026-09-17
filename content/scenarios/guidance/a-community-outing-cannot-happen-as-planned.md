@@ -13,12 +13,12 @@ steps:
   - text: Check what the plan says about substitutions before you choose anything.
     rationale: >-
       Some plans name alternatives precisely because this happens. Following one that is
-      already written beats inventing one in a car park.
+      already written beats inventing one in a parking lot.
   - text: If the plan allows a substitute activity, pick the one closest to what was planned, and tell the learner what is happening.
     rationale: >-
       A person who has been told what to expect is in a different position from one who has
       simply been taken somewhere else.
-  - text: If nothing in the plan fits, run what you can of the session elsewhere rather than improvising a new programme.
+  - text: If nothing in the plan fits, run what you can of the session elsewhere rather than improvising a new program.
     rationale: >-
       Choosing a new teaching target in the moment is a clinical decision, and it is not the
       technician's to make.
@@ -28,7 +28,7 @@ steps:
       information.
 whatNotToDo:
   - >-
-    Do not invent a replacement programme on the spot.
+    Do not invent a replacement program on the spot.
   - >-
     Do not press on with the activity in conditions the plan did not anticipate, such as a
     far larger crowd.

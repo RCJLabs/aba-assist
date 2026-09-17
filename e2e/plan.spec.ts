@@ -44,7 +44,7 @@ async function drill(page: Page, domain: string, n: number): Promise<void> {
 test('with no history it says so rather than showing an empty score', async ({ page }) => {
 	await openPlan(page);
 	await expect(page.getByRole('heading', { name: 'Nothing to go on yet' })).toBeVisible();
-	await expect(page.getByRole('link', { name: 'Start practising' })).toBeVisible();
+	await expect(page.getByRole('link', { name: 'Start practicing' })).toBeVisible();
 	// No percentage anywhere: there is nothing to compute one from.
 	await expect(page.locator('.bar')).toHaveCount(0);
 });

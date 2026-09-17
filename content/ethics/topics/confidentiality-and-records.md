@@ -15,7 +15,7 @@ sectionRefs:
     standardNumbers: ['3.10', '3.11']
 ourSummary: >-
   Confidentiality covers more than files. It covers the fact that someone is a client at
-  all, what you say in a waiting room or a car park, what is visible on a screen or a
+  all, what you say in a waiting room or a parking lot, what is visible on a screen or a
   clipboard, what you put in a group chat, and what you carry between sites. Both codes
   require you to follow the rules for collecting, using, storing, protecting and
   disclosing client information, and those rules come from several directions at once:
@@ -30,12 +30,12 @@ plainSummary: >-
 whatThisLooksLike:
   - Declining to confirm or deny that a family is a client when someone asks in public.
   - Data sheets transported in a closed folder and handed in the same day.
-  - Using the client code your organisation assigns rather than a name in messages.
+  - Using the client code your organization assigns rather than a name in messages.
   - Checking before sharing anything with a school or another provider, even a helpful detail.
 commonPitfalls:
   - Sharing something positive, as though only bad news is confidential.
   - Photographing data sheets on a personal phone "just as a backup".
-  - Discussing a session in a car park, corridor or lift where families can hear.
+  - Discussing a session in a parking lot, hallway or elevator where families can hear.
   - Assuming a first name or initials is anonymous in a small community.
 ifYouAreUnsure: >-
   Do not disclose, and ask your supervisor. An unnecessary delay is recoverable; a

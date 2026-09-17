@@ -4,7 +4,7 @@ kind: guidance
 title: You are unwell and have a session booked
 situation: >-
   You wake up ill. The session is today. You know the learner does better with a
-  consistent person, you may not be paid if you do not work, and cancelling feels like
+  consistent person, you may not be paid if you do not work, and canceling feels like
   letting the family down.
 setting: any
 audience: [RBT, BCaBA, BCBA]
@@ -35,7 +35,7 @@ steps:
   - text: >-
       Record the missed session the way your employer requires.
     rationale: >-
-      A missing session with no record looks like a programme that quietly stopped.
+      A missing session with no record looks like a program that quietly stopped.
 whatNotToDo:
   - >-
     Do not decide on your own that you are well enough because the family is expecting

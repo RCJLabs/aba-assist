@@ -84,7 +84,7 @@ questions:
           Administration requirements vary by instrument and are not what distinguishes the
           two types.
       - id: c
-        text: Measures behaviour directly rather than by report
+        text: Measures behavior directly rather than by report
         isCorrect: false
         rationale: >-
           Either type can use direct observation or report; the distinction is what the result
@@ -94,12 +94,12 @@ questions:
         isCorrect: true
         rationale: >-
           Criterion-referenced tools say what the learner can and cannot do relative to stated
-          criteria, which is what a teaching programme needs.
+          criteria, which is what a teaching program needs.
     explanation: >-
       The purpose of assessment determines the tool. Norm-referenced instruments answer
       how a learner compares with peers, which suits eligibility questions.
       Criterion-referenced instruments answer what to teach next, which is what a
-      behaviour-analytic programme is built from.
+      behavior-analytic program is built from.
     cognitiveLevel: recall
     difficulty: 2
     termRefs: [skills-assessment, competency-assessment, ecological-assessment]
@@ -115,7 +115,7 @@ questions:
     type: single-best-answer
     stem: >-
       A referral describes concerns that assessment shows are fully accounted for by an
-      untreated medical condition, with no behavioural component the team can address. The
+      untreated medical condition, with no behavioral component the team can address. The
       appropriate conclusion is:
     options:
       - id: a
@@ -128,7 +128,7 @@ questions:
         text: Begin a functional analysis to be certain
         isCorrect: false
         rationale: >-
-          A functional analysis is warranted where a behavioural function is plausible, not to
+          A functional analysis is warranted where a behavioral function is plausible, not to
           rule out what assessment has already accounted for.
       - id: c
         text: Accept the referral because the family has requested it
@@ -137,15 +137,15 @@ questions:
           Demand does not establish indication, and accepting on that basis is not in the
           client's interest.
       - id: d
-        text: Behaviour-analytic services are not indicated for this concern, and the referral should be redirected
+        text: Behavior-analytic services are not indicated for this concern, and the referral should be redirected
         isCorrect: true
         rationale: >-
           Interpreting assessment includes concluding that services are not needed, and
           referring on is the appropriate action.
     explanation: >-
-      Interpreting a referral means deciding whether behaviour-analytic services are
+      Interpreting a referral means deciding whether behavior-analytic services are
       needed at all and, if so, of what kind. Concluding that they are not is a legitimate
-      and sometimes necessary outcome, and it is part of practising within scope.
+      and sometimes necessary outcome, and it is part of practicing within scope.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -197,7 +197,7 @@ questions:
       Schedule selection follows the phase. Dense, usually continuous, reinforcement
       establishes a response; intermittent schedules maintain it and make it resistant to
       extinction. Moving between them deliberately is schedule thinning, and skipping the
-      thinning is how a programme collapses when reinforcement stops.
+      thinning is how a program collapses when reinforcement stops.
     cognitiveLevel: application
     difficulty: 2
     termRefs:
@@ -236,8 +236,8 @@ questions:
         text: Arrange brief restricted access to the item before the session
         isCorrect: true
         rationale: >-
-          Limiting access establishes the item as a reinforcer and makes behaviour that has
-          produced it more likely, which is the value-altering and behaviour-altering effect
+          Limiting access establishes the item as a reinforcer and makes behavior that has
+          produced it more likely, which is the value-altering and behavior-altering effect
           of an establishing operation.
       - id: d
         text: Place the item in view and tell the learner they may ask for it
@@ -298,7 +298,7 @@ questions:
         rationale: >-
           Timing is a procedural detail, not what makes the discrimination conditional.
     explanation: >-
-      A simple discrimination has one stimulus signalling reinforcement. A conditional
+      A simple discrimination has one stimulus signaling reinforcement. A conditional
       discrimination has the meaning of one stimulus depending on another, which is the
       structure behind matching-to-sample, listener responding by feature and class, and
       equivalence-based instruction.
@@ -336,7 +336,7 @@ questions:
         text: Errorless teaching with most-to-least prompting and a prompt delay
         isCorrect: true
         rationale: >-
-          Beginning with enough help to prevent errors and fading systematically minimises the
+          Beginning with enough help to prevent errors and fading systematically minimizes the
           errors that occasion the difficulty.
       - id: c
         text: Least-to-most prompting so the learner has the chance to respond independently
@@ -348,7 +348,7 @@ questions:
         text: No prompts, with error correction after each mistake
         isCorrect: false
         rationale: >-
-          This maximises errors for a learner whose errors are the problem.
+          This maximizes errors for a learner whose errors are the problem.
     explanation: >-
       Prompt hierarchies are chosen for the learner and the skill. Least-to-most preserves
       independence but produces errors; most-to-least and errorless approaches prevent
@@ -378,32 +378,32 @@ questions:
     taskRef: { credential: BCBA, code: G.9 }
     type: single-best-answer
     stem: >-
-      Video modelling is most likely to be effective when the learner:
+      Video modeling is most likely to be effective when the learner:
     options:
       - id: a
         text: Prefers screens to in-person interaction
         isCorrect: false
         rationale: >-
-          Preference may aid attending but is not the precondition that makes modelling work.
+          Preference may aid attending but is not the precondition that makes modeling work.
       - id: b
         text: Has failed discrete-trial teaching for the same skill
         isCorrect: false
         rationale: >-
-          Prior failure of another method does not predict that modelling will succeed.
+          Prior failure of another method does not predict that modeling will succeed.
       - id: c
         text: Can already perform each component in isolation
         isCorrect: false
         rationale: >-
-          That is helpful for some chains but is not what makes modelling viable as a teaching
+          That is helpful for some chains but is not what makes modeling viable as a teaching
           procedure.
       - id: d
         text: Has a generalized imitative repertoire and attends to the video
         isCorrect: true
         rationale: >-
-          Modelling depends on the learner being able to match a model; without an imitative
+          Modeling depends on the learner being able to match a model; without an imitative
           repertoire the video has nothing to work with.
     explanation: >-
-      Modelling procedures rest on imitation as a response class: the model becomes a
+      Modeling procedures rest on imitation as a response class: the model becomes a
       discriminative stimulus for matching it. Video adds consistency and removes the need
       for a live model, but it does not remove the prerequisite.
     cognitiveLevel: application
@@ -420,7 +420,7 @@ questions:
     taskRef: { credential: BCBA, code: G.10 }
     type: single-best-answer
     stem: >-
-      Establishing a behaviour by instruction rather than by shaping is least appropriate
+      Establishing a behavior by instruction rather than by shaping is least appropriate
       when:
     options:
       - id: a
@@ -429,7 +429,7 @@ questions:
         rationale: >-
           A strong listener repertoire makes instruction more viable, not less.
       - id: b
-        text: The behaviour needs to occur immediately for safety reasons
+        text: The behavior needs to occur immediately for safety reasons
         isCorrect: false
         rationale: >-
           Urgency is a reason to use a rule where the learner can follow one, not a reason
@@ -446,9 +446,9 @@ questions:
         rationale: >-
           That is precisely where rules are most useful, since direct shaping is impractical.
     explanation: >-
-      Rules get behaviour started without waiting for consequences to shape it, which
+      Rules get behavior started without waiting for consequences to shape it, which
       suits delayed or dangerous contingencies. Their limit is that rule-governed
-      behaviour can be insensitive to the actual contingencies, and that no description
+      behavior can be insensitive to the actual contingencies, and that no description
       substitutes for shaping a skill defined by its timing.
     cognitiveLevel: analysis
     difficulty: 4
@@ -478,7 +478,7 @@ questions:
         isCorrect: false
         rationale: >-
           Satiation affects the reinforcer's value; it does not explain a stalled shaping
-          programme.
+          program.
       - id: c
         text: Generalization to other responses occurs automatically
         isCorrect: false
@@ -569,7 +569,7 @@ questions:
           Schedule density is independent of whether the arrangement is trial-based or
           free-operant.
       - id: c
-        text: It can only be used for verbal behaviour
+        text: It can only be used for verbal behavior
         isCorrect: false
         rationale: >-
           Free-operant arrangements are used across repertoires.
@@ -623,7 +623,7 @@ questions:
         isCorrect: false
         rationale: >-
           That is an independent group contingency, where each person's outcome depends only
-          on their own behaviour.
+          on their own behavior.
       - id: d
         text: One selected member meets the criterion, for everyone
         isCorrect: false
@@ -678,7 +678,7 @@ questions:
     explanation: >-
       Generalization is programmed rather than hoped for, and the tactics are distinct:
       sufficient exemplars, common stimuli, loose training, indiscriminable contingencies
-      and handing the behaviour to natural contingencies. Naming which one is in use is
+      and handing the behavior to natural contingencies. Naming which one is in use is
       what makes a plan checkable.
     cognitiveLevel: recall
     difficulty: 3
@@ -708,20 +708,20 @@ questions:
         rationale: >-
           Reteaching is a response to lost maintenance, not a way of producing it.
       - id: c
-        text: Shift the behaviour onto reinforcers that occur naturally in the environment
+        text: Shift the behavior onto reinforcers that occur naturally in the environment
         isCorrect: true
         rationale: >-
-          A behaviour maintained by what the environment already provides does not depend on
-          the programme continuing.
+          A behavior maintained by what the environment already provides does not depend on
+          the program continuing.
       - id: d
         text: Keep the programmed reinforcement schedule in place indefinitely
         isCorrect: false
         rationale: >-
-          This maintains the behaviour but never ends, and it fails the moment the programme
+          This maintains the behavior but never ends, and it fails the moment the program
           does.
     explanation: >-
-      Maintenance is programmed by thinning the schedule and by handing the behaviour to
-      naturally occurring reinforcement. The test of a successful programme is that it can
+      Maintenance is programmed by thinning the schedule and by handing the behavior to
+      naturally occurring reinforcement. The test of a successful program is that it can
       be withdrawn, which means the natural contingencies have to be doing the work by the
       end.
     cognitiveLevel: application
@@ -752,7 +752,7 @@ questions:
         isCorrect: true
         rationale: >-
           Time-out means time out from positive reinforcement; if the setting is not
-          reinforcing, removal is escape and will strengthen the behaviour.
+          reinforcing, removal is escape and will strengthen the behavior.
       - id: c
         text: The duration is at least several minutes
         isCorrect: false
@@ -768,7 +768,7 @@ questions:
       Punishment procedures carry the heaviest justification burden: demonstrated need,
       less restrictive alternatives tried, consent, oversight and monitoring for side
       effects. Time-out adds a specific trap — if the setting is aversive, removal
-      reinforces the very behaviour it was meant to reduce.
+      reinforces the very behavior it was meant to reduce.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -863,7 +863,7 @@ questions:
         rationale: >-
           Understanding is not observable, which makes the goal unmeasurable in principle.
     explanation: >-
-      A usable goal states the behaviour, the conditions under which it should occur, and
+      A usable goal states the behavior, the conditions under which it should occur, and
       the criterion for mastery. Anything less leaves the decision to end teaching to
       impression, and impressions differ between the people who wrote the goal and the
       people running it.
@@ -882,35 +882,35 @@ questions:
     taskRef: { credential: BCBA, code: H.3 }
     type: single-best-answer
     stem: >-
-      An assessment shows a behaviour is maintained by escape from demands. The most
+      An assessment shows a behavior is maintained by escape from demands. The most
       defensible intervention among these is to:
     options:
       - id: a
-        text: Remove the demands from the programme
+        text: Remove the demands from the program
         isCorrect: false
         rationale: >-
-          This removes the teaching rather than addressing the behaviour, and the demands
+          This removes the teaching rather than addressing the behavior, and the demands
           presumably serve a purpose.
       - id: b
-        text: Teach and reinforce an appropriate way to request a break, and honour it
+        text: Teach and reinforce an appropriate way to request a break, and honor it
         isCorrect: true
         rationale: >-
-          A function-based alternative that produces the same outcome as the problem behaviour
+          A function-based alternative that produces the same outcome as the problem behavior
           is the socially valid first choice.
       - id: c
-        text: Deliver a preferred item when the behaviour does not occur for five minutes
+        text: Deliver a preferred item when the behavior does not occur for five minutes
         isCorrect: false
         rationale: >-
           This offers a consequence unrelated to the maintaining one, so it competes poorly
           with escape.
       - id: d
-        text: Continue presenting demands until the behaviour stops
+        text: Continue presenting demands until the behavior stops
         isCorrect: false
         rationale: >-
           That is escape extinction alone, without teaching an alternative, and it carries
           predictable side effects.
     explanation: >-
-      Function-based intervention starts from what the behaviour produces and teaches
+      Function-based intervention starts from what the behavior produces and teaches
       something socially acceptable that produces the same thing. Functional communication
       training is the clearest instance, and it is preferred because it gives the learner
       a route rather than only closing one.
@@ -939,7 +939,7 @@ questions:
       plan for is:
     options:
       - id: a
-        text: A temporary increase in the rate or intensity of the behaviour
+        text: A temporary increase in the rate or intensity of the behavior
         isCorrect: true
         rationale: >-
           The extinction burst is predictable, and a plan that does not anticipate it tends to
@@ -1014,7 +1014,7 @@ questions:
         rationale: >-
           Ambition is not the issue; an unmeasurable goal fails whatever the timescale.
     explanation: >-
-      Supervision is a behaviour-change programme with the supervisee as the learner, and
+      Supervision is a behavior-change program with the supervisee as the learner, and
       the same standards apply. Goals come from assessed skills and the requirements of
       the role, and they are stated so that performance against them can be measured
       rather than impressioned.

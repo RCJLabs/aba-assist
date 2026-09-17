@@ -18,9 +18,9 @@ questions:
         text: Scoring the protocol and writing the summary of skill levels
         isCorrect: false
         rationale: >-
-          Interpreting and summarising assessment results sits with the supervisor.
+          Interpreting and summarizing assessment results sits with the supervisor.
       - id: c
-        text: Deciding which skills should become goals from what you observed
+        text: Deciding which skills should become goals from what was observed
         isCorrect: false
         rationale: >-
           Goal selection follows from interpretation, which is not the technician's role.
@@ -32,7 +32,7 @@ questions:
           technician's contribution to an assessment.
     explanation: >-
       Technicians assist with assessment rather than conduct it. The line falls at
-      judgement: you run the items you were assigned and record what happened, and the
+      judgment: you run the items you were assigned and record what happened, and the
       supervisor decides what it means and what follows from it.
     cognitiveLevel: application
     difficulty: 2
@@ -116,10 +116,10 @@ questions:
       not been trained on. The right action is:
     options:
       - id: a
-        text: Administer it and note your uncertainty in the session note
+        text: Administer it and note the uncertainty in the session note
         isCorrect: false
         rationale: >-
-          The note records the problem after the data is already compromised.
+          The note records the problem after the data are already compromised.
       - id: b
         text: Ask a more experienced technician to explain it quickly and then run it
         isCorrect: false
@@ -173,7 +173,7 @@ questions:
           Crisis response is defined in advance by the plan and the employer's policy, and the
           technician follows what those say.
       - id: c
-        text: The technician's own judgement about what is safest in the moment
+        text: The technician's own judgment about what is safest in the moment
         isCorrect: false
         rationale: >-
           Improvising a crisis response is outside the role and is what the written procedure
@@ -258,10 +258,10 @@ questions:
         text: 'The learner had a major meltdown and completely lost control.'
         isCorrect: false
         rationale: >-
-          This is interpretation and judgement rather than description, and it is not
+          This is interpretation and judgment rather than description, and it is not
           measurable.
       - id: b
-        text: 'The learner was trying to get out of the maths task again.'
+        text: 'The learner was trying to get out of the math task again.'
         isCorrect: false
         rationale: >-
           This states a function as fact, which is a conclusion the technician is not in a
@@ -270,9 +270,11 @@ questions:
         text: 'Nothing serious happened, the learner was just having a bad day.'
         isCorrect: false
         rationale: >-
-          Minimising and explaining by mood leaves no usable record of what occurred.
+          Minimizing and explaining by mood leaves no usable record of what occurred.
       - id: d
-        text: 'At 10:14 the learner left the room and went into the corridor. Staff followed the site procedure and the learner returned at 10:19.'
+        text: >-
+          At 10:14 the learner left the room and went into the hallway. Staff followed the
+          site procedure and the learner returned at 10:19.
         isCorrect: true
         rationale: >-
           It records times, what was observed, and that the written procedure was followed,
@@ -324,9 +326,9 @@ questions:
         isCorrect: false
         rationale: >-
           Imitating an uncertified version of a certified procedure is how people get hurt,
-          and it is outside the technician's authorisation.
+          and it is outside the technician's authorization.
     explanation: >-
-      Certified safety training is a separate qualification with its own authorisation,
+      Certified safety training is a separate qualification with its own authorization,
       and it is not something an app, a colleague or a handbook can supply. What the
       technician is always responsible for is knowing which parts of the procedure apply
       to them, and calling the people who hold the rest.
@@ -399,7 +401,7 @@ questions:
     type: single-best-answer
     stem: >-
       Colleagues use an unofficial group chat to coordinate cover, and someone posts a
-      question naming a client and a behaviour. The technician should:
+      question naming a client and a behavior. The technician should:
     options:
       - id: a
         text: Reply privately to the person instead of in the group
@@ -444,35 +446,35 @@ questions:
     taskRef: { credential: RBT, code: F.5 }
     type: single-best-answer
     stem: >-
-      A classroom teacher asks a technician directly for a copy of the learner's behaviour
+      A classroom teacher asks a technician directly for a copy of the learner's behavior
       data. The technician should:
     options:
       - id: a
         text: Share it, since the teacher works with the same learner
         isCorrect: false
         rationale: >-
-          Working with the learner is not authorisation to receive records.
+          Working with the learner is not authorization to receive records.
       - id: b
         text: Share a summary rather than the raw data
         isCorrect: false
         rationale: >-
-          A summary is still client information released without authorisation.
+          A summary is still client information released without authorization.
       - id: c
-        text: Ask the parent at pick-up whether it is alright
+        text: Ask the parent at pick-up whether it is all right
         isCorrect: false
         rationale: >-
-          Verbal agreement at the door is not the authorisation process, and the release
+          Verbal agreement at the door is not the authorization process, and the release
           should not come from the technician.
       - id: d
         text: Decline to release it themselves and refer the request to the supervisor
         isCorrect: true
         rationale: >-
-          Releasing records requires authorisation and goes through the proper channel, which
+          Releasing records requires authorization and goes through the proper channel, which
           is not the technician.
     explanation: >-
       Requests from other professionals feel routine, which is exactly why they are a
-      common route to an unauthorised disclosure. Referring it up is quick and creates the
-      record that the release was authorised.
+      common route to an unauthorized disclosure. Referring it up is quick and creates the
+      record that the release was authorized.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [confidentiality, hipaa, informed-consent, supervision]
@@ -485,13 +487,13 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
-  - id: rbt-f6-anonymised-post
+  - id: rbt-f6-anonymized-post
     credential: RBT
     taskRef: { credential: RBT, code: F.6 }
     type: single-best-answer
     stem: >-
       A technician posts about a hard day on a public account without naming anyone,
-      mentioning the setting, the learner's age and the behaviour. The main problem is:
+      mentioning the setting, the learner's age and the behavior. The main problem is:
     options:
       - id: a
         text: The post reflects poorly on the employer
@@ -512,10 +514,10 @@ questions:
         text: The details can identify the learner to anyone who knows them
         isCorrect: true
         rationale: >-
-          Setting, age and behaviour together frequently identify a person within a small
+          Setting, age and behavior together frequently identify a person within a small
           community, so the post is a disclosure.
     explanation: >-
-      Anonymising by removing the name is the most common mistake in this area. What
+      Anonymizing by removing the name is the most common mistake in this area. What
       identifies someone is usually the combination of details, and a post cannot be
       withdrawn once it has been seen.
     cognitiveLevel: application
@@ -539,12 +541,12 @@ questions:
       Which statement may a technician make about themselves in public?
     options:
       - id: a
-        text: That they provide behaviour therapy independently to families
+        text: That they provide behavior therapy independently to families
         isCorrect: false
         rationale: >-
-          Technicians do not practise independently, so this misstates the role.
+          Technicians do not practice independently, so this misstates the role.
       - id: b
-        text: That their programmes have a high success rate with this population
+        text: That their programs have a high success rate with this population
         isCorrect: false
         rationale: >-
           A claim about outcomes is a claim about services the technician does not design and
@@ -556,7 +558,7 @@ questions:
           An accurate statement of the credential held and the supervised nature of the role
           is what the code permits.
       - id: d
-        text: That they are a behaviour analyst working with children with autism
+        text: That they are a behavior analyst working with children with autism
         isCorrect: false
         rationale: >-
           This claims a credential the technician does not hold.
@@ -596,7 +598,7 @@ questions:
           Naming the technician and describing the services still identifies the client to
           many readers.
       - id: c
-        text: Suggest the family post it about the organisation rather than the technician
+        text: Suggest the family post it about the organization rather than the technician
         isCorrect: false
         rationale: >-
           Redirecting the post is still arranging a public statement about a client's
@@ -653,7 +655,7 @@ questions:
         text: Accept if the family signs something acknowledging the two roles
         isCorrect: false
         rationale: >-
-          An acknowledgement does not remove the effect on the technician's objectivity or the
+          An acknowledgment does not remove the effect on the technician's objectivity or the
           family's position.
     explanation: >-
       This is the most common multiple-relationship request technicians face, and the
@@ -678,7 +680,7 @@ questions:
     taskRef: { credential: RBT, code: F.7 }
     type: single-best-answer
     stem: >-
-      A technician discovers that a new learner is the child of a close neighbour. The
+      A technician discovers that a new learner is the child of a close neighbor. The
       appropriate first step is:
     options:
       - id: a
@@ -781,7 +783,7 @@ questions:
         text: Accept it, since refusing would offend the family
         isCorrect: false
         rationale: >-
-          Possible offence is a reason to decline warmly and explain, not a reason to accept.
+          Possible offense is a reason to decline warmly and explain, not a reason to accept.
       - id: b
         text: Accept it and share it with the team
         isCorrect: false
@@ -875,10 +877,10 @@ questions:
         text: Regular weekly lunches paid for by the family
         isCorrect: false
         rationale: >-
-          A recurring benefit accumulates into a substantial one and normalises the
+          A recurring benefit accumulates into a substantial one and normalizes the
           arrangement.
       - id: b
-        text: A card and a small home-made item given by the family at the end of a programme
+        text: A card and a small home-made item given by the family at the end of a program
         isCorrect: true
         rationale: >-
           A nominal, non-monetary token of thanks is generally acceptable and creates little
@@ -971,13 +973,13 @@ questions:
         text: Modify the instruction slightly to make it work
         isCorrect: false
         rationale: >-
-          Changing a procedure without authorisation is outside the role and contaminates the
+          Changing a procedure without authorization is outside the role and contaminates the
           data.
       - id: b
         text: Ask a colleague whether they agree before deciding what to do
         isCorrect: false
         rationale: >-
-          A peer's opinion does not authorise anything and delays raising it with the person
+          A peer's opinion does not authorize anything and delays raising it with the person
           responsible.
       - id: c
         text: Raise the concern with the supervisor, with what they have observed, and follow the instruction meanwhile
@@ -1033,7 +1035,7 @@ questions:
           Describing your own role is appropriate and helps the team; explaining or justifying
           the plan is the supervisor's part.
       - id: d
-        text: Explain the whole behaviour plan so the assistant can support it
+        text: Explain the whole behavior plan so the assistant can support it
         isCorrect: false
         rationale: >-
           Sharing the plan is a disclosure decision and an interpretation task that is not the

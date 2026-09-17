@@ -32,7 +32,7 @@ whatNotToDo:
     specifically says so.
   - >-
     Do not put your hands on the learner to interrupt it. Physical procedures need both
-    the plan's authorisation and the certified training your employer requires, and that
+    the plan's authorization and the certified training your employer requires, and that
     training is not something a plan, a colleague or an app can supply.
   - >-
     Do not assume the behavior is a problem because it looks unusual.

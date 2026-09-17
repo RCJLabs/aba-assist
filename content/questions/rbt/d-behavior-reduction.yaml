@@ -530,12 +530,12 @@ questions:
     taskRef: { credential: RBT, code: D.6 }
     type: single-best-answer
     stem: >-
-      A plan places a behaviour on extinction. In the first two sessions the behaviour
+      A plan places a behavior on extinction. In the first two sessions the behavior
       becomes more frequent and more intense. What does the technician need to know
       about this?
     options:
       - id: a
-        text: 'The behaviour has changed function'
+        text: 'The behavior has changed function'
         isCorrect: false
         rationale: >-
           Nothing here indicates a function change. The pattern described is the
@@ -545,7 +545,7 @@ questions:
         isCorrect: false
         rationale: >-
           Stopping at this point is the most common way extinction goes wrong,
-          because ending it here reinforces the strongest form of the behaviour.
+          because ending it here reinforces the strongest form of the behavior.
       - id: c
         text: 'A temporary increase is a documented side effect, and it is reported rather than reacted to'
         isCorrect: true
@@ -562,9 +562,9 @@ questions:
           either way.
     explanation: >-
       Extinction commonly produces a temporary increase in rate, intensity or
-      variability, and sometimes new forms of the behaviour. Knowing it is expected is
+      variability, and sometimes new forms of the behavior. Knowing it is expected is
       what stops a technician abandoning the procedure at the worst possible moment.
-      Whether to continue is the analyst’s decision, informed by what is reported.
+      Whether to continue is the analyst's decision, informed by what is reported.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [extinction, extinction-burst, resurgence, treatment-integrity]
@@ -576,7 +576,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -606,7 +606,7 @@ questions:
           most consistently reported side effects, which is one reason these
           procedures are restricted.
       - id: b
-        text: 'Permanent elimination of the behaviour'
+        text: 'Permanent elimination of the behavior'
         isCorrect: false
         rationale: >-
           Suppression under punishment is frequently specific to the conditions in
@@ -615,10 +615,10 @@ questions:
         text: 'Improved generalization of the target skill'
         isCorrect: false
         rationale: >-
-          Punishment suppresses a behaviour; it does not teach an alternative, and
+          Punishment suppresses a behavior; it does not teach an alternative, and
           nothing about it promotes generalization.
       - id: d
-        text: 'An increase in the punished behaviour'
+        text: 'An increase in the punished behavior'
         isCorrect: false
         rationale: >-
           An increase would mean the consequence was not functioning as a
@@ -626,8 +626,8 @@ questions:
     explanation: >-
       The documented side effects of punishment include avoidance of the person and
       setting, emotional responding, and suppression that does not persist outside the
-      conditions of delivery. These are why plans favour reinforcement-based
-      procedures and why punishment components require specific authorisation.
+      conditions of delivery. These are why plans favor reinforcement-based
+      procedures and why punishment components require specific authorization.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs:
@@ -646,7 +646,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -665,7 +665,7 @@ questions:
     taskRef: { credential: RBT, code: D.6 }
     type: single-best-answer
     stem: >-
-      A behaviour on extinction has been near zero for three weeks. After a long
+      A behavior on extinction has been near zero for three weeks. After a long
       weekend it occurs several times in one session, then falls away again. What is
       the most likely account?
     options:
@@ -673,7 +673,7 @@ questions:
         text: 'Spontaneous recovery'
         isCorrect: true
         rationale: >-
-          A behaviour that has undergone extinction commonly reappears after a
+          A behavior that has undergone extinction commonly reappears after a
           break and then declines again. It is a documented feature of the process
           rather than a failure of it.
       - id: b
@@ -684,7 +684,7 @@ questions:
           near zero is the textbook pattern for recovery rather than for
           procedural error.
       - id: c
-        text: 'The behaviour has acquired a new function'
+        text: 'The behavior has acquired a new function'
         isCorrect: false
         rationale: >-
           A change in function would usually show as a sustained change in
@@ -696,8 +696,8 @@ questions:
           Nothing in the description indicates this, and the pattern described is
           well accounted for without it.
     explanation: >-
-      Spontaneous recovery is the reappearance of an extinguished behaviour after time
-      has passed, usually at a lower level and briefly. Recognising it matters because
+      Spontaneous recovery is the reappearance of an extinguished behavior after time
+      has passed, usually at a lower level and briefly. Recognizing it matters because
       the alternative reading — that the plan has stopped working — leads to
       abandoning a procedure that is working.
     cognitiveLevel: analysis
@@ -711,7 +711,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -730,7 +730,7 @@ questions:
     taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
-      A plan specifies DRO with a two-minute interval. The behaviour occurs 90 seconds
+      A plan specifies DRO with a two-minute interval. The behavior occurs 90 seconds
       into an interval. What does the procedure require?
     options:
       - id: a
@@ -743,23 +743,23 @@ questions:
         text: 'Deliver the reinforcer at the two-minute mark as planned'
         isCorrect: false
         rationale: >-
-          DRO delivers only if the behaviour did not occur during the interval.
-          Delivering anyway reinforces an interval containing the behaviour.
+          DRO delivers only if the behavior did not occur during the interval.
+          Delivering anyway reinforces an interval containing the behavior.
       - id: c
         text: 'Withhold the reinforcer and reset the interval as the plan specifies'
         isCorrect: true
         rationale: >-
           The defining feature of DRO is that reinforcement follows the absence of
-          the behaviour for the whole interval. Occurrence means the interval does
+          the behavior for the whole interval. Occurrence means the interval does
           not earn.
       - id: d
         text: 'Shorten the interval to one minute permanently'
         isCorrect: false
         rationale: >-
-          Changing the interval is a programme change. It may be the right
+          Changing the interval is a program change. It may be the right
           adjustment, but the analyst makes it.
     explanation: >-
-      DRO reinforces the omission of a behaviour across an interval. Whether a reset
+      DRO reinforces the omission of a behavior across an interval. Whether a reset
       is momentary or whole-interval, and how long the interval is, are set by the
       written plan; running it as written is what makes the resulting data
       interpretable.
@@ -779,7 +779,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -798,7 +798,7 @@ questions:
     taskRef: { credential: RBT, code: D.3 }
     type: single-best-answer
     stem: >-
-      A plan aims to increase a learner asking for help and decrease throwing
+      A plan aims to increase how often a learner asks for help and to reduce throwing
       materials. Which differential reinforcement arrangement matches that aim most
       directly?
     options:
@@ -806,7 +806,7 @@ questions:
         text: 'DRH, reinforcing higher rates of throwing'
         isCorrect: false
         rationale: >-
-          DRH increases a behaviour, which is the opposite of the stated aim.
+          DRH increases a behavior, which is the opposite of the stated aim.
       - id: b
         text: 'DRO, reinforcing the absence of throwing'
         isCorrect: false
@@ -818,19 +818,19 @@ questions:
         isCorrect: true
         rationale: >-
           DRA reinforces a specific alternative response that serves the same
-          function, which both reduces the problem behaviour and leaves the
+          function, which both reduces the problem behavior and leaves the
           learner with something that works.
       - id: d
         text: 'DRL, reinforcing lower rates of throwing'
         isCorrect: false
         rationale: >-
-          DRL is for behaviours that are acceptable at a lower rate. Throwing
+          DRL is for behaviors that are acceptable at a lower rate. Throwing
           materials is not usually one of them, and it still teaches no
           alternative.
     explanation: >-
       DRA reinforces a specific alternative; DRO reinforces the absence of the target;
       DRI reinforces something incompatible. DRA is the usual choice where the learner
-      needs a way to achieve what the problem behaviour was achieving.
+      needs a way to achieve what the problem behavior was achieving.
     cognitiveLevel: application
     difficulty: 2
     termRefs:
@@ -849,7 +849,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -869,7 +869,7 @@ questions:
     type: single-best-answer
     stem: >-
       Which arrangement is an example of differential reinforcement of an incompatible
-      behaviour?
+      behavior?
     options:
       - id: a
         text: 'Reinforcing asking for a break to reduce hand-mouthing'
@@ -894,11 +894,11 @@ questions:
         text: 'Reinforcing any two minutes without hand-mouthing'
         isCorrect: false
         rationale: >-
-          That is DRO: reinforcement follows the absence of the behaviour rather
+          That is DRO: reinforcement follows the absence of the behavior rather
           than a specified competing response.
     explanation: >-
       DRI is a special case of DRA where the reinforced response physically cannot
-      co-occur with the problem behaviour. The distinction matters because
+      co-occur with the problem behavior. The distinction matters because
       incompatibility does some of the work automatically rather than relying on the
       alternative being more efficient.
     cognitiveLevel: recall
@@ -918,7 +918,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -952,7 +952,7 @@ questions:
         isCorrect: false
         rationale: >-
           Nothing aversive follows calling out. The arrangement adds a consequence
-          independently of behaviour rather than after it.
+          independently of behavior rather than after it.
       - id: c
         text: 'The learner has been taught an alternative response'
         isCorrect: false
@@ -987,7 +987,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1007,7 +1007,7 @@ questions:
     type: single-best-answer
     stem: >-
       A plan lists both an antecedent strategy and a consequence strategy for the same
-      behaviour. Why do plans commonly include the antecedent component?
+      behavior. Why do plans commonly include the antecedent component?
     options:
       - id: a
         text: 'It removes the need to collect data'
@@ -1027,14 +1027,14 @@ questions:
           Choosing an antecedent strategy depends on knowing the function, so the
           assessment comes first rather than being replaced.
       - id: d
-        text: 'It prevents the behaviour occurring rather than responding after it has'
+        text: 'It prevents the behavior occurring rather than responding after it has'
         isCorrect: true
         rationale: >-
-          Antecedent strategies change the conditions under which the behaviour is
+          Antecedent strategies change the conditions under which the behavior is
           likely, so fewer occurrences need to be responded to at all.
     explanation: >-
       Antecedent strategies — non-contingent access, choice, priming, adjusting task
-      difficulty, changing the schedule of demands — act before the behaviour occurs.
+      difficulty, changing the schedule of demands — act before the behavior occurs.
       They are generally less intrusive than consequence-based components, which is
       part of why plans lead with them.
     cognitiveLevel: analysis
@@ -1055,7 +1055,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1074,7 +1074,7 @@ questions:
     taskRef: { credential: RBT, code: D.4 }
     type: single-best-answer
     stem: >-
-      A plan specifies that a demand is not removed following problem behaviour.
+      A plan specifies that a demand is not removed following problem behavior.
       During a difficult session the technician ends the demand early once to let the
       learner calm down. What is the most likely consequence for the plan?
     options:
@@ -1083,13 +1083,13 @@ questions:
         isCorrect: false
         rationale: >-
           A single removal after a long run of non-removal is an intermittent
-          schedule for the problem behaviour, which is the arrangement that makes
-          behaviour most persistent.
+          schedule for the problem behavior, which is the arrangement that makes
+          behavior most persistent.
       - id: b
-        text: 'The behaviour is likely to become more persistent'
+        text: 'The behavior is likely to become more persistent'
         isCorrect: true
         rationale: >-
-          Intermittent reinforcement of a behaviour on extinction makes it
+          Intermittent reinforcement of a behavior on extinction makes it
           markedly harder to reduce afterwards, so one removal can cost weeks.
       - id: c
         text: 'The plan will work faster'
@@ -1127,7 +1127,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1146,8 +1146,8 @@ questions:
     taskRef: { credential: RBT, code: D.1 }
     type: single-best-answer
     stem: >-
-      A learner throws materials only during maths and only when an adult is nearby,
-      and the throwing reliably ends the maths task. Which function do these data most
+      A learner throws materials only during math and only when an adult is nearby,
+      and the throwing reliably ends the math task. Which function do these data most
       support?
     options:
       - id: a
@@ -1155,17 +1155,17 @@ questions:
         isCorrect: false
         rationale: >-
           Automatic reinforcement would not depend on a demand being present and
-          would not be so tightly tied to the maths task.
+          would not be so tightly tied to the math task.
       - id: b
         text: 'Access to a tangible item'
         isCorrect: false
         rationale: >-
-          No item is delivered following the behaviour in this description.
+          No item is delivered following the behavior in this description.
       - id: c
         text: 'Escape from the task'
         isCorrect: true
         rationale: >-
-          The behaviour occurs under demands and produces removal of the demand.
+          The behavior occurs under demands and produces removal of the demand.
           That is the pattern of escape maintenance, whoever happens to be nearby.
       - id: d
         text: 'Access to attention'
@@ -1174,8 +1174,8 @@ questions:
           An adult being present is not the same as attention being the
           consequence. What reliably follows is the task ending.
     explanation: >-
-      Function is identified by what reliably follows the behaviour, not by who is
-      present or what the behaviour looks like. Technicians assist with the assessment
+      Function is identified by what reliably follows the behavior, not by who is
+      present or what the behavior looks like. Technicians assist with the assessment
       that establishes function; they do not determine it, and the written plan
       follows from it.
     cognitiveLevel: analysis
@@ -1196,7 +1196,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review
@@ -1210,13 +1210,13 @@ questions:
       version: 1
       updated: '2026-09-15'
 
-  - id: rbt-d-timeout-authorised
+  - id: rbt-d-timeout-authorized
     credential: RBT
     taskRef: { credential: RBT, code: D.5 }
     type: single-best-answer
     stem: >-
-      A plan authorises a brief time-out from reinforcement following a specified
-      behaviour. What does running it correctly most depend on?
+      A plan authorizes a brief time-out from reinforcement following a specified
+      behavior. What does running it correctly most depend on?
     options:
       - id: a
         text: 'It being delivered inconsistently'
@@ -1245,10 +1245,10 @@ questions:
           removal raises restrictiveness without adding effect.
     explanation: >-
       Time-out only functions as intended where the setting being removed is
-      reinforcing. Used with a learner whose behaviour is escape-maintained it can
-      reinforce the very behaviour it targets, which is one reason it requires
-      authorisation and specification in the written plan rather than technician
-      judgement.
+      reinforcing. Used with a learner whose behavior is escape-maintained it can
+      reinforce the very behavior it targets, which is one reason it requires
+      authorization and specification in the written plan rather than technician
+      judgment.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -1267,7 +1267,7 @@ questions:
       noVerbatimSource: true
       aiAssisted: true
       consulted: >-
-        Original question written from the primary behaviour-reduction literature;
+        Original question written from the primary behavior-reduction literature;
         no examination material consulted.
     review:
       status: in-review

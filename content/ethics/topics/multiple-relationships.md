@@ -16,21 +16,21 @@ ourSummary: >-
   partner, fellow member of a small community. They matter because they make it harder to
   judge clearly and harder for the other person to say no, and the power sits with you.
   Some are outright prohibited. Others are unavoidable — in a small town your client's
-  parent may coach your child's team — and there the obligation is to recognise it, be
+  parent may coach your child's team — and there the obligation is to recognize it, be
   open about it, and manage or hand over the professional relationship rather than pretend
   the overlap is not there. The technician outline asks specifically about identifying the
   risks and mitigating them when they cannot be avoided.
 plainSummary: >-
-  Being more than one thing to a client or their family clouds your judgement and makes it
+  Being more than one thing to a client or their family clouds your judgment and makes it
   hard for them to refuse you. Avoid it where you can. Where you cannot, say so and get it
   managed.
 whatThisLooksLike:
   - Declining private paid work, babysitting or social invitations with a client's family.
-  - Telling your supervisor as soon as you realise you already know a new client's family.
+  - Telling your supervisor as soon as you realize you already know a new client's family.
   - An analyst handing a case to a colleague because of an overlap they cannot undo.
   - Keeping social media accounts separate from the families you work with.
 commonPitfalls:
-  - Thinking the rule is only about romance, when money and favours cause more cases.
+  - Thinking the rule is only about romance, when money and favors cause more cases.
   - Treating an unavoidable overlap as therefore acceptable, without disclosing or managing it.
   - Agreeing to something small for a family because refusing feels rude.
   - Forgetting that supervisees are covered too, not just clients.

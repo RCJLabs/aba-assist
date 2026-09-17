@@ -27,8 +27,8 @@ export const METHODS: MethodInfo[] = [
 		label: 'Partial interval',
 		termId: 'partial-interval-recording',
 		prompt: 'Did it happen at any point in that interval?',
-		scoreIf: 'Score it if the behaviour occurred at all, even once, even briefly.',
-		bias: 'Overestimates how much of the time the behaviour actually occupied, because one second scores the same as the whole interval. Useful for behaviour you want to see less of.'
+		scoreIf: 'Score it if the behavior occurred at all, even once, even briefly.',
+		bias: 'Overestimates how much of the time the behavior actually occupied, because one second scores the same as the whole interval. Useful for behavior you want to see less of.'
 	},
 	{
 		id: 'whole',
@@ -36,8 +36,8 @@ export const METHODS: MethodInfo[] = [
 		termId: 'whole-interval-recording',
 		prompt: 'Did it happen for that entire interval?',
 		scoreIf:
-			'Score it only if the behaviour continued for the whole interval without stopping.',
-		bias: 'Underestimates, because any break in the interval scores a no. Usually paired with behaviour you want to see more of, such as staying on task.'
+			'Score it only if the behavior continued for the whole interval without stopping.',
+		bias: 'Underestimates, because any break in the interval scores a no. Usually paired with behavior you want to see more of, such as staying on task.'
 	},
 	{
 		id: 'momentary',
@@ -107,7 +107,7 @@ export interface Tally {
  * The datum these procedures produce: percentage of intervals.
  *
  * Over scored intervals rather than over all of them. An unscored interval is missing
- * data, and counting it as a no would understate the behaviour — the mistake looks like
+ * data, and counting it as a no would understate the behavior — the mistake looks like
  * an improvement, which is the worst direction for it to be wrong in.
  */
 export function tally(marks: (boolean | null)[]): Tally {

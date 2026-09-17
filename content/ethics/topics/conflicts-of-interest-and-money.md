@@ -1,7 +1,7 @@
 ---
 id: conflicts-of-interest-and-money
 ourLabel: Money, funders and conflicts of interest
-gloss: When someone else's interests could bend your judgement
+gloss: When someone else's interests could bend your judgment
 appliesTo: [BCaBA, BCBA]
 sectionRefs:
   - codeId: ethics-code-for-behavior-analysts-2022
@@ -12,24 +12,24 @@ sectionRefs:
     standardNumbers: ['3.05', '3.07', '3.08', '3.13']
 ourSummary: >-
   A conflict of interest exists whenever something you stand to gain could sway — or
-  reasonably appear to sway — your professional judgement. In practice most of them are
+  reasonably appear to sway — your professional judgment. In practice most of them are
   financial and structural rather than personal: service agreements that reward volume,
-  a funder's authorisation limits shaping what gets recommended, referral relationships
+  a funder's authorization limits shaping what gets recommended, referral relationships
   with businesses you have an interest in, or a third-party contract where the entity
   paying is not the person receiving services. The code's answer is transparency and
   priority: identify who the client is, disclose the arrangement, and keep the client's
   interests ahead of the payer's and your own. Fees and financial terms are agreed up
   front and in writing.
 plainSummary: >-
-  Notice when money or an outside relationship could bend your judgement. Say so openly,
+  Notice when money or an outside relationship could bend your judgment. Say so openly,
   agree fees up front, and keep the client's interests first.
 whatThisLooksLike:
   - A written service agreement covering scope, fees and how services end.
-  - Telling a family plainly when a funder limits what can be authorised.
+  - Telling a family plainly when a funder limits what can be authorized.
   - Declining a referral arrangement that pays you for sending people somewhere.
   - Recommending fewer hours when the data support fewer hours.
 commonPitfalls:
-  - Letting authorisation limits silently become the clinical recommendation.
+  - Letting authorization limits silently become the clinical recommendation.
   - Leaving fee arrangements informal until there is a dispute.
   - Assuming that because the contract is with a school or agency, the student is not the client.
   - Treating disclosure as sufficient when the conflict should simply be avoided.

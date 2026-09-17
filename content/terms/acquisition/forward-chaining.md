@@ -14,8 +14,8 @@ definition:
   gloss: Steps taught in order from the beginning
 examples:
   - text: >-
-      Hand washing: the learner is taught to turn on the tap; the technician does
-      everything else. Then turning on the tap and wetting hands. And so on.
+      Hand washing: the learner is taught to turn on the faucet; the technician does
+      everything else. Then turning on the faucet and wetting hands. And so on.
     setting: home
 nonExamples:
   - text: >-

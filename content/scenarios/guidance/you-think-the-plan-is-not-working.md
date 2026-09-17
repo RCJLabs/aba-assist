@@ -22,7 +22,7 @@ steps:
       easier to fix than a plan revision.
   - text: Bring the data, your description of what you are seeing, and anything about the setting that has changed.
     rationale: >-
-      Illness, sleep, a new sibling, a substitute teacher — the things outside the programme
+      Illness, sleep, a new sibling, a substitute teacher — the things outside the program
       are often the answer, and you are the person positioned to notice them.
   - text: Raise it as a question rather than a conclusion, and say what you would want to look at.
     rationale: >-
@@ -55,7 +55,7 @@ termRefs:
   ]
 ethicsRefs:
   [reporting-to-your-supervisor, dignity-and-client-rights, choosing-goals-that-matter]
-tags: [supervision, clinical-judgement, data]
+tags: [supervision, clinical-judgment, data]
 taskRefs:
   - { credential: RBT, code: E.2 }
   - { credential: RBT, code: E.3 }

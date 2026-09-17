@@ -1,10 +1,10 @@
 ---
 id: learner-leaves-toward-a-road-or-water
 kind: escalation-only
-title: The learner runs off toward a road, a car park, or water
+title: The learner runs off toward a road, a parking lot, or water
 situation: >-
-  The learner has left the room, building or yard and is heading toward traffic, a car
-  park, a pool or open water, or anywhere else where they could be seriously hurt. You
+  The learner has left the room, building or yard and is heading toward traffic, a parking
+  lot, a pool or open water, or anywhere else where they could be seriously hurt. You
   may or may not be able to see them.
 setting: any
 audience: [RBT, BCaBA, BCBA]

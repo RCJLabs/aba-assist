@@ -1,7 +1,7 @@
 ---
 id: generalization
 term: Generalization
-aliases: [generalisation, transfer]
+aliases: [transfer]
 category: acquisition
 definition:
   technical: >-

@@ -14,12 +14,12 @@ steps:
       Say what you are scheduled to be doing, and who scheduled it.
     rationale: >-
       The person asking often does not know that your time is allocated clinically rather
-      than by the school timetable.
+      than by the school schedule.
   - text: >-
       Do not agree to miss a session on your own authority.
     rationale: >-
-      A session is part of a programme somebody is accountable for. Whether it can be
-      dropped is not a decision made in a corridor.
+      A session is part of a program somebody is accountable for. Whether it can be
+      dropped is not a decision made in a hallway.
   - text: >-
       Offer what you can do that does not cost the session, such as helping afterwards.
     rationale: >-
@@ -33,7 +33,7 @@ steps:
   - text: >-
       Record any session that did not happen, and why.
     rationale: >-
-      Missed sessions that leave no trace are invisible, and the programme looks as though
+      Missed sessions that leave no trace are invisible, and the program looks as though
       it simply stopped working.
 whatNotToDo:
   - >-

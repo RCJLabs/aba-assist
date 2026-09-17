@@ -30,11 +30,11 @@ steps:
       start.
     rationale: >-
       Reteaching a skill somebody still partly has wastes session time and can make the
-      programme look like it is going backwards.
+      program look like it is going backwards.
   - text: >-
       Tell your supervisor with dates and numbers.
     rationale: >-
-      Whether this is drift, thinning, or something outside the session is a judgement the
+      Whether this is drift, thinning, or something outside the session is a judgment the
       supervisor makes from the record.
 whatNotToDo:
   - >-
@@ -74,7 +74,7 @@ attestation:
   aiAssisted: true
   consulted: >-
     Written from the generalization and maintenance literature and the
-    behavioural-momentum work on persistence.
+    behavioral-momentum work on persistence.
 review:
   status: in-review
   authoredBy: claude

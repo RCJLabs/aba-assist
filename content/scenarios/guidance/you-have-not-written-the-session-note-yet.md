@@ -30,7 +30,7 @@ steps:
       Use the data sheet as the source, not your memory of how it went.
     rationale: >-
       What was recorded at the time is the evidence. Recollection after the fact is
-      reconstruction, and it drifts towards what you expected.
+      reconstruction, and it drifts toward what you expected.
   - text: >-
       Tell your supervisor if notes are regularly going unwritten.
     rationale: >-

@@ -11,7 +11,7 @@ audience: [RBT, BCaBA, BCBA]
 riskFlags: []
 steps:
   - text: >-
-      Answer briefly and generally, without describing the learner's needs or programme.
+      Answer briefly and generally, without describing the learner's needs or program.
     rationale: >-
       Everybody in the room is entitled to an answer to an honest question. The learner is
       entitled to have their arrangements stay theirs.
@@ -37,13 +37,13 @@ whatNotToDo:
   - >-
     Do not tell the peer they may earn the same thing unless the teacher has said so.
   - >-
-    Do not treat the question as misbehaviour.
+    Do not treat the question as misbehavior.
 whenToEscalate:
   - >-
     Raise it with your supervisor if the arrangement is drawing enough attention to affect
     the learner.
   - >-
-    Tell your supervisor if you are asked to explain the learner's programme to
+    Tell your supervisor if you are asked to explain the learner's program to
     classmates.
 termRefs: [confidentiality, dignity, token-economy, social-validity]
 taskRefs:

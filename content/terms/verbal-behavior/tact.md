@@ -7,7 +7,7 @@ definition:
   technical: >-
     A verbal operant evoked by a nonverbal stimulus — an object, event, property or
     relation that the speaker sees, hears, smells or feels — and reinforced by
-    generalized social consequences such as acknowledgement. It is the operant that
+    generalized social consequences such as acknowledgment. It is the operant that
     lets a speaker tell a listener about the world.
   plain: >-
     Naming something you can see, hear or feel. The reward is social, like a smile or

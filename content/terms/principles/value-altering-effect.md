@@ -71,7 +71,7 @@ provenance:
   updated: '2026-09-16'
 ---
 
-Every motivating operation has both this effect and a behaviour-altering one, at the same
+Every motivating operation has both this effect and a behavior-altering one, at the same
 time. Splitting them is what makes the concept examinable: the exam can ask about the
 worth of the consequence and about what the learner is doing separately, and the answer
 is different for each.

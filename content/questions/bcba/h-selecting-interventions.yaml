@@ -6,7 +6,7 @@ questions:
     taskRef: { credential: BCBA, code: H.1 }
     type: single-best-answer
     stem: >-
-      A goal states the behaviour and the criterion but not the conditions. The practical
+      A goal states the behavior and the criterion but not the conditions. The practical
       consequence is that:
     options:
       - id: a
@@ -23,7 +23,7 @@ questions:
         text: Two people may teach and test it under different circumstances and both believe they met it
         isCorrect: true
         rationale: >-
-          Conditions fix when and where the behaviour should occur, and without them mastery
+          Conditions fix when and where the behavior should occur, and without them mastery
           is not comparable across people or settings.
       - id: d
         text: The goal cannot be measured at all
@@ -32,7 +32,7 @@ questions:
           It can be measured; what is unclear is under what circumstances the measurement
           counts.
     explanation: >-
-      A complete goal names the behaviour, the conditions and the criterion. Omitting
+      A complete goal names the behavior, the conditions and the criterion. Omitting
       conditions is the most common gap, and it shows up later as a skill that was
       mastered in one arrangement and is absent everywhere else.
     cognitiveLevel: analysis
@@ -131,7 +131,7 @@ questions:
         rationale: >-
           A stricter criterion does not address what is actually missing.
     explanation: >-
-      Goal writing is where most later confusion is prevented. Behaviour, conditions and
+      Goal writing is where most later confusion is prevented. Behavior, conditions and
       criterion together let two people agree whether it has been met, and conditions are
       also where social validity enters — whether the skill will serve the learner where
       they live.
@@ -292,7 +292,7 @@ questions:
       setting cannot sustain. The standard next step is to:
     options:
       - id: a
-        text: Thin the schedule for the new request systematically, using delay or signalled availability
+        text: Thin the schedule for the new request systematically, using delay or signaled availability
         isCorrect: true
         rationale: >-
           Schedule thinning is the planned continuation of functional communication training,
@@ -302,7 +302,7 @@ questions:
         isCorrect: false
         rationale: >-
           That places the new response on extinction and predictably returns the original
-          behaviour.
+          behavior.
       - id: c
         text: Return to the previous intervention
         isCorrect: false
@@ -341,7 +341,7 @@ questions:
     taskRef: { credential: BCBA, code: H.3 }
     type: single-best-answer
     stem: >-
-      For a replacement response to compete with an established problem behaviour, it most
+      For a replacement response to compete with an established problem behavior, it most
       needs to be:
     options:
       - id: a
@@ -361,12 +361,12 @@ questions:
         rationale: >-
           Appropriateness matters for selection but does not make the response compete.
       - id: d
-        text: Topographically similar to the problem behaviour
+        text: Topographically similar to the problem behavior
         isCorrect: false
         rationale: >-
           Similarity of form is irrelevant to whether it competes.
     explanation: >-
-      A replacement behaviour competes on the terms the matching law describes: relative
+      A replacement behavior competes on the terms the matching law describes: relative
       rate, immediacy, magnitude and effort. An alternative that is harder work for a
       thinner payoff will not displace something that already works.
     cognitiveLevel: analysis
@@ -399,19 +399,19 @@ questions:
         rationale: >-
           Measurability is unrelated to function.
       - id: c
-        text: Produces the same consequence the problem behaviour produced
+        text: Produces the same consequence the problem behavior produced
         isCorrect: true
         rationale: >-
           Serving the same function is what makes it a genuine alternative rather than an
           unrelated skill.
       - id: d
-        text: Is incompatible with the problem behaviour
+        text: Is incompatible with the problem behavior
         isCorrect: false
         rationale: >-
-          That describes an incompatible behaviour, which may or may not share the function.
+          That describes an incompatible behavior, which may or may not share the function.
     explanation: >-
       Function-based intervention gives the learner another route to what they were
-      already getting. Teaching an appropriate behaviour that produces something different
+      already getting. Teaching an appropriate behavior that produces something different
       leaves the original need unmet, which is why such plans tend to hold only while
       supervision is close.
     cognitiveLevel: recall
@@ -462,7 +462,7 @@ questions:
     explanation: >-
       Anticipating unwanted effects is part of selecting an intervention, and restrictive
       procedures carry the widest range: emotional responding, avoidance of the person
-      delivering it, modelling for peers, and the effect on staff asked to run it.
+      delivering it, modeling for peers, and the effect on staff asked to run it.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -527,7 +527,7 @@ questions:
     taskRef: { credential: BCBA, code: H.5 }
     type: single-best-answer
     stem: >-
-      A behaviour treated successfully in the clinic returns when the learner is seen at
+      A behavior treated successfully in the clinic returns when the learner is seen at
       home, where treatment was never run. This is best described as:
     options:
       - id: a
@@ -541,7 +541,7 @@ questions:
         isCorrect: false
         rationale: >-
           Reinstatement follows response-independent delivery of the reinforcer that
-          maintained the behaviour.
+          maintained the behavior.
       - id: c
         text: Spontaneous recovery
         isCorrect: false
@@ -586,7 +586,7 @@ questions:
         rationale: >-
           Abrupt withdrawal tests for relapse rather than reducing it.
       - id: c
-        text: Conduct treatment across the contexts where the behaviour has to stay changed
+        text: Conduct treatment across the contexts where the behavior has to stay changed
         isCorrect: true
         rationale: >-
           Treating in multiple contexts prevents the change being tied to one, which is what
@@ -754,7 +754,7 @@ questions:
     taskRef: { credential: BCBA, code: H.7 }
     type: single-best-answer
     stem: >-
-      Data show steady but very slow progress towards a goal that matters. The most
+      Data show steady but very slow progress toward a goal that matters. The most
       defensible decision is to:
     options:
       - id: a
@@ -805,7 +805,7 @@ questions:
         text: Trains them to run the procedure and gives feedback on their performance
         isCorrect: true
         rationale: >-
-          Behavioural skills training with feedback is what produces implementation, as
+          Behavioral skills training with feedback is what produces implementation, as
           opposed to understanding.
       - id: b
         text: Explains the rationale thoroughly at the outset
@@ -825,7 +825,7 @@ questions:
           That produces change while the analyst is present and nothing afterwards.
     explanation: >-
       Collaboration is not only consultation. Caregivers are implementers, and
-      implementers are trained the same way anybody is: instruction, modelling, rehearsal
+      implementers are trained the same way anybody is: instruction, modeling, rehearsal
       and feedback until performance meets criterion.
     cognitiveLevel: application
     difficulty: 3
@@ -856,7 +856,9 @@ questions:
         rationale: >-
           This puts a technical disagreement onto the family.
       - id: c
-        text: Agree a shared operational definition and a single measure where the goals overlap
+        text: >-
+          Agree on a shared operational definition and a single measure where the goals
+          overlap
         isCorrect: true
         rationale: >-
           Two definitions of the same target produce contradictory data and confuse everybody
@@ -865,7 +867,7 @@ questions:
         text: Keep separate goals so each discipline can report its own outcome
         isCorrect: false
         rationale: >-
-          Parallel measurement of the same behaviour is exactly what produces the
+          Parallel measurement of the same behavior is exactly what produces the
           contradiction.
     explanation: >-
       Interdisciplinary collaboration usually founders on definitions rather than on

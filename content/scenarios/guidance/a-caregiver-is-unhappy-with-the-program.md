@@ -1,9 +1,9 @@
 ---
 id: a-caregiver-is-unhappy-with-the-program
 kind: guidance
-title: A caregiver tells you the programme is not working
+title: A caregiver tells you the program is not working
 situation: >-
-  A parent says the programme is not helping, or is upsetting their child, or is not what
+  A parent says the program is not helping, or is upsetting their child, or is not what
   they agreed to. They may be frustrated with you personally. They may be right. You are
   the person in the room and you did not write the plan.
 setting: home
@@ -35,7 +35,7 @@ whatNotToDo:
   - Do not offer a modification to keep the peace in the moment.
   - Do not treat the complaint as being about you, or wait until the next supervision to mention it.
 whenToEscalate:
-  - Always pass on a caregiver's concern about the programme the same day.
+  - Always pass on a caregiver's concern about the program the same day.
   - >-
     A caregiver withdrawing agreement to a procedure, or asking for services to stop, goes
     to the analyst immediately — consent is theirs to withdraw and it is not yours to

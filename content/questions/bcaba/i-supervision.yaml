@@ -66,29 +66,29 @@ questions:
     taskRef: { credential: BCaBA, code: I.1 }
     type: single-best-answer
     stem: >-
-      What makes supervision behaviour-analytic rather than merely regular?
+      What makes supervision behavior-analytic rather than merely regular?
     options:
       - id: a
         text: It is delivered by a certified analyst
         isCorrect: false
         rationale: >-
-          Who delivers it does not determine whether the methods are behavioural.
+          Who delivers it does not determine whether the methods are behavioral.
       - id: b
         text: It covers ethics as well as procedures
         isCorrect: false
         rationale: >-
-          Content coverage is necessary and is not what makes the method behavioural.
+          Content coverage is necessary and is not what makes the method behavioral.
       - id: c
         text: Performance is measured, taught to criterion, and evaluated with data
         isCorrect: true
         rationale: >-
-          Behaviour-analytic supervision applies the same measurement and teaching procedures
-          to staff behaviour that it applies to clients.
+          Behavior-analytic supervision applies the same measurement and teaching procedures
+          to staff behavior that it applies to clients.
       - id: d
         text: It occurs at a fixed frequency set by the certifying body
         isCorrect: false
         rationale: >-
-          Frequency is a requirement; it does not make the content behaviour-analytic.
+          Frequency is a requirement; it does not make the content behavior-analytic.
     explanation: >-
       The test is whether the supervisor could show you data on the supervisee's
       performance. Meetings held reliably, with no measure of what changed, meet the
@@ -335,7 +335,7 @@ questions:
         rationale: >-
           Useful in a development conversation, but not what the agreement has to establish.
       - id: c
-        text: The organisation's annual leave policy
+        text: The organization's annual leave policy
         isCorrect: false
         rationale: >-
           An employment matter rather than a supervision one.
@@ -376,7 +376,7 @@ questions:
         text: It allows the supervisee to evaluate the supervisor formally
         isCorrect: false
         rationale: >-
-          Formal evaluation is a separate organisational matter.
+          Formal evaluation is a separate organizational matter.
       - id: c
         text: The supervisee depends on the supervisor's availability and responsiveness to perform
         isCorrect: true
@@ -418,7 +418,7 @@ questions:
         text: The standard competency list used for all new staff
         isCorrect: false
         rationale: >-
-          A standard list is a starting point, not an individualised goal set.
+          A standard list is a starting point, not an individualized goal set.
       - id: c
         text: The supervisee's stated interests
         isCorrect: false
@@ -452,7 +452,7 @@ questions:
       procedure is to:
     options:
       - id: a
-        text: Review their session notes for that programme
+        text: Review their session notes for that program
         isCorrect: false
         rationale: >-
           Notes record what was reported, not what was done.
@@ -497,14 +497,14 @@ questions:
     taskRef: { credential: BCaBA, code: I.6 }
     type: single-best-answer
     stem: >-
-      Behavioural skills training is delivered but the supervisee still performs below
+      Behavioral skills training is delivered but the supervisee still performs below
       criterion. Which component was most likely omitted or cut short?
     options:
       - id: a
         text: Rehearsal with feedback, repeated until criterion is met
         isCorrect: true
         rationale: >-
-          Instruction and modelling are quick to deliver and are commonly where training
+          Instruction and modeling are quick to deliver and are commonly where training
           stops; rehearsal and feedback are what change performance.
       - id: b
         text: Written instructions
@@ -513,16 +513,16 @@ questions:
           Instructions are almost always provided and are the least sufficient component
           alone.
       - id: c
-        text: Modelling of the procedure
+        text: Modeling of the procedure
         isCorrect: false
         rationale: >-
-          Modelling is often included, and on its own it does not establish performance
+          Modeling is often included, and on its own it does not establish performance
           either.
       - id: d
         text: A description of the underlying principles
         isCorrect: false
         rationale: >-
-          Not a component of behavioural skills training as such.
+          Not a component of behavioral skills training as such.
     explanation: >-
       The loop is the procedure: rehearse, get feedback, rehearse again, until a criterion
       is met. Training that ends after the demonstration is an information session with a
@@ -582,7 +582,7 @@ questions:
     attestation: *att
     review: *rev
     provenance: *prov
-  - id: bcaba-i6-generalisation-of-training
+  - id: bcaba-i6-generalization-of-training
     credential: BCaBA
     taskRef: { credential: BCaBA, code: I.6 }
     type: single-best-answer
@@ -612,7 +612,7 @@ questions:
         rationale: >-
           Nothing indicates the trainer was the variable.
     explanation: >-
-      Generalisation has to be programmed for staff exactly as it does for learners.
+      Generalization has to be programmed for staff exactly as it does for learners.
       In-situ training and feedback is the component most often missing when role-play
       performance does not survive first contact with a real session.
     cognitiveLevel: analysis
@@ -730,7 +730,7 @@ questions:
         text: Add the step to the annual appraisal
         isCorrect: false
         rationale: >-
-          A distant consequence rarely controls a moment-to-moment behaviour.
+          A distant consequence rarely controls a moment-to-moment behavior.
       - id: b
         text: Require a signature confirming the step was done
         isCorrect: false

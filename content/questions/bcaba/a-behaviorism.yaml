@@ -8,7 +8,7 @@ questions:
     stem: >-
       A supervisor says the team has "done the science" on a learner's hand-flapping
       because they can now state when it is most likely to happen and how often. Which
-      goal of a natural science of behaviour has the team NOT yet demonstrated?
+      goal of a natural science of behavior has the team NOT yet demonstrated?
     negated: true
     options:
       - id: a
@@ -16,25 +16,25 @@ questions:
         isCorrect: false
         rationale: >-
           Replication is a method used to establish the goals, not one of the three goals a
-          natural science of behaviour pursues.
+          natural science of behavior pursues.
       - id: b
         text: Control
         isCorrect: true
         rationale: >-
-          Control means producing a change in the behaviour by changing the conditions it
+          Control means producing a change in the behavior by changing the conditions it
           depends on. Knowing when it happens is not the same as being able to change it.
       - id: c
         text: Description
         isCorrect: false
         rationale: >-
-          Description is already done: the team can say what the behaviour looks like and how
+          Description is already done: the team can say what the behavior looks like and how
           often it occurs.
       - id: d
         text: Prediction
         isCorrect: false
         rationale: >-
           Prediction is already done: the team can state the conditions under which the
-          behaviour is more and less likely.
+          behavior is more and less likely.
     explanation: >-
       Description, prediction and control are the three goals, in that order of demands.
       Description says what happens; prediction says when it will happen again; control
@@ -74,25 +74,25 @@ questions:
       than only prediction?
     options:
       - id: a
-        text: The behaviour is more likely on days the learner slept badly
+        text: The behavior is more likely on days the learner slept badly
         isCorrect: false
         rationale: >-
           This is prediction. The relation is observed rather than produced, and sleep was not
           manipulated.
       - id: b
-        text: Two observers agree on when the behaviour occurred
+        text: Two observers agree on when the behavior occurred
         isCorrect: false
         rationale: >-
           Observer agreement is a measurement property. It makes the data trustworthy without
           saying anything about causes.
       - id: c
-        text: Removing and then reinstating the antecedent changes the behaviour both times
+        text: Removing and then reinstating the antecedent changes the behavior both times
         isCorrect: true
         rationale: >-
-          Changing a condition and seeing the behaviour follow it, twice, is a demonstration
+          Changing a condition and seeing the behavior follow it, twice, is a demonstration
           of control rather than of association.
       - id: d
-        text: The behaviour occurs in 80% of observed sessions
+        text: The behavior occurs in 80% of observed sessions
         isCorrect: false
         rationale: >-
           A rate is a description. It says what happened, not what would change it.
@@ -116,17 +116,17 @@ questions:
     taskRef: { credential: BCaBA, code: A.1 }
     type: single-best-answer
     stem: >-
-      Calling behaviour analysis a natural science commits a practitioner to which of the
+      Calling behavior analysis a natural science commits a practitioner to which of the
       following?
     options:
       - id: a
-        text: Explaining behaviour by the mental states that accompany it
+        text: Explaining behavior by the mental states that accompany it
         isCorrect: false
         rationale: >-
-          That reverses the commitment: it treats behaviour as evidence about something else
+          That reverses the commitment: it treats behavior as evidence about something else
           rather than as the thing being explained.
       - id: b
-        text: Restricting study to behaviour that can be seen by a second observer
+        text: Restricting study to behavior that can be seen by a second observer
         isCorrect: false
         rationale: >-
           Private events are within the subject matter. What is required is that claims about
@@ -138,16 +138,16 @@ questions:
           Method does not define the commitment, and single-case designs are the field's
           standard tool for showing lawful relations.
       - id: d
-        text: Treating behaviour as a subject matter in its own right, lawful and observable
+        text: Treating behavior as a subject matter in its own right, lawful and observable
         isCorrect: true
         rationale: >-
-          A natural science studies its subject directly and assumes it is orderly. Behaviour
+          A natural science studies its subject directly and assumes it is orderly. Behavior
           is the subject matter, not an indirect readout of something else.
     explanation: >-
       The natural-science commitment is what separates this field from approaches that
-      treat behaviour as a symptom. It has a practical consequence: the things you change
+      treat behavior as a symptom. It has a practical consequence: the things you change
       are events in the environment, because those are the variables the science says
-      behaviour depends on.
+      behavior depends on.
     cognitiveLevel: recall
     difficulty: 2
     termRefs: [applied-behavior-analysis, radical-behaviorism, behavior]
@@ -164,7 +164,7 @@ questions:
     taskRef: { credential: BCaBA, code: A.2 }
     type: single-best-answer
     stem: >-
-      An assistant analyst tells a parent that a behaviour "just happens for no reason at
+      An assistant analyst tells a parent that a behavior "just happens for no reason at
       all." Which assumption of the science does this statement conflict with?
     options:
       - id: a
@@ -192,7 +192,7 @@ questions:
           Empiricism requires claims to rest on observation. The problem here is the denial of
           causes, not the absence of data.
     explanation: >-
-      Determinism is what makes assessment worth doing: if behaviour were random there
+      Determinism is what makes assessment worth doing: if behavior were random there
       would be nothing to find. In practice "no reason" almost always means "no reason I
       have identified yet", and saying so accurately keeps the assessment alive.
     cognitiveLevel: application
@@ -267,19 +267,21 @@ questions:
           Evidence for a procedure in general is not evidence that it is working for this
           person now, which is what measurement establishes.
       - id: b
-        text: Withholding judgement until a large sample is available
+        text: Withholding judgment until a large sample is available
         isCorrect: false
         rationale: >-
           Single-case methods exist precisely so that decisions about one person can be made
           from that person's data.
       - id: c
-        text: Collecting data on the procedure you believe in, and changing course when it does not work
+        text: >-
+          Collecting data on a favored procedure, and changing course when the data say it
+          is not working
         isCorrect: true
         rationale: >-
           Empiricism supplies the data; philosophic doubt is the willingness to let the data
           overturn what you expected.
       - id: d
-        text: Relying on the judgement of the most experienced person in the room
+        text: Relying on the judgment of the most experienced person in the room
         isCorrect: false
         rationale: >-
           Experience is useful, but deferring to it in place of data is the opposite of both
@@ -303,29 +305,29 @@ questions:
     taskRef: { credential: BCaBA, code: A.3 }
     type: single-best-answer
     stem: >-
-      From a radical behaviourist position, how is a learner's report of feeling anxious
+      From a radical behaviorist position, how is a learner's report of feeling anxious
       best treated?
     options:
       - id: a
-        text: As behaviour in its own right, with its own history, not as the cause of other behaviour
+        text: As behavior in its own right, with its own history, not as the cause of other behavior
         isCorrect: true
         rationale: >-
-          Radical behaviourism includes private events in the subject matter and explains them
-          the same way it explains public behaviour, rather than promoting them to causes.
+          Radical behaviorism includes private events in the subject matter and explains them
+          the same way it explains public behavior, rather than promoting them to causes.
       - id: b
         text: As data that should be excluded because it cannot be verified
         isCorrect: false
         rationale: >-
-          That is methodological behaviourism, which rules private events out of the subject
+          That is methodological behaviorism, which rules private events out of the subject
           matter altogether.
       - id: c
         text: As the reason the learner avoids the activity
         isCorrect: false
         rationale: >-
-          Using the feeling as the explanation is the move radical behaviourism specifically
+          Using the feeling as the explanation is the move radical behaviorism specifically
           refuses; the feeling and the avoidance likely share a history.
       - id: d
-        text: As evidence of an internal state that must be treated before behaviour can change
+        text: As evidence of an internal state that must be treated before behavior can change
         isCorrect: false
         rationale: >-
           This treats the private event as a prior cause, which reverses the account and puts
@@ -374,7 +376,7 @@ questions:
         text: 'He hits because he is aggressive.'
         isCorrect: true
         rationale: >-
-          The explanation is the behaviour renamed. Nothing new is offered, and there is
+          The explanation is the behavior renamed. Nothing new is offered, and there is
           nothing to change.
     explanation: >-
       An explanatory fiction takes a description, turns it into a noun, and then offers
@@ -397,7 +399,7 @@ questions:
     type: single-best-answer
     stem: >-
       A report states that a learner "lacks the internal motivation to complete work."
-      Rewriting this in radical behaviourist terms would most appropriately produce:
+      Rewriting this in radical behaviorist terms would most appropriately produce:
     options:
       - id: a
         text: A statement of the learner's reinforcement history in general terms
@@ -409,13 +411,13 @@ questions:
         text: A statement that motivation cannot be measured and so cannot be discussed
         isCorrect: false
         rationale: >-
-          Radical behaviourism does not refuse to discuss motivation; it analyses it as
+          Radical behaviorism does not refuse to discuss motivation; it analyzes it as
           motivating operations and history.
       - id: c
         text: A statement of the learner's diagnosis and its known features
         isCorrect: false
         rationale: >-
-          A diagnosis describes a group. It does not explain this learner's behaviour, and the
+          A diagnosis describes a group. It does not explain this learner's behavior, and the
           assistant analyst should not be reasoning from it.
       - id: d
         text: A statement of what conditions have and have not followed work completion
@@ -447,31 +449,31 @@ questions:
       no applied aim. This work belongs to:
     options:
       - id: a
-        text: Professional practice guided by behaviour analysis
+        text: Professional practice guided by behavior analysis
         isCorrect: false
         rationale: >-
           Professional practice is service delivery to clients, which this is not.
       - id: b
-        text: The experimental analysis of behaviour
+        text: The experimental analysis of behavior
         isCorrect: true
         rationale: >-
-          Basic laboratory research into behavioural processes is the experimental analysis of
-          behaviour.
+          Basic laboratory research into behavioral processes is the experimental analysis of
+          behavior.
       - id: c
-        text: Applied behaviour analysis
+        text: Applied behavior analysis
         isCorrect: false
         rationale: >-
-          Applied work addresses socially significant behaviour in the settings where it
+          Applied work addresses socially significant behavior in the settings where it
           matters.
       - id: d
-        text: Behaviourism
+        text: Behaviorism
         isCorrect: false
         rationale: >-
-          Behaviourism is the philosophy of the science, not the research activity itself.
+          Behaviorism is the philosophy of the science, not the research activity itself.
     explanation: >-
       The four are commonly confused because they share vocabulary. Philosophy asks what
       the science assumes; the experimental analysis discovers basic processes; applied
-      work applies them to behaviour that matters; practice is the delivery of services to
+      work applies them to behavior that matters; practice is the delivery of services to
       people.
     cognitiveLevel: recall
     difficulty: 2
@@ -490,14 +492,14 @@ questions:
     taskRef: { credential: BCaBA, code: A.4 }
     type: single-best-answer
     stem: >-
-      Which activity is professional practice rather than applied behaviour analysis?
+      Which activity is professional practice rather than applied behavior analysis?
     options:
       - id: a
         text: Using a multiple baseline to test whether a new teaching procedure works
         isCorrect: false
         rationale: >-
-          Testing a procedure with an experimental design and socially significant behaviour
-          is applied behaviour analysis.
+          Testing a procedure with an experimental design and socially significant behavior
+          is applied behavior analysis.
       - id: b
         text: Publishing a component analysis of a classroom intervention
         isCorrect: false
@@ -510,7 +512,7 @@ questions:
         rationale: >-
           Replication across participants is applied research method, not service delivery.
       - id: d
-        text: Running a learner's programme and billing a funder for the session
+        text: Running a learner's program and billing a funder for the session
         isCorrect: true
         rationale: >-
           Service delivery to a client, under the rules of a profession, is professional
@@ -533,8 +535,8 @@ questions:
     taskRef: { credential: BCaBA, code: A.4 }
     type: single-best-answer
     stem: >-
-      What does behaviourism, as a philosophy, contribute that the experimental analysis
-      of behaviour does not?
+      What does behaviorism, as a philosophy, contribute that the experimental analysis
+      of behavior does not?
     options:
       - id: a
         text: Ethical standards governing certificants
@@ -548,19 +550,19 @@ questions:
           Philosophy settles the ground rules: what the subject matter is, and what an
           acceptable explanation looks like.
       - id: c
-        text: Experimental evidence about basic behavioural processes
+        text: Experimental evidence about basic behavioral processes
         isCorrect: false
         rationale: >-
-          That is precisely what the experimental analysis of behaviour contributes.
+          That is precisely what the experimental analysis of behavior contributes.
       - id: d
-        text: Procedures for changing socially significant behaviour
+        text: Procedures for changing socially significant behavior
         isCorrect: false
         rationale: >-
-          Those come from applied behaviour analysis.
+          Those come from applied behavior analysis.
     explanation: >-
       Philosophy is not decoration here. The refusal to accept an inner cause as an
       explanation is a philosophical commitment, and it is what pushes every analysis back
-      towards variables somebody can actually change.
+      toward variables somebody can actually change.
     cognitiveLevel: recall
     difficulty: 3
     termRefs: [radical-behaviorism, explanatory-fiction, experimental-analysis-of-behavior]
@@ -575,21 +577,21 @@ questions:
     taskRef: { credential: BCaBA, code: A.5 }
     type: single-best-answer
     stem: >-
-      A programme teaches a learner to ask for help, but the skill appears only with one
+      A program teaches a learner to ask for help, but the skill appears only with one
       staff member in one room. Which of the defining dimensions is not yet satisfied?
     options:
       - id: a
         text: Effective
         isCorrect: false
         rationale: >-
-          The behaviour did change to a meaningful degree with that staff member, so there is
+          The behavior did change to a meaningful degree with that staff member, so there is
           evidence of effectiveness as far as it goes.
       - id: b
         text: Generality
         isCorrect: true
         rationale: >-
-          Generality requires that behaviour change last over time, appear in other settings,
-          or spread to other behaviours. None has been shown.
+          Generality requires that behavior change last over time, appear in other settings,
+          or spread to other behaviors. None has been shown.
       - id: c
         text: Applied
         isCorrect: false
@@ -597,13 +599,13 @@ questions:
           The target — asking for help — is socially significant, so this dimension is
           satisfied.
       - id: d
-        text: Behavioural
+        text: Behavioral
         isCorrect: false
         rationale: >-
           The skill is observable and measurable, so this dimension is satisfied.
     explanation: >-
       Generality is the dimension most often left to chance, and the one most likely to be
-      missing when a programme looks successful in session and invisible at home. It has
+      missing when a program looks successful in session and invisible at home. It has
       to be programmed, not hoped for.
     cognitiveLevel: application
     difficulty: 2
@@ -641,13 +643,13 @@ questions:
         text: Conceptually systematic
         isCorrect: false
         rationale: >-
-          This concerns whether the procedure is described in terms of behavioural principles,
+          This concerns whether the procedure is described in terms of behavioral principles,
           which is a separate question.
       - id: d
         text: Applied
         isCorrect: false
         rationale: >-
-          The behaviour may be entirely socially significant; the weakness is in what the data
+          The behavior may be entirely socially significant; the weakness is in what the data
           can show.
     explanation: >-
       Analytic is the dimension that costs the most to satisfy and is dropped first under

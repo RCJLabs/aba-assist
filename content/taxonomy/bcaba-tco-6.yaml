@@ -52,7 +52,7 @@ domains:
       - code: A.1
         ourSummary: >-
           State the goals a natural science of behavior pursues — describing what happens,
-          predicting when it will happen, and influencing it — and recognise each in practice.
+          predicting when it will happen, and influencing it — and recognize each in practice.
         plainSummary: Know the three things this science tries to do, and spot each one at work.
         keywords: [description, prediction, control, goals of science]
         termRefs: [functional-relation, applied-behavior-analysis]
@@ -116,7 +116,7 @@ domains:
         attestation: *att
       - code: B.2
         ourSummary: >-
-          Distinguish a single stimulus from a stimulus class, and recognise when different
+          Distinguish a single stimulus from a stimulus class, and recognize when different
           things in the world are functioning as one class for a learner.
         plainSummary: Know when several different things all work the same way for a learner.
         keywords: [stimulus, stimulus class, feature class, arbitrary class]
@@ -172,7 +172,7 @@ domains:
       - code: B.8
         ourSummary: >-
           Identify the four simple schedules — fixed and variable, ratio and interval — and
-          recognise the response pattern each one tends to produce.
+          recognize the response pattern each one tends to produce.
         plainSummary: Know the four basic reinforcement schedules and the pattern each one makes.
         keywords: [FR, VR, FI, VI, schedule effects]
         termRefs:
@@ -185,7 +185,7 @@ domains:
         attestation: *att
       - code: B.9
         ourSummary: >-
-          Recognise operant extinction from what was withheld, and separate it from simply
+          Recognize operant extinction from what was withheld, and separate it from simply
           ignoring a behavior whose reinforcer is still arriving.
         plainSummary: Spot real extinction, and know why ignoring is often not it.
         keywords: [extinction, extinction burst, spontaneous recovery, planned ignoring]
@@ -228,7 +228,7 @@ domains:
       - code: B.13
         ourSummary: >-
           Distinguish behavior shaped by direct contact with consequences from behavior that
-          follows a stated rule, and recognise where each pattern comes from.
+          follows a stated rule, and recognize where each pattern comes from.
         plainSummary: Know the difference between learning from experience and following instructions.
         keywords: [rule-governed, contingency-shaped, instructions]
         termRefs: [rule-governed-behavior, contingency-shaped-behavior]
@@ -325,14 +325,14 @@ domains:
         ourSummary: >-
           Build graphs that show the quantitative relation you are claiming, including
           equal-interval line graphs, bar graphs and cumulative records.
-        plainSummary: Draw graphs that actually show what the data says.
+        plainSummary: Draw graphs that actually show what the data say.
         keywords: [line graph, bar graph, cumulative record, equal interval]
         termRefs: [line-graph, bar-graph, cumulative-record, phase-change-line]
         attestation: *att
       - code: C.9
         ourSummary: >-
           Read a graph for level, trend and variability, compare conditions, and state what
-          the data supports and what it does not.
+          the data support and what they do not.
         plainSummary: Read a graph for its level, direction and bounce, and say what it shows.
         keywords: [visual analysis, level, trend, variability]
         termRefs: [visual-analysis, level, trend, variability, baseline]
@@ -358,7 +358,7 @@ domains:
       - code: D.1
         ourSummary: >-
           Separate what you measure from what you change, and identify both in a described
-          study or in a programme running in a classroom.
+          study or in a program running in a classroom.
         plainSummary: Know which part you change and which part you measure.
         keywords: [dependent variable, independent variable]
         termRefs: [dependent-variable, independent-variable]
@@ -416,7 +416,7 @@ domains:
     examWeightPercent: 12
     examItems: 18
     ourDescription: >-
-      The rules of the job and the judgement behind them: competence, confidentiality,
+      The rules of the job and the judgment behind them: competence, confidentiality,
       relationships, cultural responsiveness, and the law. Assistant analysts work under
       supervision, so a recurring theme here is knowing when a question is not yours to settle.
     tasks:
@@ -456,7 +456,7 @@ domains:
       - code: E.5
         ourSummary: >-
           Apply the rules for collecting, storing, using and releasing confidential
-          information, and recognise the situations where disclosure is required.
+          information, and recognize the situations where disclosure is required.
         plainSummary: Follow the rules on private information, and know when you must share it.
         keywords: [confidentiality, HIPAA, records, disclosure]
         termRefs: [confidentiality, hipaa, mandated-reporter, informed-consent]
@@ -471,9 +471,9 @@ domains:
         attestation: *att
       - code: E.7
         ourSummary: >-
-          Recognise the kinds of multiple relationship that arise in practice, the risks each
+          Recognize the kinds of multiple relationship that arise in practice, the risks each
           carries, and how to limit harm where one cannot be avoided.
-        plainSummary: Spot relationships that could cloud your judgement, and reduce the risk.
+        plainSummary: Spot relationships that could cloud your judgment, and reduce the risk.
         keywords: [multiple relationships, dual relationship, conflict of interest]
         termRefs: [dual-relationship, conflict-of-interest, ethics-code]
         attestation: *att
@@ -487,7 +487,7 @@ domains:
         attestation: *att
       - code: E.9
         ourSummary: >-
-          Practise cultural humility: treat the people you work with as the authority on their
+          Practice cultural humility: treat the people you work with as the authority on their
           own culture, and keep checking your assumptions rather than declaring them settled.
         plainSummary: Treat families as the experts on their own culture, and keep checking your assumptions.
         keywords: [cultural humility, self-reflection, assumptions]
@@ -529,7 +529,7 @@ domains:
         attestation: *att
       - code: F.2
         ourSummary: >-
-          Identify when behavior-analytic services are warranted at all, and recognise the
+          Identify when behavior-analytic services are warranted at all, and recognize the
           situations that call for a different profession instead.
         plainSummary: Know when this work is the right answer, and when another profession is.
         keywords: [referral, indications for service, scope]
@@ -670,7 +670,7 @@ domains:
         attestation: *att
       - code: G.7
         ourSummary: >-
-          Use instructions and stated rules to establish behavior, and recognise when a rule
+          Use instructions and stated rules to establish behavior, and recognize when a rule
           will not be enough because the learner has no history with it.
         plainSummary: Teach using instructions and rules, and know when they will not work.
         keywords: [instructions, rules, rule-governed behavior]
@@ -789,7 +789,7 @@ domains:
       - code: G.19
         ourSummary: >-
           Define positive and negative punishment procedures such as time-out, response cost
-          and overcorrection, and state the authorisation and safeguards each one requires.
+          and overcorrection, and state the authorization and safeguards each one requires.
         plainSummary: Know the punishment procedures, when they are considered, and the safeguards required.
         keywords: [time-out, response cost, overcorrection, safeguards]
         termRefs:
@@ -941,7 +941,7 @@ domains:
         ourSummary: >-
           Train supervisees with methods shown to work and to a stated standard — instruct,
           model, rehearse, give feedback, and repeat until performance meets criterion.
-        plainSummary: Train staff by showing, practising and giving feedback until they meet a standard.
+        plainSummary: Train staff by showing, practicing and giving feedback until they meet a standard.
         keywords: [BST, competency-based training, behavioral skills training]
         termRefs:
           [

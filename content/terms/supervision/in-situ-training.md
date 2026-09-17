@@ -10,7 +10,7 @@ definition:
     criterion in role-play and then perform poorly with a client, because a skill
     trained only in a quiet room is a skill under the control of a quiet room.
   plain: >-
-    Training people in the real setting, not just in a meeting room. Skills practised in
+    Training people in the real setting, not just in a meeting room. Skills practiced in
     a quiet room often do not survive a real session.
   gloss: Training and feedback given where the skill will be used
 examples:

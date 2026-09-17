@@ -1,6 +1,6 @@
 id: anatomy-of-a-line-graph
 title: The parts of a line graph
-gloss: Every labelled piece of the standard behaviour graph, named on the graph itself
+gloss: Every labeled piece of the standard behavior graph, named on the graph itself
 audience: [RBT, BCaBA, BCBA]
 fictional: true
 design: ab
@@ -62,7 +62,7 @@ callouts:
     place: right
     termRef: line-graph
     text: >-
-      The measure of behaviour, scaled from zero. Where this axis starts matters: a scale
+      The measure of behavior, scaled from zero. Where this axis starts matters: a scale
       that begins part-way up makes a small change look enormous.
   - id: abscissa
     label: Horizontal axis
@@ -133,7 +133,7 @@ longDescription: >-
   conditions are not joined by a line across the phase-change line.
 teaching: >-
   Almost everything the exam asks about graphing is a question about one of the seven
-  parts labelled here. A graph with an unlabelled axis, or with the data path drawn
+  parts labeled here. A graph with an unlabeled axis, or with the data path drawn
   straight through a phase-change line, is not a stylistic preference gone wrong: it is a
   graph that says something untrue. The path across a phase line asserts that the
   sessions either side belong to the same condition, which is the exact comparison the

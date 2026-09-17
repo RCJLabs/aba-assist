@@ -6,7 +6,7 @@ questions:
     taskRef: { credential: BCBA, code: A.1 }
     type: single-best-answer
     stem: >-
-      A study reports that classroom noise and off-task behaviour rise and fall together,
+      A study reports that classroom noise and off-task behavior rise and fall together,
       with nothing manipulated. This supports:
     options:
       - id: a
@@ -65,10 +65,10 @@ questions:
     taskRef: { credential: BCBA, code: A.2 }
     type: single-best-answer
     stem: >-
-      The assumption of determinism in behaviour analysis commits the analyst to:
+      The assumption of determinism in behavior analysis commits the analyst to:
     options:
       - id: a
-        text: Believing behaviour cannot be changed
+        text: Believing behavior cannot be changed
         isCorrect: false
         rationale: >-
           Lawfulness is what makes deliberate change possible rather than impossible.
@@ -76,21 +76,21 @@ questions:
         text: Rejecting the existence of private events
         isCorrect: false
         rationale: >-
-          Radical behaviourism includes private events rather than denying them.
+          Radical behaviorism includes private events rather than denying them.
       - id: c
-        text: Explaining behaviour by inner states
+        text: Explaining behavior by inner states
         isCorrect: false
         rationale: >-
           That is mentalism, which determinism as used here works against.
       - id: d
-        text: Treating behaviour as lawful and its causes as discoverable in the environment
+        text: Treating behavior as lawful and its causes as discoverable in the environment
         isCorrect: true
         rationale: >-
-          Determinism is the working assumption that behaviour has orderly causes that can be
+          Determinism is the working assumption that behavior has orderly causes that can be
           found.
     explanation: >-
       The philosophical assumptions do practical work. Determinism is why an unexplained
-      behaviour is treated as a gap in the analysis rather than as evidence of something
+      behavior is treated as a gap in the analysis rather than as evidence of something
       uncaused, and it is what makes assessment worth doing.
     cognitiveLevel: recall
     difficulty: 2
@@ -106,20 +106,20 @@ questions:
     taskRef: { credential: BCBA, code: A.3 }
     type: single-best-answer
     stem: >-
-      Radical behaviourism differs from methodological behaviourism principally in that
+      Radical behaviorism differs from methodological behaviorism principally in that
       it:
     options:
       - id: a
-        text: Includes private events as behaviour to be explained by the same principles
+        text: Includes private events as behavior to be explained by the same principles
         isCorrect: true
         rationale: >-
-          Radical behaviourism treats thinking and feeling as behaviour, subject to the same
+          Radical behaviorism treats thinking and feeling as behavior, subject to the same
           analysis.
       - id: b
-        text: Rejects the study of observable behaviour
+        text: Rejects the study of observable behavior
         isCorrect: false
         rationale: >-
-          Observable behaviour remains central to both positions.
+          Observable behavior remains central to both positions.
       - id: c
         text: Requires physiological measurement
         isCorrect: false
@@ -131,9 +131,9 @@ questions:
         rationale: >-
           That is closer to the methodological position, which excludes them from analysis.
     explanation: >-
-      The distinction matters in practice. Treating a private event as behaviour means
+      The distinction matters in practice. Treating a private event as behavior means
       asking what controls it, rather than either ignoring it or promoting it to an
-      explanation of the behaviour you can see.
+      explanation of the behavior you can see.
     cognitiveLevel: analysis
     difficulty: 3
     termRefs: [radical-behaviorism, methodological-behaviorism, private-event, mentalism]
@@ -148,11 +148,11 @@ questions:
     taskRef: { credential: BCBA, code: A.4 }
     type: single-best-answer
     stem: >-
-      The experimental analysis of behaviour differs from applied behaviour analysis
+      The experimental analysis of behavior differs from applied behavior analysis
       mainly in its:
     options:
       - id: a
-        text: Purpose — understanding basic processes rather than improving socially important behaviour
+        text: Purpose — understanding basic processes rather than improving socially important behavior
         isCorrect: true
         rationale: >-
           The branches are distinguished by aim, with applied work committed to social
@@ -173,7 +173,7 @@ questions:
         rationale: >-
           Applied work uses humans; basic work often does not, but that follows from purpose.
     explanation: >-
-      The four branches — behaviourism, the experimental analysis, applied behaviour
+      The four branches — behaviorism, the experimental analysis, applied behavior
       analysis and practice — differ by aim rather than by method. The applied branch is
       defined by social importance, which is why social validity belongs to it
       specifically.
@@ -244,10 +244,10 @@ questions:
       practical difference. It fails which dimension?
     options:
       - id: a
-        text: Behavioural
+        text: Behavioral
         isCorrect: false
         rationale: >-
-          Behavioural concerns measuring behaviour itself rather than a proxy.
+          Behavioral concerns measuring behavior itself rather than a proxy.
       - id: b
         text: Effective
         isCorrect: true
@@ -258,7 +258,7 @@ questions:
         text: Applied
         isCorrect: false
         rationale: >-
-          Applied concerns whether the behaviour is socially important, which it may well be.
+          Applied concerns whether the behavior is socially important, which it may well be.
       - id: d
         text: Analytic
         isCorrect: false
@@ -284,7 +284,7 @@ questions:
     taskRef: { credential: BCBA, code: A.2 }
     type: single-best-answer
     stem: >-
-      Parsimony requires that, before invoking a complex account of a behaviour, the
+      Parsimony requires that, before invoking a complex account of a behavior, the
       analyst:
     options:
       - id: a
@@ -310,7 +310,7 @@ questions:
           when they fail.
     explanation: >-
       Parsimony is a working rule, not a claim that the world is simple. In practice it
-      means checking whether an ordinary contingency accounts for the behaviour before
+      means checking whether an ordinary contingency accounts for the behavior before
       reaching for anything more elaborate.
     cognitiveLevel: application
     difficulty: 2
@@ -326,8 +326,8 @@ questions:
     taskRef: { credential: BCBA, code: B.3 }
     type: single-best-answer
     stem: >-
-      The clearest practical marker distinguishing respondent from operant behaviour is
-      that respondent behaviour is:
+      The clearest practical marker distinguishing respondent from operant behavior is
+      that respondent behavior is:
     options:
       - id: a
         text: Elicited by an antecedent stimulus rather than selected by its consequences
@@ -349,10 +349,10 @@ questions:
         text: Impossible to measure directly
         isCorrect: false
         rationale: >-
-          Respondent behaviour is measured directly all the time.
+          Respondent behavior is measured directly all the time.
     explanation: >-
-      The two kinds of behaviour call for different analyses and different interventions.
-      Asking whether the behaviour is drawn out by something before it or selected by
+      The two kinds of behavior call for different analyses and different interventions.
+      Asking whether the behavior is drawn out by something before it or selected by
       something after it is the question that separates them.
     cognitiveLevel: analysis
     difficulty: 3
@@ -381,7 +381,7 @@ questions:
         rationale: >-
           That describes variable ratio.
       - id: c
-        text: A pause after reinforcement followed by accelerating responding towards the end of the interval
+        text: A pause after reinforcement followed by accelerating responding toward the end of the interval
         isCorrect: true
         rationale: >-
           That pattern, seen as a scallop on a cumulative record, is the signature of fixed
@@ -392,7 +392,7 @@ questions:
         rationale: >-
           That is the variable-interval pattern.
     explanation: >-
-      The four basic schedules produce four recognisable patterns, and the patterns follow
+      The four basic schedules produce four recognizable patterns, and the patterns follow
       from what the schedule makes relevant: time or responses, fixed or variable. Being
       able to read the pattern back to the schedule is the skill being tested.
     cognitiveLevel: analysis
@@ -441,7 +441,7 @@ questions:
           They are distinct antecedent functions with different effects.
     explanation: >-
       Confusing the two leads to the wrong intervention. If the learner does not want the
-      consequence, signalling availability more loudly will not help; if they want it but
+      consequence, signaling availability more loudly will not help; if they want it but
       do not know it is available, changing deprivation will not help either.
     cognitiveLevel: application
     difficulty: 3
@@ -528,9 +528,9 @@ questions:
           Effort matters and is not the whole account; relative reinforcement rate is the core
           relation.
     explanation: >-
-      The matching law is the reason a replacement behaviour has to compete rather than
+      The matching law is the reason a replacement behavior has to compete rather than
       merely exist. It also explains why thinning the alternative too far returns the
-      problem behaviour: the relative rates shift back.
+      problem behavior: the relative rates shift back.
     cognitiveLevel: application
     difficulty: 3
     termRefs:
@@ -551,14 +551,14 @@ questions:
     taskRef: { credential: BCBA, code: B.6 }
     type: single-best-answer
     stem: >-
-      A behaviour decreases because it directly produces an uncomfortable consequence,
+      A behavior decreases because it directly produces an uncomfortable consequence,
       with nobody else involved. This is:
     options:
       - id: a
         text: Automatic reinforcement
         isCorrect: false
         rationale: >-
-          Reinforcement would increase the behaviour, and this decreased.
+          Reinforcement would increase the behavior, and this decreased.
       - id: b
         text: Extinction
         isCorrect: false
@@ -568,7 +568,7 @@ questions:
         text: Automatic punishment
         isCorrect: true
         rationale: >-
-          The punishing consequence is produced by the behaviour itself rather than delivered
+          The punishing consequence is produced by the behavior itself rather than delivered
           by another person.
       - id: d
         text: Socially mediated punishment
@@ -695,9 +695,9 @@ questions:
         text: Negative reinforcement
         isCorrect: false
         rationale: >-
-          Nothing is removed contingent on the behaviour.
+          Nothing is removed contingent on the behavior.
       - id: c
-        text: Behavioural momentum, by building responding that persists into the harder request
+        text: Behavioral momentum, by building responding that persists into the harder request
         isCorrect: true
         rationale: >-
           A run of reinforced compliance increases the persistence of responding when the
@@ -737,7 +737,7 @@ questions:
       mand because it is:
     options:
       - id: a
-        text: Evoked by another person's verbal behaviour
+        text: Evoked by another person's verbal behavior
         isCorrect: false
         rationale: >-
           Verbal antecedent control without point-to-point correspondence is an intraverbal.
@@ -759,7 +759,7 @@ questions:
     explanation: >-
       The mand is the only verbal operant whose reinforcer is specified by the response
       itself, which is why it is usually taught first: it puts the learner in control of
-      getting what they want, by a route other than problem behaviour.
+      getting what they want, by a route other than problem behavior.
     cognitiveLevel: application
     difficulty: 2
     termRefs: [mand, motivating-operation, tact, echoic, functional-communication-training]
@@ -794,7 +794,7 @@ questions:
         text: Reactivity
         isCorrect: false
         rationale: >-
-          Reactivity is behaviour changing because of observation.
+          Reactivity is behavior changing because of observation.
       - id: d
         text: Observer drift
         isCorrect: false
@@ -865,7 +865,7 @@ questions:
       A reversal design is least appropriate when:
     options:
       - id: a
-        text: The behaviour occurs at a low rate
+        text: The behavior occurs at a low rate
         isCorrect: false
         rationale: >-
           Low rates complicate measurement rather than ruling out the design.
@@ -880,15 +880,15 @@ questions:
         rationale: >-
           Cost is a practical constraint rather than a design one.
       - id: d
-        text: The behaviour change is irreversible, such as an acquired academic skill
+        text: The behavior change is irreversible, such as an acquired academic skill
         isCorrect: true
         rationale: >-
-          Withdrawal cannot return the behaviour to baseline if the change does not reverse,
+          Withdrawal cannot return the behavior to baseline if the change does not reverse,
           so the design cannot demonstrate control.
     explanation: >-
-      Design selection follows from the behaviour and the ethics of withdrawal.
+      Design selection follows from the behavior and the ethics of withdrawal.
       Irreversible changes and cases where withdrawal would be harmful both point away
-      from reversal and towards multiple baseline.
+      from reversal and toward multiple baseline.
     cognitiveLevel: application
     difficulty: 3
     termRefs:
@@ -908,13 +908,13 @@ questions:
       baseline design demonstrates control by showing that:
     options:
       - id: a
-        text: Each behaviour changes only when the intervention reaches it, and not before
+        text: Each behavior changes only when the intervention reaches it, and not before
         isCorrect: true
         rationale: >-
           Change coinciding with introduction in each leg, and untreated legs staying stable,
           is the demonstration.
       - id: b
-        text: All behaviours change at the same time
+        text: All behaviors change at the same time
         isCorrect: false
         rationale: >-
           Simultaneous change would suggest a common external cause rather than the
@@ -955,7 +955,7 @@ questions:
         rationale: >-
           Rapid alternation makes maturation a weak competitor.
       - id: b
-        text: Irreversibility of the behaviour change
+        text: Irreversibility of the behavior change
         isCorrect: false
         rationale: >-
           That is the reversal design's problem.
@@ -973,7 +973,7 @@ questions:
     explanation: >-
       Each design has a characteristic weakness. Alternating treatments compares
       conditions quickly and efficiently, at the cost of multiple-treatment interference,
-      which is managed by signalling conditions clearly and counterbalancing their order.
+      which is managed by signaling conditions clearly and counterbalancing their order.
     cognitiveLevel: analysis
     difficulty: 4
     termRefs:
@@ -1047,7 +1047,7 @@ questions:
         rationale: >-
           That is measurement agreement rather than experimental logic.
       - id: c
-        text: Returning to the prior condition returns the data towards the predicted pattern
+        text: Returning to the prior condition returns the data toward the predicted pattern
         isCorrect: true
         rationale: >-
           Verification shows that the baseline prediction would have held, had the
@@ -1134,7 +1134,7 @@ questions:
         text: The dependent variable becomes unreliable
         isCorrect: false
         rationale: >-
-          Measurement of the behaviour is unaffected by the confound.
+          Measurement of the behavior is unaffected by the confound.
       - id: d
         text: External validity is reduced
         isCorrect: false
@@ -1160,7 +1160,7 @@ questions:
     taskRef: { credential: BCBA, code: D.4 }
     type: single-best-answer
     stem: >-
-      Extending a baseline while a harmful behaviour continues raises a conflict between:
+      Extending a baseline while a harmful behavior continues raises a conflict between:
     options:
       - id: a
         text: Internal and external validity
@@ -1178,10 +1178,10 @@ questions:
         rationale: >-
           Also a measurement question rather than an ethical one.
       - id: d
-        text: Experimental rigour and the obligation to intervene promptly
+        text: Experimental rigor and the obligation to intervene promptly
         isCorrect: true
         rationale: >-
-          A longer baseline strengthens the demonstration while leaving the behaviour
+          A longer baseline strengthens the demonstration while leaving the behavior
           untreated, which is the tension.
     explanation: >-
       Design decisions in applied work are constrained by obligations to the client. Where

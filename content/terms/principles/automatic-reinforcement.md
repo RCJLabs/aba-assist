@@ -9,7 +9,7 @@ definition:
     delivering it — the sensory result of rocking, the sound of humming, the relief of
     scratching an itch. Because no one mediates the consequence, these behaviors are
     harder to assess and to treat, and the functional-analysis "alone" condition exists
-    to detect them. Older writing calls behaviour of this kind self-stimulatory, which
+    to detect them. Older writing calls behavior of this kind self-stimulatory, which
     names how it looks rather than what maintains it, and is not a synonym for this term.
   plain: >-
     When the behavior itself is the reward. Nobody has to give anything; the feeling or

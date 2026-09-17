@@ -6,7 +6,7 @@ category: supervision
 definition:
   technical: >-
     A pattern of exhaustion, disengagement and reduced effectiveness arising from
-    sustained work demands with insufficient support. In behaviour-analytic terms it is
+    sustained work demands with insufficient support. In behavior-analytic terms it is
     largely a contingency problem rather than a personal failing: high effort, thin
     reinforcement and low control over the work, which are conditions a supervisor can
     change.

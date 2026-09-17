@@ -1,6 +1,6 @@
 ---
 id: gifts
-ourLabel: Gifts, meals and favours
+ourLabel: Gifts, meals and favors
 gloss: Why a small thank-you is a bigger problem than it looks
 appliesTo: [RBT, BCaBA, BCBA]
 sectionRefs:
@@ -15,7 +15,7 @@ ourSummary: >-
   technician outline makes adhering to those limits its own task. The reason is not that
   generosity is suspect; it is that a gift changes a relationship. It creates an
   obligation running in the wrong direction, it can be a step toward a multiple
-  relationship, and where an organisation bills for services it can look like an
+  relationship, and where an organization bills for services it can look like an
   inducement. A token of nominal value in a cultural context where refusing would itself
   be an insult is treated differently from cash, expensive items, or repeated giving. Your
   employer will usually have a specific policy, and it can be stricter than the code.
@@ -23,17 +23,17 @@ plainSummary: >-
   Gifts change a working relationship, even small ones. Know your employer's rule before
   it happens, decline warmly, and tell your supervisor what was offered.
 whatThisLooksLike:
-  - Knowing your organisation's gift rule before a birthday or a holiday arrives.
+  - Knowing your organization's gift rule before a birthday or a holiday arrives.
   - Thanking a family warmly and explaining that professional rules limit what you can accept.
   - Declining private paid work outside the agency's arrangement.
   - Telling your supervisor about anything offered, including what you declined.
 commonPitfalls:
   - Accepting "just this once", which sets an expectation for next time.
   - Accepting something and deciding afterwards whether it was allowed.
-  - Treating a shared meal, a lift, or childcare as different in kind from a wrapped present.
+  - Treating a shared meal, a ride, or childcare as different in kind from a wrapped present.
   - Giving gifts to families, which raises the same problem in reverse.
 ifYouAreUnsure: >-
-  Do not accept it in the moment; say you will check your organisation's policy and come
+  Do not accept it in the moment; say you will check your organization's policy and come
   back to them. Then ask your supervisor. A short delay is far easier than returning
   something later.
 termRefs: [conflict-of-interest, dual-relationship, ethics-code]

@@ -35,7 +35,7 @@ whatNotToDo:
   - >-
     Do not argue with the stranger or try to correct their opinion. You are working.
   - >-
-    Do not apologise for the learner as though they have done something wrong.
+    Do not apologize for the learner as though they have done something wrong.
 whenToEscalate:
   - >-
     Tell your supervisor the same day if anybody photographed or filmed the learner, or if

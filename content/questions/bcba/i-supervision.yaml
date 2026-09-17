@@ -19,7 +19,7 @@ questions:
         rationale: >-
           Also real, and further removed than the client.
       - id: c
-        text: The employing organisation's funding
+        text: The employing organization's funding
         isCorrect: false
         rationale: >-
           A consequence of a consequence rather than the direct cost.
@@ -293,7 +293,7 @@ questions:
         rationale: >-
           Matching is not required and does not substitute for responsive practice.
     explanation: >-
-      Cultural responsiveness in supervision is practised through the same levers as
+      Cultural responsiveness in supervision is practiced through the same levers as
       everything else: how goals are chosen, how performance is discussed, how feedback
       lands, and whether the supervisee can say when something is not working.
     cognitiveLevel: application
@@ -313,10 +313,10 @@ questions:
       Supervisee goals should be derived primarily from:
     options:
       - id: a
-        text: The caseload the organisation needs covered
+        text: The caseload the organization needs covered
         isCorrect: false
         rationale: >-
-          Organisational need is a constraint, not the basis for individual goals.
+          Organizational need is a constraint, not the basis for individual goals.
       - id: b
         text: An assessment of their current skills against the requirements of their role
         isCorrect: true
@@ -334,7 +334,7 @@ questions:
         rationale: >-
           Interests inform priorities but do not establish need.
     explanation: >-
-      Supervision is a behaviour-change programme and starts with assessment like any
+      Supervision is a behavior-change program and starts with assessment like any
       other. Goals set without assessing current performance are either already met or out
       of reach, and neither produces change.
     cognitiveLevel: application
@@ -373,9 +373,9 @@ questions:
         text: Runs a preference assessment to written protocol with 90% of steps correct on three occasions
         isCorrect: true
         rationale: >-
-          The behaviour, the standard and the number of occasions are all stated.
+          The behavior, the standard and the number of occasions are all stated.
     explanation: >-
-      Supervisee goals get the same treatment as client goals: behaviour, conditions,
+      Supervisee goals get the same treatment as client goals: behavior, conditions,
       criterion. Goals about understanding or comfort cannot be assessed, so they tend to
       be signed off on impression.
     cognitiveLevel: application
@@ -392,7 +392,7 @@ questions:
     taskRef: { credential: BCBA, code: I.5 }
     type: single-best-answer
     stem: >-
-      Behavioural skills training is distinguished from ordinary instruction chiefly by
+      Behavioral skills training is distinguished from ordinary instruction chiefly by
       including:
     options:
       - id: a
@@ -416,7 +416,7 @@ questions:
         rationale: >-
           Practice with feedback to criterion is what separates it from telling and showing.
     explanation: >-
-      Instruction and modelling establish what to do; rehearsal and feedback establish
+      Instruction and modeling establish what to do; rehearsal and feedback establish
       doing it. Training that stops after the first two reliably produces staff who can
       describe a procedure and cannot run it.
     cognitiveLevel: recall
@@ -491,10 +491,10 @@ questions:
         text: Schedule ongoing observation and feedback rather than treating training as finished
         isCorrect: true
         rationale: >-
-          Performance requires maintenance like any other behaviour, and periodic feedback is
+          Performance requires maintenance like any other behavior, and periodic feedback is
           what supplies it.
       - id: d
-        text: Repeat the full training programme
+        text: Repeat the full training program
         isCorrect: false
         rationale: >-
           Repeating training addresses acquisition, which is not what failed.
@@ -634,7 +634,7 @@ questions:
         rationale: >-
           Nothing indicates they cannot do it.
     explanation: >-
-      Staff behaviour follows the same contingencies as anybody's. A procedure that costs
+      Staff behavior follows the same contingencies as anybody's. A procedure that costs
       more effort and produces no difference in outcome is being selected against, and the
       fix is in the arrangement rather than in the person.
     cognitiveLevel: analysis
@@ -660,7 +660,7 @@ questions:
         text: Procedural integrity of the supervisee's implementation over time
         isCorrect: true
         rationale: >-
-          Integrity is the behaviour supervision is meant to change, measured where it
+          Integrity is the behavior supervision is meant to change, measured where it
           matters.
       - id: b
         text: Number of supervision hours delivered
@@ -741,13 +741,13 @@ questions:
       Including client outcomes when evaluating supervision is important because:
     options:
       - id: a
-        text: Supervision that improves supervisee behaviour without improving client outcomes has missed its purpose
+        text: Supervision that improves supervisee behavior without improving client outcomes has missed its purpose
         isCorrect: true
         rationale: >-
           The point of supervision is the effect on the people receiving services, reached
           through the supervisee.
       - id: b
-        text: Client outcomes are easier to measure than supervisee behaviour
+        text: Client outcomes are easier to measure than supervisee behavior
         isCorrect: false
         rationale: >-
           They are usually harder, not easier.
@@ -762,7 +762,7 @@ questions:
         rationale: >-
           Integrity is how the effect is produced and still needs measuring.
     explanation: >-
-      The chain runs from supervision to supervisee behaviour to client outcome, and
+      The chain runs from supervision to supervisee behavior to client outcome, and
       evaluating only the middle link can miss a failure at the end. Measuring both is
       what makes the chain visible rather than assumed.
     cognitiveLevel: analysis
@@ -786,7 +786,7 @@ questions:
         text: Reduce the first supervisee's independence
         isCorrect: false
         rationale: >-
-          Levelling down is equally unexamined.
+          Leveling down is equally unexamined.
       - id: b
         text: Ask the supervisees whether they feel treated equally
         isCorrect: false
@@ -796,13 +796,13 @@ questions:
         text: Compare the independence decisions against the documented criteria
         isCorrect: true
         rationale: >-
-          Checking the judgements against stated criteria is what reveals whether the pattern
+          Checking the judgments against stated criteria is what reveals whether the pattern
           is justified.
       - id: d
         text: Give the other supervisees the same independence
         isCorrect: false
         rationale: >-
-          Levelling up without checking the criteria may extend an unjustified decision rather
+          Leveling up without checking the criteria may extend an unjustified decision rather
           than correct it.
     explanation: >-
       Equity is checked the way anything else is: state the criteria, compare the
