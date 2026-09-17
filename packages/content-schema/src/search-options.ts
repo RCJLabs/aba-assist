@@ -26,8 +26,24 @@ export interface AbaSearchOptions {
  * setup, a topic's summary. One field rather than one per kind, because MiniSearch scores
  * per field and a term would otherwise be competing against itself across two of them
  * while a situation matched in only one.
+ *
+ * `situ` is the exception, and it earns being separate. It holds a term's worked examples,
+ * so a reader who remembers what the thing looked like can find the word for it: "started
+ * putting on their coat six seconds after being asked" now reaches Latency, and "teach the
+ * last step first" reaches Chaining. Neither did before — the examples were not indexed at
+ * all.
+ *
+ * Weighted below every other field because it is a route in, never the reason a result is
+ * first. Folded into `body` instead, a term whose *example* mentions a tablet would rank
+ * level with one that is *about* tablets.
+ *
+ * What this is NOT, having tested it: a way to ask in ordinary words. "He screamed when I
+ * took the tablet" still returns unrelated situations, and stripping the function words
+ * from the query does not rescue it — the corpus does not contain the words people reach
+ * for, and bag-of-words scoring over a few hundred documents rewards many weak matches
+ * over one good one. A distinctive phrase from an example works; a sentence does not.
  */
-export const SEARCH_FIELDS = ['t', 'a', 'g', 'body'];
+export const SEARCH_FIELDS = ['t', 'a', 'g', 'body', 'situ'];
 
 export function searchOptions(): AbaSearchOptions {
 	return {
@@ -45,7 +61,8 @@ export function searchOptions(): AbaSearchOptions {
 		 */
 		storeFields: ['i', 'k', 't', 'l', 'g', 'b', 'c', 'r', 'p'],
 		searchOptions: {
-			boost: { t: 4, a: 3, g: 2 },
+			// `body` is the implicit 1. `situ` deliberately sits under it — see above.
+			boost: { t: 4, a: 3, g: 2, situ: 0.4 },
 			prefix: true,
 			fuzzy: 0.2,
 			/*

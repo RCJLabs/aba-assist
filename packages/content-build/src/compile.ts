@@ -1381,7 +1381,7 @@ function buildAssets(
 		task: 0.55
 	} as const;
 
-	const searchDocs: (SearchIndexEntry & { body: string })[] = [];
+	const searchDocs: (SearchIndexEntry & { body: string; situ?: string })[] = [];
 
 	for (const t of terms) {
 		searchDocs.push({
@@ -1395,7 +1395,18 @@ function buildAssets(
 			b: t.searchBoost * KIND_WEIGHT.term,
 			r: t.taskRefs.map(taskRefKey),
 			p: null,
-			body: `${t.definition.technical} ${t.definition.plain}`
+			body: `${t.definition.technical} ${t.definition.plain}`,
+			/*
+			 * Examples only, never non-examples.
+			 *
+			 * A non-example is prose describing something the term is *not*, and it very
+			 * often describes the term it is contrasted against — "guiding the arm from the
+			 * first trial, that is most-to-least" lives on the least-to-most entry. Indexed,
+			 * it would answer a reader who described most-to-least with the wrong page,
+			 * confidently. The same reasoning kept them out of the pair drills, and it is
+			 * the same underlying fact: not-A is not evidence of B.
+			 */
+			situ: t.examples.map((e) => e.text).join(' ')
 		});
 	}
 

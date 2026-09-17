@@ -1674,3 +1674,83 @@ describe('an alias has to be another name for the same thing', () => {
 		expect(rules(r)).not.toContain('editorial/alias-names-another-term');
 	});
 });
+
+describe('the examples in the search index', () => {
+	/*
+	 * Worked examples were not indexed at all, so a reader who remembered what the thing
+	 * looked like but not what it was called had nothing to type. These pin the narrow
+	 * thing that fixes — a distinctive phrase from an example reaching its term — and the
+	 * one that must not follow from it.
+	 */
+	async function search(query: string) {
+		const MiniSearch = (await import('minisearch')).default;
+		const { searchOptions } = await import('@aba/content-schema');
+		const r = await build({
+			'terms/latency.md': frontmatter(
+				term({
+					id: 'latency',
+					term: 'Latency',
+					definition: {
+						technical:
+							'The elapsed time between the onset of an instruction and the beginning of the response it asks for.',
+						plain: 'How long they take to get started after you ask them to do something.',
+						gloss: 'How long before the response starts'
+					},
+					examples: [
+						{ text: 'They began putting on their coat six seconds after being asked.' }
+					],
+					nonExamples: [
+						{ text: 'Counting how many bites were taken during the whole meal instead.' }
+					]
+				})
+			),
+			'terms/duration.md': frontmatter(
+				term({
+					id: 'duration',
+					term: 'Duration',
+					definition: {
+						technical:
+							'The total elapsed time a behavior occupies, measured from when an episode begins until it ends.',
+						plain: 'How long the behavior itself goes on for once it has started.',
+						gloss: 'How long an episode lasts'
+					},
+					examples: [{ text: 'A tantrum that ran from the start of the lesson until break.' }],
+					nonExamples: [{ text: 'They began putting on their coat six seconds after asked.' }]
+				})
+			)
+		});
+		// Surfaced rather than swallowed: a fixture that fails the content gate otherwise
+		// arrives here as "cannot read properties of undefined", which says nothing.
+		expect(r.errors).toEqual([]);
+		const asset = r.assets.find((a) => a.name === 'search-index')!;
+		const mini = MiniSearch.loadJSON(asset.source, searchOptions());
+		return mini.search(query, searchOptions().searchOptions);
+	}
+
+	it('finds a term from a distinctive phrase in its own example', async () => {
+		const hits = await search('putting on their coat six seconds after being asked');
+		expect(hits[0]!.i).toBe('latency');
+	});
+
+	/*
+	 * The decision that makes the field safe. A non-example describes what the term is
+	 * *not*, and very often describes the term it is contrasted against — indexed, it would
+	 * answer a reader who described one thing with the page for the other, confidently.
+	 * Here `duration`'s non-example is `latency`'s example almost word for word, which is
+	 * exactly how the corpus really reads.
+	 */
+	it('never routes a reader to a term on the strength of its non-example', async () => {
+		const hits = await search('putting on their coat six seconds after being asked');
+		const duration = hits.findIndex((h) => h.i === 'duration');
+		expect(duration === -1 || duration > hits.findIndex((h) => h.i === 'latency')).toBe(true);
+	});
+
+	/*
+	 * Examples are a route in, never the reason a result is first. A term that is *about*
+	 * the word has to outrank one that merely mentions it in a story.
+	 */
+	it('ranks a term below one whose definition is actually about the query', async () => {
+		const hits = await search('duration');
+		expect(hits[0]!.i).toBe('duration');
+	});
+});
