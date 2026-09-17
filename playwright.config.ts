@@ -19,6 +19,19 @@ export default defineConfig({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 1 : 0,
+
+	/*
+	 * Playwright's default test budget is 30s, and several specs spend a documented 30s
+	 * waiting for the search index or a tracker to report ready. That is the whole budget:
+	 * a wait that actually ran long could never fail as itself, only as "test timeout of
+	 * 30000ms exceeded" with no locator named — the least useful message available at the
+	 * moment you most need one. 60s leaves the readiness wait its 30s and the assertions
+	 * after it the 30s they were written against.
+	 *
+	 * `expect` keeps its 5s default on purpose: ordinary assertions should stay fast to
+	 * fail, and the slow waits already say so explicitly at the call site.
+	 */
+	timeout: 60_000,
 	reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
 
 	use: {
