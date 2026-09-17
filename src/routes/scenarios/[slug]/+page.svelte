@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { CONTACT_LABELS, RISK_LABELS, IMMEDIATE_CONTACTS } from '$lib/content/scenarios.js';
+	import PageBand from '$lib/components/PageBand.svelte';
+	import { settingLabel } from '@aba/content-schema/runtime';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -11,6 +13,12 @@
 	<title>{s.title} — ABA Assist</title>
 	<meta name="description" content={s.situation.slice(0, 155)} />
 </svelte:head>
+
+{#if s.kind === 'escalation-only'}
+	<PageBand tone="urgent" label="Urgent" />
+{:else}
+	<PageBand label="Situation" detail={settingLabel(s.setting)} />
+{/if}
 
 <nav aria-label="Breadcrumb" class="crumbs">
 	<a href={resolve('/scenarios')}>Situations</a>
@@ -29,11 +37,11 @@
 		</ul>
 	{/if}
 
-	<h2>The situation</h2>
+	<h2 class="section-head">The situation</h2>
 	<p>{s.situation}</p>
 
 	{#if s.kind === 'guidance'}
-		<h2>What the plan usually asks for</h2>
+		<h2 class="section-head">What the plan usually asks for</h2>
 		<ol>
 			{#each s.steps as step, i (i)}
 				<li>
@@ -43,17 +51,17 @@
 			{/each}
 		</ol>
 
-		<h2>What not to do</h2>
+		<h2 class="section-head">What not to do</h2>
 		<ul>
 			{#each s.whatNotToDo as x, i (i)}<li>{x}</li>{/each}
 		</ul>
 
-		<h2>When to tell your supervisor</h2>
+		<h2 class="section-head">When to tell your supervisor</h2>
 		<ul>
 			{#each s.whenToEscalate as x, i (i)}<li>{x}</li>{/each}
 		</ul>
 	{:else}
-		<h2>Contact now</h2>
+		<h2 class="section-head">Contact now</h2>
 		<ul class="contacts">
 			{#each s.escalation.contacts as c (c)}
 				<li class:immediate={IMMEDIATE_CONTACTS.has(c)}>
@@ -63,15 +71,15 @@
 			{/each}
 		</ul>
 
-		<h2>Right now</h2>
+		<h2 class="section-head">Right now</h2>
 		<p>{s.escalation.immediateSafetyNote}</p>
 
 		{#if s.escalation.mandatedReporterNote}
-			<h2>Mandated reporting</h2>
+			<h2 class="section-head">Mandated reporting</h2>
 			<p>{s.escalation.mandatedReporterNote}</p>
 		{/if}
 
-		<h2>Write down</h2>
+		<h2 class="section-head">Write down</h2>
 		<ul>
 			{#each s.escalation.documentation as d, i (i)}<li>{d}</li>{/each}
 		</ul>
@@ -80,7 +88,7 @@
 	{/if}
 
 	{#if data.terms.length > 0}
-		<h2>Terms used here</h2>
+		<h2 class="section-head">Terms used here</h2>
 		<ul class="links">
 			{#each data.terms as t (t.id)}
 				<li><a href={resolve('/glossary/[slug]', { slug: t.id })}>{t.name}</a></li>
@@ -89,7 +97,7 @@
 	{/if}
 
 	<section class="sources">
-		<h2>Written from</h2>
+		<h2 class="section-head">Written from</h2>
 		<ul>
 			{#each s.citations as c, i (i)}
 				<li>{c.sourceId}{c.locator ? ` — ${c.locator}` : ''}</li>
@@ -107,13 +115,6 @@
 	}
 	h1 {
 		font-size: 1.5rem;
-	}
-	h2 {
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-		color: var(--text-muted);
-		margin-top: 1.75rem;
 	}
 	.stop {
 		background: var(--stop-bg);

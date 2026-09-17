@@ -69,7 +69,20 @@ const PAIRS: [string, string, number][] = [
 	['--caution-text', '--caution-bg', 4.5],
 	['--caution-border', '--bg', 3],
 	['--stop-text', '--stop-bg', 4.5],
-	['--stop-border', '--bg', 3]
+	['--stop-border', '--bg', 3],
+	['--band-ordinary-text', '--band-ordinary-bg', 4.5],
+	['--band-caution-text', '--band-caution-bg', 4.5],
+	['--band-urgent-text', '--band-urgent-bg', 4.5],
+	/*
+	 * A band has to read as a block against the page as well as hold its own text. On light
+	 * these pass on the fill alone; on dark the tinted fills do not, which is why the dark
+	 * blocks give them an edge and why urgent alone stays solid — see the comment beside
+	 * those tokens in `app.css`.
+	 */
+	['--band-urgent-bg', '--bg', 3],
+	['--band-ordinary-edge', '--bg', 3],
+	['--band-caution-edge', '--bg', 3],
+	['--section-rule', '--bg', 3]
 ];
 
 describe('the palette', () => {

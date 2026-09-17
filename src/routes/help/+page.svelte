@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import PageBand from '$lib/components/PageBand.svelte';
 	import {
 		escalationScenarios,
 		CONTACT_LABELS,
@@ -15,6 +16,8 @@
 		content="Who to contact and what to document when a situation is unsafe. This page does not give procedures."
 	/>
 </svelte:head>
+
+<PageBand tone="urgent" label="Urgent" />
 
 <h1>Something urgent is happening</h1>
 

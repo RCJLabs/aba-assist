@@ -68,6 +68,35 @@
 
 	--focus: #0b63c5;
 
+	/*
+	 * The page band: level one of three, and the only filled thing on an ordinary page.
+	 *
+	 * Section headers are a rule and a label, list marks are a left border, and a fill is
+	 * reserved for saying what kind of page this is. That ordering is the whole theme — if
+	 * every heading were a band, the band on the escalation card would mean nothing.
+	 *
+	 * Each band carries an edge, and only the ones that need it draw anything. Blue and red
+	 * separate from a white page on their fill alone, so their edge is the fill and is
+	 * invisible. Amber does not — #e8a33d is 2.16 against white — so the caution band takes
+	 * the darker amber as a real edge. On dark none of the tinted fills separate, and there
+	 * the edge is what delineates every band except urgent, which stays solid.
+	 */
+	--band-ordinary-bg: #00539b;
+	--band-ordinary-text: #ffffff;
+	--band-ordinary-edge: #00539b;
+
+	--band-caution-bg: #e8a33d;
+	--band-caution-text: #10151a;
+	--band-caution-edge: #8a5a00;
+
+	--band-urgent-bg: #b3122b;
+	--band-urgent-text: #ffffff;
+	--band-urgent-edge: #b3122b;
+
+	/* The 2px rule above a section label. Ink on light; the line colour on dark, where ink
+	 * is near-white and a 2px rule of it would outshout the heading it introduces. */
+	--section-rule: #10151a;
+
 	--radius: 10px;
 	--tap: 44px; /* WCAG 2.2 floor is 24px; this app is used one-handed, in a hurry. */
 	--actionbar-h: 0px;
@@ -103,6 +132,23 @@
 		--stop-text: #ff9ea0;
 
 		--focus: #7fb6f5;
+
+		--band-ordinary-bg: #13293f;
+		--band-ordinary-text: #9cc9f7;
+		--band-ordinary-edge: #4e9be0;
+
+		--band-caution-bg: #2e2411;
+		--band-caution-text: #f0c070;
+		--band-caution-edge: #e0a34a;
+
+		/* The one solid fill in the dark theme. #c02033 is inside a narrow window: white text
+		 * on it is 6.01 and it separates from the page at 3.08. Darker and the band vanishes
+		 * into the ground; lighter and the white text drops under 4.5. */
+		--band-urgent-bg: #c02033;
+		--band-urgent-text: #ffffff;
+		--band-urgent-edge: #c02033;
+
+		--section-rule: #6e8296;
 	}
 }
 
@@ -134,6 +180,23 @@
 	--stop-text: #ff9ea0;
 
 	--focus: #7fb6f5;
+
+	--band-ordinary-bg: #13293f;
+	--band-ordinary-text: #9cc9f7;
+	--band-ordinary-edge: #4e9be0;
+
+	--band-caution-bg: #2e2411;
+	--band-caution-text: #f0c070;
+	--band-caution-edge: #e0a34a;
+
+	/* The one solid fill in the dark theme. #c02033 is inside a narrow window: white text
+	 * on it is 6.01 and it separates from the page at 3.08. Darker and the band vanishes
+	 * into the ground; lighter and the white text drops under 4.5. */
+	--band-urgent-bg: #c02033;
+	--band-urgent-text: #ffffff;
+	--band-urgent-edge: #c02033;
+
+	--section-rule: #6e8296;
 }
 
 * {
@@ -389,6 +452,24 @@ main {
  * `!important`, a scoped `.primary { background: var(--accent) }` outranks this rule and
  * paints our navy on the forced black canvas — 1.1:1 contrast, which axe rightly fails.
  */
+/*
+ * A section header: level two of three. A rule and a small-caps label, never a fill.
+ *
+ * Global rather than per-route so the treatment cannot drift page by page, which is what
+ * happened to the heading styles this replaces — eleven routes, eleven sizes.
+ */
+.section-head {
+	border-top: 2px solid var(--section-rule);
+	padding-top: 0.4rem;
+	margin: 1.75rem 0 0.6rem;
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
 @media (forced-colors: active) {
 	button,
 	.button,

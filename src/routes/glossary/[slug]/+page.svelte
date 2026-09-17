@@ -3,6 +3,7 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { CATEGORY_LABELS } from '$lib/content/load.js';
+	import PageBand from '$lib/components/PageBand.svelte';
 	import { settingLabel } from '@aba/content-schema/runtime';
 	import { errataUrl } from '$lib/config.js';
 	import type { PageData } from './$types';
@@ -22,6 +23,8 @@
 	<title>{term.term} — ABA Assist</title>
 	<meta name="description" content={term.definition.gloss} />
 </svelte:head>
+
+<PageBand label="Term" detail={CATEGORY_LABELS[term.category] ?? term.category} />
 
 <nav aria-label="Breadcrumb" class="crumbs">
 	<a href={resolve('/glossary')}>Glossary</a>
@@ -67,7 +70,7 @@
 		words, and the colour is the third signal rather than the only one.
 	-->
 	<section>
-		<h2>Example{term.examples.length > 1 ? 's' : ''}</h2>
+		<h2 class="section-head">Example{term.examples.length > 1 ? 's' : ''}</h2>
 		<ul class="examples">
 			{#each term.examples as ex, i (i)}
 				<li>
@@ -84,7 +87,7 @@
 	</section>
 
 	<section>
-		<h2>Not {term.term.toLowerCase()}</h2>
+		<h2 class="section-head">Not {term.term.toLowerCase()}</h2>
 		<ul class="examples non">
 			{#each term.nonExamples as ex, i (i)}
 				<li>
@@ -102,7 +105,7 @@
 
 	{#if data.contrastWith.length > 0}
 		<section>
-			<h2>Commonly confused with</h2>
+			<h2 class="section-head">Commonly confused with</h2>
 			<ul class="links">
 				{#each data.contrastWith as t (t.id)}
 					<li><a href={resolve('/glossary/[slug]', { slug: t.id })}>{t.name}</a></li>
@@ -113,7 +116,7 @@
 
 	{#if data.graphs.length > 0}
 		<section>
-			<h2>Shown on a graph</h2>
+			<h2 class="section-head">Shown on a graph</h2>
 			<ul class="links">
 				{#each data.graphs as g (g.id)}
 					<li><a href={resolve('/graphs/[slug]', { slug: g.id })}>{g.title}</a></li>
@@ -124,7 +127,7 @@
 
 	{#if data.seeAlso.length > 0}
 		<section>
-			<h2>See also</h2>
+			<h2 class="section-head">See also</h2>
 			<ul class="links">
 				{#each data.seeAlso as t (t.id)}
 					<li><a href={resolve('/glossary/[slug]', { slug: t.id })}>{t.name}</a></li>
@@ -139,7 +142,7 @@
 		posture that keeps a tool like this clearly outside clinical-decision territory.
 	-->
 	<section class="sources">
-		<h2>Written from</h2>
+		<h2 class="section-head">Written from</h2>
 		<ul>
 			{#each term.citations as c, i (i)}
 				<li>{c.sourceId}{c.locator ? ` — ${c.locator}` : ''}</li>
@@ -193,14 +196,6 @@
 		border-left: 4px solid var(--accent);
 		padding: 0.75rem 1rem;
 		border-radius: 0 var(--radius) var(--radius) 0;
-	}
-
-	h2 {
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-		color: var(--text-muted);
-		margin-top: 1.75rem;
 	}
 
 	.examples {
