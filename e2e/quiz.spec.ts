@@ -85,11 +85,23 @@ test('a negated question is flagged before the reader answers it', async ({ page
 	await page.getByLabel('Exam', { exact: true }).selectOption('RBT');
 	await page.getByLabel('Content area').selectOption('E');
 	await page.getByLabel('Number of questions').selectOption('1000');
+
+	/*
+	 * How many there are, read off the page, rather than a number written here. A sitting
+	 * drawn from one area is shuffled, so a fixed cap walks a shrinking fraction of a
+	 * growing bank: at 12 questions it saw all of them, at 26 it missed the negated one
+	 * roughly a quarter of the time, and the failure looks exactly like flake.
+	 */
+	const available = Number(
+		/(\d+)\s+questions available/.exec(await page.locator('.setup').innerText())?.[1]
+	);
+	expect(available).toBeGreaterThan(0);
+
 	await page.getByRole('button', { name: 'Start' }).click();
 
 	// Walk the whole area; exactly one E question is negated and it must show the callout.
 	let seen = 0;
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < available; i++) {
 		if (await page.locator('.callout').isVisible()) seen++;
 		await page.getByRole('radio').first().check();
 		await page.getByRole('button', { name: 'Check answer' }).click();
