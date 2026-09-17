@@ -42,7 +42,12 @@ export default defineConfig({
 				short_name: 'ABA Assist',
 				description:
 					'Free, offline reference and study tool for behavior technicians, analysts, and paraeducators.',
-				theme_color: '#1b3a5c',
+				/*
+				 * Matches the light `--surface` in `app.css`, which is what the app header is
+				 * painted in. The manifest takes one value where the meta tags in `app.html`
+				 * take two, and this is the one the task switcher and the splash screen use.
+				 */
+				theme_color: '#f2f6fa',
 				background_color: '#ffffff',
 				display: 'standalone',
 				orientation: 'any',

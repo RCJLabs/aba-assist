@@ -3,7 +3,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#1b3a5c" />
+		<!--
+			The browser paints its own chrome in this colour, directly above the page, so it has
+			to be what sits at the top edge: the header, which is `--surface`. The old value was
+			a navy from a palette this app no longer uses, and it never matched the header even
+			then — an installed reader got a dark bar above a near-white page. Two of them,
+			because a single value is wrong in one theme by construction.
+		-->
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6fa" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171e26" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="%sveltekit.assets%/icons/apple-touch-icon.png" />
 		<!-- Declared here rather than left to the PWA plugin, which does not inject it into

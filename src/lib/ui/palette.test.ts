@@ -115,6 +115,25 @@ describe('the palette', () => {
 	}
 
 	/*
+	 * `theme-color` drifted for months: it held a navy from a palette two rewrites ago,
+	 * so an installed reader got browser chrome in a colour the app no longer contained.
+	 * Nothing rendered it, so nothing caught it — it is only visible on a phone, in an
+	 * installed app, to somebody who knows what it should have been.
+	 */
+	it('paints the browser chrome in the same colour as the header', () => {
+		const html = readFileSync(new URL('../../app.html', import.meta.url), 'utf8');
+		const declared = (scheme: string) =>
+			new RegExp(
+				`theme-color"\\s+media="\\(prefers-color-scheme: ${scheme}\\)"\\s+content="(#[0-9a-f]{6})"`,
+				'i'
+			).exec(html)?.[1] ?? null;
+
+		// The header is `background: var(--surface)`; the meta tag is what sits above it.
+		expect(declared('light')).toBe(token('--surface', themes.light));
+		expect(declared('dark')).toBe(token('--surface', themes['dark (chosen)']));
+	});
+
+	/*
 	 * The theme toggle sets `data-theme` explicitly, and the media query catches everyone
 	 * who never opened settings. A token defined in one and not the other is a page that
 	 * changes colour depending on how the reader arrived at dark mode — which is the bug
