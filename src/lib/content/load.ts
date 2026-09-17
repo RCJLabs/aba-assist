@@ -2,7 +2,13 @@ import {
 	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
 	CATEGORY_ORDER
 } from '@aba/content-schema/runtime';
-import type { ContentOutline, QuizQuestion, Term, TermIndexEntry } from '@aba/content-schema';
+import type {
+	ContentOutline,
+	PairDrill,
+	QuizQuestion,
+	Term,
+	TermIndexEntry
+} from '@aba/content-schema';
 import index from './generated/terms.index.json';
 import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
@@ -111,4 +117,21 @@ export async function loadQuestions(credential: string): Promise<QuizQuestion[]>
 	const value = (mod.default ?? mod) as QuizQuestion[];
 	questionCache.set(credential, value);
 	return value;
+}
+
+// ------------------------------------------------------------ pair drills
+
+let pairDrillCache: PairDrill[] | null = null;
+
+/**
+ * The generated discrimination bank, loaded when the drill route opens.
+ *
+ * Fifty kilobytes that nothing else needs, so it stays out of the initial bundle for the
+ * same reason the question banks do — most readers open the glossary, not a drill.
+ */
+export async function loadPairDrills(): Promise<PairDrill[]> {
+	if (pairDrillCache) return pairDrillCache;
+	const mod = await import('./generated/pair-drills.json');
+	pairDrillCache = (mod.default ?? mod) as unknown as PairDrill[];
+	return pairDrillCache;
 }

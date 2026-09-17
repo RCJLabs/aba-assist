@@ -73,6 +73,31 @@ export const SearchIndexEntry = z.strictObject({
 });
 export type SearchIndexEntry = z.infer<typeof SearchIndexEntry>;
 
+/**
+ * One "which of these two is it?" item, generated rather than authored.
+ *
+ * The confusable pairs are already in the corpus: every term declares `contrastWith`, and
+ * the compiler validates it as symmetric. An example written to illustrate one member of
+ * a pair is, by construction, a discrimination item for that pair — so this bank costs no
+ * new prose and adds nothing to the review queue. It inherits its terms' approval state
+ * for free, because it is built from the terms that survived withholding.
+ *
+ * Short keys for the same reason as the index above: this ships in the precache.
+ */
+export const PairDrill = z.strictObject({
+	/** `<term id>--<example index>`. Stable, so a session can be resumed or logged. */
+	i: z.string(),
+	/** The example text, verbatim from the term that owns it. */
+	p: z.string(),
+	/** The two term ids on offer, in a deterministic order. Shuffled again at runtime. */
+	o: z.tuple([Slug, Slug]),
+	/** Which of `o` is correct — the term the example was written for. */
+	k: Slug,
+	/** The owning term's category, so a reader can drill one area. */
+	c: TermCategory
+});
+export type PairDrill = z.infer<typeof PairDrill>;
+
 export const AssetEntry = z.strictObject({
 	url: z.string(),
 	sha256: z.string(),

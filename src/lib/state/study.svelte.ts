@@ -1,7 +1,8 @@
 import { browser } from '$app/environment';
 import type { Term } from '@aba/content-schema';
 import { loadTerm, termIndex } from '$lib/content/load.js';
-import { getAllCards, recordReview } from '$lib/db/index.js';
+import { getAllCards, putCards, recordReview } from '$lib/db/index.js';
+import { planReinforcement, termsToReinforce } from '$lib/study/reinforce.js';
 import { storage } from './storage.svelte.js';
 import {
 	CARD_STATE,
@@ -88,6 +89,31 @@ class Study {
 	 */
 	invalidateCards(): void {
 		this.#cards.clear();
+	}
+
+	/**
+	 * Make the terms behind a set of misses due again. Returns how many moved.
+	 *
+	 * Lives here rather than in each caller because the deck is this class's to own, and
+	 * because two callers that each write cards and then remember to invalidate are one
+	 * caller away from a deck showing stale counts. `groups` is one entry per missed
+	 * item — the quiz passes a question's term refs, the pair drill passes both sides of
+	 * the confusion — and a term missed twice is ranked ahead of one missed once.
+	 */
+	async reinforce(groups: string[][]): Promise<number> {
+		if (!browser || groups.length === 0) return 0;
+		const flashcardTerms = new Set(termIndex.filter((t) => t.f).map((t) => t.i));
+		const ids = termsToReinforce(
+			groups.map((termRefs) => ({ termRefs })),
+			flashcardTerms
+		);
+		if (ids.length === 0) return 0;
+
+		const cards = new Map((await getAllCards()).map((c) => [c.id, c]));
+		const plan = planReinforcement(ids, cards, Date.now());
+		await putCards(plan.writes);
+		this.invalidateCards();
+		return plan.created + plan.pulled;
 	}
 
 	/** The term ids the current filter puts in play. */

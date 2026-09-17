@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import MiniSearch from 'minisearch';
+import { buildPairDrills } from './pair-drills.js';
 import {
 	CATEGORY_LABELS,
 	CompetencyAssessment,
@@ -1268,6 +1269,18 @@ function buildAssets(
 			fetchedAtRuntime: false
 		});
 	}
+
+	/*
+	 * The discrimination bank. Derived from `terms`, which is the post-withholding list,
+	 * so an unapproved term cannot reach a reader through this side door — it simply
+	 * produces no items, and its partner's items lose one option and drop out with it.
+	 */
+	assets.push({
+		name: 'pair-drills',
+		fileName: `${base}/pair-drills.json`,
+		source: JSON.stringify(buildPairDrills(terms)),
+		fetchedAtRuntime: false
+	});
 
 	assets.push({
 		name: 'scenarios',

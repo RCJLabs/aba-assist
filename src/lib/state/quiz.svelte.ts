@@ -1,8 +1,7 @@
 import { browser } from '$app/environment';
 import type { QuizQuestion } from '@aba/content-schema';
-import { loadQuestions, outlineForCredential, termIndex } from '$lib/content/load.js';
-import { getAllCards, putAttempt, putCards } from '$lib/db/index.js';
-import { planReinforcement, termsToReinforce } from '$lib/study/reinforce.js';
+import { loadQuestions, outlineForCredential } from '$lib/content/load.js';
+import { putAttempt } from '$lib/db/index.js';
 import { study } from './study.svelte.js';
 import {
 	crossedWarning,
@@ -439,22 +438,14 @@ class Quiz {
 		await Promise.all([saving, reinforcing]);
 	}
 
-	/** Make the terms behind the missed questions due for review. Returns how many. */
+	/**
+	 * Make the terms behind the missed questions due for review. Returns how many.
+	 *
+	 * The writing and the deck invalidation belong to `study`, which owns the cards; this
+	 * only decides what counts as missed.
+	 */
 	async #reinforce(missed: { q: QuizQuestion }[]): Promise<number> {
-		if (!browser || missed.length === 0) return 0;
-		const flashcardTerms = new Set(termIndex.filter((t) => t.f).map((t) => t.i));
-		const ids = termsToReinforce(
-			missed.map((m) => ({ termRefs: m.q.termRefs })),
-			flashcardTerms
-		);
-		if (ids.length === 0) return 0;
-
-		const cards = new Map((await getAllCards()).map((c) => [c.id, c]));
-		const plan = planReinforcement(ids, cards, Date.now());
-		await putCards(plan.writes);
-		// The deck holds its cards in memory, so it has to be told they changed.
-		study.invalidateCards();
-		return plan.created + plan.pulled;
+		return study.reinforce(missed.map((m) => m.q.termRefs));
 	}
 
 	reset(): void {

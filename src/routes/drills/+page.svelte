@@ -95,6 +95,11 @@
 
 	<button type="button" class="go" onclick={next}>Start</button>
 
+	<p class="sibling">
+		Mixing up two terms rather than the arithmetic? Try
+		<a href={resolve('/drills/pairs')}>commonly confused</a>.
+	</p>
+
 	<p class="note" role="note">
 		This is arithmetic practice, not exam questions. It is not written by the certifying board
 		and it is not a prediction of anything. Nothing is saved — the tally is on screen only, and
@@ -174,6 +179,10 @@
 	.lede {
 		color: var(--text-muted);
 		margin-top: 0;
+	}
+
+	.sibling {
+		font-size: 0.9rem;
 	}
 
 	fieldset {

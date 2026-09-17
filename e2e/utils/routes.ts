@@ -26,6 +26,7 @@ export const ROUTES = [
 	'/study',
 	'/quiz',
 	'/drills',
+	'/drills/pairs',
 	'/plan',
 	'/ethics',
 	'/ethics/gifts',
