@@ -18,6 +18,10 @@ examples:
       After a skill is learned, praise is delivered for about every fourth correct
       response instead of every one.
     setting: clinic
+  - text: >-
+      A child who is now fluent at asking gets the item most times they ask, and occasionally
+      has to ask twice before it arrives.
+    setting: home
 nonExamples:
   - text: >-
       Reinforcing every correct response during the first teaching sessions. That is

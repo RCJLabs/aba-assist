@@ -17,6 +17,9 @@ examples:
   - text: >-
       The technician says "cookie" and the learner says "cookie."
     setting: clinic
+  - text: >-
+      A parent says "up" and the child immediately says "up" back, with no object in sight.
+    setting: home
 nonExamples:
   - text: >-
       The technician says "What do you want?" and the learner says "cookie." The

@@ -19,6 +19,10 @@ examples:
       Five snacks are laid out; the learner picks the crackers, which are removed, then
       the raisins from the remaining four, and so on.
     setting: clinic
+  - text: >-
+      Four toys are on the rug. The child takes the ball, which is set aside, then the blocks
+      from the remaining three, and the order they were taken is the ranking.
+    setting: home
 nonExamples:
   - text: >-
       The chosen item is put back and the array is presented again. That is

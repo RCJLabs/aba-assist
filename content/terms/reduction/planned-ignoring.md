@@ -19,6 +19,10 @@ examples:
       A learner's silly noises used to get laughs. Staff now carry on without reacting,
       as the plan directs, and praise the learner when they speak normally.
     setting: school
+  - text: >-
+      A child who used to get a reaction for repeating a rude word says it at dinner and the
+      conversation carries on around them, exactly as the plan directs.
+    setting: home
 nonExamples:
   - text: >-
       Ignoring a learner's protests about a task. If the protest was about escaping the

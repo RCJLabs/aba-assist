@@ -18,6 +18,10 @@ examples:
   - text: >-
       "Hang up your coat." Wait. Point at the hook. Wait. Model it. Wait. Guide the arm.
     setting: school
+  - text: >-
+      The instruction is given and the technician waits. Nothing. A gesture toward the
+      materials. Nothing. A demonstration. Then, if needed, physical guidance.
+    setting: clinic
 nonExamples:
   - text: >-
       Guiding the arm from the first trial and reducing help over days. That is

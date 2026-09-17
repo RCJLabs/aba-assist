@@ -18,6 +18,10 @@ examples:
       A learner who gets a laugh for a joke tells more jokes. The consequence changed
       the behavior.
     setting: any
+  - text: >-
+      A student who is thanked warmly for handing out books starts volunteering to hand things
+      out at every opportunity.
+    setting: school
 nonExamples:
   - text: >-
       A learner's eyes water when an onion is cut. That is a reflex, not something shaped

@@ -18,6 +18,10 @@ examples:
   - text: >-
       A learner earns a break after every three worksheets completed.
     setting: school
+  - text: >-
+      A learner receives a token for every fifth correct response, and tends to pause briefly
+      right after each token arrives.
+    setting: clinic
 nonExamples:
   - text: >-
       A break after an average of three worksheets, sometimes two, sometimes five. That

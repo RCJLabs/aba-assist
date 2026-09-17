@@ -19,6 +19,10 @@ examples:
       The learner points to the wrong card. The technician re-presents the cards,
       points to the correct one, and then re-presents without pointing.
     setting: clinic
+  - text: >-
+      The student writes the wrong answer. The teacher shows the worked step, has the student
+      redo it, then gives a fresh problem of the same kind.
+    setting: school
 nonExamples:
   - text: >-
       Prompting the right answer immediately so no error happens. That is errorless

@@ -16,6 +16,10 @@ examples:
   - text: >-
       A learner answered 8 of 10 questions correctly: 80 percent.
     setting: clinic
+  - text: >-
+      A student completed 15 of 20 problems, which is recorded as 75 rather than as a count of
+      15.
+    setting: school
 nonExamples:
   - text: >-
       Twelve hits in a one-hour session. That is a count, and dividing by time gives a

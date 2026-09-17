@@ -17,6 +17,10 @@ examples:
   - text: >-
       Asked "What do you eat with?", the learner says "a spoon."
     setting: clinic
+  - text: >-
+      Asked "What comes after Tuesday?", the student says "Wednesday," with no calendar in
+      front of them.
+    setting: school
 nonExamples:
   - text: >-
       Asked to say "spoon," the learner says "spoon." That matches the model, so it is

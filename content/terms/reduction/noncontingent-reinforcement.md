@@ -21,6 +21,10 @@ examples:
       A learner whose shouting produced attention now gets a staff member's attention
       every ninety seconds whether or not they shout.
     setting: clinic
+  - text: >-
+      A student is called on every four minutes on a timer, regardless of whether their hand
+      is up, and the calling out during lessons falls away.
+    setting: school
 nonExamples:
   - text: >-
       Attention delivered only after thirty seconds without shouting. Because it

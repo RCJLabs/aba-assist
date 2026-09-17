@@ -18,6 +18,10 @@ examples:
       A learner who used to end a puzzle task by pushing it away now finds the puzzle
       stays until the plan's step is complete.
     setting: clinic
+  - text: >-
+      A student who used to be sent to the hallway for sweeping the desk now stays at the
+      desk, and the worksheet is still in front of them when they settle.
+    setting: school
 nonExamples:
   - text: >-
       Ignoring a behavior that used to get attention. That is extinction of an

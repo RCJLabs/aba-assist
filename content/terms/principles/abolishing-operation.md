@@ -20,6 +20,10 @@ examples:
       A learner given ten minutes of free attention before a session bids for attention
       far less during the session.
     setting: clinic
+  - text: >-
+      A student eats a large lunch and then shows no interest in the snack that usually gets
+      them through the afternoon work block.
+    setting: school
 nonExamples:
   - text: >-
       A learner who has not had a drink all morning. Water is worth more, which is an

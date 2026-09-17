@@ -22,6 +22,10 @@ examples:
       Across alternating sessions, hair pulling is high only when it produces a break
       from tasks. Escape is the demonstrated function.
     setting: clinic
+  - text: >-
+      In one condition an adult attends only after the behavior; in another, demands are
+      removed after it. The rate is high in the second and near zero in the first.
+    setting: school
 nonExamples:
   - text: >-
       Recording ABC data during a normal morning. Nothing is arranged, so it is a

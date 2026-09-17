@@ -18,6 +18,9 @@ examples:
   - text: >-
       A learner signs "open" while holding a closed container and the adult opens it.
     setting: home
+  - text: >-
+      A student raises their hand and says "bathroom," and is let out.
+    setting: school
 nonExamples:
   - text: >-
       A learner says "ball" when they see a ball and the adult says "yes, ball." Naming

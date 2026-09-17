@@ -16,6 +16,10 @@ examples:
   - text: >-
       A learner who begins to imitate can now be taught almost anything by demonstration.
     setting: clinic
+  - text: >-
+      A child who learns to crawl suddenly has the whole floor of the house available, and
+      what they contact and learn from changes completely.
+    setting: home
 nonExamples:
   - text: >-
       Learning to name one more color. Useful, but it does not by itself open up new

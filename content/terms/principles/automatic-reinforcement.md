@@ -20,6 +20,10 @@ examples:
       A learner flicks a string near their eyes when alone, and keeps doing it whether
       or not anyone reacts.
     setting: home
+  - text: >-
+      A student hums quietly through independent work at the same rate on days when the room
+      is full and on days when it is nearly empty.
+    setting: school
 nonExamples:
   - text: >-
       Humming that stops as soon as a parent stops smiling at it. The reinforcement came

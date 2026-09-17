@@ -19,6 +19,10 @@ examples:
       A technician observes a whole morning and notes each outburst along with the
       activity, the people present and what followed.
     setting: school
+  - text: >-
+      Over four sessions a technician writes down what was happening just before each episode
+      and what the adults did afterward, without changing anything.
+    setting: clinic
 nonExamples:
   - text: >-
       Arranging an attention condition and a demand condition and comparing them. That

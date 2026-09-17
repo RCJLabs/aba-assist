@@ -18,6 +18,10 @@ examples:
       A new word is taught by saying it immediately after showing the card, then
       waiting a little longer each session before saying it.
     setting: clinic
+  - text: >-
+      The teacher places their hand beside the correct answer from the first trial, so the
+      student has not yet had a chance to choose wrongly.
+    setting: school
 nonExamples:
   - text: >-
       Letting the learner guess and correcting each wrong guess. That relies on error

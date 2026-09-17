@@ -17,6 +17,10 @@ examples:
   - text: >-
       "High five! Touch your nose! Clap!" — praise each — then "Time to put the toys away."
     setting: home
+  - text: >-
+      "Give me five. Now a thumbs up. Now a high ten." — praise after each — "Now open your
+      book to page four."
+    setting: school
 nonExamples:
   - text: >-
       Letting the learner play after they clean up. Using a preferred activity as a

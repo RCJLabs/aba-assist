@@ -17,6 +17,10 @@ examples:
       Bubbles are kept for sessions only. Because the learner does not get them at home,
       they stay effective during teaching.
     setting: clinic
+  - text: >-
+      A family agrees to keep the tablet put away until after homework, and by four o'clock
+      the tablet is worth far more than it was at breakfast.
+    setting: home
 nonExamples:
   - text: >-
       A learner who has just spent an hour on the tablet. Recent access lowers its value,

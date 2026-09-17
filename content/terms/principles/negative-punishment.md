@@ -17,6 +17,10 @@ examples:
   - text: >-
       A token is removed each time a student shouts out, and shouting out falls.
     setting: school
+  - text: >-
+      Five minutes of screen time are subtracted each evening a chore is skipped, and chores
+      start getting done.
+    setting: home
 nonExamples:
   - text: >-
       A reprimand after shouting out. Something was added, so if shouting falls this is

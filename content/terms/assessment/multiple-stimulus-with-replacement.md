@@ -22,6 +22,10 @@ examples:
       reshuffled around it. The car is clearly the top preference, and nothing has been
       learned about the other four.
     setting: clinic
+  - text: >-
+      Six items are laid out. The student picks one, it is put straight back, the array is
+      shuffled, and the same six are offered again.
+    setting: school
 nonExamples:
   - text: >-
       The chosen item is removed and the rest re-presented. That is without replacement.

@@ -19,6 +19,10 @@ examples:
       A student sees a classmate praised for lining up quietly and lines up quietly the
       next time.
     setting: school
+  - text: >-
+      A learner watches another child hand a card over and receive a snack, and reaches for a
+      card themselves at the next opportunity.
+    setting: clinic
 nonExamples:
   - text: >-
       A learner copying a wave the instant the model waves. That is imitation.

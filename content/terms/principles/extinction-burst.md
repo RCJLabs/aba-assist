@@ -19,6 +19,10 @@ examples:
       Attention for whining is withheld as planned. For two days the whining is louder
       and longer than before, then it falls.
     setting: home
+  - text: >-
+      A student whose desk-tapping used to get a reaction taps harder and faster for the first
+      three lessons after staff stop responding, before it drops away.
+    setting: school
 nonExamples:
   - text: >-
       A behavior that returns weeks after it had stopped. That later reappearance is

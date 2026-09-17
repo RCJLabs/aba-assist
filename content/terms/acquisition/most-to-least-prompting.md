@@ -19,6 +19,10 @@ examples:
       Hand-over-hand for the first sessions of a tracing task, then a light touch at the
       wrist, then a gesture, then nothing.
     setting: clinic
+  - text: >-
+      A parent guides the child through every step of tooth brushing for a week, then only
+      starts the movement, then only stands nearby.
+    setting: home
 nonExamples:
   - text: >-
       Waiting for the learner to try alone and adding help only if they fail. That is

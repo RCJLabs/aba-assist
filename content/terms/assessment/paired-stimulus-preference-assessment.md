@@ -18,6 +18,10 @@ examples:
       Six items produce fifteen pairs. The tablet is chosen in all five of its pairs
       and ranks first.
     setting: clinic
+  - text: >-
+      Items are shown two at a time until every item has been offered against every other, and
+      the number of times each was picked becomes its rank.
+    setting: school
 nonExamples:
   - text: >-
       All six items laid out at once and the chosen one removed each time. That is

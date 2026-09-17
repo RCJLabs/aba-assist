@@ -17,6 +17,10 @@ examples:
       Hand washing: the learner is taught to turn on the faucet; the technician does
       everything else. Then turning on the faucet and wetting hands. And so on.
     setting: home
+  - text: >-
+      Making toast: the learner is taught to take the bread out of the bag, and an adult does
+      the rest; once that is solid, the learner also puts it in the toaster.
+    setting: clinic
 nonExamples:
   - text: >-
       The learner is taught the final step, drying hands, first. That is backward

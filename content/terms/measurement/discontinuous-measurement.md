@@ -18,6 +18,10 @@ examples:
       Every minute, the observer marks whether any talking-out happened during that
       minute.
     setting: school
+  - text: >-
+      The observer glances up at the end of every thirty seconds and records only whether the
+      behavior is happening at that instant.
+    setting: clinic
 nonExamples:
   - text: >-
       Counting every hand raise in a lesson. That is continuous measurement.

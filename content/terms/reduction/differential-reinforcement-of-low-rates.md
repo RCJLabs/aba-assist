@@ -20,6 +20,10 @@ examples:
       A student who asks to sharpen a pencil twenty times a day earns a token for each
       hour with three or fewer requests.
     setting: school
+  - text: >-
+      A learner who interrupts the group about twelve times a session earns a preferred
+      activity on any session with four interruptions or fewer.
+    setting: clinic
 nonExamples:
   - text: >-
       Reinforcing the student for going a whole hour with no requests at all. The

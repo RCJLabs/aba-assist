@@ -18,6 +18,10 @@ examples:
       "Nice work" starts to increase a learner's effort after weeks of being paired
       with tickles and preferred toys.
     setting: clinic
+  - text: >-
+      A sticker chart means nothing to a new student until the stickers have been traded for
+      computer time a few times, after which they start working for stickers alone.
+    setting: school
 nonExamples:
   - text: >-
       A drink of water for a thirsty learner. Its power does not depend on any pairing.

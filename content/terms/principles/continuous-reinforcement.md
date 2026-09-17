@@ -19,6 +19,10 @@ examples:
       During the first days of teaching a new request, every correct request produces the
       item.
     setting: clinic
+  - text: >-
+      A parent hands over the cup every single time their child points at it, throughout the
+      week the pointing is being taught.
+    setting: home
 nonExamples:
   - text: >-
       Praising roughly every third correct answer. That is intermittent reinforcement.

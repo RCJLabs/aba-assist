@@ -17,6 +17,9 @@ examples:
   - text: >-
       The technician claps twice and the learner claps twice.
     setting: clinic
+  - text: >-
+      A parent waves and, within a second or two, the child waves back in the same way.
+    setting: home
 nonExamples:
   - text: >-
       A learner who watches a sibling get a cookie for asking politely and asks

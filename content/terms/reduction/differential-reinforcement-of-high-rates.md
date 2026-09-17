@@ -19,6 +19,10 @@ examples:
       A learner earns a break only if they complete at least eight problems in five
       minutes.
     setting: school
+  - text: >-
+      A learner who greets one or two peers a session earns computer time on any session where
+      they greet at least six.
+    setting: clinic
 nonExamples:
   - text: >-
       Earning a break for making three or fewer requests for help in a lesson.

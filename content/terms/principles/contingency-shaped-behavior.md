@@ -17,6 +17,10 @@ examples:
       A technician gradually learns the pace at which a particular learner stays engaged,
       without anyone stating it as a rule.
     setting: clinic
+  - text: >-
+      A parent learns which tone of voice settles their child and which one does not, purely
+      from how each attempt has gone, and could not say what the difference is.
+    setting: home
 nonExamples:
   - text: >-
       Following a written protocol step by step on the first day. That is rule-governed.

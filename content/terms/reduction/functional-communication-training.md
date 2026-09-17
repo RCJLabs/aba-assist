@@ -20,6 +20,10 @@ examples:
       A learner who screamed to end tasks is taught to hand over a break card, and
       break cards are honored while screaming no longer ends the task.
     setting: school
+  - text: >-
+      A child who banged on the cupboard until someone opened it is taught to hand over a
+      picture of the snack, and the cupboard opens for the picture.
+    setting: home
 nonExamples:
   - text: >-
       Teaching the learner to say "please" for a snack when the screaming was about

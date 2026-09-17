@@ -18,6 +18,10 @@ examples:
       Putting on a shirt: the technician does everything except pulling the hem down,
       which the learner does and gets praised for.
     setting: home
+  - text: >-
+      Packing a bag: the adult puts everything in and zips it most of the way, and the student
+      finishes the zip and heads out the door with the bag.
+    setting: school
 nonExamples:
   - text: >-
       The learner attempts every step each time with help where needed. That is

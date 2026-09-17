@@ -19,6 +19,10 @@ examples:
       A learner is handed a locked box with a favorite toy visible inside. The locked
       box makes asking for the key far more likely.
     setting: clinic
+  - text: >-
+      A child comes in from an hour of running about in the heat, and a drink is suddenly
+      worth working for in a way it was not before they went out.
+    setting: home
 nonExamples:
   - text: >-
       A learner who has just finished a large lunch. Food is worth less now, which is an

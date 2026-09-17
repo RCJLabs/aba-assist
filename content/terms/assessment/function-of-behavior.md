@@ -21,6 +21,10 @@ examples:
       A learner's crying stops the moment a worksheet is removed and starts again when
       it returns. Escape is the likely function.
     setting: school
+  - text: >-
+      A child calls out only when the adult is on the phone, and stops as soon as the adult
+      turns to them.
+    setting: home
 nonExamples:
   - text: >-
       Describing crying as loud, with tears, lasting about a minute. That is

@@ -18,6 +18,10 @@ examples:
       A learner takes a bite, then another bite 40 seconds later. The interresponse
       time is 40 seconds.
     setting: home
+  - text: >-
+      A learner raises their hand, then raises it again four minutes later, and the gap
+      between the two is what gets recorded.
+    setting: clinic
 nonExamples:
   - text: >-
       The time from the instruction "take a bite" to the first bite. That is latency.

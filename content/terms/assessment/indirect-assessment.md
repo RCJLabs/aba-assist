@@ -19,6 +19,10 @@ examples:
       A structured interview with a parent about when the behavior is most and least
       likely and what usually follows it.
     setting: home
+  - text: >-
+      A teacher is asked to think back over the term and say when the behavior tended to
+      happen and what the adults usually did about it. Nobody watched the classroom.
+    setting: school
 nonExamples:
   - text: >-
       Sitting in the classroom and recording each occurrence. That is direct observation.

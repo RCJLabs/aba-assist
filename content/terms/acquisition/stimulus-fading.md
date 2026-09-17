@@ -18,6 +18,10 @@ examples:
       The correct picture starts out three times larger than the others and shrinks a
       little each session.
     setting: clinic
+  - text: >-
+      The letter the student is learning is printed in bold black while the others are pale
+      gray, and the contrast is reduced a little each week until all look the same.
+    setting: school
 nonExamples:
   - text: >-
       Waiting a little longer before pointing to the correct picture. Delaying a

@@ -19,6 +19,10 @@ examples:
       A technician tallies each request during a forty-minute session and times how
       long each tantrum lasts.
     setting: clinic
+  - text: >-
+      A parent clicks a counter every time their child asks for help across the whole
+      afternoon, missing none of them.
+    setting: home
 nonExamples:
   - text: >-
       Checking every thirty seconds whether the learner is on task. That samples the

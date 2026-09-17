@@ -19,6 +19,10 @@ examples:
       A teacher checks on a student every five minutes and praises on-task work if she
       sees it then. Work picks up shortly before each check.
     setting: school
+  - text: >-
+      A learner may trade tokens only on the hour. Almost all of the trading happens in the
+      minute or two before each hour.
+    setting: clinic
 nonExamples:
   - text: >-
       Praise for every fifth completed problem regardless of time. That is a ratio

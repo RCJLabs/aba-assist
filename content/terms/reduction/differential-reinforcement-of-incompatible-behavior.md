@@ -20,6 +20,10 @@ examples:
       A learner who grabs food from others' plates is reinforced for keeping both hands
       on their own tray during meals.
     setting: home
+  - text: >-
+      A learner who mouths materials is reinforced every two minutes for holding a chewy
+      necklace between their teeth instead.
+    setting: clinic
 nonExamples:
   - text: >-
       Reinforcing asking for a snack instead of grabbing. Asking is an alternative, but

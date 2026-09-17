@@ -18,6 +18,10 @@ examples:
       After being taught to ask "what's that?", a learner's vocabulary grows from the
       answers without any further word-by-word teaching.
     setting: home
+  - text: >-
+      A learner who is taught to respond to more than one feature of what they are looking at
+      starts getting new tasks right that nobody taught directly.
+    setting: clinic
 nonExamples:
   - text: >-
       Learning to walk, which opens new places and contingencies. That is a cusp.
