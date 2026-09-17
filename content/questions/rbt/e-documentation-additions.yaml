@@ -1,0 +1,469 @@
+# RBT practice questions — area E additions, Documentation and Reporting. All original.
+#
+# Area E had the widest gap between its share of the bank and its share of the paper, and
+# it is also the part of the job the workforce research names as a daily pain point rather
+# than an exam abstraction. These ten sit deliberately in the awkward cases: what to pass
+# on, when to ask, what belongs in a note and what does not.
+
+questions:
+  - id: rbt-e-caregiver-raises-medication
+    credential: RBT
+    taskRef: { credential: RBT, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      At handover a parent mentions that the learner started a new medication this week and
+      asks whether it will affect the program. What should the technician do?
+    options:
+      - id: a
+        text: Note it privately and mention it at the next supervision meeting
+        isCorrect: false
+        rationale: >-
+          Holding information until a scheduled meeting is what "promptly" rules out; the
+          data in between are affected either way.
+      - id: b
+        text: Ask the parent to email the supervisor directly instead
+        isCorrect: false
+        rationale: >-
+          Redirecting the family is not the same as reporting, and it makes a caregiver
+          responsible for the team's communication.
+      - id: c
+        text: Say it is worth telling the supervisor, pass it on that day, and record that it was reported
+        isCorrect: true
+        rationale: >-
+          Medication is exactly the kind of outside variable the supervisor needs, and the
+          technician's part is relaying it promptly rather than interpreting it.
+      - id: d
+        text: Explain how that class of medication usually affects behavior
+        isCorrect: false
+        rationale: >-
+          That is a clinical opinion outside the technician's role, and a medical one on
+          top of it.
+    explanation: >-
+      Technicians are a channel, not a filter. Something that could be changing the
+      learner's behavior goes to the supervisor promptly and gets recorded as reported;
+      what it means for the program is a decision made above the technician's role.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-practice, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the certification task list and the technician
+        ethics code; no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-17'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-17'
+
+  - id: rbt-e-teacher-asks-for-strategy
+    credential: RBT
+    taskRef: { credential: RBT, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      A classroom teacher asks a technician what to do about a behavior that happens when
+      the technician is not there. What is the appropriate response?
+    options:
+      - id: a
+        text: Say it is a question for the supervising analyst, and pass the request on
+        isCorrect: true
+        rationale: >-
+          Advising on a behavior outside the program the technician implements would be
+          designing intervention, which is not the technician's role.
+      - id: b
+        text: Describe the plan's procedures so the teacher can use them
+        isCorrect: false
+        rationale: >-
+          Handing a behavior plan to somebody outside the team is both a scope and a
+          confidentiality problem.
+      - id: c
+        text: Suggest the general strategy that usually works for this learner
+        isCorrect: false
+        rationale: >-
+          A general suggestion is still clinical direction, and it will be acted on as
+          though it were authorized.
+      - id: d
+        text: Decline and say nothing further
+        isCorrect: false
+        rationale: >-
+          Declining is right; stopping there drops a request the supervisor should hear
+          about.
+    explanation: >-
+      There are two halves to this: the technician does not give clinical direction, and
+      the request does not disappear. Naming who it belongs to and routing it there is the
+      whole answer.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-practice, confidentiality]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-report-what-was-observed-not-inferred
+    credential: RBT
+    taskRef: { credential: RBT, code: E.1 }
+    type: single-best-answer
+    stem: >-
+      A technician wants to tell the supervisor that a session went badly because the
+      learner "was in a mood." Which report is more useful?
+    options:
+      - id: a
+        text: The learner pushed materials away on eleven of fifteen trials and left the table four times
+        isCorrect: true
+        rationale: >-
+          Counts of observable events give the supervisor something to compare against
+          other sessions and act on.
+      - id: b
+        text: The learner was in a bad mood for most of the session
+        isCorrect: false
+        rationale: >-
+          A mood is inferred, not observed, and two people would not agree on where it
+          started or stopped.
+      - id: c
+        text: The learner was uncooperative and did not want to work
+        isCorrect: false
+        rationale: >-
+          "Uncooperative" and "did not want to" are interpretations of what happened
+          rather than what happened.
+      - id: d
+        text: The session was a write-off
+        isCorrect: false
+        rationale: >-
+          A verdict with no observations behind it cannot be checked or compared.
+    explanation: >-
+      A supervisor can act on counts and descriptions. Everything else asks them to trust
+      an interpretation made by somebody who was busy running the session at the time.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [operational-definition, session-note]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-ask-before-improvising
+    credential: RBT
+    taskRef: { credential: RBT, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      A program step does not fit the materials available in the room today. What should the
+      technician do?
+    options:
+      - id: a
+        text: Skip the step and run the rest of the program
+        isCorrect: false
+        rationale: >-
+          Dropping a step alters the procedure and the data it produces, without anybody
+          deciding to.
+      - id: b
+        text: Run the step as closely as possible and record full integrity
+        isCorrect: false
+        rationale: >-
+          Recording integrity that was not achieved makes the data actively misleading.
+      - id: c
+        text: Contact the supervisor for direction before changing anything
+        isCorrect: true
+        rationale: >-
+          Asking is the authorized route when a program cannot be run as written, and it
+          is faster than the alternative in every sense that matters.
+      - id: d
+        text: Substitute the closest materials and note the change afterward
+        isCorrect: false
+        rationale: >-
+          A substitution made first and reported later is a program change made by the
+          technician.
+    explanation: >-
+      The task is not "never deviate" — it is "do not deviate on your own." Asking for
+      direction promptly, through the route the employer sets, is the procedure for
+      exactly this situation.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [treatment-integrity, scope-of-practice]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-urgent-versus-routine-question
+    credential: RBT
+    taskRef: { credential: RBT, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      Which of these should reach the supervisor the same day rather than waiting for the
+      next scheduled contact?
+    options:
+      - id: a
+        text: A preferred item has run out and needs replacing
+        isCorrect: false
+        rationale: >-
+          A supply issue, raised through the usual route.
+      - id: b
+        text: The learner was injured during the session, even slightly
+        isCorrect: true
+        rationale: >-
+          An injury is reported the same day as a matter of course, whatever its apparent
+          severity.
+      - id: c
+        text: A data sheet has a column the technician finds confusing
+        isCorrect: false
+        rationale: >-
+          Worth raising, and it can wait for the next scheduled contact.
+      - id: d
+        text: The learner mastered a target ahead of schedule
+        isCorrect: false
+        rationale: >-
+          Good news that the data already carry; it does not need an out-of-band contact.
+    explanation: >-
+      Some things travel on the ordinary schedule and some do not. Injury — to the learner
+      or to the technician — is in the second group, and reporting it is not conditional on
+      how bad it looked.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [incident-report, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-supervisor-unreachable
+    credential: RBT
+    taskRef: { credential: RBT, code: E.2 }
+    type: single-best-answer
+    stem: >-
+      A technician needs direction mid-session and the supervisor does not answer. What is
+      the right next step?
+    options:
+      - id: a
+        text: Follow the employer's backup contact procedure and keep running the program as written meanwhile
+        isCorrect: true
+        rationale: >-
+          Organizations have a route for exactly this, and continuing as written is the
+          option that changes nothing nobody authorized.
+      - id: b
+        text: Use professional judgment to adjust the program until the supervisor replies
+        isCorrect: false
+        rationale: >-
+          Adjusting the program is the decision the technician is waiting for permission to
+          make.
+      - id: c
+        text: End the session and send the learner home
+        isCorrect: false
+        rationale: >-
+          Ending a service without authorization is its own problem and is rarely what the
+          situation requires.
+      - id: d
+        text: Ask a colleague on another team what they would do
+        isCorrect: false
+        rationale: >-
+          Direction comes from the person responsible for this learner's program, not from
+          whoever is nearby.
+    explanation: >-
+      An unavailable supervisor is a foreseeable situation with a planned answer. The
+      technician uses the backup route and, until somebody authorized says otherwise, keeps
+      doing what was already authorized.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [scope-of-practice, treatment-integrity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-external-variable-sleep
+    credential: RBT
+    taskRef: { credential: RBT, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      A caregiver says the learner slept about three hours last night. Why does this belong
+      in the session record?
+    options:
+      - id: a
+        text: It is a condition outside the program that could be affecting today's data
+        isCorrect: true
+        rationale: >-
+          Recording it lets the supervisor read an unusual session against something other
+          than the procedure.
+      - id: b
+        text: It explains away any poor performance
+        isCorrect: false
+        rationale: >-
+          A recorded variable is context for interpretation, not a reason to discount the
+          data.
+      - id: c
+        text: It justifies reducing the demands placed today
+        isCorrect: false
+        rationale: >-
+          Changing demands is a program decision, and reporting is not the same as
+          adjusting.
+      - id: d
+        text: It is required for billing
+        isCorrect: false
+        rationale: >-
+          Sleep is not a billing element; it is clinical context.
+    explanation: >-
+      Illness, sleep, a change at home, a new medication — these are the variables that
+      make a week's data look unlike the week before. A supervisor reading a dip without
+      them is reading the procedure and drawing the wrong conclusion.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [motivating-operation, session-note]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-external-variable-not-diagnosis
+    credential: RBT
+    taskRef: { credential: RBT, code: E.3 }
+    type: single-best-answer
+    stem: >-
+      A learner has been rubbing the side of their face all session and eating less than
+      usual. What should the technician write?
+    options:
+      - id: a
+        text: What was observed, with times and frequency, and report it to the supervisor and caregiver route that day
+        isCorrect: true
+        rationale: >-
+          Describing what was seen and passing it on lets the people qualified to act do
+          so, which may include seeking medical advice.
+      - id: b
+        text: That the learner appears to have an ear infection
+        isCorrect: false
+        rationale: >-
+          That is a medical judgment, and a technician recording one puts a diagnosis into
+          a clinical record.
+      - id: c
+        text: Nothing, since it is not a program behavior
+        isCorrect: false
+        rationale: >-
+          A possible health change is precisely the kind of outside variable the task
+          requires be recorded.
+      - id: d
+        text: That the learner was refusing food today
+        isCorrect: false
+        rationale: >-
+          "Refusing" attributes an intention; eating less is the observation.
+    explanation: >-
+      The line holds in both directions here. Something outside the program that might
+      matter gets written down and passed on; what it is caused by is not the technician's
+      to name.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [scope-of-practice, operational-definition]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-note-written-when-fresh
+    credential: RBT
+    taskRef: { credential: RBT, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      A technician writes Monday's, Tuesday's and Wednesday's session notes together on
+      Friday from memory. What is the main problem?
+    options:
+      - id: a
+        text: The supervisor will have to read three notes at once
+        isCorrect: false
+        rationale: >-
+          An inconvenience for the reader, not a defect in the record.
+      - id: b
+        text: There is nothing wrong provided the notes are truthful
+        isCorrect: false
+        rationale: >-
+          Intending to be truthful does not make a three-day-old recollection an accurate
+          record.
+      - id: c
+        text: Notes written days later are less accurate, and the record no longer reflects when the service happened
+        isCorrect: true
+        rationale: >-
+          Accuracy falls with delay, and a contemporaneous record is part of what makes
+          documentation defensible to a funder or an auditor.
+      - id: d
+        text: Friday notes take longer to write
+        isCorrect: false
+        rationale: >-
+          Time spent is a workload issue, not the reason the practice is wrong.
+    explanation: >-
+      Session documentation is written to the employer's and the funder's rules, and those
+      rules exist because a record made at the time is more reliable than one assembled
+      later. The delay itself is the defect.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [session-note]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-e-note-excludes-other-clients
+    credential: RBT
+    taskRef: { credential: RBT, code: E.4 }
+    type: single-best-answer
+    stem: >-
+      A group session included two learners. What may appear in the note for one of them?
+    options:
+      - id: a
+        text: Both learners' names, since they were in the same room
+        isCorrect: false
+        rationale: >-
+          Sharing a room is not consent to appear in somebody else's clinical record.
+      - id: b
+        text: The other learner's behavior, as context for this learner's session
+        isCorrect: false
+        rationale: >-
+          Context can be given without recording a second person's behavior in a file that
+          is not theirs.
+      - id: c
+        text: Whatever the technician judges relevant
+        isCorrect: false
+        rationale: >-
+          Relevance is not the test; whose record it is, is.
+      - id: d
+        text: Only what concerns that learner, with the other referred to in a way that does not identify them
+        isCorrect: true
+        rationale: >-
+          A record belongs to its own client; naming another person in it discloses that
+          person's involvement to everyone who later reads the file.
+    explanation: >-
+      Confidentiality is not only about who sees a note — it is also about who ends up
+      inside one. A second learner can be described as "another learner" without being
+      identified.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [confidentiality, session-note]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

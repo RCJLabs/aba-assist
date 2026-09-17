@@ -1,0 +1,734 @@
+# RBT practice questions — area C additions, Behavior Acquisition. All original.
+#
+# Area C is a quarter of the RBT paper and was the largest gap between the bank's shape
+# and the blueprint's. These sixteen fill the codes that carried only two questions each,
+# and lean toward application rather than recall: a technician who can define a prompt
+# hierarchy and still cannot tell which prompt they just delivered has not learned it.
+
+questions:
+  - id: rbt-c-pairing-before-demands
+    credential: RBT
+    taskRef: { credential: RBT, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      A technician spends the first ten minutes of each session handing the learner
+      preferred items and joining their play, asking nothing of them. What is this
+      intended to accomplish?
+    options:
+      - id: a
+        text: To satisfy the daily requirement for unstructured time
+        isCorrect: false
+        rationale: >-
+          There is no such general requirement, and a procedure run to fill a quota is
+          not run for its effect.
+      - id: b
+        text: To establish the learner as the one who sets the session agenda
+        isCorrect: false
+        rationale: >-
+          Following the learner's lead is a teaching tactic, not a transfer of decisions
+          about the program.
+      - id: c
+        text: To make the technician's presence itself something the learner values
+        isCorrect: true
+        rationale: >-
+          Repeatedly pairing a neutral stimulus — a new adult — with things the learner
+          already likes is how that adult comes to function as a reinforcer.
+      - id: d
+        text: To use up the learner's motivation before teaching begins
+        isCorrect: false
+        rationale: >-
+          Free access can reduce momentary motivation for a specific item, but that is a
+          cost to manage rather than the purpose, and the plan would say so.
+    explanation: >-
+      A stimulus becomes a conditioned reinforcer through its history of being paired
+      with existing reinforcers. Pairing the technician with preferred items early makes
+      later social praise and attention worth something, which is what the teaching
+      procedures then rely on.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [conditioned-reinforcer, pairing]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the primary behavior-analytic literature; no
+        examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-17'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-17'
+
+  - id: rbt-c-pairing-stops-working
+    credential: RBT
+    taskRef: { credential: RBT, code: C.2 }
+    type: single-best-answer
+    stem: >-
+      Praise that used to work for a learner no longer changes anything. What should the
+      technician do first?
+    options:
+      - id: a
+        text: Switch to a tangible reinforcer chosen on the spot
+        isCorrect: false
+        rationale: >-
+          Substituting a different consequence changes the program, which is not the
+          technician's call to make mid-session.
+      - id: b
+        text: Withhold all attention until the learner works for praise again
+        isCorrect: false
+        rationale: >-
+          Withholding attention is a procedure with its own effects and its own
+          authorization; it is not a repair anybody improvises.
+      - id: c
+        text: Say the praise louder and more often
+        isCorrect: false
+        rationale: >-
+          More of a consequence that is not functioning as a reinforcer produces more of
+          nothing, and it can make the session unpleasant.
+      - id: d
+        text: Tell the supervisor, who decides whether the praise needs pairing again or the plan needs a different reinforcer
+        isCorrect: true
+        rationale: >-
+          Whether a consequence still functions as a reinforcer is a question about the
+          program, and changing what is delivered is the supervisor's decision.
+    explanation: >-
+      A reinforcer is defined by its effect, so "praise stopped working" is a finding
+      about the program rather than a problem with the learner. The technician's job is
+      to notice it, record it and report it; deciding what to do about it is supervision.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [conditioned-reinforcer, reinforcer]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-reinforcement-immediacy
+    credential: RBT
+    taskRef: { credential: RBT, code: C.1 }
+    type: single-best-answer
+    stem: >-
+      A technician finishes a teaching block, then delivers the earned reinforcer several
+      minutes later while packing up. What is the most likely problem?
+    options:
+      - id: a
+        text: Nothing, as long as the total amount earned is correct
+        isCorrect: false
+        rationale: >-
+          Accounting for the right total is not the same as delivering it when it will do
+          the work, which is the whole point of the contingency.
+      - id: b
+        text: The delay weakens the link between the response and the consequence
+        isCorrect: true
+        rationale: >-
+          Reinforcement affects whatever happened just before it, so a long gap leaves it
+          unclear to the learner which response earned it.
+      - id: c
+        text: The reinforcer will lose its value permanently
+        isCorrect: false
+        rationale: >-
+          A delayed delivery does not destroy the item's value; it weakens the contingency
+          on this occasion.
+      - id: d
+        text: The learner will require a larger reinforcer next time
+        isCorrect: false
+        rationale: >-
+          Nothing about a delay sets a new magnitude requirement.
+    explanation: >-
+      Immediacy is one of the conditions that makes reinforcement effective. A consequence
+      delivered minutes later still follows a response — just not the one intended.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [positive-reinforcement, three-term-contingency]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-dtt-massed-vs-interspersed
+    credential: RBT
+    taskRef: { credential: RBT, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      A program says to mix trials of a new target with trials of skills the learner has
+      already mastered. What does mixing them in achieve?
+    options:
+      - id: a
+        text: It lets the technician skip the error-correction step
+        isCorrect: false
+        rationale: >-
+          Error correction is run as written whatever the trial order.
+      - id: b
+        text: It counts the mastered skill as though it were taught again
+        isCorrect: false
+        rationale: >-
+          Mastered trials are maintenance, and the data on them are recorded as that.
+      - id: c
+        text: It makes the session shorter
+        isCorrect: false
+        rationale: >-
+          Adding trials does not shorten a session; length is not the reason for the
+          arrangement.
+      - id: d
+        text: It keeps the rate of reinforcement up while the new target is still hard
+        isCorrect: true
+        rationale: >-
+          Interspersed mastered trials give the learner responses they can make correctly,
+          so contact with reinforcement stays frequent through a difficult target.
+    explanation: >-
+      Running only hard trials drives the reinforcement rate down and the escape
+      motivation up. Interspersing maintained targets keeps the session worth being in
+      while the new skill is still shaky.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [discrete-trial-training, maintenance]
+    citations:
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-dtt-inter-trial-interval
+    credential: RBT
+    taskRef: { credential: RBT, code: C.3 }
+    type: single-best-answer
+    stem: >-
+      During discrete-trial teaching a technician begins the next instruction the instant
+      the previous consequence is delivered, with no pause. What is the risk?
+    options:
+      - id: a
+        text: The session will end before the trial count is met
+        isCorrect: false
+        rationale: >-
+          A faster pace would meet the count sooner, not later.
+      - id: b
+        text: Trials blur together, so it becomes unclear which instruction a response belongs to
+        isCorrect: true
+        rationale: >-
+          The brief interval is what separates one trial from the next; without it the
+          discriminative stimulus for each trial loses its boundary.
+      - id: c
+        text: The learner receives too much reinforcement
+        isCorrect: false
+        rationale: >-
+          Pace does not change how much is earned; the schedule does.
+      - id: d
+        text: The data sheet will not have enough rows
+        isCorrect: false
+        rationale: >-
+          A recording inconvenience is not the behavioral problem here.
+    explanation: >-
+      A discrete trial is discrete because it has edges: instruction, response,
+      consequence, pause. Removing the pause removes the edge, and a learner cannot
+      discriminate what they were asked if the asking never stops.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [discrete-trial-training, discriminative-stimulus]
+    citations:
+      - sourceId: smith-2001-dtt
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-net-capturing-motivation
+    credential: RBT
+    taskRef: { credential: RBT, code: C.4 }
+    type: single-best-answer
+    stem: >-
+      A learner walks to the sink and reaches for the tap. The program targets requesting
+      help. What does teaching in the natural environment ask the technician to do here?
+    options:
+      - id: a
+        text: Redirect the learner to the table and run the target there
+        isCorrect: false
+        rationale: >-
+          Moving to the table abandons the motivation that made this a teaching moment.
+      - id: b
+        text: Wait for the learner to give up, then prompt the request
+        isCorrect: false
+        rationale: >-
+          Waiting until the motivation has passed leaves nothing worth responding for.
+      - id: c
+        text: Turn the tap on so the learner is not frustrated
+        isCorrect: false
+        rationale: >-
+          Providing the outcome for free removes the occasion to teach the request.
+      - id: d
+        text: Use the moment the learner already wants something as the occasion to teach the request
+        isCorrect: true
+        rationale: >-
+          Naturalistic teaching runs on motivation that is already present, so the thing
+          the learner gets for responding is the thing they were reaching for.
+    explanation: >-
+      The difference between naturalistic teaching and table teaching is where the
+      motivation comes from. Here it is already in the room, and the reinforcer for the
+      request is the running water rather than something unrelated.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [naturalistic-teaching, motivating-operation, mand]
+    citations:
+      - sourceId: hart-risley-1975
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-discrimination-training-both-halves
+    credential: RBT
+    taskRef: { credential: RBT, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      A learner hands over the red card every time, whether the technician asks for red or
+      for blue, and is reinforced whenever they happen to be right. What is missing?
+    options:
+      - id: a
+        text: The cards should be presented one at a time
+        isCorrect: false
+        rationale: >-
+          A single card removes the discrimination entirely rather than teaching it.
+      - id: b
+        text: The instruction should be repeated more clearly
+        isCorrect: false
+        rationale: >-
+          Clarity of delivery is not the issue when the consequence does not distinguish
+          correct from incorrect.
+      - id: c
+        text: The learner needs a longer response interval
+        isCorrect: false
+        rationale: >-
+          More time to make an undifferentiated response does not differentiate it.
+      - id: d
+        text: Reinforcement must follow responding to the target and not follow responding to the others
+        isCorrect: true
+        rationale: >-
+          Discrimination is taught by the difference in consequences across stimuli; if
+          both get reinforced some of the time, there is no difference to learn.
+    explanation: >-
+      A behavior comes under stimulus control when it is reinforced in the presence of one
+      stimulus and not in the presence of others. Reinforcing a fixed response that is
+      sometimes correct by chance teaches the fixed response.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [discrimination-training, stimulus-control]
+    citations:
+      - sourceId: terrace-1963
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-stimulus-control-transfer
+    credential: RBT
+    taskRef: { credential: RBT, code: C.6 }
+    type: single-best-answer
+    stem: >-
+      A learner answers correctly only when the technician taps the right picture first.
+      What has control of the response?
+    options:
+      - id: a
+        text: The technician's tap, rather than the instruction
+        isCorrect: true
+        rationale: >-
+          The response reliably follows the prompt and not the instruction, which is what
+          prompt dependence looks like in the data.
+      - id: b
+        text: The instruction, with the tap as harmless extra help
+        isCorrect: false
+        rationale: >-
+          If the instruction controlled the response, removing the tap would not stop it.
+      - id: c
+        text: The reinforcer that follows
+        isCorrect: false
+        rationale: >-
+          A consequence strengthens the response; it is not the antecedent that occasions
+          it.
+      - id: d
+        text: Nothing yet, because the learner is still acquiring the skill
+        isCorrect: false
+        rationale: >-
+          Responding is reliable — it is under the control of the wrong antecedent, which
+          is a different problem from not responding.
+    explanation: >-
+      The aim of prompting is to transfer control from the prompt to the natural
+      discriminative stimulus. Until that transfer happens, a high correct-response rate
+      is a measure of the prompt rather than of the skill.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [stimulus-control, prompt-fading, prompt]
+    citations:
+      - sourceId: touchette-1971
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-generalization-multiple-exemplars
+    credential: RBT
+    taskRef: { credential: RBT, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      A learner labels the one plastic apple used in teaching but not any real apple.
+      Which programmed strategy addresses this directly?
+    options:
+      - id: a
+        text: Teaching with several different apples that vary in color, size and setting
+        isCorrect: true
+        rationale: >-
+          Training across multiple examples of the concept is what brings the range of
+          stimuli the learner will actually meet under the same response.
+      - id: b
+        text: Running more trials with the plastic apple until fluency is reached
+        isCorrect: false
+        rationale: >-
+          More practice with one exemplar strengthens responding to that exemplar.
+      - id: c
+        text: Adding a larger reinforcer for correct labels
+        isCorrect: false
+        rationale: >-
+          Magnitude does not widen the range of stimuli that occasion the response.
+      - id: d
+        text: Waiting for the skill to transfer on its own once it is mastered
+        isCorrect: false
+        rationale: >-
+          Treating generalization as something that happens by itself is exactly the
+          assumption the programming exists to replace.
+    explanation: >-
+      Generalization is programmed, not hoped for. Teaching with several exemplars that
+      span the relevant variation is one of the established tactics for producing it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [generalization, stimulus-generalization]
+    citations:
+      - sourceId: stokes-baer-1977
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-generalization-natural-contingency
+    credential: RBT
+    taskRef: { credential: RBT, code: C.8 }
+    type: single-best-answer
+    stem: >-
+      A program aims for a learner's new greeting to keep happening outside sessions. Which
+      arrangement makes that most likely?
+    options:
+      - id: a
+        text: Choosing a greeting that the people around the learner will respond to naturally
+        isCorrect: true
+        rationale: >-
+          A response that the everyday environment already reinforces does not depend on
+          the program continuing in order to persist.
+      - id: b
+        text: Using an unusual greeting so it is easy to score
+        isCorrect: false
+        rationale: >-
+          A form nobody responds to will meet no reinforcement once teaching stops.
+      - id: c
+        text: Reinforcing the greeting on a dense schedule indefinitely
+        isCorrect: false
+        rationale: >-
+          A schedule that never thins leaves the behavior dependent on the program.
+      - id: d
+        text: Teaching the greeting only with the assigned technician
+        isCorrect: false
+        rationale: >-
+          A single trainer is the narrowest possible training condition, which works
+          against transfer.
+    explanation: >-
+      One of the most reliable ways to get a behavior to last is to pick one that the
+      natural community of reinforcement will maintain. The environment then does the
+      work the program was doing.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [generalization, maintenance, stimulus-generalization]
+    citations:
+      - sourceId: baer-wolf-risley-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-maintenance-data-still-taken
+    credential: RBT
+    taskRef: { credential: RBT, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      A target has met its mastery criterion and moved to maintenance. What happens to
+      data collection?
+    options:
+      - id: a
+        text: It stops, because the skill is mastered
+        isCorrect: false
+        rationale: >-
+          A mastery decision made once says nothing about next month.
+      - id: b
+        text: It continues at the same frequency as during teaching
+        isCorrect: false
+        rationale: >-
+          Full-rate data on a mastered target spends session time that acquisition targets
+          need.
+      - id: c
+        text: It is replaced by the caregiver's report
+        isCorrect: false
+        rationale: >-
+          Caregiver report is useful information and not a substitute for the measurement
+          the program specifies.
+      - id: d
+        text: It continues on the schedule the program sets, less often than during acquisition
+        isCorrect: true
+        rationale: >-
+          Maintenance checks exist to catch a skill slipping, which cannot be noticed if
+          nothing is recorded.
+    explanation: >-
+      Acquisition and maintenance are different jobs with different data. The maintenance
+      schedule is lighter, but a skill that is never probed again is a skill nobody would
+      notice losing.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [maintenance, mastery-criterion]
+    citations:
+      - sourceId: cooper-heron-heward-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-acquisition-target-regressed
+    credential: RBT
+    taskRef: { credential: RBT, code: C.9 }
+    type: single-best-answer
+    stem: >-
+      A skill that has been in maintenance for two months drops to half its usual accuracy
+      on the latest probe. What is the technician's move?
+    options:
+      - id: a
+        text: Re-run the probe until the learner performs at the usual level
+        isCorrect: false
+        rationale: >-
+          Repeating a measurement until it gives the expected answer is not measurement.
+      - id: b
+        text: Leave it, since one probe is not a trend
+        isCorrect: false
+        rationale: >-
+          One probe may not be a trend, but it is information, and silence is not how the
+          supervisor finds out.
+      - id: c
+        text: Record the probe as it fell and report the drop to the supervisor
+        isCorrect: true
+        rationale: >-
+          The datum is the finding; deciding whether the target returns to acquisition is
+          a program decision the supervisor makes on the evidence.
+      - id: d
+        text: Move the target back into acquisition and resume teaching trials
+        isCorrect: false
+        rationale: >-
+          Changing which phase a target is in changes the program.
+    explanation: >-
+      Technicians record what happened and report what it looks like. Whether a single low
+      probe means the skill needs re-teaching is a judgment made against the whole data
+      path, by the person responsible for the program.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [maintenance, mastery-criterion]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-shaping-successive-approximations
+    credential: RBT
+    taskRef: { credential: RBT, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      A learner who says "buh" for "ball" is reinforced for that sound this week, and next
+      week only for something closer to the whole word. What is being reinforced?
+    options:
+      - id: a
+        text: Every vocalization the learner produces
+        isCorrect: false
+        rationale: >-
+          Reinforcing everything would not differentiate anything, which is the opposite
+          of shaping.
+      - id: b
+        text: Only the exact target response
+        isCorrect: false
+        rationale: >-
+          Waiting for the final form means waiting for a response that may never occur.
+      - id: c
+        text: The learner's attempt, regardless of its form
+        isCorrect: false
+        rationale: >-
+          Effort alone is not the criterion; the criterion is the form of the response
+          against the current step.
+      - id: d
+        text: Successively closer approximations to the target response
+        isCorrect: true
+        rationale: >-
+          Shaping reinforces a response that is nearer the target than the last accepted
+          one, and stops reinforcing what has been passed.
+    explanation: >-
+      Shaping works by differential reinforcement of successive approximations: the
+      criterion moves as the response improves, so what earned reinforcement last week no
+      longer does.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [shaping, mastery-criterion]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-shaping-criterion-too-soon
+    credential: RBT
+    taskRef: { credential: RBT, code: C.10 }
+    type: single-best-answer
+    stem: >-
+      A technician raises the shaping criterion after a single better attempt, and the
+      learner stops responding altogether. What most likely happened?
+    options:
+      - id: a
+        text: The learner lost interest in the reinforcer
+        isCorrect: false
+        rationale: >-
+          Possible in principle, but the change in responding lines up exactly with the
+          change in criterion.
+      - id: b
+        text: The target response was too easy
+        isCorrect: false
+        rationale: >-
+          Responding stopped, which is not what an easy target produces.
+      - id: c
+        text: The technician should have waited for the exact target from the start
+        isCorrect: false
+        rationale: >-
+          That is the error shaping exists to avoid.
+      - id: d
+        text: The previous approximation stopped earning reinforcement before it was solid
+        isCorrect: true
+        rationale: >-
+          Moving the criterion past a response the learner cannot yet produce reliably
+          leaves nothing in their repertoire that gets reinforced.
+    explanation: >-
+      Shaping depends on the learner always having something they can do that still works.
+      Advance too fast and the current step is out of reach while the previous one has
+      already been put on extinction.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [shaping, extinction]
+    citations:
+      - sourceId: skinner-1953
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-token-ratio-written
+    credential: RBT
+    taskRef: { credential: RBT, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      A token system specifies five tokens for an exchange. Late in a hard session the
+      learner has three and is becoming upset. What should the technician do?
+    options:
+      - id: a
+        text: Run the system as written and report how the session went
+        isCorrect: true
+        rationale: >-
+          The exchange requirement is part of the program; changing it mid-session changes
+          the contingency the data are supposed to be measuring.
+      - id: b
+        text: Exchange at three tokens this once to settle the learner
+        isCorrect: false
+        rationale: >-
+          An exchange that was not earned teaches that the requirement moves when the
+          session gets hard.
+      - id: c
+        text: Hand over two extra tokens for effort
+        isCorrect: false
+        rationale: >-
+          Tokens delivered for something other than the specified response are not part of
+          the system.
+      - id: d
+        text: End the session early and record it as complete
+        isCorrect: false
+        rationale: >-
+          Recording a session as something it was not is a documentation problem on top of
+          a program one.
+    explanation: >-
+      A token economy is only a contingency while its rules hold. If the requirement is
+      wrong for this learner, that is a finding for the supervisor — and the way it
+      reaches them is the data and the note, not an on-the-spot change.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [token-economy, treatment-integrity]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-c-token-backup-value
+    credential: RBT
+    taskRef: { credential: RBT, code: C.11 }
+    type: single-best-answer
+    stem: >-
+      Tokens that used to be worked for are now ignored, though the exchange rules have not
+      changed. Which explanation should be checked first?
+    options:
+      - id: a
+        text: Whether the items the tokens buy are still worth having to this learner
+        isCorrect: true
+        rationale: >-
+          A token is a conditioned reinforcer that borrows its value from its backups; if
+          the backups have stopped mattering, so has the token.
+      - id: b
+        text: Whether the tokens are the wrong color
+        isCorrect: false
+        rationale: >-
+          The physical form of a token is arbitrary and not where its value comes from.
+      - id: c
+        text: Whether the learner can count to five
+        isCorrect: false
+        rationale: >-
+          Token systems do not require counting; the exchange can be made visible without
+          it.
+      - id: d
+        text: Whether the session is too short for five tokens
+        isCorrect: false
+        rationale: >-
+          Worth checking eventually, but it would show as tokens earned and unspent rather
+          than as tokens ignored.
+    explanation: >-
+      Tokens work because of what they can be exchanged for. When a system stops working,
+      the backup reinforcers are the first place to look, and preference changes over time.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [token-economy, conditioned-reinforcer, preference-assessment]
+    citations:
+      - sourceId: kazdin-1977-token
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov

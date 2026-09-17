@@ -1,0 +1,856 @@
+# RBT practice questions — additions across areas A, B and D. All original.
+#
+# Written to bring the bank's shape closer to the paper's. Area A carries seventeen per
+# cent of the exam and the codes below had two questions each; area D's punishment and
+# side-effect codes were the thinnest in the bank, and they are the ones where a
+# technician most needs to know the edge of their own role.
+
+questions:
+  # ---------------------------------------------------------------- area A
+  - id: rbt-a-count-needs-time-to-compare
+    credential: RBT
+    taskRef: { credential: RBT, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      A technician records 12 occurrences on Monday and 12 on Tuesday, but Monday's session
+      ran two hours and Tuesday's ran one. What should be reported to allow comparison?
+    options:
+      - id: a
+        text: Rate, because the same count over different observation times is not the same behavior level
+        isCorrect: true
+        rationale: >-
+          Dividing by observation time makes the two sessions comparable; twelve in one
+          hour is twice the level of twelve in two.
+      - id: b
+        text: The raw counts, since both are 12
+        isCorrect: false
+        rationale: >-
+          Equal counts over unequal times hide a real difference, which is the error this
+          is testing.
+      - id: c
+        text: The longer session only, as it gives more information
+        isCorrect: false
+        rationale: >-
+          Discarding a session is not a summary method and loses data the program needs.
+      - id: d
+        text: The average of the two counts
+        isCorrect: false
+        rationale: >-
+          Averaging counts taken over different durations carries the same problem into
+          one number.
+    explanation: >-
+      Count is only interpretable alongside the time it was collected in. When session
+      length varies, rate is what makes one day comparable with the next.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [frequency-and-rate, duration]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: &att
+      originalProse: true
+      noVerbatimSource: true
+      aiAssisted: true
+      consulted: >-
+        Original question written from the measurement and behavior-analytic literature;
+        no examination material consulted.
+    review: &rev
+      status: in-review
+      authoredBy: claude
+      authoredOn: '2026-09-17'
+      reviewedBy: null
+      reviewedOn: null
+    provenance: &prov
+      license: CC-BY-SA-4.0
+      tier: free
+      version: 1
+      updated: '2026-09-17'
+
+  - id: rbt-a-missed-occurrences-while-busy
+    credential: RBT
+    taskRef: { credential: RBT, code: A.1 }
+    type: single-best-answer
+    stem: >-
+      A technician running continuous recording realizes they missed several occurrences
+      while helping the learner with materials. What should the session data show?
+    options:
+      - id: a
+        text: The count actually recorded, with a note that occurrences were likely missed
+        isCorrect: true
+        rationale: >-
+          The record states what was observed and flags its limitation, which is what lets
+          the supervisor weigh it.
+      - id: b
+        text: An estimate of the true count, corrected upward
+        isCorrect: false
+        rationale: >-
+          An estimate entered as data is indistinguishable from a measurement once it is
+          on the graph.
+      - id: c
+        text: Nothing for that session, since the data are unreliable
+        isCorrect: false
+        rationale: >-
+          A gap with no explanation is less useful than a flagged partial count.
+      - id: d
+        text: The count from a comparable previous session
+        isCorrect: false
+        rationale: >-
+          Copying another day's figure is fabricating this day's.
+    explanation: >-
+      Data that are known to be incomplete are still data, provided the record says so.
+      What makes them dangerous is a correction, an estimate or a substitute that arrives
+      on the graph looking exactly like a measurement.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [continuous-measurement, treatment-integrity]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-graph-kept-current
+    credential: RBT
+    taskRef: { credential: RBT, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      Why does a program ask that session data be entered and the graph updated before the
+      technician leaves, rather than weekly?
+    options:
+      - id: a
+        text: Because weekly entry is not allowed by any funder
+        isCorrect: false
+        rationale: >-
+          Funder rules vary and are not the behavioral reason for the requirement.
+      - id: b
+        text: So the graph looks complete during audits
+        isCorrect: false
+        rationale: >-
+          Appearance during an audit is not why current data matter clinically.
+      - id: c
+        text: So the supervisor can see a change in the data in time to act on it
+        isCorrect: true
+        rationale: >-
+          Graphs exist to support decisions, and a decision made a week late was made on
+          a week-old picture.
+      - id: d
+        text: So the technician does not forget the numbers
+        isCorrect: false
+        rationale: >-
+          The paper or device record already holds the numbers; currency is about the
+          decision, not memory.
+    explanation: >-
+      A graph is a decision-making instrument. Entering data the same day is what keeps the
+      person responsible for the program looking at the present rather than at last week.
+    cognitiveLevel: recall
+    difficulty: 1
+    termRefs: [line-graph, continuous-measurement]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-transcription-error-found
+    credential: RBT
+    taskRef: { credential: RBT, code: A.4 }
+    type: single-best-answer
+    stem: >-
+      A technician notices that a figure entered last week does not match the paper data
+      sheet. What is the right correction?
+    options:
+      - id: a
+        text: Leave it, since one point will not change the trend
+        isCorrect: false
+        rationale: >-
+          A known error left in place is a known error, whatever its effect on the line.
+      - id: b
+        text: Change the paper sheet to match what was entered
+        isCorrect: false
+        rationale: >-
+          That alters the original observation to fit a typing mistake.
+      - id: c
+        text: Correct the entry so it matches the original record, and note that a correction was made
+        isCorrect: true
+        rationale: >-
+          The original record is the source of truth, and a visible correction keeps the
+          history of the record honest.
+      - id: d
+        text: Overwrite the entry quietly so the graph is right
+        isCorrect: false
+        rationale: >-
+          A silent change leaves nobody able to tell what the record said before or why it
+          moved.
+    explanation: >-
+      Corrections go one way — toward what was actually observed — and they are made
+      visibly. The paper record is what happened; the entry is a copy of it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [line-graph, session-note]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-definition-excludes-edge-case
+    credential: RBT
+    taskRef: { credential: RBT, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      Two technicians disagree about whether a brief touch counts as the target behavior.
+      What does that disagreement indicate?
+    options:
+      - id: a
+        text: One technician needs retraining on the behavior
+        isCorrect: false
+        rationale: >-
+          Retraining on an ambiguous definition trains people to guess the same way.
+      - id: b
+        text: The behavior is happening too fast to score
+        isCorrect: false
+        rationale: >-
+          Speed would produce missed occurrences rather than a disagreement about what
+          counts.
+      - id: c
+        text: The disagreement can be settled by taking the higher count
+        isCorrect: false
+        rationale: >-
+          Picking a number does not resolve what the number is supposed to measure.
+      - id: d
+        text: The definition does not yet say clearly enough what is included and what is not
+        isCorrect: true
+        rationale: >-
+          A definition two trained observers can read differently is the definition's
+          problem, and it will show up as poor agreement.
+    explanation: >-
+      An operational definition earns its name by letting two people score the same events
+      the same way. A boundary case nobody wrote down is where that breaks, and the fix is
+      in the definition rather than in the observers.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [operational-definition, interobserver-agreement]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-definition-names-topography
+    credential: RBT
+    taskRef: { credential: RBT, code: A.5 }
+    type: single-best-answer
+    stem: >-
+      Which is written in terms two observers could agree on?
+    options:
+      - id: a
+        text: Learner disengages from the activity
+        isCorrect: false
+        rationale: >-
+          Disengagement summarizes several possible behaviors without naming any of them.
+      - id: b
+        text: Learner leaves their seat with both feet on the floor and moves more than one step away
+        isCorrect: true
+        rationale: >-
+          Every part of it is something an observer can see happen or not happen.
+      - id: c
+        text: Learner becomes restless during table work
+        isCorrect: false
+        rationale: >-
+          Restlessness is an interpretation, and observers will draw its line in different
+          places.
+      - id: d
+        text: Learner is unwilling to remain seated
+        isCorrect: false
+        rationale: >-
+          Willingness is a private state, not an event.
+    explanation: >-
+      The test is not whether the words sound precise. It is whether two people watching
+      the same minute would produce the same record — which requires the definition to name
+      what the body does.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [operational-definition, topography]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-percentage-needs-opportunities
+    credential: RBT
+    taskRef: { credential: RBT, code: A.6 }
+    type: single-best-answer
+    stem: >-
+      A technician reports "80% correct" for a target. What else must be recorded for that
+      figure to be interpretable?
+    options:
+      - id: a
+        text: Which prompt level was used
+        isCorrect: false
+        rationale: >-
+          Important for the program and recorded separately; the percentage is still
+          uninterpretable without its denominator.
+      - id: b
+        text: Nothing, a percentage stands on its own
+        isCorrect: false
+        rationale: >-
+          A percentage with no denominator is the most common way a small sample is made to
+          look like a finding.
+      - id: c
+        text: How many opportunities the percentage was calculated from
+        isCorrect: true
+        rationale: >-
+          Four out of five and forty out of fifty are both 80%, and they do not support the
+          same conclusion.
+      - id: d
+        text: The time of day the session ran
+        isCorrect: false
+        rationale: >-
+          Useful context sometimes, but it is not what makes a percentage readable.
+    explanation: >-
+      A percentage is a ratio, and half of it is missing when only the result is reported.
+      The number of opportunities is what tells the supervisor how much weight the figure
+      can carry.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [percentage, trials-to-criterion]
+    citations:
+      - sourceId: johnston-pennypacker-2020
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-variability-not-trend
+    credential: RBT
+    taskRef: { credential: RBT, code: A.7 }
+    type: single-best-answer
+    stem: >-
+      A graph shows points swinging widely up and down with no consistent direction across
+      three weeks. How should this be described?
+    options:
+      - id: a
+        text: As stable, because it averages out
+        isCorrect: false
+        rationale: >-
+          An average can be steady while the behavior is anything but; stability is about
+          spread, not about the mean.
+      - id: b
+        text: As variable, with no clear trend yet
+        isCorrect: true
+        rationale: >-
+          Spread without direction is variability, and saying so is more accurate than
+          forcing a direction onto it.
+      - id: c
+        text: As an increasing trend, because the last point is high
+        isCorrect: false
+        rationale: >-
+          A single high point is not a direction, and reading the last value as the trend
+          is the classic error.
+      - id: d
+        text: As a decreasing trend, because the lowest point is recent
+        isCorrect: false
+        rationale: >-
+          The same error in the other direction.
+    explanation: >-
+      Level, trend and variability are three separate things to read off a graph. Wide
+      scatter with no direction is a finding in its own right, and it usually means the
+      question "is this working" cannot be answered yet.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [trend, variability, line-graph]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-a-level-change-at-phase-line
+    credential: RBT
+    taskRef: { credential: RBT, code: A.7 }
+    type: single-best-answer
+    stem: >-
+      Immediately after a phase line the data points sit noticeably lower than before it and
+      stay there. What has changed?
+    options:
+      - id: a
+        text: The level of the behavior
+        isCorrect: true
+        rationale: >-
+          A shift in where the points sit, sustained after the change, is a change in
+          level.
+      - id: b
+        text: The trend within the first phase
+        isCorrect: false
+        rationale: >-
+          The earlier phase is unchanged; what moved happened at the line.
+      - id: c
+        text: The variability of the measure
+        isCorrect: false
+        rationale: >-
+          Variability is how spread out the points are, which is not what is described.
+      - id: d
+        text: The scale of the vertical axis
+        isCorrect: false
+        rationale: >-
+          An axis change would move every point, including those before the line.
+    explanation: >-
+      Reading a graph starts with naming which property moved. A sustained vertical shift
+      that lines up with a phase change is a level change — whether the intervention caused
+      it is a separate question the design has to answer.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [line-graph, trend]
+    citations:
+      - sourceId: kazdin-2011
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  # ---------------------------------------------------------------- area B
+  - id: rbt-b-preference-not-reinforcer-yet
+    credential: RBT
+    taskRef: { credential: RBT, code: B.1 }
+    type: single-best-answer
+    stem: >-
+      A preference assessment shows a learner chose the blue car most often. What does that
+      result establish?
+    options:
+      - id: a
+        text: That the car was chosen most in this assessment, which is a reason to test it as a reinforcer
+        isCorrect: true
+        rationale: >-
+          Preference is what was selected; whether it strengthens behavior is a separate
+          empirical question.
+      - id: b
+        text: That the car will function as a reinforcer for this learner
+        isCorrect: false
+        rationale: >-
+          Only an effect on behavior can establish that, and the assessment did not measure
+          one.
+      - id: c
+        text: That the car should be removed from free access permanently
+        isCorrect: false
+        rationale: >-
+          Access decisions belong to the program, not to the assessment result.
+      - id: d
+        text: That other items are not preferred
+        isCorrect: false
+        rationale: >-
+          A ranking says what was chosen more often, not that the rest are worthless.
+    explanation: >-
+      Preference and reinforcement are related and not the same. An assessment narrows the
+      field of things worth testing; the test is whether behavior it follows increases.
+    cognitiveLevel: analysis
+    difficulty: 2
+    termRefs: [preference-assessment, reinforcer]
+    citations:
+      - sourceId: fisher-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-preference-record-as-run
+    credential: RBT
+    taskRef: { credential: RBT, code: B.1 }
+    type: single-best-answer
+    stem: >-
+      During a paired-choice assessment the learner reaches for both items at once on one
+      trial. What should be recorded?
+    options:
+      - id: a
+        text: Whichever item the learner held longer
+        isCorrect: false
+        rationale: >-
+          Substituting a different criterion mid-assessment changes what is being measured.
+      - id: b
+        text: The trial as a selection of the item presented on the left
+        isCorrect: false
+        rationale: >-
+          A default that is not in the protocol introduces a bias into the ranking.
+      - id: c
+        text: Nothing, and re-run the whole assessment
+        isCorrect: false
+        rationale: >-
+          One awkward trial does not invalidate an assessment that has a rule for it.
+      - id: d
+        text: What happened on that trial, following the protocol's rule for it
+        isCorrect: true
+        rationale: >-
+          Assessment protocols specify how to handle reaching for both, and following that
+          rule keeps the result comparable with other administrations.
+    explanation: >-
+      The value of a standard assessment is that it was run the standard way. When
+      something unusual happens, the protocol usually already says what to do, and that is
+      the answer rather than the technician's judgment.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [preference-assessment, treatment-integrity]
+    citations:
+      - sourceId: fisher-1992
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-skills-assessment-record-exactly
+    credential: RBT
+    taskRef: { credential: RBT, code: B.2 }
+    type: single-best-answer
+    stem: >-
+      While assisting with a skills assessment, a learner gives an answer that is nearly
+      right. How should it be scored?
+    options:
+      - id: a
+        text: By the protocol's scoring rule, without crediting near misses
+        isCorrect: true
+        rationale: >-
+          An assessment's results mean something only if it was scored the way it is meant
+          to be scored.
+      - id: b
+        text: As correct, since the learner clearly understood
+        isCorrect: false
+        rationale: >-
+          Inferring understanding is exactly the judgment the scoring rule exists to remove.
+      - id: c
+        text: As correct with a note explaining the difference
+        isCorrect: false
+        rationale: >-
+          A note does not undo a score that was not earned under the rule.
+      - id: d
+        text: By asking the learner again with a hint
+        isCorrect: false
+        rationale: >-
+          Re-presenting with help changes the item and the result.
+    explanation: >-
+      Assisting with an assessment means administering and recording it as written. Kindness
+      applied to the scoring produces a picture of the learner that nobody can act on.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [treatment-integrity, scope-of-practice]
+    citations:
+      - sourceId: bacb-rbt-tco-3
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-b-abc-record-what-preceded
+    credential: RBT
+    taskRef: { credential: RBT, code: B.3 }
+    type: single-best-answer
+    stem: >-
+      A technician is asked to keep an antecedent-behavior-consequence record. What goes in
+      the antecedent column?
+    options:
+      - id: a
+        text: The reason the technician believes the behavior happened
+        isCorrect: false
+        rationale: >-
+          A hypothesis about function is what the record is collected to inform, not an
+          entry in it.
+      - id: b
+        text: What happened earlier in the day at home
+        isCorrect: false
+        rationale: >-
+          Distant events may matter and are recorded elsewhere; the antecedent column is
+          the immediate situation.
+      - id: c
+        text: The learner's diagnosis
+        isCorrect: false
+        rationale: >-
+          A diagnosis is a fixed characteristic and cannot vary with individual episodes.
+      - id: d
+        text: What was observable in the situation immediately before the behavior
+        isCorrect: true
+        rationale: >-
+          The column records the conditions present just beforehand, in observable terms,
+          so patterns can be read across many entries.
+    explanation: >-
+      A descriptive record is only as good as the discipline of what goes in each column.
+      The antecedent is what was there immediately before, described so a reader who was
+      not present can picture it.
+    cognitiveLevel: application
+    difficulty: 2
+    termRefs: [abc-recording, descriptive-assessment, operational-definition]
+    citations:
+      - sourceId: bijou-peterson-ault-1968
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  # ---------------------------------------------------------------- area D
+  - id: rbt-d-function-not-topography
+    credential: RBT
+    taskRef: { credential: RBT, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      Two learners both shout during group work. One is sent to sit with the teacher; the
+      other is excused from the task. What does this suggest?
+    options:
+      - id: a
+        text: Both learners are seeking attention
+        isCorrect: false
+        rationale: >-
+          Being excused from a task is escape, and assuming attention for both is the
+          mistake the example is built around.
+      - id: b
+        text: Shouting always serves the same function
+        isCorrect: false
+        rationale: >-
+          Form does not determine function; that is the central point.
+      - id: c
+        text: The behavior is automatically reinforced in both cases
+        isCorrect: false
+        rationale: >-
+          Both consequences here are delivered by other people, so neither is automatic.
+      - id: d
+        text: The same form of behavior may be maintained by different consequences for different learners
+        isCorrect: true
+        rationale: >-
+          One arrangement delivers adult attention and the other removes a demand, which
+          are different functions behind identical topographies.
+    explanation: >-
+      What a behavior looks like says very little about why it persists. Two learners doing
+      the same thing can be doing it for opposite reasons, which is why plans are written
+      per learner rather than per behavior.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [function-of-behavior, negative-reinforcement, topography]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-automatic-function-signs
+    credential: RBT
+    taskRef: { credential: RBT, code: D.1 }
+    type: single-best-answer
+    stem: >-
+      A behavior happens at a steady rate whether the learner is alone, with a preferred
+      adult, or being asked to work. Which function does this pattern point toward?
+    options:
+      - id: a
+        text: Attention, since it continues when an adult is present
+        isCorrect: false
+        rationale: >-
+          It continues when nobody is present too, which attention cannot explain.
+      - id: b
+        text: Escape, since it happens during demands
+        isCorrect: false
+        rationale: >-
+          It happens equally without demands, so escape does not account for it.
+      - id: c
+        text: Access to tangibles
+        isCorrect: false
+        rationale: >-
+          Nothing in the pattern involves items being delivered or withheld.
+      - id: d
+        text: Automatic, since the consequence does not appear to depend on other people
+        isCorrect: true
+        rationale: >-
+          A rate that does not change with the social conditions suggests the consequence
+          is produced by the behavior itself.
+    explanation: >-
+      The useful signal is not where the behavior happens but where it *changes*. A rate
+      that stays flat across social conditions is the pattern that points away from socially
+      mediated consequences.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [automatic-reinforcement, function-of-behavior]
+    citations:
+      - sourceId: iwata-1982-1994
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-restrictive-component-authorization
+    credential: RBT
+    taskRef: { credential: RBT, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      A plan includes a component that removes access to a preferred activity for a set
+      period after a target behavior. Before running it, what must be true?
+    options:
+      - id: a
+        text: The caregiver has asked for something stricter
+        isCorrect: false
+        rationale: >-
+          A request does not create authorization, and it does not substitute for the plan.
+      - id: b
+        text: The behavior has continued despite reinforcement-based procedures
+        isCorrect: false
+        rationale: >-
+          That may be why a supervisor writes such a component, but the reason is not the
+          permission.
+      - id: c
+        text: It is written in the current authorized plan, the technician has been trained on it, and a supervisor directs its use
+        isCorrect: true
+        rationale: >-
+          Restrictive components carry authorization, training and oversight requirements
+          that are not optional and not the technician's to waive.
+      - id: d
+        text: The technician has seen it work for another learner
+        isCorrect: false
+        rationale: >-
+          Experience elsewhere is not authorization for this learner.
+    explanation: >-
+      Procedures that reduce behavior by removing something carry more conditions than
+      reinforcement-based ones, and every condition is somebody else's decision. The
+      technician's question is whether all of them are already in place.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [scope-of-practice, treatment-integrity]
+    citations:
+      - sourceId: bacb-rbt-ethics-code-2
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-least-restrictive-first
+    credential: RBT
+    taskRef: { credential: RBT, code: D.5 }
+    type: single-best-answer
+    stem: >-
+      Why do behavior plans generally place reinforcement-based procedures ahead of
+      punishment-based ones?
+    options:
+      - id: a
+        text: Because punishment-based procedures never work
+        isCorrect: false
+        rationale: >-
+          Effectiveness is not the reason for the ordering, and overstating it here
+          misrepresents the literature.
+      - id: b
+        text: Because reinforcement is faster in every case
+        isCorrect: false
+        rationale: >-
+          Speed varies, and the ordering does not rest on it.
+      - id: c
+        text: Because punishment requires no documentation
+        isCorrect: false
+        rationale: >-
+          The opposite is true: restrictive components carry more documentation, not less.
+      - id: d
+        text: Because a procedure that teaches what to do instead is preferred where it can achieve the outcome
+        isCorrect: true
+        rationale: >-
+          Building an alternative leaves the learner with a skill, and less restrictive
+          options are used first where they can work.
+    explanation: >-
+      The ordering is about what the learner is left with and about using the least
+      restrictive option that can do the job. A reduction achieved by teaching an
+      alternative survives the plan ending.
+    cognitiveLevel: recall
+    difficulty: 2
+    termRefs: [differential-reinforcement-of-alternative-behavior, punishment]
+    citations:
+      - sourceId: bacb-ethics-code-2022
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-extinction-burst-expected
+    credential: RBT
+    taskRef: { credential: RBT, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      In the first sessions after an extinction procedure begins, the behavior gets more
+      frequent and more intense. What is the technician's response?
+    options:
+      - id: a
+        text: Stop the procedure, since it is making things worse
+        isCorrect: false
+        rationale: >-
+          Stopping mid-burst reinforces the escalated form, which is the worst available
+          outcome.
+      - id: b
+        text: Deliver the consequence once to settle the learner
+        isCorrect: false
+        rationale: >-
+          One delivery at the height of a burst is intermittent reinforcement of the most
+          intense response yet.
+      - id: c
+        text: Increase the intensity of the procedure
+        isCorrect: false
+        rationale: >-
+          Changing the procedure's parameters is a program decision, not a response to an
+          expected effect.
+      - id: d
+        text: Continue the plan as written if it is safe to do so, record what happened, and report it
+        isCorrect: true
+        rationale: >-
+          A temporary increase is a documented effect of the procedure, and abandoning it
+          at the peak teaches that the behavior works when escalated.
+    explanation: >-
+      A burst is predicted, not a sign of failure — which is why it is taught in advance.
+      The two things that are the technician's to do are keep the procedure intact where
+      safe and make sure the supervisor sees what happened.
+    cognitiveLevel: application
+    difficulty: 3
+    termRefs: [extinction, extinction-burst]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
+
+  - id: rbt-d-spontaneous-recovery-vs-failure
+    credential: RBT
+    taskRef: { credential: RBT, code: D.6 }
+    type: single-best-answer
+    stem: >-
+      A behavior reduced by extinction had almost stopped, then reappeared after a quiet
+      week. What is the most likely explanation?
+    options:
+      - id: a
+        text: The behavior was never really reduced
+        isCorrect: false
+        rationale: >-
+          The data showed a reduction; that record does not un-happen.
+      - id: b
+        text: Spontaneous recovery, a known effect that can follow a period without the behavior
+        isCorrect: true
+        rationale: >-
+          A reduced behavior reappearing after time has passed is documented and does not
+          by itself mean the procedure failed.
+      - id: c
+        text: The plan has stopped working and needs replacing
+        isCorrect: false
+        rationale: >-
+          A single reappearance is not evidence for that, and the conclusion is not the
+          technician's to draw.
+      - id: d
+        text: Somebody must have reinforced the behavior deliberately
+        isCorrect: false
+        rationale: >-
+          Possible and worth noting, but spontaneous recovery does not require it.
+    explanation: >-
+      Extinction does not produce a clean line to zero. Bursts early and recoveries later
+      are part of the pattern, and knowing that is what keeps a team from abandoning a
+      working procedure at the wrong moment.
+    cognitiveLevel: analysis
+    difficulty: 3
+    termRefs: [extinction, spontaneous-recovery]
+    citations:
+      - sourceId: lerman-iwata-1996
+        useType: fact-reference
+    attestation: *att
+    review: *rev
+    provenance: *prov
