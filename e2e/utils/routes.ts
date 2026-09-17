@@ -37,6 +37,7 @@ export const ROUTES = [
 	'/tools/supervision',
 	'/tools/development',
 	'/tools/notes',
+	'/tools/questions',
 	'/tools/timer',
 	'/session',
 	'/tools/fieldwork',

@@ -31,6 +31,8 @@ import type {
 	ServiceMonth,
 	Supervisee,
 	SupervisionEntry,
+	SupervisionQuestion,
+	QuestionTopic,
 	Workplace
 } from './index.js';
 import type { CardRecord, ReviewRecord } from './scheduler.js';
@@ -55,6 +57,7 @@ export interface BackupPayload {
 	developmentUnits: DevelopmentUnit[];
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
+	supervisionQuestions: SupervisionQuestion[];
 }
 
 export interface BackupReport {
@@ -438,6 +441,41 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		dropped
 	);
 
+	const TOPICS = [
+		'the-plan',
+		'a-procedure',
+		'data-and-measurement',
+		'a-reaction-i-did-not-expect',
+		'scope-and-role',
+		'documentation',
+		'something-else'
+	] as const;
+
+	/*
+	 * Parked questions. The one free-text field here gets the same treatment as a supervision
+	 * note — counted toward the warning, never rejected for it — and an unknown topic falls
+	 * back rather than dropping the row: the question is the part worth keeping, and losing
+	 * it because a future build renamed a topic would be the wrong trade.
+	 */
+	const supervisionQuestions = sift<SupervisionQuestion>(
+		'supervisionQuestions',
+		raw.supervisionQuestions,
+		(r) => {
+			if (!str(r.id) || !str(r.question) || !num(r.raisedAt)) return null;
+			const question = r.question.slice(0, 500);
+			if (question && phiWarnings(question).length > 0) notesToCheck++;
+			return {
+				id: r.id,
+				superviseeId: str(r.superviseeId) ? r.superviseeId : null,
+				topic: (oneOf(TOPICS, r.topic) ? r.topic : 'something-else') as QuestionTopic,
+				question,
+				raisedAt: r.raisedAt,
+				answeredAt: num(r.answeredAt) ? r.answeredAt : null
+			};
+		},
+		dropped
+	);
+
 	const data: BackupPayload = {
 		kind: BACKUP_KIND,
 		version: raw.version,
@@ -454,7 +492,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		cycles,
 		developmentUnits,
 		fieldworkPeriods,
-		fieldworkMonths
+		fieldworkMonths,
+		supervisionQuestions
 	};
 
 	const counts: Record<string, number> = {
@@ -470,7 +509,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		cycles: cycles.length,
 		developmentUnits: developmentUnits.length,
 		fieldworkPeriods: fieldworkPeriods.length,
-		fieldworkMonths: fieldworkMonths.length
+		fieldworkMonths: fieldworkMonths.length,
+		supervisionQuestions: supervisionQuestions.length
 	};
 
 	if (Object.values(counts).every((n) => n === 0)) {

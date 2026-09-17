@@ -118,6 +118,12 @@
 		: `${tracker.workplaces.length} organizations`}
 />
 
+<p class="sibling">
+	Something you meant to ask rather than something you did? Park it in
+	<a href={resolve('/tools/questions')}>questions for supervision</a> and take the list into the
+	meeting.
+</p>
+
 <div data-tracker-status={tracker.status} hidden></div>
 
 {#if tracker.status === 'unavailable'}
@@ -396,8 +402,15 @@
 	 * On paper this page is a record, not a form. The sections that take input have nothing
 	 * to say once they are printed, so only the ones marked `record` survive.
 	 */
+	.sibling {
+		color: var(--text-muted);
+		font-size: 0.92em;
+		max-width: 62ch;
+	}
+
 	@media print {
 		.crumbs,
+		.sibling,
 		.lede,
 		h1,
 		section:not(.record) {

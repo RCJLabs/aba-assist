@@ -38,7 +38,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(5);
+		expect(DB_VERSION).toBe(6);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -103,8 +103,6 @@ describe('local database', () => {
 		await put('workplaces', { id: 'w1', label: 'Clinic', active: true, createdAt: T0 });
 		expect(await getAll('workplaces')).toHaveLength(1);
 
-		// v5, the newest rung. An install this old is the case a migration most often gets
-		// wrong, because the fresh-create path works whatever the ladder does.
 		await putDrillAttempt({
 			id: 'pairs-1-15',
 			kind: 'pairs',
@@ -116,6 +114,54 @@ describe('local database', () => {
 			missedPairs: ['dro|dra']
 		});
 		expect(await recentDrillAttempts()).toHaveLength(1);
+
+		// v6, the newest rung. An install this old is the case a migration most often gets
+		// wrong, because the fresh-create path works whatever the ladder does.
+		await put('supervisionQuestions', {
+			id: 'q1',
+			superviseeId: null,
+			topic: 'the-plan',
+			question: 'Which step of the chain counts as independent?',
+			raisedAt: T0,
+			answeredAt: null
+		});
+		expect(await getAll('supervisionQuestions')).toHaveLength(1);
+	});
+
+	it('deleting a supervisee takes their parked questions with them', async () => {
+		/*
+		 * A question left behind would sit on the agenda under a supervisee who no longer
+		 * exists — a line of free text about somebody, outliving the record it was filed
+		 * under, which is worse than the dangling reference it looks like.
+		 */
+		await put('supervisees', {
+			id: 's1',
+			code: 'S-04',
+			role: 'RBT',
+			active: true,
+			createdAt: T0
+		});
+		await put('supervisionQuestions', {
+			id: 'theirs',
+			superviseeId: 's1',
+			topic: 'a-procedure',
+			question: 'Do we still run the token board on Fridays?',
+			raisedAt: T0,
+			answeredAt: null
+		});
+		await put('supervisionQuestions', {
+			id: 'mine',
+			superviseeId: null,
+			topic: 'scope-and-role',
+			question: 'Am I allowed to write the goal myself?',
+			raisedAt: T0,
+			answeredAt: null
+		});
+
+		await removeSupervisee('s1');
+
+		const left = await getAll('supervisionQuestions');
+		expect(left.map((q) => q.id)).toEqual(['mine']);
 	});
 
 	it('keeps drill sittings newest first', async () => {
@@ -250,7 +296,8 @@ describe('local database', () => {
 			cycles: [],
 			developmentUnits: [],
 			fieldworkPeriods: [],
-			fieldworkMonths: []
+			fieldworkMonths: [],
+			supervisionQuestions: []
 		});
 
 		// Replace, not merge: merging two devices' review histories means deciding which

@@ -160,6 +160,47 @@ export interface SupervisionEntry {
 }
 
 /**
+ * Topics a question can be about.
+ *
+ * An enum rather than a second free-text field, for the same reason session activities are
+ * one: every field this app can make a closed set, it makes a closed set, and the single
+ * open line below is the only thing the linter then has to watch.
+ */
+export type QuestionTopic =
+	| 'the-plan'
+	| 'a-procedure'
+	| 'data-and-measurement'
+	| 'a-reaction-i-did-not-expect'
+	| 'scope-and-role'
+	| 'documentation'
+	| 'something-else';
+
+/**
+ * A question parked for the next supervision meeting.
+ *
+ * The workforce research behind this app is blunt about why it exists: the technician to
+ * analyst ratio moved from two to one to three to one between 2020 and 2025, and over
+ * forty per cent of technicians report verbal feedback as their only supervision. "Ask
+ * your BCBA" is increasingly not answerable in the moment, and a question that waits until
+ * the meeting is a question that has to survive the week.
+ *
+ * Same structural promise as everything else here: the only identifier is a supervisee
+ * code that cannot spell a name, the topic is an enum, and `question` is one line the PHI
+ * linter warns about.
+ */
+export interface SupervisionQuestion {
+	id: string;
+	/** The supervisee this concerns, or null when it is the author's own question. */
+	superviseeId: string | null;
+	topic: QuestionTopic;
+	/** One line, and the only free text. Warned about, never blocked. */
+	question: string;
+	raisedAt: number;
+	/** When it was taken to a meeting and closed, or null while it is still open. */
+	answeredAt: number | null;
+}
+
+/**
  * Hours of service delivery in one calendar month at one workplace.
  *
  * The denominator of the 5% rule, and the number nobody has to hand — so it is entered
@@ -304,6 +345,11 @@ interface AbaDB extends DBSchema {
 		value: FieldworkMonth;
 		indexes: { 'by-period': string };
 	};
+	supervisionQuestions: {
+		key: string;
+		value: SupervisionQuestion;
+		indexes: { 'by-raised': number };
+	};
 }
 
 type StoreName =
@@ -319,7 +365,8 @@ type StoreName =
 	| 'cycles'
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
-	| 'fieldworkMonths';
+	| 'fieldworkMonths'
+	| 'supervisionQuestions';
 
 type Migration = (
 	db: IDBPDatabase<AbaDB>,
@@ -378,6 +425,14 @@ const MIGRATIONS: Migration[] = [
 	(db) => {
 		const drills = db.createObjectStore('drillAttempts', { keyPath: 'id' });
 		drills.createIndex('by-finished', 'finishedAt');
+	},
+
+	// v6 — questions parked for the next supervision meeting.
+	(db) => {
+		const questions = db.createObjectStore('supervisionQuestions', { keyPath: 'id' });
+		// Indexed by when it was raised, because the ordering that matters is oldest first:
+		// the question parked three weeks ago is the one that keeps not getting asked.
+		questions.createIndex('by-raised', 'raisedAt');
 	}
 ];
 
@@ -498,7 +553,8 @@ type TrackerStore =
 	| 'cycles'
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
-	| 'fieldworkMonths';
+	| 'fieldworkMonths'
+	| 'supervisionQuestions';
 
 export async function getAll<S extends TrackerStore>(store: S): Promise<AbaDB[S]['value'][]> {
 	const db = await openAbaDB();
@@ -519,21 +575,32 @@ export async function remove(store: TrackerStore, id: string): Promise<void> {
 }
 
 /**
- * Delete a supervisee and every contact logged against them, in one transaction.
+ * Delete a supervisee and everything logged against them, in one transaction.
  *
  * Halfway through would leave contacts pointing at nobody, which the monthly summary
  * would then quietly drop from its totals — a compliance number that silently got smaller.
+ *
+ * Parked questions go the same way. One left behind would sit on the agenda attached to a
+ * supervisee who no longer exists, which reads as a bug and is worse than one: it is a
+ * line of free text about somebody, outliving the record it was filed under.
  */
 export async function removeSupervisee(id: string): Promise<void> {
 	const db = await openAbaDB();
-	const tx = db.transaction(['supervisees', 'supervisionEntries'], 'readwrite');
+	const tx = db.transaction(
+		['supervisees', 'supervisionEntries', 'supervisionQuestions'],
+		'readwrite'
+	);
 	const entries = await tx
 		.objectStore('supervisionEntries')
 		.index('by-supervisee')
 		.getAllKeys(id);
+	const questions = await tx.objectStore('supervisionQuestions').getAll();
 	await Promise.all([
 		tx.objectStore('supervisees').delete(id),
-		...entries.map((key) => tx.objectStore('supervisionEntries').delete(key))
+		...entries.map((key) => tx.objectStore('supervisionEntries').delete(key)),
+		...questions
+			.filter((q) => q.superviseeId === id)
+			.map((q) => tx.objectStore('supervisionQuestions').delete(q.id))
 	]);
 	await tx.done;
 }
@@ -625,6 +692,7 @@ export async function exportAll(): Promise<{
 	developmentUnits: DevelopmentUnit[];
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
+	supervisionQuestions: SupervisionQuestion[];
 }> {
 	const db = await openAbaDB();
 	const [
@@ -640,7 +708,8 @@ export async function exportAll(): Promise<{
 		cycles,
 		developmentUnits,
 		fieldworkPeriods,
-		fieldworkMonths
+		fieldworkMonths,
+		supervisionQuestions
 	] = await Promise.all([
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
@@ -654,7 +723,8 @@ export async function exportAll(): Promise<{
 		db.getAll('cycles'),
 		db.getAll('developmentUnits'),
 		db.getAll('fieldworkPeriods'),
-		db.getAll('fieldworkMonths')
+		db.getAll('fieldworkMonths'),
+		db.getAll('supervisionQuestions')
 	]);
 	return {
 		// Marks the file as ours, so importing somebody's tax return gets a useful message
@@ -678,7 +748,8 @@ export async function exportAll(): Promise<{
 		cycles,
 		developmentUnits,
 		fieldworkPeriods,
-		fieldworkMonths
+		fieldworkMonths,
+		supervisionQuestions
 	};
 }
 
@@ -697,7 +768,8 @@ export async function hasStoredData(): Promise<boolean> {
 		'reviewDecisions',
 		'supervisionEntries',
 		'developmentUnits',
-		'fieldworkMonths'
+		'fieldworkMonths',
+		'supervisionQuestions'
 	];
 	const counts = await Promise.all(stores.map((s) => db.count(s)));
 	return counts.some((n) => n > 0);
@@ -729,6 +801,7 @@ export async function restoreAll(data: {
 	developmentUnits: DevelopmentUnit[];
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
+	supervisionQuestions: SupervisionQuestion[];
 }): Promise<void> {
 	const db = await openAbaDB();
 	const stores: StoreName[] = [
@@ -744,7 +817,8 @@ export async function restoreAll(data: {
 		'cycles',
 		'developmentUnits',
 		'fieldworkPeriods',
-		'fieldworkMonths'
+		'fieldworkMonths',
+		'supervisionQuestions'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
@@ -763,7 +837,8 @@ export async function restoreAll(data: {
 		...data.cycles.map((x) => tx.objectStore('cycles').put(x)),
 		...data.developmentUnits.map((x) => tx.objectStore('developmentUnits').put(x)),
 		...data.fieldworkPeriods.map((x) => tx.objectStore('fieldworkPeriods').put(x)),
-		...data.fieldworkMonths.map((x) => tx.objectStore('fieldworkMonths').put(x))
+		...data.fieldworkMonths.map((x) => tx.objectStore('fieldworkMonths').put(x)),
+		...data.supervisionQuestions.map((x) => tx.objectStore('supervisionQuestions').put(x))
 	]);
 	await tx.done;
 }
@@ -783,7 +858,8 @@ export async function clearAll(): Promise<void> {
 		'cycles',
 		'developmentUnits',
 		'fieldworkPeriods',
-		'fieldworkMonths'
+		'fieldworkMonths',
+		'supervisionQuestions'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));

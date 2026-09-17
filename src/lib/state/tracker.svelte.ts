@@ -18,6 +18,7 @@ import {
 	type FieldworkType,
 	type Supervisee,
 	type SupervisionEntry,
+	type SupervisionQuestion,
 	type UnitKind,
 	type UnitTopic,
 	type Workplace
@@ -95,6 +96,7 @@ class Tracker {
 	units = $state<DevelopmentUnit[]>([]);
 	fieldworkPeriods = $state<FieldworkPeriod[]>([]);
 	fieldworkMonths = $state<FieldworkMonth[]>([]);
+	questions = $state<SupervisionQuestion[]>([]);
 
 	async load(): Promise<void> {
 		if (!browser || this.status === 'loading' || this.status === 'ready') return;
@@ -114,7 +116,8 @@ class Tracker {
 				cycles,
 				units,
 				fieldworkPeriods,
-				fieldworkMonths
+				fieldworkMonths,
+				questions
 			] = await Promise.all([
 				getAll('supervisees'),
 				getAll('workplaces'),
@@ -123,7 +126,8 @@ class Tracker {
 				getAll('cycles'),
 				getAll('developmentUnits'),
 				getAll('fieldworkPeriods'),
-				getAll('fieldworkMonths')
+				getAll('fieldworkMonths'),
+				getAll('supervisionQuestions')
 			]);
 			this.supervisees = supervisees;
 			this.workplaces = workplaces;
@@ -133,6 +137,7 @@ class Tracker {
 			this.units = units;
 			this.fieldworkPeriods = fieldworkPeriods;
 			this.fieldworkMonths = fieldworkMonths;
+			this.questions = questions;
 			this.status = 'ready';
 		} catch {
 			// Without storage this tool would appear to record things and lose them, which
@@ -269,6 +274,42 @@ class Tracker {
 		await put('supervisees', s);
 		this.supervisees = [...this.supervisees, s];
 		return s;
+	}
+
+	/**
+	 * Park a question for the next meeting.
+	 *
+	 * Written straight through rather than batched: this is typed in the ten seconds
+	 * between one trial and the next, and a parked question that was still in memory when
+	 * the phone was locked is the exact failure the feature exists to prevent.
+	 */
+	async addQuestion(
+		question: Omit<SupervisionQuestion, 'id' | 'raisedAt' | 'answeredAt'>
+	): Promise<void> {
+		const q: SupervisionQuestion = {
+			...question,
+			question: question.question.trim(),
+			id: id(),
+			raisedAt: Date.now(),
+			answeredAt: null
+		};
+		await put('supervisionQuestions', q);
+		this.questions = [...this.questions, q];
+		storage.hasData = true;
+	}
+
+	/** Close a question, or reopen one closed by mistake. */
+	async setAnswered(questionId: string, answered: boolean): Promise<void> {
+		const found = this.questions.find((q) => q.id === questionId);
+		if (!found) return;
+		const next = { ...found, answeredAt: answered ? Date.now() : null };
+		await put('supervisionQuestions', next);
+		this.questions = this.questions.map((q) => (q.id === questionId ? next : q));
+	}
+
+	async removeQuestion(questionId: string): Promise<void> {
+		await remove('supervisionQuestions', questionId);
+		this.questions = this.questions.filter((q) => q.id !== questionId);
 	}
 
 	async addEntry(entry: Omit<SupervisionEntry, 'id'>): Promise<void> {

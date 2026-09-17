@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
 	import { developmentCsv, fieldworkCsv, supervisionCsv } from '$lib/tracker/csv.js';
+	import { openQuestions } from '$lib/tracker/agenda.js';
 	import { downloadBlob } from '$lib/util/download.js';
 	import FigureRows from '$lib/components/FigureRows.svelte';
 	import { NO_FIGURE, type Figure } from '$lib/ui/figures.js';
@@ -16,6 +17,7 @@
 		{ value: 'BCBA', label: 'Analyst (BCBA)' }
 	];
 
+	const openQuestionCount = $derived(openQuestions(tracker.questions).length);
 	const cycle = $derived(tracker.currentCycle);
 	const cycleSummary = $derived(cycle ? tracker.summaryFor(cycle) : null);
 	const months = $derived(tracker.months);
@@ -337,6 +339,22 @@
 				clock.
 			</p>
 			<p class="now">Nothing to set up, and nothing is saved.</p>
+		</article>
+		<article class="card">
+			<h2><a href={resolve('/tools/questions')}>Questions for supervision</a></h2>
+			<p>
+				The thing you meant to ask, parked in the ten seconds before the next trial, and a
+				written agenda to take into the meeting. Oldest first, so the one that keeps getting
+				bumped stops getting bumped.
+			</p>
+			<p class="now">
+				{#if tracker.questions.length === 0}
+					Nothing parked yet.
+				{:else}
+					{openQuestionCount}
+					{openQuestionCount === 1 ? 'question' : 'questions'} waiting.
+				{/if}
+			</p>
 		</article>
 		<article class="card">
 			<h2><a href={resolve('/tools/notes')}>Writing session notes</a></h2>
