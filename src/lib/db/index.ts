@@ -51,7 +51,7 @@ export interface QuizAttempt {
  * store is worth its migration.
  *
  * `kind` is what lets one store hold more than one sort of drill. It earns that now: the
- * measurement rehearsal writes `data` sittings here too, and everything that reads this
+ * measurement rehearsal writes `data` sittings and the graph drill writes `graph` ones, and everything that reads this
  * store filters on it, because a pair score and an agreement percentage are different
  * measurements and pooling them would produce a number that means nothing.
  *
@@ -61,7 +61,7 @@ export interface QuizAttempt {
  */
 export interface DrillAttempt {
 	id: string;
-	kind: 'pairs' | 'data';
+	kind: 'pairs' | 'data' | 'graph';
 	startedAt: number;
 	finishedAt: number;
 	total: number;

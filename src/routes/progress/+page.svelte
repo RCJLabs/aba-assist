@@ -23,6 +23,7 @@
 	const deck = $derived(progress.deck);
 	const drills = $derived(progress.drills);
 	const observation = $derived(progress.observation);
+	const plotting = $derived(progress.plotting);
 
 	/** A stored method id back into the name the drill page used for it. */
 	const methodLabel = (id: string) => METHODS.find((m) => m.id === id)?.label ?? id;
@@ -321,6 +322,30 @@
 				</p>
 				<p class="more">
 					<a href={resolve('/drills/data')}>Take data on another session</a>
+				</p>
+			</div>
+		{/if}
+	</section>
+
+	<section aria-labelledby="{uid}-plot">
+		<h2 id="{uid}-plot" class="section-head">Drawing graphs</h2>
+
+		{#if plotting.sittings === 0}
+			<p class="note">
+				No graphs drawn yet. <a href={resolve('/drills/graph')}>Put a data sheet on a graph</a>
+				and how much of it came out right gets tracked here.
+			</p>
+		{:else}
+			<div class="card">
+				<p class="figure">
+					<strong>{plotting.percent}%</strong>
+					<span class="unit">
+						across {plotting.sittings}
+						{plotting.sittings === 1 ? 'graph' : 'graphs'}
+					</span>
+				</p>
+				<p class="more">
+					<a href={resolve('/drills/graph')}>Draw another</a>
 				</p>
 			</div>
 		{/if}

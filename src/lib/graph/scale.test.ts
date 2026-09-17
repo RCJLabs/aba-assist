@@ -8,7 +8,8 @@ import {
 	tables,
 	ticks,
 	xPix,
-	yPix
+	yPix,
+	type Phase
 } from './scale.js';
 import { graphById, graphList } from '$lib/content/corpus.js';
 
@@ -182,5 +183,43 @@ describe('the graphs actually shipped', () => {
 		const frames = panels(mb!);
 		expect(frames).toHaveLength(3);
 		expect(frames.map((f) => boundaries(f.phases)[0])).toEqual([4.5, 8.5, 12.5]);
+	});
+});
+
+describe('a gap in the record', () => {
+	const phase = (id: string, from: number, to: number): Phase => ({
+		id,
+		label: id,
+		from,
+		to,
+		seriesId: null,
+		changeNote: null
+	});
+
+	const pts = (...xs: number[]) => xs.map((x) => ({ x, y: 1 }));
+
+	it('is joined when the caller has not said how often data was taken', () => {
+		// The behaviour every existing caller has. Changing it silently would redraw every
+		// published graph on a rule none of them were authored against.
+		expect(segments(pts(1, 2, 4, 5), [phase('a', 1, 5)])).toHaveLength(1);
+	});
+
+	it('breaks the path once the cadence is known', () => {
+		/*
+		 * Session 3 was never run. A line from 2 to 4 asserts the behaviour moved smoothly
+		 * across a day nobody measured, which is the same false claim as drawing through a
+		 * phase change, only quieter.
+		 */
+		expect(segments(pts(1, 2, 4, 5), [phase('a', 1, 5)], 1)).toEqual([pts(1, 2), pts(4, 5)]);
+	});
+
+	it('leaves a record taken every other session alone', () => {
+		expect(segments(pts(2, 4, 6, 8), [phase('a', 1, 8)], 2)).toHaveLength(1);
+	});
+
+	it('breaks for both reasons at once without emitting an empty run', () => {
+		const out = segments(pts(1, 2, 5, 6), [phase('a', 1, 2), phase('b', 3, 6)], 1);
+		expect(out).toEqual([pts(1, 2), pts(5, 6)]);
+		expect(out.every((run) => run.length > 0)).toBe(true);
 	});
 });

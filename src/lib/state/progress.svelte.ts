@@ -11,7 +11,7 @@ import {
 	retention,
 	confusions,
 	drillSummary,
-	observationSummary,
+	practiceSummary,
 	reviewsPerDay,
 	streak,
 	trendShift,
@@ -19,7 +19,7 @@ import {
 	type DayBucket,
 	type DeckState,
 	type DrillSummary,
-	type ObservationSummary,
+	type PracticeSummary,
 	type Retention,
 	type Streak,
 	type TrendPoint
@@ -60,7 +60,13 @@ class Progress {
 		lastAt: null
 	});
 	confused = $state.raw<Confusion[]>([]);
-	observation = $state<ObservationSummary>({
+	observation = $state<PracticeSummary>({
+		sittings: 0,
+		percent: null,
+		methods: [],
+		lastAt: null
+	});
+	plotting = $state<PracticeSummary>({
 		sittings: 0,
 		percent: null,
 		methods: [],
@@ -74,7 +80,8 @@ class Progress {
 			this.deck.total === 0 &&
 			this.recall.tested === 0 &&
 			this.drills.sittings === 0 &&
-			this.observation.sittings === 0
+			this.observation.sittings === 0 &&
+			this.plotting.sittings === 0
 		);
 	}
 
@@ -102,7 +109,8 @@ class Progress {
 			this.deck = deckState(cards);
 			this.drills = drillSummary(drills);
 			this.confused = confusions(drills);
-			this.observation = observationSummary(drills);
+			this.observation = practiceSummary(drills, 'data');
+			this.plotting = practiceSummary(drills, 'graph');
 			this.status = 'ready';
 		} catch {
 			// Blocked storage or a private window. The page says so rather than showing zeros,

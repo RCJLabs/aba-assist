@@ -28,6 +28,7 @@ export const ROUTES = [
 	'/drills',
 	'/drills/pairs',
 	'/drills/data',
+	'/drills/graph',
 	'/plan',
 	'/progress',
 	'/ethics',

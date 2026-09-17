@@ -62,21 +62,34 @@ export function phaseAt(phases: Phase[], x: number): Phase | null {
 }
 
 /**
- * The data path, split at every phase change.
+ * The data path, split at every phase change — and, when told the cadence, at every gap.
  *
  * This is the whole reason the module exists. Joining the last point of one condition to
  * the first of the next draws a line asserting that the two belong together, which is
- * exactly what the change was made to interrupt — so a segment never spans a boundary,
- * and neither does a gap in the record.
+ * exactly what the change was made to interrupt.
+ *
+ * A gap in the record is the same false claim in a smaller way: a session nobody ran is
+ * not a session where the behaviour moved smoothly from one value to the next, and a line
+ * drawn through it says it was. Splitting there needs to know how far apart consecutive
+ * sessions are supposed to be, which the graph schema does not record — `tickEvery` is
+ * how often the axis is *labelled*, not how often data was taken — so `step` is opt-in
+ * and callers that omit it get exactly the phase-change behaviour they had before.
+ *
+ * Inferring the cadence from the smallest gap present was the obvious alternative and is
+ * wrong on any record that legitimately changes cadence partway through, where it would
+ * invent breaks rather than miss them.
  */
-export function segments(points: Point[], phases: Phase[]): Point[][] {
+export function segments(points: Point[], phases: Phase[], step?: number): Point[][] {
 	const out: Point[][] = [];
 	let run: Point[] = [];
 	let currentPhase: Phase | null = null;
 
 	for (const pt of points) {
 		const phase = phaseAt(phases, pt.x);
-		if (run.length > 0 && phase !== currentPhase) {
+		const previous = run.at(-1);
+		const gapped =
+			step !== undefined && previous !== undefined && pt.x - previous.x > step + 1e-9;
+		if (run.length > 0 && (phase !== currentPhase || gapped)) {
 			out.push(run);
 			run = [];
 		}

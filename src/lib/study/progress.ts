@@ -303,25 +303,32 @@ export function confusions(
 		.sort((x, y) => y.times - x.times || x.pair[0].localeCompare(y.pair[0]));
 }
 
-export interface ObservationSummary {
+export interface PracticeSummary {
 	sittings: number;
-	/** Mean agreement across sittings, 0–100, or null with no sittings. */
+	/** Mean of the per-sitting percentages, 0–100, or null with no sittings. */
 	percent: number | null;
-	/** Which recording methods have been practised, in the order first met. */
+	/** Whatever each sitting was drawn from — the recording method, for the rehearsal. */
 	methods: string[];
 	lastAt: number | null;
 }
 
 /**
- * The measurement rehearsal.
+ * One kind of generated practice, summarised.
  *
- * The mean of the per-sitting agreements, not the pooled total. Pooling would weight a
+ * The mean of the per-sitting percentages, not the pooled total. Pooling would weight a
  * four-minute duration run — which has two hundred and forty seconds of opportunity — some
  * twenty times a twelve-interval sampling run, so one long session would decide the figure
  * and the reader would have no way to see that from the number.
+ *
+ * Takes the kind rather than existing once per kind. The three sorts of sitting in this
+ * store differ in what a percentage *means*, which is exactly why they must not be pooled,
+ * and not at all in how a list of them is averaged.
  */
-export function observationSummary(all: readonly DrillAttempt[]): ObservationSummary {
-	const attempts = all.filter((a) => a.kind === 'data' && a.total > 0);
+export function practiceSummary(
+	all: readonly DrillAttempt[],
+	kind: DrillAttempt['kind']
+): PracticeSummary {
+	const attempts = all.filter((a) => a.kind === kind && a.total > 0);
 	const methods: string[] = [];
 	for (const a of attempts) {
 		for (const m of a.categories) if (!methods.includes(m)) methods.push(m);

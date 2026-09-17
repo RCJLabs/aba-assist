@@ -3,7 +3,9 @@ import { putDrillAttempt } from '$lib/db/index.js';
 import {
 	toAttempt,
 	toObservationAttempt,
+	toPlotAttempt,
 	type FinishedObservation,
+	type FinishedPlot,
 	type FinishedSitting
 } from '$lib/drills/record.js';
 
@@ -32,13 +34,24 @@ export async function recordSitting(sitting: FinishedSitting): Promise<boolean> 
 	}
 }
 
-export { toObservationAttempt, type FinishedObservation };
+export { toObservationAttempt, toPlotAttempt, type FinishedObservation, type FinishedPlot };
 
 /** Store one measurement sitting. Same failure posture as a pair sitting: reported, never thrown. */
 export async function recordObservation(sitting: FinishedObservation): Promise<boolean> {
 	if (!browser || sitting.opportunities <= 0) return false;
 	try {
 		await putDrillAttempt(toObservationAttempt(sitting, Date.now()));
+		return true;
+	} catch {
+		return false;
+	}
+}
+
+/** Store one graph sitting. Same failure posture: reported, never thrown. */
+export async function recordPlot(sitting: FinishedPlot): Promise<boolean> {
+	if (!browser || sitting.opportunities <= 0) return false;
+	try {
+		await putDrillAttempt(toPlotAttempt(sitting, Date.now()));
 		return true;
 	} catch {
 		return false;

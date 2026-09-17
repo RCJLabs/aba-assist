@@ -35,6 +35,10 @@
 	Every graph here is invented. Real behavior data belong to the person they were collected
 	from, and none of it is in this app.
 </p>
+<p class="lede">
+	Reading one is half of it. When you want the other half — a data sheet and an empty grid —
+	<a href={resolve('/drills/graph')}>draw a graph</a>.
+</p>
 
 <ul class="list">
 	{#each data.graphs as g (g.id)}

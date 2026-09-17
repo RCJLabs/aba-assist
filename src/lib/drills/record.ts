@@ -80,3 +80,30 @@ export function toObservationAttempt(
 		missedPairs: []
 	};
 }
+
+export interface FinishedPlot {
+	startedAt: number;
+	/** Every session, plus the phase line. */
+	opportunities: number;
+	score: number;
+}
+
+/**
+ * The record a graph sitting becomes.
+ *
+ * Same shape as the others and the same reason: `correct / total` has to mean "the share
+ * they got right" for every kind in this store, or the one summary that reads them all is
+ * reading three different things.
+ */
+export function toPlotAttempt(sitting: FinishedPlot, finishedAt: number): DrillAttempt {
+	return {
+		id: `graph-${sitting.startedAt}`,
+		kind: 'graph',
+		startedAt: sitting.startedAt,
+		finishedAt,
+		total: Math.max(1, sitting.opportunities),
+		correct: sitting.score,
+		categories: [],
+		missedPairs: []
+	};
+}
