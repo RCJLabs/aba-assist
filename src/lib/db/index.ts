@@ -386,6 +386,20 @@ export async function recordReview(card: CardRecord, review: ReviewRecord): Prom
 	await tx.done;
 }
 
+/**
+ * The review log, oldest first, optionally from a cutoff.
+ *
+ * Every grade this app has ever recorded has been written here since the deck was built
+ * and read by nothing but the backup file. It is the only record of whether the reader is
+ * actually remembering anything, as opposed to how many cards are due — and the `by-time`
+ * index means asking for the last month does not walk years of it.
+ */
+export async function getReviewLog(since?: number): Promise<ReviewRecord[]> {
+	const db = await openAbaDB();
+	if (since === undefined) return db.getAllFromIndex('reviewLog', 'by-time');
+	return db.getAllFromIndex('reviewLog', 'by-time', IDBKeyRange.lowerBound(since));
+}
+
 export async function countReviews(): Promise<number> {
 	const db = await openAbaDB();
 	return db.count('reviewLog');

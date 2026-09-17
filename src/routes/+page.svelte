@@ -413,6 +413,10 @@
 			<strong>What to study next</strong>
 			<span>Your practice history, read as a plan rather than a score.</span>
 		</a>
+		<a class="tile" href={resolve('/progress')}>
+			<strong>How it is going</strong>
+			<span>Your scores over time, and whether the flashcards are sticking.</span>
+		</a>
 		<a class="tile" href={resolve('/study')}>
 			<strong>Flashcards</strong>
 			<span>Spaced repetition over any set of terms. Works offline.</span>

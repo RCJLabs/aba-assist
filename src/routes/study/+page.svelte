@@ -250,6 +250,14 @@
 			>
 			<button type="button" onclick={() => study.reset()}>Change the deck</button>
 		</p>
+		<!--
+			This session in the context of every other one. The bars above say how the last
+			ten minutes went; they cannot say whether any of it is being retained.
+		-->
+		<p class="over-time">
+			<a href={resolve('/progress')}>How it is going over time</a> — whether these cards are actually
+			sticking.
+		</p>
 	</section>
 {:else}
 	<p>

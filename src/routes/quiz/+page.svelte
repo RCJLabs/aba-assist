@@ -727,6 +727,11 @@
 			an accuracy only where enough has been answered to mean anything.
 		</p>
 
+		<p class="next-step">
+			<a href={resolve('/progress')}>See how it is going</a> — this sitting against the ones before
+			it.
+		</p>
+
 		{#if quiz.reinforced > 0}
 			<p class="reinforced" role="status" data-reinforced={quiz.reinforced}>
 				<strong
