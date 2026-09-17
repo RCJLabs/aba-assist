@@ -21,31 +21,49 @@
 	color-scheme: light;
 
 	--bg: #ffffff;
-	--surface: #f5f7fa;
+	--surface: #f2f6fa;
 	--surface-raised: #ffffff;
-	--border: #c9d2dd;
-	--text: #14202c;
-	--text-muted: #48576a;
+	/*
+	 * Two weights of line, and the difference is a rule rather than a preference.
+	 * `--border` bounds a control — an input, a select, a card someone taps — so it clears
+	 * the 3:1 that 1.4.11 asks of anything needed to identify a component: 3.36 on the page
+	 * and 3.09 on a surface. `--hair` is 1.57 and separates paragraphs from each other,
+	 * which nothing depends on seeing. The old palette used one value for both and the
+	 * control boundaries were the ones that lost.
+	 */
+	--border: #7c8ea3;
+	--hair: #dce4ec;
+	--text: #10151a;
+	--text-muted: #414d58;
 	/* The drop-down chevron, drawn by us so the control looks the same on every OS. */
-	--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2348576a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23414D58' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
-	--accent: #1b3a5c;
+	--accent: #00539b;
 	--accent-text: #ffffff;
-	--link: #10467e;
+	--link: #00539b;
+	/*
+	 * Green says "this is an instance", red says "this is not". Both carry a shape and a
+	 * heading beside them, so the colour is the third signal rather than the only one.
+	 */
+	--yes: #1c6b3c;
 
 	/*
-	 * The coverage dial. Two strokes that have to be told apart at a glance, so both
-	 * clear 3:1 against the surface behind them (WCAG 1.4.11) and against each other.
+	 * The coverage dial. Two strokes that have to be told apart at a glance, so both clear
+	 * 3:1 against the card behind them and against each other — three constraints at once,
+	 * and they leave almost no room: the fill has to sit near 11:1 against the card before
+	 * a track exists that clears 3:1 against both it and the card. `--accent` itself is too
+	 * light to be the fill here, which is why this pair is its own token rather than a
+	 * reference to the accent.
 	 */
-	--dial-track: #848f9e;
-	--dial-fill: #1b3a5c;
+	--dial-track: #8494a6;
+	--dial-fill: #003b70;
 
-	--caution-bg: #fff4e0;
-	--caution-border: #a35b00;
-	--caution-text: #5c3200;
+	--caution-bg: #fff3e0;
+	--caution-border: #8a5a00;
+	--caution-text: #4a2f00;
 
 	--stop-bg: #fdecec;
-	--stop-border: #a01b1b;
+	--stop-border: #b3122b;
 	--stop-text: #6b0f0f;
 
 	--focus: #0b63c5;
@@ -59,28 +77,30 @@
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme='light']) {
 		color-scheme: dark;
-		--bg: #10161d;
-		--surface: #182029;
-		--surface-raised: #1e2833;
-		--border: #37444f;
-		--text: #e9eef4;
-		--text-muted: #a9b6c4;
-		--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a9b6c4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		--bg: #0f1419;
+		--surface: #171e26;
+		--surface-raised: #1b232c;
+		--border: #6e8296;
+		--hair: #27313c;
+		--text: #e9eff5;
+		--text-muted: #a4b4c4;
+		--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23A4B4C4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
-		--accent: #9cc6f2;
-		--accent-text: #0b1620;
-		--link: #9cc6f2;
+		--accent: #9cc9f7;
+		--accent-text: #0f1419;
+		--link: #9cc9f7;
+		--yes: #6fd08c;
 
-		--dial-track: #6b7d91;
-		--dial-fill: #dce9f8;
+		--dial-track: #5e7286;
+		--dial-fill: #c8dff8;
 
-		--caution-bg: #33260f;
+		--caution-bg: #2e2411;
 		--caution-border: #e0a34a;
-		--caution-text: #f4d9a8;
+		--caution-text: #f0c070;
 
-		--stop-bg: #3a1618;
-		--stop-border: #f08c8c;
-		--stop-text: #f7cccc;
+		--stop-bg: #3a1418;
+		--stop-border: #f06e72;
+		--stop-text: #ff9ea0;
 
 		--focus: #7fb6f5;
 	}
@@ -88,24 +108,31 @@
 
 :root[data-theme='dark'] {
 	color-scheme: dark;
-	--bg: #10161d;
-	--surface: #182029;
-	--surface-raised: #1e2833;
-	--border: #37444f;
-	--text: #e9eef4;
-	--text-muted: #a9b6c4;
-	--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a9b6c4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-	--accent: #9cc6f2;
-	--accent-text: #0b1620;
-	--link: #9cc6f2;
-	--dial-track: #6b7d91;
-	--dial-fill: #dce9f8;
-	--caution-bg: #33260f;
+	--bg: #0f1419;
+	--surface: #171e26;
+	--surface-raised: #1b232c;
+	--border: #6e8296;
+	--hair: #27313c;
+	--text: #e9eff5;
+	--text-muted: #a4b4c4;
+	--chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23A4B4C4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+	--accent: #9cc9f7;
+	--accent-text: #0f1419;
+	--link: #9cc9f7;
+	--yes: #6fd08c;
+
+	--dial-track: #5e7286;
+	--dial-fill: #c8dff8;
+
+	--caution-bg: #2e2411;
 	--caution-border: #e0a34a;
-	--caution-text: #f4d9a8;
-	--stop-bg: #3a1618;
-	--stop-border: #f08c8c;
-	--stop-text: #f7cccc;
+	--caution-text: #f0c070;
+
+	--stop-bg: #3a1418;
+	--stop-border: #f06e72;
+	--stop-text: #ff9ea0;
+
 	--focus: #7fb6f5;
 }
 

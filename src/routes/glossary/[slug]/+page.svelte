@@ -209,7 +209,7 @@
 	}
 
 	.examples li {
-		border-left: 4px solid var(--accent);
+		border-left: 4px solid var(--yes);
 		padding-left: 0.85rem;
 		margin-bottom: 0.85rem;
 	}
@@ -230,7 +230,7 @@
 	.mark {
 		font-weight: 700;
 		margin-right: 0.15rem;
-		color: var(--accent);
+		color: var(--yes);
 	}
 	.examples.non .mark {
 		color: var(--stop-border);
