@@ -68,26 +68,26 @@ questions:
       behavior. Assessment effort should go first to:
     options:
       - id: a
+        text: Repeating the skills assessment to confirm it
+        isCorrect: false
+        rationale: >-
+          Repeating existing data is the lowest-yield use of assessment time.
+      - id: b
+        text: A full preference assessment
+        isCorrect: false
+        rationale: >-
+          Preference information will be needed but does not answer the referral question.
+      - id: c
         text: Caregiver interview about developmental history
         isCorrect: false
         rationale: >-
           History may be useful context but does not measure the behavior in question.
-      - id: b
+      - id: d
         text: Direct measurement of the referral behavior
         isCorrect: true
         rationale: >-
           The behavior that prompted the referral has no data at all, so it is where the gap
           is largest and the question most urgent.
-      - id: c
-        text: Repeating the skills assessment to confirm it
-        isCorrect: false
-        rationale: >-
-          Repeating existing data is the lowest-yield use of assessment time.
-      - id: d
-        text: A full preference assessment
-        isCorrect: false
-        rationale: >-
-          Preference information will be needed but does not answer the referral question.
     explanation: >-
       Reviewing records is how assessment gets prioritized. Effort goes where the
       uncertainty is greatest and the question most consequential, which is normally the

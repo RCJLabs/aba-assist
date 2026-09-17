@@ -29,7 +29,9 @@
     "content:build": "tsx packages/content-build/src/cli.ts build --channel=${ABA_CONTENT_CHANNEL:-dev}",
     "build:packages": "npm run build -w @aba/content-schema && npm run build -w @aba/content-build",
     "test:perf": "lhci autorun",
-    "content:verify": "node scripts/verify-against-sources.mjs"
+    "content:verify": "node scripts/verify-against-sources.mjs",
+    "content:balance": "node scripts/balance-question-options.mjs",
+    "content:balance:check": "node scripts/balance-question-options.mjs --check"
   },
   "devDependencies": {
     "@aba/content-build": "*",

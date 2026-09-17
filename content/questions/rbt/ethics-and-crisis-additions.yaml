@@ -496,26 +496,26 @@ questions:
       mentioning the setting, the learner's age and the behavior. The main problem is:
     options:
       - id: a
-        text: The post reflects poorly on the employer
-        isCorrect: false
-        rationale: >-
-          Reputational concern is real but secondary to a disclosure about a client.
-      - id: b
-        text: Social media use during work hours is prohibited
-        isCorrect: false
-        rationale: >-
-          Timing is not the issue; the content is.
-      - id: c
         text: The technician did not have the employer's permission to post
         isCorrect: false
         rationale: >-
           Employer permission would not make the disclosure acceptable.
-      - id: d
+      - id: b
         text: The details can identify the learner to anyone who knows them
         isCorrect: true
         rationale: >-
           Setting, age and behavior together frequently identify a person within a small
           community, so the post is a disclosure.
+      - id: c
+        text: The post reflects poorly on the employer
+        isCorrect: false
+        rationale: >-
+          Reputational concern is real but secondary to a disclosure about a client.
+      - id: d
+        text: Social media use during work hours is prohibited
+        isCorrect: false
+        rationale: >-
+          Timing is not the issue; the content is.
     explanation: >-
       Anonymizing by removing the name is the most common mistake in this area. What
       identifies someone is usually the combination of details, and a post cannot be

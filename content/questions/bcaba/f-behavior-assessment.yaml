@@ -114,28 +114,28 @@ questions:
       and it did not work. The most useful response is:
     options:
       - id: a
+        text: Propose it again with a longer timeframe
+        isCorrect: false
+        rationale: >-
+          More time applied to an unexamined failure is a common way to lose another term.
+      - id: b
         text: Disregard the earlier attempt, since the learner has changed since
         isCorrect: false
         rationale: >-
           The learner may have changed, but the record is still the best available information
           about what happens with this procedure here.
-      - id: b
+      - id: c
         text: Find out how it was implemented and why it stopped before proposing it again
         isCorrect: true
         rationale: >-
           A procedure that failed may have failed on integrity, on function, or on fit — and
           each points somewhere different.
-      - id: c
+      - id: d
         text: Propose a different procedure, since this one has failed
         isCorrect: false
         rationale: >-
           Discarding it without knowing why it failed may discard something that was never
           properly run.
-      - id: d
-        text: Propose it again with a longer timeframe
-        isCorrect: false
-        rationale: >-
-          More time applied to an unexamined failure is a common way to lose another term.
     explanation: >-
       Failed prior programs are among the most informative things in a file and the most
       often skipped. Very frequently the failure was integrity, which is a staffing
@@ -471,26 +471,26 @@ questions:
       ranking them?
     options:
       - id: a
+        text: Which can be taught fastest with current resources
+        isCorrect: false
+        rationale: >-
+          Feasibility matters, but ranking by ease produces a program of easy goals.
+      - id: b
         text: Which the assessment showed the largest deficit in
         isCorrect: false
         rationale: >-
           The largest deficit is not necessarily the most consequential one to address.
-      - id: b
+      - id: c
         text: Which the funder is most likely to authorize
         isCorrect: false
         rationale: >-
           Funding is a constraint on delivery, not a basis for clinical priority.
-      - id: c
+      - id: d
         text: Which would most improve the learner's access to daily life, including safety
         isCorrect: true
         rationale: >-
           Impact on the learner's life, with safety weighted heavily, is the primary ranking
           criterion.
-      - id: d
-        text: Which can be taught fastest with current resources
-        isCorrect: false
-        rationale: >-
-          Feasibility matters, but ranking by ease produces a program of easy goals.
     explanation: >-
       Prioritizing is where a good assessment becomes a good program. Safety first, then
       access to ordinary life, then everything else — and feasibility decides sequencing
