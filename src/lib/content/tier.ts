@@ -16,6 +16,7 @@ import {
 	PHYSICAL_CONTACT_LEXICON,
 	RISK_LEXICON
 } from '@aba/content-schema/runtime';
+import { rngFor } from '$lib/rand.js';
 import type { ReviewItem } from './reviewable.js';
 
 export type ReviewTier = 'A' | 'B' | 'C';
@@ -115,27 +116,6 @@ export function batchFor(item: ReviewItem): string | null {
 	return item.category ? `term:${item.category}` : null;
 }
 
-/** A small, fast, deterministic hash, so a sample is the same every time it is drawn. */
-function hash(seed: string): number {
-	let h = 1779033703 ^ seed.length;
-	for (let i = 0; i < seed.length; i++) {
-		h = Math.imul(h ^ seed.charCodeAt(i), 3432918353);
-		h = (h << 13) | (h >>> 19);
-	}
-	return h >>> 0;
-}
-
-function rng(seed: number): () => number {
-	let a = seed;
-	return () => {
-		a |= 0;
-		a = (a + 0x6d2b79f5) | 0;
-		let t = Math.imul(a ^ (a >>> 15), 1 | a);
-		t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-		return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-	};
-}
-
 export interface Sample {
 	batch: string;
 	/** Ids drawn for reading, in queue order. */
@@ -162,7 +142,7 @@ export function drawSample(
 ): Sample {
 	const sorted = [...ids].sort();
 	const size = Math.min(sorted.length, Math.max(1, Math.ceil(sorted.length * rate)));
-	const next = rng(hash(`${batch}@${contentVersion}`));
+	const next = rngFor(`${batch}@${contentVersion}`);
 
 	// Partial Fisher-Yates: shuffle only as far as the sample needs.
 	const pool = [...sorted];

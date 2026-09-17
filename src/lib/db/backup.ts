@@ -211,7 +211,10 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 			str(r.id) && num(r.total) && num(r.correct) && num(r.finishedAt)
 				? {
 						id: r.id,
-						kind: 'pairs',
+						// Never defaulted to 'pairs': a restored measurement sitting that came back
+						// as a pair sitting would be counted into the pair statistics, silently and
+						// plausibly, and nothing on screen would look wrong.
+						kind: r.kind === 'data' ? 'data' : 'pairs',
 						startedAt: num(r.startedAt) ? r.startedAt : r.finishedAt,
 						finishedAt: r.finishedAt,
 						total: r.total,

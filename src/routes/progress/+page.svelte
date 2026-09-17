@@ -5,6 +5,7 @@
 	import { progress, WINDOW_DAYS } from '$lib/state/progress.svelte.js';
 	import { termIndex } from '$lib/content/load.js';
 	import { CONFUSION_MINIMUM, RETENTION_MINIMUM, TREND_MINIMUM } from '$lib/study/progress.js';
+	import { METHODS } from '$lib/drills/observe.js';
 
 	onMount(() => {
 		void progress.load();
@@ -21,6 +22,10 @@
 	const run = $derived(progress.run);
 	const deck = $derived(progress.deck);
 	const drills = $derived(progress.drills);
+	const observation = $derived(progress.observation);
+
+	/** A stored method id back into the name the drill page used for it. */
+	const methodLabel = (id: string) => METHODS.find((m) => m.id === id)?.label ?? id;
 	const confused = $derived(progress.confused);
 
 	const nameOf = (id: string) => termIndex.find((t) => t.i === id)?.t ?? id;
@@ -284,6 +289,38 @@
 
 				<p class="more">
 					<a href={resolve('/drills/pairs')}>Drill some more pairs</a>
+				</p>
+			</div>
+		{/if}
+	</section>
+
+	<section aria-labelledby="{uid}-observe">
+		<h2 id="{uid}-observe" class="section-head">Taking data</h2>
+
+		{#if observation.sittings === 0}
+			<p class="note">
+				No recording sittings yet. <a href={resolve('/drills/data')}>Take data on a session</a>
+				and how closely your data matched what happened gets tracked here.
+			</p>
+		{:else}
+			<div class="card">
+				<p class="figure">
+					<strong>{observation.percent}%</strong>
+					<span class="unit">
+						mean agreement across {observation.sittings}
+						{observation.sittings === 1 ? 'sitting' : 'sittings'}
+					</span>
+				</p>
+				<!--
+					The mean of the sittings, not the pooled total, because a four-minute duration run
+					has two hundred and forty seconds of opportunity and a twelve-interval sampling run
+					has twelve. Pooled, one long session would quietly decide the figure.
+				-->
+				<p class="hint">
+					Practised so far: {observation.methods.map(methodLabel).join(', ')}.
+				</p>
+				<p class="more">
+					<a href={resolve('/drills/data')}>Take data on another session</a>
 				</p>
 			</div>
 		{/if}

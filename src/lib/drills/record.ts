@@ -40,3 +40,43 @@ export function toAttempt(sitting: FinishedSitting, finishedAt: number): DrillAt
 		missedPairs: [...new Set(sitting.missed.map(pairKey))]
 	};
 }
+
+export interface FinishedObservation {
+	startedAt: number;
+	method: string;
+	/** Intervals, taps or seconds — whatever the method gave the reader a chance to get right. */
+	opportunities: number;
+	/** Agreement with what actually happened, 0–100. */
+	agreement: number;
+}
+
+/**
+ * The record a measurement sitting becomes.
+ *
+ * Agreement is stored back as a count out of the opportunities rather than as a percentage,
+ * so the one field pair every reader of this store already understands keeps meaning the
+ * same thing. `correct / total` reproduces the agreement either way, and a store where
+ * `correct` means one thing for one `kind` and something else for another is a store that
+ * will be misread.
+ *
+ * The stream is not kept. It is a pure function of the seed, and the seed is not kept
+ * either: what a reader gets from history is whether they are getting better at catching
+ * behaviour, not the chance to re-litigate one two-minute session.
+ */
+export function toObservationAttempt(
+	sitting: FinishedObservation,
+	finishedAt: number
+): DrillAttempt {
+	const total = Math.max(1, Math.round(sitting.opportunities));
+	return {
+		id: `data-${sitting.startedAt}-${sitting.method}`,
+		kind: 'data',
+		startedAt: sitting.startedAt,
+		finishedAt,
+		total,
+		correct: Math.round((sitting.agreement / 100) * total),
+		// The method, in the field that already answers "what was this sitting drawn from".
+		categories: [sitting.method],
+		missedPairs: []
+	};
+}

@@ -27,6 +27,7 @@ export const ROUTES = [
 	'/quiz',
 	'/drills',
 	'/drills/pairs',
+	'/drills/data',
 	'/plan',
 	'/progress',
 	'/ethics',

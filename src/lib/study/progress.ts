@@ -246,7 +246,15 @@ export interface DrillSummary {
 	lastAt: number | null;
 }
 
-export function drillSummary(attempts: readonly DrillAttempt[]): DrillSummary {
+/**
+ * The pair drills, and only those.
+ *
+ * Filtered rather than trusted. One store now holds two sorts of sitting, and a pair score
+ * pooled with a measurement agreement is a number with no referent — it would still render,
+ * still look like a percentage, and still be wrong.
+ */
+export function drillSummary(all: readonly DrillAttempt[]): DrillSummary {
+	const attempts = all.filter((a) => a.kind === 'pairs');
 	const answered = attempts.reduce((n, a) => n + a.total, 0);
 	const correct = attempts.reduce((n, a) => n + a.correct, 0);
 	return {
@@ -278,11 +286,11 @@ export interface Confusion {
  * reshuffles on every visit reads as noise even when the numbers have not moved.
  */
 export function confusions(
-	attempts: readonly DrillAttempt[],
+	all: readonly DrillAttempt[],
 	minimum = CONFUSION_MINIMUM
 ): Confusion[] {
 	const counts = new Map<string, number>();
-	for (const a of attempts) {
+	for (const a of all.filter((x) => x.kind === 'pairs')) {
 		for (const key of a.missedPairs) counts.set(key, (counts.get(key) ?? 0) + 1);
 	}
 
@@ -293,4 +301,43 @@ export function confusions(
 			return { pair: [a!, b!] as [string, string], times };
 		})
 		.sort((x, y) => y.times - x.times || x.pair[0].localeCompare(y.pair[0]));
+}
+
+export interface ObservationSummary {
+	sittings: number;
+	/** Mean agreement across sittings, 0–100, or null with no sittings. */
+	percent: number | null;
+	/** Which recording methods have been practised, in the order first met. */
+	methods: string[];
+	lastAt: number | null;
+}
+
+/**
+ * The measurement rehearsal.
+ *
+ * The mean of the per-sitting agreements, not the pooled total. Pooling would weight a
+ * four-minute duration run — which has two hundred and forty seconds of opportunity — some
+ * twenty times a twelve-interval sampling run, so one long session would decide the figure
+ * and the reader would have no way to see that from the number.
+ */
+export function observationSummary(all: readonly DrillAttempt[]): ObservationSummary {
+	const attempts = all.filter((a) => a.kind === 'data' && a.total > 0);
+	const methods: string[] = [];
+	for (const a of attempts) {
+		for (const m of a.categories) if (!methods.includes(m)) methods.push(m);
+	}
+	return {
+		sittings: attempts.length,
+		percent:
+			attempts.length > 0
+				? Math.round(
+						attempts.reduce((sum, a) => sum + (a.correct / a.total) * 100, 0) / attempts.length
+					)
+				: null,
+		methods,
+		lastAt: attempts.reduce<number | null>(
+			(latest, a) => (latest === null || a.finishedAt > latest ? a.finishedAt : latest),
+			null
+		)
+	};
 }

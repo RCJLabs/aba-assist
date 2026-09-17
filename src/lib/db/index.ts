@@ -50,13 +50,18 @@ export interface QuizAttempt {
  * *which pairs keep catching them out*. `missedPairs` is that, and it is the reason this
  * store is worth its migration.
  *
- * `kind` exists so this can hold more than one sort of drill later. The calculation drills
- * still record nothing on purpose: that page says out loud that the tally is on screen only
- * and goes when you leave, and quietly starting to keep it would make the page a liar.
+ * `kind` is what lets one store hold more than one sort of drill. It earns that now: the
+ * measurement rehearsal writes `data` sittings here too, and everything that reads this
+ * store filters on it, because a pair score and an agreement percentage are different
+ * measurements and pooling them would produce a number that means nothing.
+ *
+ * The calculation drills still record nothing on purpose: that page says out loud that the
+ * tally is on screen only and goes when you leave, and quietly starting to keep it would
+ * make the page a liar.
  */
 export interface DrillAttempt {
 	id: string;
-	kind: 'pairs';
+	kind: 'pairs' | 'data';
 	startedAt: number;
 	finishedAt: number;
 	total: number;

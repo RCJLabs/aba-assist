@@ -409,6 +409,10 @@
 			<strong>Commonly confused</strong>
 			<span>One situation, two names it could have. Where most marks actually go.</span>
 		</a>
+		<a class="tile" href={resolve('/drills/data')}>
+			<strong>Taking data</strong>
+			<span>Record a session as it happens, then see what your data missed.</span>
+		</a>
 		<a class="tile" href={resolve('/plan')}>
 			<strong>What to study next</strong>
 			<span>Your practice history, read as a plan rather than a score.</span>

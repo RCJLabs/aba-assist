@@ -11,6 +11,7 @@ import {
 	retention,
 	confusions,
 	drillSummary,
+	observationSummary,
 	reviewsPerDay,
 	streak,
 	trendShift,
@@ -18,6 +19,7 @@ import {
 	type DayBucket,
 	type DeckState,
 	type DrillSummary,
+	type ObservationSummary,
 	type Retention,
 	type Streak,
 	type TrendPoint
@@ -58,6 +60,12 @@ class Progress {
 		lastAt: null
 	});
 	confused = $state.raw<Confusion[]>([]);
+	observation = $state<ObservationSummary>({
+		sittings: 0,
+		percent: null,
+		methods: [],
+		lastAt: null
+	});
 
 	/** Whether anything has been done at all, which decides between a page and an invitation. */
 	get empty(): boolean {
@@ -65,7 +73,8 @@ class Progress {
 			this.trend.length === 0 &&
 			this.deck.total === 0 &&
 			this.recall.tested === 0 &&
-			this.drills.sittings === 0
+			this.drills.sittings === 0 &&
+			this.observation.sittings === 0
 		);
 	}
 
@@ -93,6 +102,7 @@ class Progress {
 			this.deck = deckState(cards);
 			this.drills = drillSummary(drills);
 			this.confused = confusions(drills);
+			this.observation = observationSummary(drills);
 			this.status = 'ready';
 		} catch {
 			// Blocked storage or a private window. The page says so rather than showing zeros,

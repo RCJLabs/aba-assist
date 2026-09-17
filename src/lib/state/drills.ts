@@ -1,6 +1,11 @@
 import { browser } from '$app/environment';
 import { putDrillAttempt } from '$lib/db/index.js';
-import { toAttempt, type FinishedSitting } from '$lib/drills/record.js';
+import {
+	toAttempt,
+	toObservationAttempt,
+	type FinishedObservation,
+	type FinishedSitting
+} from '$lib/drills/record.js';
 
 /**
  * Writing a finished drill sitting.
@@ -21,6 +26,19 @@ export async function recordSitting(sitting: FinishedSitting): Promise<boolean> 
 	if (!browser || sitting.questions.length === 0) return false;
 	try {
 		await putDrillAttempt(toAttempt(sitting, Date.now()));
+		return true;
+	} catch {
+		return false;
+	}
+}
+
+export { toObservationAttempt, type FinishedObservation };
+
+/** Store one measurement sitting. Same failure posture as a pair sitting: reported, never thrown. */
+export async function recordObservation(sitting: FinishedObservation): Promise<boolean> {
+	if (!browser || sitting.opportunities <= 0) return false;
+	try {
+		await putDrillAttempt(toObservationAttempt(sitting, Date.now()));
 		return true;
 	} catch {
 		return false;

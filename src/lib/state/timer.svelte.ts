@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { Cue } from '$lib/cue.js';
 import {
 	plan as makePlan,
 	positionAt,
@@ -61,7 +62,7 @@ class IntervalTimer {
 	wakeLockHeld = $state(false);
 
 	#ticker: ReturnType<typeof setInterval> | null = null;
-	#audio: AudioContext | null = null;
+	#cueDevice = new Cue();
 	#wakeLock: WakeLockSentinel | null = null;
 	#lastIndex = -1;
 
@@ -134,7 +135,7 @@ class IntervalTimer {
 		this.status = 'running';
 		this.savePrefs();
 
-		if (this.sound) this.#unlockAudio();
+		if (this.sound) this.#cueDevice.unlock();
 		await this.#acquireWakeLock();
 		this.#ticker = setInterval(() => this.tick(), 200);
 	}
@@ -169,47 +170,8 @@ class IntervalTimer {
 
 	#cue(): void {
 		this.cueCount += 1;
-		if (this.vibrate) {
-			try {
-				navigator.vibrate?.(180);
-			} catch {
-				// Unsupported or blocked; the visual cue still fires.
-			}
-		}
-		if (this.sound) this.#beep();
-	}
-
-	#unlockAudio(): void {
-		try {
-			this.#audio ??= new AudioContext();
-			void this.#audio.resume();
-		} catch {
-			this.#audio = null;
-		}
-	}
-
-	/**
-	 * A short tone, synthesised rather than played from a file.
-	 *
-	 * No asset to ship, nothing to fetch, and it works offline on the first run — which
-	 * matters because the building this gets used in often has no signal.
-	 */
-	#beep(): void {
-		const ctx = this.#audio;
-		if (!ctx) return;
-		try {
-			const osc = ctx.createOscillator();
-			const gain = ctx.createGain();
-			osc.frequency.value = 880;
-			gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-			gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + 0.01);
-			gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.16);
-			osc.connect(gain).connect(ctx.destination);
-			osc.start();
-			osc.stop(ctx.currentTime + 0.18);
-		} catch {
-			// Audio unavailable; the other cues still fire.
-		}
+		// The visual cue fires whatever these do, so a blocked device is never silent failure.
+		this.#cueDevice.fire({ vibrate: this.vibrate, sound: this.sound });
 	}
 
 	/** Keep the screen on. This is a tool somebody watches for ten minutes without touching. */

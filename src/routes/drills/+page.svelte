@@ -97,7 +97,9 @@
 
 	<p class="sibling">
 		Mixing up two terms rather than the arithmetic? Try
-		<a href={resolve('/drills/pairs')}>commonly confused</a>.
+		<a href={resolve('/drills/pairs')}>commonly confused</a>. Want the other half of the
+		measurement domain — catching the behavior rather than working out the number afterwards?
+		<a href={resolve('/drills/data')}>Take data on a session</a>.
 	</p>
 
 	<p class="note" role="note">
