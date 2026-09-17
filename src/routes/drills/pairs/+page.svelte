@@ -24,8 +24,16 @@
 	let missed = $state<PairQuestion[]>([]);
 	let reinforced = $state(0);
 	let startedAt = $state(0);
-	/** Whether this sitting reached the history. False on a device with storage blocked. */
-	let saved = $state(true);
+	/**
+	 * Whether this sitting has reached the history yet.
+	 *
+	 * Observable rather than internal, because the write finishes *after* the score appears
+	 * — `finish()` is fired off when the last answer lands, and the summary renders
+	 * immediately. A reader who tapped Finish and left at once could outrun it, and nothing
+	 * on screen would have said the sitting was still in flight. Now it does, and the
+	 * end-to-end test waits on the same attribute instead of on a guess.
+	 */
+	let saveState = $state<'idle' | 'saving' | 'saved' | 'failed'>('idle');
 
 	const areas = $derived(
 		bank ? [...availableCategories(bank)].sort((a, b) => b[1] - a[1]) : []
@@ -58,7 +66,7 @@
 		missed = [];
 		reinforced = 0;
 		startedAt = Date.now();
-		saved = true;
+		saveState = 'idle';
 	}
 
 	function toggle(c: TermCategory) {
@@ -90,12 +98,14 @@
 	 * useful of the two.
 	 */
 	async function finish() {
-		saved = await recordSitting({
+		saveState = 'saving';
+		const ok = await recordSitting({
 			startedAt,
 			questions: session,
 			missed,
 			categories: chosen
 		});
+		saveState = ok ? 'saved' : 'failed';
 		await reinforce();
 	}
 
@@ -176,7 +186,7 @@
 		> can be named. A miss also makes both terms due again in your flashcards.
 	</p>
 {:else if done}
-	<section class="card" aria-labelledby="{uid}-done">
+	<section class="card" aria-labelledby="{uid}-done" data-sitting={saveState}>
 		<h2 id="{uid}-done" class="section-head">How that went</h2>
 		<p class="score">{score} of {session.length}</p>
 		{#if reinforced > 0}
@@ -205,7 +215,7 @@
 		{/if}
 	</section>
 
-	{#if !saved}
+	{#if saveState === 'failed'}
 		<p class="note" role="status">
 			This sitting could not be saved — this device is not letting the app write stored data.
 			The score above is still correct; it just will not be there later.

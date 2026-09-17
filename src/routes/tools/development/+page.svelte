@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
+	import PrintHeader from '$lib/components/PrintHeader.svelte';
+	import PrintButton from '$lib/components/PrintButton.svelte';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import {
 		tracker,
@@ -86,6 +88,11 @@
 
 <h1>Professional development</h1>
 
+<PrintHeader
+	title="Professional development"
+	subject={current ? `Cycle to ${current.endDate}` : null}
+/>
+
 <div data-tracker-status={tracker.status} hidden></div>
 
 {#if tracker.status === 'unavailable'}
@@ -134,7 +141,7 @@
 			</form>
 		</section>
 	{:else if current}
-		<section class="progress">
+		<section class="progress record">
 			<h2 class="section-head">
 				Cycle to {current.endDate}
 				{#if summary}
@@ -259,7 +266,7 @@
 			</p>
 		</section>
 
-		<section>
+		<section class="record">
 			<h2 class="section-head">Entries</h2>
 			{#if tracker.unitsFor(current.id).length === 0}
 				<p class="hint">Nothing recorded in this cycle yet.</p>
@@ -279,6 +286,9 @@
 					{/each}
 				</ul>
 			{/if}
+			<p class="print-offer">
+				<PrintButton label="Print this ledger or save it as a PDF" />
+			</p>
 		</section>
 
 		<section>
@@ -306,6 +316,23 @@
 {/if}
 
 <style>
+	.print-offer {
+		margin-top: 1rem;
+	}
+
+	/*
+	 * On paper this page is a record, not a form. The sections that take input have nothing
+	 * to say once they are printed, so only the ones marked `record` survive.
+	 */
+	@media print {
+		.crumbs,
+		.lede,
+		h1,
+		section:not(.record) {
+			display: none;
+		}
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}

@@ -242,7 +242,12 @@ test('a finished drill sitting reaches the history', async ({ page }) => {
 		if ((await page.locator('.verdict').getAttribute('data-verdict')) === 'wrong') wrong += 1;
 		await page.getByRole('button', { name: /Next|Finish/ }).click();
 	}
-	await expect(page.locator('.score')).toBeVisible();
+	/*
+	 * Wait for the write, not for the score. The summary renders the moment the last answer
+	 * lands; the sitting is still being written behind it, and navigating on the score alone
+	 * raced it under load — which is how the page came to say so.
+	 */
+	await expect(page.locator('[data-sitting="saved"]')).toBeVisible({ timeout: 10_000 });
 
 	await page.goto('/progress');
 	await expect(page.locator('[data-progress-status="ready"]')).toBeAttached({

@@ -106,7 +106,9 @@
 
 <ReviewBanner />
 
-<header>
+<!-- `app-bar` so the print stylesheet can name this header without an element selector
+     that would also catch a glossary entry's own title block. -->
+<header class="app-bar">
 	<a class="wordmark" href={resolve('/')}>ABA&nbsp;Assist</a>
 	<div class="header-actions">
 		<button

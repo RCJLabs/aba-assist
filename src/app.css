@@ -495,3 +495,87 @@ main {
 		background-image: none;
 	}
 }
+
+/*
+ * Paper.
+ *
+ * The trackers are the one part of this app somebody has to hand to another person: a
+ * supervision summary for a meeting, a development ledger for a renewal audit. Until now
+ * nothing here could leave the screen. This is that, for the cost of a stylesheet — and on
+ * Android "print" is also "save as PDF", so it is the export as well.
+ *
+ * Everything below is about turning an application into a document. The app shell is
+ * navigation and has no meaning on paper; `main` is a scroll container, which most
+ * browsers print as the single screenful it happens to be showing.
+ */
+@media print {
+	:root {
+		/*
+		 * Ink on paper, whatever theme the reader had on screen. Printing a dark theme
+		 * either wastes a cartridge or, with backgrounds dropped, prints pale grey text.
+		 */
+		--bg: #ffffff;
+		--surface: #ffffff;
+		--surface-raised: #ffffff;
+		--text: #000000;
+		--text-muted: #333333;
+		--border: #666666;
+		--hair: #bbbbbb;
+		--link: #000000;
+		color-scheme: light;
+	}
+
+	body {
+		background: #fff;
+		display: block;
+	}
+
+	/*
+	 * Navigation, controls and notices: all of it is for the screen.
+	 *
+	 * `.app-bar` rather than `header`. A bare element selector here hid the `<header>` that a
+	 * glossary entry uses for its own title block, which is the failure mode of global print
+	 * rules in one line: they reach every route, including the ones nobody was thinking
+	 * about while writing them. `body > header` does not work either — SvelteKit wraps the
+	 * body in a `display: contents` div, so the shell's header is a grandchild.
+	 */
+	.app-bar,
+	nav[aria-label='Main'],
+	.banner,
+	.update,
+	.offline,
+	button {
+		display: none !important;
+	}
+
+	main {
+		overflow: visible !important;
+		flex: none !important;
+	}
+
+	.page {
+		max-width: none;
+		padding: 0;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	/*
+	 * Keep a record together. A month's checks split across a page break is the one thing
+	 * that makes a printed log hard to read back.
+	 */
+	section,
+	article,
+	.card,
+	li {
+		break-inside: avoid;
+	}
+
+	h1,
+	h2,
+	h3 {
+		break-after: avoid;
+	}
+}

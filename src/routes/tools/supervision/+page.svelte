@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
+	import PrintHeader from '$lib/components/PrintHeader.svelte';
+	import PrintButton from '$lib/components/PrintButton.svelte';
 	import PhiNote from '$lib/components/PhiNote.svelte';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import {
@@ -108,6 +110,13 @@
 <nav aria-label="Breadcrumb" class="crumbs"><a href={resolve('/tools')}>Tools</a></nav>
 
 <h1>Supervision log</h1>
+
+<PrintHeader
+	title="Supervision log"
+	subject={tracker.workplaces.length === 1
+		? tracker.workplaces[0]!.label
+		: `${tracker.workplaces.length} organizations`}
+/>
 
 <div data-tracker-status={tracker.status} hidden></div>
 
@@ -318,7 +327,7 @@
 		{/if}
 	</section>
 
-	<section>
+	<section class="record">
 		<h2 class="section-head">By month</h2>
 		{#if months.length === 0}
 			<p class="hint">Nothing logged yet.</p>
@@ -367,6 +376,9 @@
 					</details>
 				</article>
 			{/each}
+			<p class="print-offer">
+				<PrintButton label="Print this log or save it as a PDF" />
+			</p>
 		{/if}
 	</section>
 {/if}
@@ -375,6 +387,24 @@
 	h1 {
 		font-size: 1.5rem;
 	}
+
+	.print-offer {
+		margin-top: 1rem;
+	}
+
+	/*
+	 * On paper this page is a record, not a form. The sections that take input have nothing
+	 * to say once they are printed, so only the ones marked `record` survive.
+	 */
+	@media print {
+		.crumbs,
+		.lede,
+		h1,
+		section:not(.record) {
+			display: none;
+		}
+	}
+
 	.crumbs {
 		font-size: 0.9rem;
 		margin-bottom: 0.5rem;

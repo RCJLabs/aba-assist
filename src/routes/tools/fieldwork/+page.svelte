@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
+	import PrintHeader from '$lib/components/PrintHeader.svelte';
+	import PrintButton from '$lib/components/PrintButton.svelte';
 	import PhiNote from '$lib/components/PhiNote.svelte';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { tracker, todayIso, type FieldworkType } from '$lib/state/tracker.svelte.js';
@@ -35,6 +37,17 @@
 	const months = $derived(tracker.myFieldworkMonths);
 	const progress = $derived(tracker.fieldworkProgress);
 	const countsMinutes = $derived(rules ? rules.observationMinutes !== null : false);
+
+	/*
+	 * What identifies this record on paper. A supervisor code, never a name — the app has
+	 * nowhere to put a name by construction, and that has to hold on the one artifact that
+	 * leaves the device.
+	 */
+	const periodSubject = $derived(
+		period
+			? `${rules?.label ?? 'Fieldwork'} from ${period.startDate} · supervisor ${period.supervisorCode}`
+			: null
+	);
 
 	const codeValid = $derived(isSuperviseeCode(supervisorCode.trim().toUpperCase()));
 
@@ -107,6 +120,8 @@
 
 <h1>Fieldwork hours</h1>
 
+<PrintHeader title="Supervised fieldwork" subject={periodSubject} />
+
 <div data-tracker-status={tracker.status} hidden></div>
 
 {#if tracker.status === 'unavailable'}
@@ -171,7 +186,7 @@
 		</section>
 	{:else}
 		{#if progress}
-			<section class="progress">
+			<section class="progress record">
 				<h2 class="section-head">
 					{progress.credited} of {progress.required} hours
 					{#if progress.daysRemaining !== null}
@@ -353,7 +368,7 @@
 			</form>
 		</section>
 
-		<section>
+		<section class="record">
 			<h2 class="section-head">By month</h2>
 			{#if months.length === 0}
 				<p class="hint">Nothing logged yet.</p>
@@ -408,6 +423,9 @@
 					{/if}
 				{/each}
 			{/if}
+			<p class="print-offer">
+				<PrintButton label="Print this record or save it as a PDF" />
+			</p>
 		</section>
 
 		<section>
@@ -450,6 +468,23 @@
 {/if}
 
 <style>
+	.print-offer {
+		margin-top: 1rem;
+	}
+
+	/*
+	 * On paper this page is a record, not a form. The sections that take input have nothing
+	 * to say once they are printed, so only the ones marked `record` survive.
+	 */
+	@media print {
+		.crumbs,
+		.lede,
+		h1,
+		section:not(.record) {
+			display: none;
+		}
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}
