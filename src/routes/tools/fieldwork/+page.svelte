@@ -122,7 +122,7 @@
 
 	{#if !period}
 		<section class="setup">
-			<h2>Start tracking</h2>
+			<h2 class="section-head">Start tracking</h2>
 			<p class="hint">
 				{req.totalHours} supervised hours, or {req.concentratedTotalHours} concentrated, inside
 				{req.windowYears} years. Concentrated months need more supervision and more contacts, and
@@ -172,7 +172,7 @@
 	{:else}
 		{#if progress}
 			<section class="progress">
-				<h2>
+				<h2 class="section-head">
 					{progress.credited} of {progress.required} hours
 					{#if progress.daysRemaining !== null}
 						<span class="countdown" class:bad={progress.daysRemaining < 90}>
@@ -243,7 +243,7 @@
 		{/if}
 
 		<section>
-			<h2>Log a month</h2>
+			<h2 class="section-head">Log a month</h2>
 			<p class="hint">
 				Saving a month you have already logged replaces it, so a correction is an edit rather
 				than a duplicate.
@@ -354,7 +354,7 @@
 		</section>
 
 		<section>
-			<h2>By month</h2>
+			<h2 class="section-head">By month</h2>
 			{#if months.length === 0}
 				<p class="hint">Nothing logged yet.</p>
 			{:else}
@@ -411,7 +411,7 @@
 		</section>
 
 		<section>
-			<h2>Export</h2>
+			<h2 class="section-head">Export</h2>
 			<p class="hint">
 				Fieldwork is verified from documentation, sometimes years later, and a record that
 				exists only in this browser is one cleared cache away from gone.
@@ -425,7 +425,7 @@
 	{/if}
 
 	<section>
-		<h2>What does not count</h2>
+		<h2 class="section-head">What does not count</h2>
 		<ul class="excluded">
 			{#each req.excluded as x (x)}
 				<li>{x}</li>
@@ -440,7 +440,7 @@
 
 	{#if period}
 		<section>
-			<h2>Start over</h2>
+			<h2 class="section-head">Start over</h2>
 			<p class="hint">Deletes this fieldwork period and every month logged against it.</p>
 			<button type="button" onclick={() => tracker.deleteFieldworkPeriod(period.id)}>
 				Delete fieldwork period
@@ -465,9 +465,6 @@
 	}
 	section {
 		margin: 1.5rem 0;
-	}
-	h2 {
-		font-size: 1.15rem;
 	}
 	.grid {
 		display: grid;

@@ -62,7 +62,7 @@
 
 {#each groups as group (group.letter)}
 	<section aria-labelledby="letter-{group.letter}">
-		<h2 id="letter-{group.letter}">{group.letter}</h2>
+		<h2 id="letter-{group.letter}" class="section-head">{group.letter}</h2>
 		<dl>
 			{#each group.items as item (item.key)}
 				<!--
@@ -145,17 +145,6 @@
 		color: var(--text-muted);
 		font-size: 0.9rem;
 		margin: 0 0 1rem;
-	}
-
-	h2 {
-		font-size: 1.1rem;
-		position: sticky;
-		top: 0;
-		z-index: 1;
-		margin: 1.5rem 0 0.5rem;
-		padding: 0.25rem 0;
-		background: var(--bg);
-		border-bottom: 1px solid var(--border);
 	}
 
 	dl {

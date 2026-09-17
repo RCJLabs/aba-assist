@@ -99,7 +99,9 @@
 			"Assessment (19) Index" is not the name of anything.
 		-->
 		<div class="cat-head">
-			<h2>{CATEGORY_LABELS[c] ?? c} <span class="n">({grouped.get(c)?.length ?? 0})</span></h2>
+			<h2 class="section-head">
+				{CATEGORY_LABELS[c] ?? c} <span class="n">({grouped.get(c)?.length ?? 0})</span>
+			</h2>
 			<a class="to-index" href="#glossary-index">Index</a>
 		</div>
 		<ul>
@@ -225,11 +227,6 @@
 
 	section {
 		scroll-margin-top: 0.25rem;
-	}
-
-	h2 {
-		font-size: 1.1rem;
-		margin: 0;
 	}
 
 	.n {

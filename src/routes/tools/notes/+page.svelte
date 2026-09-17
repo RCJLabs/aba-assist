@@ -43,7 +43,7 @@
 
 {#if checklist && checklist.kind === 'checklist'}
 	<section>
-		<h2>{checklist.title}</h2>
+		<h2 class="section-head">{checklist.title}</h2>
 		<p class="summary" class:plain={settings.plainLanguage}>
 			{settings.plainLanguage ? checklist.plainSummary : checklist.ourSummary}
 		</p>
@@ -73,7 +73,7 @@
 
 {#if phrasing && phrasing.kind === 'phrasing'}
 	<section>
-		<h2>{phrasing.title}</h2>
+		<h2 class="section-head">{phrasing.title}</h2>
 		<p class="summary" class:plain={settings.plainLanguage}>
 			{settings.plainLanguage ? phrasing.plainSummary : phrasing.ourSummary}
 		</p>
@@ -113,9 +113,6 @@
 	.crumbs {
 		font-size: 0.9rem;
 		margin-bottom: 0.5rem;
-	}
-	h2 {
-		font-size: 1.2rem;
 	}
 	section {
 		margin: 1.5rem 0;

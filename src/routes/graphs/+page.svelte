@@ -41,7 +41,9 @@
 		{@const full = graphById(g.id)}
 		<li>
 			<article>
-				<h2><a href={resolve('/graphs/[slug]', { slug: g.id })}>{g.title}</a></h2>
+				<h2 class="section-head">
+					<a href={resolve('/graphs/[slug]', { slug: g.id })}>{g.title}</a>
+				</h2>
 				<p class="design">{DESIGN_LABEL[g.design] ?? g.design}</p>
 				<p>{g.gloss}.</p>
 				{#if full}
@@ -73,10 +75,6 @@
 		padding: 0;
 		display: grid;
 		gap: 1.5rem;
-	}
-	h2 {
-		font-size: 1.15rem;
-		margin: 0 0 0.15rem;
 	}
 	.design {
 		margin: 0;

@@ -131,7 +131,7 @@
 
 	{#if tracker.workplaces.length === 0}
 		<section class="setup">
-			<h2>Start with where you work</h2>
+			<h2 class="section-head">Start with where you work</h2>
 			<p>The requirement is per organization, so each one is counted separately.</p>
 			<form onsubmit={addWorkplace}>
 				<div class="field">
@@ -148,7 +148,7 @@
 		</section>
 	{:else}
 		<section>
-			<h2>Log a contact</h2>
+			<h2 class="section-head">Log a contact</h2>
 			<form onsubmit={addContact}>
 				<div class="grid">
 					<div class="field">
@@ -218,7 +218,7 @@
 		</section>
 
 		<section>
-			<h2>Hours you delivered</h2>
+			<h2 class="section-head">Hours you delivered</h2>
 			<p class="hint">
 				The denominator of the percentage. Enter it once a month, per organization — until you
 				do, this app will say it cannot work the percentage out rather than guess.
@@ -255,7 +255,7 @@
 		</section>
 
 		<section>
-			<h2>Add an organization</h2>
+			<h2 class="section-head">Add an organization</h2>
 			<form onsubmit={addWorkplace} class="inline">
 				<div class="field">
 					<label for="{uid}-wp2">Organization name</label>
@@ -267,7 +267,7 @@
 	{/if}
 
 	<section>
-		<h2>People you supervise</h2>
+		<h2 class="section-head">People you supervise</h2>
 		<p class="hint">{SUPERVISEE_CODE_HINT}</p>
 		<form onsubmit={addSupervisee} class="inline">
 			<div class="field">
@@ -319,7 +319,7 @@
 	</section>
 
 	<section>
-		<h2>By month</h2>
+		<h2 class="section-head">By month</h2>
 		{#if months.length === 0}
 			<p class="hint">Nothing logged yet.</p>
 		{:else}
@@ -387,9 +387,6 @@
 	}
 	section {
 		margin: 1.5rem 0;
-	}
-	h2 {
-		font-size: 1.15rem;
 	}
 	.grid {
 		display: grid;

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import PageBand from '$lib/components/PageBand.svelte';
 	import { CREDENTIAL_LABELS } from '$lib/content/corpus.js';
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { filters, type CredentialFilter } from '$lib/state/filters.svelte.js';
@@ -37,6 +38,8 @@
 		content="The {o.credential} Test Content Outline ({o.edition} ed.): content areas, exam weights, and our summaries of each task, with links to the glossary."
 	/>
 </svelte:head>
+
+<PageBand label="Exam outline" detail={facts?.credential ?? null} />
 
 <nav aria-label="Breadcrumb" class="crumbs">
 	<a href={resolve('/exams')}>Exams</a>
@@ -81,7 +84,7 @@
 	</div>
 {/if}
 
-<h2>Content areas</h2>
+<h2 class="section-head">Content areas</h2>
 <p class="muted">
 	{o.domains.length} areas{#if o.countsVerified}, {taskCount} tasks{/if}. The bar shows each
 	area's share of the exam.
@@ -151,7 +154,7 @@
 </ol>
 
 {#if facts}
-	<h2>Certification requirements</h2>
+	<h2 class="section-head">Certification requirements</h2>
 	<p class="muted">
 		Checked against the {facts.handbookVersion} version of the handbook. Requirements change;
 		<!-- The official handbook is an external document, not an app route. -->
@@ -178,7 +181,7 @@
 {/if}
 
 <section class="sources">
-	<h2>About this page</h2>
+	<h2 class="section-head">About this page</h2>
 	<p>
 		Content-area names, task codes, counts and weights are facts taken from the official
 		outline and handbook. The task summaries and descriptions are written by us and are not the
@@ -230,10 +233,6 @@
 		color: var(--caution-text);
 		padding: 0.6rem 0.8rem;
 		border-radius: var(--radius);
-	}
-	h2 {
-		font-size: 1.15rem;
-		margin-top: 2rem;
 	}
 	h3 {
 		font-size: 1.05rem;

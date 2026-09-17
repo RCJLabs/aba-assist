@@ -26,7 +26,7 @@
 </p>
 
 {#each guidanceGroups as g (g.id)}
-	<h2>{g.title}</h2>
+	<h2 class="section-head">{g.title}</h2>
 	<ul>
 		{#each g.scenarios as s (s.id)}
 			<li><a href={resolve('/scenarios/[slug]', { slug: s.id })}>{s.title}</a></li>
@@ -34,7 +34,7 @@
 	</ul>
 {/each}
 
-<h2>Stop and escalate</h2>
+<h2 class="section-head">Stop and escalate</h2>
 <p class="note">These do not have steps. They tell you who to contact and what to record.</p>
 <ul>
 	{#each escalationScenarios as s (s.id)}
@@ -45,10 +45,6 @@
 <style>
 	h1 {
 		font-size: 1.5rem;
-	}
-	h2 {
-		font-size: 1.1rem;
-		margin-top: 2rem;
 	}
 	.note,
 	.count {

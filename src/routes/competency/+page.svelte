@@ -66,7 +66,7 @@
 
 	{#each a.sections as section (section.id)}
 		<section aria-labelledby="sec-{section.id}">
-			<h2 id="sec-{section.id}">{section.title}</h2>
+			<h2 id="sec-{section.id}" class="section-head">{section.title}</h2>
 			<p class="about">{section.ourDescription}</p>
 			{#if section.sectionRule}
 				<p class="rule" role="note">{section.sectionRule}</p>
@@ -171,7 +171,7 @@
 	{/each}
 
 	<section aria-labelledby="rules">
-		<h2 id="rules">How the assessment runs</h2>
+		<h2 id="rules" class="section-head">How the assessment runs</h2>
 		<dl class="rules">
 			{#each a.rules as r (r.label)}
 				<dt>{r.label}</dt>
@@ -266,11 +266,6 @@
 	.policy {
 		border-left-color: var(--stop-border, var(--border));
 		margin: 0.5rem 0;
-	}
-
-	h2 {
-		font-size: 1.15rem;
-		margin-top: 2rem;
 	}
 
 	.about {

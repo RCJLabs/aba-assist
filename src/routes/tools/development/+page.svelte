@@ -112,7 +112,7 @@
 
 	{#if cycles.length === 0}
 		<section class="setup">
-			<h2>Set up your cycle</h2>
+			<h2 class="section-head">Set up your cycle</h2>
 			<p class="hint">
 				The start date is the day your current certification period began — usually the
 				anniversary of the date you certified.
@@ -135,7 +135,7 @@
 		</section>
 	{:else if current}
 		<section class="progress">
-			<h2>
+			<h2 class="section-head">
 				Cycle to {current.endDate}
 				{#if summary}
 					<span class="countdown" class:bad={summary.daysRemaining < 60}>
@@ -194,7 +194,7 @@
 		</section>
 
 		<section>
-			<h2>Add units</h2>
+			<h2 class="section-head">Add units</h2>
 			<form onsubmit={addUnit}>
 				<div class="grid">
 					<div class="field">
@@ -260,7 +260,7 @@
 		</section>
 
 		<section>
-			<h2>Entries</h2>
+			<h2 class="section-head">Entries</h2>
 			{#if tracker.unitsFor(current.id).length === 0}
 				<p class="hint">Nothing recorded in this cycle yet.</p>
 			{:else}
@@ -282,7 +282,7 @@
 		</section>
 
 		<section>
-			<h2>Cycles</h2>
+			<h2 class="section-head">Cycles</h2>
 			<ul class="entries">
 				{#each cycles as c (c.id)}
 					<li>
@@ -321,14 +321,6 @@
 	}
 	section {
 		margin: 1.5rem 0;
-	}
-	h2 {
-		font-size: 1.15rem;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		align-items: baseline;
-		justify-content: space-between;
 	}
 	.countdown {
 		font-size: 0.9rem;

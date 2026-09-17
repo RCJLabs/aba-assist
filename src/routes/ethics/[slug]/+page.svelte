@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import PageBand from '$lib/components/PageBand.svelte';
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { errataUrl } from '$lib/config.js';
@@ -20,6 +21,8 @@
 	<title>{topic.ourLabel} — Ethics — ABA Assist</title>
 	<meta name="description" content={topic.gloss} />
 </svelte:head>
+
+<PageBand label="Ethics" detail={topic.gloss} />
 
 <nav aria-label="Breadcrumb" class="crumbs">
 	<a href={resolve('/ethics')}>Ethics</a>
@@ -57,7 +60,7 @@
 	</section>
 
 	<section>
-		<h2>What this looks like</h2>
+		<h2 class="section-head">What this looks like</h2>
 		<ul class="looks">
 			{#each topic.whatThisLooksLike as item, i (i)}
 				<li>{item}</li>
@@ -66,7 +69,7 @@
 	</section>
 
 	<section>
-		<h2>Where people get caught</h2>
+		<h2 class="section-head">Where people get caught</h2>
 		<ul class="pitfalls">
 			{#each topic.commonPitfalls as item, i (i)}
 				<li>{item}</li>
@@ -75,12 +78,12 @@
 	</section>
 
 	<section class="unsure">
-		<h2>If you are not sure</h2>
+		<h2 class="section-head">If you are not sure</h2>
 		<p>{topic.ifYouAreUnsure}</p>
 	</section>
 
 	<section>
-		<h2>In the codes</h2>
+		<h2 class="section-head">In the codes</h2>
 		<ul class="codes">
 			{#each data.codes as c, i (i)}
 				<li>
@@ -109,7 +112,7 @@
 
 	{#if topic.taskRefs.length > 0}
 		<section>
-			<h2>On the exam</h2>
+			<h2 class="section-head">On the exam</h2>
 			<ul class="links">
 				{#each topic.taskRefs as t, i (i)}
 					<li>
@@ -122,7 +125,7 @@
 
 	{#if data.terms.length > 0}
 		<section>
-			<h2>Terms used here</h2>
+			<h2 class="section-head">Terms used here</h2>
 			<ul class="links">
 				{#each data.terms as t (t.id)}
 					<li><a href={resolve('/glossary/[slug]', { slug: t.id })}>{t.name}</a></li>
@@ -133,7 +136,7 @@
 
 	{#if data.scenarios.length > 0}
 		<section>
-			<h2>Situations where this comes up</h2>
+			<h2 class="section-head">Situations where this comes up</h2>
 			<ul class="situations">
 				{#each data.scenarios as s (s.id)}
 					<li><a href={resolve('/scenarios/[slug]', { slug: s.id })}>{s.title}</a></li>
@@ -144,7 +147,7 @@
 
 	{#if data.related.length > 0}
 		<section>
-			<h2>Related topics</h2>
+			<h2 class="section-head">Related topics</h2>
 			<ul class="links">
 				{#each data.related as r (r.id)}
 					<li><a href={resolve('/ethics/[slug]', { slug: r.id })}>{r.label}</a></li>
@@ -154,7 +157,7 @@
 	{/if}
 
 	<section class="sources">
-		<h2>Written from</h2>
+		<h2 class="section-head">Written from</h2>
 		<ul>
 			{#each topic.citations as c, i (i)}
 				<li>{c.sourceId}{c.locator ? ` — ${c.locator}` : ''}</li>
@@ -234,13 +237,6 @@
 		border-left: 4px solid var(--accent);
 		padding: 0.75rem 1rem;
 		border-radius: 0 var(--radius) var(--radius) 0;
-	}
-	h2 {
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-		color: var(--text-muted);
-		margin-top: 1.75rem;
 	}
 	.looks li,
 	.pitfalls li {

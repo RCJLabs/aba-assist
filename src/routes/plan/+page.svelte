@@ -68,7 +68,7 @@
 
 	{#if plan.attempts === 0}
 		<section class="empty">
-			<h2>Nothing to go on yet</h2>
+			<h2 class="section-head">Nothing to go on yet</h2>
 			<p>
 				Answer some practice questions and this fills in. It needs about as many answers in
 				each area as the real paper asks there before it will report a number for that area.
@@ -77,7 +77,7 @@
 		</section>
 	{:else}
 		<section class="summary">
-			<h2>Where you stand</h2>
+			<h2 class="section-head">Where you stand</h2>
 			{#if plan.summary.overall === null}
 				<p>
 					<strong>{plan.summary.measured} of {plan.summary.total} areas</strong>
@@ -101,7 +101,7 @@
 		</section>
 
 		<section>
-			<h2>Do this next</h2>
+			<h2 class="section-head">Do this next</h2>
 			{#if plan.next.length === 0}
 				<p class="hint">
 					Nothing is weak, nothing is due and every area has been sampled. Keep the cards
@@ -125,7 +125,7 @@
 		</section>
 
 		<section>
-			<h2>By area</h2>
+			<h2 class="section-head">By area</h2>
 			<ul class="areas">
 				{#each plan.stats as s (s.letter)}
 					<li data-measured={s.accuracy !== null}>
@@ -177,9 +177,6 @@
 	}
 	section {
 		margin: 1.5rem 0;
-	}
-	h2 {
-		font-size: 1.15rem;
 	}
 	.field {
 		display: grid;

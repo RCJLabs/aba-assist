@@ -72,7 +72,7 @@
 <h1>Settings</h1>
 
 <section>
-	<h2 id="theme-label">Theme</h2>
+	<h2 id="theme-label" class="section-head">Theme</h2>
 	<div class="options" role="radiogroup" aria-labelledby="theme-label">
 		{#each themes as t (t.value)}
 			<label class="option">
@@ -90,7 +90,7 @@
 </section>
 
 <section>
-	<h2 id="size-label">Text size</h2>
+	<h2 id="size-label" class="section-head">Text size</h2>
 	<div class="options" role="radiogroup" aria-labelledby="size-label">
 		{#each sizes as s (s.value)}
 			<label class="option">
@@ -112,7 +112,7 @@
 </section>
 
 <section>
-	<h2>Reading</h2>
+	<h2 class="section-head">Reading</h2>
 	<label class="switch">
 		<input
 			type="checkbox"
@@ -130,7 +130,7 @@
 </section>
 
 <section>
-	<h2>One-handed use</h2>
+	<h2 class="section-head">One-handed use</h2>
 	<label class="switch">
 		<input
 			type="checkbox"
@@ -166,7 +166,7 @@
 </section>
 
 <section>
-	<h2>Your data</h2>
+	<h2 class="section-head">Your data</h2>
 	<p>
 		Everything this app remembers stays on this device. There is no account, and nothing is
 		sent anywhere — which also means nobody else has a copy if this device is lost.
@@ -309,7 +309,7 @@
 </section>
 
 <section>
-	<h2>Reviewing this app's content</h2>
+	<h2 class="section-head">Reviewing this app's content</h2>
 	<p>
 		Every entry here is written first and checked afterwards, and nothing is treated as
 		finished until a person who did not write it says so. If that person is you, the review
@@ -401,11 +401,6 @@
 
 	h1 {
 		font-size: 1.5rem;
-	}
-
-	h2 {
-		font-size: 1.05rem;
-		margin-top: 2rem;
 	}
 
 	h3 {

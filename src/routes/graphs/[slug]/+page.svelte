@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import PageBand from '$lib/components/PageBand.svelte';
 	import Graph from '$lib/components/Graph.svelte';
 	import type { PageProps } from './$types';
 
@@ -24,6 +25,8 @@
 	<meta name="description" content={data.graph.gloss} />
 </svelte:head>
 
+<PageBand label="Graph" />
+
 <nav aria-label="Breadcrumb" class="crumbs"><a href={resolve('/graphs')}>Graphs</a></nav>
 
 <h1>{data.graph.title}</h1>
@@ -33,7 +36,7 @@
 
 {#if data.callouts.length > 0}
 	<section>
-		<h2>The parts, one at a time</h2>
+		<h2 class="section-head">The parts, one at a time</h2>
 		<dl class="parts">
 			{#each data.callouts as c (c.id)}
 				<dt>{c.label}</dt>
@@ -50,7 +53,7 @@
 
 {#if data.graph.readings.length > 0}
 	<section>
-		<h2>What to see in it</h2>
+		<h2 class="section-head">What to see in it</h2>
 		<dl class="parts">
 			{#each data.graph.readings as r (r.id)}
 				<dt>
@@ -64,17 +67,17 @@
 {/if}
 
 <section>
-	<h2>Why it matters</h2>
+	<h2 class="section-head">Why it matters</h2>
 	<p>{data.graph.teaching}</p>
 </section>
 
 <section class="plain">
-	<h2>In plain language</h2>
+	<h2 class="section-head">In plain language</h2>
 	<p>{data.graph.plainSummary}</p>
 </section>
 
 <section>
-	<h2>What changed, and when</h2>
+	<h2 class="section-head">What changed, and when</h2>
 	<ol class="phases">
 		{#each data.graph.phases as p (p.id)}
 			<li>
@@ -92,7 +95,7 @@
 
 {#if data.terms.length > 0}
 	<section>
-		<h2>Terms on this page</h2>
+		<h2 class="section-head">Terms on this page</h2>
 		<ul class="terms">
 			{#each data.terms as t (t.id)}
 				<li><a href={resolve('/glossary/[slug]', { slug: t.id })}>{t.name}</a></li>
@@ -127,9 +130,6 @@
 	}
 	section {
 		margin: 1.5rem 0;
-	}
-	h2 {
-		font-size: 1.15rem;
 	}
 	.parts {
 		margin: 0;

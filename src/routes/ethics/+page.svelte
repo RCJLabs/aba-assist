@@ -65,7 +65,7 @@
 
 {#each ordered as code (code.id)}
 	<section class="code">
-		<h2>{code.shortName}</h2>
+		<h2 class="section-head">{code.shortName}</h2>
 		<p class="meta">
 			Effective {fmtDate(code.effectiveDate)} · applies to {code.appliesTo.join(', ')}
 			{#if code.totalStandards}· {code.totalStandards} standards{/if}
@@ -237,10 +237,6 @@
 		margin-top: 2rem;
 		padding-top: 1rem;
 		border-top: 2px solid var(--border);
-	}
-	h2 {
-		font-size: 1.25rem;
-		margin-bottom: 0.15rem;
 	}
 	h3 {
 		font-size: 1.05rem;

@@ -16,7 +16,7 @@
 <h1>About this app</h1>
 
 <section class="callout">
-	<h2>This is not clinical advice</h2>
+	<h2 class="section-head">This is not clinical advice</h2>
 	<p>
 		ABA Assist is an educational reference. It is not a medical device, it does not diagnose,
 		treat, cure, or prevent any condition, and it is not a substitute for supervision. The
@@ -31,7 +31,7 @@
 	</p>
 </section>
 
-<h2>What it deliberately does not do</h2>
+<h2 class="section-head">What it deliberately does not do</h2>
 <ul>
 	<li>
 		<strong>No instruction on restraint, seclusion, or physical management.</strong> Those are certified,
@@ -47,7 +47,7 @@
 	</li>
 </ul>
 
-<h2>Where the content comes from</h2>
+<h2 class="section-head">Where the content comes from</h2>
 <p>
 	Every definition here is written from scratch, from primary literature where possible, and
 	every entry lists what it was written from. Nothing is copied from a certifying body's
@@ -59,7 +59,7 @@
 	explanatory writing is ours.
 </p>
 
-<h2 id="errata">Found an error?</h2>
+<h2 id="errata" class="section-head">Found an error?</h2>
 <p>
 	Please report it — wrong content in this field is worse than missing content. Errors are
 	tracked publicly, so you can see what was reported and what was done about it.
@@ -72,7 +72,7 @@
 	</a>
 </p>
 
-<h2>This build</h2>
+<h2 class="section-head">This build</h2>
 <dl>
 	<dt>Content version</dt>
 	<dd>{contentVersion.contentVersion}</dd>
@@ -101,10 +101,6 @@
 <style>
 	h1 {
 		font-size: 1.5rem;
-	}
-	h2 {
-		font-size: 1.1rem;
-		margin-top: 2rem;
 	}
 	.callout {
 		background: var(--caution-bg);
