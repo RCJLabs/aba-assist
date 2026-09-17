@@ -22,6 +22,7 @@ export type { CardGrade } from '$lib/db/scheduler.js';
 export type StudyStatus = 'idle' | 'loading' | 'ready' | 'session' | 'done' | 'unavailable';
 
 const NEW_KEY = 'aba-assist:study:new-per-session';
+const RECALL_KEY = 'aba-assist:study:recall';
 
 /**
  * Flashcards.
@@ -38,6 +39,20 @@ class Study {
 	status = $state<StudyStatus>('idle');
 	stats = $state({ due: 0, fresh: 0, learned: 0, inDeck: 0 });
 	newPerSession = $state(10);
+	/**
+	 * Produce the definition before seeing it, rather than judging a definition already on
+	 * screen.
+	 *
+	 * Turning the card over and grading yourself is recognition, and it invites "I knew
+	 * that" at exactly the moment self-assessment is least reliable — the answer is right
+	 * there, it looks familiar, and familiarity is not recall. Writing it first does not
+	 * make the grade objective; nothing here can. It puts the reader's own words beside the
+	 * definition so the grade is harder to fudge, which is the honest version of the claim.
+	 *
+	 * Off by default. It is slower, and a reader working through forty cards on a bus has
+	 * chosen the faster thing on purpose.
+	 */
+	recall = $state(false);
 
 	queue = $state<string[]>([]);
 	index = $state(0);
@@ -64,8 +79,18 @@ class Study {
 			const raw = localStorage.getItem(NEW_KEY);
 			const n = raw ? Number(raw) : NaN;
 			if ([5, 10, 20, 40].includes(n)) this.newPerSession = n;
+			this.recall = localStorage.getItem(RECALL_KEY) === 'on';
 		} catch {
 			// Defaults are fine.
+		}
+	}
+
+	setRecall(on: boolean): void {
+		this.recall = on;
+		try {
+			localStorage.setItem(RECALL_KEY, on ? 'on' : 'off');
+		} catch {
+			// Storage unavailable; the mode still holds for this visit.
 		}
 	}
 

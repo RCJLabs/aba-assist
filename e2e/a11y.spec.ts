@@ -46,6 +46,18 @@ test('a flashcard mid-session, revealed, is accessible', async ({ page }) => {
 	await expectNoA11yViolations(page);
 });
 
+test('a recall card, written and checked, is accessible', async ({ page }) => {
+	// A different shape from the card above: a labelled textarea before the reveal, and the
+	// reader's own words beside the answer after it.
+	await page.goto('/study');
+	await page.getByRole('checkbox', { name: /Write it before you check/ }).check();
+	await page.getByRole('button', { name: 'Start' }).click();
+	await page.getByLabel(/Write the definition/).fill('An attempt at the definition');
+	await page.getByRole('button', { name: 'Check it' }).click();
+	await expect(page.locator('.compare .mine')).toBeVisible();
+	await expectNoA11yViolations(page);
+});
+
 test('a quiz question and its feedback are accessible', async ({ page }) => {
 	await page.goto('/quiz');
 	await page.getByLabel('Number of questions').selectOption('5');

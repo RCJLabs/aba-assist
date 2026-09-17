@@ -9,6 +9,15 @@
 	import { storage } from '$lib/state/storage.svelte.js';
 
 	let nudgeDismissed = $state(false);
+	/**
+	 * What the reader wrote, before they saw the answer.
+	 *
+	 * Page state, never stored. It exists to be put beside the definition for the few
+	 * seconds it takes to grade, and a store for it would mean a migration, a backup entry
+	 * and a second place free text lives — for something nobody would ever read again.
+	 */
+	let attempt = $state('');
+	let gradesEl = $state<HTMLDivElement | undefined>();
 
 	onMount(() => {
 		study.hydrate();
@@ -28,11 +37,18 @@
 	function reveal() {
 		study.reveal();
 		announcer.announce('Answer shown');
+		/*
+		 * Move focus off the textarea. The key handler correctly ignores 1 to 4 while a
+		 * textarea has focus, so without this a reader who typed their answer would find the
+		 * grade keys dead and no explanation on screen for why.
+		 */
+		if (study.recall) queueMicrotask(() => gradesEl?.querySelector('button')?.focus());
 	}
 
 	async function grade(g: CardGrade) {
 		const label = GRADES.find((x) => x.grade === g)?.label ?? '';
 		await study.grade(g);
+		attempt = '';
 		if (study.status === 'done') announcer.announce('Session complete');
 		else announcer.announce(`${label}. Next card.`);
 	}
@@ -155,6 +171,18 @@
 
 					{#if study.revealed}
 						<div class="back">
+							{#if study.recall}
+								<!--
+									Their words first, then the definition. This is the whole mechanism:
+									"I knew that" is much harder to tell yourself with what you actually
+									wrote sitting directly above what the answer was.
+								-->
+								<div class="compare">
+									<p class="mine" data-attempt={attempt.trim() === '' ? 'blank' : 'written'}>
+										{attempt.trim() === '' ? 'You did not write anything.' : attempt}
+									</p>
+								</div>
+							{/if}
 							<p>{back}</p>
 							{#if study.term.flashcard.mnemonic}
 								<p class="mnemonic">
@@ -168,6 +196,15 @@
 								>
 							</p>
 						</div>
+					{:else if study.recall}
+						<div class="field">
+							<label for="recall-attempt">Write the definition, then check</label>
+							<textarea
+								id="recall-attempt"
+								rows="3"
+								bind:value={attempt}
+								placeholder="In your own words…"></textarea>
+						</div>
 					{:else}
 						<p class="prompt" aria-hidden="true">Can you define it?</p>
 					{/if}
@@ -176,10 +213,24 @@
 		</div>
 
 		{#if !study.revealed}
-			<button type="button" class="primary reveal" onclick={reveal}>Show answer</button>
-			<p class="hint">Space or Enter also shows the answer.</p>
+			<button type="button" class="primary reveal" onclick={reveal}>
+				{study.recall ? 'Check it' : 'Show answer'}
+			</button>
+			<p class="hint">
+				{#if study.recall}
+					Checking with the box empty is allowed — not being able to write it is an answer, and
+					it is the one worth grading honestly.
+				{:else}
+					Space or Enter also shows the answer.
+				{/if}
+			</p>
 		{:else}
-			<div class="grades" role="group" aria-label="How well did you know it?">
+			<div
+				class="grades"
+				role="group"
+				aria-label="How well did you know it?"
+				bind:this={gradesEl}
+			>
 				{#each GRADES as g (g.grade)}
 					<button type="button" class="grade grade-{g.grade}" onclick={() => grade(g.grade)}>
 						<span class="label">{g.label}</span>
@@ -308,6 +359,22 @@
 				<option value="40">40</option>
 			</select>
 		</div>
+
+		<label class="recall-toggle">
+			<input
+				type="checkbox"
+				checked={study.recall}
+				onchange={(e) => study.setRecall(e.currentTarget.checked)}
+			/>
+			<span>
+				<strong>Write it before you check</strong>
+				<span class="why">
+					Turning a card over and grading yourself is recognition — the answer is on screen, it
+					looks familiar, and familiarity is not recall. Writing first puts your words next to
+					the definition. Slower, and harder to fool yourself with.
+				</span>
+			</span>
+		</label>
 
 		<p>
 			<button
@@ -598,6 +665,65 @@
 	 * (320 - 32 padding - 3 gaps of 8 = 264 / 4 = 66px). Tap is the primary interface;
 	 * there is deliberately no swipe gesture (WCAG 2.5.1 / 2.5.7).
 	 */
+	.recall-toggle {
+		display: flex;
+		gap: 0.6rem;
+		align-items: start;
+		max-width: 46rem;
+		margin: 0.75rem 0;
+		padding: 0.6rem 0.75rem;
+		border: 1px solid var(--hair);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+		cursor: pointer;
+	}
+
+	.recall-toggle input {
+		margin-top: 0.15rem;
+		min-width: 1.15rem;
+		min-height: 1.15rem;
+	}
+
+	.recall-toggle span {
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.why {
+		color: var(--text-muted);
+		font-size: 0.92em;
+	}
+
+	.field {
+		display: grid;
+		gap: 0.25rem;
+		margin-top: 0.5rem;
+		text-align: left;
+	}
+
+	.field textarea {
+		width: 100%;
+		font: inherit;
+	}
+
+	/*
+	 * The reader's attempt, marked off from the definition rather than styled to look like
+	 * one. Two paragraphs of prose with nothing between them would read as one answer.
+	 */
+	.compare .mine {
+		margin: 0 0 0.6rem;
+		padding: 0.5rem 0.6rem;
+		border-left: 4px solid var(--border);
+		background: var(--surface);
+		border-radius: 0 var(--radius) var(--radius) 0;
+		white-space: pre-wrap;
+	}
+
+	.compare .mine[data-attempt='blank'] {
+		color: var(--text-muted);
+		font-style: italic;
+	}
+
 	.grades {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
