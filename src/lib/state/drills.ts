@@ -1,0 +1,28 @@
+import { browser } from '$app/environment';
+import { putDrillAttempt } from '$lib/db/index.js';
+import { toAttempt, type FinishedSitting } from '$lib/drills/record.js';
+
+/**
+ * Writing a finished drill sitting.
+ *
+ * All that is left here after `$lib/drills/record.ts` took the mapping: a component may not
+ * touch the database directly, so this is the door it goes through.
+ */
+export { pairKey, toAttempt, type FinishedSitting } from '$lib/drills/record.js';
+
+/**
+ * Store one sitting. Returns false if it could not be written.
+ *
+ * Failure is reported rather than thrown: a blocked IndexedDB is an ordinary state on this
+ * app's platform — a private window, a browser with site storage off — and losing a drill
+ * score is not worth an error screen over a page whose whole content is still on screen.
+ */
+export async function recordSitting(sitting: FinishedSitting): Promise<boolean> {
+	if (!browser || sitting.questions.length === 0) return false;
+	try {
+		await putDrillAttempt(toAttempt(sitting, Date.now()));
+		return true;
+	} catch {
+		return false;
+	}
+}

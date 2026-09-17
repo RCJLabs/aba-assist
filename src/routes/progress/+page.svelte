@@ -3,7 +3,8 @@
 	import { resolve } from '$app/paths';
 	import BarSeries from '$lib/components/BarSeries.svelte';
 	import { progress, WINDOW_DAYS } from '$lib/state/progress.svelte.js';
-	import { RETENTION_MINIMUM, TREND_MINIMUM } from '$lib/study/progress.js';
+	import { termIndex } from '$lib/content/load.js';
+	import { CONFUSION_MINIMUM, RETENTION_MINIMUM, TREND_MINIMUM } from '$lib/study/progress.js';
 
 	onMount(() => {
 		void progress.load();
@@ -19,6 +20,10 @@
 	const recall = $derived(progress.recall);
 	const run = $derived(progress.run);
 	const deck = $derived(progress.deck);
+	const drills = $derived(progress.drills);
+	const confused = $derived(progress.confused);
+
+	const nameOf = (id: string) => termIndex.find((t) => t.i === id)?.t ?? id;
 
 	const peak = $derived(Math.max(1, ...days.map((d) => d.reviews)));
 	const reviewsInWindow = $derived(days.reduce((n, d) => n + d.reviews, 0));
@@ -229,6 +234,61 @@
 		</div>
 	</section>
 
+	<section aria-labelledby="{uid}-drills">
+		<h2 id="{uid}-drills" class="section-head">Telling pairs apart</h2>
+
+		{#if drills.sittings === 0}
+			<p class="note">
+				No drill sittings yet. <a href={resolve('/drills/pairs')}>Try a few pairs</a> and the ones
+				that catch you out get named here.
+			</p>
+		{:else}
+			<div class="card">
+				<p class="figure">
+					<strong>{drills.percent}%</strong>
+					<span class="unit">
+						across {drills.sittings}
+						{drills.sittings === 1 ? 'sitting' : 'sittings'} · {drills.correct} of {drills.answered}
+					</span>
+				</p>
+
+				{#if confused.length > 0}
+					<!--
+						The reason this history is kept at all. A drill score is forgotten by the next
+						sitting; "you have mixed these two up four times" names something that can be
+						gone and read, and both entries are one tap away.
+					-->
+					<h3 class="section-head">What keeps catching you out</h3>
+					<ul class="confusions">
+						{#each confused.slice(0, 8) as c (c.pair.join('|'))}
+							<li>
+								<span class="names">
+									<a href={resolve('/glossary/[slug]', { slug: c.pair[0] })}
+										>{nameOf(c.pair[0])}</a
+									>
+									<span class="vs">against</span>
+									<a href={resolve('/glossary/[slug]', { slug: c.pair[1] })}
+										>{nameOf(c.pair[1])}</a
+									>
+								</span>
+								<span class="times">{c.times}×</span>
+							</li>
+						{/each}
+					</ul>
+				{:else}
+					<p class="hint">
+						Nothing has caught you out {CONFUSION_MINIMUM} times yet. A pair appears here once you
+						have mixed it up more than once — a single miss is a bad morning, not a pattern.
+					</p>
+				{/if}
+
+				<p class="more">
+					<a href={resolve('/drills/pairs')}>Drill some more pairs</a>
+				</p>
+			</div>
+		{/if}
+	</section>
+
 	<p class="note" role="note">
 		These are figures about this app, not about an exam. A bank written by one author cannot
 		tell you whether you would pass one, and nothing here is a prediction.
@@ -349,6 +409,40 @@
 	.more {
 		margin: 0.75rem 0 0;
 		font-size: 0.9rem;
+	}
+
+	.confusions {
+		list-style: none;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		font-size: 0.95rem;
+	}
+
+	/*
+	 * A grid rather than a wrapping flex row. With two long term names the count was pushed
+	 * onto a line of its own, right-aligned under nothing in particular, and which pair it
+	 * belonged to stopped being obvious. Two columns keep it beside its row however the
+	 * names wrap.
+	 */
+	.confusions li {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: baseline;
+		gap: 0.25rem 0.75rem;
+		padding: 0.45rem 0;
+		border-top: 1px solid var(--hair);
+	}
+
+	/* A count, not a bar: four is four, and a bar would invite it to be read as a rate. */
+	.confusions .times {
+		font-variant-numeric: tabular-nums;
+		font-weight: 700;
+	}
+
+	.vs {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		padding: 0 0.15rem;
 	}
 
 	.note {

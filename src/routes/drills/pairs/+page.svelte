@@ -4,6 +4,7 @@
 	import type { PairDrill, TermCategory } from '@aba/content-schema';
 	import { loadPairDrills, termIndex } from '$lib/content/load.js';
 	import { study } from '$lib/state/study.svelte.js';
+	import { recordSitting } from '$lib/state/drills.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import {
 		availableCategories,
@@ -22,6 +23,9 @@
 	let picked = $state<string | null>(null);
 	let missed = $state<PairQuestion[]>([]);
 	let reinforced = $state(0);
+	let startedAt = $state(0);
+	/** Whether this sitting reached the history. False on a device with storage blocked. */
+	let saved = $state(true);
 
 	const areas = $derived(
 		bank ? [...availableCategories(bank)].sort((a, b) => b[1] - a[1]) : []
@@ -53,6 +57,8 @@
 		picked = null;
 		missed = [];
 		reinforced = 0;
+		startedAt = Date.now();
+		saved = true;
 	}
 
 	function toggle(c: TermCategory) {
@@ -72,7 +78,25 @@
 	function next() {
 		picked = null;
 		at += 1;
-		if (at >= session.length) void reinforce();
+		if (at >= session.length) void finish();
+	}
+
+	/**
+	 * End of the sitting: keep it, then make what was missed due again.
+	 *
+	 * Recorded before the flashcard write rather than after. The scheduler write is the one
+	 * that can take a while — it reads every card — and a reader who closes the page during
+	 * it should still have the sitting in their history, which is the cheaper and more
+	 * useful of the two.
+	 */
+	async function finish() {
+		saved = await recordSitting({
+			startedAt,
+			questions: session,
+			missed,
+			categories: chosen
+		});
+		await reinforce();
 	}
 
 	/**
@@ -146,8 +170,10 @@
 
 	<p class="note" role="note">
 		These are generated from the glossary rather than written as exam questions, and they are
-		not from the certifying board. Nothing is saved except a miss, which makes both terms due
-		again in your flashcards.
+		not from the certifying board. Each sitting is kept on this device — the score and which
+		pairs you mixed up, so <a href={resolve('/progress')}
+			>the ones that keep catching you out</a
+		> can be named. A miss also makes both terms due again in your flashcards.
 	</p>
 {:else if done}
 	<section class="card" aria-labelledby="{uid}-done">
@@ -178,6 +204,17 @@
 			</ul>
 		{/if}
 	</section>
+
+	{#if !saved}
+		<p class="note" role="status">
+			This sitting could not be saved — this device is not letting the app write stored data.
+			The score above is still correct; it just will not be there later.
+		</p>
+	{/if}
+
+	<p class="more">
+		<a href={resolve('/progress')}>How it is going</a> — these sittings against the ones before them.
+	</p>
 
 	<button type="button" class="go" onclick={start}>Go again</button>
 	<button type="button" class="stop" onclick={() => (session = [])}>Change areas</button>
@@ -436,6 +473,11 @@
 	.note {
 		font-size: 0.85rem;
 		color: var(--text-muted);
+	}
+
+	.more {
+		margin: 0.75rem 0;
+		font-size: 0.9rem;
 	}
 
 	@media (forced-colors: active) {

@@ -1,14 +1,23 @@
 import { browser } from '$app/environment';
-import { getAllCards, getReviewLog, recentAttempts } from '$lib/db/index.js';
+import {
+	getAllCards,
+	getReviewLog,
+	recentAttempts,
+	recentDrillAttempts
+} from '$lib/db/index.js';
 import {
 	attemptTrend,
 	deckState,
 	retention,
+	confusions,
+	drillSummary,
 	reviewsPerDay,
 	streak,
 	trendShift,
+	type Confusion,
 	type DayBucket,
 	type DeckState,
+	type DrillSummary,
 	type Retention,
 	type Streak,
 	type TrendPoint
@@ -41,10 +50,23 @@ class Progress {
 	recall = $state<Retention>({ tested: 0, kept: 0, percent: null, needed: 20 });
 	run = $state<Streak>({ current: 0, longest: 0, activeDays: 0 });
 	deck = $state<DeckState>({ fresh: 0, learning: 0, review: 0, total: 0 });
+	drills = $state<DrillSummary>({
+		sittings: 0,
+		answered: 0,
+		correct: 0,
+		percent: null,
+		lastAt: null
+	});
+	confused = $state.raw<Confusion[]>([]);
 
 	/** Whether anything has been done at all, which decides between a page and an invitation. */
 	get empty(): boolean {
-		return this.trend.length === 0 && this.deck.total === 0 && this.recall.tested === 0;
+		return (
+			this.trend.length === 0 &&
+			this.deck.total === 0 &&
+			this.recall.tested === 0 &&
+			this.drills.sittings === 0
+		);
 	}
 
 	async load(now = Date.now()): Promise<void> {
@@ -56,10 +78,11 @@ class Progress {
 			 * both about the entire history, and a window would quietly cap a run at thirty
 			 * and report a retention figure that changed meaning as the month rolled.
 			 */
-			const [cards, attempts, log] = await Promise.all([
+			const [cards, attempts, log, drills] = await Promise.all([
 				getAllCards(),
 				recentAttempts(200),
-				getReviewLog()
+				getReviewLog(),
+				recentDrillAttempts(200)
 			]);
 
 			this.trend = attemptTrend(attempts);
@@ -68,6 +91,8 @@ class Progress {
 			this.recall = retention(log);
 			this.run = streak(log, now);
 			this.deck = deckState(cards);
+			this.drills = drillSummary(drills);
+			this.confused = confusions(drills);
 			this.status = 'ready';
 		} catch {
 			// Blocked storage or a private window. The page says so rather than showing zeros,

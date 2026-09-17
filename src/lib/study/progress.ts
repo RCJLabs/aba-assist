@@ -14,6 +14,7 @@
  * about a real exam.
  */
 import type { CardRecord, ReviewRecord } from '$lib/db/scheduler.js';
+import type { DrillAttempt } from '$lib/db/index.js';
 
 /** Enough sittings that a line between them is a trend rather than two points and hope. */
 export const TREND_MINIMUM = 5;
@@ -224,4 +225,72 @@ export function deckState(cards: readonly CardRecord[]): DeckState {
 	const learning = cards.filter((c) => c.state === 1 || c.state === 3).length;
 	const review = cards.filter((c) => c.state === 2).length;
 	return { fresh, learning, review, total: cards.length };
+}
+
+/**
+ * Enough sightings of one pair to call it a pattern rather than a bad morning.
+ *
+ * Two, and low on purpose. Unlike an accuracy rate, this is not an estimate of anything —
+ * it is a count of times the reader picked the wrong one of two names, and the page does
+ * not convert it into a percentage. Getting the same pair wrong twice is a fact worth
+ * putting in front of somebody; it just must not be dressed up as a measurement.
+ */
+export const CONFUSION_MINIMUM = 2;
+
+export interface DrillSummary {
+	sittings: number;
+	answered: number;
+	correct: number;
+	/** 0–100, or null with nothing answered. */
+	percent: number | null;
+	lastAt: number | null;
+}
+
+export function drillSummary(attempts: readonly DrillAttempt[]): DrillSummary {
+	const answered = attempts.reduce((n, a) => n + a.total, 0);
+	const correct = attempts.reduce((n, a) => n + a.correct, 0);
+	return {
+		sittings: attempts.length,
+		answered,
+		correct,
+		percent: answered > 0 ? Math.round((correct / answered) * 100) : null,
+		lastAt: attempts.reduce<number | null>(
+			(latest, a) => (latest === null || a.finishedAt > latest ? a.finishedAt : latest),
+			null
+		)
+	};
+}
+
+export interface Confusion {
+	/** The two term ids, sorted — the same order the stored key uses. */
+	pair: [string, string];
+	times: number;
+}
+
+/**
+ * The pairs that keep catching the reader out, most-missed first.
+ *
+ * This is the reason the drill store exists. A drill score says how a sitting went and is
+ * forgotten by the next one; "you have mixed these two up four times" names something the
+ * reader can go and fix, and the two glossary entries are one tap away.
+ *
+ * Ties are broken alphabetically so the list is stable between renders — a list that
+ * reshuffles on every visit reads as noise even when the numbers have not moved.
+ */
+export function confusions(
+	attempts: readonly DrillAttempt[],
+	minimum = CONFUSION_MINIMUM
+): Confusion[] {
+	const counts = new Map<string, number>();
+	for (const a of attempts) {
+		for (const key of a.missedPairs) counts.set(key, (counts.get(key) ?? 0) + 1);
+	}
+
+	return [...counts.entries()]
+		.filter(([, times]) => times >= minimum)
+		.map(([key, times]) => {
+			const [a, b] = key.split('|');
+			return { pair: [a!, b!] as [string, string], times };
+		})
+		.sort((x, y) => y.times - x.times || x.pair[0].localeCompare(y.pair[0]));
 }

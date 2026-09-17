@@ -42,6 +42,38 @@ export interface QuizAttempt {
 }
 
 /**
+ * One finished drill sitting.
+ *
+ * Deliberately a summary, not a row per item. What a reader wants back from a drill is not
+ * "which of the 188 generated items did I see" — those are regenerated every build and
+ * their ids mean nothing to anybody — it is how the sittings went and, far more usefully,
+ * *which pairs keep catching them out*. `missedPairs` is that, and it is the reason this
+ * store is worth its migration.
+ *
+ * `kind` exists so this can hold more than one sort of drill later. The calculation drills
+ * still record nothing on purpose: that page says out loud that the tally is on screen only
+ * and goes when you leave, and quietly starting to keep it would make the page a liar.
+ */
+export interface DrillAttempt {
+	id: string;
+	kind: 'pairs';
+	startedAt: number;
+	finishedAt: number;
+	total: number;
+	correct: number;
+	/** Term categories the sitting was drawn from. Empty means a mix of everything. */
+	categories: string[];
+	/**
+	 * The confusions, as `a|b` with the two term ids sorted.
+	 *
+	 * Sorted so that mistaking A for B and B for A are the same pair, which is what a
+	 * confusion is — the reader cannot tell them apart, and which way round they happened to
+	 * get it wrong this time is not a second fact.
+	 */
+	missedPairs: string[];
+}
+
+/**
  * One reviewer's verdict on one content item.
  *
  * Kept on the device rather than sent anywhere: there is no backend, and a verdict is
@@ -220,6 +252,11 @@ interface AbaDB extends DBSchema {
 		value: QuizAttempt;
 		indexes: { 'by-finished': number };
 	};
+	drillAttempts: {
+		key: string;
+		value: DrillAttempt;
+		indexes: { 'by-finished': number };
+	};
 	reviewDecisions: {
 		key: string;
 		value: ReviewDecision;
@@ -268,6 +305,7 @@ type StoreName =
 	| 'cards'
 	| 'reviewLog'
 	| 'quizAttempts'
+	| 'drillAttempts'
 	| 'reviewDecisions'
 	| 'supervisees'
 	| 'workplaces'
@@ -329,6 +367,12 @@ const MIGRATIONS: Migration[] = [
 		db.createObjectStore('fieldworkPeriods', { keyPath: 'id' });
 		const fwMonths = db.createObjectStore('fieldworkMonths', { keyPath: 'id' });
 		fwMonths.createIndex('by-period', 'periodId');
+	},
+
+	// v5 — drill sittings, so a confusion that keeps recurring can be named.
+	(db) => {
+		const drills = db.createObjectStore('drillAttempts', { keyPath: 'id' });
+		drills.createIndex('by-finished', 'finishedAt');
 	}
 ];
 
@@ -513,6 +557,28 @@ export async function removeCycle(id: string): Promise<void> {
 	await tx.done;
 }
 
+// ---------------------------------------------------------- drill attempts
+
+export async function putDrillAttempt(attempt: DrillAttempt): Promise<void> {
+	const db = await openAbaDB();
+	await db.put('drillAttempts', attempt);
+}
+
+/** Most recent first, like `recentAttempts` — the page that reads them wants both orders. */
+export async function recentDrillAttempts(limit = 100): Promise<DrillAttempt[]> {
+	const db = await openAbaDB();
+	const out: DrillAttempt[] = [];
+	let cursor = await db
+		.transaction('drillAttempts')
+		.store.index('by-finished')
+		.openCursor(null, 'prev');
+	while (cursor && out.length < limit) {
+		out.push(cursor.value);
+		cursor = await cursor.continue();
+	}
+	return out;
+}
+
 // ---------------------------------------------------------------- attempts
 
 export async function putAttempt(attempt: QuizAttempt): Promise<void> {
@@ -544,6 +610,7 @@ export async function exportAll(): Promise<{
 	cards: CardRecord[];
 	reviewLog: ReviewRecord[];
 	quizAttempts: QuizAttempt[];
+	drillAttempts: DrillAttempt[];
 	reviewDecisions: ReviewDecision[];
 	supervisees: Supervisee[];
 	workplaces: Workplace[];
@@ -559,6 +626,7 @@ export async function exportAll(): Promise<{
 		cards,
 		reviewLog,
 		quizAttempts,
+		drillAttempts,
 		reviewDecisions,
 		supervisees,
 		workplaces,
@@ -572,6 +640,7 @@ export async function exportAll(): Promise<{
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
 		db.getAll('quizAttempts'),
+		db.getAll('drillAttempts'),
 		db.getAll('reviewDecisions'),
 		db.getAll('supervisees'),
 		db.getAll('workplaces'),
@@ -595,6 +664,7 @@ export async function exportAll(): Promise<{
 			return rest;
 		}),
 		quizAttempts,
+		drillAttempts,
 		reviewDecisions,
 		supervisees,
 		workplaces,
@@ -618,6 +688,7 @@ export async function hasStoredData(): Promise<boolean> {
 	const stores: StoreName[] = [
 		'cards',
 		'quizAttempts',
+		'drillAttempts',
 		'reviewDecisions',
 		'supervisionEntries',
 		'developmentUnits',
@@ -643,6 +714,7 @@ export async function restoreAll(data: {
 	cards: CardRecord[];
 	reviewLog: ReviewRecord[];
 	quizAttempts: QuizAttempt[];
+	drillAttempts: DrillAttempt[];
 	reviewDecisions: ReviewDecision[];
 	supervisees: Supervisee[];
 	workplaces: Workplace[];
@@ -658,6 +730,7 @@ export async function restoreAll(data: {
 		'cards',
 		'reviewLog',
 		'quizAttempts',
+		'drillAttempts',
 		'reviewDecisions',
 		'supervisees',
 		'workplaces',
@@ -676,6 +749,7 @@ export async function restoreAll(data: {
 		...data.reviewLog.map((r) => tx.objectStore('reviewLog').add(r)),
 		...data.cards.map((c) => tx.objectStore('cards').put(c)),
 		...data.quizAttempts.map((a) => tx.objectStore('quizAttempts').put(a)),
+		...data.drillAttempts.map((a) => tx.objectStore('drillAttempts').put(a)),
 		...data.reviewDecisions.map((d) => tx.objectStore('reviewDecisions').put(d)),
 		...data.supervisees.map((x) => tx.objectStore('supervisees').put(x)),
 		...data.workplaces.map((x) => tx.objectStore('workplaces').put(x)),
@@ -695,6 +769,7 @@ export async function clearAll(): Promise<void> {
 		'cards',
 		'reviewLog',
 		'quizAttempts',
+		'drillAttempts',
 		'reviewDecisions',
 		'supervisees',
 		'workplaces',

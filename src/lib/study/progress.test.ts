@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import type { CardRecord, ReviewRecord } from '$lib/db/scheduler.js';
+import type { DrillAttempt } from '$lib/db/index.js';
 import {
 	attemptTrend,
+	confusions,
 	deckState,
+	drillSummary,
 	retention,
 	reviewsPerDay,
 	streak,
@@ -217,5 +220,59 @@ describe('deckState', () => {
 	it('reads relearning as learning, because that is what it is to a reader', () => {
 		const s = deckState([card(0, 'a'), card(1, 'b'), card(2, 'c'), card(3, 'd')]);
 		expect(s).toEqual({ fresh: 1, learning: 2, review: 1, total: 4 });
+	});
+});
+
+describe('drillSummary and confusions', () => {
+	const sitting = (
+		id: string,
+		correct: number,
+		total: number,
+		missedPairs: string[] = []
+	): DrillAttempt => ({
+		id,
+		kind: 'pairs',
+		startedAt: daysAgo(2),
+		finishedAt: daysAgo(2) + 60_000,
+		total,
+		correct,
+		categories: [],
+		missedPairs
+	});
+
+	it('totals across sittings rather than averaging their percentages', () => {
+		// A ten-question sitting and a two-question one do not carry equal weight.
+		const s = drillSummary([sitting('a', 9, 10), sitting('b', 0, 2)]);
+		expect(s).toMatchObject({ sittings: 2, answered: 12, correct: 9, percent: 75 });
+	});
+
+	it('is empty-safe and states no rate with nothing answered', () => {
+		expect(drillSummary([])).toMatchObject({ sittings: 0, percent: null, lastAt: null });
+	});
+
+	/*
+	 * The whole reason the store exists. One miss is a bad morning; the same pair twice is
+	 * something the reader can go and read about, which is why it is named and linked.
+	 */
+	it('names a pair only once it has been missed more than once', () => {
+		const attempts = [
+			sitting('a', 9, 10, ['dro|dra', 'shaping|chaining']),
+			sitting('b', 8, 10, ['dro|dra'])
+		];
+		const out = confusions(attempts);
+		expect(out).toHaveLength(1);
+		expect(out[0]).toMatchObject({ pair: ['dro', 'dra'], times: 2 });
+	});
+
+	it('ranks the most-missed first and breaks ties stably', () => {
+		const attempts = [
+			sitting('a', 0, 3, ['x|y', 'p|q', 'a|b']),
+			sitting('b', 0, 3, ['x|y', 'p|q', 'a|b']),
+			sitting('c', 0, 1, ['x|y'])
+		];
+		const out = confusions(attempts);
+		expect(out[0]!.times).toBe(3);
+		// Same count, so alphabetical — a list that reshuffles between visits reads as noise.
+		expect(out.slice(1).map((c) => c.pair[0])).toEqual(['a', 'p']);
 	});
 });

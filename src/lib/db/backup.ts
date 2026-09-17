@@ -23,6 +23,7 @@ import { isSuperviseeCode, phiWarnings } from '$lib/tracker/phi.js';
 import type {
 	Cycle,
 	DevelopmentUnit,
+	DrillAttempt,
 	FieldworkMonth,
 	FieldworkPeriod,
 	QuizAttempt,
@@ -44,6 +45,7 @@ export interface BackupPayload {
 	cards: CardRecord[];
 	reviewLog: ReviewRecord[];
 	quizAttempts: QuizAttempt[];
+	drillAttempts: DrillAttempt[];
 	reviewDecisions: ReviewDecision[];
 	supervisees: Supervisee[];
 	workplaces: Workplace[];
@@ -189,6 +191,37 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 						perDomain: isObj(r.perDomain) ? (r.perDomain as QuizAttempt['perDomain']) : {},
 						missed: Array.isArray(r.missed) ? r.missed.filter(str) : [],
 						tasks: Array.isArray(r.tasks) ? r.tasks.filter(str) : []
+					}
+				: null,
+		dropped
+	);
+
+	/*
+	 * Drill sittings. Added in v5, so a file exported before then simply has none — which is
+	 * the ordinary case for a while and must not read as a rejected store.
+	 *
+	 * `missedPairs` is filtered down to strings that look like the `a|b` key the app writes,
+	 * because it is rendered as two glossary links: anything else would either 404 or, worse,
+	 * be interpolated into a href. A hand-edited file is exactly the input this is for.
+	 */
+	const drillAttempts = sift<DrillAttempt>(
+		'drillAttempts',
+		raw.drillAttempts,
+		(r) =>
+			str(r.id) && num(r.total) && num(r.correct) && num(r.finishedAt)
+				? {
+						id: r.id,
+						kind: 'pairs',
+						startedAt: num(r.startedAt) ? r.startedAt : r.finishedAt,
+						finishedAt: r.finishedAt,
+						total: r.total,
+						correct: r.correct,
+						categories: Array.isArray(r.categories) ? r.categories.filter(str) : [],
+						missedPairs: Array.isArray(r.missedPairs)
+							? r.missedPairs.filter(
+									(x): x is string => str(x) && /^[a-z0-9-]+\|[a-z0-9-]+$/.test(x)
+								)
+							: []
 					}
 				: null,
 		dropped
@@ -409,6 +442,7 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		cards,
 		reviewLog,
 		quizAttempts,
+		drillAttempts,
 		reviewDecisions,
 		supervisees,
 		workplaces,
@@ -424,6 +458,7 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		cards: cards.length,
 		reviewLog: reviewLog.length,
 		quizAttempts: quizAttempts.length,
+		drillAttempts: drillAttempts.length,
 		reviewDecisions: reviewDecisions.length,
 		supervisees: supervisees.length,
 		workplaces: workplaces.length,

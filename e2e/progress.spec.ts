@@ -73,6 +73,44 @@ async function seed(
 	});
 }
 
+/** Drill sittings, written the way the app writes them. */
+async function seedDrills(
+	page: Page,
+	sittings: { correct: number; total: number; missedPairs: string[] }[]
+) {
+	await page.goto('/progress');
+	await expect(page.locator('[data-progress-status]')).toBeAttached({ timeout: 30_000 });
+	await page.evaluate(async (rows) => {
+		const db = await new Promise<IDBDatabase>((res, rej) => {
+			const r = indexedDB.open('aba-assist');
+			r.onsuccess = () => res(r.result);
+			r.onerror = () => rej(r.error);
+		});
+		await new Promise<void>((done, fail) => {
+			const tx = db.transaction('drillAttempts', 'readwrite');
+			tx.oncomplete = () => done();
+			tx.onerror = () => fail(tx.error);
+			rows.forEach((row, i) =>
+				tx.objectStore('drillAttempts').put({
+					id: `seed-drill-${i}`,
+					kind: 'pairs',
+					startedAt: Date.now() - (i + 1) * 60_000,
+					finishedAt: Date.now() - i * 60_000,
+					total: row.total,
+					correct: row.correct,
+					categories: [],
+					missedPairs: row.missedPairs
+				})
+			);
+		});
+		db.close();
+	}, sittings);
+	await page.reload();
+	await expect(page.locator('[data-progress-status="ready"]')).toBeAttached({
+		timeout: 30_000
+	});
+}
+
 test('with no history it invites you to make some rather than showing zeros', async ({
 	page
 }) => {
@@ -185,4 +223,51 @@ test('the day chart shows the gaps, not only the study days', async ({ page }) =
 		.click();
 	await expect(rows.last()).toBeVisible();
 	await expect(page.locator('.runs')).toContainText(/current run:\s*2\s+days/i);
+});
+
+test('a finished drill sitting reaches the history', async ({ page }) => {
+	/*
+	 * End to end through the real page rather than by seeding, because the thing worth
+	 * proving is the wiring: the route computes the sitting, the state module maps it, and
+	 * the store keeps it. Seeded rows would prove only that the reader renders.
+	 */
+	await page.goto('/drills/pairs');
+	await expect(page.locator('[data-drill-status="ready"]')).toBeAttached({ timeout: 30_000 });
+	await page.getByRole('button', { name: 'Start' }).click();
+
+	let wrong = 0;
+	for (let n = 0; n < 40; n++) {
+		if ((await page.locator('.options .option').count()) === 0) break;
+		await page.locator('.option[data-state="open"]').first().click();
+		if ((await page.locator('.verdict').getAttribute('data-verdict')) === 'wrong') wrong += 1;
+		await page.getByRole('button', { name: /Next|Finish/ }).click();
+	}
+	await expect(page.locator('.score')).toBeVisible();
+
+	await page.goto('/progress');
+	await expect(page.locator('[data-progress-status="ready"]')).toBeAttached({
+		timeout: 30_000
+	});
+	await expect(page.locator('body')).toContainText(/across 1\s+sitting/i);
+	// The page reports the sitting it was actually given, not a fixed expectation.
+	await expect(page.locator('body')).toContainText(`${15 - wrong} of 15`);
+});
+
+test('a pair missed twice is named; a pair missed once is not', async ({ page }) => {
+	await seedDrills(page, [
+		{ correct: 14, total: 15, missedPairs: ['dro|dra'] },
+		{ correct: 13, total: 15, missedPairs: ['dro|dra', 'shaping|chaining'] }
+	]);
+
+	const named = page.locator('.confusions li');
+	await expect(named).toHaveCount(1);
+	await expect(named.first()).toContainText('2×');
+	// The one-off is left out on purpose: a single miss is a bad morning, not a pattern.
+	await expect(named.first()).not.toContainText(/shaping/i);
+});
+
+test('drill sittings alone are enough to make the page non-empty', async ({ page }) => {
+	await seedDrills(page, [{ correct: 10, total: 15, missedPairs: [] }]);
+	await expect(page.locator('body')).not.toContainText(/nothing to\s+show yet/i);
+	await expect(page.locator('body')).toContainText('67%');
 });

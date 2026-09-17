@@ -22,7 +22,9 @@ import {
 	putDecision,
 	recentAttempts,
 	recordReview,
-	resetDbHandle
+	resetDbHandle,
+	putDrillAttempt,
+	recentDrillAttempts
 } from './index.js';
 import { gradeCard, newCard } from './scheduler.js';
 
@@ -36,7 +38,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(4);
+		expect(DB_VERSION).toBe(5);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -100,6 +102,40 @@ describe('local database', () => {
 		// v1 install walks all of them rather than jumping to the current schema.
 		await put('workplaces', { id: 'w1', label: 'Clinic', active: true, createdAt: T0 });
 		expect(await getAll('workplaces')).toHaveLength(1);
+
+		// v5, the newest rung. An install this old is the case a migration most often gets
+		// wrong, because the fresh-create path works whatever the ladder does.
+		await putDrillAttempt({
+			id: 'pairs-1-15',
+			kind: 'pairs',
+			startedAt: T0,
+			finishedAt: T0 + 60_000,
+			total: 15,
+			correct: 12,
+			categories: [],
+			missedPairs: ['dro|dra']
+		});
+		expect(await recentDrillAttempts()).toHaveLength(1);
+	});
+
+	it('keeps drill sittings newest first', async () => {
+		for (const [id, at] of [
+			['old', T0],
+			['new', T0 + 86_400_000],
+			['middle', T0 + 3_600_000]
+		] as const) {
+			await putDrillAttempt({
+				id,
+				kind: 'pairs',
+				startedAt: at,
+				finishedAt: at,
+				total: 15,
+				correct: 10,
+				categories: [],
+				missedPairs: []
+			});
+		}
+		expect((await recentDrillAttempts()).map((a) => a.id)).toEqual(['new', 'middle', 'old']);
 	});
 
 	it('deletes a supervisee together with the contacts logged against them', async () => {
@@ -205,6 +241,7 @@ describe('local database', () => {
 			cards: [newCard('shaping', T0)],
 			reviewLog: [{ cardId: 'shaping', grade: 3, reviewedAt: T0, scheduledDays: 1, state: 2 }],
 			quizAttempts: [],
+			drillAttempts: [],
 			reviewDecisions: [],
 			supervisees: [{ id: 's1', code: 'S-04', role: 'RBT', active: true, createdAt: T0 }],
 			workplaces: [{ id: 'new', label: 'New job', active: true, createdAt: T0 }],

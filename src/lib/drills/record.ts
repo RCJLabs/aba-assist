@@ -1,0 +1,42 @@
+import type { DrillAttempt } from '$lib/db/index.js';
+import type { PairQuestion } from './pairs.js';
+
+/**
+ * What a finished drill sitting is worth keeping.
+ *
+ * A summary and the confusions, never a row per item: the items are regenerated on every
+ * build, so their ids would be a record of nothing.
+ *
+ * Separate from the module that writes it because that one imports `$app/environment`,
+ * which does not exist outside a SvelteKit build — and the mapping below is the part with
+ * decisions in it, so it is the part that has to be testable.
+ */
+
+/** The key a confusion is stored under: the two term ids, sorted. */
+export const pairKey = (question: PairQuestion): string =>
+	[...question.options].sort().join('|');
+
+export interface FinishedSitting {
+	startedAt: number;
+	questions: readonly PairQuestion[];
+	missed: readonly PairQuestion[];
+	categories: readonly string[];
+}
+
+/** The record a sitting becomes. Pure, so it can be checked without a database. */
+export function toAttempt(sitting: FinishedSitting, finishedAt: number): DrillAttempt {
+	return {
+		// Stamped with the start time so two sittings cannot collide, and readable in a dump,
+		// which an opaque uuid is not.
+		id: `pairs-${sitting.startedAt}-${sitting.questions.length}`,
+		kind: 'pairs',
+		startedAt: sitting.startedAt,
+		finishedAt,
+		total: sitting.questions.length,
+		correct: sitting.questions.length - sitting.missed.length,
+		categories: [...sitting.categories],
+		// Deduplicated within a sitting: seeing both directions of one pair and getting both
+		// wrong is one confusion met twice, not two confusions.
+		missedPairs: [...new Set(sitting.missed.map(pairKey))]
+	};
+}
