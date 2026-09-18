@@ -144,3 +144,51 @@ test('everyday situations are grouped rather than listed as two dozen titles', a
 	const hrefs = await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')));
 	expect(new Set(hrefs).size).toBe(hrefs.length);
 });
+
+test('the app states what it costs, and there is no account to make', async ({ page }) => {
+	await page.goto('/about');
+	await expect(page.getByRole('heading', { name: 'What it costs' })).toBeVisible();
+	await expect(
+		page.getByText(/no paid tier, no trial, no advertising and no analytics/i)
+	).toBeVisible();
+});
+
+test('using the app sends nothing to anybody', async ({ page, baseURL }) => {
+	/*
+	 * The about page claims this in words, so something has to hold it to the claim. A
+	 * tracker added later would be one script tag and would break no other test in the
+	 * suite — it would simply start reporting what people study, on an app whose whole
+	 * position is that it does not.
+	 *
+	 * Written as "no request leaves this origin" rather than a blocklist of known analytics
+	 * hosts, because the hosts worth catching are the ones nobody thought to list.
+	 */
+	const origin = new URL(baseURL ?? 'http://localhost:4173').origin;
+	const offsite: string[] = [];
+	page.on('request', (req) => {
+		const url = req.url();
+		// data: and blob: are the page talking to itself; they reach no network.
+		if (url.startsWith('data:') || url.startsWith('blob:')) return;
+		if (!url.startsWith(origin)) offsite.push(`${req.method()} ${url}`);
+	});
+
+	// Real use, across the features that would be worth reporting on if anybody were.
+	await page.goto('/');
+	// Search specifically, because it is the one feature that fetches anything after load.
+	await page.getByLabel('Search terms').fill('reinforcement');
+	await expect(page.locator('[data-search-status="ready"]')).toBeAttached({ timeout: 30_000 });
+	await expect(page.locator('.results li').first()).toBeVisible();
+
+	await page.goto('/quiz');
+	await expect(page.locator('.setup')).toContainText(/\d+\s+questions available/);
+	await page.getByLabel('Number of questions').selectOption('5');
+	await page.getByRole('button', { name: 'Start' }).click();
+	await page.getByRole('radio').first().check();
+	await page.getByRole('button', { name: 'Check answer' }).click();
+
+	await page.goto('/study');
+	await page.goto('/tools/supervision');
+	await page.goto('/progress');
+
+	expect(offsite).toEqual([]);
+});

@@ -47,6 +47,21 @@
 	</li>
 </ul>
 
+<h2 class="section-head">What it costs</h2>
+<p>
+	Nothing. There is no paid tier, no trial, no advertising and no analytics, and there is
+	nothing here to sign up for — this app has no accounts because it has no server to keep them
+	on. Every feature is available to everybody who can open the page, which for a workforce that
+	frequently studies on unpaid time is the point rather than a courtesy.
+</p>
+<p>
+	That is a description of how it is built rather than a claim you have to take on faith. The
+	app downloads its own files — the pages, and a search index it fetches the first time you
+	search — and it sends nothing back: no usage, no scores, no logs, no identifiers. Once those
+	files are on your device every feature works in airplane mode, which is the easiest way to
+	check it for yourself.
+</p>
+
 <h2 class="section-head">Where the content comes from</h2>
 <p>
 	Every definition here is written from scratch, from primary literature where possible, and

@@ -386,6 +386,55 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## There is no paid tier, and the reason is an audit rather than a principle
+
+The build plan split this app into free and paid: free was the reference core, paid was
+exam prep — a timed simulation, a large question bank, per-area readiness analytics, a
+deck builder, tracker export, cross-device backup. The reasoning was that exam prep is
+the commoditised thing people already pay $50 to $400 for, and on-the-job reference is
+the unoccupied ground.
+
+Audited against what actually shipped, five of those six are already here and free:
+
+| Planned as paid                        | Where it is                                                       |
+| -------------------------------------- | ----------------------------------------------------------------- |
+| Timed, domain-weighted exam simulation | `/quiz`, at the exam's own pace, with a flag-and-return navigator |
+| Large question bank                    | 648 items — RBT 187, BCaBA 212, BCBA 249                          |
+| Per-area readiness analytics           | `/plan` and `/progress`                                           |
+| Deck builder                           | `/study`, filtered by exam, area and category                     |
+| Tracker export and PDF                 | Print on all four tools, JSON backup in settings                  |
+| Cross-device backup                    | Not built, and the only one that needs an account and a server    |
+
+So the plan's own logic got inverted in execution: the part that was supposed to pay for
+the rest was built and given away, one milestone at a time, because each of those
+features made the free app better and there was never a moment where withholding one was
+the obvious call.
+
+Given that, the paid tier was cancelled rather than retrofitted. The three ways to
+un-invert it were all worse than not charging:
+
+- **Fence off what already shipped.** The app is published, and its entire position is
+  that it can be trusted in a field whose incumbent apps cannot. Taking back a working
+  simulator is the single fastest way to lose that.
+- **Sell new content instead.** Coherent, and it aims the paywall straight at the thing
+  that is already the bottleneck. Every item has to be read by a reviewer before it
+  ships, and the launch set is not through that queue yet. A paid tier made of content
+  multiplies the constraint that is holding up the launch.
+- **Sell sync and a supervisor view.** The one genuinely missing capability, and it costs
+  the promise three pages of this app make in writing — no account, nothing leaves the
+  device — plus a data-protection surface that a solo project should not take on lightly.
+
+What that deletes is worth stating, because it is most of two milestones. No Cloudflare
+Worker, no Ed25519 licence tokens, no Stripe, no Digital Goods API, no purchase outbox,
+and no server-side acknowledgement — which also removes the three-day auto-refund window
+that makes Play Billing a live liability from the moment it ships. The Play submission is
+an Education listing with no in-app purchases at all.
+
+None of this is a promise never to charge for anything. It is a statement that nothing
+working here today is going to be moved behind a payment, and that the question gets
+asked again when the content is reviewed and the site is indexed — which is to say, when
+there is something to sell and somebody able to find it.
+
 ## Your data lives on your device, which is a risk as well as a promise
 
 There is no account and nothing leaves the browser — which also means nobody else has a
