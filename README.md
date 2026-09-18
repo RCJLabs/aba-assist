@@ -402,6 +402,36 @@ same review queue, so there is one copy of each number rather than two that drif
 
 ## Fieldwork is checked a month at a time, not as a running total
 
+The export is the artifact and the app is the convenience. Fieldwork is verified from
+documentation, sometimes years later, by somebody who will not accept "it was in an app" —
+so `/tools/fieldwork` exports the whole record as four CSVs rather than a dump of what was
+typed in:
+
+1. **the period** — when it started, whose rules, which handbook edition the figures came
+   from;
+2. **the months** — every field, plus credited hours, a standing, and the requirements
+   that month failed, named rather than implied;
+3. **the totals** — credited against the 2000 required, hours that will not count, and
+   each ratio with its verdict;
+4. **the requirements** — every threshold with the handbook page it came from.
+
+The fourth is the one that is easy to leave out and the one that makes the other three
+auditable. A spreadsheet of hours with a "short" column and no statement of the threshold
+asks the reader to trust an app they have never seen.
+
+Two details that are easy to get wrong. The restricted ceiling is **derived, not written
+down**: the rule is 40%, so a record built around a literal 800 is right only for a
+2000-hour run and wrong for anybody accruing concentrated hours, where the same rule comes
+to 600 of 1500. And a ratio the handbook judges month by month carries no cumulative
+verdict — individual supervision is reported as a figure with "judged month by month; see
+the months file", because a cumulative percentage with "met" beside it would be a claim
+the handbook does not support.
+
+Four files rather than one `.xlsx` with tabs, deliberately. A real workbook needs a
+spreadsheet library, and this is an offline PWA whose whole free corpus is about 1.5MB —
+several hundred kilobytes of formatting code would ship to everybody who opens the
+glossary. CSV is what Excel and Sheets both import natively.
+
 `/tools/fieldwork` is for analyst trainees, and it is deliberately not a progress bar with
 hours in it. Supervised fieldwork is verified one calendar month at a time: a month below
 its floor is worth **nothing**, not less, and hours above its ceiling are dropped. Somebody

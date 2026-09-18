@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Download, type Page } from '@playwright/test';
 import { expectNoA11yViolations } from './utils/a11y';
 
 /**
@@ -212,4 +212,64 @@ test('the fieldwork page has no accessibility violations once a month is logged'
 		contacts: 4
 	});
 	await expectNoA11yViolations(page);
+});
+
+test('the whole record exports as four files a supervisor could audit', async ({ page }) => {
+	/*
+	 * The export is the artifact and the app is the convenience. Fieldwork is verified
+	 * from documentation, sometimes years later, by somebody who will not accept "it was
+	 * in an app" — so what matters is that the four files together answer the questions a
+	 * record has to answer, including where every threshold came from.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, { month: '2026-01', total: 120, unrestricted: 80, supervision: 6 });
+	// A month under the monthly floor, so the record has something to say "does not count"
+	// about — the failure mode the whole tracker exists for.
+	await logMonth(page, { month: '2026-02', total: 15, unrestricted: 12, supervision: 1 });
+
+	const downloads: Download[] = [];
+	for (let i = 0; i < 4; i++) {
+		const wait = page.waitForEvent('download');
+		if (i === 0) await page.getByRole('button', { name: /The whole record/ }).click();
+		downloads.push(await wait);
+	}
+
+	const names = downloads.map((d) => d.suggestedFilename()).sort();
+	expect(names).toEqual([
+		'fieldwork-1-period.csv',
+		'fieldwork-2-months.csv',
+		'fieldwork-3-totals.csv',
+		'fieldwork-4-requirements.csv'
+	]);
+
+	const read = async (part: string) => {
+		const d = downloads.find((x) => x.suggestedFilename().includes(part))!;
+		const path = await d.path();
+		const { readFile } = await import('node:fs/promises');
+		return readFile(path, 'utf8');
+	};
+
+	// The months carry a verdict, not just the hours that were typed in.
+	const months = await read('months');
+	expect(months).toContain('Month standing');
+	expect(months).toContain('short');
+	expect(months).toContain('Requirements not met');
+
+	// The totals state the ceiling as a number somebody can plan against.
+	const totals = await read('totals');
+	expect(totals).toContain('800 of 2000');
+	expect(totals).toContain('Credited hours required,2000');
+
+	// And every threshold says which handbook page it came from.
+	const requirements = await read('requirements');
+	expect(requirements).toContain('Handbook reference');
+	expect(requirements).toMatch(/p\. \d+/);
+
+	// No client information anywhere, because the record has nowhere to hold any.
+	const period = await read('period');
+	expect(period).toContain('S-01');
+	for (const csv of [period, months, totals, requirements]) {
+		expect(csv).not.toMatch(/client name|date of birth/i);
+	}
 });

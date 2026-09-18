@@ -7,6 +7,7 @@
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { tracker, todayIso, type FieldworkType } from '$lib/state/tracker.svelte.js';
 	import { fieldworkCsv } from '$lib/tracker/csv.js';
+	import { fieldworkRecord } from '$lib/tracker/fieldwork-export.js';
 	import { isSuperviseeCode, SUPERVISEE_CODE_HINT } from '$lib/tracker/phi.js';
 	import { downloadBlob } from '$lib/util/download.js';
 
@@ -98,6 +99,31 @@
 			fieldworkCsv(s.fieldworkMonths, s.fieldworkPeriods[0] ?? null),
 			'text/csv;charset=utf-8'
 		);
+	}
+
+	/**
+	 * The whole record, as four files.
+	 *
+	 * Sequential with a gap between them, because a browser asked for four downloads in
+	 * the same tick drops all but the first. Most browsers ask once whether to allow
+	 * several files; the hint below says so, so that being asked is not a surprise.
+	 */
+	async function exportRecord() {
+		if (!req || !rules) return;
+		const s = tracker.snapshot();
+		const files = fieldworkRecord({
+			period: s.fieldworkPeriods[0] ?? null,
+			months: s.fieldworkMonths,
+			req,
+			rules,
+			handbookVersion: tracker.fieldworkHandbookVersion,
+			today: todayIso()
+		});
+		for (const f of files) {
+			downloadBlob(f.name, f.csv, 'text/csv;charset=utf-8');
+			await new Promise((r) => setTimeout(r, 250));
+		}
+		announcer.announce(`${files.length} files downloaded.`);
 	}
 
 	const fmtMonth = (m: string) =>
@@ -435,10 +461,20 @@
 				exists only in this browser is one cleared cache away from gone.
 			</p>
 			<div class="actions">
+				<button type="button" class="button primary" onclick={exportRecord}>
+					The whole record (4 files)
+				</button>
 				<button type="button" class="button" disabled={months.length === 0} onclick={exportCsv}
-					>Fieldwork CSV</button
+					>Just the months (1 file)</button
 				>
 			</div>
+			<p class="hint">
+				The four files are the run and its rules, the month-by-month log with a verdict on each
+				month, the totals against the {req.totalHours} hours required and the unrestricted share,
+				and the requirements themselves with the handbook page each came from — so somebody reading
+				it can check every figure without taking this app's word for anything. They open in Excel
+				and in Google Sheets. Your browser may ask whether to allow several files at once.
+			</p>
 		</section>
 	{/if}
 
