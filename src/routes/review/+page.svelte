@@ -6,6 +6,7 @@
 	import { RELEASE_MINIMUM_TERMS } from '@aba/content-schema/runtime';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { review } from '$lib/state/review.svelte.js';
+	import { SITTING_SIZES } from '$lib/review/sitting.js';
 	import { downloadBlob } from '$lib/util/download.js';
 
 	let copied = $state(false);
@@ -22,30 +23,107 @@
 	const tiers: ReviewTier[] = ['A', 'B', 'C'];
 	const meta = $derived(item ? review.metaFor(item) : null);
 
+	/*
+	 * Sitting sizes worth offering, which depends on what is actually left.
+	 *
+	 * Offering twenty when three remain would quote a cost for seventeen items that do not
+	 * exist, and then end the sitting early for reasons the reviewer cannot see. Below the
+	 * smallest size the only honest offer is "what is left".
+	 */
+	const left = $derived(review.queue.length);
+	const offers = $derived.by(() => {
+		const fits = SITTING_SIZES.filter((n) => n <= left);
+		const sizes: number[] = fits.length > 0 ? [...fits] : left > 0 ? [left] : [];
+		return sizes.map((n) => ({ n, minutes: review.sittingCost(n) }));
+	});
+	const tallied = $derived(review.sittingTally);
+
 	async function carryBatch(name: string) {
 		const s = review.samples.get(name);
 		await review.carryBatch(name);
 		announcer.announce(`${s?.carried.length ?? 0} terms carried by the ${name} draw`);
 	}
 
+	let headingEl = $state<HTMLElement | null>(null);
+
 	async function decide(d: 'approved' | 'needs-change') {
 		if (!item) return;
 		const title = item.title;
 		await review.decide(d);
 		announcer.announce(d === 'approved' ? `Approved: ${title}` : `Flagged: ${title}`);
+		/*
+		 * Put focus on the item that just arrived.
+		 *
+		 * Necessary rather than decorative: a flag is submitted from inside the note, and
+		 * focus stayed there afterwards — so the next `a` typed the letter a into the note
+		 * instead of approving, which breaks the keyboard flow at the exact point it is
+		 * most useful. Moving to the heading also tells a screen reader that the card
+		 * underneath it has changed, which nothing else on this page does.
+		 */
+		requestAnimationFrame(() => headingEl?.focus());
 	}
 
+	let noteEl = $state<HTMLTextAreaElement | null>(null);
+	let showKeys = $state(false);
+
+	/**
+	 * Keys, because the cost of a review is the friction between items.
+	 *
+	 * Approving was already one key and flagging was click, type, click — which had it
+	 * exactly backwards. A flag is the decision that carries information, and it is the one
+	 * worth making cheap. `f` starts one by putting the cursor in the note; Ctrl or Cmd
+	 * with Enter submits it from inside the textarea, since a bare Enter has to stay a
+	 * newline in a field where people write sentences.
+	 */
 	function onKey(e: KeyboardEvent) {
 		const target = e.target as HTMLElement | null;
-		if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return;
-		if (e.key === 'a') {
+		const typing = target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+
+		if (typing) {
+			// The one combination that works while typing: submit the flag being written.
+			if (target?.id === 'note' && e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+				e.preventDefault();
+				void decide('needs-change');
+			}
+			return;
+		}
+
+		if (e.key === '?') {
+			e.preventDefault();
+			showKeys = !showKeys;
+		} else if (e.key === 'a') {
 			e.preventDefault();
 			void decide('approved');
+		} else if (e.key === 'f') {
+			/*
+			 * Starts a flag rather than making one. A flag without a reason cannot be acted
+			 * on later, so the note stays required and this only saves the reach for it.
+			 *
+			 * Focused after the event rather than during it. Moving focus into the textarea
+			 * inside the handler makes it the target for the rest of this keystroke, and
+			 * preventing the default on the window no longer stops the insertion — so the
+			 * note opened with a stray "f" already typed into it.
+			 */
+			e.preventDefault();
+			requestAnimationFrame(() => noteEl?.focus());
 		} else if (e.key === 's') {
 			e.preventDefault();
 			review.skip();
+		} else if (e.key === 'b') {
+			e.preventDefault();
+			review.back();
 		}
 	}
+
+	/** The shortcuts, in one place, because six keys do not fit on button labels. */
+	const KEYS: { key: string; does: string }[] = [
+		{ key: 'A', does: 'Approve' },
+		{ key: 'F', does: 'Start a flag (types into the note)' },
+		{ key: 'Ctrl or ⌘ + Enter', does: 'Submit the flag you are writing' },
+		{ key: 'S', does: 'Skip without deciding' },
+		{ key: 'B', does: 'Back to the previous item' },
+		{ key: '?', does: 'Show or hide this list' }
+	];
 
 	function download() {
 		downloadBlob(
@@ -305,7 +383,101 @@
 		</label>
 	</div>
 
-	{#if item}
+	<!--
+		The sitting. Two and a quarter hours of reading does not get done because two and a
+		quarter hours is not a thing anybody sits down and does; ten items is. This is the
+		same shape the app gives a reader for a study session, pointed at the one person who
+		has to do the reviewing.
+	-->
+	{#if !review.sittingActive}
+		{#if offers.length > 0}
+			<section class="sitting-start" aria-labelledby="sitting-heading">
+				<h2 id="sitting-heading">Do a sitting</h2>
+				<p class="hint">
+					Pick a number and stop when it is done. The whole queue is not a plan; this is.
+				</p>
+				<div class="sizes">
+					{#each offers as o (o.n)}
+						<button type="button" onclick={() => review.startSitting(o.n)}>
+							{o.n === left && o.n < SITTING_SIZES[0] ? `The last ${o.n}` : `${o.n} items`}
+							<span class="cost">about {o.minutes} min</span>
+						</button>
+					{/each}
+				</div>
+			</section>
+		{/if}
+	{:else}
+		<section class="sitting-now" aria-labelledby="sitting-now-heading">
+			<h2 id="sitting-now-heading" class="visually-hidden">This sitting</h2>
+			<p class="sitting-line">
+				<strong data-sitting-done={tallied.done}
+					>{tallied.done} of {review.sittingTarget}</strong
+				>
+				in this sitting · {left}
+				{left === 1 ? 'item' : 'items'} left in this selection
+				<button type="button" class="linkish" onclick={() => review.endSitting()}>
+					End the sitting
+				</button>
+			</p>
+			<div
+				class="sitting-bar"
+				role="progressbar"
+				aria-valuemin={0}
+				aria-valuemax={review.sittingTarget ?? 0}
+				aria-valuenow={tallied.done}
+				aria-label="Items decided in this sitting"
+			>
+				<span
+					class="fill"
+					style="width: {Math.min(
+						100,
+						review.sittingTarget ? (100 * tallied.done) / review.sittingTarget : 0
+					)}%"
+				></span>
+			</div>
+		</section>
+	{/if}
+
+	{#if review.sittingActive && (review.sittingFinished || !item)}
+		<!--
+			The finish line, and the reason the whole thing exists. A queue that never says
+			"that is done" is a queue somebody stops opening.
+		-->
+		<section class="sitting-done" aria-labelledby="sitting-done-heading" data-sitting="done">
+			<h2 id="sitting-done-heading">
+				{review.sittingFinished ? 'Sitting done' : 'Nothing left to read in this selection'}
+			</h2>
+			<p class="figures">
+				<strong>{tallied.done}</strong>
+				{tallied.done === 1 ? 'item' : 'items'} decided ·
+				<strong>{tallied.approved}</strong> approved ·
+				<strong data-sitting-flagged={tallied.flagged}>{tallied.flagged}</strong> flagged
+				{#if review.sittingMinutes() > 0}
+					· started {review.sittingMinutes()} min ago
+				{/if}
+			</p>
+			{#if launch.left > 0}
+				<p class="hint">
+					{launch.left} to read before a release, about {launch.minutes} minutes. Nothing is published
+					until they are exported and applied in git.
+				</p>
+			{/if}
+			<div class="actions">
+				{#if offers.length > 0}
+					<button
+						type="button"
+						class="approve"
+						onclick={() => review.startSitting(offers[0]!.n)}
+					>
+						Another {offers[0]!.n}
+					</button>
+				{/if}
+				<button type="button" onclick={() => review.endSitting()}>
+					Keep going without a sitting
+				</button>
+			</div>
+		</section>
+	{:else if item}
 		<article class="card">
 			<header>
 				<p class="kind">
@@ -314,7 +486,8 @@
 					{#if item.status !== 'in-review'}<span class="status">status: {item.status}</span
 						>{/if}
 				</p>
-				<h2>{item.title}</h2>
+				<!-- Focus target after a decision; see `decide`. -->
+				<h2 tabindex="-1" bind:this={headingEl}>{item.title}</h2>
 				<p class="subtitle">{item.subtitle}</p>
 				{#if meta}
 					<p class="tier-why">
@@ -366,12 +539,14 @@
 				disabled={review.note.trim().length === 0}
 				onclick={() => decide('needs-change')}
 			>
-				Needs a change
+				Needs a change <span class="key">F</span>
 			</button>
 			<button type="button" onclick={() => review.skip()}
 				>Skip <span class="key">S</span></button
 			>
-			<button type="button" onclick={() => review.back()}>Back</button>
+			<button type="button" onclick={() => review.back()}
+				>Back <span class="key">B</span></button
+			>
 		</div>
 
 		<div class="field note">
@@ -379,10 +554,40 @@
 			<textarea
 				id="note"
 				rows="3"
+				bind:this={noteEl}
 				bind:value={review.note}
 				placeholder="The non-example is really an example; the citation does not support the claim; …"
 			></textarea>
+			<p class="hint">
+				Ctrl or ⌘ with Enter submits the flag from here, so a flag never needs the mouse.
+			</p>
 		</div>
+
+		<!--
+			Six keys do not fit on button labels, and a shortcut nobody can find is a shortcut
+			nobody uses. Toggled by the button or by "?".
+		-->
+		<p class="keys-toggle">
+			<button
+				type="button"
+				class="linkish"
+				aria-expanded={showKeys}
+				onclick={() => (showKeys = !showKeys)}
+			>
+				{showKeys ? 'Hide' : 'Show'} keyboard shortcuts
+				<span class="key">?</span>
+			</button>
+		</p>
+		{#if showKeys}
+			<dl class="keys">
+				{#each KEYS as k (k.key)}
+					<div>
+						<dt>{k.key}</dt>
+						<dd>{k.does}</dd>
+					</div>
+				{/each}
+			</dl>
+		{/if}
 	{:else}
 		<p class="done">
 			Nothing left in this selection. Change the filter, uncheck "hide decided", or export
@@ -844,6 +1049,131 @@
 		padding: 0.5rem 0.8rem;
 		font-size: 0.9rem;
 	}
+	/* ------------------------------------------------------------- the sitting */
+
+	.sitting-start,
+	.sitting-now,
+	.sitting-done {
+		max-width: 44rem;
+		margin: 1rem 0;
+	}
+
+	.sitting-start,
+	.sitting-done {
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--border);
+		border-left-width: 4px;
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+	}
+
+	.sitting-start h2,
+	.sitting-done h2 {
+		font-size: 1.05rem;
+		margin: 0 0 0.35rem;
+	}
+
+	.sizes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.sizes button {
+		display: grid;
+		gap: 0.1rem;
+		min-height: var(--tap);
+		padding: 0.4rem 0.8rem;
+	}
+
+	.cost {
+		font-size: 0.8rem;
+		color: var(--text-muted);
+		font-weight: 400;
+	}
+
+	.sitting-line {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.4rem;
+		margin: 0 0 0.35rem;
+		font-size: 0.95rem;
+	}
+
+	/*
+	 * A button that reads as a link. It ends a sitting rather than navigating, so it stays
+	 * a button for the keyboard and the screen reader and only borrows the appearance.
+	 */
+	.linkish {
+		background: none;
+		border: none;
+		padding: 0.25rem;
+		min-height: var(--tap);
+		color: var(--text-muted);
+		text-decoration: underline;
+		cursor: pointer;
+		font-size: 0.9em;
+	}
+
+	.sitting-bar {
+		height: 6px;
+		border-radius: 3px;
+		background: var(--surface);
+		border: 1px solid var(--hair);
+		overflow: hidden;
+	}
+
+	.sitting-bar .fill {
+		display: block;
+		height: 100%;
+		background: var(--accent);
+	}
+
+	.sitting-done .figures {
+		margin: 0 0 0.5rem;
+		font-size: 1.02rem;
+	}
+
+	.card h2:focus-visible {
+		outline: 3px solid var(--focus);
+		outline-offset: 3px;
+	}
+
+	.keys-toggle {
+		margin: 0.5rem 0 0;
+	}
+
+	.keys {
+		display: grid;
+		gap: 0.3rem;
+		max-width: 34rem;
+		margin: 0.4rem 0 0;
+		padding: 0.6rem 0.8rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--surface);
+		font-size: 0.9rem;
+	}
+
+	.keys div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: baseline;
+	}
+
+	.keys dt {
+		flex: none;
+		font-weight: 600;
+		font-family: var(--mono, ui-monospace, monospace);
+	}
+
+	.keys dd {
+		margin: 0;
+		color: var(--text-muted);
+	}
+
 	.actions {
 		display: flex;
 		flex-wrap: wrap;

@@ -173,3 +173,18 @@ test('the retry offer and a retry run in progress are accessible', async ({ page
 	await expect(page.locator('.progress')).toContainText('one you missed before');
 	await expectNoA11yViolations(page);
 });
+
+test('a review sitting, its shortcut list and its finish line are accessible', async ({
+	page
+}) => {
+	await page.goto('/review');
+	await expect(page.locator('article.card').first()).toBeVisible({ timeout: 30_000 });
+	await page.getByRole('button', { name: /^5 items/ }).click();
+	await page.keyboard.press('?');
+	await expect(page.locator('dl.keys')).toBeVisible();
+	await expectNoA11yViolations(page);
+
+	for (let i = 0; i < 5; i++) await page.getByRole('button', { name: /^Approve/ }).click();
+	await expect(page.locator('[data-sitting="done"]')).toBeVisible();
+	await expectNoA11yViolations(page);
+});

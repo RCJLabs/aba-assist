@@ -17,10 +17,20 @@ import {
 	type ReviewTier,
 	type Sample
 } from '$lib/content/tier.js';
+import {
+	estimateMinutes,
+	isFinished,
+	minutesElapsed,
+	restore,
+	serialise,
+	tally,
+	type Sitting
+} from '$lib/review/sitting.js';
 
 export type ReviewStatus = 'idle' | 'loading' | 'ready' | 'unavailable';
 
 const REVIEWER_KEY = 'aba-assist:reviewer';
+const SITTING_KEY = 'aba-assist:review:sitting';
 
 /**
  * The content-review queue.
@@ -62,6 +72,21 @@ class Review {
 	reviewer = $state('');
 	note = $state('');
 
+	/**
+	 * A sitting: how many items this reviewer said they would decide now.
+	 *
+	 * The launch set is about two and a quarter hours of reading, and nothing gets read
+	 * because two and a quarter hours is not a thing anybody sits down and does. Ten items
+	 * is. This is the same shape the app already gives a reader for a study session and a
+	 * drill sitting, pointed at the one person who has to do the reviewing.
+	 *
+	 * Null means no sitting, which is the behaviour this page has always had: an
+	 * open-ended queue you leave when you leave.
+	 */
+	sittingTarget = $state<number | null>(null);
+	/** When the current sitting began, and the clock that decides what counts towards it. */
+	sittingStartedAt = $state(0);
+
 	async load(): Promise<void> {
 		if (!browser || this.status === 'loading' || this.status === 'ready') return;
 		this.status = 'loading';
@@ -71,6 +96,7 @@ class Review {
 		} catch {
 			// Storage blocked; the reviewer can retype their id.
 		}
+		this.#restoreSitting();
 		this.items = await loadReviewItems();
 		try {
 			const existing = await getDecisions();
@@ -259,6 +285,83 @@ class Review {
 		return { total, left, minutes: Math.ceil(minutes) };
 	}
 
+	/*
+	 * ---------------------------------------------------------------- the sitting
+	 *
+	 * The arithmetic lives in `$lib/review/sitting.js` and is unit-tested there; this only
+	 * holds the reactive state and talks to storage. Progress is derived from the stored
+	 * decisions rather than kept in a counter, so a reload cannot desync it and no future
+	 * path that records a decision can forget to count.
+	 */
+
+	/** The sitting, or null for the open-ended queue this page has always had. */
+	get sitting(): Sitting | null {
+		return this.sittingTarget === null
+			? null
+			: { target: this.sittingTarget, startedAt: this.sittingStartedAt };
+	}
+
+	startSitting(target: number): void {
+		this.sittingTarget = target;
+		this.sittingStartedAt = Date.now();
+		this.#saveSitting();
+	}
+
+	endSitting(): void {
+		this.sittingTarget = null;
+		this.sittingStartedAt = 0;
+		this.#saveSitting();
+	}
+
+	#saveSitting(): void {
+		try {
+			const sitting = this.sitting;
+			if (!sitting) localStorage.removeItem(SITTING_KEY);
+			else localStorage.setItem(SITTING_KEY, serialise(sitting));
+		} catch {
+			// Storage blocked. The sitting still works for as long as the page is open.
+		}
+	}
+
+	#restoreSitting(): void {
+		let raw: string | null;
+		try {
+			raw = localStorage.getItem(SITTING_KEY);
+		} catch {
+			// Storage blocked. There is nothing to restore and nothing to clear.
+			return;
+		}
+		const saved = restore(raw, Date.now());
+		if (!saved) {
+			// Expired or not ours. Clear it rather than leaving it to be re-read forever.
+			if (raw !== null) this.endSitting();
+			return;
+		}
+		this.sittingTarget = saved.target;
+		this.sittingStartedAt = saved.startedAt;
+	}
+
+	get sittingTally() {
+		return tally(Object.values(this.decisions), this.sittingStartedAt);
+	}
+
+	get sittingActive(): boolean {
+		return this.sittingTarget !== null;
+	}
+
+	get sittingFinished(): boolean {
+		return isFinished(this.sitting, this.sittingTally.done);
+	}
+
+	sittingMinutes(now = Date.now()): number {
+		return minutesElapsed(this.sitting, now);
+	}
+
+	/** Roughly what the next `n` items in this queue would cost, in minutes. */
+	sittingCost(n: number): number {
+		return estimateMinutes(this.queue.slice(0, n).map((i) => this.metaFor(i).tier));
+	}
+
 	setTier(tier: ReviewTier | 'all'): void {
 		this.tier = tier;
 		this.index = 0;
@@ -301,7 +404,27 @@ class Review {
 		this.note = '';
 	}
 
-	async decide(decision: 'approved' | 'needs-change'): Promise<void> {
+	/**
+	 * Decisions run one at a time, in the order they were asked for.
+	 *
+	 * `decide` awaits the write before the queue updates, so two quick presses both used to
+	 * read the same `current` — the second decided the item already being decided, and the
+	 * item after it was stepped past without ever being decided at all. At mouse speed that
+	 * was unreachable; on a keyboard sitting, holding `a` is the normal way to work.
+	 *
+	 * Chaining rather than dropping the second press: the reviewer meant to decide two
+	 * items, so the second waits and then reads the queue fresh, which by then has moved on.
+	 */
+	#pending: Promise<void> = Promise.resolve();
+
+	decide(decision: 'approved' | 'needs-change'): Promise<void> {
+		const run = this.#pending.then(() => this.#decideOne(decision));
+		// Swallowed on this branch only, so one failure cannot poison every later decision.
+		this.#pending = run.catch(() => {});
+		return run;
+	}
+
+	async #decideOne(decision: 'approved' | 'needs-change'): Promise<void> {
 		const item = this.current;
 		if (!item) return;
 		if (decision === 'needs-change' && this.note.trim().length === 0) return;
@@ -343,6 +466,8 @@ class Review {
 		this.decisions = {};
 		this.index = 0;
 		this.note = '';
+		// The sitting counted decisions that no longer exist, so it is over too.
+		this.endSitting();
 	}
 
 	/** The payload `apply-review` consumes. */

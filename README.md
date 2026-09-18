@@ -150,6 +150,47 @@ whole file by YAML anchor. The moment one question in that file is decided diffe
 from its neighbours the anchor is no longer true, so the tool writes every block in that
 file out in full. That is why an approval of one question can show up as a large diff.
 
+### A sitting, because two hours is not a plan either
+
+The tiering made the total tractable — the launch set is about 137 minutes rather than
+456 items — and 137 minutes still did not get done, for a reason that has nothing to do
+with the number. Two and a quarter hours is not a thing anybody sits down and does. Ten
+items is.
+
+So `/review` offers a sitting: pick 5, 10 or 20, see roughly what it costs before
+starting, get a position and a bar while you work, and get a finish line that says what
+was decided and offers the next one. The sizes are deliberately small, and each is priced
+from the tiers of the items actually about to be offered rather than a corpus average,
+because tier A and tier C differ by four times and the question being answered is "have I
+got time for this right now".
+
+Progress is derived from the stored decisions rather than kept in a counter. A counter
+would have to be incremented by every path that records a decision, and the first path
+anybody forgot would report a sitting that did not happen — on this page, that means
+overstating how much of the corpus a human has read, which is the one number here it
+would be worst to inflate. Deriving it also means a sitting survives a reload or an
+evicted tab for free, which matters because a reviewer doing this on a phone will hit
+both. Terms carried by a draw are excluded: carrying a batch is what you do _instead_ of
+reading it, so counting thirty carried terms would finish a sitting of ten without
+anybody reading anything.
+
+The keys matter as much as the sitting does, because the cost of a review is the friction
+between items. `a` approves, `f` starts a flag by putting the cursor in the note,
+Ctrl or ⌘ with Enter submits that flag without leaving the keyboard, `s` skips, `b` goes
+back and `?` lists the lot. Flagging used to be click, type, click while approving was one
+key, which had it backwards: the flag is the decision that carries information. A flag
+still requires a note, because a flag nobody can act on later is not a flag.
+
+Two real defects surfaced while testing that flow, both unreachable at mouse speed:
+
+- **Two quick approvals decided the same item twice.** `decide` awaited the write before
+  the queue updated, so the second press still read the old `current`, and the item after
+  it was stepped past without ever being decided. Decisions are chained now, so the second
+  press waits and then reads the queue fresh.
+- **Focus stayed in the note after a flag was submitted**, so the next `a` typed the
+  letter a into the textarea instead of approving. Focus now moves to the new item's
+  heading after every decision, which also tells a screen reader the card changed.
+
 ### The two structural guards
 
 Both make the wrong thing impossible to express, rather than something a reviewer has to
