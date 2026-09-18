@@ -581,7 +581,7 @@ domains:
           originalProse: true
           noVerbatimSource: true
           consulted: Task topic from the outline; summary written independently.
-review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14', nextReviewDue: '2099-01-01' }
 provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 `;
 
@@ -652,7 +652,7 @@ domains:
     name: Data Collection and Graphing
     examWeightPercent: null
     ourDescription: Recording what happened during a session and putting it on a graph so change is visible.
-review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14', nextReviewDue: '2099-01-01' }
 provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 `;
 
@@ -759,7 +759,7 @@ sections:
     title: The examination
     items:
       - { label: Questions, value: '85 in total, 75 of them scored.' }
-review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14' }
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14', nextReviewDue: '2099-01-01' }
 provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 ${extra}`;
 
@@ -1266,7 +1266,7 @@ sections:
   - number: '2'
     ourLabel: How you deliver services
     ourSummary: Your obligations while working with people, including following the plan and protecting information.
-review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-15' }
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-15', nextReviewDue: '2099-01-01' }
 provenance: { license: CC-BY-SA-4.0, updated: '2026-09-15' }
 ${extra}`;
 
@@ -1752,5 +1752,101 @@ describe('the examples in the search index', () => {
 	it('ranks a term below one whose definition is actually about the query', async () => {
 		const hits = await search('duration');
 		expect(hits[0]!.i).toBe('duration');
+	});
+});
+
+describe('facts that expire have to say when', () => {
+	/*
+	 * `nextReviewDue` sat in the schema from the first commit, was set by no content file
+	 * and read by no code — a staleness mechanism that existed as a field name, which is
+	 * worse than none because it makes the gap look handled. These are the rules that make
+	 * it real, and they are deliberately of different severities.
+	 */
+	const outline = (extra = '') => `
+id: rbt-tco-3
+credential: RBT
+edition: '3rd'
+effectiveDate: '2026-01-01'
+issuer: BACB
+sourceId: open-source-doc
+countsVerified: false
+totalTasks: 43
+exam: { scoredItems: 75, unscoredItems: 10, minutes: 90 }
+domains:
+  - letter: C
+    name: Behavior Acquisition
+    examWeightPercent: 100
+    examItems: 75
+    ourDescription: Teaching new skills, prompting and fading, and running programs as written every time.
+    tasks:
+      - code: C.1
+        ourSummary: Run a teaching program the way it is written, including its prompting procedure.
+        plainSummary: Run the program as written.
+        attestation:
+          originalProse: true
+          noVerbatimSource: true
+          consulted: Task topic from the outline; summary written independently.
+review: { status: in-review, authoredBy: tester, authoredOn: '2026-09-14'${extra} }
+provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
+`;
+
+	const allRules = (r: Awaited<ReturnType<typeof compile>>) =>
+		[...r.errors, ...r.warnings].map((i) => i.rule);
+
+	it('REFUSES an outline with no re-check date, in every channel', async () => {
+		/*
+		 * Structural rather than time-based, and that is the point: it can be refused
+		 * without reference to the clock, so no build ever starts failing because a date
+		 * rolled over while nobody was looking.
+		 */
+		for (const channel of ['dev', 'pr', 'release'] as const) {
+			const r = await build({ 'taxonomy/rbt-tco-3.yaml': outline() }, channel);
+			expect(allRules(r)).toContain('staleness/no-due-date');
+		}
+	});
+
+	it('accepts one that says when', async () => {
+		const r = await build(
+			{ 'taxonomy/rbt-tco-3.yaml': outline(", nextReviewDue: '2099-01-01'") },
+			'pr'
+		);
+		expect(allRules(r)).not.toContain('staleness/no-due-date');
+		expect(allRules(r)).not.toContain('staleness/overdue');
+	});
+
+	it('warns about a passed date without stopping an ordinary build', async () => {
+		/*
+		 * The difference between a ratchet and a time bomb. An overdue handbook must not
+		 * ship as though it were checked, and must also not block an unrelated fix at three
+		 * in the morning.
+		 */
+		const r = await build(
+			{ 'taxonomy/rbt-tco-3.yaml': outline(", nextReviewDue: '2020-01-01'") },
+			'pr'
+		);
+		const overdue = [...r.errors, ...r.warnings].filter((i) => i.rule === 'staleness/overdue');
+		expect(overdue).toHaveLength(1);
+		expect(overdue[0]!.severity).toBe('warning');
+	});
+
+	it('stops the same build calling itself a release', async () => {
+		const r = await build(
+			{ 'taxonomy/rbt-tco-3.yaml': outline(", nextReviewDue: '2020-01-01'") },
+			'release'
+		);
+		const overdue = [...r.errors, ...r.warnings].filter((i) => i.rule === 'staleness/overdue');
+		expect(overdue).toHaveLength(1);
+		expect(overdue[0]!.severity).toBe('error');
+		expect(overdue[0]!.message).toContain('2020-01-01');
+	});
+
+	it('says how far overdue, so the message is worth reading on its own', async () => {
+		const r = await build(
+			{ 'taxonomy/rbt-tco-3.yaml': outline(", nextReviewDue: '2020-01-01'") },
+			'release'
+		);
+		expect(r.errors.find((i) => i.rule === 'staleness/overdue')!.message).toMatch(
+			/\d+ days ago/
+		);
 	});
 });

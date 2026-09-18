@@ -577,6 +577,10 @@ review:
   authoredOn: '2026-09-15'
   reviewedBy: null
   reviewedOn: null
+  # Our own re-check horizon, not a date the issuer publishes.
+  # The 3rd edition took effect 2026-01-01 and no successor is announced, so this is a
+  # periodic confirmation rather than a deadline.
+  nextReviewDue: '2027-06-30'
   changeNote: >-
     All 43 task codes filled in from the outline document (updated 09/2024), with original
     summaries. Domains, weights, item counts and exam format verified.

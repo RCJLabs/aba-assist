@@ -684,6 +684,10 @@ review:
   authoredOn: '2026-09-15'
   reviewedBy: null
   reviewedOn: null
+  # Our own re-check horizon, not a date the issuer publishes.
+  # Effective 2022-01-01 and still current with no announced successor. A yearly look is
+  # enough for a document that has not moved in four years.
+  nextReviewDue: '2027-06-30'
   changeNote: >-
     Rewritten from the code document itself; all 85 standards now modeled with our own
     labels and summaries.

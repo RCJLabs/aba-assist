@@ -29,10 +29,17 @@ import {
 	type SearchIndexEntry,
 	type TermIndexEntry
 } from '@aba/content-schema';
-import { MIN_INTENT_TOKENS, intentTokens } from '@aba/content-schema/runtime';
+import {
+	MIN_INTENT_TOKENS,
+	describeDue,
+	intentTokens,
+	isVolatileKind,
+	reviewSchedule,
+	type DatedItem
+} from '@aba/content-schema/runtime';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
 import type { CompileOptions, CompileResult, EmittedAsset, Issue } from './types.js';
-import { error } from './types.js';
+import { error, warning as warn } from './types.js';
 import {
 	checkAliasCollisions,
 	checkDuplicateProse,
@@ -44,6 +51,51 @@ import {
 	checkSchema,
 	checkScenarioSafety
 } from './validate.js';
+
+/**
+ * The facts that carry a re-check date, in one place.
+ *
+ * Shared by the build rule and by the file the app reads, because two lists of the same
+ * thing drift: the rule would refuse a build over an item the page never mentioned, or
+ * the page would report a schedule the rule was not enforcing.
+ */
+function datedItems(
+	outlines: readonly z_Outline[],
+	credentials: readonly z_Credential[],
+	ethicsCodes: readonly z_EthicsCode[],
+	competencies: readonly z_Competency[]
+): DatedItem[] {
+	return [
+		...outlines.map((o) => ({
+			id: o.id,
+			kind: 'outline',
+			label: `${o.credential} outline ${o.edition}`,
+			against: o.edition,
+			nextReviewDue: o.review.nextReviewDue
+		})),
+		...credentials.map((c) => ({
+			id: c.id,
+			kind: 'credential',
+			label: c.label,
+			against: `handbook ${c.handbookVersion}`,
+			nextReviewDue: c.review.nextReviewDue
+		})),
+		...ethicsCodes.map((c) => ({
+			id: c.id,
+			kind: 'ethics-code',
+			label: c.shortName,
+			against: `effective ${c.effectiveDate}`,
+			nextReviewDue: c.review.nextReviewDue
+		})),
+		...competencies.map((c) => ({
+			id: c.id,
+			kind: 'competency',
+			label: `${c.credential} ${c.name}`,
+			against: `effective ${c.effectiveDate}`,
+			nextReviewDue: c.review.nextReviewDue
+		}))
+	];
+}
 
 function sha256(s: string): string {
 	return createHash('sha256').update(s).digest('hex');
@@ -830,6 +882,68 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	const keep = (ids: string[], pool: Set<string>) => ids.filter((id) => pool.has(id));
 
 	/*
+	 * ------------------------------------------------------------------- staleness
+	 *
+	 * What this app sells is being right about 2026, and the failure mode it was built
+	 * against is content keyed to an edition that has since been replaced, still on sale,
+	 * with nothing on the page admitting it. Every incumbent was accurate the day it
+	 * shipped.
+	 *
+	 * `nextReviewDue` has been in the schema since the beginning, was never set by a single
+	 * content file and was never read by any code — a staleness mechanism that existed as a
+	 * field name. These two rules are what make it real, and they are deliberately of
+	 * different severities.
+	 *
+	 * A volatile fact with no date at all is an error in every channel. It is a structural
+	 * question — nobody decided how long this was good for — so it can be refused
+	 * immediately and without reference to the clock, which means no build can start
+	 * failing because a date rolled over.
+	 *
+	 * A date that has passed only stops a release. That is the difference between a ratchet
+	 * and a time bomb: an overdue handbook must not ship as though it were checked, but it
+	 * must also not block an unrelated fix at three in the morning. The release channel
+	 * already downgrades to a preview rather than failing, so an overdue fact does what an
+	 * unapproved one does — the app still publishes, carries its banner, and stays out of
+	 * the index until somebody has looked.
+	 */
+	const dated = datedItems(allOutlines, credentials, ethicsCodes, competencies);
+
+	for (const d of dated) {
+		if (!isVolatileKind(d.kind)) continue;
+		if (d.nextReviewDue === null) {
+			push(
+				error(
+					'staleness/no-due-date',
+					`${d.kind} "${d.id}" restates facts from a document its issuer maintains, so it ` +
+						`must say when it is due to be checked again (review.nextReviewDue). ` +
+						`Without one nothing can tell a fact that was confirmed last week from one ` +
+						`nobody has looked at since 2024.`
+				)
+			);
+		}
+	}
+
+	const schedule = reviewSchedule(dated, Date.now());
+
+	if (withholding) {
+		for (const row of schedule.overdue) {
+			push(
+				error(
+					'staleness/overdue',
+					`${row.kind} "${row.id}" was due to be checked against its source on ` +
+						`${row.nextReviewDue} and has not been. A release may not restate a ` +
+						`maintained document as current on the strength of a check that expired ` +
+						`${Math.abs(row.days)} days ago; until it is re-checked the build is a preview.`
+				)
+			);
+		}
+	} else {
+		for (const row of schedule.overdue) {
+			push(warn('staleness/overdue', describeDue(row)));
+		}
+	}
+
+	/*
 	 * Four kinds have to be complete rather than grow one entry at a time. They are the
 	 * spine everything else hangs from, and a partial one is not a smaller app but a broken
 	 * or an unsafe one — an unapproved outline empties the exam filters and the quiz
@@ -1584,6 +1698,24 @@ function buildAssets(
 		name: 'search-index',
 		fileName: `${base}/search-index.json`,
 		source: JSON.stringify(mini),
+		fetchedAtRuntime: false
+	});
+
+	/*
+	 * The re-check schedule, shipped so the app can say it out loud.
+	 *
+	 * A build rule that only a maintainer ever sees is half the mechanism. The claim this
+	 * app makes is that its facts are current, and the honest version of that claim names
+	 * the date each one was last good for.
+	 */
+	assets.push({
+		name: 'review-schedule',
+		fileName: `${base}/review-schedule.json`,
+		source: JSON.stringify(
+			datedItems(outlines, credentials, ethicsCodes, competencies).sort((a, b) =>
+				(a.nextReviewDue ?? '').localeCompare(b.nextReviewDue ?? '')
+			)
+		),
 		fetchedAtRuntime: false
 	});
 

@@ -991,6 +991,9 @@ review:
   authoredOn: '2026-09-16'
   reviewedBy: null
   reviewedOn: null
+  # Our own re-check horizon, not a date the issuer publishes.
+  # Same edition and the same cutoff as the analyst outline, checked at the same time.
+  nextReviewDue: '2027-01-31'
   changeNote: >-
     Codes, counts, weights and per-domain question counts read from the official outline
     (updated 09/2024). Summaries are original and await review. The exam's time limit is

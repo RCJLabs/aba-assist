@@ -291,6 +291,9 @@ review:
   authoredOn: '2026-09-15'
   reviewedBy: null
   reviewedOn: null
+  # Our own re-check horizon, not a date the issuer publishes.
+  # Same footing as the analyst code: effective 2022-01-01, no successor announced.
+  nextReviewDue: '2027-06-30'
   changeNote: >-
     Rewritten from the code document itself; all 29 standards now modeled with our own
     labels and summaries, and the four core principles corrected.

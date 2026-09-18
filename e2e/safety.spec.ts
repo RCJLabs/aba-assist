@@ -192,3 +192,23 @@ test('using the app sends nothing to anybody', async ({ page, baseURL }) => {
 
 	expect(offsite).toEqual([]);
 });
+
+test('the app says when its restated facts are due to be checked again', async ({ page }) => {
+	/*
+	 * The claim this app makes is that its facts are current, and the honest version of
+	 * that claim names the date each one was last good for. The build refuses a volatile
+	 * file with no date and refuses to call itself a release once one has passed; this is
+	 * the half a reader can see.
+	 */
+	await page.goto('/about');
+	await expect(
+		page.getByRole('heading', { name: 'When these facts get checked again' })
+	).toBeVisible();
+
+	const rows = page.locator('table.schedule tbody tr');
+	// Three outlines, three credentials, two ethics codes, one competency model.
+	await expect(rows).toHaveCount(9);
+	// Every one carries a date; "not set" would mean the build rule had stopped working.
+	await expect(page.locator('table.schedule')).not.toContainText('not set');
+	await expect(rows.first()).toContainText(/\d{4}-\d{2}-\d{2}/);
+});

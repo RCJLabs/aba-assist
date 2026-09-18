@@ -1,6 +1,7 @@
 import {
 	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
 	CATEGORY_ORDER,
+	type DatedItem,
 	type IntentRoute
 } from '@aba/content-schema/runtime';
 import type {
@@ -14,6 +15,7 @@ import index from './generated/terms.index.json';
 import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
 import intents from './generated/intents.json';
+import schedule from './generated/review-schedule.json';
 
 export const termIndex = index as TermIndexEntry[];
 
@@ -25,6 +27,15 @@ export const termIndex = index as TermIndexEntry[];
  * card: that lookup has to answer on the first keystroke, offline, before anything loads.
  */
 export const intentRoutes = intents as IntentRoute[];
+
+/**
+ * When each restated fact is due to be checked against its source again.
+ *
+ * Shipped in the bundle rather than fetched, because it is a few hundred bytes and
+ * because the page that shows it is the page somebody opens to decide whether to trust
+ * this app at all — which is not a moment to be waiting on a request.
+ */
+export const reviewScheduleRows = schedule as DatedItem[];
 export const contentVersion = version as {
 	contentVersion: string;
 	channel: string;

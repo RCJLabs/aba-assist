@@ -31,6 +31,19 @@ export {
 } from './settings.js';
 export { SEARCH_FIELDS, searchOptions, type AbaSearchOptions } from './search-options.js';
 export {
+	DUE_SOON_DAYS,
+	VOLATILE_KINDS,
+	daysUntil,
+	describeDue,
+	isVolatileKind,
+	reviewSchedule,
+	stalenessOf,
+	type DatedItem,
+	type Staleness,
+	type StalenessReport,
+	type StalenessRow
+} from './staleness.js';
+export {
 	HOUSE_IDIOM,
 	HOUSE_SPELLINGS,
 	houseStyleHits,

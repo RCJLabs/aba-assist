@@ -13,3 +13,4 @@ export * from './compiled.js';
 export * from './search-options.js';
 export * from './competency.js';
 export * from './house-style.js';
+export * from './staleness.js';

@@ -440,6 +440,51 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## Facts that expire now have to say when
+
+Being right about 2026 is what this app is for, and the failure mode it was built against
+is the one killing the incumbents: content keyed to an edition that has since been
+replaced, still on sale, with nothing on the page admitting it. Every one of those apps
+was accurate the day it shipped.
+
+`Review.nextReviewDue` had been in the schema from the first commit. No content file ever
+set it and no code ever read it — a staleness mechanism that existed as a field name,
+which is worse than none, because it makes the gap look handled.
+
+**Only some content can go stale, and saying which is the design.** A definition written
+from Michael 1982 does not rot; the paper is not going to be reissued with different
+contents. What rots is anything restated from a document a certifying body maintains and
+republishes — task codes, exam weights, cycle lengths, unit counts. So the requirement
+attaches to four kinds (outlines, credentials, ethics codes, competency models) rather
+than to all 259 terms, where it would be noise burying nine files that matter. It attaches
+to the _kind_, so a new credential is covered the moment it is added rather than when
+somebody remembers.
+
+Two rules, deliberately of different severities:
+
+- **`staleness/no-due-date` is an error in every channel.** It is a structural question —
+  nobody decided how long this fact was good for — so it is refused without reference to
+  the clock. No build can start failing because a date rolled over overnight.
+- **`staleness/overdue` only stops a release.** That is the difference between a ratchet
+  and a time bomb. An overdue handbook must not ship as though it were checked, and must
+  also not block an unrelated fix at three in the morning. The release channel already
+  downgrades to a preview, so an overdue fact does exactly what an unapproved one does: the
+  app still publishes, carries its banner and stays out of the index until somebody looks.
+
+Both were confirmed by backdating a real file and watching: on `pr` a warning and a build
+that still succeeds, on `release` an error naming the date and how many days have passed.
+
+The dates are **our** re-check horizons, not dates anybody publishes, and each one says why
+in the file beside it. The technician handbook and competency model are anchored to January
+2027, when the recertification change lands and those numbers are most likely to be wrong;
+the analyst outlines to the same month, when the applicant cutoff makes the edition worth
+confirming; the ethics codes to mid-2027, since both have been effective and unchanged
+since 2022.
+
+`/about` shows the whole schedule, because a build rule only a maintainer sees is half a
+mechanism. The list the page renders and the list the rule enforces come from one function,
+so they cannot drift into disagreeing about what is covered.
+
 ## Search has a floor now, and it is a measured one
 
 Search had no measure at all. The only query-level tests in the repo were the escalation

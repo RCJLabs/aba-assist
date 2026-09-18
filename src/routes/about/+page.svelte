@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { contentVersion, termIndex } from '$lib/content/load.js';
+	import { reviewScheduleRows, contentVersion, termIndex } from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
 
 	import { REPO_URL } from '$lib/config.js';
@@ -113,7 +113,59 @@
 	cached copy. Reconnecting and reopening the app will update it.
 </p>
 
+<h2 class="section-head">When these facts get checked again</h2>
+<p>
+	Task codes, exam weights, cycle lengths and unit counts are restated from documents the
+	certifying bodies maintain and republish, so they expire. Each one carries the date we have
+	committed to checking it against its source again, and the build will not call itself a
+	release once any of them has passed — it publishes as a preview instead, with the banner on.
+	These are our own deadlines, not dates anybody else publishes.
+</p>
+<table class="schedule">
+	<caption class="visually-hidden">Facts restated from a maintained document</caption>
+	<thead>
+		<tr>
+			<th scope="col">What</th>
+			<th scope="col">Checked against</th>
+			<th scope="col">Re-check by</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each reviewScheduleRows as row (row.id)}
+			<tr>
+				<th scope="row">{row.label}</th>
+				<td>{row.against ?? '—'}</td>
+				<td>{row.nextReviewDue ?? 'not set'}</td>
+			</tr>
+		{/each}
+	</tbody>
+</table>
+
 <style>
+	.schedule {
+		border-collapse: collapse;
+		width: 100%;
+		max-width: 44rem;
+		font-size: 0.92rem;
+	}
+
+	.schedule th,
+	.schedule td {
+		text-align: left;
+		padding: 0.35rem 0.5rem;
+		border-bottom: 1px solid var(--border);
+		vertical-align: top;
+	}
+
+	.schedule th[scope='row'] {
+		font-weight: 500;
+	}
+
+	.schedule td {
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+	}
+
 	h1 {
 		font-size: 1.5rem;
 	}
