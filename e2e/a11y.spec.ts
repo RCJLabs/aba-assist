@@ -188,3 +188,22 @@ test('a review sitting, its shortcut list and its finish line are accessible', a
 	await expect(page.locator('[data-sitting="done"]')).toBeVisible();
 	await expectNoA11yViolations(page);
 });
+
+test('the lost-data notice is accessible', async ({ page }) => {
+	/*
+	 * It carries `role="alert"`, which is the right role for something the reader did not
+	 * ask for and needs to know — and exactly the kind of thing that fails a contrast or
+	 * naming check unnoticed, because it only renders in a state nobody browses to.
+	 */
+	await page.goto('/study');
+	await expect(page.locator('[data-study-status]')).toBeAttached({ timeout: 30_000 });
+	await page.evaluate(() =>
+		localStorage.setItem(
+			'aba-assist:data-witness',
+			JSON.stringify({ seenAt: Date.now() - 9 * 86_400_000 })
+		)
+	);
+	await page.reload();
+	await expect(page.locator('[data-data-lost]')).toBeVisible({ timeout: 30_000 });
+	await expectNoA11yViolations(page);
+});

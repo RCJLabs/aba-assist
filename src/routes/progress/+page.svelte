@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import BarSeries from '$lib/components/BarSeries.svelte';
@@ -71,6 +72,8 @@
 <div data-progress-status={progress.status}></div>
 
 <h1>How it is going</h1>
+
+<DataLostNotice />
 
 <p class="lede">
 	Worked out from what this device has already recorded. Nothing new is stored to produce it

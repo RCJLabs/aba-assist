@@ -16,6 +16,15 @@ import {
 	validateBackup,
 	type BackupReport
 } from '$lib/db/backup.js';
+import {
+	assess,
+	daysSinceSeen,
+	parseWitness,
+	serialiseWitness,
+	WITNESS_KEY,
+	type DataState,
+	type Witness
+} from '$lib/db/witness.js';
 import { downloadBlob } from '$lib/util/download.js';
 
 const LAST_BACKUP_KEY = 'aba-assist:last-backup';
@@ -41,6 +50,16 @@ class Storage {
 	lastBackup = $state<number | null>(null);
 	/** Filled by whoever knows whether there is anything stored yet. */
 	hasData = $state(false);
+	/**
+	 * Whether data that used to be here has gone.
+	 *
+	 * See `$lib/db/witness.js` for what this can and cannot catch — the short version is
+	 * that it catches a loss of IndexedDB alone and cannot catch a sweep that takes
+	 * localStorage with it, which is the Safari case. That one is warned about in advance
+	 * instead, further down this page.
+	 */
+	dataState = $state<DataState>('unknown');
+	witness = $state<Witness | null>(null);
 	busy = $state(false);
 	message = $state('');
 	report = $state<BackupReport | null>(null);
@@ -53,12 +72,76 @@ class Storage {
 		} catch {
 			// Storage blocked; the nudge just behaves as though there has never been one.
 		}
+		try {
+			this.witness = parseWitness(localStorage.getItem(WITNESS_KEY));
+		} catch {
+			// Storage blocked; nothing can be concluded, and `assess` says so.
+			this.witness = null;
+		}
 		void this.refreshPersist();
-		void hasStoredData()
-			.then((has) => (this.hasData = has))
-			.catch(() => {
-				// No database, so nothing to lose and nothing to nag about.
-			});
+		void this.checkData();
+	}
+
+	/**
+	 * Read the database and decide what its state means.
+	 *
+	 * `hasStoredData` throwing is passed on as null rather than as false, which is the
+	 * whole reason this is not one line. A database that cannot be opened — blocked
+	 * storage, a private window, a browser refusing IndexedDB — looks exactly like an
+	 * empty one from out here, and the difference between "you have nothing" and "this
+	 * session cannot see what you have" is the difference between a fair warning and a
+	 * false alarm about lost work.
+	 */
+	async checkData(): Promise<void> {
+		if (!browser) return;
+		let has: boolean | null;
+		try {
+			has = await hasStoredData();
+		} catch {
+			has = null;
+		}
+		this.hasData = has === true;
+		this.dataState = assess(this.witness, has);
+		// Seeing data is what makes a later absence meaningful, so record it every time.
+		if (has === true) this.noteDataSeen();
+	}
+
+	/** Record that the database had something in it, so a later emptiness means something. */
+	private noteDataSeen(): void {
+		const w = { seenAt: Date.now() };
+		this.witness = w;
+		try {
+			localStorage.setItem(WITNESS_KEY, serialiseWitness(w));
+		} catch {
+			// Storage blocked. Nothing is witnessed, which reads as "cannot tell" later —
+			// the safe direction.
+		}
+	}
+
+	/** Stop reporting a clearance the reader already knows about. */
+	private forgetWitness(): void {
+		this.witness = null;
+		this.dataState = 'fresh';
+		try {
+			localStorage.removeItem(WITNESS_KEY);
+		} catch {
+			// Storage blocked.
+		}
+	}
+
+	/** How long ago the app last saw data on this device, in whole days. */
+	get daysSinceData(): number | null {
+		return this.witness === null ? null : daysSinceSeen(this.witness, Date.now());
+	}
+
+	/**
+	 * Acknowledge a reported clearance without restoring anything.
+	 *
+	 * Somebody who has no backup can do nothing about it, and a notice they cannot act on
+	 * and cannot dismiss is just a scold on every visit.
+	 */
+	dismissClearedNotice(): void {
+		if (this.dataState === 'cleared') this.forgetWitness();
 	}
 
 	async refreshPersist(): Promise<void> {
@@ -171,6 +254,9 @@ class Storage {
 			}
 			await restoreAll(result.data);
 			this.report = result.report;
+			// Restored data is data: witness it, and stop reporting the loss it just fixed.
+			this.noteDataSeen();
+			this.dataState = 'present';
 			const rows = totalRows(result.report.counts);
 			this.message = `Restored ${rows} ${rows === 1 ? 'record' : 'records'}.`;
 			this.noteBackup();
@@ -193,6 +279,12 @@ class Storage {
 			resetDbHandle();
 			this.hasData = false;
 			this.lastBackup = null;
+			/*
+			 * Deleting your own data is not a clearance to be warned about. Without this
+			 * the app would greet somebody who had just pressed "delete everything" with a
+			 * notice that their data had gone, which is both obvious and alarming.
+			 */
+			this.forgetWitness();
 			try {
 				localStorage.removeItem(LAST_BACKUP_KEY);
 			} catch {

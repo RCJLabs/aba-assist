@@ -440,6 +440,51 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## Saying so when the browser has cleared somebody's data
+
+Settings has warned about this from the start: Safari and iOS clear a non-installed site's
+storage after about a week of inactivity, which for spaced repetition is exactly backwards
+— the reader who studies once a week is who the scheduling is for, and who loses it.
+
+What nothing did was notice _afterwards_. A reader whose deck had been cleared opened
+`/study` and read "nothing to review yet", opened `/progress` and read "no finished
+sittings yet" — the same words a new reader sees. The app that had just lost a year of
+supervision records said nothing about it and offered no restore, which is the difference
+between an app with a known limitation and an app that looks broken.
+
+So the app now keeps a witness: a timestamp in localStorage recording the last time it saw
+a database with something in it. If that witness exists and IndexedDB is empty, data was
+cleared, and `/study`, `/progress` and `/settings` say so and offer the backup file.
+
+**The limit is severe and is stated in the code rather than glossed.** WebKit's cap covers
+all script-writable storage together — localStorage, IndexedDB, the Cache API and service
+worker registrations go in one sweep. A witness in localStorage therefore cannot survive
+the eviction it exists to witness, and the canonical Safari case is undetectable from
+inside the origin by any means available to a page. That case is handled the only way it
+can be: by saying in Settings, in advance, that this browser will do it.
+
+What the witness does catch is every loss that takes IndexedDB and leaves the rest: quota
+eviction under storage pressure, a clear of site data that misses localStorage, and — the
+reason this earns its place regardless of browsers — a migration that completes and leaves
+empty stores. The migration ladder is this app's own code, and a bug there presents to a
+reader as exactly the same silence.
+
+Three things it must never do, each with a test:
+
+- **Never call a deliberate deletion a loss.** Pressing "delete my data" and being told
+  your data has gone would be the least forgivable false positive, so erasing forgets the
+  witness.
+- **Never conclude anything when the database cannot be opened.** Blocked storage and a
+  private window look identical to an empty database from outside, and the data may be
+  sitting untouched behind a door the session cannot open. `hasStoredData` throwing is
+  passed on as null, not false.
+- **Never read a value it did not write as a loss.** A corrupt witness reads as absent.
+  Sending somebody after a backup they never needed teaches them the app cries wolf, and
+  the true warning is then ignored too.
+
+The notice can also be dismissed, because somebody with no backup can do nothing about it
+and a notice you cannot act on and cannot dismiss is a scold on every visit.
+
 ## The corrections page, and why it is currently empty
 
 The defining complaint about the incumbent apps in this field is wrong answers with

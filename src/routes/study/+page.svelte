@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
@@ -95,6 +96,8 @@
 <svelte:window onkeydown={onKey} />
 
 <h1>Flashcards</h1>
+
+<DataLostNotice />
 
 {#if storage.overdue && !nudgeDismissed && study.status !== 'session'}
 	<!--

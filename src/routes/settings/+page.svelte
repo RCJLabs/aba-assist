@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { settings, type Theme, type Hand } from '$lib/state/settings.svelte.js';
@@ -70,6 +71,8 @@
 </svelte:head>
 
 <h1>Settings</h1>
+
+<DataLostNotice settings />
 
 <section>
 	<h2 id="theme-label" class="section-head">Theme</h2>
