@@ -440,6 +440,49 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## Search has a floor now, and it is a measured one
+
+Search had no measure at all. The only query-level tests in the repo were the escalation
+intent routes — and those exist _because_ ranking was measured once and found unable to
+answer the queries that matter. Everything since had been changed on the strength of
+reading the code.
+
+`src/lib/search/quality.ts` is a fixed set of 48 realistic queries with an expected answer
+each, run against the index that actually ships: `MiniSearch.loadJSON` with the shared
+options, which is exactly what the browser does. The suite refuses to fall below the day's
+measurement — 45 of 48, mean reciprocal rank 0.839.
+
+**The rule for adding to the set is to write the query first and take the result you get.**
+A query added because it already passes measures nothing. Three of the 48 fail and are
+kept:
+
+- `giving them a break when they hit` finds negative reinforcement at rank 31.
+- `they only do it when I am in the room` finds stimulus control at rank 96.
+- `how do I fade prompts` finds prompt fading at rank 6, under five situations.
+
+The first two are the hard class, and the corpus not answering a situation described
+rather than named is the same finding that produced the authored intent routes. The third
+is the interesting one: `prompt fading` alone is answered instantly, and four function
+words bury it — there is far more situation prose than definition prose for `how do I` to
+match against. Stripping function words from the query was tried before and did not
+rescue it. A real fix is a ranking change, and the point of this file is that there is now
+something to make one against.
+
+Two things were learned by testing the harness itself rather than trusting it:
+
+**A pass count is a poor ratchet on its own.** Deleting every field boost from the index
+configuration — about as large a ranking regression as this app could suffer — moved it by
+three queries, because most of the set is exact term names and those win on a title match
+whatever the weighting does. Mean reciprocal rank moves continuously, so an answer
+slipping from first to third registers even though it still passes. Both are asserted.
+
+**Three of the prefix queries were testing something else.** `momentar` and friends are
+close enough to the whole word that the fuzzy setting rescues them with prefix matching
+switched off, so they were measuring fuzzy and reporting it as prefix. `reinforc`,
+`generaliz` and `discrimin` stop far enough short that only prefix matching reaches them.
+Checked by breaking the configuration three ways and watching both numbers fall: no boosts
+42/48 and 0.802, no fuzzy 39/48 and 0.751, no prefix 42/48 and 0.805.
+
 ## There is no paid tier, and the reason is an audit rather than a principle
 
 The build plan split this app into free and paid: free was the reference core, paid was
