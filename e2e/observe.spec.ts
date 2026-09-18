@@ -29,9 +29,16 @@ async function setUp(page: Page, method: string) {
 test('a run plays out, ends on its own, and reports against the truth', async ({ page }) => {
 	await setUp(page, 'Frequency');
 
-	// The stimulus has to actually change, or there is nothing to record.
-	await expect(page.locator('.stage[data-happening="true"]')).toBeVisible({ timeout: 20_000 });
-
+	/*
+	 * Tap once, whenever, rather than waiting for the stimulus to be mid-episode.
+	 *
+	 * That wait was a race the poller can lose outright: at four times pace the whole
+	 * sixty-second run is about fifteen real seconds, and an episode can be under one of
+	 * them, so "visible at some poll" is not guaranteed however long the timeout. It also
+	 * was not testing what this test is named for — that the run ends on its own and is
+	 * scored against the truth — and the engine's episode generation has unit tests of its
+	 * own that do not depend on catching a frame.
+	 */
 	await page.getByRole('button', { name: 'Count it' }).click();
 	await expect(page.locator('[data-observe-status="done"]')).toBeAttached({ timeout: 30_000 });
 
