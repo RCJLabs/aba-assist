@@ -19,6 +19,8 @@
     "content": "tsx packages/content-build/src/cli.ts",
     "content:check": "tsx packages/content-build/src/cli.ts check --channel=pr",
     "content:apply-review": "tsx packages/content-build/src/cli.ts apply-review",
+    "review:apply": "tsx packages/content-build/src/cli.ts apply-review",
+    "review:check": "tsx packages/content-build/src/cli.ts apply-review --dry-run",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",

@@ -694,8 +694,14 @@
 				>
 			{/if}
 		</div>
+		<!--
+			One command, no path. The file is looked for in the places a browser puts
+			downloads, because four steps of administration on the end of a fifteen-minute
+			sitting is how the sitting stops happening.
+		-->
 		<p class="hint">
-			Then apply them: <code>npm run content:apply-review -- --file=&lt;the file&gt;</code>
+			Then, in the repo: <code>npm run review:apply</code> — it finds the file you just
+			downloaded. <code>npm run review:check</code> does the same without writing anything.
 		</p>
 		<p class="hint">
 			<a href={resolve('/about')}>About this app</a>

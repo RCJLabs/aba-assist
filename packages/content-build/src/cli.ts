@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { Channel } from '@aba/content-schema';
 import { applyDecisions, parseExport } from './apply-review.js';
+import { describeAge, findNewestDecisions, searchDirs } from './find-decisions.js';
 import { compile } from './compile.js';
 import { formatResult } from './report.js';
 import { writeGenerated } from './vite-plugin.js';
@@ -20,10 +21,29 @@ const command = process.argv[2] ?? 'check';
 const projectRoot = resolve(arg('root') ?? process.cwd());
 
 if (command === 'apply-review') {
-	const file = arg('file');
+	/*
+	 * An explicit `--file=` always wins: somebody who knows which file they mean should
+	 * not have their choice guessed at. Without one the newest export is looked for in the
+	 * places a browser puts downloads, because the alternative is four steps of
+	 * administration on the end of a fifteen-minute job, which is how the job stops
+	 * happening.
+	 */
+	let file = arg('file');
 	if (!file) {
-		console.error('Usage: aba-content apply-review --file=decisions.json [--dry-run]');
-		process.exit(2);
+		const found = await findNewestDecisions(searchDirs(projectRoot));
+		if (!found) {
+			console.error('No decisions file found. Looked in:');
+			for (const dir of searchDirs(projectRoot)) console.error(`  ${dir}`);
+			console.error('');
+			console.error('Export your decisions from /review, or name the file:');
+			console.error('  npm run review:apply -- --file=path/to/decisions.json');
+			process.exit(2);
+		}
+		file = found.path;
+		// Said out loud, because picking up a file from last week without mentioning it is
+		// how somebody re-applies a stale pass and wonders why nothing changed.
+		console.log(`Using ${found.path}`);
+		console.log(`  downloaded ${describeAge(found.modifiedAt, Date.now())}`);
 	}
 	const raw = await readFile(resolve(file), 'utf8');
 	const parsed = parseExport(raw);
@@ -57,6 +77,17 @@ if (command === 'apply-review') {
 					`  note dropped on approving ${item.kind} ${item.id}: ${item.droppedNote}`
 				);
 			}
+		}
+		/*
+		 * The next step, spelled out. Applying decisions changes tracked files and nothing
+		 * else; until they are committed and pushed the build that readers get is still the
+		 * old one, and a reviewer who has just spent a sitting on this should not have to
+		 * remember that on their own.
+		 */
+		if (!flag('dry-run') && result.applied.length > 0) {
+			console.log('');
+			console.log('Nothing has shipped yet. To publish what you just approved:');
+			console.log('  git add content && git commit -m "Apply review decisions" && git push');
 		}
 	}
 	process.exit(result.ok ? 0 : 1);

@@ -132,12 +132,20 @@ carries plus the author's account of what it was written from, and two buttons. 
 are kept in IndexedDB on the device and never sent anywhere — a decision only means
 something once it is in git.
 
-When a pass is done, the page exports the decisions as JSON, and:
+When a pass is done, the page exports the decisions as JSON, and in the repo:
 
 ```sh
-npm run content:apply-review -- --file=aba-assist-review-2026-09-15.json --dry-run
-npm run content:apply-review -- --file=aba-assist-review-2026-09-15.json
+npm run review:check    # says what it would change, writes nothing
+npm run review:apply    # applies it
 ```
+
+Neither takes a path. The newest `aba-assist-review-*.json` is looked for where browsers
+put downloads, and the file it picked and how old it is are printed before anything is
+written — picking up last week's export without saying so is how somebody re-applies a
+stale pass and wonders why nothing changed. `--file=` still works and still wins, because
+a reviewer who knows which file they mean should not have their choice guessed at. On
+success it prints the commit and push that actually ships the result, since applying
+decisions changes tracked files and nothing else.
 
 That rewrites the `review:` block of each decided item — `approved` with your reviewer id
 and the date, or `needs-update` with your note — and nothing else in the file. The diff is
