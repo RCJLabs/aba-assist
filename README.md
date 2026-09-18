@@ -191,6 +191,19 @@ Two real defects surfaced while testing that flow, both unreachable at mouse spe
   letter a into the textarea instead of approving. Focus now moves to the new item's
   heading after every decision, which also tells a screen reader the card changed.
 
+A third turned up in the quiz, surfaced by the same suite on a slow device rather than by
+the review work itself. `countAvailable` read the exam off the state, awaited that exam's
+bank and then wrote a count — so a load started for one exam could land after the reader
+had moved to another. The ordinary sequence hits it: the prerendered form ships with the
+technician exam selected and hydration counts against it, then the saved filter switches
+to the assistant exam a moment later. Pick area I, which the technician outline does not
+have, and the late technician answer filtered to zero — "0 questions available" and a dead
+Start button over a bank of twenty-one. Both loads now carry a token and discard their own
+result if a later call has superseded it, with a token each rather than a shared one, since
+one would have each cancelling the other's perfectly current answer. The regression test
+holds the technician bank back by matching a question id only that bank carries, so the
+interleaving is forced rather than waited for; it fails without the guard.
+
 ### The two structural guards
 
 Both make the wrong thing impossible to express, rather than something a reviewer has to

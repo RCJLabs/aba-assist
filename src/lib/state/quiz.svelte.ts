@@ -206,20 +206,48 @@ class Quiz {
 	 */
 	async loadRetry(): Promise<void> {
 		if (!browser) return;
+		/*
+		 * A token of its own rather than one shared with the count above. They answer
+		 * different questions, and a shared counter would have each cancelling the other's
+		 * perfectly current answer — starting a retry run would leave the setup screen
+		 * reporting a stale number of questions available.
+		 */
+		const token = ++this.#retryToken;
+		const credential = this.credential;
 		try {
 			const [history, bank] = await Promise.all([
 				recentAttempts(200),
-				loadQuestions(this.credential)
+				loadQuestions(credential)
 			]);
-			this.retry = planRetry(history, this.credential, new Set(bank.map((q) => q.id)));
+			// Same staleness rule: a queue built for the exam the reader has just left would
+			// offer them questions from a paper they are not sitting.
+			if (token !== this.#retryToken) return;
+			this.retry = planRetry(history, credential, new Set(bank.map((q) => q.id)));
 		} catch {
-			this.retry = null;
+			if (token === this.#retryToken) this.retry = null;
 		}
 	}
 
+	/**
+	 * Guards against a slow answer to a question nobody is asking any more.
+	 *
+	 * Both of the loads below read the exam off the state, await a bank, and then write a
+	 * result — so a load started for one exam can land after the reader has moved to
+	 * another. That is not hypothetical: switching from the technician exam to the
+	 * assistant one and picking area I gave "0 questions available" and a dead Start
+	 * button, because the technician bank's load resolved last and was filtered against an
+	 * area its outline does not have. It needed a slow device to show up, which is to say
+	 * it showed up for exactly the readers least able to work around it.
+	 */
+	#countToken = 0;
+	#retryToken = 0;
+
 	async countAvailable(): Promise<void> {
 		if (!browser) return;
+		const token = ++this.#countToken;
 		const bank = await loadQuestions(this.credential);
+		// A later call has already asked a different question; its answer is the one to keep.
+		if (token !== this.#countToken) return;
 		this.available = this.pool(bank).length;
 	}
 

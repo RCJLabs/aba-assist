@@ -139,3 +139,51 @@ test('the assistant mode is accessible', async ({ page }) => {
 	const { expectNoA11yViolations } = await import('./utils/a11y');
 	await expectNoA11yViolations(page);
 });
+
+test('a slow bank for the exam you left cannot zero the count for the one you picked', async ({
+	page
+}) => {
+	/*
+	 * A regression test for a bug that only appeared under load.
+	 *
+	 * `countAvailable` reads the exam off the state, awaits that exam's bank, and then
+	 * writes a count — so a load started for one exam can land after the reader has moved
+	 * to another. The sequence is the ordinary one: the prerendered form ships with the
+	 * technician exam selected and hydration counts against it, then the saved filter
+	 * switches to the assistant exam a moment later. Pick area I, which the technician
+	 * outline does not have, and the late technician answer filtered to zero: "0 questions
+	 * available" and a dead Start button over a bank of twenty-one.
+	 *
+	 * The ordering is forced rather than waited for. The technician bank is held back long
+	 * enough to guarantee it lands last, which is what a slow phone did by itself.
+	 */
+	await page.route('**/_app/immutable/**/*.js', async (route) => {
+		const response = await route.fetch();
+		const body = await response.text();
+		// Matched on a question id only the technician bank carries, rather than on the
+		// hashed chunk name or on anything every bank shares.
+		if (body.includes('rbt-a-count-needs-time-to-compare')) {
+			await new Promise((r) => setTimeout(r, 2500));
+		}
+		await route.fulfill({ response, body });
+	});
+
+	await setMode(page);
+	// `commit` rather than `load`: waiting for the page to settle would wait for the very
+	// chunk being held, and there would be no race left to test.
+	await page.goto('/quiz', { waitUntil: 'commit' });
+
+	const area = page.getByLabel('Content area');
+	await area.selectOption('I');
+	await page.getByLabel('Number of questions').selectOption('5');
+
+	// The assistant bank's area I, and it has to stay there once the held bank lands.
+	await expect(page.locator('.setup')).toContainText(/21\s+questions available/, {
+		timeout: 20_000
+	});
+	await page.waitForTimeout(3000);
+	await expect(page.locator('.setup')).toContainText(/21\s+questions available/);
+
+	await page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.locator('.progress')).toContainText('Question 1 of 5');
+});
