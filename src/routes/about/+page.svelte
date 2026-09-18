@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { reviewScheduleRows, contentVersion, termIndex } from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
 
@@ -77,7 +78,9 @@
 <h2 id="errata" class="section-head">Found an error?</h2>
 <p>
 	Please report it — wrong content in this field is worse than missing content. Errors are
-	tracked publicly, so you can see what was reported and what was done about it.
+	tracked publicly, so you can see what was reported and what was done about it:
+	<a href={resolve('/corrections')}>the corrections page</a> lists everything this app has got wrong
+	and fixed, and everything it knows is wrong and has not fixed yet.
 </p>
 <p>
 	<!-- An external GitHub URL, not an app route: resolve() does not apply. -->

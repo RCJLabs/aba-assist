@@ -71,6 +71,14 @@ async function build(
 	const root = await mkdtemp(join(tmpdir(), 'aba-content-'));
 	await mkdir(join(root, '_registry'), { recursive: true });
 	await writeFile(join(root, '_registry', 'sources.yaml'), SOURCES);
+	/*
+	 * An empty corrections log, as a real repo has before its first correction. The file
+	 * is required rather than optional: a missing one is indistinguishable from an empty
+	 * one to a reader, so treating absence as "no corrections" would let a deleted log
+	 * silently erase the record of every mistake this app has ever admitted to. Tests that
+	 * care about corrections overwrite this.
+	 */
+	await writeFile(join(root, '_registry', 'corrections.yaml'), 'corrections: []\n');
 	for (const [rel, content] of Object.entries(files)) {
 		const path = join(root, rel);
 		await mkdir(join(path, '..'), { recursive: true });
@@ -1848,5 +1856,111 @@ provenance: { license: CC-BY-SA-4.0, updated: '2026-09-14' }
 		expect(r.errors.find((i) => i.rule === 'staleness/overdue')!.message).toMatch(
 			/\d+ days ago/
 		);
+	});
+});
+
+describe('the corrections log', () => {
+	/*
+	 * The defining complaint about the incumbent apps in this field is wrong answers with
+	 * confident explanations and a report button that goes nowhere. An app that asks people
+	 * to report errors and then never shows what happened to any of them is making the same
+	 * promise those apps made, so the one rule here is that the record cannot point at
+	 * something that is not there.
+	 */
+	const correction = (over: Record<string, unknown> = {}) =>
+		`corrections:\n  - ${JSON.stringify({
+			id: 'supervision-percentage',
+			correctedOn: '2026-10-01',
+			affects: ['sample-term'],
+			summary: 'Supervision percentage for assistant analysts',
+			wasWrong:
+				'It said the monthly supervision requirement stays at five per cent for the whole of an assistant analyst career.',
+			nowSays:
+				'It steps down to two per cent after the first thousand hours of post-certification practice, as the handbook sets out.',
+			foundBy: 'reader-report',
+			severity: 'material',
+			...over
+		})}\n`;
+
+	it('accepts a correction that points at a real entry', async () => {
+		const r = await build({
+			'_registry/corrections.yaml': correction(),
+			'terms/principles/sample-term.md': frontmatter(term())
+		});
+		expect(r.errors).toEqual([]);
+	});
+
+	it('REFUSES a correction naming an entry that is not in the corpus', async () => {
+		/*
+		 * A dead reference on the one page whose entire job is to be trustworthy is worse
+		 * than no page. Ids get renamed; this is what stops the record rotting silently.
+		 */
+		const r = await build({
+			'_registry/corrections.yaml': correction({ affects: ['a-term-that-was-renamed'] }),
+			'terms/principles/sample-term.md': frontmatter(term())
+		});
+		expect(rules(r)).toContain('corrections/unknown-entry');
+	});
+
+	it('REFUSES two corrections sharing an id', async () => {
+		const twice = correction() + correction().replace('corrections:\n', '');
+		const r = await build({
+			'_registry/corrections.yaml': twice,
+			'terms/principles/sample-term.md': frontmatter(term())
+		});
+		expect(rules(r)).toContain('structure/duplicate-id');
+	});
+
+	it('REFUSES a correction that does not say what was wrong', async () => {
+		// `wasWrong` and `nowSays` are both required and both long enough to be an account
+		// rather than a label: "fixed a typo" tells nobody whether they learned the wrong
+		// thing from it.
+		const r = await build({
+			'_registry/corrections.yaml': correction({ wasWrong: 'typo' }),
+			'terms/principles/sample-term.md': frontmatter(term())
+		});
+		expect(rules(r)).toContain('schema/corrections');
+	});
+
+	it('emits the log, with the newest correction first', async () => {
+		const older = correction({ id: 'older', correctedOn: '2026-09-01' });
+		const both = older + correction().replace('corrections:\n', '');
+		const r = await build({
+			'_registry/corrections.yaml': both,
+			'terms/principles/sample-term.md': frontmatter(term())
+		});
+		const asset = r.assets.find((a) => a.name === 'corrections');
+		expect(asset).toBeDefined();
+		const parsed = JSON.parse(asset!.source) as { corrections: { id: string }[] };
+		expect(parsed.corrections.map((c) => c.id)).toEqual(['supervision-percentage', 'older']);
+	});
+
+	it('lists what is flagged and not yet fixed, derived rather than authored', async () => {
+		/*
+		 * The harder half of the same promise. Anybody can list their fixes; saying "this
+		 * one is wrong and we have not got to it" is the part that has to be true.
+		 */
+		const flaggedTerm = frontmatter(
+			term({
+				review: {
+					status: 'needs-update',
+					authoredBy: 'tester',
+					authoredOn: '2026-09-14',
+					reviewedBy: 'reviewer',
+					reviewedOn: '2026-09-15',
+					changeNote: 'The non-example is really an example.'
+				}
+			})
+		);
+		const r = await build({
+			'_registry/corrections.yaml': 'corrections: []\n',
+			'terms/principles/sample-term.md': flaggedTerm
+		});
+		const parsed = JSON.parse(r.assets.find((a) => a.name === 'corrections')!.source) as {
+			flagged: { id: string; title: string }[];
+		};
+		expect(parsed.flagged).toHaveLength(1);
+		// The reviewer's own note stays internal; only the fact and the entry are published.
+		expect(JSON.stringify(parsed.flagged)).not.toContain('non-example');
 	});
 });

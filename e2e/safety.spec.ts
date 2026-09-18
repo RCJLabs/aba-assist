@@ -212,3 +212,33 @@ test('the app says when its restated facts are due to be checked again', async (
 	await expect(page.locator('table.schedule')).not.toContainText('not set');
 	await expect(rows.first()).toContainText(/\d{4}-\d{2}-\d{2}/);
 });
+
+test('the errata loop shows what happened to reports, not just where to send them', async ({
+	page
+}) => {
+	/*
+	 * The defining complaint about the incumbent apps in this field is wrong answers with
+	 * confident explanations and a report button that goes nowhere. Asking for reports and
+	 * never showing what became of any of them is the same promise those apps made.
+	 */
+	await page.goto('/about');
+	await page.getByRole('link', { name: 'the corrections page' }).click();
+
+	await expect(page.getByRole('heading', { name: 'Corrections', level: 1 })).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'What has been corrected' })).toBeVisible();
+	// The harder half: what is known to be wrong and not fixed.
+	await expect(
+		page.getByRole('heading', { name: 'What is known to be wrong now' })
+	).toBeVisible();
+	await expect(page.getByRole('link', { name: 'Report a content error' })).toBeVisible();
+
+	/*
+	 * Empty today, and it says why rather than rendering a blank section. Nothing has
+	 * reached a reader yet: the site publishes as a preview until its launch set has been
+	 * reviewed.
+	 */
+	await expect(page.locator('[data-corrections="none"]')).toContainText(
+		'This page starts filling'
+	);
+	await expect(page.locator('[data-flagged="none"]')).toBeVisible();
+});

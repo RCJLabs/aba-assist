@@ -1,6 +1,7 @@
 import {
 	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
 	CATEGORY_ORDER,
+	type Correction,
 	type DatedItem,
 	type IntentRoute
 } from '@aba/content-schema/runtime';
@@ -16,6 +17,7 @@ import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
 import intents from './generated/intents.json';
 import schedule from './generated/review-schedule.json';
+import corrections from './generated/corrections.json';
 
 export const termIndex = index as TermIndexEntry[];
 
@@ -36,6 +38,23 @@ export const intentRoutes = intents as IntentRoute[];
  * this app at all — which is not a moment to be waiting on a request.
  */
 export const reviewScheduleRows = schedule as DatedItem[];
+
+export interface FlaggedEntry {
+	id: string;
+	kind: 'term' | 'scenario' | 'ethics-topic';
+	title: string;
+}
+
+/**
+ * The public record: what this app got wrong and fixed, and what it knows is still wrong.
+ *
+ * Bundled rather than fetched. It is a few hundred bytes, it is the page somebody opens
+ * when deciding whether to trust any of this, and it has to work offline like the rest.
+ */
+export const correctionLog = corrections as {
+	corrections: Correction[];
+	flagged: FlaggedEntry[];
+};
 export const contentVersion = version as {
 	contentVersion: string;
 	channel: string;

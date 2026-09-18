@@ -1,0 +1,17 @@
+# Public corrections.
+#
+# Everything this app has told readers that turned out to be wrong, and what it says now.
+# One entry per correction, oldest first, written for a reader rather than for whoever
+# fixed it — somebody who never saw the old version has to be able to tell whether they
+# learned the wrong thing from it.
+#
+# The build checks that every `affects` id exists, so a correction cannot point at an
+# entry that has been renamed or removed. It does not check the prose; that is what the
+# review queue is for.
+#
+# Empty, and honestly so. Nothing here has reached a reader yet: the site publishes as a
+# preview with the review banner on and search engines kept out, and the corrections loop
+# starts when the first reviewed content ships. A log with invented entries would be worth
+# less than an empty one.
+
+corrections: []

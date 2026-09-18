@@ -15,6 +15,7 @@ import {
 	GraphDoc,
 	QuizFile,
 	Scenario,
+	CorrectionRegistry,
 	SourceRegistry,
 	Term,
 	isDomainRef,
@@ -38,6 +39,7 @@ import {
 	type DatedItem
 } from '@aba/content-schema/runtime';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
+import type { Correction } from '@aba/content-schema';
 import type { CompileOptions, CompileResult, EmittedAsset, Issue } from './types.js';
 import { error, warning as warn } from './types.js';
 import {
@@ -217,6 +219,50 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			for (const s of value?.sources ?? []) sources.set(s.id, s);
 		} else if (pIssues.length === 0) {
 			push(error('parse/missing', 'content/_registry/sources.yaml not found'));
+		}
+	}
+
+	// ------------------------------------------------------------ corrections
+	/*
+	 * The public record of what this app got wrong.
+	 *
+	 * Loaded here beside the bibliography because it is the same kind of thing: a registry
+	 * that the rest of the corpus is checked against rather than content in its own right.
+	 * The one rule that matters is below, after the ids are known — a correction pointing
+	 * at an entry that no longer exists is a dead link in the one place whose entire job is
+	 * to be trustworthy.
+	 */
+	const corrections: Correction[] = [];
+	{
+		const path = join(root, '_registry', 'corrections.yaml');
+		const { data, issues: pIssues } = await parseYamlFile(root, path);
+		push(...pIssues);
+		if (data !== undefined) {
+			inputHash.update(JSON.stringify(data));
+			const { value, issues: cIssues } = checkSchema(
+				CorrectionRegistry,
+				data,
+				'_registry/corrections.yaml',
+				'schema/corrections'
+			);
+			push(...cIssues);
+			corrections.push(...(value?.corrections ?? []));
+		} else if (pIssues.length === 0) {
+			push(error('parse/missing', 'content/_registry/corrections.yaml not found'));
+		}
+
+		const seen = new Set<string>();
+		for (const c of corrections) {
+			if (seen.has(c.id)) {
+				push(
+					error(
+						'structure/duplicate-id',
+						`duplicate correction "${c.id}"`,
+						'_registry/corrections.yaml'
+					)
+				);
+			}
+			seen.add(c.id);
 		}
 	}
 
@@ -906,6 +952,43 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	 * unapproved one does — the app still publishes, carries its banner, and stays out of
 	 * the index until somebody has looked.
 	 */
+	/*
+	 * A correction has to point at something that is actually here.
+	 *
+	 * Checked against everything the corpus contains rather than only what this build
+	 * ships, because a correction about a withheld entry is still a true statement about
+	 * what this app once said — and withholding it from the log would quietly delete the
+	 * record of a mistake, which is the one thing this file exists not to do.
+	 */
+	{
+		const everything = new Set<string>([
+			...terms.map((x) => x.id),
+			...scenarios.map((x) => x.id),
+			...ethicsTopics.map((x) => x.id),
+			...ethicsCodes.map((x) => x.id),
+			...allOutlines.map((x) => x.id),
+			...credentials.map((x) => x.id),
+			...competencies.map((x) => x.id),
+			...guides.map((x) => x.id),
+			...graphs.map((x) => x.id),
+			...questions.map((x) => x.id)
+		]);
+		for (const c of corrections) {
+			for (const id of c.affects) {
+				if (everything.has(id)) continue;
+				push(
+					error(
+						'corrections/unknown-entry',
+						`correction "${c.id}" says it affects "${id}", which is not in this corpus. ` +
+							`A dead reference in the record of what this app got wrong is worse than ` +
+							`no record at all.`,
+						'_registry/corrections.yaml'
+					)
+				);
+			}
+		}
+	}
+
 	const dated = datedItems(allOutlines, credentials, ethicsCodes, competencies);
 
 	for (const d of dated) {
@@ -1365,6 +1448,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		emitGuides,
 		shipGraphs,
 		emitCompetencies,
+		corrections,
 		contentVersion
 	);
 
@@ -1382,6 +1466,7 @@ function buildAssets(
 	guides: z_PracticeGuide[],
 	graphs: z_GraphDoc[],
 	competencies: z_Competency[],
+	corrections: Correction[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -1708,6 +1793,55 @@ function buildAssets(
 	 * app makes is that its facts are current, and the honest version of that claim names
 	 * the date each one was last good for.
 	 */
+	/*
+	 * The public record of what this app got wrong, shipped with the bundle.
+	 *
+	 * Small, and on the page somebody opens when deciding whether to trust any of this —
+	 * which is not a moment to be waiting on a request, and not a page that should go
+	 * blank offline.
+	 */
+	/*
+	 * Alongside the corrections, what is known to be wrong and not yet fixed.
+	 *
+	 * Derived rather than authored: an entry a reviewer flagged carries
+	 * `status: needs-update`, and that is already the fact. Publishing it costs nothing
+	 * and is the harder half of the same promise — anybody can list their fixes, and
+	 * saying "we know this one is wrong and have not got to it" is the part that has to be
+	 * true to be worth reading.
+	 *
+	 * The reviewer's own note is deliberately NOT published. It was written for whoever
+	 * would do the fix, and retroactively making internal notes public is not a decision
+	 * to take on somebody's behalf. What ships is the fact and the entry.
+	 */
+	const flagged = [
+		...terms.map((x) => ({ id: x.id, kind: 'term', title: x.term, status: x.review.status })),
+		...scenarios.map((x) => ({
+			id: x.id,
+			kind: 'scenario',
+			title: x.title,
+			status: x.review.status
+		})),
+		...ethicsTopics.map((x) => ({
+			id: x.id,
+			kind: 'ethics-topic',
+			title: x.ourLabel,
+			status: x.review.status
+		}))
+	]
+		.filter((x) => x.status === 'needs-update')
+		.map((x) => ({ id: x.id, kind: x.kind, title: x.title }))
+		.sort((a, b) => a.title.localeCompare(b.title));
+
+	assets.push({
+		name: 'corrections',
+		fileName: `${base}/corrections.json`,
+		source: JSON.stringify({
+			corrections: [...corrections].sort((a, b) => b.correctedOn.localeCompare(a.correctedOn)),
+			flagged
+		}),
+		fetchedAtRuntime: false
+	});
+
 	assets.push({
 		name: 'review-schedule',
 		fileName: `${base}/review-schedule.json`,

@@ -440,6 +440,42 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## The corrections page, and why it is currently empty
+
+The defining complaint about the incumbent apps in this field is wrong answers with
+confident explanations and a report button that goes nowhere — one review put it as
+"finding inconsistencies multiple times makes it hard to trust anything on the app". This
+app has had a working report button from the start, and until now it showed nothing back.
+Asking people to report errors and never showing what became of any of them is the same
+promise those apps made.
+
+`/corrections` has two halves.
+
+**What has been corrected** comes from `content/_registry/corrections.yaml`. Each entry
+carries `wasWrong` and `nowSays` as separate required fields, both long enough to be an
+account rather than a label: "fixed a typo in negative reinforcement" tells nobody whether
+they learned the wrong thing from it. `foundBy: reader-report` is recorded separately
+because it is the category that proves the button works. No entry names a person.
+
+**What is known to be wrong now** is derived from review status rather than authored — an
+entry a reviewer flagged carries `needs-update`, and that is already the fact. This is the
+harder half of the promise: anybody can list their fixes, and saying "this one is wrong and
+we have not got to it" is the part that has to be true to be worth reading. The reviewer's
+own note is deliberately not published. It was written for whoever would do the fix, and
+retroactively making internal notes public is not a decision to take on somebody's behalf.
+
+Two build rules. A correction naming an entry that is not in the corpus is an error,
+because a dead reference on the one page whose job is to be trustworthy is worse than no
+page, and ids do get renamed. And a _missing_ `corrections.yaml` is an error rather than
+"no corrections yet" — absence and emptiness look identical to a reader, so treating them
+the same would let a deleted log silently erase the record of every mistake this app has
+admitted to.
+
+The page is empty today and says so in its own words. Nothing here has reached a reader:
+the site publishes as a preview with the banner on and search engines kept out, until the
+launch set has been through review. An empty log is worth more than an invented one, and
+the machinery has to exist before the first correction rather than after it.
+
 ## Facts that expire now have to say when
 
 Being right about 2026 is what this app is for, and the failure mode it was built against

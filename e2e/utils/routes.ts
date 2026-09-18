@@ -17,6 +17,7 @@ export const ROUTES = [
 	'/scenarios/you-are-asked-to-work-outside-your-role',
 	'/help',
 	'/about',
+	'/corrections',
 	'/settings',
 	'/exams',
 	'/competency',

@@ -44,6 +44,7 @@ test('every main route still opens with no network', async ({ page, context }) =
 		['/help', /urgent/i],
 		['/settings', /Settings/],
 		['/about', /About this app/],
+		['/corrections', /Corrections/],
 		['/study', /Flashcards/],
 		['/quiz', /Practice questions/],
 		['/exams', /Exams and certifications/],
