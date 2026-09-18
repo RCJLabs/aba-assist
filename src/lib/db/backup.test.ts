@@ -164,6 +164,36 @@ describe('validateBackup', () => {
 		}
 	});
 
+	it('carries what a run got right through a round trip, and leaves it off when absent', () => {
+		/*
+		 * The field the retry queue is read from. An empty list and an absent one mean
+		 * different things — "this run answered nothing correctly" against "this run did not
+		 * record" — and a restore that turned the second into the first would start handing
+		 * back questions the reader had already put right.
+		 */
+		const attempt = (over: Record<string, unknown>) => ({
+			id: 'a1',
+			credential: 'RBT',
+			domain: 'all',
+			startedAt: 1,
+			finishedAt: 2,
+			total: 2,
+			correct: 1,
+			perDomain: {},
+			missed: ['q-wrong'],
+			...over
+		});
+		const r = validateBackup(
+			backup({ quizAttempts: [attempt({ right: ['q-right', 7] }), attempt({ id: 'a2' })] }),
+			3
+		);
+		expect(r.ok).toBe(true);
+		if (!r.ok) return;
+		// Non-strings inside the list are dropped rather than taking the row with them.
+		expect(r.data.quizAttempts[0]!.right).toEqual(['q-right']);
+		expect(r.data.quizAttempts[1]!.right).toBeUndefined();
+	});
+
 	it('repairs a store that is the wrong type rather than throwing', () => {
 		const r = validateBackup(backup({ quizAttempts: 'nope' }), 3);
 		expect(r.ok).toBe(true);

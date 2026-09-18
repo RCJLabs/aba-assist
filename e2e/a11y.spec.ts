@@ -151,3 +151,25 @@ test('a simulation in progress, with its clock and navigator, is accessible', as
 	await expect(page.getByRole('timer')).toBeVisible();
 	await expectNoA11yViolations(page);
 });
+
+test('the retry offer and a retry run in progress are accessible', async ({ page }) => {
+	/*
+	 * Produced the way a reader would produce it: a simulation finished early leaves every
+	 * unreached question outstanding, which is the state the offer renders in.
+	 */
+	await page.goto('/quiz');
+	await page.getByLabel('Full exam simulation, against the clock').check();
+	await page.getByRole('button', { name: 'Start the clock' }).click();
+	await page.getByRole('button', { name: 'Finish early' }).click();
+	await page.getByRole('button', { name: 'Change settings' }).click();
+	await page.getByRole('radio', { name: 'After each question' }).check();
+	await page.getByLabel('Number of questions').selectOption('5');
+
+	const panel = page.locator('.retry');
+	await expect(panel).toBeVisible();
+	await expectNoA11yViolations(page);
+
+	await panel.getByRole('button', { name: 'Retry 5 questions' }).click();
+	await expect(page.locator('.progress')).toContainText('one you missed before');
+	await expectNoA11yViolations(page);
+});

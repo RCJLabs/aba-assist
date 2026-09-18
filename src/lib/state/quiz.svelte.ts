@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import type { QuizQuestion } from '@aba/content-schema';
 import { loadQuestions, outlineForCredential } from '$lib/content/load.js';
-import { putAttempt } from '$lib/db/index.js';
+import { putAttempt, recentAttempts } from '$lib/db/index.js';
 import { study } from './study.svelte.js';
 import {
 	crossedWarning,
@@ -10,12 +10,26 @@ import {
 	secondsLeft,
 	type SimulationPlan
 } from '$lib/quiz/simulation.js';
+import { planRetry, RETRY_DOMAIN, type RetryPlan } from '$lib/quiz/retry.js';
 
 /**
  * `simulation` is `test` with a clock and the exam's own shape: every domain, weighted,
  * as many questions as the bank can supply, at the real seconds per question.
  */
 export type QuizMode = 'practice' | 'test' | 'simulation';
+
+/**
+ * Where a session's questions come from.
+ *
+ * Deliberately separate from the mode. The mode decides when the reader is told how they
+ * did; this decides which questions they are asked. Folding the retry queue into the
+ * domain picker was the obvious alternative and it was wrong: "Behavior Reduction" and
+ * "the ones I keep getting wrong" are not two items on the same list, and a run drawn
+ * from past errors has to be distinguishable afterwards from a fresh draw — see what
+ * `finish` records.
+ */
+export type QuizSource = 'bank' | 'missed';
+
 export type QuizStatus = 'setup' | 'loading' | 'question' | 'feedback' | 'done' | 'empty';
 
 export interface SessionItem {
@@ -58,6 +72,13 @@ class Quiz {
 	domain = $state<string>('all');
 	count = $state<number>(10);
 	mode = $state<QuizMode>('practice');
+	source = $state<QuizSource>('bank');
+
+	/**
+	 * The retry queue, once storage has been read. Null until then, and on a device that
+	 * has no storage at all — which the page reads as "no offer", not as "nothing missed".
+	 */
+	retry = $state<RetryPlan | null>(null);
 
 	status = $state<QuizStatus>('setup');
 	items = $state<SessionItem[]>([]);
@@ -157,15 +178,43 @@ class Quiz {
 		domain?: string;
 		count?: number;
 		mode?: QuizMode;
+		source?: QuizSource;
 	}): void {
 		if (next.credential !== undefined && next.credential !== this.credential) {
 			this.credential = next.credential;
 			this.domain = 'all';
+			// The queue is per exam and so was the offer, so both go back to the bank until
+			// the new exam's history has been read.
+			this.source = 'bank';
+			this.retry = null;
+			void this.loadRetry();
 		}
 		if (next.domain !== undefined) this.domain = next.domain;
 		if (next.count !== undefined) this.count = next.count;
 		if (next.mode !== undefined) this.mode = next.mode;
+		if (next.source !== undefined) this.source = next.source;
 		void this.countAvailable();
+	}
+
+	/**
+	 * Read the retry queue back out of storage.
+	 *
+	 * Called when the setup screen opens and again after a run finishes, because a run is
+	 * the only thing that changes the answer. Failure is silent and leaves the queue null:
+	 * a reader whose browser has blocked storage has no history to retry from, and an
+	 * error message about IndexedDB would be answering a question they did not ask.
+	 */
+	async loadRetry(): Promise<void> {
+		if (!browser) return;
+		try {
+			const [history, bank] = await Promise.all([
+				recentAttempts(200),
+				loadQuestions(this.credential)
+			]);
+			this.retry = planRetry(history, this.credential, new Set(bank.map((q) => q.id)));
+		} catch {
+			this.retry = null;
+		}
 	}
 
 	async countAvailable(): Promise<void> {
@@ -184,6 +233,11 @@ class Quiz {
 		this.stopClock();
 		this.ranOutOfTime = false;
 		this.flagged = {};
+
+		if (this.source === 'missed') {
+			await this.startRetry();
+			return;
+		}
 
 		if (this.mode === 'simulation') {
 			// The real paper covers every domain and does not let you pick a length, so
@@ -218,6 +272,50 @@ class Quiz {
 		this.startedAt = Date.now();
 		this.status = 'question';
 		if (this.plan) this.startClock(this.plan.minutes);
+	}
+
+	/**
+	 * A session drawn from the questions this reader has got wrong and not put right.
+	 *
+	 * No sampling and no shuffling of the set itself: the queue is already in the order
+	 * that says what is worth sitting first, and re-shuffling it would throw that away for
+	 * the sake of a variety this run is not for. The options inside each question are
+	 * shuffled as always, because remembering that the answer was the third one is not
+	 * knowing the answer.
+	 *
+	 * There is no clock here even if the reader had picked the simulation. A simulation is
+	 * the whole paper, weighted, at the exam's pace; a run drawn from ten questions you
+	 * already know you got wrong is not that, and dressing it up as one would make the
+	 * number at the end mean nothing.
+	 */
+	private async startRetry(): Promise<void> {
+		this.plan = null;
+		if (this.mode === 'simulation') this.mode = 'practice';
+
+		await this.loadRetry();
+		const bank = await loadQuestions(this.credential);
+		const byId = new Map(bank.map((q) => [q.id, q]));
+		const chosen = (this.retry?.ids ?? [])
+			.map((id) => byId.get(id))
+			.filter((q): q is QuizQuestion => q !== undefined)
+			.slice(0, Math.max(1, this.count));
+
+		if (chosen.length === 0) {
+			this.status = 'empty';
+			return;
+		}
+
+		this.items = chosen.map((q) => ({
+			q,
+			order: shuffle(q.options.map((o) => o.id)),
+			selected: [],
+			correct: null
+		}));
+		this.index = 0;
+		this.selected = [];
+		this.results = null;
+		this.startedAt = Date.now();
+		this.status = 'question';
 	}
 
 	/*
@@ -380,6 +478,10 @@ class Quiz {
 			perDomain[letter] = row;
 		}
 		const missed = this.items.filter((it) => !it.correct);
+		// Strictly true, not merely "not missed": a question left unanswered has `null`
+		// here, and counting it as right would clear it out of the retry queue on the
+		// strength of never having been attempted.
+		const right = this.items.filter((it) => it.correct === true);
 
 		/*
 		 * Started before the results are rendered, not after.
@@ -410,7 +512,9 @@ class Quiz {
 		const saving = putAttempt({
 			id: `${this.startedAt}-${Math.random().toString(36).slice(2, 8)}`,
 			credential: this.credential,
-			domain: this.domain,
+			// A run drawn from past errors is recorded as such, so that everything reading
+			// this history back can tell it from a fresh draw.
+			domain: this.source === 'missed' ? RETRY_DOMAIN : this.domain,
 			startedAt: this.startedAt,
 			finishedAt: Date.now(),
 			total: this.items.length,
@@ -419,6 +523,7 @@ class Quiz {
 				Object.entries(perDomain).map(([k, v]) => [k, { total: v.total, correct: v.correct }])
 			),
 			missed: missed.map((m) => m.q.id),
+			right: right.map((r) => r.q.id),
 			// What the run examined, not what it got right. Coverage is a record of
 			// having looked, and a wrong answer is still a look.
 			tasks: [...new Set(this.items.map((it) => it.q.taskRef.code))].sort()
@@ -436,6 +541,9 @@ class Quiz {
 		this.status = 'done';
 
 		await Promise.all([saving, reinforcing]);
+		// After the write, never before: the queue this run just changed is the one the
+		// results screen offers, and reading it early would show the figure from before.
+		await this.loadRetry();
 	}
 
 	/**
@@ -451,6 +559,7 @@ class Quiz {
 	reset(): void {
 		this.stopClock();
 		this.status = 'setup';
+		this.source = 'bank';
 		this.items = [];
 		this.index = 0;
 		this.selected = [];

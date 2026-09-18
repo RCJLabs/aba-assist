@@ -30,6 +30,21 @@ export interface QuizAttempt {
 	/** Question ids answered incorrectly, for "review what I missed". */
 	missed: string[];
 	/**
+	 * Question ids answered correctly. The other half of `missed`, and together they are
+	 * every question the run put in front of the reader.
+	 *
+	 * Written because "what I missed" is otherwise a list that only grows. Knowing a
+	 * question was missed in March says nothing about whether it is still a weak spot;
+	 * knowing it was answered correctly in April says it is not. Without this field the
+	 * retry queue would keep handing back questions the reader has since learned, which is
+	 * the fastest way to make somebody stop opening it.
+	 *
+	 * Optional for the same reason `tasks` is: runs recorded before it existed cannot
+	 * answer the question, and they read as an empty list — which is honest. Those runs
+	 * can only ever put a question *into* the queue, never take one out.
+	 */
+	right?: string[];
+	/**
 	 * Task codes this run actually examined, e.g. `["C.4", "F.10"]`.
 	 *
 	 * Codes rather than question ids because the question is "has this part of the

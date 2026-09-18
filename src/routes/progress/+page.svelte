@@ -28,6 +28,7 @@
 	/** A stored method id back into the name the drill page used for it. */
 	const methodLabel = (id: string) => METHODS.find((m) => m.id === id)?.label ?? id;
 	const confused = $derived(progress.confused);
+	const retries = $derived(progress.retries);
 
 	const nameOf = (id: string) => termIndex.find((t) => t.i === id)?.t ?? id;
 
@@ -96,10 +97,23 @@
 	<section aria-labelledby="{uid}-quiz">
 		<h2 id="{uid}-quiz" class="section-head">Practice questions</h2>
 
-		{#if trend.length === 0}
+		{#if trend.length === 0 && retries.sittings === 0}
 			<p class="note">
 				No finished sittings yet. <a href={resolve('/quiz')}>Answer some questions</a> and this fills
 				in.
+			</p>
+		{:else if trend.length === 0}
+			<!--
+				Every sitting so far was a retry run, so there is no line to draw — but saying
+				"no finished sittings" to somebody who has sat three would be plainly false.
+			-->
+			<p class="note" data-retries-only={retries.sittings}>
+				{retries.sittings === 1
+					? 'Your one sitting'
+					: `All ${retries.sittings} of your sittings`}
+				so far drew only from questions you had already missed, so there is nothing here to compare
+				them against yet. You got {retries.correct} of {retries.total} of them right.
+				<a href={resolve('/quiz')}>A fresh set</a> is what this chart is drawn from.
 			</p>
 		{:else}
 			<div class="card">
@@ -155,6 +169,23 @@
 							</li>
 						{/each}
 					</ol>
+				{/if}
+
+				{#if retries.sittings > 0}
+					<!--
+						The sittings this chart deliberately leaves out. Left unsaid, a reader who
+						worked through their mistakes would count their sessions, count the bars,
+						and conclude the app had lost some.
+					-->
+					<p class="hint" data-retries={retries.sittings}>
+						{retries.sittings}
+						{retries.sittings === 1 ? 'sitting is' : 'sittings are'} not on this chart: {retries.sittings ===
+						1
+							? 'it drew'
+							: 'they drew'} only from questions you had already missed, which is a harder set than
+						a fresh draw and not comparable with one. You got {retries.correct} of {retries.total}
+						of those right.
+					</p>
 				{/if}
 
 				<p class="more">

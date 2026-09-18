@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { RETRY_DOMAIN } from '$lib/quiz/retry.js';
 import type { CardRecord, ReviewRecord } from '$lib/db/scheduler.js';
 import type { DrillAttempt } from '$lib/db/index.js';
 import {
@@ -7,6 +8,7 @@ import {
 	deckState,
 	drillSummary,
 	retention,
+	retrySittings,
 	reviewsPerDay,
 	streak,
 	trendShift,
@@ -40,10 +42,10 @@ const review = (at: number, over: Partial<ReviewRecord> = {}): ReviewRecord => (
 	...over
 });
 
-const attempt = (n: number, correct: number, total = 10): AttemptLike => ({
+const attempt = (n: number, correct: number, total = 10, domain = 'all'): AttemptLike => ({
 	id: `a${n}`,
 	credential: 'RBT',
-	domain: 'all',
+	domain,
 	finishedAt: daysAgo(30 - n),
 	total,
 	correct
@@ -62,6 +64,40 @@ describe('attemptTrend', () => {
 	 */
 	it('drops a sitting with no answers rather than dividing by zero', () => {
 		expect(attemptTrend([{ ...attempt(1, 0), total: 0 }])).toEqual([]);
+	});
+
+	it('leaves a sitting drawn from past errors off the line', () => {
+		/*
+		 * Every question on such a run is one the reader got wrong before, so it scores
+		 * below a fresh draw for reasons that say nothing about whether they are improving.
+		 * On the chart it would read as a dip earned by going back over their mistakes.
+		 */
+		const points = attemptTrend([attempt(1, 8), attempt(2, 2, 10, RETRY_DOMAIN)]);
+		expect(points.map((p) => p.id)).toEqual(['a1']);
+	});
+
+	it('keeps a single-area sitting, which is an ordinary draw', () => {
+		expect(attemptTrend([attempt(1, 8, 10, 'C')]).map((p) => p.id)).toEqual(['a1']);
+	});
+});
+
+describe('retrySittings', () => {
+	it('counts the runs the trend left out, and how they went', () => {
+		const out = retrySittings([
+			attempt(1, 8),
+			attempt(2, 3, 10, RETRY_DOMAIN),
+			attempt(3, 6, 10, RETRY_DOMAIN)
+		]);
+		expect(out).toEqual({ sittings: 2, total: 20, correct: 9 });
+	});
+
+	it('reports zeroes rather than nothing when there have been none', () => {
+		expect(retrySittings([attempt(1, 8)])).toEqual({ sittings: 0, total: 0, correct: 0 });
+	});
+
+	it('ignores an abandoned run, the same way the trend does', () => {
+		const abandoned = { ...attempt(1, 0, 10, RETRY_DOMAIN), total: 0 };
+		expect(retrySittings([abandoned]).sittings).toBe(0);
 	});
 });
 

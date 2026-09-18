@@ -193,6 +193,9 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 						correct: r.correct,
 						perDomain: isObj(r.perDomain) ? (r.perDomain as QuizAttempt['perDomain']) : {},
 						missed: Array.isArray(r.missed) ? r.missed.filter(str) : [],
+						// Absent rather than empty where the file carries none. An empty list would
+						// claim the run answered nothing correctly; absent says it did not record.
+						...(Array.isArray(r.right) ? { right: r.right.filter(str) } : {}),
 						tasks: Array.isArray(r.tasks) ? r.tasks.filter(str) : []
 					}
 				: null,

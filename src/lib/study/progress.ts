@@ -15,6 +15,7 @@
  */
 import type { CardRecord, ReviewRecord } from '$lib/db/scheduler.js';
 import type { DrillAttempt } from '$lib/db/index.js';
+import { RETRY_DOMAIN } from '$lib/quiz/retry.js';
 
 /** Enough sittings that a line between them is a trend rather than two points and hope. */
 export const TREND_MINIMUM = 5;
@@ -53,6 +54,14 @@ export interface TrendPoint {
 /**
  * Attempts as a chronological series.
  *
+ * Runs drawn from questions the reader already missed are left out, and that is the more
+ * consequential of the two decisions here. Such a run is a deliberately hard paper — every
+ * question on it is one they got wrong before — so its score sits below a fresh draw for
+ * reasons that have nothing to do with whether they are improving. A reader who worked
+ * through their mistakes would watch the line fall, which is both false and exactly the
+ * discouragement that stops people doing the useful thing. They are counted separately
+ * instead, so the sittings do not simply vanish.
+ *
  * Ordered by when they finished and plotted by position rather than by date, which is a
  * choice worth naming: sittings are irregular events, and spacing them along a real time
  * axis would draw a wide empty gap for a fortnight off and invite it to be read as a
@@ -61,7 +70,7 @@ export interface TrendPoint {
  */
 export function attemptTrend(attempts: readonly AttemptLike[]): TrendPoint[] {
 	return [...attempts]
-		.filter((a) => a.total > 0)
+		.filter((a) => a.total > 0 && a.domain !== RETRY_DOMAIN)
 		.sort((x, y) => x.finishedAt - y.finishedAt)
 		.map((a) => ({
 			id: a.id,
@@ -72,6 +81,26 @@ export function attemptTrend(attempts: readonly AttemptLike[]): TrendPoint[] {
 			correct: a.correct,
 			percent: Math.round((a.correct / a.total) * 100)
 		}));
+}
+
+/**
+ * Retry sittings: how many, and how they went in total.
+ *
+ * Kept off the chart but not hidden. A reader who has spent three sessions on their own
+ * mistakes should see that they did, and "31 of 48" is a fair thing to say about them —
+ * it is a fact about those sittings, not an estimate of anything else.
+ */
+export function retrySittings(attempts: readonly AttemptLike[]): {
+	sittings: number;
+	total: number;
+	correct: number;
+} {
+	const runs = attempts.filter((a) => a.domain === RETRY_DOMAIN && a.total > 0);
+	return {
+		sittings: runs.length,
+		total: runs.reduce((n, a) => n + a.total, 0),
+		correct: runs.reduce((n, a) => n + a.correct, 0)
+	};
 }
 
 /**

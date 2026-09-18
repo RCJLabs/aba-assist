@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { RETRY_DOMAIN } from '$lib/quiz/retry.js';
 import type { TermIndexEntry } from '@aba/content-schema';
 import {
 	actions,
@@ -28,11 +29,41 @@ const TERMS = [
 	term('elsewhere', ['BCBA:B.2'])
 ];
 
-const attempt = (perDomain: AttemptLike['perDomain']): AttemptLike => ({
+const attempt = (perDomain: AttemptLike['perDomain'], domain = 'all'): AttemptLike => ({
 	credential: 'RBT',
+	domain,
 	perDomain,
 	missed: [],
 	finishedAt: 1
+});
+
+describe('which sittings count as a measurement', () => {
+	it('leaves a retry run out of the area totals', () => {
+		/*
+		 * A retry run is drawn entirely from questions already got wrong, so it is a harder
+		 * paper than the bank by construction. Counting it would drag every area's accuracy
+		 * down in proportion to how much the reader had gone back over their mistakes —
+		 * the app punishing them for doing the useful thing.
+		 */
+		const fresh = attempt({ A: { total: 13, correct: 13 } });
+		const retried = attempt({ A: { total: 13, correct: 0 } }, RETRY_DOMAIN);
+		const stats = domainStats(DOMAINS, [fresh, retried], 'RBT', TERMS, new Set());
+		const a = stats.find((s) => s.letter === 'A')!;
+		expect(a.answered).toBe(13);
+		expect(a.accuracy).toBe(1);
+	});
+
+	it('still counts an ordinary single-area run', () => {
+		// The exclusion is on the retry marker alone, not on anything narrower than "all".
+		const stats = domainStats(
+			DOMAINS,
+			[attempt({ A: { total: 13, correct: 7 } }, 'A')],
+			'RBT',
+			TERMS,
+			new Set()
+		);
+		expect(stats.find((s) => s.letter === 'A')!.answered).toBe(13);
+	});
 });
 
 describe('how much is enough to report', () => {

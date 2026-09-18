@@ -38,6 +38,9 @@
 				: (questionCredentials[0] ?? 'RBT'),
 			domain: domain || 'all'
 		});
+		// Needs storage, so it can only happen here — the page is prerendered and the
+		// server has no history to read. The block below stays absent until it lands.
+		void quiz.loadRetry();
 	});
 
 	let setupForm = $state<HTMLFormElement | null>(null);
@@ -240,6 +243,22 @@
 
 	const remaining = $derived(quiz.secondsRemaining);
 	const lowOnTime = $derived(quiz.plan !== null && remaining <= 300);
+
+	/*
+	 * The retry queue, and how much of it this run would actually cover.
+	 *
+	 * The length control applies here as it does to a fresh draw, and the queue is ordered
+	 * worst-first, so a reader with forty outstanding and ten selected gets the ten that
+	 * have caught them out most. Said out loud below rather than left to be discovered.
+	 */
+	const outstanding = $derived(quiz.retry?.ids.length ?? 0);
+	const retryRun = $derived(Math.min(outstanding, Math.max(1, quiz.count)));
+
+	async function startRetry() {
+		adoptForm();
+		quiz.configure({ source: 'missed' });
+		await quiz.start();
+	}
 </script>
 
 <svelte:head>
@@ -420,8 +439,19 @@
 			{quiz.available === 1 ? 'question' : 'questions'} available for this selection.
 		</p>
 		{#if quiz.status === 'empty'}
+			<!--
+				Two ways to arrive here, and they need different sentences. Clearing the last
+				outstanding question is the good outcome of the feature below, and telling
+				somebody who has just done it that no questions are written for their area
+				would read as a fault.
+			-->
 			<p class="warn">
-				No questions are written for that area yet. Choose another, or all areas.
+				{#if quiz.source === 'missed'}
+					Nothing left to retry — every question you had missed, you have since answered
+					correctly. Start a fresh set above.
+				{:else}
+					No questions are written for that area yet. Choose another, or all areas.
+				{/if}
 			</p>
 		{/if}
 
@@ -437,6 +467,57 @@
 					: 'Start'}
 		</button>
 	</form>
+
+	<!--
+		Outside the form on purpose. This is a second way to start a session, not a fifth
+		control on the first one, and nesting a second submit inside that form would make
+		the Enter key ambiguous on every field above it.
+
+		Absent entirely until storage has been read, and absent for a reader who has never
+		missed anything — an empty "0 to retry" panel is a permanent reminder of a feature
+		that does not apply yet.
+	-->
+	{#if quiz.retry !== null && (outstanding > 0 || quiz.retry.gone > 0)}
+		<section class="retry" aria-labelledby="retry-heading" data-outstanding={outstanding}>
+			<h2 id="retry-heading">Questions you have missed</h2>
+			{#if outstanding > 0}
+				<p>
+					<strong>{outstanding}</strong>
+					{outstanding === 1 ? 'question has' : 'questions have'} caught you out and
+					{outstanding === 1 ? 'has' : 'have'} not been answered correctly since. Sitting one again
+					is not the same as re-reading the term behind it: most of what one of these tests is telling
+					a plausible option from the right one.
+				</p>
+				{#if retryRun < outstanding}
+					<p class="muted">
+						This run takes the {retryRun} that have caught you out most. Ask for more above to cover
+						the rest.
+					</p>
+				{/if}
+				<button type="button" class="primary" onclick={startRetry}>
+					Retry {retryRun}
+					{retryRun === 1 ? 'question' : 'questions'}
+				</button>
+			{:else}
+				<p data-retry-cleared>
+					Nothing outstanding. Every question you have missed, you have since answered
+					correctly.
+				</p>
+			{/if}
+			{#if quiz.retry.gone > 0}
+				<!--
+					Said rather than swallowed. The alternative is a number that quietly shrinks
+					between sittings, which teaches people not to trust any figure on the page.
+				-->
+				<p class="muted" data-retry-gone={quiz.retry.gone}>
+					{quiz.retry.gone}
+					{quiz.retry.gone === 1 ? 'question you missed is' : 'questions you missed are'} not in
+					this version of the app, so {quiz.retry.gone === 1 ? 'it is' : 'they are'} not in the count
+					above. Questions are rebuilt with every release and one can be withdrawn or rewritten.
+				</p>
+			{/if}
+		</section>
+	{/if}
 {:else if (quiz.status === 'question' || quiz.status === 'feedback') && item}
 	<form
 		class="question"
@@ -495,7 +576,13 @@
 		<p class="progress">
 			Question {quiz.progress.n} of {quiz.progress.total}{#if !quiz.plan}&nbsp;·
 				{item.q.taskRef.credential}
-				{item.q.taskRef.code}{/if}
+				{item.q.taskRef
+					.code}{/if}<!--
+				Said on every question of a retry run. Without it a reader who recognises the
+				third question in a row wonders whether the app is repeating itself.
+			-->{#if quiz.source === 'missed'}<span
+					class="withheld">&nbsp;· one you missed before</span
+				>{/if}
 			<!--
 				Said on every question rather than once at setup. The setting was chosen a
 				screen ago and the consequence lands here, which is where somebody wonders
@@ -668,6 +755,20 @@
 				quiz.results.total
 			)}%)
 		</h2>
+		{#if quiz.source === 'missed'}
+			<!--
+				The caveat that has to sit next to the figure rather than under the fold. A run
+				drawn only from questions already missed is a harder paper than a fresh draw by
+				construction, so the percentage above is not comparable with the others and
+				nothing in the app treats it as though it were.
+			-->
+			<p class="muted" data-retry-run>
+				These were all questions you had missed before, so this score is not comparable with a
+				fresh draw and is left off the trend on
+				<a href={resolve('/progress')}>your progress</a>. What it does say is which of them you
+				have now put right.
+			</p>
+		{/if}
 		{#if quiz.ranOutOfTime}
 			<p class="warn" role="note">
 				<strong>Time ran out.</strong> Questions you did not reach are counted wrong, which is what
@@ -772,16 +873,55 @@
 			</ol>
 		{/if}
 
-		<p>
-			<button type="button" class="primary" onclick={() => quiz.start()}
-				>Another session</button
-			>
+		<p class="after">
+			<button type="button" class="primary" onclick={() => quiz.start()}>
+				{quiz.source === 'missed' ? 'Another retry' : 'Another session'}
+			</button>
+			{#if outstanding > 0 && quiz.source !== 'missed'}
+				<!--
+					Where the offer is worth most: the reader has just been shown what they got
+					wrong and is the most willing they will ever be to sit those again.
+				-->
+				<button type="button" onclick={startRetry}>
+					Retry {retryRun}
+					{retryRun === 1 ? 'question' : 'questions'} you have missed
+				</button>
+			{/if}
 			<button type="button" onclick={() => quiz.reset()}>Change settings</button>
 		</p>
 	</section>
 {/if}
 
 <style>
+	.retry {
+		max-width: 30rem;
+		margin-top: 1.5rem;
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--border);
+		border-left-width: 4px;
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+	}
+	.retry h2 {
+		font-size: 1.05rem;
+		margin: 0 0 0.5rem;
+	}
+	.retry p {
+		margin: 0 0 0.6rem;
+	}
+	.retry button {
+		min-height: var(--tap);
+	}
+
+	.after {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.after button {
+		min-height: var(--tap);
+	}
+
 	.untimed {
 		margin: 0.5rem 0 0;
 		font-size: 0.85rem;

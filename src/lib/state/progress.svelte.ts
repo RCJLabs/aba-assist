@@ -14,6 +14,7 @@ import {
 	practiceSummary,
 	reviewsPerDay,
 	streak,
+	retrySittings,
 	trendShift,
 	type Confusion,
 	type DayBucket,
@@ -49,6 +50,12 @@ class Progress {
 	trend = $state.raw<TrendPoint[]>([]);
 	days = $state.raw<DayBucket[]>([]);
 	shift = $state<number | null>(null);
+	/** Sittings drawn from past errors, kept off the trend and counted here instead. */
+	retries = $state<{ sittings: number; total: number; correct: number }>({
+		sittings: 0,
+		total: 0,
+		correct: 0
+	});
 	recall = $state<Retention>({ tested: 0, kept: 0, percent: null, needed: 20 });
 	run = $state<Streak>({ current: 0, longest: 0, activeDays: 0 });
 	deck = $state<DeckState>({ fresh: 0, learning: 0, review: 0, total: 0 });
@@ -103,6 +110,7 @@ class Progress {
 
 			this.trend = attemptTrend(attempts);
 			this.shift = trendShift(this.trend);
+			this.retries = retrySittings(attempts);
 			this.days = reviewsPerDay(log, now, WINDOW_DAYS);
 			this.recall = retention(log);
 			this.run = streak(log, now);

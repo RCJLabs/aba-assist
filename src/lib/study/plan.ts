@@ -12,6 +12,7 @@
  * not, and never converts any of it into a claim about the real exam.
  */
 import type { TermIndexEntry } from '@aba/content-schema';
+import { RETRY_DOMAIN } from '$lib/quiz/retry.js';
 
 export interface DomainLike {
 	letter: string;
@@ -22,6 +23,8 @@ export interface DomainLike {
 
 export interface AttemptLike {
 	credential: string;
+	/** A domain letter, "all", or "missed" for a run drawn from past errors. */
+	domain: string;
 	perDomain: Record<string, { total: number; correct: number }>;
 	missed: string[];
 	finishedAt: number;
@@ -59,7 +62,19 @@ export function domainStats(
 	terms: TermIndexEntry[],
 	studied: ReadonlySet<string>
 ): DomainStat[] {
-	const mine = attempts.filter((a) => a.credential === credential);
+	/*
+	 * Fresh draws only.
+	 *
+	 * A retry run is drawn entirely from questions this reader has already got wrong, so
+	 * it is a biased sample by construction and a harder paper than the bank. Adding it to
+	 * the running total would push every area's accuracy down in proportion to how much
+	 * the reader had used the feature — which would mean the app punished them for going
+	 * back over their mistakes. The answers still count as coverage of the outline; they
+	 * just do not count as a measurement.
+	 */
+	const mine = attempts.filter(
+		(a) => a.credential === credential && a.domain !== RETRY_DOMAIN
+	);
 
 	return domains.map((d) => {
 		let answered = 0;

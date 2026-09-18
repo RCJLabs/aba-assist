@@ -35,6 +35,7 @@ describe('what a run counted as examined', () => {
 			[
 				{
 					credential: 'RBT',
+					domain: 'all',
 					perDomain: {},
 					missed: ['q-1'],
 					finishedAt: 0,
@@ -48,7 +49,16 @@ describe('what a run counted as examined', () => {
 
 	it('ignores runs for another credential', () => {
 		const seen = tasksExamined(
-			[{ credential: 'BCBA', perDomain: {}, missed: [], finishedAt: 0, tasks: ['A.1'] }],
+			[
+				{
+					credential: 'BCBA',
+					domain: 'all',
+					perDomain: {},
+					missed: [],
+					finishedAt: 0,
+					tasks: ['A.1']
+				}
+			],
 			'RBT'
 		);
 		expect(seen.size).toBe(0);
@@ -61,7 +71,7 @@ describe('what a run counted as examined', () => {
 	 */
 	it('treats a run with no task list as covering nothing', () => {
 		const seen = tasksExamined(
-			[{ credential: 'RBT', perDomain: {}, missed: [], finishedAt: 0 }],
+			[{ credential: 'RBT', domain: 'all', perDomain: {}, missed: [], finishedAt: 0 }],
 			'RBT'
 		);
 		expect(seen.size).toBe(0);
