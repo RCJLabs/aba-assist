@@ -78,6 +78,24 @@ const ScenarioBase = {
 	situation: z.string().min(40).max(1200),
 	setting: Setting,
 	audience: z.array(Credential).min(1),
+	/**
+	 * How somebody would ask for this, in the words they would actually type.
+	 *
+	 * Search ranks words against words. Somebody reaching for an escalation card is not
+	 * reaching for its title — they are mid-incident, and what they type is what is
+	 * happening: "he is hitting his own head", not "self-injurious behavior". The corpus
+	 * does not contain those words anywhere, which is a limitation established by measuring
+	 * it rather than assumed, so no amount of better ranking reaches them.
+	 *
+	 * These live on the scenario rather than in a lookup table of their own, deliberately.
+	 * A phrasing decides what a person sees in a crisis, which makes it exactly the kind of
+	 * prose this app sends through tier A review — and a separate file would have been the
+	 * first piece of safety routing in the repo to escape that.
+	 *
+	 * Written person-neutral. A phrasing that says "himself" answers half the readers who
+	 * need it.
+	 */
+	askedAs: z.array(z.string().min(8).max(120)).default([]),
 	tags: z.array(Slug).default([]),
 	termRefs: z.array(Slug).default([]),
 	taskRefs: z.array(TaskRef).default([]),

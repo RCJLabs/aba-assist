@@ -6,6 +6,12 @@ situation: >-
   During a session the learner has a seizure, has trouble breathing, chokes, faints,
   has a severe allergic reaction, or shows any other sign of a medical emergency. You
   may or may not know their medical history.
+askedAs:
+  - having a seizure
+  - stopped breathing properly
+  - collapsed and will not wake
+  - choking on something
+  - lips turning blue
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [medical-emergency]

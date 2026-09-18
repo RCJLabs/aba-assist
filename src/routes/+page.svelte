@@ -274,6 +274,41 @@
 </details>
 
 {#if search.query.trim().length >= 2}
+	<!--
+		Answers, above results.
+
+		Deliberately not merged into the ranked list and deliberately not filtered by the
+		exam or category drop-downs: somebody typing what is happening in front of them is
+		not browsing a corpus, and a card that exactly answers them must not be displaced by
+		a term whose gloss happens to share a word — or hidden because the filter is still
+		set to Behavior Acquisition from ten minutes ago.
+	-->
+	{#if search.routes.length > 0}
+		<section
+			class="routes"
+			aria-labelledby="routes-heading"
+			data-routes={search.routes.length}
+		>
+			<h2 id="routes-heading">
+				{search.routes.length === 1
+					? 'This may be what you mean'
+					: 'These may be what you mean'}
+			</h2>
+			<ul>
+				{#each search.routes as r (r.id)}
+					<li data-escalate={r.escalate}>
+						<a href={resolve('/scenarios/[slug]', { slug: r.id })}>
+							<span class="title">{r.title}</span>
+							{#if r.escalate}
+								<span class="flag">Stop and escalate</span>
+							{/if}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	<p class="count">{results.length} {results.length === 1 ? 'result' : 'results'}</p>
 	{#if results.length > 0}
 		<ul class="results">
@@ -696,6 +731,54 @@
 	.kind[data-kind='ethics-topic'] {
 		border-color: var(--accent);
 		color: var(--accent);
+	}
+
+	/*
+		Marked as the urgent thing by the band tokens the rest of the app uses for this, with
+		the words "Stop and escalate" carrying it as well as the colour — the same rule
+		everywhere else: never colour alone for anything that means act differently.
+	*/
+	.routes {
+		margin: 1rem 0;
+		padding: 0.75rem 0.9rem;
+		border: 2px solid var(--band-urgent-edge);
+		border-radius: var(--radius);
+		background: var(--surface-raised);
+	}
+
+	.routes h2 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+	}
+
+	.routes ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.routes li a {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: var(--tap);
+		padding: 0.35rem 0;
+		font-weight: 600;
+	}
+
+	.routes .flag {
+		flex: none;
+		padding: 0.05rem 0.4rem;
+		border-radius: 4px;
+		background: var(--band-urgent-bg);
+		color: var(--band-urgent-text);
+		font-size: 0.78em;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
 	}
 
 	.results,

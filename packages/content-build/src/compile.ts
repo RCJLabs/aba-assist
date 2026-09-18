@@ -29,6 +29,7 @@ import {
 	type SearchIndexEntry,
 	type TermIndexEntry
 } from '@aba/content-schema';
+import { MIN_INTENT_TOKENS, intentTokens } from '@aba/content-schema/runtime';
 import { discover, parseMarkdown, parseYamlFile } from './parse.js';
 import type { CompileOptions, CompileResult, EmittedAsset, Issue } from './types.js';
 import { error } from './types.js';
@@ -931,8 +932,46 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			}
 		}
 
+		/*
+		 * The plain-language routes, checked as routing rather than as prose.
+		 *
+		 * Two rules, and both are about what a wrong match costs. A phrase claimed by two
+		 * situations makes the app pick one for a reader mid-incident, and a phrase with one
+		 * content word claims every query in its neighbourhood — "hitting" would answer both
+		 * aggression and self-injury, confidently, and be wrong half the time.
+		 *
+		 * Normalised through the same function the browser matches with, so this is checking
+		 * the thing that actually runs rather than an approximation of it.
+		 */
+		const claimedBy = new Map<string, string>();
 		for (const s of scenarios) {
 			const file = scenarioFiles.get(s.id)!;
+			for (const phrase of s.askedAs) {
+				const words = intentTokens(phrase);
+				if (words.length < MIN_INTENT_TOKENS) {
+					push(
+						error(
+							'intent/too-vague',
+							`askedAs "${phrase}" reduces to ${words.length === 0 ? 'no words' : `"${words.join(' ')}"`} once ordinary words are dropped, which is not specific enough to route on`,
+							file
+						)
+					);
+					continue;
+				}
+				const key = [...words].sort().join(' ');
+				const other = claimedBy.get(key);
+				if (other !== undefined && other !== s.id) {
+					push(
+						error(
+							'intent/ambiguous',
+							`askedAs "${phrase}" asks for the same words as "${other}", so a reader typing it would be routed to one of two situations arbitrarily`,
+							file
+						)
+					);
+				} else {
+					claimedBy.set(key, s.id);
+				}
+			}
 			checkRefs(s.termRefs, termIds, 'term', file, 'termRefs', knownTerms);
 			for (const c of s.citations) {
 				if (!sources.has(c.sourceId)) {
@@ -1286,6 +1325,34 @@ function buildAssets(
 		name: 'scenarios',
 		fileName: `${base}/scenarios.json`,
 		source: JSON.stringify(Object.fromEntries(scenarios.map((s) => [s.id, s]))),
+		fetchedAtRuntime: false
+	});
+
+	/*
+	 * The plain-language routes, emitted small and shipped eagerly.
+	 *
+	 * Deliberately not part of the search index. The index is fetched on search intent and
+	 * deserialised in batches, which is the right trade for ranking a glossary and the wrong
+	 * one for somebody mid-incident: the one lookup in this app that must not wait on a
+	 * network round trip is the one for an escalation card. A few dozen rows in the bundle
+	 * costs nothing and is answerable on the first keystroke.
+	 *
+	 * Built from `scenarios`, the post-withholding list, so a card that has not been
+	 * approved routes nobody anywhere.
+	 */
+	assets.push({
+		name: 'intents',
+		fileName: `${base}/intents.json`,
+		source: JSON.stringify(
+			scenarios.flatMap((sc) =>
+				sc.askedAs.map((phrase) => ({
+					phrase,
+					id: sc.id,
+					title: sc.title,
+					escalate: sc.kind === 'escalation-only'
+				}))
+			)
+		),
 		fetchedAtRuntime: false
 	});
 

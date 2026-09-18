@@ -5,6 +5,12 @@ title: A learner is hurting themselves and there is a risk of injury
 situation: >-
   During a session a learner begins behaving in a way that is causing, or is likely to
   cause, physical injury to themselves. You are worried about their safety right now.
+askedAs:
+  - hitting their own head
+  - banging their head on something
+  - biting their own arm
+  - scratching their own skin raw
+  - hurting themself on purpose
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [self-injury, medical-emergency]

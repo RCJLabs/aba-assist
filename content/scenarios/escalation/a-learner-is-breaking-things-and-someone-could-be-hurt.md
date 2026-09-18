@@ -6,6 +6,11 @@ situation: >-
   The learner is throwing furniture, pulling things off walls, breaking glass or damaging
   equipment, and the room is no longer a safe place for the people in it. There are other
   learners nearby, or there is nobody else at all and you are on your own with it.
+askedAs:
+  - throwing furniture across the room
+  - breaking glass in the room
+  - pulling things off the wall
+  - destroying the room and nobody else is here
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [property-destruction-danger]

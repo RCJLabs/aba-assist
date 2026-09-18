@@ -7,6 +7,11 @@ situation: >-
   learner, or to put them in a room on their own and keep the door shut. It is happening
   now, somebody senior is waiting for you to act, and refusing in front of everybody feels
   impossible.
+askedAs:
+  - told me to hold the learner down
+  - asked me to restrain a child
+  - told to lock them in a room
+  - supervisor wants me to seclude them
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [restraint, seclusion]

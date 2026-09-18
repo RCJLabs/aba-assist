@@ -58,3 +58,10 @@ export {
 	RELEASE_MINIMUM_TERMS,
 	type ReleaseRequiredKind
 } from './release.js';
+export {
+	intentTokens,
+	matchesIntent,
+	routesFor,
+	MIN_INTENT_TOKENS,
+	type IntentRoute
+} from './intent.js';

@@ -6,6 +6,11 @@ situation: >-
   A learner — of any age — says, writes, signs or otherwise communicates that they want
   to die, that they wish they were dead, or that they plan to hurt themselves. It may be
   said calmly or in distress, and it may be the first time or one of many.
+askedAs:
+  - said they want to die
+  - said they wish they were dead
+  - talking about killing themself
+  - said everyone would be better off without them
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [suicidal-ideation]

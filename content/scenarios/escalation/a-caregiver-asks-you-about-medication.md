@@ -7,6 +7,12 @@ situation: >-
   seems to be helping, whether the dose seems right, whether to skip it on session days,
   or whether a behavior you see could be a side effect. They ask because you see the
   learner often and they trust you.
+askedAs:
+  - asked me about the medication
+  - asking about the medication dose
+  - whether to skip the medication
+  - is the medication working
+  - could this be a side effect
 setting: home
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [medication-question]

@@ -7,6 +7,12 @@ situation: >-
   physically, sexually or emotionally abused, or neglected — an unexplained injury, a
   disclosure, a pattern of fear, signs of not being fed or cared for. You are not
   certain, and you are not sure whether it is your place to say anything.
+askedAs:
+  - unexplained bruises on a child
+  - think a child is being abused
+  - disclosed something that happened at home
+  - suspect neglect at home
+  - not being fed properly at home
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [suspected-abuse]

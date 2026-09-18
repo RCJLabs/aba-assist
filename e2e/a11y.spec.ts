@@ -46,6 +46,15 @@ test('a flashcard mid-session, revealed, is accessible', async ({ page }) => {
 	await expectNoA11yViolations(page);
 });
 
+test('a plain-language route to a situation is accessible', async ({ page }) => {
+	// A block marked urgent, above the ordinary results. The colour is reinforcement; the
+	// words carry it, which is what has to survive forced colours and a monochrome theme.
+	await page.goto('/');
+	await page.getByRole('searchbox').fill('he keeps hitting his own head');
+	await expect(page.locator('.routes')).toBeVisible();
+	await expectNoA11yViolations(page);
+});
+
 test('a recall card, written and checked, is accessible', async ({ page }) => {
 	// A different shape from the card above: a labelled textarea before the reveal, and the
 	// reader's own words beside the answer after it.

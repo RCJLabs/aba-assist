@@ -1,6 +1,7 @@
 import {
 	CATEGORY_LABELS as SCHEMA_CATEGORY_LABELS,
-	CATEGORY_ORDER
+	CATEGORY_ORDER,
+	type IntentRoute
 } from '@aba/content-schema/runtime';
 import type {
 	ContentOutline,
@@ -12,8 +13,18 @@ import type {
 import index from './generated/terms.index.json';
 import version from './generated/version.json';
 import taxonomy from './generated/taxonomy.json';
+import intents from './generated/intents.json';
 
 export const termIndex = index as TermIndexEntry[];
+
+/**
+ * Plain-language routes into the situations, shipped in the bundle rather than fetched.
+ *
+ * A few dozen rows. The search index is fetched on intent and deserialised in batches,
+ * which is right for ranking a glossary and wrong for somebody reaching for an escalation
+ * card: that lookup has to answer on the first keystroke, offline, before anything loads.
+ */
+export const intentRoutes = intents as IntentRoute[];
 export const contentVersion = version as {
 	contentVersion: string;
 	channel: string;

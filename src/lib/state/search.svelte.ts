@@ -1,7 +1,7 @@
 import type MiniSearchType from 'minisearch';
-import { searchOptions } from '@aba/content-schema/runtime';
+import { routesFor, searchOptions, type IntentRoute } from '@aba/content-schema/runtime';
 import type { SearchKind } from '@aba/content-schema';
-import { CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
+import { CATEGORY_LABELS, intentRoutes, termIndex } from '$lib/content/load.js';
 
 export interface SearchHit {
 	id: string;
@@ -74,6 +74,25 @@ class Search {
 		})();
 
 		return this.#warming;
+	}
+
+	/**
+	 * Situations the query asks for in so many words, ahead of anything ranked.
+	 *
+	 * Not part of `results`, and not sorted into them. A ranked hit is the index's opinion
+	 * about which words are close; this is an authored answer to a question somebody asked
+	 * in the words they had — and mixing the two would mean a card that exactly answers
+	 * "he is hitting his own head" could be displaced by a term whose gloss happens to say
+	 * "head". The page renders them as a separate block, above.
+	 *
+	 * Available on the first keystroke, deliberately. The table is in the bundle rather
+	 * than the fetched index, because the one lookup in this app that must not wait on the
+	 * network is the one somebody does mid-incident.
+	 */
+	get routes(): IntentRoute[] {
+		const q = this.query.trim();
+		if (q.length < MIN_QUERY) return [];
+		return routesFor(q, intentRoutes);
 	}
 
 	get results(): SearchHit[] {

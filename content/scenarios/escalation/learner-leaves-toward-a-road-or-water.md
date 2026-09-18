@@ -6,6 +6,11 @@ situation: >-
   The learner has left the room, building or yard and is heading toward traffic, a parking
   lot, a pool or open water, or anywhere else where they could be seriously hurt. You
   may or may not be able to see them.
+askedAs:
+  - ran out toward the road
+  - running into the parking lot
+  - got out of the building and gone
+  - heading for the pool alone
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [elopement-into-danger]

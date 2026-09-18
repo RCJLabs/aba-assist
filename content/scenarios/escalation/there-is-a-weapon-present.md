@@ -7,6 +7,10 @@ situation: >-
   hand. It may belong to an adult who is not thinking about you at all. It may be a
   learner who has picked something up. You do not know, and you are deciding what to do in
   the next few seconds.
+askedAs:
+  - there is a gun in the house
+  - picked up a knife
+  - somebody has a weapon
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [weapon]

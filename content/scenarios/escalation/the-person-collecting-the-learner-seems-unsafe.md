@@ -7,6 +7,11 @@ situation: >-
   behaving in a way that alarms you, or is somebody you have not been told about and cannot
   identify. Handing the learner over feels wrong. Refusing feels like something you have no
   authority to do.
+askedAs:
+  - seems drunk at pickup
+  - smells of alcohol at collection
+  - person collecting them seems impaired
+  - stranger came to collect the learner
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [suspected-abuse]

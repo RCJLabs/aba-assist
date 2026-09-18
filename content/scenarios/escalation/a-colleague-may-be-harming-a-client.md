@@ -7,6 +7,11 @@ situation: >-
   cruelly, being rough with them, taking away something they need, leaving them distressed
   and walking off. Perhaps it was once. Perhaps you have noticed it building. They are
   senior to you, everyone else seems comfortable, and you are not certain.
+askedAs:
+  - rough with a client
+  - speaks cruelly to a learner
+  - saw staff mistreat a learner
+  - someone senior is hurting a client
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [suspected-abuse]

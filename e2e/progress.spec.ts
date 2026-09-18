@@ -25,7 +25,18 @@ async function seed(
 	}
 ) {
 	await page.goto('/progress');
-	await expect(page.locator('[data-progress-status]')).toBeAttached({ timeout: 30_000 });
+	/*
+	 * Wait for `ready`, not merely for the attribute to exist.
+	 *
+	 * `idle` is attached from the first render, before the app has opened the database.
+	 * Seeding at that point calls `indexedDB.open('aba-assist')` with no version, which
+	 * CREATES an empty database rather than joining the app's — and the very next line asks
+	 * it for object stores nobody has made yet. It fails as "One of the specified object
+	 * stores was not found", and only under enough load to lose the race.
+	 */
+	await expect(page.locator('[data-progress-status="ready"]')).toBeAttached({
+		timeout: 30_000
+	});
 
 	await page.evaluate(async (payload) => {
 		const open = () =>
@@ -79,7 +90,11 @@ async function seedDrills(
 	sittings: { correct: number; total: number; missedPairs: string[] }[]
 ) {
 	await page.goto('/progress');
-	await expect(page.locator('[data-progress-status]')).toBeAttached({ timeout: 30_000 });
+	// Same reason as above: seeding before the app has opened the database creates an empty
+	// one and the transaction then asks for stores that do not exist.
+	await expect(page.locator('[data-progress-status="ready"]')).toBeAttached({
+		timeout: 30_000
+	});
 	await page.evaluate(async (rows) => {
 		const db = await new Promise<IDBDatabase>((res, rej) => {
 			const r = indexedDB.open('aba-assist');

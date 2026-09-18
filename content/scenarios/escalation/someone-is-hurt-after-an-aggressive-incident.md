@@ -6,6 +6,11 @@ situation: >-
   During a session the learner strikes, bites, kicks or throws something at another
   person — you, a peer, a family member — and that person is hurt, or you cannot yet
   tell whether they are. The behavior may or may not be continuing.
+askedAs:
+  - bit me and drew blood
+  - someone was injured during the incident
+  - hit another child and they are hurt
+  - kicked a staff member who is injured
 setting: any
 audience: [RBT, BCaBA, BCBA]
 riskFlags: [aggression-with-injury]
