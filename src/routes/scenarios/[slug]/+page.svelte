@@ -2,11 +2,22 @@
 	import { resolve } from '$app/paths';
 	import { CONTACT_LABELS, RISK_LABELS, IMMEDIATE_CONTACTS } from '$lib/content/scenarios.js';
 	import PageBand from '$lib/components/PageBand.svelte';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 	import { settingLabel } from '@aba/content-schema/runtime';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const s = $derived(data.scenario);
+
+	/*
+	 * Recorded so the reader can see their own pattern later. An effect rather than
+	 * `onMount`, because moving between two terms reuses this component — the slug changes
+	 * and nothing remounts, so a mount hook would record the first term of a session and
+	 * nothing after it.
+	 */
+	$effect(() => {
+		lookups.note('scenario', s.id, s.title);
+	});
 </script>
 
 <svelte:head>

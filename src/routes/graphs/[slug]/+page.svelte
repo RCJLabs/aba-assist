@@ -2,9 +2,20 @@
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import Graph from '$lib/components/Graph.svelte';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
+
+	/*
+	 * Recorded so the reader can see their own pattern later. An effect rather than
+	 * `onMount`, because moving between two graphs reuses this component — the slug changes
+	 * and nothing remounts, so a mount hook would record the first one of a session and
+	 * nothing after it.
+	 */
+	$effect(() => {
+		lookups.note('graph', data.graph.id, data.graph.title);
+	});
 
 	const FEATURE_LABEL: Record<string, string> = {
 		level: 'Level',

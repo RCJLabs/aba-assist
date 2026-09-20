@@ -6,10 +6,21 @@
 	import PageBand from '$lib/components/PageBand.svelte';
 	import { settingLabel } from '@aba/content-schema/runtime';
 	import { errataUrl } from '$lib/config.js';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const term = $derived(data.term);
+
+	/*
+	 * Recorded so the reader can see their own pattern later. An effect rather than
+	 * `onMount`, because moving between two terms reuses this component — the slug changes
+	 * and nothing remounts, so a mount hook would record the first term of a session and
+	 * nothing after it.
+	 */
+	$effect(() => {
+		lookups.note('term', term.id, term.term);
+	});
 
 	function togglePlain() {
 		settings.set('plainLanguage', !settings.plainLanguage);

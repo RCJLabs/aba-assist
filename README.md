@@ -478,6 +478,53 @@ catches up to the clock instead of resuming where the last tick left off. And th
 takes a screen wake lock for the duration, because this is a tool somebody watches for ten
 minutes without touching.
 
+## What you looked up is a signal, and a weak one
+
+Every other thing this app knows about a reader comes from asking them a question: a quiz
+grades an answer, a drill scores a recording, a flashcard asks for a recall. All three
+cost something to produce, which means they only ever measure the people willing to be
+tested. On a free reference app that people open in a hallway between sessions, that is a
+minority. Opening a term costs nothing and happens anyway.
+
+So the app records it: one row per entry, with a count and a last-seen time, on the device
+and nowhere else. The glossary offers the way back to what you were reading, and
+`/progress` shows what you keep returning to — in a section that sits **outside** the
+"nothing to show yet" branch the rest of that page lives behind, because the reader this
+is for is precisely the one who has never finished a quiz.
+
+The wording around it is the actual feature. A repeated lookup is not a knowledge gap, and
+saying it is would be a claim about somebody the app has never assessed:
+
+- a term you look up weekly may be one you use constantly and double-check a boundary on;
+- the count is confounded by the app's own cross-references — an entry six others link to
+  gets opened more than an equally shaky one nothing points at;
+- somebody else may have used the phone.
+
+The page therefore says it has seen you open these more than once, names those limits in
+two sentences, and leaves the diagnosis to the person it is about. Same posture as the
+study plan, which refuses to produce a score for the same reason.
+
+Three details that are load-bearing rather than incidental. A visit inside **thirty
+minutes** of a counted one does not count again, tracked against its own `countedAt`
+rather than the last-seen time — deduping against last-seen would let somebody re-reading
+every twenty minutes all afternoon record a single lookup, because each visit would push
+the window ahead of itself. The title is **stored on the row** rather than resolved at
+render: looking four kinds of id up means importing the scenario, ethics and graph corpora
+into every page that shows the list, which is the same 450KB the corpus split exists to
+avoid. And recording is an `$effect` keyed on the id rather than `onMount`, because one
+component serves every slug — a mount hook records the first entry of a session and
+nothing after it, which is a bug an e2e test was checked to catch.
+
+It is on by default and it is a reading history, so both halves of that are answered
+rather than assumed. Settings carries a switch and a **separate** clear button, because "I
+would rather you did not keep a list of what I read" is a different request from "delete
+everything" and answering the first with the second would cost somebody years of
+supervision records. It rides along in the backup and goes with the erase. It is
+deliberately **not** counted by `hasStoredData`, which decides whether to warn that data
+has gone: a reader who has only ever browsed has nothing they would grieve, and greeting
+them with "your progress has been deleted" is the false positive that teaches people to
+ignore the true warning.
+
 ## Saying so when the browser has cleared somebody's data
 
 Settings has warned about this from the start: Safari and iOS clear a non-installed site's

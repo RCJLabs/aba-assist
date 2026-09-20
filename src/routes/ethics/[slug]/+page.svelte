@@ -4,10 +4,21 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { errataUrl } from '$lib/config.js';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	const topic = $derived(data.topic);
+
+	/*
+	 * Recorded so the reader can see their own pattern later. An effect rather than
+	 * `onMount`, because moving between two terms reuses this component — the slug changes
+	 * and nothing remounts, so a mount hook would record the first term of a session and
+	 * nothing after it.
+	 */
+	$effect(() => {
+		lookups.note('ethics', topic.id, topic.ourLabel);
+	});
 
 	function togglePlain() {
 		settings.set('plainLanguage', !settings.plainLanguage);

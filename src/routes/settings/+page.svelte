@@ -5,13 +5,22 @@
 	import { settings, type Theme, type Hand } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { storage, NUDGE_AFTER_DAYS } from '$lib/state/storage.svelte.js';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 
 	const uid = $props.id();
 	let fileInput: HTMLInputElement | null = $state(null);
 	let confirmingErase = $state(false);
 	let confirmingImport = $state<File | null>(null);
 
-	onMount(() => storage.load());
+	onMount(() => {
+		void lookups.load();
+		return storage.load();
+	});
+
+	async function forgetLookups() {
+		await lookups.forget();
+		announcer.announce('The list of what you have looked up has been cleared.', 'assertive');
+	}
 
 	function chooseFile(e: Event) {
 		const file = (e.currentTarget as HTMLInputElement).files?.[0];
@@ -166,6 +175,45 @@
 			{/each}
 		</div>
 	{/if}
+</section>
+
+<section>
+	<h2 class="section-head">What you look up</h2>
+	<label class="switch">
+		<input
+			type="checkbox"
+			checked={settings.rememberLookups}
+			onchange={(e) => settings.set('rememberLookups', e.currentTarget.checked)}
+		/>
+		<span>
+			<strong>Remember which entries I open</strong>
+			<small>
+				So the glossary can offer you the way back to what you were reading, and
+				<a href={resolve('/progress')}>your progress page</a> can show what you keep returning to.
+				A page and a count, on this device only — never what you searched for, and never sent anywhere.
+			</small>
+		</span>
+	</label>
+
+	<!--
+		Its own button rather than only the erase-everything one below. "I would rather you
+		did not keep a list of what I read" is a different request from "delete everything",
+		and answering the first with the second would cost somebody years of supervision
+		records.
+	-->
+	<p class="actions">
+		<button type="button" disabled={lookups.isEmpty} onclick={forgetLookups}>
+			Clear that list
+		</button>
+		<small class="hint">
+			{#if lookups.isEmpty}
+				Nothing recorded.
+			{:else}
+				{lookups.rows.length}
+				{lookups.rows.length === 1 ? 'entry' : 'entries'} recorded.
+			{/if}
+		</small>
+	</p>
 </section>
 
 <section>

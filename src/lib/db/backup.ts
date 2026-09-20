@@ -20,6 +20,7 @@
  * will never import is not a trade worth making.
  */
 import { isSuperviseeCode, phiWarnings } from '$lib/tracker/phi.js';
+import { LOOKUP_KINDS, type Lookup } from '$lib/study/lookups.js';
 import type {
 	Cycle,
 	DevelopmentUnit,
@@ -58,6 +59,7 @@ export interface BackupPayload {
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
+	lookups: Lookup[];
 }
 
 export interface BackupReport {
@@ -479,6 +481,39 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		dropped
 	);
 
+	/*
+	 * The reading history. Added in v7, so an older file simply has none and `sift`
+	 * returns an empty list.
+	 *
+	 * A row whose counters are missing or nonsensical is rebuilt around the times it does
+	 * carry rather than dropped: the fact worth keeping is that this page was opened, and
+	 * losing that because a hand-edited file wrote `count: "three"` would be the wrong
+	 * trade. An unknown kind is dropped, though — it would render as a link to a route
+	 * that does not exist.
+	 */
+	const lookups = sift<Lookup>(
+		'lookups',
+		raw.lookups,
+		(r) => {
+			if (!str(r.id) || !str(r.slug) || !oneOf(LOOKUP_KINDS, r.kind)) return null;
+			const lastAt = num(r.lastAt) ? r.lastAt : 0;
+			const firstAt = num(r.firstAt) ? Math.min(r.firstAt, lastAt) : lastAt;
+			return {
+				id: r.id,
+				kind: r.kind,
+				slug: r.slug,
+				// Falls back to the slug rather than dropping the row: a link labelled
+				// `differential-reinforcement` is still a link somebody can follow.
+				title: str(r.title) && r.title ? r.title.slice(0, 200) : r.slug,
+				count: num(r.count) && r.count >= 1 ? Math.floor(r.count) : 1,
+				firstAt,
+				countedAt: num(r.countedAt) ? r.countedAt : lastAt,
+				lastAt
+			};
+		},
+		dropped
+	);
+
 	const data: BackupPayload = {
 		kind: BACKUP_KIND,
 		version: raw.version,
@@ -496,7 +531,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		developmentUnits,
 		fieldworkPeriods,
 		fieldworkMonths,
-		supervisionQuestions
+		supervisionQuestions,
+		lookups
 	};
 
 	const counts: Record<string, number> = {
@@ -513,7 +549,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		developmentUnits: developmentUnits.length,
 		fieldworkPeriods: fieldworkPeriods.length,
 		fieldworkMonths: fieldworkMonths.length,
-		supervisionQuestions: supervisionQuestions.length
+		supervisionQuestions: supervisionQuestions.length,
+		lookups: lookups.length
 	};
 
 	if (Object.values(counts).every((n) => n === 0)) {

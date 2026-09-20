@@ -5,10 +5,16 @@ export type Hand = 'left' | 'right';
 
 const DISPLAY_KEY = 'aba-assist:display';
 
-type DisplaySettingKey = 'theme' | 'oneHanded' | 'hand' | 'fontScale' | 'plainLanguage';
+type DisplaySettingKey =
+	'theme' | 'oneHanded' | 'hand' | 'fontScale' | 'plainLanguage' | 'rememberLookups';
 
 /**
- * Display settings.
+ * The reader's own preferences, in localStorage.
+ *
+ * Mostly display, with one that is not: `rememberLookups` decides whether opening a
+ * content page is recorded at all. It lives here rather than in the database because the
+ * switch has to be readable before the database is opened — a preference stored inside
+ * the thing it governs cannot turn that thing off.
  *
  * A class rather than exported `$state` variables, because Svelte 5 refuses to export
  * reassignable state from a module ("Cannot export state from a module if it is
@@ -24,6 +30,15 @@ class Settings {
 	hand = $state<Hand>('right');
 	fontScale = $state(1);
 	plainLanguage = $state(false);
+	/*
+	 * On by default, which is the part worth defending. The app already records which
+	 * questions somebody got wrong and how their recall is going, without asking, and a
+	 * list of pages opened is less revealing than either. It never leaves the device, the
+	 * switch is in Settings beside a button that erases the list on its own, and the page
+	 * that shows the history says what is kept. A feature that is off until somebody finds
+	 * a toggle they have no reason to look for is a feature nobody has.
+	 */
+	rememberLookups = $state(true);
 
 	/** Called once from the root layout's onMount. Never at module scope — this runs on the server too. */
 	hydrate(): void {
@@ -37,6 +52,7 @@ class Settings {
 				if (s.hand) this.hand = s.hand;
 				if (typeof s.fontScale === 'number') this.fontScale = s.fontScale;
 				if (typeof s.plainLanguage === 'boolean') this.plainLanguage = s.plainLanguage;
+				if (typeof s.rememberLookups === 'boolean') this.rememberLookups = s.rememberLookups;
 			}
 		} catch {
 			// Private mode or blocked storage. Defaults are correct and the app still works.
@@ -77,7 +93,8 @@ class Settings {
 					oneHanded: this.oneHanded,
 					hand: this.hand,
 					fontScale: this.fontScale,
-					plainLanguage: this.plainLanguage
+					plainLanguage: this.plainLanguage,
+					rememberLookups: this.rememberLookups
 				})
 			);
 		} catch {

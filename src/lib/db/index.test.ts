@@ -24,7 +24,10 @@ import {
 	recordReview,
 	resetDbHandle,
 	putDrillAttempt,
-	recentDrillAttempts
+	recentDrillAttempts,
+	recordLookup,
+	getLookups,
+	clearLookups
 } from './index.js';
 import { gradeCard, newCard } from './scheduler.js';
 
@@ -38,7 +41,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(6);
+		expect(DB_VERSION).toBe(7);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -126,6 +129,71 @@ describe('local database', () => {
 			answeredAt: null
 		});
 		expect(await getAll('supervisionQuestions')).toHaveLength(1);
+
+		// v7, the newest rung. An install this old is the case a migration most often gets
+		// wrong, because the fresh-create path works whatever the ladder does.
+		await recordLookup('term', 'tact', 'Tact', T0);
+		expect(await getLookups()).toHaveLength(1);
+	});
+
+	it('a repeat visit in the same sitting updates the row rather than adding one', async () => {
+		await recordLookup('term', 'tact', 'Tact', T0);
+		await recordLookup('term', 'tact', 'Tact', T0 + 60_000);
+		const rows = await getLookups();
+		expect(rows).toHaveLength(1);
+		expect(rows[0]!.count).toBe(1);
+		expect(rows[0]!.lastAt).toBe(T0 + 60_000);
+	});
+
+	it('keeps a term and a situation with the same slug apart', async () => {
+		await recordLookup('term', 'elopement', 'Elopement', T0);
+		await recordLookup('scenario', 'elopement', 'A learner leaves the area', T0);
+		expect(await getLookups()).toHaveLength(2);
+	});
+
+	it('forgets the reading history without touching anything else', async () => {
+		/*
+		 * The whole reason `clearLookups` exists separately. "I would rather you did not
+		 * keep a list of what I read" must not cost somebody their supervision records.
+		 */
+		await recordLookup('term', 'tact', 'Tact', T0);
+		await put('supervisionQuestions', {
+			id: 'q1',
+			superviseeId: null,
+			topic: 'the-plan',
+			question: 'Which step counts as independent?',
+			raisedAt: T0,
+			answeredAt: null
+		});
+
+		await clearLookups();
+
+		expect(await getLookups()).toHaveLength(0);
+		expect(await getAll('supervisionQuestions')).toHaveLength(1);
+	});
+
+	it('does not let a reading history alone count as data worth warning about', async () => {
+		/*
+		 * `hasStoredData` decides whether to tell somebody their data has gone. A reader
+		 * who has only ever browsed the glossary has nothing they would grieve, and
+		 * greeting them with "your progress has been deleted" after a cleared cache is
+		 * the false positive that teaches people to ignore the true warning.
+		 */
+		await recordLookup('term', 'tact', 'Tact', T0);
+		expect(await hasStoredData()).toBe(false);
+
+		await putCard(newCard('tact', T0));
+		expect(await hasStoredData()).toBe(true);
+	});
+
+	it('carries the reading history through a backup and erases it with everything else', async () => {
+		await recordLookup('term', 'tact', 'Tact', T0);
+		const dump = await exportAll();
+		expect(dump.lookups).toHaveLength(1);
+		expect(dump.lookups[0]!.title).toBe('Tact');
+
+		await clearAll();
+		expect(await getLookups()).toHaveLength(0);
 	});
 
 	it('deleting a supervisee takes their parked questions with them', async () => {
@@ -297,7 +365,8 @@ describe('local database', () => {
 			developmentUnits: [],
 			fieldworkPeriods: [],
 			fieldworkMonths: [],
-			supervisionQuestions: []
+			supervisionQuestions: [],
+			lookups: []
 		});
 
 		// Replace, not merge: merging two devices' review histories means deciding which

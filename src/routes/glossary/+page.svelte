@@ -1,10 +1,32 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
+	import LookupList from '$lib/components/LookupList.svelte';
 	import { termsByCategory, CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
 	import { filters } from '$lib/state/filters.svelte.js';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 
 	const visible = $derived(termIndex.filter((t) => filters.matches(t)));
+
+	onMount(() => {
+		void lookups.load();
+	});
+
+	/*
+	 * Only terms, and only ones still in the corpus.
+	 *
+	 * This page already holds `termIndex`, so checking costs nothing here — which is the
+	 * reason the filtering happens on this page rather than in the store. A row survives
+	 * an entry being renamed, but an entry withdrawn between builds would leave a link to
+	 * a page that no longer prerenders, and a dead link on the way back to something you
+	 * read yesterday is worse than not offering the shortcut.
+	 */
+	// The index uses one-letter keys to keep the shipped JSON small; `i` is the id.
+	const known = $derived(new Set(termIndex.map((t) => t.i)));
+	const recentTerms = $derived(
+		lookups.recent.filter((r) => r.kind === 'term' && known.has(r.slug)).slice(0, 5)
+	);
 	const grouped = $derived(termsByCategory(visible));
 	const categories = $derived(
 		[...grouped.keys()].sort((a, b) =>
@@ -42,6 +64,22 @@
 		All {termIndex.length} terms
 	{/if}
 </p>
+
+<!--
+	The way back to what you were reading.
+
+	Five, and only on this page. A reference app is opened mid-task and the thing somebody
+	wants most often is the entry they had open twenty minutes ago, before a session
+	interrupted them — which is otherwise reachable only by remembering the word and
+	typing it again. It is hidden entirely until there is history, so a first visit is
+	unchanged.
+-->
+{#if recentTerms.length > 0}
+	<section class="recent" aria-labelledby="recent-h">
+		<h2 id="recent-h" class="section-head">Back to what you were reading</h2>
+		<LookupList rows={recentTerms} />
+	</section>
+{/if}
 
 {#if visible.length === 0}
 	<p class="empty">

@@ -16,6 +16,14 @@
  */
 import { openDB, type DBSchema, type IDBPDatabase, type IDBPTransaction } from 'idb';
 import type { CardRecord, ReviewRecord } from './scheduler.js';
+import {
+	lookupId,
+	MAX_LOOKUPS,
+	noteLookup,
+	prunable,
+	type Lookup,
+	type LookupKind
+} from '$lib/study/lookups.js';
 
 export interface QuizAttempt {
 	id: string;
@@ -365,6 +373,11 @@ interface AbaDB extends DBSchema {
 		value: SupervisionQuestion;
 		indexes: { 'by-raised': number };
 	};
+	lookups: {
+		key: string;
+		value: Lookup;
+		indexes: { 'by-last': number };
+	};
 }
 
 type StoreName =
@@ -381,7 +394,8 @@ type StoreName =
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
 	| 'fieldworkMonths'
-	| 'supervisionQuestions';
+	| 'supervisionQuestions'
+	| 'lookups';
 
 type Migration = (
 	db: IDBPDatabase<AbaDB>,
@@ -448,6 +462,15 @@ const MIGRATIONS: Migration[] = [
 		// Indexed by when it was raised, because the ordering that matters is oldest first:
 		// the question parked three weeks ago is the one that keeps not getting asked.
 		questions.createIndex('by-raised', 'raisedAt');
+	},
+
+	// v7 — what has been looked up, so the reader can see their own pattern.
+	(db) => {
+		const lookups = db.createObjectStore('lookups', { keyPath: 'id' });
+		// Only recency is indexed. "Most opened" is a sort over at most a few hundred rows
+		// and is wanted whole rather than as a range, so an index would be read in full
+		// every time and maintained on every write to buy nothing.
+		lookups.createIndex('by-last', 'lastAt');
 	}
 ];
 
@@ -666,6 +689,60 @@ export async function recentDrillAttempts(limit = 100): Promise<DrillAttempt[]> 
 	return out;
 }
 
+// ----------------------------------------------------------------- lookups
+
+/**
+ * Record that a content page was opened.
+ *
+ * Read-then-write in one transaction, because whether this visit counts depends on when
+ * the last one did. Two tabs opening the same term at once would otherwise both read
+ * `count: 3` and both write `4`.
+ *
+ * Failure is swallowed by the caller, not here — this runs on every content page view and
+ * must never be the reason a page fails to render, but the database layer saying so is
+ * how the caller gets to make that choice.
+ */
+export async function recordLookup(
+	kind: LookupKind,
+	slug: string,
+	title: string,
+	now = Date.now()
+): Promise<void> {
+	const db = await openAbaDB();
+	const tx = db.transaction('lookups', 'readwrite');
+	const existing = await tx.store.get(lookupId(kind, slug));
+	await tx.store.put(noteLookup(existing, kind, slug, title, now));
+	await tx.done;
+
+	// Pruning is behind a count check so the ordinary write stays a get and a put. `count`
+	// is a key-range count rather than a read of every row, so this costs nothing until
+	// there is something to do.
+	const total = await db.count('lookups');
+	if (total <= MAX_LOOKUPS) return;
+	const drop = prunable(await db.getAll('lookups'));
+	if (drop.length === 0) return;
+	const cull = db.transaction('lookups', 'readwrite');
+	await Promise.all(drop.map((id) => cull.store.delete(id)));
+	await cull.done;
+}
+
+export async function getLookups(): Promise<Lookup[]> {
+	const db = await openAbaDB();
+	return db.getAll('lookups');
+}
+
+/**
+ * Forget the reading history, and only that.
+ *
+ * Separate from `clearAll` on purpose. "I would rather you did not keep a list of what I
+ * read" is a different request from "delete everything", and answering the first with the
+ * second would cost somebody two years of supervision records.
+ */
+export async function clearLookups(): Promise<void> {
+	const db = await openAbaDB();
+	await db.clear('lookups');
+}
+
 // ---------------------------------------------------------------- attempts
 
 export async function putAttempt(attempt: QuizAttempt): Promise<void> {
@@ -708,6 +785,7 @@ export async function exportAll(): Promise<{
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
+	lookups: Lookup[];
 }> {
 	const db = await openAbaDB();
 	const [
@@ -724,7 +802,8 @@ export async function exportAll(): Promise<{
 		developmentUnits,
 		fieldworkPeriods,
 		fieldworkMonths,
-		supervisionQuestions
+		supervisionQuestions,
+		lookups
 	] = await Promise.all([
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
@@ -739,7 +818,8 @@ export async function exportAll(): Promise<{
 		db.getAll('developmentUnits'),
 		db.getAll('fieldworkPeriods'),
 		db.getAll('fieldworkMonths'),
-		db.getAll('supervisionQuestions')
+		db.getAll('supervisionQuestions'),
+		db.getAll('lookups')
 	]);
 	return {
 		// Marks the file as ours, so importing somebody's tax return gets a useful message
@@ -764,7 +844,8 @@ export async function exportAll(): Promise<{
 		developmentUnits,
 		fieldworkPeriods,
 		fieldworkMonths,
-		supervisionQuestions
+		supervisionQuestions,
+		lookups
 	};
 }
 
@@ -776,6 +857,14 @@ export async function exportAll(): Promise<{
  */
 export async function hasStoredData(): Promise<boolean> {
 	const db = await openAbaDB();
+	/*
+	 * `lookups` is deliberately absent, though it is exported and erased with everything
+	 * else. This list decides whether to warn somebody that their data has gone, and a
+	 * reading history is not data anybody grieves. Counting it would mean a reader who
+	 * has only ever browsed the glossary gets "your progress has been deleted" after a
+	 * cleared cache — the exact false positive the notice is built to avoid, and the one
+	 * that teaches people to ignore the true warning.
+	 */
 	const stores: StoreName[] = [
 		'cards',
 		'quizAttempts',
@@ -817,6 +906,7 @@ export async function restoreAll(data: {
 	fieldworkPeriods: FieldworkPeriod[];
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
+	lookups: Lookup[];
 }): Promise<void> {
 	const db = await openAbaDB();
 	const stores: StoreName[] = [
@@ -833,7 +923,8 @@ export async function restoreAll(data: {
 		'developmentUnits',
 		'fieldworkPeriods',
 		'fieldworkMonths',
-		'supervisionQuestions'
+		'supervisionQuestions',
+		'lookups'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
@@ -853,7 +944,8 @@ export async function restoreAll(data: {
 		...data.developmentUnits.map((x) => tx.objectStore('developmentUnits').put(x)),
 		...data.fieldworkPeriods.map((x) => tx.objectStore('fieldworkPeriods').put(x)),
 		...data.fieldworkMonths.map((x) => tx.objectStore('fieldworkMonths').put(x)),
-		...data.supervisionQuestions.map((x) => tx.objectStore('supervisionQuestions').put(x))
+		...data.supervisionQuestions.map((x) => tx.objectStore('supervisionQuestions').put(x)),
+		...data.lookups.map((x) => tx.objectStore('lookups').put(x))
 	]);
 	await tx.done;
 }
@@ -874,7 +966,8 @@ export async function clearAll(): Promise<void> {
 		'developmentUnits',
 		'fieldworkPeriods',
 		'fieldworkMonths',
-		'supervisionQuestions'
+		'supervisionQuestions',
+		'lookups'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));

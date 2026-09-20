@@ -3,13 +3,16 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import BarSeries from '$lib/components/BarSeries.svelte';
+	import LookupList from '$lib/components/LookupList.svelte';
 	import { progress, WINDOW_DAYS } from '$lib/state/progress.svelte.js';
+	import { lookups } from '$lib/state/lookups.svelte.js';
 	import { termIndex } from '$lib/content/load.js';
 	import { CONFUSION_MINIMUM, RETENTION_MINIMUM, TREND_MINIMUM } from '$lib/study/progress.js';
 	import { METHODS } from '$lib/drills/observe.js';
 
 	onMount(() => {
 		void progress.load();
+		void lookups.load();
 	});
 
 	const uid = $props.id();
@@ -389,6 +392,44 @@
 		These are figures about this app, not about an exam. A bank written by one author cannot
 		tell you whether you would pass one, and nothing here is a prediction.
 	</p>
+{/if}
+
+<!--
+	Outside the status branch above, deliberately.
+
+	Everything else on this page needs somebody to have sat a quiz or reviewed a card, and
+	so it is all hidden behind `progress.empty`. This is the one signal that does not: it
+	comes from reading, which costs nothing and happens anyway. Putting it inside that
+	branch would hide it from exactly the reader it is for — the one who uses the glossary
+	between sessions and has never opened the quiz.
+-->
+{#if lookups.loaded && lookups.repeated.length > 0}
+	<section aria-labelledby="{uid}-lookups" data-lookups>
+		<h2 id="{uid}-lookups" class="section-head">What you keep looking up</h2>
+		<div class="card">
+			<!--
+				The wording is the feature here, and it is deliberately not "your weak spots".
+				The app cannot tell a term somebody has not learnt from one they use daily and
+				check a boundary on, and the count is partly a fact about how many other
+				entries link here. Naming those limits costs two sentences and is the
+				difference between a useful observation and a wrong diagnosis.
+			-->
+			<p>
+				You have opened these more than once. That is not the same as not knowing them — a term
+				you use every day is one you might double-check often, and entries that many others
+				link to get opened more whatever you know. It is what this app can see; which of these
+				is actually shaky is yours to say.
+			</p>
+			<LookupList rows={lookups.repeated} showCount />
+			<p class="more">
+				<a href={resolve('/study')}>Put some of them in a deck</a>
+			</p>
+		</div>
+		<p class="note">
+			Kept on this device and nowhere else.
+			<a href={resolve('/settings')}>Settings</a> can stop it or clear it.
+		</p>
+	</section>
 {/if}
 
 <style>
