@@ -12,6 +12,7 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { pwa } from '$lib/state/pwa.svelte.js';
+	import { badge } from '$lib/state/badge.svelte.js';
 
 	let { children } = $props();
 	let main: HTMLElement | undefined = $state();
@@ -20,8 +21,27 @@
 		settings.hydrate();
 		filters.hydrate();
 		void pwa.register();
+
+		badge.init();
+		void badge.refresh();
+		// After `register`, because it waits on `serviceWorker.ready`.
+		void badge.watch();
+		/*
+		 * `visibilitychange` rather than `beforeunload` or `unload`. On a phone neither of
+		 * those reliably fires — the tab is frozen and discarded without either — and
+		 * being hidden is the last moment the page is certainly still running. It is also
+		 * the moment the number matters most: whatever is left on the icon here is what
+		 * the reader sees next time they look at their home screen.
+		 */
+		const onVisibility = () => void badge.refresh();
+		document.addEventListener('visibilitychange', onVisibility);
+
 		// Not inside `register`: a browser that refuses service workers still goes offline.
-		return pwa.watchConnection();
+		const stopWatching = pwa.watchConnection();
+		return () => {
+			document.removeEventListener('visibilitychange', onVisibility);
+			stopWatching();
+		};
 	});
 
 	/*

@@ -581,6 +581,22 @@ export async function countReviews(): Promise<number> {
 	return db.count('reviewLog');
 }
 
+/**
+ * How many cards are due right now, counted by the index rather than read.
+ *
+ * A key-range count over `by-due`, so this never pulls a card record into memory. It runs
+ * on load and whenever the app is hidden, on a phone, to decide a number on an icon —
+ * reading the whole deck to answer it would be the wrong trade, and the index already
+ * exists for the review queue.
+ *
+ * Unfiltered on purpose. See `$lib/study/badge.ts`: the badge reports the work, not
+ * whatever glossary filter happened to be left on.
+ */
+export async function countDue(now = Date.now()): Promise<number> {
+	const db = await openAbaDB();
+	return db.countFromIndex('cards', 'by-due', IDBKeyRange.upperBound(now));
+}
+
 export async function deleteCards(ids: string[]): Promise<void> {
 	const db = await openAbaDB();
 	const tx = db.transaction('cards', 'readwrite');

@@ -7,6 +7,7 @@
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { storage, NUDGE_AFTER_DAYS } from '$lib/state/storage.svelte.js';
 	import { lookups } from '$lib/state/lookups.svelte.js';
+	import { badge } from '$lib/state/badge.svelte.js';
 
 	const uid = $props.id();
 	let fileInput: HTMLInputElement | null = $state(null);
@@ -14,6 +15,7 @@
 	let confirmingImport = $state<File | null>(null);
 
 	onMount(() => {
+		badge.init();
 		void lookups.load();
 		return storage.load();
 	});
@@ -172,6 +174,48 @@
 				</label>
 			{/each}
 		</div>
+	{/if}
+</section>
+
+<section>
+	<h2 class="section-head">Cards waiting</h2>
+	{#if badge.supported}
+		<label class="switch">
+			<input
+				type="checkbox"
+				checked={settings.dueBadge}
+				onchange={(e) => {
+					settings.set('dueBadge', e.currentTarget.checked);
+					void (e.currentTarget.checked ? badge.refresh() : badge.clear());
+					void badge.watch();
+				}}
+			/>
+			<span>
+				<strong>Show how many cards are due on the app icon</strong>
+				<small>
+					A number on the installed icon, and nothing else — no notification, no sound, nothing
+					sent anywhere. It is the only way this app has of saying there is work waiting, since
+					it has no account and no server to send you a message from.
+				</small>
+			</span>
+		</label>
+		<!--
+			The limit is stated rather than left to be discovered. A reader who notices the
+			number going stale should find out here that it is a platform limit and not a
+			bug, and one on a browser that never updates it in the background should not be
+			waiting for something that is never coming.
+		-->
+		<p class="hint">
+			It is set whenever you open or leave the app. Keeping it right while the app is closed
+			needs a background refresh that only some browsers allow, and only for an app you have
+			installed — where that is not available the number is simply the one from your last
+			visit.
+		</p>
+	{:else}
+		<p class="hint">
+			This browser does not offer app-icon badges, so there is nothing to switch on. They work
+			on an installed app in Chrome, Edge and recent Safari.
+		</p>
 	{/if}
 </section>
 

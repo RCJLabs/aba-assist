@@ -877,6 +877,51 @@ working here today is going to be moved behind a payment, and that the question 
 asked again when the content is reviewed and the site is indexed — which is to say, when
 there is something to sell and somebody able to find it.
 
+## Saying "there is work waiting" with no server to say it from
+
+Spaced repetition only works if somebody comes back, and this app has no way of asking
+them to. No account, no server, no push — which rules out the mechanism every other
+review app uses. The Badging API is what is left: an installed app can put a count on its
+own icon, and the count outlives the app being closed.
+
+**The limit shapes the design, so it is worth stating before the feature.** A page can
+only set the badge while it is running. Set it as the app closes and it reports how many
+cards were due at that moment — which, right after a session, is zero. Tomorrow, when
+twelve have come due, the icon still says nothing. The only thing that fixes that without
+a server is **periodic background sync**, which re-runs a service worker on a schedule the
+browser chooses. It is Chromium-only, needs the app installed, and is granted on the
+browser's own judgement of how much the app gets used.
+
+So both halves ship. The app sets the badge on load and on `visibilitychange`; a small
+static script imported into the generated service worker re-counts and re-sets it when the
+browser allows a periodic wake. Where that is refused, the badge is simply the number from
+the last visit — stale, but never invented. Settings says so in as many words, because a
+reader who notices it going stale should learn there that it is a platform limit rather
+than a bug.
+
+`visibilitychange` rather than `beforeunload` or `unload`: on a phone neither of those
+reliably fires, because the tab is frozen and discarded without either. Being hidden is
+the last moment the page is certainly still running, and it is also the moment the number
+matters most.
+
+**The count is deliberately unfiltered** — every due card, not the ones the current
+glossary filter puts in play. A badge that changed because somebody left a category filter
+on last time would be reporting the filter rather than the work, and the service worker
+cannot reconstruct the filter anyway: it has no access to the app's settings, so a filtered
+badge would disagree with itself depending on which half set it last. One definition, two
+callers.
+
+**Zero clears rather than showing a zero.** `setAppBadge(0)` clears on some platforms and
+draws a bare dot on others, and a dot meaning "nothing is due" catches the eye and then
+wastes the trip.
+
+The one real cost is that "due" is now defined in two places — `src/lib/study/badge.ts`
+for the app and `static/badge-sw.js` for the worker, which cannot import from `src/`.
+They are kept to the narrowest shared surface to make drifting hard: a count over the
+`by-due` index, at or before now, unfiltered. A test fetches the worker script and parses
+it, because an `importScripts` of a 404 or a syntax error takes the whole service worker
+down and would break offline for everybody.
+
 ## Your data lives on your device, which is a risk as well as a promise
 
 There is no account and nothing leaves the browser — which also means nobody else has a

@@ -6,7 +6,13 @@ export type Hand = 'left' | 'right';
 const DISPLAY_KEY = 'aba-assist:display';
 
 type DisplaySettingKey =
-	'theme' | 'oneHanded' | 'hand' | 'fontScale' | 'plainLanguage' | 'rememberLookups';
+	| 'theme'
+	| 'oneHanded'
+	| 'hand'
+	| 'fontScale'
+	| 'plainLanguage'
+	| 'rememberLookups'
+	| 'dueBadge';
 
 /**
  * The reader's own preferences, in localStorage.
@@ -39,6 +45,13 @@ class Settings {
 	 * a toggle they have no reason to look for is a feature nobody has.
 	 */
 	rememberLookups = $state(true);
+	/*
+	 * On, where the platform offers it at all. The count is the only way this app has of
+	 * saying "there is work waiting" — no account, no server, no push — and a review app
+	 * nobody returns to is a review app that does not work. It writes one number to an
+	 * icon the reader installed on purpose, and nothing leaves the device.
+	 */
+	dueBadge = $state(true);
 
 	/** Called once from the root layout's onMount. Never at module scope — this runs on the server too. */
 	hydrate(): void {
@@ -53,6 +66,7 @@ class Settings {
 				if (typeof s.fontScale === 'number') this.fontScale = s.fontScale;
 				if (typeof s.plainLanguage === 'boolean') this.plainLanguage = s.plainLanguage;
 				if (typeof s.rememberLookups === 'boolean') this.rememberLookups = s.rememberLookups;
+				if (typeof s.dueBadge === 'boolean') this.dueBadge = s.dueBadge;
 			}
 		} catch {
 			// Private mode or blocked storage. Defaults are correct and the app still works.
@@ -94,7 +108,8 @@ class Settings {
 					hand: this.hand,
 					fontScale: this.fontScale,
 					plainLanguage: this.plainLanguage,
-					rememberLookups: this.rememberLookups
+					rememberLookups: this.rememberLookups,
+					dueBadge: this.dueBadge
 				})
 			);
 		} catch {

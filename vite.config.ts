@@ -85,6 +85,13 @@ export default defineConfig({
 				]
 			},
 			workbox: {
+				/*
+				 * Pulled into the generated worker rather than written through
+				 * `injectManifest`. Switching strategies would mean owning the whole service
+				 * worker — precache handling, navigation fallback, the update flow — to add one
+				 * periodic-sync listener. A static file next to `sw.js` costs one line.
+				 */
+				importScripts: ['badge-sw.js'],
 				globPatterns: ['**/*.{js,css,html,woff2,png,svg,json}'],
 				// The ~600 prerendered term pages exist for first visit and for search
 				// engines. Precaching them would cost several megabytes to say what the
