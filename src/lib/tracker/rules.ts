@@ -15,6 +15,7 @@ import type {
 	Cycle,
 	DevelopmentUnit,
 	ServiceMonth,
+	SuperviseeMonth,
 	SupervisionEntry,
 	UnitTopic
 } from '$lib/db/index.js';
@@ -58,6 +59,11 @@ export interface Check {
 }
 
 export type Standing = 'met' | 'short' | 'unknown';
+
+/** A month judged from the supervisor's side: the same shape, plus whose month it is. */
+export interface SuperviseeMonthSummary extends MonthSummary {
+	superviseeId: string;
+}
 
 export interface MonthSummary {
 	/** YYYY-MM. */
@@ -110,6 +116,14 @@ export function monthOf(date: string): string {
  * Per workplace because the rule is written per workplace: somebody working at two
  * organisations owes 5% at each, and adding the two together would let a well-supervised
  * job paper over a badly supervised one.
+ *
+ * **Received only.** One store holds both directions — a contact with `superviseeId: null`
+ * is supervision this reader was given, and one with a supervisee is supervision they
+ * provided — and this counts only the first. Pooling them was a real defect rather than a
+ * tidiness question: an assistant analyst who supervises two technicians at the same
+ * organisation had their own hours padded by the supervision they *delivered*, and the
+ * page told them they had met a requirement they had not. The supervisor's side of the
+ * same log is `summariseSuperviseeMonth`.
  */
 export function summariseMonth(
 	month: string,
@@ -119,14 +133,34 @@ export function summariseMonth(
 	req: SupervisionRequirement
 ): MonthSummary {
 	const mine = entries.filter(
-		(e) => e.workplaceId === workplaceId && monthOf(e.date) === month
+		(e) =>
+			e.superviseeId === null && e.workplaceId === workplaceId && monthOf(e.date) === month
 	);
 
+	return {
+		...summariseContacts(mine, serviceMonth ? serviceMonth.hours : null, req),
+		month,
+		workplaceId
+	};
+}
+
+/**
+ * The rule itself, over whichever contacts count and whatever hours they are measured
+ * against.
+ *
+ * Shared by both directions rather than written twice. Two copies of a compliance
+ * calculation drift, and the one that drifts is whichever is read less often — which
+ * here would be the supervisor's, the side nobody has been testing.
+ */
+function summariseContacts(
+	mine: SupervisionEntry[],
+	serviceHours: number | null,
+	req: SupervisionRequirement
+): Omit<MonthSummary, 'month' | 'workplaceId'> {
 	const supervisedHours = round(hours(mine.reduce((sum, e) => sum + e.minutes, 0)));
 	const contacts = mine.length;
 	const observedContacts = mine.filter((e) => e.observed).length;
 	const individualContacts = mine.filter((e) => e.format === 'individual').length;
-	const serviceHours = serviceMonth ? serviceMonth.hours : null;
 	const requiredHours =
 		serviceHours === null ? null : round((serviceHours * req.monthlyPercent) / 100);
 
@@ -181,8 +215,6 @@ export function summariseMonth(
 	];
 
 	return {
-		month,
-		workplaceId,
 		serviceHours,
 		requiredHours,
 		supervisedHours,
@@ -211,7 +243,12 @@ export function summariseMonths(
 	req: SupervisionRequirement
 ): MonthSummary[] {
 	const keys = new Set<string>();
-	for (const e of entries) keys.add(`${e.workplaceId}:${monthOf(e.date)}`);
+	// Received contacts only, to match what `summariseMonth` counts. A month whose only
+	// activity was supervision this reader *gave* is not a month of theirs to report on,
+	// and listing it with four failed checks would be an accusation rather than a record.
+	for (const e of entries) {
+		if (e.superviseeId === null) keys.add(`${e.workplaceId}:${monthOf(e.date)}`);
+	}
 	for (const m of serviceMonths) keys.add(`${m.workplaceId}:${m.month}`);
 
 	const byId = new Map(serviceMonths.map((m) => [`${m.workplaceId}:${m.month}`, m]));
@@ -224,6 +261,83 @@ export function summariseMonths(
 		})
 		.sort(
 			(a, b) => b.month.localeCompare(a.month) || a.workplaceId.localeCompare(b.workplaceId)
+		);
+}
+
+// ------------------------------------------------------- the other direction
+
+/**
+ * One supervisee's month, judged against the same rule from the supervisor's side.
+ *
+ * Everything under `/tools` until now has been first-person: your fieldwork, the
+ * supervision you received, your development units. A behaviour analyst supervising four
+ * technicians had nothing, which is a strange gap given that they are the person the
+ * requirement is written *at* — the technician has to receive the supervision, but the
+ * analyst is the one who has to be able to show it was delivered.
+ *
+ * It is the same rule and the same arithmetic. What differs is the denominator: the
+ * percentage is owed on the *supervisee's* service hours, not the supervisor's, and those
+ * have to be recorded separately because nothing else in this app knows them.
+ *
+ * Keyed by workplace as well, for the reason `summariseMonth` already gives: the rule is
+ * written per organisation, and a technician supervised well at one job and badly at
+ * another has not met it twice over.
+ */
+export function summariseSuperviseeMonth(
+	month: string,
+	superviseeId: string,
+	workplaceId: string,
+	entries: SupervisionEntry[],
+	superviseeMonth: SuperviseeMonth | undefined,
+	req: SupervisionRequirement
+): SuperviseeMonthSummary {
+	const given = entries.filter(
+		(e) =>
+			e.superviseeId === superviseeId &&
+			e.workplaceId === workplaceId &&
+			monthOf(e.date) === month
+	);
+
+	const base = summariseContacts(given, superviseeMonth ? superviseeMonth.hours : null, req);
+	return { ...base, month, workplaceId, superviseeId };
+}
+
+/** Every supervisee-month with either a contact or an hours entry, newest first. */
+export function summariseSuperviseeMonths(
+	entries: SupervisionEntry[],
+	superviseeMonths: SuperviseeMonth[],
+	req: SupervisionRequirement
+): SuperviseeMonthSummary[] {
+	const keys = new Set<string>();
+	for (const e of entries) {
+		if (e.superviseeId !== null) {
+			keys.add(`${e.superviseeId}|${e.workplaceId}|${monthOf(e.date)}`);
+		}
+	}
+	for (const m of superviseeMonths) keys.add(`${m.superviseeId}|${m.workplaceId}|${m.month}`);
+
+	// A pipe rather than a colon, because ids are generated and a colon in one would make
+	// the key ambiguous where three parts have to come back out of it.
+	const byId = new Map(
+		superviseeMonths.map((m) => [`${m.superviseeId}|${m.workplaceId}|${m.month}`, m])
+	);
+	return [...keys]
+		.map((key) => {
+			const [superviseeId, workplaceId, month] = key.split('|') as [string, string, string];
+			return summariseSuperviseeMonth(
+				month,
+				superviseeId,
+				workplaceId,
+				entries,
+				byId.get(key),
+				req
+			);
+		})
+		.sort(
+			(a, b) =>
+				b.month.localeCompare(a.month) ||
+				a.superviseeId.localeCompare(b.superviseeId) ||
+				a.workplaceId.localeCompare(b.workplaceId)
 		);
 }
 

@@ -283,6 +283,14 @@
 				</p>
 			{/if}
 			<FigureRows rows={supervisionFigures} label="Supervision figures" />
+			<!--
+				A link rather than a card of its own. It is the same log read the other way
+				round, and giving it equal billing would suggest a second place to record
+				contacts — which is the one thing this page has to not suggest.
+			-->
+			<p class="onward">
+				<a href={resolve('/tools/caseload')}>What you delivered, per supervisee</a>
+			</p>
 		</article>
 
 		<article class="card">
@@ -435,6 +443,11 @@
 		padding: 1rem;
 		background: var(--surface-raised);
 	}
+	.onward {
+		margin: 0.5rem 0 0;
+		font-size: 0.95rem;
+	}
+
 	.card h2 {
 		margin-top: 0;
 		font-size: 1.15rem;

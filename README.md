@@ -436,6 +436,59 @@ CEUs with 4 on ethics — are not constants in the code. They live in `content/c
 beside the prose that states them, carrying the same handbook locator and going through the
 same review queue, so there is one copy of each number rather than two that drift.
 
+## The supervisor's side, and the bug that finding it turned up
+
+Everything under `/tools` was first-person: your fieldwork, the supervision you received,
+your development units. A behaviour analyst supervising four technicians had nothing —
+odd, given that they are the person the requirement is written _at_. The technician has
+to receive the supervision; the analyst is the one who has to be able to show it was
+delivered, per person, per month, if anybody asks.
+
+`/tools/caseload` is that record. Contacts are still logged once, on the supervision page,
+with a supervisee chosen; this reads them back the other way round. Two places to record
+the same contact is two places for them to disagree.
+
+**Building it surfaced a real defect.** One store holds both directions — a contact with
+no supervisee is supervision you were given, one with a supervisee is supervision you
+provided — and the monthly summary counted both. So an assistant analyst supervising
+technicians at their own organisation had their own 5% padded by the supervision they
+_delivered_, and the page told them a month was met that contained no supervision received
+at all. That is the worst thing a compliance tool can do, and no test caught it because
+every fixture logged one direction at a time. Both directions are now filtered explicitly,
+with unit and end-to-end tests that fail if they are ever pooled again.
+
+**The requirement comes from the supervisee's role, not the reader's.** This one took a
+failing test to see, and it is the crux of the whole page: a **BCBA has no ongoing
+supervision requirement**, because they do not receive supervision — and a BCBA is exactly
+who is doing the supervising. Judging a caseload against the supervisor's own credential
+showed the person the page exists for an empty page. Each supervisee is measured against
+their own rule: the technician percentage for an RBT, the assistant-analyst one for a
+BCaBA.
+
+A `trainee` gets no verdict at all, deliberately. A fieldwork trainee's supervision is
+governed by the fieldwork requirements — a share of _fieldwork_ hours with its own monthly
+floor and ceiling — and measuring them against the monthly ongoing-supervision percentage
+would be a confident wrong answer. The page says so and points at the tracker that does
+know that rule.
+
+The percentage needs the supervisee's hours, which nothing else in the app knows, so the
+supervisor records them — the same figure the technician gives their supervisor on paper.
+Without it the month reads "could not be judged" rather than short, the same way the
+reader's own months already do.
+
+**It prints, and it is careful about what it claims to be.** A supervision attestation is
+a document both parties sign and whose wording belongs to a certifying body or an
+employer; producing something that looked like one would be this app claiming an authority
+it does not have. What it produces is the evidence — who, when, how long, one-to-one or
+group, observed or not, and the rule each month was judged against — with signature lines,
+described as something to attach to whatever form is actually required. The contacts are
+listed rather than folded into a `<details>`, because a disclosure cannot be reliably
+opened for printing and a record whose working prints folded away is a claim with nothing
+under it.
+
+No client appears anywhere in it, structurally: a supervisee is a code, and the only free
+text is the note on a contact.
+
 ## Fieldwork is checked a month at a time, not as a running total
 
 The export is the artifact and the app is the convenience. Fieldwork is verified from

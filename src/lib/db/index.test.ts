@@ -41,7 +41,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(7);
+		expect(DB_VERSION).toBe(8);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -130,10 +130,21 @@ describe('local database', () => {
 		});
 		expect(await getAll('supervisionQuestions')).toHaveLength(1);
 
-		// v7, the newest rung. An install this old is the case a migration most often gets
+		// v7. An install this old is the case a migration most often gets
 		// wrong, because the fresh-create path works whatever the ladder does.
 		await recordLookup('term', 'tact', 'Tact', T0);
 		expect(await getLookups()).toHaveLength(1);
+
+		// v8, the newest rung. An install this old is the case a migration most often gets
+		// wrong, because the fresh-create path works whatever the ladder does.
+		await put('superviseeMonths', {
+			id: 's1|w1|2026-09',
+			superviseeId: 's1',
+			workplaceId: 'w1',
+			month: '2026-09',
+			hours: 30
+		});
+		expect(await getAll('superviseeMonths')).toHaveLength(1);
 	});
 
 	it('a repeat visit in the same sitting updates the row rather than adding one', async () => {
@@ -194,6 +205,40 @@ describe('local database', () => {
 
 		await clearAll();
 		expect(await getLookups()).toHaveLength(0);
+	});
+
+	it('deleting a supervisee takes their recorded hours with them', async () => {
+		/*
+		 * An hours row outliving the person it belongs to is a figure about somebody the
+		 * log no longer names — the shape of orphan record this data model exists to make
+		 * impossible.
+		 */
+		await put('supervisees', {
+			id: 's1',
+			code: 'S-04',
+			role: 'RBT',
+			active: true,
+			createdAt: T0
+		});
+		await put('superviseeMonths', {
+			id: 's1|w1|2026-09',
+			superviseeId: 's1',
+			workplaceId: 'w1',
+			month: '2026-09',
+			hours: 30
+		});
+		await put('superviseeMonths', {
+			id: 's2|w1|2026-09',
+			superviseeId: 's2',
+			workplaceId: 'w1',
+			month: '2026-09',
+			hours: 12
+		});
+
+		await removeSupervisee('s1');
+
+		const left = await getAll('superviseeMonths');
+		expect(left.map((m) => m.superviseeId)).toEqual(['s2']);
 	});
 
 	it('deleting a supervisee takes their parked questions with them', async () => {
@@ -366,7 +411,8 @@ describe('local database', () => {
 			fieldworkPeriods: [],
 			fieldworkMonths: [],
 			supervisionQuestions: [],
-			lookups: []
+			lookups: [],
+			superviseeMonths: []
 		});
 
 		// Replace, not merge: merging two devices' review histories means deciding which

@@ -13,6 +13,7 @@ import {
 	type FieldworkMonth,
 	type FieldworkPeriod,
 	type ServiceMonth,
+	type SuperviseeMonth,
 	type ContactFormat,
 	type ContactModality,
 	type FieldworkType,
@@ -36,10 +37,12 @@ import {
 	summariseCycle,
 	todayIso,
 	summariseMonths,
+	summariseSuperviseeMonths,
 	unitsOutsideCycle,
 	type CycleSummary,
 	type DevelopmentRequirement,
 	type MonthSummary,
+	type SuperviseeMonthSummary,
 	type SupervisionRequirement
 } from '$lib/tracker/rules.js';
 
@@ -60,6 +63,7 @@ export type {
 	FieldworkPeriod,
 	FieldworkType,
 	ServiceMonth,
+	SuperviseeMonth,
 	Supervisee,
 	SupervisionEntry,
 	UnitKind,
@@ -92,6 +96,7 @@ class Tracker {
 	workplaces = $state<Workplace[]>([]);
 	entries = $state<SupervisionEntry[]>([]);
 	serviceMonths = $state<ServiceMonth[]>([]);
+	superviseeMonths = $state<SuperviseeMonth[]>([]);
 	cycles = $state<Cycle[]>([]);
 	units = $state<DevelopmentUnit[]>([]);
 	fieldworkPeriods = $state<FieldworkPeriod[]>([]);
@@ -117,7 +122,8 @@ class Tracker {
 				units,
 				fieldworkPeriods,
 				fieldworkMonths,
-				questions
+				questions,
+				superviseeMonths
 			] = await Promise.all([
 				getAll('supervisees'),
 				getAll('workplaces'),
@@ -127,7 +133,8 @@ class Tracker {
 				getAll('developmentUnits'),
 				getAll('fieldworkPeriods'),
 				getAll('fieldworkMonths'),
-				getAll('supervisionQuestions')
+				getAll('supervisionQuestions'),
+				getAll('superviseeMonths')
 			]);
 			this.supervisees = supervisees;
 			this.workplaces = workplaces;
@@ -138,6 +145,7 @@ class Tracker {
 			this.fieldworkPeriods = fieldworkPeriods;
 			this.fieldworkMonths = fieldworkMonths;
 			this.questions = questions;
+			this.superviseeMonths = superviseeMonths;
 			this.status = 'ready';
 		} catch {
 			// Without storage this tool would appear to record things and lose them, which
@@ -340,6 +348,86 @@ class Tracker {
 		this.serviceMonths = [...this.serviceMonths.filter((m) => m.id !== record.id), record];
 	}
 
+	/**
+	 * Record how many hours a supervisee worked in a month, as they reported it.
+	 *
+	 * The supervisor has to enter this: nothing in this app knows what somebody else
+	 * worked, and on paper the figure comes from the technician telling their supervisor
+	 * too. Without it the percentage has no denominator and the month reads as unknown
+	 * rather than short, which is the honest answer.
+	 */
+	async setSuperviseeHours(
+		superviseeId: string,
+		workplaceId: string,
+		month: string,
+		hours: number
+	): Promise<void> {
+		const record: SuperviseeMonth = {
+			// A pipe, not a colon: ids are generated and three parts have to come back out.
+			id: `${superviseeId}|${workplaceId}|${month}`,
+			superviseeId,
+			workplaceId,
+			month,
+			hours
+		};
+		await put('superviseeMonths', record);
+		this.superviseeMonths = [
+			...this.superviseeMonths.filter((m) => m.id !== record.id),
+			record
+		];
+	}
+
+	/**
+	 * The ongoing-supervision rule a supervisee is held to, by their own role.
+	 *
+	 * Not the reader's. This took a failing test to notice and it is the crux of the
+	 * supervisor's side: a BCBA has **no** ongoing supervision requirement, because they
+	 * do not receive supervision — and a BCBA is precisely who is doing the supervising.
+	 * Judging a caseload against the supervisor's own credential would have shown the
+	 * person this page exists for an empty page.
+	 *
+	 * `trainee` returns null on purpose rather than falling back to the technician rule.
+	 * A fieldwork trainee's supervision is governed by the fieldwork requirements — a
+	 * percentage of *fieldwork* hours, with its own monthly floors and ceilings — and
+	 * measuring them against the RBT monthly percentage would be a confident wrong
+	 * answer. The fieldwork tracker is where that rule lives.
+	 */
+	requirementForRole(role: Supervisee['role']): SupervisionRequirement | null {
+		const facts = credentials[role.toLowerCase()];
+		return (facts?.requirements?.supervision as SupervisionRequirement | null) ?? null;
+	}
+
+	/** Every supervisee-month with something in it, newest first, per supervisee. */
+	get caseload(): SuperviseeMonthSummary[] {
+		const entries = $state.snapshot(this.entries);
+		const months = $state.snapshot(this.superviseeMonths);
+		const out: SuperviseeMonthSummary[] = [];
+		for (const s of this.supervisees) {
+			const req = this.requirementForRole(s.role);
+			if (!req) continue;
+			out.push(
+				...summariseSuperviseeMonths(
+					entries.filter((e) => e.superviseeId === s.id),
+					months.filter((m) => m.superviseeId === s.id),
+					req
+				)
+			);
+		}
+		return out;
+	}
+
+	/** The contacts behind one supervisee-month, so the record can show its own working. */
+	contactsFor(superviseeId: string, workplaceId: string, month: string): SupervisionEntry[] {
+		return this.entries
+			.filter(
+				(e) =>
+					e.superviseeId === superviseeId &&
+					e.workplaceId === workplaceId &&
+					e.date.slice(0, 7) === month
+			)
+			.sort((a, b) => a.date.localeCompare(b.date));
+	}
+
 	async addCycle(
 		credential: TrackedCredential,
 		startDate: string,
@@ -493,6 +581,7 @@ class Tracker {
 			workplaces: $state.snapshot(this.workplaces),
 			entries: $state.snapshot(this.entries),
 			serviceMonths: $state.snapshot(this.serviceMonths),
+			superviseeMonths: $state.snapshot(this.superviseeMonths),
 			cycles: $state.snapshot(this.cycles),
 			units: $state.snapshot(this.units),
 			fieldworkPeriods: $state.snapshot(this.fieldworkPeriods),

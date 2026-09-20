@@ -229,6 +229,27 @@ export interface SupervisionQuestion {
  * The denominator of the 5% rule, and the number nobody has to hand — so it is entered
  * once a month rather than derived from anything.
  */
+/**
+ * How many hours a supervisee worked in a month, as their supervisor recorded it.
+ *
+ * Separate from `ServiceMonth`, which holds the reader's own hours, because they are
+ * different people's numbers and the percentage each owes is measured against their own.
+ * A supervisor has to record this themselves: nothing else in this app knows what a
+ * technician worked, and the figure comes from the technician telling them — which is
+ * how the paper version of this works too.
+ *
+ * Keyed by workplace as well as month, because the rule is written per organisation.
+ */
+export interface SuperviseeMonth {
+	/** `${superviseeId}:${workplaceId}:${YYYY-MM}`, so re-entering a month updates it. */
+	id: string;
+	superviseeId: string;
+	workplaceId: string;
+	/** YYYY-MM. */
+	month: string;
+	hours: number;
+}
+
 export interface ServiceMonth {
 	/** `${workplaceId}:${YYYY-MM}`, so entering the same month twice updates it. */
 	id: string;
@@ -378,6 +399,11 @@ interface AbaDB extends DBSchema {
 		value: Lookup;
 		indexes: { 'by-last': number };
 	};
+	superviseeMonths: {
+		key: string;
+		value: SuperviseeMonth;
+		indexes: { 'by-supervisee': string };
+	};
 }
 
 type StoreName =
@@ -395,7 +421,8 @@ type StoreName =
 	| 'fieldworkPeriods'
 	| 'fieldworkMonths'
 	| 'supervisionQuestions'
-	| 'lookups';
+	| 'lookups'
+	| 'superviseeMonths';
 
 type Migration = (
 	db: IDBPDatabase<AbaDB>,
@@ -471,6 +498,13 @@ const MIGRATIONS: Migration[] = [
 		// and is wanted whole rather than as a range, so an index would be read in full
 		// every time and maintained on every write to buy nothing.
 		lookups.createIndex('by-last', 'lastAt');
+	},
+
+	// v8 — a supervisee's own service hours, so the supervisor's side of the log has a
+	// denominator. The percentage is owed on their hours, not on their supervisor's.
+	(db) => {
+		const months = db.createObjectStore('superviseeMonths', { keyPath: 'id' });
+		months.createIndex('by-supervisee', 'superviseeId');
 	}
 ];
 
@@ -592,7 +626,8 @@ type TrackerStore =
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
 	| 'fieldworkMonths'
-	| 'supervisionQuestions';
+	| 'supervisionQuestions'
+	| 'superviseeMonths';
 
 export async function getAll<S extends TrackerStore>(store: S): Promise<AbaDB[S]['value'][]> {
 	const db = await openAbaDB();
@@ -625,7 +660,7 @@ export async function remove(store: TrackerStore, id: string): Promise<void> {
 export async function removeSupervisee(id: string): Promise<void> {
 	const db = await openAbaDB();
 	const tx = db.transaction(
-		['supervisees', 'supervisionEntries', 'supervisionQuestions'],
+		['supervisees', 'supervisionEntries', 'supervisionQuestions', 'superviseeMonths'],
 		'readwrite'
 	);
 	const entries = await tx
@@ -633,9 +668,17 @@ export async function removeSupervisee(id: string): Promise<void> {
 		.index('by-supervisee')
 		.getAllKeys(id);
 	const questions = await tx.objectStore('supervisionQuestions').getAll();
+	// Their recorded hours go too. A months row outliving the person it belongs to is a
+	// number about somebody the log no longer names, which is the shape of record this
+	// app is built to not keep.
+	const months = await tx
+		.objectStore('superviseeMonths')
+		.index('by-supervisee')
+		.getAllKeys(id);
 	await Promise.all([
 		tx.objectStore('supervisees').delete(id),
 		...entries.map((key) => tx.objectStore('supervisionEntries').delete(key)),
+		...months.map((key) => tx.objectStore('superviseeMonths').delete(key)),
 		...questions
 			.filter((q) => q.superviseeId === id)
 			.map((q) => tx.objectStore('supervisionQuestions').delete(q.id))
@@ -786,6 +829,7 @@ export async function exportAll(): Promise<{
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
 	lookups: Lookup[];
+	superviseeMonths: SuperviseeMonth[];
 }> {
 	const db = await openAbaDB();
 	const [
@@ -803,7 +847,8 @@ export async function exportAll(): Promise<{
 		fieldworkPeriods,
 		fieldworkMonths,
 		supervisionQuestions,
-		lookups
+		lookups,
+		superviseeMonths
 	] = await Promise.all([
 		db.getAll('cards'),
 		db.getAll('reviewLog'),
@@ -819,7 +864,8 @@ export async function exportAll(): Promise<{
 		db.getAll('fieldworkPeriods'),
 		db.getAll('fieldworkMonths'),
 		db.getAll('supervisionQuestions'),
-		db.getAll('lookups')
+		db.getAll('lookups'),
+		db.getAll('superviseeMonths')
 	]);
 	return {
 		// Marks the file as ours, so importing somebody's tax return gets a useful message
@@ -845,7 +891,8 @@ export async function exportAll(): Promise<{
 		fieldworkPeriods,
 		fieldworkMonths,
 		supervisionQuestions,
-		lookups
+		lookups,
+		superviseeMonths
 	};
 }
 
@@ -907,6 +954,7 @@ export async function restoreAll(data: {
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
 	lookups: Lookup[];
+	superviseeMonths: SuperviseeMonth[];
 }): Promise<void> {
 	const db = await openAbaDB();
 	const stores: StoreName[] = [
@@ -924,7 +972,8 @@ export async function restoreAll(data: {
 		'fieldworkPeriods',
 		'fieldworkMonths',
 		'supervisionQuestions',
-		'lookups'
+		'lookups',
+		'superviseeMonths'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));
@@ -945,7 +994,8 @@ export async function restoreAll(data: {
 		...data.fieldworkPeriods.map((x) => tx.objectStore('fieldworkPeriods').put(x)),
 		...data.fieldworkMonths.map((x) => tx.objectStore('fieldworkMonths').put(x)),
 		...data.supervisionQuestions.map((x) => tx.objectStore('supervisionQuestions').put(x)),
-		...data.lookups.map((x) => tx.objectStore('lookups').put(x))
+		...data.lookups.map((x) => tx.objectStore('lookups').put(x)),
+		...data.superviseeMonths.map((x) => tx.objectStore('superviseeMonths').put(x))
 	]);
 	await tx.done;
 }
@@ -967,7 +1017,8 @@ export async function clearAll(): Promise<void> {
 		'fieldworkPeriods',
 		'fieldworkMonths',
 		'supervisionQuestions',
-		'lookups'
+		'lookups',
+		'superviseeMonths'
 	];
 	const tx = db.transaction(stores, 'readwrite');
 	await Promise.all(stores.map((s) => tx.objectStore(s).clear()));

@@ -33,6 +33,7 @@ import type {
 	Supervisee,
 	SupervisionEntry,
 	SupervisionQuestion,
+	SuperviseeMonth,
 	QuestionTopic,
 	Workplace
 } from './index.js';
@@ -60,6 +61,7 @@ export interface BackupPayload {
 	fieldworkMonths: FieldworkMonth[];
 	supervisionQuestions: SupervisionQuestion[];
 	lookups: Lookup[];
+	superviseeMonths: SuperviseeMonth[];
 }
 
 export interface BackupReport {
@@ -514,6 +516,33 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		dropped
 	);
 
+	/*
+	 * A supervisee's recorded service hours. Added in v8, so an older file has none.
+	 *
+	 * A row naming a supervisee the file does not carry is dropped rather than kept: it
+	 * would be an hours figure about somebody with no code and no record, which is
+	 * exactly the kind of orphan this app's data model exists to make impossible.
+	 */
+	const superviseeIds = new Set(supervisees.map((s) => s.id));
+	const superviseeMonths = sift<SuperviseeMonth>(
+		'superviseeMonths',
+		raw.superviseeMonths,
+		(r) => {
+			if (!str(r.id) || !str(r.superviseeId) || !str(r.workplaceId)) return null;
+			if (!str(r.month) || !/^\d{4}-\d{2}$/.test(r.month)) return null;
+			if (!num(r.hours) || r.hours < 0) return null;
+			if (!superviseeIds.has(r.superviseeId)) return null;
+			return {
+				id: r.id,
+				superviseeId: r.superviseeId,
+				workplaceId: r.workplaceId,
+				month: r.month,
+				hours: r.hours
+			};
+		},
+		dropped
+	);
+
 	const data: BackupPayload = {
 		kind: BACKUP_KIND,
 		version: raw.version,
@@ -532,7 +561,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		fieldworkPeriods,
 		fieldworkMonths,
 		supervisionQuestions,
-		lookups
+		lookups,
+		superviseeMonths
 	};
 
 	const counts: Record<string, number> = {
@@ -550,7 +580,8 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 		fieldworkPeriods: fieldworkPeriods.length,
 		fieldworkMonths: fieldworkMonths.length,
 		supervisionQuestions: supervisionQuestions.length,
-		lookups: lookups.length
+		lookups: lookups.length,
+		superviseeMonths: superviseeMonths.length
 	};
 
 	if (Object.values(counts).every((n) => n === 0)) {

@@ -36,6 +36,7 @@ export const ROUTES = [
 	'/ethics/gifts',
 	'/tools',
 	'/tools/supervision',
+	'/tools/caseload',
 	'/tools/development',
 	'/tools/notes',
 	'/tools/questions',
