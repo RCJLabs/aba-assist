@@ -5,6 +5,7 @@
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { errataUrl } from '$lib/config.js';
+	import ShareLink from '$lib/components/ShareLink.svelte';
 	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageData } from './$types';
 
@@ -184,10 +185,16 @@
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href={errataUrl(topic.ourLabel)} rel="noopener">Something wrong here? Report it.</a>
 		</p>
+		<p class="share-row">
+			<ShareLink title={topic.ourLabel} text={topic.gloss} />
+		</p>
 	</section>
 </article>
 
 <style>
+	.share-row {
+		margin-top: 1rem;
+	}
 	.stds {
 		list-style: none;
 		margin: 0.4rem 0 0;

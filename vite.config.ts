@@ -73,6 +73,44 @@ export default defineConfig({
 				// from SvelteKit's base path. Hardcoding "/" breaks installation from a
 				// project site served under a subdirectory, because the scope would not
 				// contain the app.
+				/*
+				 * What a long-press on the installed icon offers.
+				 *
+				 * The escalation cards lead, and that is the whole reason this exists. This
+				 * app's premise is one-handed use in a hallway, sometimes while something is
+				 * going wrong, and the fastest route to a card was open the app, find Help,
+				 * tap. A shortcut makes it long-press, tap — which is the difference between
+				 * a reference somebody reaches for mid-incident and one they read later.
+				 *
+				 * These URLs carry the base path explicitly. `start_url` and `scope` the
+				 * plugin derives; shortcut URLs it does not touch, so a bare `/help` on a
+				 * project site points at `rcjlabs.github.io/help`, which is not this app. It
+				 * would look right in the manifest and fail only on a real phone.
+				 *
+				 * No per-shortcut icons. Android falls back to the app icon, which leaves
+				 * three identical marks told apart by their labels — legible, and better
+				 * than three hurried glyphs nobody can read at 96 pixels.
+				 */
+				shortcuts: [
+					{
+						name: 'Something urgent is happening',
+						short_name: 'Urgent',
+						description: 'Who to contact and what to document when a situation is unsafe',
+						url: `${BASE_PATH}/help`
+					},
+					{
+						name: "Today's flashcards",
+						short_name: 'Study',
+						description: 'Review whatever is due',
+						url: `${BASE_PATH}/study`
+					},
+					{
+						name: 'Interval timer',
+						short_name: 'Timer',
+						description: 'Run an interval-recording session',
+						url: `${BASE_PATH}/tools/timer`
+					}
+				],
 				icons: [
 					{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
 					{ src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

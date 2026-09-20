@@ -877,6 +877,37 @@ working here today is going to be moved behind a payment, and that the question 
 asked again when the content is reviewed and the site is indexed — which is to say, when
 there is something to sell and somebody able to find it.
 
+## Two taps to the escalation cards, and a way to pass a page on
+
+The premise of this app is one-handed use in a hallway, sometimes while something is
+going wrong, and the fastest route to an escalation card was: open the app, find Help,
+tap. A manifest shortcut makes that long-press, tap. Three of them — the escalation
+cards first, then today's flashcards and the interval timer — and the order is the point
+rather than a preference.
+
+**The shortcut URLs carry the base path explicitly, and a test asserts it.** The PWA
+plugin derives `start_url` and `scope` from SvelteKit's base path but does not touch
+shortcut URLs, so a bare `/help` on a project site points at `rcjlabs.github.io/help` —
+somewhere else entirely. It would look right in the manifest and fail only on a real
+phone, months later. The test checks every shortcut URL starts with the manifest's own
+scope and returns a 200; reverting one to a bare path was confirmed to fail it.
+
+No per-shortcut icons. Android falls back to the app icon, which leaves three identical
+marks told apart by their labels — legible, and better than three hurried glyphs nobody
+can read at 96 pixels.
+
+**Sharing** was missing altogether: this audience circulates things in group chats and
+staff threads, and inside an installed app there is no address bar to copy from.
+`navigator.share` opens the real system sheet where it exists; everywhere else the link
+goes to the clipboard. Both paths are tested, and so is the one that is easy to get
+wrong — cancelling the share sheet rejects with `AbortError`, which is somebody changing
+their mind rather than a failure, and treating it as one would leave a link they decided
+not to send sitting on their clipboard.
+
+The shared URL is `location.origin + location.pathname`, not the build-time canonical
+origin. A reader on a preview deployment sharing a link to production would be sharing a
+page they are not looking at.
+
 ## Saying "there is work waiting" with no server to say it from
 
 Spaced repetition only works if somebody comes back, and this app has no way of asking

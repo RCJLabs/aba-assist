@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import Graph from '$lib/components/Graph.svelte';
+	import ShareLink from '$lib/components/ShareLink.svelte';
 	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageProps } from './$types';
 
@@ -126,7 +127,14 @@
 	{/if}
 </nav>
 
+<p class="share-row">
+	<ShareLink title={data.graph.title} text={data.graph.gloss} />
+</p>
+
 <style>
+	.share-row {
+		margin-top: 1rem;
+	}
 	h1 {
 		font-size: 1.5rem;
 	}

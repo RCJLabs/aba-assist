@@ -7,6 +7,7 @@
 	import PageBand from '$lib/components/PageBand.svelte';
 	import { settingLabel } from '@aba/content-schema/runtime';
 	import { errataUrl, SITE_ORIGIN } from '$lib/config.js';
+	import ShareLink from '$lib/components/ShareLink.svelte';
 	import { base } from '$app/paths';
 	import { definedTerm } from '$lib/seo/meta.js';
 	import { lookups } from '$lib/state/lookups.svelte.js';
@@ -184,9 +185,16 @@
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href={errataUrl(term.term)} rel="noopener"> Something wrong here? Report it. </a>
 	</p>
+
+	<p class="share-row">
+		<ShareLink title={term.term} text={term.definition.gloss} />
+	</p>
 </article>
 
 <style>
+	.share-row {
+		margin-top: 1rem;
+	}
 	.crumbs {
 		font-size: 0.9rem;
 		color: var(--text-muted);

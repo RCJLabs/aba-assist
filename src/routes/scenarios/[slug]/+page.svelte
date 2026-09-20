@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { CONTACT_LABELS, RISK_LABELS, IMMEDIATE_CONTACTS } from '$lib/content/scenarios.js';
 	import PageBand from '$lib/components/PageBand.svelte';
+	import ShareLink from '$lib/components/ShareLink.svelte';
 	import { lookups } from '$lib/state/lookups.svelte.js';
 	import { settingLabel } from '@aba/content-schema/runtime';
 	import type { PageData } from './$types';
@@ -115,10 +116,16 @@
 		{#if s.review.status !== 'approved'}
 			<p class="unreviewed">This entry has not yet been through clinical review.</p>
 		{/if}
+		<p class="share-row">
+			<ShareLink title={s.title} />
+		</p>
 	</section>
 </article>
 
 <style>
+	.share-row {
+		margin-top: 1rem;
+	}
 	.crumbs {
 		font-size: 0.9rem;
 	}
