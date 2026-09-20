@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import {
@@ -9,13 +10,10 @@
 	} from '$lib/content/scenarios.js';
 </script>
 
-<svelte:head>
-	<title>Something urgent is happening — ABA Assist</title>
-	<meta
-		name="description"
-		content="Who to contact and what to document when a situation is unsafe. This page does not give procedures."
-	/>
-</svelte:head>
+<Seo
+	title="Something urgent is happening"
+	description="Who to contact and what to document when a situation is unsafe. This page does not give procedures."
+/>
 
 <PageBand tone="urgent" label="Urgent" />
 

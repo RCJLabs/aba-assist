@@ -687,6 +687,51 @@ since 2022.
 mechanism. The list the page renders and the list the rule enforces come from one function,
 so they cannot drift into disagreeing about what is covered.
 
+## What a scraper sees, which until now was nothing
+
+Two audiences read every page before any human does, and both were being handed a bare
+document: no `og:` tags anywhere in `src/`, no JSON-LD, no canonical link. Pasting a term
+into a work group chat produced a naked URL, and a glossary — the one content shape
+search engines have a dedicated vocabulary for — described itself as ordinary prose.
+
+One `Seo.svelte`, used by all 34 pages that have a title, rather than defaults in the
+layout that pages override. `<svelte:head>` does not deduplicate: a layout default plus a
+page override gives two `og:title` tags, and which one a scraper picks is not this app's
+decision to make. An e2e test counts each tag and fails at two.
+
+**The absolute URL problem, and why it is a build-time constant.** A canonical link and a
+share card both have to be absolute, and nothing at runtime can work out what the origin
+is — these pages are prerendered, and during prerendering SvelteKit's own `page.url` has
+the origin `http://sveltekit-prerender`. So `ABA_SITE_ORIGIN` is baked in by Vite, and the
+deploy workflow resolves it **in the same step, from the same `static/CNAME` check** as
+the base path. That pairing is the point: an origin that disagrees with the base path
+publishes canonical links pointing at pages that are not there, which is worse for
+indexing than having no canonical link at all. Both shapes are verified —
+`https://rcjlabs.github.io/aba-assist/glossary/tact` today, `https://aba.rcjlabs.com/…`
+once the DNS record exists.
+
+**The structured data is deliberately thin.** `DefinedTerm` on each entry, `DefinedTermSet`
+on the index, `WebSite` on the home page, and nothing else. The failure mode for this
+markup is overstatement, and it is punished by having rich results withdrawn, so there is
+no `author` (entries are unsigned until a human reviewer approves them), no
+`datePublished` the content files could not support, and no rating of any kind. The
+index does not list its 259 entries in `hasDefinedTerm` either: it is allowed, and it
+would add well over a hundred kilobytes of JSON to a page whose own HTML is smaller than
+that, to duplicate the list already rendered below it. Each term points back at the set
+instead, which is the same graph from the other end and costs nothing. There is no
+`SearchAction` because there could not honestly be one — search runs in the browser
+against a downloaded index, so there is no query URL to send anybody to.
+
+**The card** is `static/og.png`, 1200x630, rendered once by `node tools/make-og-card.mjs`
+and committed. Not a build step: a PNG that changes about never does not justify a
+headless browser in every build, and a share card that silently regenerates is one nobody
+looks at again. An e2e test fetches the path the tags advertise and fails on anything but
+a 200 — a card that 404s is worse than no card, because the client renders a broken
+preview instead of falling back to a plain link.
+
+None of this pays off while `robots.txt` still says `Disallow: /`. It is in place for the
+day the launch set is approved, not before.
+
 ## Search has a floor now, and it is a measured one
 
 Search had no measure at all. The only query-level tests in the repo were the escalation

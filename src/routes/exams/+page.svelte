@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { outlines } from '$lib/content/load.js';
 	import { CREDENTIAL_LABELS, credentials } from '$lib/content/corpus.js';
@@ -12,13 +13,10 @@
 		o.domains.reduce((n, d) => n + d.tasks.length, 0);
 </script>
 
-<svelte:head>
-	<title>Exams — ABA Assist</title>
-	<meta
-		name="description"
-		content="What each certification exam covers: domains, weights, task areas, and the certification requirements, with links to the official documents."
-	/>
-</svelte:head>
+<Seo
+	title="Exams"
+	description="What each certification exam covers: domains, weights, task areas, and the certification requirements, with links to the official documents."
+/>
 
 <h1>Exams and certifications</h1>
 <p>

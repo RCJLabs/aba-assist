@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import { settings } from '$lib/state/settings.svelte.js';
@@ -28,10 +29,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{topic.ourLabel} — Ethics — ABA Assist</title>
-	<meta name="description" content={topic.gloss} />
-</svelte:head>
+<Seo title="{topic.ourLabel} — Ethics" description={topic.gloss} />
 
 <PageBand label="Ethics" detail={topic.gloss} />
 

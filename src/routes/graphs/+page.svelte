@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import Graph from '$lib/components/Graph.svelte';
 	import { graphById } from '$lib/content/corpus.js';
@@ -16,13 +17,10 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Reading graphs — ABA Assist</title>
-	<meta
-		name="description"
-		content="Line graphs of behavior explained one at a time: the parts of a graph, level, trend, variability, a reversal design and a multiple baseline. Every graph has a data table and a written description."
-	/>
-</svelte:head>
+<Seo
+	title="Reading graphs"
+	description="Line graphs of behavior explained one at a time: the parts of a graph, level, trend, variability, a reversal design and a multiple baseline. Every graph has a data table and a written description."
+/>
 
 <h1>Reading graphs</h1>
 <p class="lede">

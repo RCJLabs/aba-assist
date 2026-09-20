@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { CATEGORY_LABELS } from '$lib/content/load.js';
@@ -20,13 +21,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Abbreviations — ABA Assist</title>
-	<meta
-		name="description"
-		content="What the abbreviations in applied behavior analysis stand for: MO, SD, DRO, MSWO, FCT, IOA and the rest, each linked to the full entry. Works offline."
-	/>
-</svelte:head>
+<Seo
+	title="Abbreviations"
+	description="What the abbreviations in applied behavior analysis stand for: MO, SD, DRO, MSWO, FCT, IOA and the rest, each linked to the full entry. Works offline."
+/>
 
 <h1>Abbreviations</h1>
 <p class="lede">

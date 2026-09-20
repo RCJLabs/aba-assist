@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { ethicsCodes, topicsBySection, topicsForCredential } from '$lib/content/corpus.js';
 	import { filters } from '$lib/state/filters.svelte.js';
@@ -25,13 +26,10 @@
 		});
 </script>
 
-<svelte:head>
-	<title>Ethics — ABA Assist</title>
-	<meta
-		name="description"
-		content="A plain-language reference to the ethics codes for behavior technicians and behavior analysts: the core principles, what each section covers, and what each obligation looks like in practice."
-	/>
-</svelte:head>
+<Seo
+	title="Ethics"
+	description="A plain-language reference to the ethics codes for behavior technicians and behavior analysts: the core principles, what each section covers, and what each obligation looks like in practice."
+/>
 
 <h1>Ethics</h1>
 <p class="lede">

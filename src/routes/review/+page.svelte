@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { KIND_LABELS, type ReviewableKind } from '$lib/content/reviewable.js';
@@ -145,11 +146,11 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Content review — ABA Assist</title>
-	<meta name="description" content="Reviewer tool for approving content before release." />
-	<meta name="robots" content="noindex" />
-</svelte:head>
+<Seo
+	title="Content review"
+	description="Reviewer tool for approving content before release."
+	noindex
+/>
 
 <svelte:window onkeydown={onKey} />
 

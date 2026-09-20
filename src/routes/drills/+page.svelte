@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import {
@@ -55,13 +56,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Calculation drills — ABA Assist</title>
-	<meta
-		name="description"
-		content="Practice working out rate, percentage, mean duration and the four interobserver agreement methods, on fresh numbers every time, with the working shown."
-	/>
-</svelte:head>
+<Seo
+	title="Calculation drills"
+	description="Practice working out rate, percentage, mean duration and the four interobserver agreement methods, on fresh numbers every time, with the working shown."
+/>
 
 <h1>Calculation drills</h1>
 

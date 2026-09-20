@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import PhiNote from '$lib/components/PhiNote.svelte';
@@ -73,13 +74,10 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Questions for supervision — ABA Assist</title>
-	<meta
-		name="description"
-		content="Park the question the moment it comes up, and take a written agenda to your next supervision meeting. Stays on your device, and holds no client information by construction."
-	/>
-</svelte:head>
+<Seo
+	title="Questions for supervision"
+	description="Park the question the moment it comes up, and take a written agenda to your next supervision meeting. Stays on your device, and holds no client information by construction."
+/>
 
 <PrintHeader
 	title="Questions for supervision"

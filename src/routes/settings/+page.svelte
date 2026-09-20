@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
@@ -71,13 +72,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Settings — ABA Assist</title>
-	<meta
-		name="description"
-		content="Display, reading and accessibility settings for ABA Assist."
-	/>
-</svelte:head>
+<Seo
+	title="Settings"
+	description="Display, reading and accessibility settings for ABA Assist."
+/>
 
 <h1>Settings</h1>
 

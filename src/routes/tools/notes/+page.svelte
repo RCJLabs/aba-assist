@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { termIndex } from '$lib/content/load.js';
 	import { practiceGuideList } from '$lib/content/corpus.js';
@@ -23,13 +24,10 @@
 	const checkedCount = $derived(Object.values(ticked).filter(Boolean).length);
 </script>
 
-<svelte:head>
-	<title>Writing session notes — ABA Assist</title>
-	<meta
-		name="description"
-		content="What a session note usually has to carry, and how to turn an impression into something another person could have counted."
-	/>
-</svelte:head>
+<Seo
+	title="Writing session notes"
+	description="What a session note usually has to carry, and how to turn an impression into something another person could have counted."
+/>
 
 <nav aria-label="Breadcrumb" class="crumbs"><a href={resolve('/tools')}>Tools</a></nav>
 

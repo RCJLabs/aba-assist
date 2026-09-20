@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { announcer } from '$lib/state/announcer.svelte.js';
@@ -39,13 +40,10 @@
 		methods.length === 1 && methods[0] === 'interview';
 </script>
 
-<svelte:head>
-	<title>Competency assessment — ABA Assist</title>
-	<meta
-		name="description"
-		content="What the RBT Initial Competency Assessment asks you to demonstrate, task by task, with the material for each and a place to track what you are ready for."
-	/>
-</svelte:head>
+<Seo
+	title="Competency assessment"
+	description="What the RBT Initial Competency Assessment asks you to demonstrate, task by task, with the material for each and a place to track what you are ready for."
+/>
 
 {#if !a}
 	<h1>Competency assessment</h1>

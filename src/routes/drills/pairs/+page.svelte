@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { CATEGORY_LABELS } from '@aba/content-schema/runtime';
 	import type { PairDrill, TermCategory } from '@aba/content-schema';
@@ -122,13 +123,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Commonly confused — ABA Assist</title>
-	<meta
-		name="description"
-		content="Practice telling apart the pairs that get mixed up: negative reinforcement and punishment, DRO and DRA, forward and backward chaining. Built from the glossary's own examples."
-	/>
-</svelte:head>
+<Seo
+	title="Commonly confused"
+	description="Practice telling apart the pairs that get mixed up: negative reinforcement and punishment, DRO and DRA, forward and backward chaining. Built from the glossary's own examples."
+/>
 
 <div data-drill-status={status}></div>
 

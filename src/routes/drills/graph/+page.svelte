@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import PlotCanvas from '$lib/components/PlotCanvas.svelte';
 	import { announcer } from '$lib/state/announcer.svelte.js';
@@ -116,13 +117,10 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Drawing a graph — ABA Assist</title>
-	<meta
-		name="description"
-		content="Practice putting a data sheet on a graph: plot each session, leave the one nobody ran alone, and put the phase-change line in the right gap. Scored against the graph it should have been."
-	/>
-</svelte:head>
+<Seo
+	title="Drawing a graph"
+	description="Practice putting a data sheet on a graph: plot each session, leave the one nobody ran alone, and put the phase-change line in the right gap. Scored against the graph it should have been."
+/>
 
 <svelte:window onkeydown={onKey} />
 

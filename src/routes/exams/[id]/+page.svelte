@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import { CREDENTIAL_LABELS } from '$lib/content/corpus.js';
@@ -31,13 +32,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{o.credential} exam outline ({o.edition} ed.) — ABA Assist</title>
-	<meta
-		name="description"
-		content="The {o.credential} Test Content Outline ({o.edition} ed.): content areas, exam weights, and our summaries of each task, with links to the glossary."
-	/>
-</svelte:head>
+<Seo
+	title="{o.credential} exam outline ({o.edition} ed.)"
+	description="The {o.credential} Test Content Outline ({o.edition} ed.): content areas, exam weights, and our summaries of each task, with links to the glossary."
+/>
 
 <PageBand label="Exam outline" detail={facts?.credential ?? null} />
 

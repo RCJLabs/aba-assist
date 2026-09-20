@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import Graph from '$lib/components/Graph.svelte';
@@ -31,10 +32,7 @@
 		id ? (data.graph.phases.find((p) => p.id === id)?.label ?? null) : null;
 </script>
 
-<svelte:head>
-	<title>{data.graph.title} — ABA Assist</title>
-	<meta name="description" content={data.graph.gloss} />
-</svelte:head>
+<Seo title={data.graph.title} description={data.graph.gloss} />
 
 <PageBand label="Graph" />
 

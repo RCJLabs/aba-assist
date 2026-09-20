@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { untrack } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { Cue } from '$lib/cue.js';
@@ -273,13 +274,10 @@
 		u === 'percent-of-intervals' ? `${Math.round(n)}%` : String(n);
 </script>
 
-<svelte:head>
-	<title>Taking data — ABA Assist</title>
-	<meta
-		name="description"
-		content="Practice recording behavior in real time: frequency, duration, partial and whole interval, momentary time sampling. Your data is scored against what actually happened, and the same session is reported every way at once."
-	/>
-</svelte:head>
+<Seo
+	title="Taking data"
+	description="Practice recording behavior in real time: frequency, duration, partial and whole interval, momentary time sampling. Your data is scored against what actually happened, and the same session is reported every way at once."
+/>
 
 <svelte:window onkeydown={onKey} />
 

@@ -1,11 +1,19 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
+	import { SITE_ORIGIN } from '$lib/config.js';
+	import { definedTermSet } from '$lib/seo/meta.js';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
 	import LookupList from '$lib/components/LookupList.svelte';
 	import { termsByCategory, CATEGORY_LABELS, termIndex } from '$lib/content/load.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { lookups } from '$lib/state/lookups.svelte.js';
+
+	// One string, used by the description tag and by the structured data. Two copies of
+	// the same sentence is how a page ends up describing itself two different ways.
+	const DESCRIPTION =
+		'Plain-language and technical definitions of applied behavior analysis terms, each with an example, a non-example, and its sources.';
 
 	const visible = $derived(termIndex.filter((t) => filters.matches(t)));
 
@@ -35,13 +43,16 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Glossary — ABA Assist</title>
-	<meta
-		name="description"
-		content="Plain-language and technical definitions of applied behavior analysis terms, each with an example, a non-example, and its sources."
-	/>
-</svelte:head>
+<Seo
+	structured={definedTermSet({
+		origin: SITE_ORIGIN,
+		base,
+		description: DESCRIPTION,
+		count: termIndex.length
+	})}
+	title="Glossary"
+	description={DESCRIPTION}
+/>
 
 <h1>Glossary</h1>
 <p>

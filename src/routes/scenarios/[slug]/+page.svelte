@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { CONTACT_LABELS, RISK_LABELS, IMMEDIATE_CONTACTS } from '$lib/content/scenarios.js';
 	import PageBand from '$lib/components/PageBand.svelte';
@@ -20,10 +21,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{s.title} — ABA Assist</title>
-	<meta name="description" content={s.situation.slice(0, 155)} />
-</svelte:head>
+<Seo title={s.title} description={s.situation.slice(0, 155)} />
 
 {#if s.kind === 'escalation-only'}
 	<PageBand tone="urgent" label="Urgent" />

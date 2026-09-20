@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import {
 		guidanceGroups,
@@ -7,13 +8,10 @@
 	} from '$lib/content/scenarios.js';
 </script>
 
-<svelte:head>
-	<title>Situations — ABA Assist</title>
-	<meta
-		name="description"
-		content="What the literature describes for common situations, and when to bring something to your supervisor."
-	/>
-</svelte:head>
+<Seo
+	title="Situations"
+	description="What the literature describes for common situations, and when to bring something to your supervisor."
+/>
 
 <h1>Situations</h1>
 <p>

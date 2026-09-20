@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { correctionLog, termIndex } from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
@@ -46,13 +47,10 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Corrections — ABA Assist</title>
-	<meta
-		name="description"
-		content="Everything this app has told readers that turned out to be wrong, what it says now, and what is currently known to be wrong and not yet fixed."
-	/>
-</svelte:head>
+<Seo
+	title="Corrections"
+	description="Everything this app has told readers that turned out to be wrong, what it says now, and what is currently known to be wrong and not yet fixed."
+/>
 
 <h1>Corrections</h1>
 

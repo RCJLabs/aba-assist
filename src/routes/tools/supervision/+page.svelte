@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import PrintHeader from '$lib/components/PrintHeader.svelte';
@@ -99,13 +100,10 @@
 		});
 </script>
 
-<svelte:head>
-	<title>Supervision log — ABA Assist</title>
-	<meta
-		name="description"
-		content="Log supervision contacts and check them against the monthly requirement."
-	/>
-</svelte:head>
+<Seo
+	title="Supervision log"
+	description="Log supervision contacts and check them against the monthly requirement."
+/>
 
 <nav aria-label="Breadcrumb" class="crumbs"><a href={resolve('/tools')}>Tools</a></nav>
 

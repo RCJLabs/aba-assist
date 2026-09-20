@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
@@ -85,13 +86,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Flashcards — ABA Assist</title>
-	<meta
-		name="description"
-		content="Spaced-repetition flashcards over the glossary, filtered by exam, domain, or category. Everything stays on your device."
-	/>
-</svelte:head>
+<Seo
+	title="Flashcards"
+	description="Spaced-repetition flashcards over the glossary, filtered by exam, domain, or category. Everything stays on your device."
+/>
 
 <svelte:window onkeydown={onKey} />
 

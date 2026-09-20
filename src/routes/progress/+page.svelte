@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import DataLostNotice from '$lib/components/DataLostNotice.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
@@ -64,13 +65,10 @@
 	);
 </script>
 
-<svelte:head>
-	<title>How it is going — ABA Assist</title>
-	<meta
-		name="description"
-		content="Your practice accuracy over time and whether the flashcards are being remembered, worked out from what is already stored on this device."
-	/>
-</svelte:head>
+<Seo
+	title="How it is going"
+	description="Your practice accuracy over time and whether the flashcards are being remembered, worked out from what is already stored on this device."
+/>
 
 <div data-progress-status={progress.status}></div>
 

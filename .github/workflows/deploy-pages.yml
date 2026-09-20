@@ -86,8 +86,10 @@ jobs:
       # against `/.well-known/assetlinks.json` at the ORIGIN ROOT, which a project site
       # cannot serve at all.
       #
-      # Getting these two out of step does not fail the build — it silently breaks the
-      # service worker scope and every cached URL. Hence one source of truth.
+      # Getting these out of step does not fail the build — it silently breaks the
+      # service worker scope, every cached URL, and every canonical and share-card link.
+      # Hence one source of truth: one CNAME check sets the base path and the origin
+      # together, so a canonical URL can never point somewhere the pages are not.
       - name: Resolve the base path
         run: |
           set -e
@@ -95,9 +97,11 @@ jobs:
             domain="$(tr -d '[:space:]' < static/CNAME)"
             test -n "$domain" || { echo "::error::static/CNAME is empty"; exit 1; }
             echo "ABA_BASE_PATH=" >> "$GITHUB_ENV"
+            echo "ABA_SITE_ORIGIN=https://$domain" >> "$GITHUB_ENV"
             echo "::notice::Custom domain $domain — serving from the origin root."
           else
             echo "ABA_BASE_PATH=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
+            echo "ABA_SITE_ORIGIN=https://${{ github.repository_owner }}.github.io" >> "$GITHUB_ENV"
             echo "::notice::Project site — serving from /${{ github.event.repository.name }}."
           fi
       # Built here rather than reusing the CI artifact: that one is built without the base

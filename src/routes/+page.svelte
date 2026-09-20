@@ -1,6 +1,9 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
+	import { SITE_ORIGIN } from '$lib/config.js';
+	import { webSite } from '$lib/seo/meta.js';
 	import ContentFilters from '$lib/components/ContentFilters.svelte';
 	import {
 		termIndex,
@@ -205,17 +208,17 @@
 	const questionCount = counts.questions ?? 0;
 	const scenarioCount = counts.scenarios ?? 0;
 	const graphCount = counts.graphs ?? 0;
+
+	// Stated once, for the description tag and the site's own structured data.
+	const DESCRIPTION =
+		'A free, offline reference and study tool for behavior technicians, analysts, and paraeducators. Plain-language definitions with sources, flashcards, practice questions, and situational guidance.';
 </script>
 
-<svelte:head>
-	<title
-		>ABA Assist — offline reference and study tool for behavior technicians and analysts</title
-	>
-	<meta
-		name="description"
-		content="A free, offline reference and study tool for behavior technicians, analysts, and paraeducators. Plain-language definitions with sources, flashcards, practice questions, and situational guidance."
-	/>
-</svelte:head>
+<Seo
+	title="ABA Assist — offline reference and study tool for behavior technicians and analysts"
+	description={DESCRIPTION}
+	structured={webSite({ origin: SITE_ORIGIN, base, description: DESCRIPTION })}
+/>
 
 <h1 class="visually-hidden">ABA Assist</h1>
 

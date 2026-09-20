@@ -1,11 +1,14 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { settings } from '$lib/state/settings.svelte.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { CATEGORY_LABELS } from '$lib/content/load.js';
 	import PageBand from '$lib/components/PageBand.svelte';
 	import { settingLabel } from '@aba/content-schema/runtime';
-	import { errataUrl } from '$lib/config.js';
+	import { errataUrl, SITE_ORIGIN } from '$lib/config.js';
+	import { base } from '$app/paths';
+	import { definedTerm } from '$lib/seo/meta.js';
 	import { lookups } from '$lib/state/lookups.svelte.js';
 	import type { PageData } from './$types';
 
@@ -30,10 +33,19 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{term.term} — ABA Assist</title>
-	<meta name="description" content={term.definition.gloss} />
-</svelte:head>
+<Seo
+	title={term.term}
+	description={term.definition.gloss}
+	type="article"
+	structured={definedTerm({
+		origin: SITE_ORIGIN,
+		base,
+		id: term.id,
+		term: term.term,
+		description: term.definition.gloss,
+		aliases: term.aliases
+	})}
+/>
 
 <PageBand label="Term" detail={CATEGORY_LABELS[term.category] ?? term.category} />
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { announcer } from '$lib/state/announcer.svelte.js';
@@ -46,13 +47,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Interval timer — ABA Assist</title>
-	<meta
-		name="description"
-		content="A repeating timer for partial interval, whole interval and momentary time sampling, with a running percentage of intervals."
-	/>
-</svelte:head>
+<Seo
+	title="Interval timer"
+	description="A repeating timer for partial interval, whole interval and momentary time sampling, with a running percentage of intervals."
+/>
 
 <nav aria-label="Breadcrumb" class="crumbs"><a href={resolve('/tools')}>Tools</a></nav>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { resolve } from '$app/paths';
 	import { reviewScheduleRows, contentVersion, termIndex } from '$lib/content/load.js';
 	import { scenarios } from '$lib/content/scenarios.js';
@@ -6,13 +7,10 @@
 	import { REPO_URL } from '$lib/config.js';
 </script>
 
-<svelte:head>
-	<title>About this app — ABA Assist</title>
-	<meta
-		name="description"
-		content="What this app is, what it deliberately does not do, and how to report an error."
-	/>
-</svelte:head>
+<Seo
+	title="About this app"
+	description="What this app is, what it deliberately does not do, and how to report an error."
+/>
 
 <h1>About this app</h1>
 

@@ -7,7 +7,25 @@ import { abaContent } from '@aba/content-build/vite-plugin';
 // than duplicated, because a mismatch between the two silently breaks offline navigation.
 const BASE_PATH = process.env.ABA_BASE_PATH ?? '';
 
+/**
+ * Where this build will actually be served from, scheme and host only.
+ *
+ * Needed because a share card and a canonical link have to be absolute, and nothing at
+ * runtime can work it out: these pages are prerendered, where SvelteKit's own `page.url`
+ * has the origin `http://sveltekit-prerender`. Baked in at build time instead.
+ *
+ * Resolved by the deploy workflow in the same step as the base path, from the same
+ * `static/CNAME` check, because the two have to agree — an origin that disagrees with the
+ * base path produces canonical links pointing at pages that are not there, which is worse
+ * for indexing than having no canonical link at all. The default is the project site,
+ * which is where this is served today.
+ */
+const SITE_ORIGIN = process.env.ABA_SITE_ORIGIN ?? 'https://rcjlabs.github.io';
+
 export default defineConfig({
+	// Substituted at build time. `import.meta.env` would need a VITE_ prefix and would put
+	// the value in every chunk's env object; this puts the one string where it is used.
+	define: { __SITE_ORIGIN__: JSON.stringify(SITE_ORIGIN) },
 	plugins: [
 		// Runs first, inside buildStart. An invalid content tree aborts the build itself,
 		// so there is no path from `vite build` to a bundle containing unreviewed,

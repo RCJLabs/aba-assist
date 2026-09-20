@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
@@ -28,13 +29,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>What to study next — ABA Assist</title>
-	<meta
-		name="description"
-		content="Your practice history read as a set of next actions, with an accuracy reported only where enough has been answered to mean anything."
-	/>
-</svelte:head>
+<Seo
+	title="What to study next"
+	description="Your practice history read as a set of next actions, with an accuracy reported only where enough has been answered to mean anything."
+/>
 
 <h1>What to study next</h1>
 

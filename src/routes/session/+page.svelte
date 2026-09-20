@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { announcer } from '$lib/state/announcer.svelte.js';
@@ -83,13 +84,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Session mode — ABA Assist</title>
-	<meta
-		name="description"
-		content="One screen for use during a session: the interval timer, what a session note has to carry, and a definition lookup that does not cost you the clock."
-	/>
-</svelte:head>
+<Seo
+	title="Session mode"
+	description="One screen for use during a session: the interval timer, what a session note has to carry, and a definition lookup that does not cost you the clock."
+/>
 
 <div data-session-status={t.status} hidden></div>
 

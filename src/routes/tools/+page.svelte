@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { tracker, todayIso, type TrackedCredential } from '$lib/state/tracker.svelte.js';
@@ -232,13 +233,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Tools — ABA Assist</title>
-	<meta
-		name="description"
-		content="Track supervision hours and professional development units on your own device, with no client data."
-	/>
-</svelte:head>
+<Seo
+	title="Tools"
+	description="Track supervision hours and professional development units on your own device, with no client data."
+/>
 
 <h1>Tools</h1>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { resolve } from '$app/paths';
@@ -261,13 +262,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Practice questions — ABA Assist</title>
-	<meta
-		name="description"
-		content="Original practice questions for the RBT and BCBA exams, weighted to the exam outline, with a rationale for every option."
-	/>
-</svelte:head>
+<Seo
+	title="Practice questions"
+	description="Original practice questions for the RBT and BCBA exams, weighted to the exam outline, with a rationale for every option."
+/>
 
 <h1>Practice questions</h1>
 
