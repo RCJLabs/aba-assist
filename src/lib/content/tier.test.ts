@@ -16,6 +16,7 @@ function item(over: Partial<ReviewItem> = {}): ReviewItem {
 		citations: [],
 		consulted: '',
 		inboundRefs: 0,
+		neededByGate: false,
 		...over
 	};
 }

@@ -273,11 +273,11 @@
 					{/if}
 				</p>
 				<p class="hint">
-					The four kinds above, complete, and the {RELEASE_MINIMUM_TERMS} glossary terms the rest
-					of the corpus cites most — every question, situation, ethics topic, graph, guide and task-list
-					entry that names a term counts as one reference, and the set is the top of that ranking.
-					Nothing else: the other terms, the questions and the guidance situations are withheld from
-					a release individually and can wait.
+					The four kinds above, complete, and {RELEASE_MINIMUM_TERMS} glossary terms — first every
+					term an escalation card or the RBT outline's own tasks name, because those pages ship whole
+					and a link into a withheld term is pruned out of them rather than left dangling, then the
+					most-cited of the rest to make up the number. Nothing else: the other terms, the questions
+					and the guidance situations are withheld from a release individually and can wait.
 				</p>
 				{#if gate.metAfterExport}
 					<p class="verdict good" role="status">

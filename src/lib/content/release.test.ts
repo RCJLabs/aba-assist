@@ -16,6 +16,7 @@ function item(over: Partial<ReviewItem> = {}): ReviewItem {
 		citations: [],
 		consulted: 'Primary sources.',
 		inboundRefs: 0,
+		neededByGate: false,
 		...over
 	};
 }
@@ -151,6 +152,51 @@ describe('the launch set', () => {
 		// A term outside the set is withheld individually rather than blocking a release.
 		expect(inLaunchSet(item({ id: 't199' }), set)).toBe(false);
 		expect(inLaunchSet(item({ id: 'q1', kind: 'question' }), set)).toBe(false);
+	});
+
+	it('takes a term the gate needs over a better-cited one it does not', () => {
+		/*
+		 * The regression this ordering exists for. Ranking on citations alone left 27 of
+		 * the 141 terms the RBT outline names outside the set — forward chaining, error
+		 * correction, least-to-most prompting among them — while terms carried there by
+		 * the BCBA question bank took the places. References into a withheld entry are
+		 * pruned, so that build ships the outline complete with a quarter of its task
+		 * links silently removed.
+		 */
+		const popular = ranked(150); // t000..t149, all outside the gate
+		const needed = item({ id: 'forward-chaining', inboundRefs: 1, neededByGate: true });
+		const set = launchSet([...popular, needed]);
+
+		expect(set.has('forward-chaining')).toBe(true);
+		// And it displaced the least-cited term that was not needed, not an arbitrary one.
+		expect(set.has('t149')).toBe(false);
+		expect(set.has('t148')).toBe(true);
+		expect(set.size).toBe(150);
+	});
+
+	it('ranks within the needed group too, rather than by whatever sorted first', () => {
+		// If the required kinds ever name more terms than the floor allows, the set is
+		// truncated — and it should keep the most-cited of them.
+		const needed = Array.from({ length: 200 }, (_, i) =>
+			item({ id: `n${String(i).padStart(3, '0')}`, inboundRefs: 200 - i, neededByGate: true })
+		);
+		const set = launchSet(needed);
+		expect(set.size).toBe(150);
+		expect(set.has('n000')).toBe(true);
+		expect(set.has('n149')).toBe(true);
+		expect(set.has('n150')).toBe(false);
+	});
+
+	it('still fills the remaining places by citation once the gate is satisfied', () => {
+		const needed = Array.from({ length: 10 }, (_, i) =>
+			item({ id: `n${i}`, inboundRefs: 0, neededByGate: true })
+		);
+		const set = launchSet([...needed, ...ranked(200)]);
+		expect(set.size).toBe(150);
+		for (const n of needed) expect(set.has(n.id)).toBe(true);
+		expect(set.has('t000')).toBe(true); // the most-cited of the rest
+		expect(set.has('t139')).toBe(true); // the last place the gate left over
+		expect(set.has('t140')).toBe(false);
 	});
 
 	it('is a route to the floor and not a second gate', () => {

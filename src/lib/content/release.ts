@@ -95,35 +95,54 @@ export function gatesRelease(item: ReviewItem): boolean {
  * Which 150 terms, of the 259 there are.
  *
  * The floor is a number, not a list, so a reviewer clearing the four required kinds is
- * then told "150 terms" and left to pick them. Picking badly is easy and expensive: a
- * launch glossary missing the terms the questions and situations cite is a glossary whose
- * own cross-references go nowhere, which is exactly the thinness the floor exists to
- * prevent.
+ * then told "150 terms" and left to pick them. Picking badly is easy and expensive, and
+ * the first version of this picked badly in a way worth recording, because it looked
+ * right: it ranked every term by how many other entries cite it and took the top 150.
  *
- * So the set is the terms the rest of the corpus leans on hardest, counted rather than
- * chosen: every question, situation, ethics topic, graph, practice guide and task-list
- * entry that names a term is one inbound reference, and so is every cross-reference from
- * another term. Ranked by that, ties broken by id so the set is the same on every device
- * and in every build.
+ * Counting what that produced showed the flaw. The RBT outline's 43 tasks name 141
+ * distinct terms between them, and **27 of those fell outside the top 150** — among them
+ * forward chaining, backward chaining, total-task chaining, error correction,
+ * least-to-most and most-to-least prompting, scatterplot and the three-term contingency.
+ * Not obscure: core technician vocabulary. Meanwhile 34 terms made the set on the
+ * strength of BCBA question citations alone. A pure citation count has no opinion about
+ * credentials, and this corpus has three of them, the largest of which cites nearly
+ * every term there is.
+ *
+ * A build in that state is not merely thin. References into a withheld entry are pruned
+ * rather than left dangling, so the RBT outline would have shipped complete and approved
+ * with a quarter of its task links quietly removed — on the outline this app's whole
+ * claim rests on.
+ *
+ * So the set is built in the order the gate actually cares about: first the terms an
+ * escalation card or the launch outline names, because those pages ship whole and a
+ * pruned link in them is a hole; then the rest of the ranking, to the floor. Ties inside
+ * either group break by id, so the set is identical on every device and in every build.
  *
  * This is a route to the floor, not a second gate. Approving 150 other terms clears it
  * just as well; the build reads the count and nothing else.
  */
 export function launchSet(items: ReviewItem[]): Set<string> {
 	const terms = items.filter((i) => i.kind === 'term');
-	const ranked = [...terms].sort(
-		(a, b) =>
-			(b.inboundRefs ?? 0) - (a.inboundRefs ?? 0) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
-	);
-	return new Set(ranked.slice(0, RELEASE_MINIMUM_TERMS).map((i) => i.id));
+	const byRank = (a: ReviewItem, b: ReviewItem) =>
+		(b.inboundRefs ?? 0) - (a.inboundRefs ?? 0) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+
+	/*
+	 * Ranked within each group as well as between them. If the required kinds ever name
+	 * more terms than the floor allows, the set is truncated — and it should keep the
+	 * most-cited of them rather than whichever sorted first.
+	 */
+	const needed = terms.filter((t) => t.neededByGate).sort(byRank);
+	const rest = terms.filter((t) => !t.neededByGate).sort(byRank);
+	return new Set([...needed, ...rest].slice(0, RELEASE_MINIMUM_TERMS).map((i) => i.id));
 }
 
 /**
  * Everything on the shortest honest path to a published build.
  *
- * The four required kinds, complete, plus the glossary set above. Nothing else: the other
- * 109 terms, the 603 questions and the 48 guidance situations are withheld individually
- * and can be approved at any pace afterwards.
+ * The four required kinds, complete, plus the glossary set above. Nothing else: the terms
+ * outside the set, the questions and the guidance situations are withheld individually and
+ * can be approved at any pace afterwards. Counts are deliberately absent here — they were
+ * written down once and were wrong within two commits of the corpus growing.
  */
 export function inLaunchSet(item: ReviewItem, set: Set<string>): boolean {
 	return gatesRelease(item) || set.has(item.id);

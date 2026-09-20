@@ -70,6 +70,7 @@ export const METHOD_LABELS: Record<AssessmentMethod, string> = {
 export {
 	RELEASE_REQUIRED_KINDS,
 	RELEASE_MINIMUM_TERMS,
+	LAUNCH_OUTLINE,
 	type ReleaseRequiredKind
 } from './release.js';
 export {

@@ -91,7 +91,15 @@ test('the launch set states its own cost, and it is a fraction of the backlog', 
 test('the launch set is a route to the floor rather than a second rule', async ({ page }) => {
 	await openReview(page);
 	await page.getByRole('button', { name: 'Review the launch set' }).click();
-	await expect(page.locator('.gate-actions .hint')).toContainText('cites most');
+	/*
+	 * The set leads with what ships whole — the escalation cards and the launch outline —
+	 * rather than with a citation ranking that has no opinion about credentials. Ranking
+	 * alone left 27 of the RBT outline's 141 terms out, and their task links would have
+	 * been pruned from an outline that shipped approved and complete.
+	 */
+	const hint = page.locator('.gate-actions .hint');
+	await expect(hint).toContainText('escalation card');
+	await expect(hint).toContainText("RBT outline's own tasks");
 	// The requirement the build reads is still the floor, unchanged by the route taken.
 	await expect(page.locator('[data-req="terms"]')).toContainText('of 150');
 });

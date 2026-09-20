@@ -1,4 +1,5 @@
 import { resolve } from '$app/paths';
+import { LAUNCH_OUTLINE } from '@aba/content-schema/runtime';
 import type { ReviewableKind } from '$lib/db/index.js';
 import {
 	CATEGORIES,
@@ -67,6 +68,16 @@ export interface ReviewItem {
 	 * Counted rather than tagged, so it stays true as the corpus grows.
 	 */
 	inboundRefs: number | null;
+	/**
+	 * Whether something that must ship complete names this term. Terms only; null elsewhere.
+	 *
+	 * The escalation cards and the launch outline's own tasks. Both are required whole
+	 * before a release, so a term either of them names and the build withholds is a link
+	 * pruned out of a page that did ship — the safety surface or the outline the app's
+	 * claim rests on. Ranking by citations alone does not see that: it counts a term the
+	 * BCBA question bank leans on the same way as one an RBT task cannot do without.
+	 */
+	neededByGate: boolean | null;
 }
 
 const list = (xs: readonly string[]) => xs.filter(Boolean);
@@ -90,6 +101,12 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 	const inbound = new Map<string, number>();
 	const cite = (refs: readonly string[]) => {
 		for (const r of refs) inbound.set(r, (inbound.get(r) ?? 0) + 1);
+	};
+
+	/** Terms the required-complete kinds name, gathered in the same walk as the counts. */
+	const needed = new Set<string>();
+	const need = (refs: readonly string[]) => {
+		for (const r of refs) needed.add(r);
 	};
 
 	// ------------------------------------------------------------------ terms
@@ -126,7 +143,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				],
 				citations: t.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 				consulted: t.attestation.consulted,
-				inboundRefs: 0
+				inboundRefs: 0,
+				neededByGate: false
 			});
 		}
 	}
@@ -134,6 +152,7 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 	// -------------------------------------------------------------- scenarios
 	for (const s of scenarios) {
 		cite(s.termRefs);
+		if (s.kind === 'escalation-only') need(s.termRefs);
 		const fields: ReviewField[] = [{ label: 'The situation', lines: [s.situation] }];
 		if (s.kind === 'guidance') {
 			fields.push(
@@ -169,7 +188,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			fields,
 			citations: s.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 			consulted: s.attestation.consulted,
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -205,7 +225,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 				],
 				citations: q.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 				consulted: q.attestation.consulted,
-				inboundRefs: null
+				inboundRefs: null,
+				neededByGate: null
 			});
 		}
 	}
@@ -235,7 +256,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: t.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 			consulted: t.attestation.consulted,
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -269,7 +291,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 			consulted: g.attestation.consulted,
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -312,7 +335,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: g.citations.map((c) => c.sourceId + (c.locator ? ` — ${c.locator}` : '')),
 			consulted: g.attestation.consulted,
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -351,7 +375,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: [c.sourceId],
 			consulted: c.review.changeNote ?? '',
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -377,13 +402,16 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: [c.handbookSourceId],
 			consulted: c.review.changeNote ?? '',
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
 	// ---------------------------------------------------------------- outlines
 	for (const o of Object.values(outlines)) {
 		for (const d of o.domains) for (const t of d.tasks) cite(t.termRefs);
+		if (o.id === LAUNCH_OUTLINE)
+			for (const d of o.domains) for (const t of d.tasks) need(t.termRefs);
 		items.push({
 			id: o.id,
 			kind: 'outline',
@@ -408,7 +436,8 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 			],
 			citations: [o.sourceId],
 			consulted: o.review.changeNote ?? '',
-			inboundRefs: null
+			inboundRefs: null,
+			neededByGate: null
 		});
 	}
 
@@ -417,7 +446,9 @@ export async function loadReviewItems(): Promise<ReviewItem[]> {
 	 * term has been walked, and the terms were built first.
 	 */
 	for (const item of items) {
-		if (item.kind === 'term') item.inboundRefs = inbound.get(item.id) ?? 0;
+		if (item.kind !== 'term') continue;
+		item.inboundRefs = inbound.get(item.id) ?? 0;
+		item.neededByGate = needed.has(item.id);
 	}
 
 	return items;

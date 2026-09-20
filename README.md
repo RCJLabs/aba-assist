@@ -158,12 +158,48 @@ whole file by YAML anchor. The moment one question in that file is decided diffe
 from its neighbours the anchor is no longer true, so the tool writes every block in that
 file out in full. That is why an approval of one question can show up as a large diff.
 
+### Which 150 terms, and the ranking that got it wrong
+
+The floor is a number — 150 approved terms of 259 — so something has to decide which 150,
+and the obvious answer is wrong in a way that took counting to see. The first version
+ranked every term by how many other entries cite it and took the top 150. Reasonable: a
+term the corpus keeps pointing at is one readers arrive at.
+
+Then the set was checked against what actually has to ship. The RBT outline's 43 tasks
+name **141 distinct terms** between them, and **27 of those fell outside the top 150** —
+forward chaining, backward chaining, total-task chaining, error correction, least-to-most
+and most-to-least prompting, scatterplot, the three-term contingency. Core technician
+vocabulary. Meanwhile 34 terms held places on the strength of BCBA question citations
+alone. A citation count has no opinion about credentials, and this corpus has three, the
+largest of which cites nearly every term there is.
+
+That is not a thinner launch, it is a broken one. References into a withheld entry are
+pruned rather than left dangling, so the build would have shipped the RBT outline
+complete and approved with a quarter of its task links silently removed — on the outline
+this app's entire claim rests on.
+
+So the set is assembled in the order the gate cares about: first every term an escalation
+card or the launch outline names (143 of them, together), then the most-cited of the rest
+to reach the floor. Same cost, and nothing that ships whole has a hole in it.
+
+The same counting settled the floor itself. Lowering it looked like the cheapest possible
+way to reach a launch sooner, and it is not available: 150 is within seven of the 143 the
+required-complete kinds already name, so a smaller floor buys almost nothing and starts
+pruning the outline again. The number stays, on evidence rather than on taste.
+
+`LAUNCH_OUTLINE` names the one outline a launch has to stand behind whole, and it is RBT
+for a stated reason: the 3rd edition took effect on 2026-01-01 and most circulating study
+material is still written against the 2nd. The other two outlines must be approved before
+a release like everything else in their kind — they just do not get to drag the whole
+glossary in with them. BCaBA names 214 terms and BCBA names 255, which is very nearly all
+of them.
+
 ### A sitting, because two hours is not a plan either
 
-The tiering made the total tractable — the launch set is about 137 minutes rather than
-456 items — and 137 minutes still did not get done, for a reason that has nothing to do
-with the number. Two and a quarter hours is not a thing anybody sits down and does. Ten
-items is.
+The tiering made the total tractable — the launch set is 170 entries, of which about 80
+have to be read, for something under three hours rather than a thousand items — and three
+hours still did not get done, for a reason that has nothing to do with the number. It is
+not a thing anybody sits down and does. Ten items is.
 
 So `/review` offers a sitting: pick 5, 10 or 20, see roughly what it costs before
 starting, get a position and a bar while you work, and get a finish line that says what
