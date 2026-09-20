@@ -1012,9 +1012,27 @@ Together: the home page went from 669 KB of script to 77 KB, first contentful pa
 
 `npm run test:perf` runs it locally; CI runs it on every push. The budgets are in
 `lighthouse-budgets.json` and the assertions in `lighthouserc.json`, both set from
-measured margins rather than aspiration — roughly 40% headroom on the worst route, which
-is enough that ordinary noise does not fail a build and small enough to notice a
-regression.
+measured margins rather than aspiration — enough headroom that ordinary noise does not
+fail a build and little enough to notice a regression.
+
+**It noticed one, and the budget was right.** `/tools` eventually crossed the
+first-contentful-paint assertion by eight milliseconds and blocked a deploy. The
+tempting reading was runner noise on a shared machine, and it was wrong: building the
+last passing commit and this one side by side on the same machine put `/tools` at 2610ms
+before and 2307ms after, against CI's 2608–2619. The app really had crossed the line.
+
+The cause was one import. `corpus.ts` bundles the ethics codes, every ethics topic, the
+graphs, the practice guides and the competency assessment into a single module, and the
+tracker imported `credentials` from it to read a handful of supervision percentages —
+dragging 234KB of script onto the heaviest route in the app. `/quiz` was doing the same
+thing for three heading labels. The credential facts now live in
+`src/lib/content/credentials.ts`, which imports one JSON file and nothing else, and
+`corpus.ts` re-exports them so the pages that want the whole corpus are unchanged.
+`/tools` went from 659KB of script to 452KB.
+
+This is the same failure the home page had, one level down, and it will happen again: a
+barrel module attaches everything it imports to everything that imports it, and one
+label constant is enough to do it. The budget is the thing that catches it.
 
 Two audits are deliberately off. `is-crawlable` fails because a preview build's
 `robots.txt` disallows everything, which is correct and flips on its own once review

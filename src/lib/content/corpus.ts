@@ -12,26 +12,26 @@
  */
 import type {
 	CompetencyAssessment,
-	CredentialFacts,
 	EthicsCode,
 	EthicsTopic,
 	GraphDoc,
 	PracticeGuide
 } from '@aba/content-schema';
 import competencyData from './generated/competency.json';
-import credentialData from './generated/credentials.json';
 import ethicsCodeData from './generated/ethics-codes.json';
 import ethicsTopicData from './generated/ethics-topics.json';
 import practiceGuideData from './generated/practice-guides.json';
 import graphData from './generated/graphs.json';
 
-// ---------------------------------------------------- credential labels
+// ---------------------------------------------------- credential facts
 
-export const CREDENTIAL_LABELS: Record<string, string> = {
-	RBT: 'Registered Behavior Technician',
-	BCaBA: 'Board Certified Assistant Behavior Analyst',
-	BCBA: 'Board Certified Behavior Analyst'
-};
+/*
+ * Re-exported from their own module rather than defined here. Anything that needs only
+ * the credential facts — the tracker, the quiz headings — should import
+ * `$lib/content/credentials.js` directly and not attach this barrel's other 200KB. These
+ * exports exist so the pages that do want the whole corpus are unchanged.
+ */
+export { credentials, credentialFacts, CREDENTIAL_LABELS } from './credentials.js';
 
 // -------------------------------------------------------- practice guides
 
@@ -60,10 +60,6 @@ export const graphList: GraphDoc[] = Object.values(graphs);
 export function graphById(id: string): GraphDoc | undefined {
 	return graphs[id];
 }
-
-// ------------------------------------------------------------ credentials
-
-export const credentials = credentialData as unknown as Record<string, CredentialFacts>;
 
 // ------------------------------------------------------------------ ethics
 

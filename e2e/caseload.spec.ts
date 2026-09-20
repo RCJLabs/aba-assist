@@ -36,6 +36,48 @@ async function addSupervisee(page: Page, code: string) {
 	await expect(page.getByLabel('Supervisee', { exact: true })).toContainText(code);
 }
 
+/**
+ * How many supervision contacts are in the store.
+ *
+ * Reads the database directly, and never creates or upgrades it: an `open` with no
+ * version against a database the app has not made yet would create an empty one, and a
+ * connection left open would block the app's own upgrade. So an upgrade is aborted and
+ * "not there yet" comes back as -1, which never equals an expected count.
+ */
+function storedContacts(page: Page): Promise<number> {
+	return page.evaluate(
+		() =>
+			new Promise<number>((resolve) => {
+				const open = indexedDB.open('aba-assist');
+				let fresh = false;
+				open.onupgradeneeded = () => {
+					fresh = true;
+					open.transaction?.abort();
+				};
+				open.onerror = () => resolve(-1);
+				open.onsuccess = () => {
+					const db = open.result;
+					if (fresh || !db.objectStoreNames.contains('supervisionEntries')) {
+						db.close();
+						return resolve(-1);
+					}
+					const req = db
+						.transaction('supervisionEntries')
+						.objectStore('supervisionEntries')
+						.count();
+					req.onsuccess = () => {
+						db.close();
+						resolve(req.result);
+					};
+					req.onerror = () => {
+						db.close();
+						resolve(-1);
+					};
+				};
+			})
+	);
+}
+
 async function logContact(
 	page: Page,
 	opts: { date: string; code?: string; observed?: boolean; group?: boolean }
@@ -51,13 +93,24 @@ async function logContact(
 	const observed = page.getByLabel('The supervisor observed me working with a client');
 	if (opts.observed === false) await observed.uncheck();
 	else await observed.check();
+	const before = await storedContacts(page);
 	await page.getByRole('button', { name: 'Log contact' }).click();
 	/*
-	 * Wait for the write to land. The same reasoning the tools spec already records: a
-	 * caller that navigates immediately can abort the IndexedDB transaction in flight and
-	 * then assert against a database that never received it.
+	 * Wait on the database, not on the page.
+	 *
+	 * A caller that navigates immediately can abort the IndexedDB transaction in flight
+	 * and then assert against a database that never received the contact. The obvious
+	 * signal — the form resetting — is no signal at all here: the only field that clears
+	 * is the note, and these contacts never set one, so the assertion passed instantly
+	 * and proved nothing. It held on the desktop profile by timing luck and dropped a
+	 * contact on the slower mobile one.
+	 *
+	 * There is no page-visible signal to use instead, and that is a consequence of the
+	 * change this file exists to test: supervision logged *to a supervisee* no longer
+	 * appears in the reader's own month summary, so on the supervision page nothing
+	 * changes at all when one is recorded.
 	 */
-	await expect(page.getByLabel('What the contact covered')).toHaveValue('');
+	await expect.poll(() => storedContacts(page), { timeout: 15_000 }).toBe(before + 1);
 }
 
 test('shows a month per supervisee, judged against their hours', async ({ page }) => {

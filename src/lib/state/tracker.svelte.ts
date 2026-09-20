@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { TRACKER_ROLE_KEY as ROLE_KEY } from './mode.js';
-import { credentials } from '$lib/content/corpus.js';
+import { credentials } from '$lib/content/credentials.js';
 import {
 	getAll,
 	put,

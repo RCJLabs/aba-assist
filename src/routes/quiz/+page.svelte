@@ -5,7 +5,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { outlineForCredential, questionCredentials, termIndex } from '$lib/content/load.js';
-	import { CREDENTIAL_LABELS } from '$lib/content/corpus.js';
+	import { CREDENTIAL_LABELS } from '$lib/content/credentials.js';
 	import { announcer } from '$lib/state/announcer.svelte.js';
 	import { filters } from '$lib/state/filters.svelte.js';
 	import { quiz, type QuizMode } from '$lib/state/quiz.svelte.js';
