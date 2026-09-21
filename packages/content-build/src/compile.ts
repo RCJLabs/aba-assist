@@ -18,6 +18,10 @@ import {
 	CorrectionRegistry,
 	SourceRegistry,
 	Term,
+	LANGUAGE_LABELS,
+	TRANSLATION_LANGUAGES,
+	Translation,
+	languageSuffix,
 	isDomainRef,
 	searchOptions,
 	taskRefKey,
@@ -28,7 +32,9 @@ import {
 	type GraphDoc as z_GraphDoc,
 	type CompetencyAssessment as z_Competency,
 	type SearchIndexEntry,
-	type TermIndexEntry
+	type TermIndexEntry,
+	type Translation as z_Translation,
+	type TranslationLanguage
 } from '@aba/content-schema';
 import {
 	MIN_INTENT_TOKENS,
@@ -403,6 +409,203 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 			push(...checkHouseStyle([...prose, value.term], parsed.file));
 			push(...checkReviewStatus(value.review, channel, parsed.file));
 			push(...checkPlainLanguage(value.definition.plain, 'definition.plain', parsed.file));
+		}
+	}
+
+	// ----------------------------------------------------------- translations
+	/*
+	 * Translations are loaded here, immediately after the entries they render, because
+	 * every rule below needs the source entry in hand. Nothing about a translation can be
+	 * judged on its own: whether it is stale, whether it may ship, and whether it has
+	 * quietly grown an extra example are all questions about the pair.
+	 *
+	 * See `translation.ts` for why these are separate files holding only prose.
+	 */
+	const translations: z_Translation[] = [];
+	/** Renderings pinned to a version the source has since moved past. */
+	const staleTranslations = new Set<string>();
+	{
+		const termById = new Map(terms.map((t) => [t.id, t]));
+		const seen = new Map<string, string>();
+		const known = new Set<string>(TRANSLATION_LANGUAGES);
+		/*
+		 * Everything under `translations/` is discovered, then judged — rather than looking
+		 * only where the known languages are.
+		 *
+		 * The difference matters. Walking the language list and building each path means a
+		 * folder nobody recognises is not rejected, it is never opened: somebody starts
+		 * `translations/fr/` and the build reports success over work it did not read. An
+		 * unknown folder should be an error, and the only way to say that is to look first
+		 * and check afterwards.
+		 */
+		const dir = join(root, 'translations');
+		for (const path of await discover(dir, ['.md'])) {
+			const { parsed, issues: pIssues } = await parseMarkdown(root, dir, path);
+			push(...pIssues);
+			if (!parsed) continue;
+			inputHash.update(JSON.stringify(parsed.data));
+
+			const [langDir, collection, ...rest] = parsed.dirs;
+			if (!langDir || !known.has(langDir)) {
+				push(
+					error(
+						'structure/unknown-language-directory',
+						`translations/${langDir ?? ''} is not a language this corpus is translated into (known: ${TRANSLATION_LANGUAGES.join(', ')}). Add it to TRANSLATION_LANGUAGES, where the record of which build checks exist for a language lives.`,
+						parsed.file
+					)
+				);
+				continue;
+			}
+			if (collection !== 'terms' || rest.length > 0) {
+				/*
+				 * Only glossary entries are translatable, and the schema already refuses any
+				 * other `kind`. This is the same refusal one level up, so a hopeful
+				 * `translations/es/scenarios/` is a build failure rather than a folder the
+				 * compiler walks past.
+				 */
+				push(
+					error(
+						'structure/unknown-translation-collection',
+						`expected translations/${langDir}/terms/, and only terms are translatable — see TranslatableKind for why`,
+						parsed.file
+					)
+				);
+				continue;
+			}
+			const lang = langDir as TranslationLanguage;
+
+			const { value, issues: sIssues } = checkSchema(
+				Translation,
+				parsed.data,
+				parsed.file,
+				'schema/translation'
+			);
+			push(...sIssues);
+			if (!value) continue;
+
+			/*
+			 * The declared language and the folder have to agree.
+			 *
+			 * Redundant with the path, deliberately: the mistake it catches is a file copied
+			 * from one language's folder into another's, which is silent and unrecoverable if
+			 * the language is merely derived. With a single language the enum above reaches
+			 * this case first, so this rule is dormant until there is a second one — which is
+			 * exactly when the copy becomes possible to make.
+			 */
+			if (value.lang !== lang) {
+				push(
+					error(
+						'structure/language-directory-mismatch',
+						`lang "${value.lang}" but the file lives in translations/${lang}/`,
+						parsed.file
+					)
+				);
+			}
+			if (value.translates.id !== parsed.basename) {
+				push(
+					error(
+						'structure/id-filename-mismatch',
+						`translates.id "${value.translates.id}" does not match filename "${parsed.basename}"`,
+						parsed.file
+					)
+				);
+			}
+
+			const key = `${value.lang}:${value.translates.id}`;
+			if (seen.has(key)) {
+				push(
+					error(
+						'structure/duplicate-id',
+						`duplicate ${value.lang} translation of "${value.translates.id}" (also in ${seen.get(key)})`,
+						parsed.file
+					)
+				);
+			}
+			seen.set(key, parsed.file);
+
+			const src = termById.get(value.translates.id);
+			if (!src) {
+				push(
+					error(
+						'refs/unknown-translation-source',
+						`translates "${value.translates.id}", which is not a term in this corpus`,
+						parsed.file
+					)
+				);
+				continue;
+			}
+
+			/*
+			 * The version pin, which is what makes drift a rule rather than a hope.
+			 *
+			 * Behind the source means the English has been edited since this was written,
+			 * so the rendering no longer describes what the entry says. Handled the way an
+			 * unapproved entry is handled — withheld from a release, so the app ships less
+			 * rather than shipping something that has quietly stopped being true.
+			 *
+			 * Ahead of the source is a different animal and is an error in every channel:
+			 * there is no such version, so somebody edited the pin by hand, which is
+			 * precisely the move that would silence a staleness warning without fixing
+			 * anything.
+			 */
+			if (value.translates.version > src.provenance.version) {
+				push(
+					error(
+						'translation/version-ahead-of-source',
+						`pinned to version ${value.translates.version} of "${src.id}", which is at version ${src.provenance.version}. A pin cannot run ahead of the entry it names.`,
+						parsed.file
+					)
+				);
+			} else if (value.translates.version < src.provenance.version) {
+				staleTranslations.add(key);
+				push(
+					warn(
+						'translation/stale',
+						`renders version ${value.translates.version} of "${src.id}", which is now at version ${src.provenance.version}. Re-read it against the current entry and move the pin; until then it is withheld from a release.`,
+						parsed.file
+					)
+				);
+			}
+
+			/*
+			 * Examples are matched to their source by position, so the counts have to
+			 * agree. This is the structural half of the `noNewClaims` attestation: an
+			 * extra example is not a translation of anything, it is new content arriving
+			 * through a file that gets fewer checks than an entry does.
+			 */
+			for (const field of ['examples', 'nonExamples'] as const) {
+				if (value[field].length !== src[field].length) {
+					push(
+						error(
+							'translation/example-count-mismatch',
+							`has ${value[field].length} ${field} but "${src.id}" has ${src[field].length}. They are rendered one for one, in order.`,
+							parsed.file
+						)
+					);
+				}
+			}
+
+			translations.push(value);
+
+			const prose = [
+				value.term,
+				value.definition.technical,
+				value.definition.plain,
+				value.definition.gloss,
+				...value.examples.flatMap((e) => [e.text, e.why ?? '']),
+				...value.nonExamples.flatMap((e) => [e.text, e.why ?? ''])
+			];
+			/*
+			 * The rights scan runs; the two editorial gates do not, and their absence is
+			 * the reason every translation is read rather than sampled. checkRights here
+			 * is the prose half only — a long quoted run, a pasted copyright notice —
+			 * which is language-agnostic. Citations are inherited from the source entry
+			 * and cannot be restated in a translation file, so there is nothing to check.
+			 * checkHouseStyle and checkPlainLanguage are English by construction; see
+			 * LANGUAGE_CHECKS.
+			 */
+			push(...checkRights({}, prose, sources, parsed.file));
+			push(...checkReviewStatus(value.review, channel, parsed.file));
 		}
 	}
 
@@ -922,6 +1125,24 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 	const shipCompetencies = competencies.filter(ships);
 
 	const shipTermIds = new Set(shipTerms.map((t) => t.id));
+
+	/*
+	 * A translation has three ways not to ship, and all three are the point of the design.
+	 *
+	 * Its own review status, because approving the English says nothing about a rendering
+	 * the approver may not be able to read. The source entry's ship status, because
+	 * translating unreviewed content does not review it — an approved Spanish rendering of
+	 * a withheld English term would be the one route by which unapproved clinical prose
+	 * reached a reader, and it would arrive looking checked. And staleness, because a
+	 * rendering pinned to a version the entry has moved past is no longer a description of
+	 * what this app says.
+	 */
+	const shipTranslations = translations.filter(
+		(t) =>
+			ships(t) &&
+			shipTermIds.has(t.translates.id) &&
+			!(withholding && staleTranslations.has(`${t.lang}:${t.translates.id}`))
+	);
 	const shipScenarioIds = new Set(shipScenarios.map((x) => x.id));
 	const shipTopicIds = new Set(shipTopics.map((t) => t.id));
 	/** Drop references to entries this build is not shipping. */
@@ -1421,6 +1642,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		practiceGuides: emitGuides.length,
 		graphs: shipGraphs.length,
 		competencyAssessments: emitCompetencies.length,
+		translations: shipTranslations.length,
 		unreviewed,
 		withheld
 	};
@@ -1449,6 +1671,7 @@ export async function compile(opts: CompileOptions): Promise<CompileResult> {
 		shipGraphs,
 		emitCompetencies,
 		corrections,
+		shipTranslations,
 		contentVersion
 	);
 
@@ -1467,6 +1690,7 @@ function buildAssets(
 	graphs: z_GraphDoc[],
 	competencies: z_Competency[],
 	corrections: Correction[],
+	translations: z_Translation[],
 	contentVersion: string
 ): EmittedAsset[] {
 	const assets: EmittedAsset[] = [];
@@ -1785,6 +2009,168 @@ function buildAssets(
 		source: JSON.stringify(mini),
 		fetchedAtRuntime: false
 	});
+
+	/*
+	 * ------------------------------------------------- the translated corpora
+	 *
+	 * One set of files per language, and one search index per language rather than one
+	 * index holding every language — see `languageSuffix` for why that is the search half
+	 * of this decision rather than an implementation detail.
+	 *
+	 * What ships is the MERGED entry: the source term's structure with the translated
+	 * prose written over it. The alternative was to ship the translation alone and join it
+	 * against the English bucket in the browser, which would mean a reader on a Spanish
+	 * page downloading the English corpus to render it, and a join that has to work
+	 * offline. Merged, a Spanish reader fetches one file and never touches the English at
+	 * all, which is what an offline-first app should do.
+	 *
+	 * The merge keeps the TRANSLATION's review and provenance, never the source's — the
+	 * Spanish approval is what let this reach a reader, so it is the one that should be on
+	 * the record. The merged entry is therefore close to a `Term` but deliberately not
+	 * identical: it carries no top-level `attestation`, because the author's asserts
+	 * original prose and names what they consulted, and the glossary page renders that line.
+	 * Both attestations sit inside `translation`, each beside the prose it describes.
+	 *
+	 * Not bucketed by category the way the English corpus is. Bucketing pays for itself at
+	 * a few hundred entries because siblings are what a reader opens next; a language with
+	 * a few dozen is smaller than a single English bucket, so it ships as one file. Revisit
+	 * when a language approaches the size of the English corpus.
+	 */
+	{
+		const termById = new Map(terms.map((t) => [t.id, t]));
+		const byLang = new Map<TranslationLanguage, z_Translation[]>();
+		for (const tr of translations) {
+			const list = byLang.get(tr.lang) ?? [];
+			list.push(tr);
+			byLang.set(tr.lang, list);
+		}
+
+		const available: { lang: string; label: string; terms: number }[] = [];
+
+		for (const [lang, list] of [...byLang].sort((a, b) => a[0].localeCompare(b[0]))) {
+			const suffix = languageSuffix(lang);
+			const index: TermIndexEntry[] = [];
+			const merged: Record<string, unknown> = {};
+			const docs: (SearchIndexEntry & { body: string; situ?: string })[] = [];
+
+			for (const tr of list) {
+				const src = termById.get(tr.translates.id);
+				// Already guaranteed by the ship filter; the guard keeps this function total.
+				if (!src) continue;
+
+				const flashcard = {
+					enabled: src.flashcard.enabled,
+					front: tr.flashcard.front,
+					back: tr.flashcard.back,
+					mnemonic: tr.flashcard.mnemonic
+				};
+				// The author's attestation is deliberately NOT carried over at the top level.
+				// It asserts `originalProse: true` and names what the author consulted, and
+				// the glossary page renders that line — under Spanish prose it would be a
+				// claim about text that is not there. Both attestations ride inside
+				// `translation` instead, each next to the prose it is about, which also means
+				// a page rendering a translation has to decide what to show rather than
+				// silently showing the wrong one.
+				const { attestation: sourceAttestation, ...structure } = src;
+				merged[src.id] = {
+					...structure,
+					term: tr.term,
+					aliases: tr.aliases,
+					abbreviation: tr.abbreviation,
+					definition: tr.definition,
+					// Positional, and the compiler has already refused a length mismatch, so
+					// the settings line up with the prose that renders them.
+					examples: tr.examples.map((e, i) => ({ ...e, setting: src.examples[i].setting })),
+					nonExamples: tr.nonExamples.map((e, i) => ({
+						...e,
+						setting: src.nonExamples[i].setting
+					})),
+					flashcard,
+					review: tr.review,
+					provenance: tr.provenance,
+					translation: {
+						lang: tr.lang,
+						translates: tr.translates,
+						attestation: tr.attestation,
+						sourceAttestation
+					}
+				};
+
+				index.push({
+					i: src.id,
+					t: tr.term,
+					a: tr.aliases,
+					c: src.category,
+					g: tr.definition.gloss,
+					b: src.searchBoost,
+					r: src.taskRefs.map(taskRefKey),
+					f: src.flashcard.enabled
+				});
+
+				docs.push({
+					i: src.id,
+					k: 'term',
+					t: tr.term,
+					a: tr.aliases,
+					// Untranslated, and visibly so: a category label is interface text, which
+					// belongs in the app's own string table rather than in content files. A
+					// translation file has no field for it, which is the point.
+					l: CATEGORY_LABELS[src.category],
+					g: tr.definition.gloss,
+					c: src.category,
+					b: src.searchBoost * KIND_WEIGHT.term,
+					r: src.taskRefs.map(taskRefKey),
+					p: null,
+					body: `${tr.definition.technical} ${tr.definition.plain}`,
+					// Examples only, never non-examples — the same reasoning as the English
+					// index, and it does not change with the language.
+					situ: tr.examples.map((e) => e.text).join(' ')
+				});
+			}
+
+			assets.push({
+				name: `terms.index${suffix}`,
+				fileName: `${base}/terms.index${suffix}.json`,
+				source: JSON.stringify(index),
+				fetchedAtRuntime: false
+			});
+			assets.push({
+				name: `terms${suffix}`,
+				fileName: `${base}/terms${suffix}.json`,
+				source: JSON.stringify(merged),
+				fetchedAtRuntime: false
+			});
+
+			const langIndex = new MiniSearch(searchOptions());
+			langIndex.addAll(docs.map((d) => ({ ...d, id: `${d.k}:${d.i}` })));
+			assets.push({
+				name: `search-index${suffix}`,
+				fileName: `${base}/search-index${suffix}.json`,
+				source: JSON.stringify(langIndex),
+				fetchedAtRuntime: false
+			});
+
+			available.push({ lang, label: LANGUAGE_LABELS[lang], terms: index.length });
+		}
+
+		/*
+		 * What is actually available, shipped eagerly and tiny.
+		 *
+		 * The app cannot offer a language picker by guessing: a language whose entries are
+		 * all withheld or all stale ships nothing, and an option that leads to an empty
+		 * glossary is worse than no option. This file is the answer, and when there are no
+		 * translations at all it is not emitted — so the picker's absence is the default
+		 * rather than something that has to be switched off.
+		 */
+		if (available.length > 0) {
+			assets.push({
+				name: 'languages',
+				fileName: `${base}/languages.json`,
+				source: JSON.stringify(available),
+				fetchedAtRuntime: false
+			});
+		}
+	}
 
 	/*
 	 * The re-check schedule, shipped so the app can say it out loud.

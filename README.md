@@ -695,6 +695,142 @@ the site publishes as a preview with the banner on and search engines kept out, 
 launch set has been through review. An empty log is worth more than an invented one, and
 the machinery has to exist before the first correction rather than after it.
 
+## How a translation is stored, decided before anything was approved
+
+Nothing is translated and nothing here translates anything. What landed is the shape a
+translation has to take, settled now because settling it later is expensive in a specific
+way: an approval is a claim about a particular piece of prose, and the shape decides
+whether approving an entry means "this file is reviewed" or only "part of this file is
+reviewed". Two hundred and fifty-nine entries carrying approvals is a bad moment to
+discover the answer was the second one.
+
+**A translation is a separate file holding only the translatable prose, pinned to the
+exact version of the entry it renders.** It lives at
+`content/translations/<lang>/terms/<slug>.md`, and structure is inherited from the source
+entry rather than repeated.
+
+Two shapes were rejected, and the reasons are different.
+
+_A field on the term_ would mean building a second review system. Review status is per
+file in every mechanism this repository already has — `checkReviewStatus` takes one review
+block, the review queue lists one row per entry, `apply-review` writes one status per file,
+CODEOWNERS routes by path. A nested translation needs a review ladder inside a file, and
+nothing reads reviews that way. It would also mean every translation added later edits a
+file that is already approved, and a Spanish reviewer reading a diff inside a file that is
+mostly English.
+
+_A parallel tree of whole entries_ — `content/es/terms/*.md` holding complete documents —
+is the tempting one, and it duplicates everything that is not language. `category`,
+`taskRefs`, `ethicsRefs`, `contrastWith`, `seeAlso`, `searchBoost` and `citations` are
+facts about the concept, not about the English sentence describing it. Duplicated, they
+can disagree, and this corpus validates exactly those fields across entries: contrast pairs
+must be symmetric, `seeAlso` must resolve, aliases must not collide, task codes must exist
+in the outline. A second tree would run all of that again over a graph that can silently
+diverge, or skip it. A `seeAlso` that resolves in English and dangles in Spanish is a new
+class of broken link invented for nothing.
+
+So a translation file has no field in which a structural fact could be written. Same move
+as `officialText: z.null()`.
+
+### Review status attaches to the translation, in both directions
+
+Each translation carries its own review block, and a translation ships only if three things
+hold. Its own status is shippable — approving the English says nothing about a rendering
+the approver may not be able to read. The source entry ships — **translating unreviewed
+content does not review it**, and an approved Spanish rendering of a withheld English term
+would be the one route by which unapproved clinical prose reached a reader, arriving
+looking checked. And it is not stale.
+
+Staleness is the rule that makes the rest work. `translates.version` must equal the source
+entry's `provenance.version`, which already exists and is already maintained — a content
+hash was the alternative and would turn every whitespace fix into a false alarm. Behind the
+source means the English has been edited since, so a release withholds it and the build
+says which versions disagree. Ahead of the source is an error in every channel: there is no
+such version, so somebody edited the pin instead of re-reading the entry, which is exactly
+the move that silences a staleness warning without fixing anything.
+
+Examples are rendered one for one, in order, and the counts have to match. An extra example
+is not a translation of anything — it is new content arriving through the door with the
+fewest checks on it.
+
+### A translation gets fewer automated checks, so it gets more human reading
+
+This runs opposite to intuition and it is the most load-bearing thing here. Two of the
+editorial gates on English prose are English by construction. `HOUSE_SPELLINGS` maps
+British spellings to American ones; pointed at Spanish it fires on nothing, which is not a
+pass, it is an absence dressed as one. `fleschKincaidGrade` counts English syllables, and
+it is a _hard_ gate on `definition.plain` — pointed at Spanish it returns a number with no
+meaning and then blocks or approves on it. Neither runs, and `LANGUAGE_CHECKS` records per
+language which ones exist.
+
+The consequence is that `SampledApproval` is deliberately absent from the translation
+schema. A sampled draw is a defensible way to approve ordinary English definitions that a
+dozen other rules have already been over, and an indefensible way to approve prose that
+none of those rules can read. Every translation is read.
+
+The same reasoning is why **only glossary entries are translatable**, enforced by typing
+`kind` as a literal and by rejecting any other folder. Situations, ethics topics and
+escalation cards are guarded by lexicons that read their prose for procedural instruction
+and crisis language — the machinery that makes writing a restraint procedure into an
+escalation card a build failure. Those lexicons are English. Translating a safety entry
+into a language whose lexicon does not exist would route the guard and produce an unguarded
+escalation card that the build reported as clean. Definitions carry no procedure, which is
+what makes them the safe thing to start with.
+
+The translator's attestation is a different shape from the author's, for the same reason.
+`Attestation.originalProse` is `z.literal(true)` — "I wrote this myself, in my own words" —
+which is false for a translation, and a schema that asks somebody to assert it teaches them
+that the attestation block is a formality. A translator asserts `faithfulRendering` and
+`noNewClaims` instead. The second is the safety-relevant one: this app explains what things
+mean and refuses to say what to do, and a translation that helpfully expanded a definition
+into advice would walk past every lexicon, which in that language is not running anyway.
+
+### One search index per language
+
+Not one index holding both, for three reasons in order of weight. A merged index doubles a
+lazily fetched download for a reader who uses one language. `prefix` matching and
+`fuzzy: 0.2` across two languages at once produce cross-language false hits that
+`boostDocument` cannot cleanly suppress without storing a language on every document and
+paying for it on every keystroke. And a translated corpus will be much smaller than the
+English one for a long time, so merging would scatter a few Spanish results through a field
+of English ones instead of letting the app say plainly how much is available.
+
+What ships per language is the _merged_ entry — the source term's structure with the
+translated prose written over it — so a Spanish reader fetches one file and never touches
+the English corpus at all. The alternative was shipping translations alone and joining them
+in the browser, which means downloading the English to render the Spanish, and a join that
+has to work offline. The merge keeps the translation's review and provenance rather than
+the source's, because the Spanish approval is what let it reach a reader — and it carries
+no top-level attestation at all. The author's asserts original prose and names what they
+consulted, and the glossary page renders that line; carried onto translated prose it would
+be a claim about text that is not on the page. Both attestations sit inside a `translation`
+block instead, each beside the prose it describes, which also forces whoever builds the
+Spanish page to decide what to show rather than silently showing the wrong one.
+
+A `languages.json` manifest says what is actually available, and is not emitted when there
+are no translations — so the absence of a language picker is the default rather than
+something that has to be switched off. Per-language entries ship as one file rather than
+bucketed by category the way English is; bucketing pays for itself at a few hundred
+entries, and is worth revisiting when a language approaches the size of the English corpus.
+
+### What is deliberately not built
+
+No language picker, no route changes, no UI. There is no content to show, and building the
+surface before the corpus exists means guessing at what it has to display. What exists is
+the storage decision, the build rules that make it mean something, and the tests that prove
+each rule fires — including the two that matter most, checked by breaking them and watching
+the suite go red: a stale rendering is withheld from a release, and an approved translation
+cannot carry an unapproved entry into one.
+
+One rule is dormant. A file's declared `lang` must agree with its folder, which catches a
+file copied from one language's folder into another's — a mistake that is silent and
+unrecoverable if the language is merely derived from the path. With a single language the
+enum reaches that case first, so the rule cannot fire until there is a second language,
+which is exactly when the copy becomes possible to make. Its neighbour is live and replaced
+a silent failure: an unrecognised folder under `translations/` used to be skipped without
+comment, so somebody could start `translations/fr/` and get a green build over work nothing
+had read.
+
 ## Facts that expire now have to say when
 
 Being right about 2026 is what this app is for, and the failure mode it was built against

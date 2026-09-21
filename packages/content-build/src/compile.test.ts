@@ -1964,3 +1964,301 @@ describe('the corrections log', () => {
 		expect(JSON.stringify(parsed.flagged)).not.toContain('non-example');
 	});
 });
+
+/**
+ * Translations.
+ *
+ * The shape is settled in `translation.ts`; these prove the rules that make the shape
+ * mean something. Every one of them is a way somebody could get unreviewed, stale or
+ * invented prose in front of a reader through a file that receives fewer automated checks
+ * than an English entry does — which is the whole reason the rules exist.
+ */
+const translatorAttestation = {
+	faithfulRendering: true,
+	noNewClaims: true,
+	translatorNote: 'Rendered from the English entry; no settled equivalent for the term of art.'
+};
+
+function translation(overrides: Record<string, unknown> = {}) {
+	return {
+		lang: 'es',
+		translates: { kind: 'term', id: 'sample-term', version: 1 },
+		term: 'Término de muestra',
+		definition: {
+			technical:
+				'Una declaración precisa del concepto, suficientemente larga para cumplir con la longitud mínima que impone el esquema de validación.',
+			plain:
+				'Una manera corta y sencilla de decir lo mismo para que una persona nueva lo entienda.',
+			gloss: 'Una línea breve de resumen'
+		},
+		examples: [{ text: 'Un ejemplo que es cómodamente más largo que el mínimo.' }],
+		nonExamples: [{ text: 'Un contraejemplo que es cómodamente más largo que el mínimo.' }],
+		attestation: translatorAttestation,
+		review,
+		provenance,
+		...overrides
+	};
+}
+
+const ES = 'translations/es/terms/sample-term.md';
+
+describe('translations', () => {
+	it('accepts a translation pinned to the current version of a term it names', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(translation())
+		});
+		expect(rules(r)).toEqual([]);
+		expect(r.counts.translations).toBe(1);
+	});
+
+	it('refuses a translation of something that is not in the corpus', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'translations/es/terms/no-such-term.md': frontmatter(
+				translation({ translates: { kind: 'term', id: 'no-such-term', version: 1 } })
+			)
+		});
+		expect(rules(r)).toContain('refs/unknown-translation-source');
+	});
+
+	it('refuses a pin that runs ahead of the entry it names', async () => {
+		/*
+		 * The move this exists to stop: silencing a staleness warning by editing the pin
+		 * instead of re-reading the entry. There is no version 4, so the claim is checkable
+		 * and false.
+		 */
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(
+				translation({ translates: { kind: 'term', id: 'sample-term', version: 4 } })
+			)
+		});
+		expect(rules(r)).toContain('translation/version-ahead-of-source');
+	});
+
+	it('warns when the entry has moved on, and withholds the rendering from a release', async () => {
+		const files = {
+			'terms/principles/sample-term.md': frontmatter(
+				term({ provenance: { ...provenance, version: 2 } })
+			),
+			[ES]: frontmatter(translation())
+		};
+		const draft = await build(files, 'dev');
+		expect(draft.warnings.map((w) => w.rule)).toContain('translation/stale');
+		// Still shipped where nothing is withheld: a warning, not a wall.
+		expect(draft.counts.translations).toBe(1);
+
+		const release = await build(
+			{
+				...files,
+				'terms/principles/sample-term.md': frontmatter(
+					term({
+						provenance: { ...provenance, version: 2 },
+						review: {
+							...review,
+							status: 'approved',
+							reviewedBy: 'someone',
+							reviewedOn: '2026-09-15'
+						},
+						reviewMethod: 'read'
+					})
+				),
+				[ES]: frontmatter(
+					translation({
+						review: {
+							...review,
+							status: 'approved',
+							reviewedBy: 'someone',
+							reviewedOn: '2026-09-15'
+						}
+					})
+				)
+			},
+			'release',
+			1
+		);
+		// Approved on both sides and still withheld, because it renders a version that is gone.
+		expect(release.counts.translations).toBe(0);
+	});
+
+	it('refuses an example the source does not have', async () => {
+		/*
+		 * Examples are rendered one for one, in order. An extra one is not a translation of
+		 * anything — it is new content arriving through the door with the fewest checks on
+		 * it, which is the structural half of the `noNewClaims` attestation.
+		 */
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(
+				translation({
+					examples: [
+						{ text: 'Un ejemplo que es cómodamente más largo que el mínimo.' },
+						{ text: 'Un segundo ejemplo que nadie revisó como traducción.' }
+					]
+				})
+			)
+		});
+		expect(rules(r)).toContain('translation/example-count-mismatch');
+	});
+
+	it('has nowhere to write a structural fact', async () => {
+		// `category` belongs to the concept, not to the language. The strict object is what
+		// stops the English and Spanish graphs from ever disagreeing.
+		for (const structural of [
+			{ category: 'measurement' },
+			{ seeAlso: ['other'] },
+			{ searchBoost: 3 }
+		]) {
+			const r = await build({
+				'terms/principles/sample-term.md': frontmatter(term()),
+				[ES]: frontmatter(translation(structural))
+			});
+			expect(rules(r), JSON.stringify(structural)).toContain('schema/translation');
+		}
+	});
+
+	it('will not let a translator claim they wrote it themselves', async () => {
+		// The author's attestation asserts original prose, which is false for a translation.
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(translation({ attestation }))
+		});
+		expect(rules(r)).toContain('schema/translation');
+	});
+
+	it('refuses a language it does not know, instead of walking past the folder', async () => {
+		/*
+		 * The failure this replaced was silent: a build that looked only where the known
+		 * languages are never opened translations/fr/ at all and reported success over work
+		 * it had not read. Adding a language has to be a deliberate edit, because that is
+		 * where the record of which build checks exist for it lives.
+		 */
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'translations/fr/terms/sample-term.md': frontmatter(translation({ lang: 'es' }))
+		});
+		expect(rules(r)).toContain('structure/unknown-language-directory');
+	});
+
+	it('refuses to translate anything but a glossary entry', async () => {
+		/*
+		 * Situations, ethics topics and escalation cards are guarded by lexicons that read
+		 * their prose for procedural instruction and crisis language, and those lexicons are
+		 * English. Translating one into a language whose lexicon does not exist would route
+		 * the guard and produce an unguarded escalation card the build called clean. The
+		 * schema refuses it by typing `kind` as a literal; this is the same refusal at the
+		 * level of the folder.
+		 */
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'translations/es/scenarios/something.md': frontmatter(translation())
+		});
+		expect(rules(r)).toContain('structure/unknown-translation-collection');
+	});
+
+	it('refuses a language that is not one of the corpus languages', async () => {
+		// Caught by the enum before the folder rule can see it, which is why the folder rule
+		// is dormant until there is a second language to copy a file between.
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(translation({ lang: 'en' }))
+		});
+		expect(rules(r)).toContain('schema/translation');
+	});
+
+	it('refuses a translation whose filename is not the term it renders', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			'translations/es/terms/something-else.md': frontmatter(translation())
+		});
+		expect(rules(r)).toContain('structure/id-filename-mismatch');
+	});
+
+	it('does not let an approved translation carry an unapproved entry into a release', async () => {
+		/*
+		 * The one route by which unreviewed clinical prose could reach a reader looking
+		 * fully checked. Translating something does not review it.
+		 */
+		const r = await build(
+			{
+				'terms/principles/sample-term.md': frontmatter(term()),
+				[ES]: frontmatter(
+					translation({
+						review: {
+							...review,
+							status: 'approved',
+							reviewedBy: 'someone',
+							reviewedOn: '2026-09-15'
+						}
+					})
+				)
+			},
+			'release',
+			1
+		);
+		expect(r.counts.terms).toBe(0);
+		expect(r.counts.translations).toBe(0);
+	});
+
+	it('does not let an English approval approve the rendering of it', async () => {
+		const r = await build(
+			{
+				'terms/principles/sample-term.md': frontmatter(
+					term({
+						review: {
+							...review,
+							status: 'approved',
+							reviewedBy: 'someone',
+							reviewedOn: '2026-09-15'
+						},
+						reviewMethod: 'read'
+					})
+				),
+				[ES]: frontmatter(translation({ review: { ...review, status: 'draft' } }))
+			},
+			'release',
+			1
+		);
+		expect(r.counts.terms).toBe(1);
+		expect(r.counts.translations).toBe(0);
+	});
+
+	it('gives each language its own index, and says what is actually available', async () => {
+		const r = await build({
+			'terms/principles/sample-term.md': frontmatter(term()),
+			[ES]: frontmatter(translation())
+		});
+		const names = r.assets.map((a) => a.name);
+		expect(names).toContain('search-index.es');
+		expect(names).toContain('terms.es');
+		expect(names).toContain('languages');
+		// Separate files, not a merged index: the English one is still its own asset.
+		expect(names).toContain('search-index');
+
+		const manifest = JSON.parse(r.assets.find((a) => a.name === 'languages')!.source);
+		expect(manifest).toEqual([{ lang: 'es', label: 'Español', terms: 1 }]);
+
+		// The merged entry carries the source's structure and the translation's prose.
+		const entries = JSON.parse(r.assets.find((a) => a.name === 'terms.es')!.source);
+		expect(entries['sample-term'].category).toBe('principles');
+		expect(entries['sample-term'].term).toBe('Término de muestra');
+		expect(entries['sample-term'].translation.translates.version).toBe(1);
+		/*
+		 * No top-level attestation. The author's asserts original prose and names what they
+		 * consulted, and the glossary page renders that line — carried over onto translated
+		 * prose it would be a claim about text that is not on the page. Both sit inside
+		 * `translation`, each beside the prose it describes.
+		 */
+		expect(entries['sample-term'].attestation).toBeUndefined();
+		expect(entries['sample-term'].translation.attestation.faithfulRendering).toBe(true);
+		expect(entries['sample-term'].translation.sourceAttestation.originalProse).toBe(true);
+	});
+
+	it('emits nothing at all when there are no translations', async () => {
+		// The language picker's absence is the default, not something switched off.
+		const r = await build({ 'terms/principles/sample-term.md': frontmatter(term()) });
+		expect(r.assets.map((a) => a.name)).not.toContain('languages');
+		expect(r.counts.translations).toBe(0);
+	});
+});
