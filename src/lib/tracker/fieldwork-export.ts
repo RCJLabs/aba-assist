@@ -14,9 +14,12 @@
  *   2. what happened each month, and whether that month met the requirements
  *   3. where the totals stand against what is required
  *   4. what the requirements actually are, and where in the handbook to check them
+ *   5. who supervised it, and whether anybody checked they were allowed to
  *
  * The fourth is the one that is easy to leave out and the one that makes the other three
- * auditable. A spreadsheet of hours with a "short" column and no statement of the
+ * auditable. The fifth is the one that can void everything above it: hours supervised by
+ * somebody who did not meet the requirements are worth nothing, however good the months
+ * look, and that is invisible from a log of hours. A spreadsheet of hours with a "short" column and no statement of the
  * threshold asks the reader to trust an app they have never seen.
  *
  * Four files rather than one workbook with tabs, deliberately. A real `.xlsx` needs a
@@ -25,10 +28,15 @@
  * everybody who opens the glossary. CSV is what Excel and Google Sheets both import
  * natively, and the formatting is theirs to apply.
  */
-import type { FieldworkMonth, FieldworkPeriod } from '$lib/db/index.js';
+import type {
+	FieldworkMonth,
+	FieldworkPeriod,
+	FieldworkSupervisorCheck
+} from '$lib/db/index.js';
 import {
 	summariseFieldwork,
 	summariseFieldworkMonth,
+	supervisorStanding,
 	type FieldworkMonthInput,
 	type FieldworkRequirement,
 	type FieldworkRuleset
@@ -366,7 +374,78 @@ function requirementsFile(req: FieldworkRequirement, rules: FieldworkRuleset): E
 }
 
 /**
- * The whole record, as four files in reading order.
+ * File 5: the supervisors, and what the trainee confirmed about each.
+ *
+ * Its own file rather than a column on the months, because it answers a question about
+ * people rather than about hours, and because what it holds is a confirmation rather than
+ * a measurement. Every row says so in as many words: this app cannot check whether
+ * somebody held an active certification, and a record that implied otherwise would be
+ * worse than one that stayed quiet.
+ */
+function supervisorsFile(
+	months: FieldworkMonth[],
+	checks: FieldworkSupervisorCheck[],
+	req: FieldworkRequirement
+): ExportFile {
+	const codes = [...new Set(months.map((m) => m.supervisorCode).filter(Boolean))].sort();
+	const pairs = months.map((m) => ({ month: m.month, supervisorCode: m.supervisorCode }));
+
+	const rows: (string | number)[][] = [];
+	for (const code of codes) {
+		const st = supervisorStanding(
+			code,
+			checks.find((c) => c.code === code) ?? null,
+			pairs,
+			req.supervisor
+		);
+		rows.push([
+			code,
+			st.months,
+			st.state === 'confirmed'
+				? 'confirmed by the trainee'
+				: st.state === 'incomplete'
+					? 'something outstanding'
+					: 'not checked',
+			st.confirmedOn ?? '',
+			st.contractSignedOn ?? 'not recorded',
+			st.outstanding.map((i) => i.label).join('; '),
+			st.monthsBeforeContract.join('; '),
+			req.supervisor.locator
+		]);
+	}
+	if (rows.length === 0) {
+		rows.push([
+			'none recorded',
+			0,
+			'not checked',
+			'',
+			'not recorded',
+			'',
+			'',
+			req.supervisor.locator
+		]);
+	}
+
+	return {
+		name: 'fieldwork-5-supervisors.csv',
+		csv: toCsv(
+			[
+				'Supervisor code',
+				'Months they signed for',
+				'Standing',
+				'Trainee confirmed on',
+				'Supervision contract signed',
+				'Not confirmed',
+				'Months logged before the contract',
+				'Handbook reference'
+			],
+			rows
+		)
+	};
+}
+
+/**
+ * The whole record, as five files in reading order.
  *
  * `handbookVersion` is carried through rather than looked up here so that the export
  * states which edition it was built against. A fieldwork record produced three years
@@ -375,16 +454,18 @@ function requirementsFile(req: FieldworkRequirement, rules: FieldworkRuleset): E
 export function fieldworkRecord(args: {
 	period: FieldworkPeriod | null;
 	months: FieldworkMonth[];
+	supervisors: FieldworkSupervisorCheck[];
 	req: FieldworkRequirement;
 	rules: FieldworkRuleset;
 	handbookVersion: string;
 	today: string;
 }): ExportFile[] {
-	const { period, months, req, rules, handbookVersion, today } = args;
+	const { period, months, supervisors, req, rules, handbookVersion, today } = args;
 	return [
 		periodFile(period, rules, req, handbookVersion, today),
 		monthsFile(months, req, rules),
 		totalsFile(months, req, rules, period, today),
-		requirementsFile(req, rules)
+		requirementsFile(req, rules),
+		supervisorsFile(months, supervisors, req)
 	];
 }

@@ -336,6 +336,34 @@ export interface FieldworkMonth {
 	note: string;
 }
 
+/**
+ * A trainee's confirmation that a supervisor met the requirements.
+ *
+ * Their confirmation, never a verification: whether somebody holds an active
+ * certification, has held it a year, and is current on their supervision continuing
+ * education are facts about another person, on a registry this app cannot reach and must
+ * not cache. What it holds is who was asked, what was confirmed, and when — which is what
+ * an auditor asks for and what nobody can reconstruct two years later.
+ *
+ * Still a code and never a name, like everything else in this model.
+ */
+export interface FieldworkSupervisorCheck {
+	/** `${periodId}:${code}`. */
+	id: string;
+	periodId: string;
+	code: string;
+	/** Ids from the credential's supervisor checklist that were confirmed. */
+	confirmed: string[];
+	/** When the trainee last checked. Null while nothing has been confirmed. */
+	confirmedOn: string | null;
+	/**
+	 * When the supervision contract was signed. The one part of this the app can check,
+	 * because a contract has a date and so does a month — hours before it are suspect.
+	 */
+	contractSignedOn: string | null;
+	note: string;
+}
+
 /** A run at the fieldwork requirement: when it started and whose rules it is under. */
 export interface FieldworkPeriod {
 	id: string;
@@ -410,6 +438,11 @@ interface AbaDB extends DBSchema {
 		key: string;
 		value: FieldworkPeriod;
 	};
+	fieldworkSupervisors: {
+		key: string;
+		value: FieldworkSupervisorCheck;
+		indexes: { 'by-period': string };
+	};
 	fieldworkMonths: {
 		key: string;
 		value: FieldworkMonth;
@@ -446,6 +479,7 @@ type StoreName =
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
 	| 'fieldworkMonths'
+	| 'fieldworkSupervisors'
 	| 'supervisionQuestions'
 	| 'lookups'
 	| 'superviseeMonths';
@@ -568,6 +602,14 @@ const MIGRATIONS: Migration[] = [
 				});
 			}
 		})();
+	},
+
+	// v10 — the trainee's confirmation that a supervisor met the requirements. Hours
+	// supervised by somebody who did not are worth nothing, and that is invisible from a
+	// log of hours, so it needs somewhere of its own to live.
+	(db) => {
+		const checks = db.createObjectStore('fieldworkSupervisors', { keyPath: 'id' });
+		checks.createIndex('by-period', 'periodId');
 	}
 ];
 
@@ -705,6 +747,7 @@ type TrackerStore =
 	| 'developmentUnits'
 	| 'fieldworkPeriods'
 	| 'fieldworkMonths'
+	| 'fieldworkSupervisors'
 	| 'supervisionQuestions'
 	| 'superviseeMonths';
 
@@ -768,11 +811,22 @@ export async function removeSupervisee(id: string): Promise<void> {
 /** Same reasoning for a fieldwork period and the months logged inside it. */
 export async function removeFieldworkPeriod(id: string): Promise<void> {
 	const db = await openAbaDB();
-	const tx = db.transaction(['fieldworkPeriods', 'fieldworkMonths'], 'readwrite');
+	const tx = db.transaction(
+		['fieldworkPeriods', 'fieldworkMonths', 'fieldworkSupervisors'],
+		'readwrite'
+	);
 	const months = await tx.objectStore('fieldworkMonths').index('by-period').getAllKeys(id);
+	// The supervisor confirmations go with it. A record of who was checked, outliving the
+	// fieldwork it was checked for, is the shape of orphan row this data model exists to
+	// make impossible.
+	const checks = await tx
+		.objectStore('fieldworkSupervisors')
+		.index('by-period')
+		.getAllKeys(id);
 	await Promise.all([
 		tx.objectStore('fieldworkPeriods').delete(id),
-		...months.map((key) => tx.objectStore('fieldworkMonths').delete(key))
+		...months.map((key) => tx.objectStore('fieldworkMonths').delete(key)),
+		...checks.map((key) => tx.objectStore('fieldworkSupervisors').delete(key))
 	]);
 	await tx.done;
 }
@@ -1050,6 +1104,7 @@ export async function restoreAll(data: {
 		'developmentUnits',
 		'fieldworkPeriods',
 		'fieldworkMonths',
+		'fieldworkSupervisors',
 		'supervisionQuestions',
 		'lookups',
 		'superviseeMonths'
@@ -1095,6 +1150,7 @@ export async function clearAll(): Promise<void> {
 		'developmentUnits',
 		'fieldworkPeriods',
 		'fieldworkMonths',
+		'fieldworkSupervisors',
 		'supervisionQuestions',
 		'lookups',
 		'superviseeMonths'

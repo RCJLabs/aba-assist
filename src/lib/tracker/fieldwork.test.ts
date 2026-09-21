@@ -5,6 +5,7 @@ import {
 	rulesetById,
 	summariseFieldwork,
 	summariseFieldworkMonth,
+	supervisorStanding,
 	type FieldworkMonthInput,
 	type FieldworkMonthSummary,
 	type FieldworkRequirement
@@ -20,6 +21,11 @@ const REQ: FieldworkRequirement = {
 	concentratedMultiplier: 1.33,
 	windowYears: 5,
 	documentationLocator: 'Documentation of Fieldwork, p. 15',
+	supervisor: {
+		items: [{ id: 'good-standing', label: 'Certified and in good standing' }],
+		contractRequired: true,
+		locator: 'Supervisor qualifications, p. 13'
+	},
 	locator: 'Hour Requirements, p. 15',
 	rulesets: [
 		{
@@ -354,5 +360,132 @@ describe('addYears', () => {
 	it('ends the window the day before the anniversary', () => {
 		expect(addYears('2026-01-01', 5)).toBe('2030-12-31');
 		expect(addYears('2024-02-29', 5)).toBe('2029-02-28');
+	});
+});
+
+describe('where a supervisor stands', () => {
+	const supervisorReq = {
+		items: [
+			{ id: 'good-standing', label: 'Certified and in good standing' },
+			{ id: 'tenure', label: 'Certified for at least a year, or consulting' },
+			{ id: 'supervision-training', label: 'Meets the supervision CE requirement' }
+		],
+		contractRequired: true,
+		locator: 'Supervisor qualifications, p. 13'
+	};
+	const all = ['good-standing', 'tenure', 'supervision-training'];
+	const logged = [
+		{ month: '2026-02', supervisorCode: 'S-01' },
+		{ month: '2026-03', supervisorCode: 'S-01' },
+		{ month: '2026-04', supervisorCode: 'S-02' }
+	];
+
+	it('starts unconfirmed, which is the state worth shouting about', () => {
+		const s = supervisorStanding('S-01', null, logged, supervisorReq);
+		expect(s.state).toBe('unconfirmed');
+		expect(s.outstanding).toHaveLength(3);
+		// And it names how much rests on it, because "unconfirmed" on two months is a
+		// different problem from "unconfirmed" on eighteen.
+		expect(s.months).toBe(2);
+	});
+
+	it('separates "not looked yet" from "looked and something is missing"', () => {
+		/*
+		 * Not a cosmetic distinction. Nobody has checked is the ordinary starting state of
+		 * every record; somebody checked and one item did not hold is a finding, and it is
+		 * the more urgent of the two.
+		 */
+		const partial = supervisorStanding(
+			'S-01',
+			{
+				code: 'S-01',
+				confirmed: ['good-standing'],
+				confirmedOn: '2026-02-01',
+				contractSignedOn: '2026-01-15'
+			},
+			logged,
+			supervisorReq
+		);
+		expect(partial.state).toBe('incomplete');
+		expect(partial.outstanding.map((i) => i.id)).toEqual(['tenure', 'supervision-training']);
+	});
+
+	it('is not confirmed without the contract, even with every box ticked', () => {
+		const s = supervisorStanding(
+			'S-01',
+			{ code: 'S-01', confirmed: all, confirmedOn: '2026-02-01', contractSignedOn: null },
+			logged,
+			supervisorReq
+		);
+		expect(s.state).toBe('incomplete');
+		expect(s.outstanding).toHaveLength(0);
+	});
+
+	it('is confirmed when everything holds', () => {
+		const s = supervisorStanding(
+			'S-01',
+			{
+				code: 'S-01',
+				confirmed: all,
+				confirmedOn: '2026-02-01',
+				contractSignedOn: '2026-01-15'
+			},
+			logged,
+			supervisorReq
+		);
+		expect(s.state).toBe('confirmed');
+		expect(s.confirmedOn).toBe('2026-02-01');
+	});
+
+	it('names months logged before the contract was signed', () => {
+		// The one part of this the app can actually check rather than take on trust.
+		const s = supervisorStanding(
+			'S-01',
+			{
+				code: 'S-01',
+				confirmed: all,
+				confirmedOn: '2026-04-01',
+				contractSignedOn: '2026-03-10'
+			},
+			logged,
+			supervisorReq
+		);
+		expect(s.monthsBeforeContract).toEqual(['2026-02']);
+	});
+
+	it('does not report a month the contract was signed inside', () => {
+		/*
+		 * A contract signed on the 10th covers part of that month, and the log holds months
+		 * rather than days. Reporting it would be the app guessing, and a false alarm on a
+		 * compliance page is worse than a quiet one — it teaches people to ignore the true
+		 * ones.
+		 */
+		const s = supervisorStanding(
+			'S-01',
+			{
+				code: 'S-01',
+				confirmed: all,
+				confirmedOn: '2026-03-01',
+				contractSignedOn: '2026-02-10'
+			},
+			logged,
+			supervisorReq
+		);
+		expect(s.monthsBeforeContract).toEqual([]);
+	});
+
+	it('counts only the months that supervisor signed for', () => {
+		const s = supervisorStanding('S-02', null, logged, supervisorReq);
+		expect(s.months).toBe(1);
+	});
+
+	it('takes the checklist from content rather than knowing it', () => {
+		// A handbook revision should be a content edit, not a release.
+		const s = supervisorStanding('S-01', null, logged, {
+			items: [{ id: 'only-one', label: 'Something else entirely' }],
+			contractRequired: false,
+			locator: 'x'
+		});
+		expect(s.outstanding.map((i) => i.id)).toEqual(['only-one']);
 	});
 });

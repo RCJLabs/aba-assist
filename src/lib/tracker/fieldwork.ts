@@ -39,6 +39,17 @@ export interface FieldworkRatio {
 	locator: string;
 }
 
+export interface SupervisorRequirementItem {
+	id: string;
+	label: string;
+}
+
+export interface SupervisorRequirements {
+	items: SupervisorRequirementItem[];
+	contractRequired: boolean;
+	locator: string;
+}
+
 export interface FieldworkRequirement {
 	totalHours: number;
 	concentratedTotalHours: number;
@@ -49,7 +60,94 @@ export interface FieldworkRequirement {
 	excluded: string[];
 	/** Where the handbook says what has to be kept and signed, which is a different page. */
 	documentationLocator: string;
+	supervisor: SupervisorRequirements;
 	locator: string;
+}
+
+/** What the trainee has confirmed about one supervisor, as the store holds it. */
+export interface SupervisorCheckInput {
+	code: string;
+	confirmed: string[];
+	confirmedOn: string | null;
+	contractSignedOn: string | null;
+}
+
+export interface SupervisorStanding {
+	code: string;
+	/**
+	 * `confirmed` only when every item is ticked and any required contract has a date.
+	 * `unconfirmed` when nothing has been recorded at all, which is the state everybody
+	 * starts in and the one worth shouting about.
+	 * `incomplete` when some of it has, which is a different and more urgent thing: the
+	 * trainee went to look and something did not check out.
+	 */
+	state: 'confirmed' | 'incomplete' | 'unconfirmed';
+	/** Checklist items not yet confirmed, in the order the handbook states them. */
+	outstanding: SupervisorRequirementItem[];
+	confirmedOn: string | null;
+	contractSignedOn: string | null;
+	/** Months logged under this supervisor that predate the contract. */
+	monthsBeforeContract: string[];
+	/** How many months of this record this supervisor signed for. */
+	months: number;
+}
+
+/**
+ * Where a supervisor stands, and which months rest on them.
+ *
+ * This is the largest single way to lose fieldwork and the only one invisible from a log
+ * of hours: hours supervised by somebody who did not meet the requirements are worth
+ * nothing, however faultless the month looks. It is also the one thing here the app cannot
+ * check — active certification, tenure and supervision training are facts about another
+ * person, on a registry this app cannot reach. So nothing below returns a verdict on the
+ * supervisor. It returns what the trainee confirmed, what they have not, and the one part
+ * that IS checkable: a month logged before the supervision contract was signed.
+ *
+ * `creditedHours` is deliberately untouched by any of this. Zeroing somebody's hours
+ * because they have not filled in a checklist would be the app inventing a finding; the
+ * page says loudly what is unconfirmed and leaves the arithmetic alone.
+ */
+export function supervisorStanding(
+	code: string,
+	check: SupervisorCheckInput | null,
+	months: { month: string; supervisorCode: string }[],
+	req: SupervisorRequirements
+): SupervisorStanding {
+	const mine = months.filter((m) => m.supervisorCode === code);
+	const confirmed = new Set(check?.confirmed ?? []);
+	const outstanding = req.items.filter((i) => !confirmed.has(i.id));
+	const contractSignedOn = check?.contractSignedOn ?? null;
+	const contractMissing = req.contractRequired && contractSignedOn === null;
+
+	/*
+	 * Hours accrued before the contract was signed do not count, and unlike everything else
+	 * here that is arithmetic rather than somebody's say-so. Compared at month granularity
+	 * because that is all the log holds: a month is listed when the contract was signed
+	 * after it ended, so a contract signed mid-month is not reported — the app would be
+	 * guessing at which days, and a false alarm on a compliance page is worse than a
+	 * quiet one.
+	 */
+	const monthsBeforeContract = contractSignedOn
+		? mine
+				.filter((m) => m.month < contractSignedOn.slice(0, 7))
+				.map((m) => m.month)
+				.sort()
+		: [];
+
+	const nothingRecorded = confirmed.size === 0 && contractSignedOn === null;
+	return {
+		code,
+		state: nothingRecorded
+			? 'unconfirmed'
+			: outstanding.length === 0 && !contractMissing
+				? 'confirmed'
+				: 'incomplete',
+		outstanding,
+		confirmedOn: check?.confirmedOn ?? null,
+		contractSignedOn,
+		monthsBeforeContract,
+		months: mine.length
+	};
 }
 
 /** One calendar month as the monthly verification form asks for it. */

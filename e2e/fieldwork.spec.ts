@@ -506,3 +506,127 @@ test('the fieldwork record is accessible with months on it', async ({ page }) =>
 	});
 	await expectNoA11yViolations(page);
 });
+
+test('asks whether anybody checked the supervisor could supervise', async ({ page }) => {
+	/*
+	 * The largest single way to lose fieldwork, and the only one invisible from a log of
+	 * hours: hours supervised by somebody who did not meet the requirements are worth
+	 * nothing, however faultless the month looks. The app cannot check it — these are facts
+	 * about another person, on a registry it cannot reach — so what it must not do is stay
+	 * quiet, which reads as though the question were settled.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+
+	const card = page.locator('[data-supervisor="S-01"]');
+	await expect(card).toBeVisible();
+	await expect(card).toHaveAttribute('data-state', 'unconfirmed');
+	await expect(card).toContainText('Not checked yet');
+	await expect(card).toContainText('1 month of this record rests on them');
+	// And it never claims to have verified anything.
+	await expect(page.locator('.supervisors')).toContainText(
+		'your confirmation, not a verification'
+	);
+});
+
+test('a supervisor is confirmed only when the contract is dated too', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+
+	await page.getByRole('button', { name: 'Check S-01' }).click();
+	const form = page.locator('[data-supervisor="S-01"] form');
+	for (const box of await form.getByRole('checkbox').all()) await box.check();
+	await page.getByRole('button', { name: 'Save', exact: true }).click();
+
+	// Every box ticked, no contract date: still outstanding rather than confirmed.
+	const card = page.locator('[data-supervisor="S-01"]');
+	await expect(card).toHaveAttribute('data-state', 'incomplete');
+	await expect(card).toContainText('No supervision contract date recorded');
+
+	await page.getByRole('button', { name: 'Update S-01' }).click();
+	await page.getByLabel('Supervision contract signed on').fill('2026-01-01');
+	await page.getByRole('button', { name: 'Save', exact: true }).click();
+	await expect(page.locator('[data-supervisor="S-01"]')).toHaveAttribute(
+		'data-state',
+		'confirmed'
+	);
+});
+
+test('names months logged before the supervision contract existed', async ({ page }) => {
+	// The one part of this that is arithmetic rather than somebody's say-so.
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+
+	await page.getByRole('button', { name: 'Check S-01' }).click();
+	await page.getByLabel('Supervision contract signed on').fill('2026-04-01');
+	await page.getByRole('button', { name: 'Save', exact: true }).click();
+
+	const card = page.locator('[data-supervisor="S-01"]');
+	await expect(card).toContainText('Logged before that contract was signed: 2026-02');
+	await expect(card).toContainText('do not count');
+});
+
+test('an unconfirmed supervisor does not silently void the hours', async ({ page }) => {
+	/*
+	 * Zeroing somebody's hours because they have not filled in a checklist would be the app
+	 * inventing a finding. It says loudly what is unconfirmed and leaves the arithmetic
+	 * alone.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+	await expect(page.locator('.month').first()).toContainText('Counts in full');
+	await expect(page.locator('.progress')).toContainText('100');
+});
+
+test('the supervisors survive onto the printed record', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+	await page.emulateMedia({ media: 'print' });
+
+	const section = page.locator('.supervisors');
+	await expect(section).toBeVisible();
+	await expect(section).toContainText('S-01');
+	await expect(section).toContainText('Supervisor qualifications, p. 13');
+	// The controls are not on the paper.
+	await expect(page.getByRole('button', { name: 'Check S-01' })).toBeHidden();
+});

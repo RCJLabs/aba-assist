@@ -7,6 +7,7 @@ import {
 	clearDecisions,
 	countReviews,
 	DB_VERSION,
+	removeFieldworkPeriod,
 	getAll,
 	hasStoredData,
 	put,
@@ -41,7 +42,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(9);
+		expect(DB_VERSION).toBe(10);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -205,6 +206,46 @@ describe('local database', () => {
 		// can lose them.
 		expect(months[0]!.totalHours).toBe(100);
 		expect(months[0]!.contacts).toBe(4);
+
+		// v10, the newest rung, reached by the same install.
+		await put('fieldworkSupervisors', {
+			id: 'p1:S-07',
+			periodId: 'p1',
+			code: 'S-07',
+			confirmed: ['good-standing'],
+			confirmedOn: '2026-03-01',
+			contractSignedOn: '2026-01-01',
+			note: ''
+		});
+		expect(await getAll('fieldworkSupervisors')).toHaveLength(1);
+	});
+
+	it('takes the supervisor confirmations with the fieldwork period', async () => {
+		/*
+		 * A record of who was checked, outliving the fieldwork it was checked for, is the
+		 * shape of orphan row this data model exists to make impossible — and the one the
+		 * supervisee hours rung had to be fixed for.
+		 */
+		await put('fieldworkPeriods', {
+			id: 'p9',
+			startDate: '2026-01-01',
+			ruleset: 'current',
+			supervisorCode: 'S-01',
+			createdAt: T0
+		});
+		await put('fieldworkSupervisors', {
+			id: 'p9:S-01',
+			periodId: 'p9',
+			code: 'S-01',
+			confirmed: ['good-standing'],
+			confirmedOn: '2026-03-01',
+			contractSignedOn: null,
+			note: ''
+		});
+		expect(await getAll('fieldworkSupervisors')).toHaveLength(1);
+
+		await removeFieldworkPeriod('p9');
+		expect(await getAll('fieldworkSupervisors')).toHaveLength(0);
 	});
 
 	it('a repeat visit in the same sitting updates the row rather than adding one', async () => {

@@ -57,7 +57,44 @@
 	const codeValid = $derived(isSuperviseeCode(supervisorCode.trim().toUpperCase()));
 
 	const unsigned = $derived(tracker.unsignedFieldworkMonths);
-	const supervisors = $derived(tracker.fieldworkSupervisors);
+	const standings = $derived(tracker.fieldworkStandings);
+
+	/*
+	 * The checklist is edited one supervisor at a time rather than all at once. Ticking a
+	 * box here is a claim that somebody went and looked at a registry, and a screen of
+	 * twenty checkboxes across four supervisors invites tapping through them.
+	 */
+	let editingSupervisor = $state<string | null>(null);
+	let draftConfirmed = $state<string[]>([]);
+	let draftContract = $state('');
+
+	function editSupervisor(code: string) {
+		const existing = tracker.fieldworkSupervisors.find(
+			(c) => c.periodId === period?.id && c.code === code
+		);
+		draftConfirmed = [...(existing?.confirmed ?? [])];
+		draftContract = existing?.contractSignedOn ?? '';
+		editingSupervisor = code;
+	}
+
+	function toggleItem(id: string) {
+		draftConfirmed = draftConfirmed.includes(id)
+			? draftConfirmed.filter((x) => x !== id)
+			: [...draftConfirmed, id];
+	}
+
+	async function saveSupervisor(e: SubmitEvent) {
+		e.preventDefault();
+		if (!period || !editingSupervisor) return;
+		await tracker.saveSupervisorCheck(period.id, editingSupervisor, {
+			confirmed: draftConfirmed,
+			contractSignedOn: draftContract || null,
+			note: ''
+		});
+		announcer.announce(`Saved what you confirmed about ${editingSupervisor}`);
+		editingSupervisor = null;
+	}
+	const supervisors = $derived(tracker.fieldworkSupervisorCodes);
 
 	/*
 	 * The supervisor field starts filled from the last month logged, falling back to the
@@ -143,6 +180,7 @@
 		const files = fieldworkRecord({
 			period: s.fieldworkPeriods[0] ?? null,
 			months: s.fieldworkMonths,
+			supervisors: s.fieldworkSupervisors,
 			req,
 			rules,
 			handbookVersion: tracker.fieldworkHandbookVersion,
@@ -548,6 +586,129 @@
 		</section>
 
 		<!--
+			Who supervised, and whether anybody checked they could.
+
+			This is the largest single way to lose fieldwork and the only one invisible from
+			a log of hours: hours supervised by somebody who did not meet the requirements
+			are worth nothing, however faultless the month looks. It is also the one thing
+			here the app cannot check — active certification, tenure and supervision training
+			are facts about another person, on a registry this app cannot reach and must not
+			cache. So it asks, records the answer with the date, and never pretends the
+			answer is a verification.
+		-->
+		<section class="record supervisors">
+			<h2 class="section-head">The people who supervised this</h2>
+			<p class="hint">
+				Hours supervised by somebody who did not meet the requirements do not count — not
+				reduced, not prorated, gone. This app cannot check any of it for you: these are facts
+				about another person, held on a registry it cannot reach. What it can do is ask, and
+				keep your answer with the date you gave it.
+				<strong>Ticking these is your confirmation, not a verification.</strong>
+			</p>
+			{#if standings.length === 0}
+				<p class="hint">No months logged yet, so nobody to ask about.</p>
+			{:else}
+				{#each standings as st (st.code)}
+					<article class="person" data-supervisor={st.code} data-state={st.state}>
+						<h3>
+							{st.code}
+							<span class="standing">
+								{#if st.state === 'confirmed'}
+									Confirmed{st.confirmedOn ? ` ${st.confirmedOn}` : ''}
+								{:else if st.state === 'incomplete'}
+									Something is outstanding
+								{:else}
+									Not checked yet
+								{/if}
+							</span>
+						</h3>
+						<p class="detail">
+							{st.months}
+							{st.months === 1 ? 'month' : 'months'} of this record rest{st.months === 1
+								? 's'
+								: ''} on them.
+							{#if st.contractSignedOn}
+								Supervision contract signed {st.contractSignedOn}.
+							{:else}
+								No supervision contract date recorded.
+							{/if}
+						</p>
+						{#if st.monthsBeforeContract.length > 0}
+							<!--
+								The one part of this that is arithmetic rather than somebody's say-so,
+								so it is stated as a finding rather than a prompt.
+							-->
+							<p class="warn-text">
+								Logged before that contract was signed: {st.monthsBeforeContract.join(', ')}.
+								Hours accrued before a supervision contract exists do not count.
+							</p>
+						{/if}
+						{#if st.outstanding.length > 0}
+							<ul class="checks">
+								{#each st.outstanding as item (item.id)}
+									<li data-met="false">
+										<span class="mark" aria-hidden="true">?</span>
+										<span
+											><strong>Not confirmed</strong>
+											<span class="detail">{item.label}</span></span
+										>
+									</li>
+								{/each}
+							</ul>
+						{/if}
+
+						{#if editingSupervisor === st.code}
+							<form class="no-print" onsubmit={saveSupervisor}>
+								<fieldset>
+									<legend>What you have checked about {st.code}</legend>
+									{#each req.supervisor.items as item (item.id)}
+										<label class="switch">
+											<input
+												type="checkbox"
+												checked={draftConfirmed.includes(item.id)}
+												onchange={() => toggleItem(item.id)}
+											/>
+											<span>{item.label}</span>
+										</label>
+									{/each}
+								</fieldset>
+								{#if req.supervisor.contractRequired}
+									<div class="field narrow">
+										<label for="{uid}-contract-{st.code}">Supervision contract signed on</label
+										>
+										<input
+											id="{uid}-contract-{st.code}"
+											type="date"
+											bind:value={draftContract}
+											max={todayIso()}
+										/>
+									</div>
+								{/if}
+								<div class="actions">
+									<button type="submit" class="button primary">Save</button>
+									<button type="button" onclick={() => (editingSupervisor = null)}>
+										Cancel
+									</button>
+								</div>
+							</form>
+						{:else}
+							<div class="actions no-print">
+								<button type="button" onclick={() => editSupervisor(st.code)}>
+									{st.state === 'unconfirmed' ? 'Check' : 'Update'}
+									{st.code}
+								</button>
+							</div>
+						{/if}
+					</article>
+				{/each}
+				<p class="note">
+					Restated in our own words from the {tracker.fieldworkHandbookVersion} handbook — {req
+						.supervisor.locator}. The handbook is what governs.
+				</p>
+			{/if}
+		</section>
+
+		<!--
 			The rules the verdicts above were reached under, on the same sheet of paper.
 			The exported spreadsheet has carried this since it was written, for a reason
 			stated there: a column saying "short" with no statement of the threshold asks
@@ -663,18 +824,19 @@
 			</p>
 			<div class="actions">
 				<button type="button" class="button primary" onclick={exportRecord}>
-					The whole record (4 files)
+					The whole record (5 files)
 				</button>
 				<button type="button" class="button" disabled={months.length === 0} onclick={exportCsv}
 					>Just the months (1 file)</button
 				>
 			</div>
 			<p class="hint">
-				The four files are the run and its rules, the month-by-month log with a verdict on each
+				The five files are the run and its rules, the month-by-month log with a verdict on each
 				month, the totals against the {req.totalHours} hours required and the unrestricted share,
-				and the requirements themselves with the handbook page each came from — so somebody reading
-				it can check every figure without taking this app's word for anything. They open in Excel
-				and in Google Sheets. Your browser may ask whether to allow several files at once.
+				the requirements themselves with the handbook page each came from, and the supervisors with
+				what you confirmed about each — so somebody reading it can check every figure without taking
+				this app's word for anything. They open in Excel and in Google Sheets. Your browser may ask
+				whether to allow several files at once.
 			</p>
 		</section>
 	{/if}

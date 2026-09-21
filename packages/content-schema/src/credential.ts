@@ -140,6 +140,40 @@ const FieldworkRatio = z.strictObject({
 	locator: z.string().max(160)
 });
 
+/**
+ * What has to be true of the person supervising, and what has to exist before hours start.
+ *
+ * Modelled as a checklist in content rather than as rules in code, because the app cannot
+ * verify any of it. Nothing here is checkable from a trainee's log: whether somebody holds
+ * an active certification, has held it a year, and is current on their supervision
+ * continuing education are facts about another person, held on a registry this app cannot
+ * reach and must not cache. What the app can do is ask, record the answer with the date it
+ * was given, and put it in the record where an auditor would look for it.
+ *
+ * Each item carries an id so a trainee's confirmation survives the wording being improved.
+ * Drive the checklist from here and a handbook revision is a content edit; hard-code it and
+ * it is a release.
+ */
+const SupervisorRequirements = z.strictObject({
+	items: z
+		.array(
+			z.strictObject({
+				id: z
+					.string()
+					.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'must be a kebab-case slug')
+					.max(40),
+				label: z.string().min(10).max(200)
+			})
+		)
+		.min(1),
+	/**
+	 * Whether a signed supervision contract has to exist before hours accrue. The one part
+	 * of this the app can actually check, because a contract has a date and so does a month.
+	 */
+	contractRequired: z.boolean().default(true),
+	locator: z.string().max(160)
+});
+
 const FieldworkRequirement = z.strictObject({
 	/** Credited hours needed, where concentrated hours count for more. */
 	totalHours: z.number().positive(),
@@ -162,6 +196,8 @@ const FieldworkRequirement = z.strictObject({
 	 * citation at all.
 	 */
 	documentationLocator: z.string().max(160),
+	/** Who may supervise, and what must be signed before any of this counts. */
+	supervisor: SupervisorRequirements,
 	locator: z.string().max(160)
 });
 

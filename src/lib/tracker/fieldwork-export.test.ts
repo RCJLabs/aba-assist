@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import type { FieldworkMonth, FieldworkPeriod } from '$lib/db/index.js';
+import type {
+	FieldworkMonth,
+	FieldworkPeriod,
+	FieldworkSupervisorCheck
+} from '$lib/db/index.js';
 import { fieldworkRecord } from './fieldwork-export.js';
 import type { FieldworkRequirement, FieldworkRuleset } from './fieldwork.js';
 
@@ -46,6 +50,14 @@ const req: FieldworkRequirement = {
 	],
 	excluded: ['Conferences, and coursework or homework for a degree'],
 	documentationLocator: 'Documentation of Fieldwork, p. 15',
+	supervisor: {
+		items: [
+			{ id: 'good-standing', label: 'Certified and in good standing' },
+			{ id: 'tenure', label: 'Certified for at least a year, or consulting' }
+		],
+		contractRequired: true,
+		locator: 'Supervisor qualifications, p. 13'
+	},
 	locator: 'Hour Requirements, p. 15'
 };
 
@@ -79,6 +91,7 @@ const month = (over: Partial<FieldworkMonth> = {}): FieldworkMonth => ({
 const build = (months: FieldworkMonth[], today = '2026-03-01') =>
 	fieldworkRecord({
 		period,
+		supervisors: [],
 		months,
 		req,
 		rules,
@@ -90,13 +103,14 @@ const fileNamed = (files: { name: string; csv: string }[], part: string) =>
 	files.find((f) => f.name.includes(part))!.csv;
 
 describe('the shape of the record', () => {
-	it('is four files, in reading order', () => {
+	it('is five files, in reading order', () => {
 		const files = build([month()]);
 		expect(files.map((f) => f.name)).toEqual([
 			'fieldwork-1-period.csv',
 			'fieldwork-2-months.csv',
 			'fieldwork-3-totals.csv',
-			'fieldwork-4-requirements.csv'
+			'fieldwork-4-requirements.csv',
+			'fieldwork-5-supervisors.csv'
 		]);
 	});
 
@@ -106,7 +120,7 @@ describe('the shape of the record', () => {
 		 * of headings and requirements is a useful answer; a crash is not.
 		 */
 		const files = build([]);
-		expect(files).toHaveLength(4);
+		expect(files).toHaveLength(5);
 		for (const f of files) expect(f.csv.length).toBeGreaterThan(0);
 	});
 });
@@ -170,6 +184,7 @@ describe('the totals', () => {
 
 		const smaller = fieldworkRecord({
 			period,
+			supervisors: [],
 			months: [month()],
 			req: { ...req, totalHours: 1500 },
 			rules,
@@ -253,6 +268,7 @@ describe('the period file', () => {
 	it('says plainly when a period has not been set up', () => {
 		const files = fieldworkRecord({
 			period: null,
+			supervisors: [],
 			months: [],
 			req,
 			rules,
@@ -371,5 +387,116 @@ describe('who supervised, and what has been signed', () => {
 			.find((l) => l.startsWith('Months with a signed monthly form'))!;
 		expect(line).toContain('Documentation of Fieldwork, p. 15');
 		expect(line).not.toContain('Hour Requirements');
+	});
+});
+
+describe('the supervisors file', () => {
+	const file = (months: FieldworkMonth[], checks: FieldworkSupervisorCheck[] = []) =>
+		fieldworkRecord({
+			period,
+			months,
+			supervisors: checks,
+			req,
+			rules,
+			handbookVersion: '2026',
+			today: '2026-05-01'
+		}).find((f) => f.name === 'fieldwork-5-supervisors.csv')!.csv;
+
+	it('says plainly that nobody has checked, rather than leaving it out', () => {
+		/*
+		 * The whole point. Hours supervised by somebody who did not meet the requirements
+		 * are worth nothing, and a record that simply does not mention the question reads as
+		 * though it were settled.
+		 */
+		const csv = file([month({ supervisorCode: 'S-01' })]);
+		expect(csv).toContain('S-01');
+		expect(csv).toContain('not checked');
+		expect(csv).toContain('Supervisor qualifications, p. 13');
+	});
+
+	it('calls a confirmation a confirmation, never a verification', () => {
+		const csv = file(
+			[month({ supervisorCode: 'S-01' })],
+			[
+				{
+					id: 'p1:S-01',
+					periodId: 'p1',
+					code: 'S-01',
+					confirmed: ['good-standing', 'tenure'],
+					confirmedOn: '2026-02-01',
+					contractSignedOn: '2026-01-01',
+					note: ''
+				}
+			]
+		);
+		expect(csv).toContain('confirmed by the trainee');
+		expect(csv).toContain('2026-02-01');
+	});
+
+	it('names what is still outstanding', () => {
+		const csv = file(
+			[month({ supervisorCode: 'S-01' })],
+			[
+				{
+					id: 'p1:S-01',
+					periodId: 'p1',
+					code: 'S-01',
+					confirmed: ['good-standing'],
+					confirmedOn: '2026-02-01',
+					contractSignedOn: '2026-01-01',
+					note: ''
+				}
+			]
+		);
+		expect(csv).toContain('something outstanding');
+		expect(csv).toContain('Certified for at least a year');
+	});
+
+	it('flags months logged before the supervision contract was signed', () => {
+		// The one part of this that is arithmetic rather than somebody's say-so.
+		const csv = file(
+			[month({ id: 'p1:2026-02', month: '2026-02', supervisorCode: 'S-01' })],
+			[
+				{
+					id: 'p1:S-01',
+					periodId: 'p1',
+					code: 'S-01',
+					confirmed: ['good-standing', 'tenure'],
+					confirmedOn: '2026-04-01',
+					contractSignedOn: '2026-03-01',
+					note: ''
+				}
+			]
+		);
+		expect(csv).toContain('2026-02');
+	});
+
+	it('has a row per supervisor across the whole record', () => {
+		const csv = file([
+			month({ id: 'p1:2026-02', month: '2026-02', supervisorCode: 'S-01' }),
+			month({ id: 'p1:2026-03', month: '2026-03', supervisorCode: 'S-02' })
+		]);
+		const rows = csv.trim().split('\n');
+		// Header plus two.
+		expect(rows).toHaveLength(3);
+	});
+
+	it('leaves the hours alone', () => {
+		/*
+		 * Zeroing somebody's hours because they have not filled in a checklist would be the
+		 * app inventing a finding. The record says loudly what is unconfirmed and the
+		 * arithmetic above it is untouched.
+		 */
+		const files = fieldworkRecord({
+			period,
+			months: [month({ supervisorCode: 'S-01' })],
+			supervisors: [],
+			req,
+			rules,
+			handbookVersion: '2026',
+			today: '2026-05-01'
+		});
+		const totals = files.find((f) => f.name === 'fieldwork-3-totals.csv')!.csv;
+		expect(totals).toContain('Credited hours so far,100');
 	});
 });

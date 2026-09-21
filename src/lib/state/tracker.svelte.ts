@@ -12,6 +12,7 @@ import {
 	type DevelopmentUnit,
 	type FieldworkMonth,
 	type FieldworkPeriod,
+	type FieldworkSupervisorCheck,
 	type ServiceMonth,
 	type SuperviseeMonth,
 	type ContactFormat,
@@ -30,7 +31,9 @@ import {
 	summariseFieldwork,
 	summariseFieldworkMonth,
 	type FieldworkRequirement,
-	type FieldworkRuleset
+	type FieldworkRuleset,
+	supervisorStanding,
+	type SupervisorStanding
 } from '$lib/tracker/fieldwork.js';
 import {
 	cycleEnd,
@@ -61,6 +64,7 @@ export type {
 	DevelopmentUnit,
 	FieldworkMonth,
 	FieldworkPeriod,
+	FieldworkSupervisorCheck,
 	FieldworkType,
 	ServiceMonth,
 	SuperviseeMonth,
@@ -101,6 +105,7 @@ class Tracker {
 	units = $state<DevelopmentUnit[]>([]);
 	fieldworkPeriods = $state<FieldworkPeriod[]>([]);
 	fieldworkMonths = $state<FieldworkMonth[]>([]);
+	fieldworkSupervisors = $state<FieldworkSupervisorCheck[]>([]);
 	questions = $state<SupervisionQuestion[]>([]);
 
 	async load(): Promise<void> {
@@ -122,6 +127,7 @@ class Tracker {
 				units,
 				fieldworkPeriods,
 				fieldworkMonths,
+				fieldworkSupervisors,
 				questions,
 				superviseeMonths
 			] = await Promise.all([
@@ -133,6 +139,7 @@ class Tracker {
 				getAll('developmentUnits'),
 				getAll('fieldworkPeriods'),
 				getAll('fieldworkMonths'),
+				getAll('fieldworkSupervisors'),
 				getAll('supervisionQuestions'),
 				getAll('superviseeMonths')
 			]);
@@ -144,6 +151,7 @@ class Tracker {
 			this.units = units;
 			this.fieldworkPeriods = fieldworkPeriods;
 			this.fieldworkMonths = fieldworkMonths;
+			this.fieldworkSupervisors = fieldworkSupervisors;
 			this.questions = questions;
 			this.superviseeMonths = superviseeMonths;
 			this.status = 'ready';
@@ -577,7 +585,7 @@ class Tracker {
 	}
 
 	/** Every supervisor code appearing in this run, oldest month first. */
-	get fieldworkSupervisors(): string[] {
+	get fieldworkSupervisorCodes(): string[] {
 		// Oldest month first, each code once. A plain filter rather than a Set: at the
 		// handful of supervisors a fieldwork run actually has, the quadratic scan is free
 		// and reads as what it is.
@@ -585,6 +593,67 @@ class Tracker {
 			.reverse()
 			.map((m) => m.supervisorCode)
 			.filter((code, i, all) => code !== '' && all.indexOf(code) === i);
+	}
+
+	/**
+	 * Where each supervisor in this record stands.
+	 *
+	 * Derived from the months rather than from a list somebody maintains: a supervisor
+	 * exists in this record because a month names them, so there is no way to log hours
+	 * under somebody the checklist then fails to ask about.
+	 */
+	get fieldworkStandings(): SupervisorStanding[] {
+		const req = this.fieldworkRequirement;
+		const periodId = this.period?.id;
+		if (!req || !periodId) return [];
+		const months = this.myFieldworkMonths.map((m) => ({
+			month: m.month,
+			supervisorCode: m.supervisorCode
+		}));
+		return this.fieldworkSupervisorCodes.map((code) =>
+			supervisorStanding(
+				code,
+				this.fieldworkSupervisors.find((c) => c.periodId === periodId && c.code === code) ??
+					null,
+				months,
+				req.supervisor
+			)
+		);
+	}
+
+	async saveSupervisorCheck(
+		periodId: string,
+		code: string,
+		values: { confirmed: string[]; contractSignedOn: string | null; note: string }
+	): Promise<void> {
+		const row: FieldworkSupervisorCheck = {
+			id: `${periodId}:${code}`,
+			periodId,
+			code,
+			/*
+			 * Snapshotted, not passed through. `confirmed` arrives from a `$state` array in
+			 * the page, `$state` returns a Proxy, and `structuredClone` on a Proxy throws
+			 * `DataCloneError` — so the write fails at the IndexedDB boundary with an error
+			 * nothing on the page surfaces. This is the one Svelte 5 hazard the storage layer
+			 * exists to be protected from, and the first array to reach it from a component.
+			 */
+			confirmed: $state.snapshot(values.confirmed),
+			/*
+			 * Stamped here rather than taken from the form. The date that matters is when
+			 * somebody actually went and looked, and a date they can type is a date they can
+			 * backdate without meaning to.
+			 */
+			confirmedOn: values.confirmed.length > 0 ? todayIso() : null,
+			contractSignedOn: values.contractSignedOn,
+			note: values.note
+		};
+		await put('fieldworkSupervisors', row);
+		this.fieldworkSupervisors = [
+			...this.fieldworkSupervisors.filter((c) => c.id !== row.id),
+			row
+		];
+		storage.hasData = true;
+		void storage.requestPersist();
 	}
 
 	async deleteFieldworkMonth(monthId: string): Promise<void> {
@@ -596,6 +665,9 @@ class Tracker {
 		await removeFieldworkPeriod(periodId);
 		this.fieldworkPeriods = this.fieldworkPeriods.filter((p) => p.id !== periodId);
 		this.fieldworkMonths = this.fieldworkMonths.filter((m) => m.periodId !== periodId);
+		this.fieldworkSupervisors = this.fieldworkSupervisors.filter(
+			(c) => c.periodId !== periodId
+		);
 	}
 
 	/** Plain snapshots, for the CSV writers. */
@@ -609,7 +681,8 @@ class Tracker {
 			cycles: $state.snapshot(this.cycles),
 			units: $state.snapshot(this.units),
 			fieldworkPeriods: $state.snapshot(this.fieldworkPeriods),
-			fieldworkMonths: $state.snapshot(this.myFieldworkMonths)
+			fieldworkMonths: $state.snapshot(this.myFieldworkMonths),
+			fieldworkSupervisors: $state.snapshot(this.fieldworkSupervisors)
 		};
 	}
 }

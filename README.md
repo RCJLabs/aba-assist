@@ -570,6 +570,50 @@ that test go red. Nothing downstream depends on it having run: every reader trea
 missing code as "not recorded", which is both the safe direction and what the backfill
 writes anyway.
 
+### The largest way to lose fieldwork was the one thing nothing asked about
+
+Hours supervised by somebody who did not meet the supervisor requirements are worth
+nothing — not reduced, not prorated, gone. That is a larger loss than any monthly
+shortfall the tracker was already catching, and it is invisible from a log of hours: every
+month can look faultless and the whole run still be void. Nothing in the app mentioned it.
+
+It cannot be checked here, and that shapes the design. Whether somebody holds an active
+certification, has held it a year, and is current on the supervision continuing-education
+requirement are facts about another person, on a registry this app cannot reach and must
+not cache. So the app asks, records the answer with the date it was given, and says in as
+many words that what it holds is the trainee's confirmation rather than a verification.
+Every row of the exported supervisors file says the same.
+
+The checklist lives in content with its handbook page, not in code, so a handbook revision
+is a content edit rather than a release. Each item carries an id, so a confirmation
+survives the wording being improved.
+
+Three deliberate calls:
+
+**Unconfirmed and incomplete are different states.** Nobody has looked yet is the ordinary
+starting state of every record. Somebody looked and one item did not hold is a finding,
+and the more urgent of the two. Collapsing them would bury the second in the first.
+
+**None of it touches the hours.** Zeroing somebody's credited hours because they have not
+filled in a checklist would be the app inventing a finding. The page says loudly what is
+unconfirmed, names how many months rest on each supervisor, and leaves the arithmetic
+alone.
+
+**The contract date is the one part that is arithmetic.** Hours accrued before a
+supervision contract exists do not count, and a contract has a date and so does a month,
+so that is checkable rather than a prompt — and it is stated as a finding. A month the
+contract was signed _inside_ is not reported: the log holds months, not days, and a false
+alarm on a compliance page teaches people to ignore the true ones.
+
+Finding this cost one real bug, and it was the Svelte 5 hazard this repository has a
+written rule about. The confirmed-item list arrives from a `$state` array, `$state`
+returns a Proxy, and `structuredClone` on a Proxy throws `DataCloneError` — so the write
+failed at the IndexedDB boundary with an error nothing on the page surfaced. The box
+ticked, the form closed, and nothing was saved. It is the first array to reach the storage
+layer from a component, which is exactly the case the rule was written for; it is
+snapshotted now, and the end-to-end test that caught it would have caught it silently
+failing again.
+
 ### Signed is a different question from short, and folding them together would be wrong
 
 Hours and signatures are now counted separately. The rules decide whether a month's hours
