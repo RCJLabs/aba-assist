@@ -82,7 +82,14 @@ function periodFile(
 		['Record generated', today],
 		['Requirements read from', `BCBA handbook ${handbookVersion}`],
 		['Ruleset in force', rules.label],
-		['Supervisor code', period?.supervisorCode ?? 'not recorded'],
+		/*
+		 * The supervisor this run began under, not the supervisor of record. Each month
+		 * carries its own, because the monthly verification form is completed per
+		 * supervisor and trainees change them — stamping one code across a whole record was
+		 * how this file used to answer the question, and it was wrong the moment anybody
+		 * moved.
+		 */
+		['Supervisor the run started with', period?.supervisorCode ?? 'not recorded'],
 		['Fieldwork started', period?.startDate ?? 'not recorded'],
 		['Must be completed within', `${req.windowYears} years`],
 		['Credited hours required', req.totalHours],
@@ -103,7 +110,6 @@ function periodFile(
  */
 function monthsFile(
 	months: FieldworkMonth[],
-	period: FieldworkPeriod | null,
 	req: FieldworkRequirement,
 	rules: FieldworkRuleset
 ): ExportFile {
@@ -116,7 +122,7 @@ function monthsFile(
 			return [
 				m.month,
 				m.type,
-				period?.supervisorCode ?? '',
+				m.supervisorCode || 'not recorded',
 				m.totalHours,
 				m.unrestrictedHours,
 				round1(m.totalHours - m.unrestrictedHours),
@@ -132,6 +138,8 @@ function monthsFile(
 				failed.join('; '),
 				unknown.join('; '),
 				s.creditNote ?? '',
+				yesNo(m.verificationSigned),
+				m.signedOn ?? '',
 				m.note
 			];
 		});
@@ -158,6 +166,8 @@ function monthsFile(
 				'Requirements not met',
 				'Could not be judged',
 				'Why the credit differs',
+				'Monthly form signed',
+				'Signed on',
 				'Note'
 			],
 			rows
@@ -203,6 +213,42 @@ function totalsFile(
 		['Unrestricted hours logged', round1(unrestricted), '', ''],
 		['Restricted hours logged', round1(logged - unrestricted), '', '']
 	];
+
+	/*
+	 * Who signed for what, and what is still unsigned.
+	 *
+	 * Hours and signatures are counted separately on purpose. The rules decide whether a
+	 * month's hours count; a signature decides whether they can be shown to anybody. A
+	 * month can be perfect on the first and missing on the second, and reporting it as
+	 * "short" would send somebody to redo work that was fine. What they actually need is
+	 * the list of months to go back and chase, while the supervisor who was there still
+	 * remembers.
+	 */
+	const supervisors = [...new Set(months.map((m) => m.supervisorCode).filter(Boolean))].sort();
+	const unsigned = months.filter((m) => !m.verificationSigned);
+	rows.push([
+		'Supervisors across this record',
+		supervisors.length === 0 ? 'none recorded' : supervisors.join('; '),
+		'',
+		''
+	]);
+	rows.push([
+		'Months with a signed monthly form',
+		`${months.length - unsigned.length} of ${months.length}`,
+		'',
+		req.documentationLocator ?? ''
+	]);
+	rows.push([
+		'Months still to be signed',
+		unsigned.length === 0
+			? 'none'
+			: [...unsigned]
+					.sort((a, b) => a.month.localeCompare(b.month))
+					.map((m) => m.month)
+					.join('; '),
+		unsigned.length > 0 ? 'unsigned hours cannot be verified' : '',
+		''
+	]);
 
 	for (const r of req.ratios) {
 		/*
@@ -337,7 +383,7 @@ export function fieldworkRecord(args: {
 	const { period, months, req, rules, handbookVersion, today } = args;
 	return [
 		periodFile(period, rules, req, handbookVersion, today),
-		monthsFile(months, period, req, rules),
+		monthsFile(months, req, rules),
 		totalsFile(months, req, rules, period, today),
 		requirementsFile(req, rules)
 	];

@@ -47,6 +47,8 @@ export interface FieldworkRequirement {
 	rulesets: FieldworkRuleset[];
 	ratios: FieldworkRatio[];
 	excluded: string[];
+	/** Where the handbook says what has to be kept and signed, which is a different page. */
+	documentationLocator: string;
 	locator: string;
 }
 

@@ -45,6 +45,7 @@ const req: FieldworkRequirement = {
 		}
 	],
 	excluded: ['Conferences, and coursework or homework for a degree'],
+	documentationLocator: 'Documentation of Fieldwork, p. 15',
 	locator: 'Hour Requirements, p. 15'
 };
 
@@ -68,6 +69,9 @@ const month = (over: Partial<FieldworkMonth> = {}): FieldworkMonth => ({
 	contacts: 4,
 	observedWithClient: true,
 	observationMinutes: 0,
+	supervisorCode: 'S-01',
+	verificationSigned: true,
+	signedOn: '2026-03-01',
 	note: '',
 	...over
 });
@@ -275,5 +279,97 @@ describe('what never reaches the file', () => {
 		// The note is the one free-text field, and this data goes straight into Excel.
 		const csv = fileNamed(build([month({ note: '=SUM(A1:A9)' })]), 'months');
 		expect(csv).toContain("'=SUM(A1:A9)");
+	});
+});
+
+describe('who supervised, and what has been signed', () => {
+	const cols = (csv: string) => csv.split('\n').map((line) => line.split(','));
+	const months = (files: ReturnType<typeof build>) =>
+		files.find((f) => f.name === 'fieldwork-2-months.csv')!.csv;
+	const totals = (files: ReturnType<typeof build>) =>
+		files.find((f) => f.name === 'fieldwork-3-totals.csv')!.csv;
+
+	it('attributes each month to the supervisor who was there', () => {
+		/*
+		 * The defect this replaced. One code lived on the fieldwork period and every row of
+		 * the exported record was stamped with it, so a trainee who changed supervisors
+		 * produced a record attributing years of earlier months to whoever happened to be
+		 * current — silently, in the one artifact that has to hold up years later. The
+		 * monthly verification form is completed per supervisor, so the month is where the
+		 * code belongs.
+		 */
+		const files = build([
+			month({ id: 'p1:2026-02', month: '2026-02', supervisorCode: 'S-01' }),
+			month({ id: 'p1:2026-03', month: '2026-03', supervisorCode: 'S-02' })
+		]);
+		const rows = cols(months(files));
+		const col = rows[0]!.indexOf('Supervisor code');
+		expect(col).toBeGreaterThan(-1);
+		expect(rows[1]![col]).toBe('S-01');
+		expect(rows[2]![col]).toBe('S-02');
+		// And the period file no longer claims to answer the question for the whole run.
+		const periodCsv = files.find((f) => f.name === 'fieldwork-1-period.csv')!.csv;
+		expect(periodCsv).toContain('Supervisor the run started with');
+	});
+
+	it('lists every supervisor across the record', () => {
+		const files = build([
+			month({ id: 'p1:2026-02', month: '2026-02', supervisorCode: 'S-02' }),
+			month({ id: 'p1:2026-03', month: '2026-03', supervisorCode: 'S-01' }),
+			month({ id: 'p1:2026-04', month: '2026-04', supervisorCode: 'S-02' })
+		]);
+		const line = totals(files)
+			.split('\n')
+			.find((l) => l.startsWith('Supervisors across this record'))!;
+		expect(line).toContain('S-01');
+		expect(line).toContain('S-02');
+		// Each once, however many months they signed for.
+		expect(line.match(/S-02/g)).toHaveLength(1);
+	});
+
+	it('says a month has no supervisor rather than leaving the cell blank', () => {
+		// A blank cell in a compliance record reads as an oversight by whoever printed it.
+		const rows = cols(months(build([month({ supervisorCode: '' })])));
+		const col = rows[0]!.indexOf('Supervisor code');
+		expect(rows[1]![col]).toBe('not recorded');
+	});
+
+	it('names the months still waiting on a signature', () => {
+		const files = build([
+			month({ id: 'p1:2026-02', month: '2026-02', verificationSigned: true }),
+			month({ id: 'p1:2026-03', month: '2026-03', verificationSigned: false, signedOn: null }),
+			month({ id: 'p1:2026-04', month: '2026-04', verificationSigned: false, signedOn: null })
+		]);
+		const csv = totals(files);
+		expect(csv).toContain('Months with a signed monthly form,1 of 3');
+		const line = csv.split('\n').find((l) => l.startsWith('Months still to be signed'))!;
+		expect(line).toContain('2026-03');
+		expect(line).toContain('2026-04');
+		expect(line).not.toContain('2026-02');
+	});
+
+	it('keeps an unsigned month off the hours verdict', () => {
+		/*
+		 * The distinction the whole feature rests on. The rules decide whether a month's
+		 * hours count; a signature decides whether they can be shown to anybody. A faultless
+		 * month with no form yet is not a short month, and reporting it as one would send
+		 * somebody to redo work that was fine.
+		 */
+		const files = build([month({ verificationSigned: false, signedOn: null })]);
+		const rows = cols(months(files));
+		const standing = rows[0]!.indexOf('Month standing');
+		const signed = rows[0]!.indexOf('Monthly form signed');
+		expect(rows[1]![standing]).toBe('met');
+		expect(rows[1]![signed]).toBe('no');
+		expect(totals(files)).toContain('Months that did not meet the requirements,0');
+	});
+
+	it('cites the documentation page rather than the hours page for the signature rows', () => {
+		// A citation that does not check out is worse in an auditable record than none.
+		const line = totals(build([month()]))
+			.split('\n')
+			.find((l) => l.startsWith('Months with a signed monthly form'))!;
+		expect(line).toContain('Documentation of Fieldwork, p. 15');
+		expect(line).not.toContain('Hour Requirements');
 	});
 });

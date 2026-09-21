@@ -545,6 +545,70 @@ code. The schema rejects a `scopeVerified: true` ratio with no scope, a scope cl
 without verification, and a multiplier that does not reconcile with the two hour totals it
 sits between.
 
+## The fieldwork record had one supervisor, and fieldwork does not
+
+A fieldwork period held a single supervisor code, set when the run started, and the
+exported record stamped it on every month. For anybody who never changed supervisor that
+was right. For everybody else it was silently wrong in the one artifact that has to hold
+up years later: a trainee who moved organisations produced a record attributing a year of
+earlier months to whoever happened to be current, with nothing on the page or in the
+spreadsheet admitting it.
+
+The monthly verification form is completed per supervisor, so the code belongs on the
+month. It is there now, prefilled from the month before so the common case costs no
+typing, and visible as a field because the month it changes is the month somebody has to
+notice. The period keeps its code as the supervisor the run started with, and the export
+labels it exactly that rather than pretending to answer the wider question. A month
+supervised by two people is not modelled: the record names the one who signs for it and
+the note holds the rest, which is stated on the form rather than left to be discovered.
+
+This is the first migration in the ladder that rewrites rows instead of adding a store, so
+it is also the first that can quietly do nothing and still leave a database that opens.
+The backfill copies each period's code down onto its existing months and is covered by a
+test that walks a v8 install through it — checked by breaking the backfill and watching
+that test go red. Nothing downstream depends on it having run: every reader treats a
+missing code as "not recorded", which is both the safe direction and what the backfill
+writes anyway.
+
+### Signed is a different question from short, and folding them together would be wrong
+
+Hours and signatures are now counted separately. The rules decide whether a month's hours
+count; a signature on the monthly verification form decides whether they can be shown to
+anybody. A month can be faultless on the first and missing on the second — and reporting
+that month as "short" would send somebody to redo work that was fine, while leaving it
+silent loses the one chase worth making while the supervisor who was there still remembers
+it.
+
+So the signature is recorded per month with its date, it never touches `creditedHours` or
+a month's standing, and the page names the months still waiting rather than folding them
+into a number. `verificationSigned` starts false on every backfilled month: nothing in the
+old data says a form was signed, and inventing that claim on somebody's behalf is the one
+thing a compliance record must not do.
+
+### What the printout was missing
+
+The exported spreadsheet has shipped a requirements file since it was written, for a
+reason stated in it: a column saying "short" with no statement of the threshold asks the
+reader to trust an app they have never seen. The printed page had exactly that flaw.
+Each month's checks carry their thresholds, but nothing said where any of them came from,
+so a supervisor reading the paper could not verify a single figure without opening the
+handbook and guessing at the page.
+
+The record now prints the rules it was judged against, with the handbook page for each,
+and ends with somewhere for both parties to sign and a plain statement that this is not
+the verification form — the same posture as the caseload page, and for the same reason: a
+document that looked like the real form would be this app claiming an authority it does
+not have. The signature rows cite the documentation page rather than the hours page,
+which is why the credential schema gained a `documentationLocator`: a citation that does
+not check out is worse in an auditable record than no citation at all.
+
+Fixed a test of mine while there. The fieldwork end-to-end helper waited for a month card
+to appear only when there were no cards at all, so every save after the first raced
+whatever the test did next. Waiting on the card count instead turned out to be wrong too —
+saving a month that already exists replaces it rather than adding one, which is how a
+correction is made here and has its own test. It now polls the stored row, which covers
+both.
+
 ## The interval timer records nothing
 
 `/tools/timer` is a repeating cue for partial interval, whole interval and momentary time

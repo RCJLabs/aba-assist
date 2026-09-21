@@ -19,6 +19,7 @@ const REQ: FieldworkRequirement = {
 	concentratedTotalHours: 1500,
 	concentratedMultiplier: 1.33,
 	windowYears: 5,
+	documentationLocator: 'Documentation of Fieldwork, p. 15',
 	locator: 'Hour Requirements, p. 15',
 	rulesets: [
 		{

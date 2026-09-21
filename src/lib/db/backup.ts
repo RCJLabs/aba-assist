@@ -442,6 +442,19 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 				contacts: num(r.contacts) ? r.contacts : 0,
 				observedWithClient: bool(r.observedWithClient) ? r.observedWithClient : false,
 				observationMinutes: num(r.observationMinutes) ? r.observationMinutes : 0,
+				/*
+				 * The same PHI rule as everywhere else, and the same remedy as the period's
+				 * code above: a supervisor named rather than coded is dropped to empty rather
+				 * than carried in. Dropping the whole month would lose the hours over a field
+				 * that is not what the hours are; emptying it loses only the attribution, and
+				 * the record says "not recorded" where it matters.
+				 */
+				supervisorCode:
+					str(r.supervisorCode) && isSuperviseeCode(r.supervisorCode.toUpperCase())
+						? r.supervisorCode.toUpperCase()
+						: '',
+				verificationSigned: bool(r.verificationSigned) ? r.verificationSigned : false,
+				signedOn: day(r.signedOn) ? r.signedOn : null,
 				note
 			};
 		},

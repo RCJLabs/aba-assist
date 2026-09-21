@@ -31,6 +31,9 @@
 	let contacts = $state(0);
 	let observedWithClient = $state(false);
 	let observationMinutes = $state(0);
+	let monthSupervisor = $state('');
+	let verificationSigned = $state(false);
+	let signedOn = $state('');
 	let note = $state('');
 
 	const req = $derived(tracker.fieldworkRequirement);
@@ -53,6 +56,23 @@
 
 	const codeValid = $derived(isSuperviseeCode(supervisorCode.trim().toUpperCase()));
 
+	const unsigned = $derived(tracker.unsignedFieldworkMonths);
+	const supervisors = $derived(tracker.fieldworkSupervisors);
+
+	/*
+	 * The supervisor field starts filled from the last month logged, falling back to the
+	 * one the run started with. Most months have the same supervisor as the month before,
+	 * so typing it every time is a tax on the common case — but it is still a field, and a
+	 * visible one, because the month it changes is the month somebody has to notice.
+	 */
+	const defaultSupervisor = $derived(
+		months[0]?.supervisorCode || period?.supervisorCode || ''
+	);
+	const monthCodeValid = $derived(isSuperviseeCode(monthSupervisor.trim().toUpperCase()));
+	$effect(() => {
+		if (!monthSupervisor && defaultSupervisor) monthSupervisor = defaultSupervisor;
+	});
+
 	async function start(e: SubmitEvent) {
 		e.preventDefault();
 		if (!codeValid) return;
@@ -71,13 +91,16 @@
 		contacts = m.contacts;
 		observedWithClient = m.observedWithClient;
 		observationMinutes = m.observationMinutes;
+		monthSupervisor = m.supervisorCode;
+		verificationSigned = m.verificationSigned;
+		signedOn = m.signedOn ?? '';
 		note = m.note;
 		announcer.announce(`Editing ${m.month}`);
 	}
 
 	async function saveMonth(e: SubmitEvent) {
 		e.preventDefault();
-		if (!period || totalHours <= 0) return;
+		if (!period || totalHours <= 0 || !monthCodeValid) return;
 		await tracker.saveFieldworkMonth(period.id, month, {
 			type,
 			totalHours,
@@ -87,6 +110,11 @@
 			contacts,
 			observedWithClient,
 			observationMinutes,
+			supervisorCode: monthSupervisor.trim().toUpperCase(),
+			verificationSigned,
+			// A signature with no date is half a record, so an unsigned month carries null
+			// rather than whatever was last typed into the box.
+			signedOn: verificationSigned && signedOn ? signedOn : null,
 			note: note.trim()
 		});
 		note = '';
@@ -275,8 +303,25 @@
 						</li>
 					{/each}
 				</ul>
+				{#if unsigned.length > 0}
+					<p class="hint unsigned-note">
+						<strong
+							>{unsigned.length}
+							{unsigned.length === 1 ? 'month has' : 'months have'} no signed verification form yet:</strong
+						>
+						{[...unsigned]
+							.map((m) => m.month)
+							.sort()
+							.join(', ')}. Those hours may well count — this is a separate question from
+						whether they meet the rules — but unsigned they cannot be verified, and the
+						supervisor who was there is easiest to reach now rather than a year from now.
+					</p>
+				{/if}
 				<p class="hint">
-					Under {rules.label}, from {period.startDate} to {progress.deadline}, supervised by {period.supervisorCode}.
+					Under {rules.label}, from {period.startDate} to {progress.deadline}. Supervised by {supervisors.length ===
+					0
+						? period.supervisorCode
+						: supervisors.join(', ')}.
 				</p>
 			</section>
 		{/if}
@@ -360,6 +405,20 @@
 						<label for="{uid}-contacts">Supervisor contacts</label>
 						<input id="{uid}-contacts" type="number" min="0" max="60" bind:value={contacts} />
 					</div>
+					<div class="field">
+						<label for="{uid}-msup">Supervisor this month</label>
+						<input
+							id="{uid}-msup"
+							type="text"
+							bind:value={monthSupervisor}
+							placeholder="S-01"
+							autocapitalize="characters"
+							autocomplete="off"
+							spellcheck="false"
+							aria-describedby="{uid}-msup-help"
+							required
+						/>
+					</div>
 					{#if countsMinutes}
 						<div class="field">
 							<label for="{uid}-obs">Minutes observed with a client</label>
@@ -374,11 +433,38 @@
 					{/if}
 				</div>
 
+				<p class="hint" id="{uid}-msup-help">
+					{#if monthSupervisor && !monthCodeValid}
+						<span class="warn-text">{SUPERVISEE_CODE_HINT}</span>
+					{:else}
+						A code, never a name. The monthly verification form is completed per supervisor, so
+						this is recorded month by month rather than once for the whole run — if more than
+						one person supervised a month, name the one who signs for it and put the other in
+						the note.
+					{/if}
+				</p>
+
 				{#if !countsMinutes}
 					<label class="switch">
 						<input type="checkbox" bind:checked={observedWithClient} />
 						<span>My supervisor observed me working with a client this month</span>
 					</label>
+				{/if}
+
+				<!--
+					Signed, and when. Separate from every check above it: the rules decide whether
+					this month's hours count, and a signature decides whether they can be shown to
+					anybody. A month can be faultless on the first and missing on the second.
+				-->
+				<label class="switch">
+					<input type="checkbox" bind:checked={verificationSigned} />
+					<span>The monthly verification form for this month has been signed</span>
+				</label>
+				{#if verificationSigned}
+					<div class="field narrow">
+						<label for="{uid}-signed">Signed on</label>
+						<input id="{uid}-signed" type="date" bind:value={signedOn} max={todayIso()} />
+					</div>
 				{/if}
 
 				<PhiNote
@@ -388,7 +474,9 @@
 					placeholder="Two weeks of the month were unrestricted — program writing and graphing."
 				/>
 
-				<button type="submit" class="button primary">Save month</button>
+				<button type="submit" class="button primary" disabled={!monthCodeValid}>
+					Save month
+				</button>
 			</form>
 		</section>
 
@@ -408,7 +496,17 @@
 									— {s.creditedHours} credited
 								</span>
 							</h3>
-							<p class="kind">{m.type === 'concentrated' ? 'Concentrated' : 'Supervised'}</p>
+							<p class="kind">
+								{m.type === 'concentrated' ? 'Concentrated' : 'Supervised'} · supervisor {m.supervisorCode ||
+									'not recorded'}
+								<span class="signed" data-signed={m.verificationSigned === true}>
+									{#if m.verificationSigned}
+										form signed{m.signedOn ? ` ${m.signedOn}` : ''}
+									{:else}
+										form not signed yet
+									{/if}
+								</span>
+							</p>
 							{#if s.creditNote}<p class="credit-note">{s.creditNote}</p>{/if}
 							<ul class="checks">
 								{#each s.checks as c (c.id)}
@@ -447,7 +545,112 @@
 					{/if}
 				{/each}
 			{/if}
-			<p class="print-offer">
+		</section>
+
+		<!--
+			The rules the verdicts above were reached under, on the same sheet of paper.
+			The exported spreadsheet has carried this since it was written, for a reason
+			stated there: a column saying "short" with no statement of the threshold asks
+			the reader to trust an app they have never seen. The printout had exactly that
+			flaw — the thresholds appear in each month's checks, but nothing said where any
+			of them came from, so a supervisor reading it could not check one without
+			opening the handbook and guessing at the page.
+		-->
+		<section class="record rules">
+			<h2 class="section-head">The rules these figures were judged against</h2>
+			<p class="hint">
+				Restated in our own words from the {tracker.fieldworkHandbookVersion} handbook, with the
+				page each came from. The handbook is what governs; where this disagrees with it, it is wrong.
+			</p>
+			<table class="refs">
+				<thead>
+					<tr
+						><th scope="col">Requirement</th><th scope="col">Value</th><th scope="col"
+							>Handbook</th
+						></tr
+					>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Credited hours</th>
+						<td
+							>{req.totalHours} supervised, or {req.concentratedTotalHours} concentrated at {req.concentratedMultiplier}×
+							each</td
+						>
+						<td>{req.locator}</td>
+					</tr>
+					<tr>
+						<th scope="row">Years to finish in</th>
+						<td>{req.windowYears}</td>
+						<td>{req.locator}</td>
+					</tr>
+					<tr>
+						<th scope="row">Hours in a countable month</th>
+						<td>{rules.monthlyMinHours} to {rules.monthlyMaxHours}</td>
+						<td>{rules.locator}</td>
+					</tr>
+					<tr>
+						<th scope="row">Supervision</th>
+						<td
+							>{rules.supervisedPercent}% of hours, or {rules.concentratedPercent}%
+							concentrated</td
+						>
+						<td>{rules.locator}</td>
+					</tr>
+					<tr>
+						<th scope="row">Supervisor contacts</th>
+						<td
+							>{rules.supervisedContacts} a month, or {rules.concentratedContacts} concentrated</td
+						>
+						<td>{rules.locator}</td>
+					</tr>
+					<tr>
+						<th scope="row">Observation with a client</th>
+						<td>
+							{rules.observationMinutes === null
+								? 'at least one contact includes it'
+								: `${rules.observationMinutes} minutes, or ${rules.concentratedObservationMinutes} concentrated`}
+						</td>
+						<td>{rules.locator}</td>
+					</tr>
+					{#each req.ratios as r (r.id)}
+						<tr>
+							<th scope="row">{r.label}</th>
+							<td>at least {r.percent}% of {r.of}</td>
+							<td>{r.locator}</td>
+						</tr>
+					{/each}
+					<tr>
+						<th scope="row">What has to be kept and signed</th>
+						<td>a signed monthly verification form for every month, and a final one</td>
+						<td>{req.documentationLocator}</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<!--
+			What the printout is, and what it is not. Same posture as the caseload page: a
+			verification form is a document both parties sign and whose wording belongs to
+			the certifying body, and producing something that looked like one would be this
+			app claiming an authority it does not have. What it can honestly produce is the
+			arithmetic and the evidence under it, with somewhere for both parties to sign
+			that this is what they agreed.
+		-->
+		<section class="record attest">
+			<h2 class="section-head">Signing it off</h2>
+			<p>
+				This is the month-by-month working behind every figure above, and the rules each month
+				was measured against. Attach it to the monthly or final verification form your
+				certifying body asks for. <strong>It is not that form</strong>, and this app does not
+				have one.
+			</p>
+			<div class="signatures">
+				<p><span class="line"></span><span class="who">Supervisor</span></p>
+				<p><span class="line"></span><span class="who">Trainee</span></p>
+				<p><span class="line short"></span><span class="who">Date</span></p>
+			</div>
+			<p class="no-print">
 				<PrintButton label="Print this record or save it as a PDF" />
 			</p>
 		</section>
@@ -502,8 +705,66 @@
 {/if}
 
 <style>
-	.print-offer {
-		margin-top: 1rem;
+	.narrow {
+		max-width: 14rem;
+	}
+
+	.signed {
+		display: inline-block;
+		font-size: 0.85rem;
+		padding: 0.1rem 0.4rem;
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+	}
+	/* Never colour alone: the words differ too, and the border carries it in forced colors. */
+	.signed[data-signed='false'] {
+		color: var(--text);
+		border-style: dashed;
+	}
+
+	.unsigned-note {
+		border-left: 3px solid var(--border);
+		padding-left: 0.6rem;
+	}
+
+	.refs {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.9rem;
+	}
+	.refs th,
+	.refs td {
+		text-align: left;
+		vertical-align: top;
+		padding: 0.3rem 0.5rem 0.3rem 0;
+		border-bottom: 1px solid var(--hair);
+	}
+	.refs th[scope='row'] {
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.signatures {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+		margin: 1rem 0;
+	}
+	.signatures p {
+		flex: 1 1 12rem;
+		margin: 0;
+	}
+	.line {
+		display: block;
+		border-bottom: 1px solid var(--text);
+		height: 2rem;
+	}
+	.line.short {
+		max-width: 8rem;
+	}
+	.who {
+		font-size: 0.8rem;
+		color: var(--text-muted);
 	}
 
 	/*
@@ -514,8 +775,19 @@
 		.crumbs,
 		.lede,
 		h1,
+		.no-print,
 		section:not(.record) {
 			display: none;
+		}
+
+		/*
+		 * The rules and the signature block go last and together. A signature line that
+		 * lands on its own page, or before the working it is attesting to, is the one part
+		 * of a printed record that has to be got right.
+		 */
+		.attest {
+			break-before: auto;
+			break-inside: avoid;
 		}
 	}
 

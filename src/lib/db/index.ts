@@ -312,6 +312,27 @@ export interface FieldworkMonth {
 	observedWithClient: boolean;
 	/** Cumulative minutes, for the ruleset that counts them rather than asking yes or no. */
 	observationMinutes: number;
+	/**
+	 * Who supervised this month. A code like "S-01", never a name — the same rule as a
+	 * supervisee.
+	 *
+	 * On the month rather than only on the period, because trainees change supervisors and
+	 * the monthly verification form is completed per supervisor. Holding one code for the
+	 * whole run meant a record produced after a change attributed every earlier month to
+	 * whoever happened to be current — silently, and in the one artifact that has to be
+	 * right years later.
+	 */
+	supervisorCode: string;
+	/**
+	 * Whether the monthly verification form for this month has been signed.
+	 *
+	 * Deliberately not part of whether the month's hours count: the rules decide that, and
+	 * a signature decides whether it can be shown. Kept apart so an unsigned month is not
+	 * reported as short on hours it actually met.
+	 */
+	verificationSigned: boolean;
+	/** YYYY-MM-DD, or null while unsigned. */
+	signedOn: string | null;
 	note: string;
 }
 
@@ -321,7 +342,12 @@ export interface FieldworkPeriod {
 	/** YYYY-MM-DD. The five-year window runs from here. */
 	startDate: string;
 	ruleset: 'current' | '2027';
-	/** A code like "S-01", never a name — the same rule as a supervisee. */
+	/**
+	 * The supervisor this run started with. A code like "S-01", never a name.
+	 *
+	 * Only a default for the month form now that each month carries its own. The
+	 * authoritative answer to "who signed for these hours" is on the month.
+	 */
 	supervisorCode: string;
 	createdAt: number;
 }
@@ -505,6 +531,43 @@ const MIGRATIONS: Migration[] = [
 	(db) => {
 		const months = db.createObjectStore('superviseeMonths', { keyPath: 'id' });
 		months.createIndex('by-supervisee', 'superviseeId');
+	},
+
+	/*
+	 * v9 — a supervisor and a signature on each month of fieldwork.
+	 *
+	 * The first rung that rewrites rows rather than adding a store, so it is worth saying
+	 * what it is doing. Until now one supervisor code sat on the fieldwork period and the
+	 * exported record stamped it on every month; a trainee who changed supervisors got a
+	 * record attributing years of earlier months to whoever was current. The code moves to
+	 * the month, and the existing months are backfilled from the period they belong to —
+	 * which is the best available answer and, for anybody who never changed supervisors,
+	 * the right one.
+	 *
+	 * `verificationSigned` starts false rather than true. Nothing in the old data says a
+	 * form was signed, and inventing that claim on somebody's behalf is the one thing a
+	 * compliance record must not do.
+	 *
+	 * Nothing downstream depends on this having run. A rewrite inside a versionchange
+	 * transaction is the kind of thing that can behave differently in a browser this was
+	 * never tested in, so every reader treats a missing code as "not recorded" and a
+	 * missing signature as unsigned — both of which are the safe direction, and both of
+	 * which are exactly what the backfill writes anyway.
+	 */
+	(_db, tx) => {
+		const periods = tx.objectStore('fieldworkPeriods');
+		const months = tx.objectStore('fieldworkMonths');
+		void (async () => {
+			const byId = new Map((await periods.getAll()).map((p) => [p.id, p]));
+			for (const m of await months.getAll()) {
+				await months.put({
+					...m,
+					supervisorCode: m.supervisorCode ?? byId.get(m.periodId)?.supervisorCode ?? '',
+					verificationSigned: m.verificationSigned ?? false,
+					signedOn: m.signedOn ?? null
+				});
+			}
+		})();
 	}
 ];
 

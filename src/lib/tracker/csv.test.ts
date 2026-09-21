@@ -117,6 +117,9 @@ describe('fieldworkCsv', () => {
 					contacts: 6,
 					observedWithClient: true,
 					observationMinutes: 95,
+					supervisorCode: 'S-01',
+					verificationSigned: false,
+					signedOn: null,
 					note: 'Two sites this month'
 				}
 			],
@@ -150,6 +153,9 @@ describe('fieldworkCsv', () => {
 					contacts: 4,
 					observedWithClient: false,
 					observationMinutes: 0,
+					supervisorCode: 'S-01',
+					verificationSigned: false,
+					signedOn: null,
 					note: ''
 				}
 			],

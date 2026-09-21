@@ -152,6 +152,16 @@ const FieldworkRequirement = z.strictObject({
 	ratios: z.array(FieldworkRatio).default([]),
 	/** Activities that do not count, in our words, for the reminder on the log. */
 	excluded: z.array(z.string().min(4)).default([]),
+	/**
+	 * Where the handbook sets out what has to be kept and signed.
+	 *
+	 * Its own reference rather than reusing `locator`, because the hour requirements and
+	 * the documentation requirements are different pages and the exported record cites the
+	 * page each figure came from. A signature row carrying the hours page would be a
+	 * citation that does not check out, which is worse in an auditable record than no
+	 * citation at all.
+	 */
+	documentationLocator: z.string().max(160),
 	locator: z.string().max(160)
 });
 

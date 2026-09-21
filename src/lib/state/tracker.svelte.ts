@@ -563,6 +563,30 @@ class Tracker {
 		void storage.requestPersist();
 	}
 
+	/**
+	 * Months whose monthly verification form has not been signed.
+	 *
+	 * Kept apart from `monthsShort` on purpose. Whether a month's hours count is decided by
+	 * the rules; whether they can be shown to anybody is decided by a signature. A month
+	 * can be faultless on the first and missing on the second, and folding them together
+	 * would either send somebody to redo work that was fine or hide the chase they actually
+	 * need to make while the supervisor who was there still remembers it.
+	 */
+	get unsignedFieldworkMonths(): FieldworkMonth[] {
+		return this.myFieldworkMonths.filter((m) => !m.verificationSigned);
+	}
+
+	/** Every supervisor code appearing in this run, oldest month first. */
+	get fieldworkSupervisors(): string[] {
+		// Oldest month first, each code once. A plain filter rather than a Set: at the
+		// handful of supervisors a fieldwork run actually has, the quadratic scan is free
+		// and reads as what it is.
+		return [...this.myFieldworkMonths]
+			.reverse()
+			.map((m) => m.supervisorCode)
+			.filter((code, i, all) => code !== '' && all.indexOf(code) === i);
+	}
+
 	async deleteFieldworkMonth(monthId: string): Promise<void> {
 		await remove('fieldworkMonths', monthId);
 		this.fieldworkMonths = this.fieldworkMonths.filter((m) => m.id !== monthId);

@@ -26,6 +26,57 @@ async function startPeriod(page: Page, start = '2026-01-01'): Promise<void> {
 	await expect(page.getByRole('heading', { name: 'Log a month' })).toBeVisible();
 }
 
+/**
+ * One month as the database holds it.
+ *
+ * Reads directly, and never creates or upgrades: an `open` with no version against a
+ * database the app has not made yet would create an empty one, and a connection left open
+ * would block the app's own upgrade. So an upgrade is aborted and "not there yet" comes
+ * back as null, which never equals an expected row.
+ */
+function storedMonth(
+	page: Page,
+	month: string
+): Promise<{ contacts: number; supervisionHours: number } | null> {
+	return page.evaluate(
+		(wanted) =>
+			new Promise<{ contacts: number; supervisionHours: number } | null>((resolve) => {
+				const request = indexedDB.open('aba-assist');
+				let fresh = false;
+				request.onupgradeneeded = () => {
+					fresh = true;
+					request.transaction?.abort();
+				};
+				request.onerror = () => resolve(null);
+				request.onsuccess = () => {
+					const db = request.result;
+					if (fresh || !db.objectStoreNames.contains('fieldworkMonths')) {
+						db.close();
+						return resolve(null);
+					}
+					const all = db
+						.transaction('fieldworkMonths')
+						.objectStore('fieldworkMonths')
+						.getAll();
+					all.onsuccess = () => {
+						db.close();
+						const row = (
+							all.result as { month: string; contacts: number; supervisionHours: number }[]
+						).find((r) => r.month === wanted);
+						resolve(
+							row ? { contacts: row.contacts, supervisionHours: row.supervisionHours } : null
+						);
+					};
+					all.onerror = () => {
+						db.close();
+						resolve(null);
+					};
+				};
+			}),
+		month
+	);
+}
+
 async function logMonth(
 	page: Page,
 	opts: {
@@ -37,6 +88,8 @@ async function logMonth(
 		contacts?: number;
 		observed?: boolean;
 		concentrated?: boolean;
+		supervisor?: string;
+		signed?: boolean;
 	}
 ): Promise<void> {
 	await page.getByLabel('Month', { exact: true }).fill(opts.month);
@@ -48,6 +101,16 @@ async function logMonth(
 	await page.getByLabel('Supervision hours').fill(String(opts.supervision ?? 0));
 	await page.getByLabel('Of that, one-to-one').fill(String(opts.individual ?? 0));
 	await page.getByLabel('Supervisor contacts').fill(String(opts.contacts ?? 0));
+	// Left alone unless a test cares: the field prefills from the month before, falling
+	// back to the supervisor the run started with, so the common case needs no typing.
+	if (opts.supervisor !== undefined) {
+		await page.getByLabel('Supervisor this month').fill(opts.supervisor);
+	}
+	const signedBox = page.getByLabel(
+		'The monthly verification form for this month has been signed'
+	);
+	if (opts.signed) await signedBox.check();
+	else await signedBox.uncheck();
 
 	const observed = page.getByLabel(
 		'My supervisor observed me working with a client this month'
@@ -55,11 +118,22 @@ async function logMonth(
 	if (opts.observed === false) await observed.uncheck();
 	else await observed.check();
 
-	const before = await page.locator('.month').count();
 	await page.getByRole('button', { name: 'Save month' }).click();
-	// The month card only renders once the write has landed and come back through state,
-	// so it is the signal that the IndexedDB transaction committed.
-	if (before === 0) await expect(page.locator('.month')).not.toHaveCount(0);
+	/*
+	 * Wait on the stored row, not on the card count.
+	 *
+	 * Counting cards asserts nothing when a save replaces a month rather than adding one —
+	 * and replacing is how a correction is made here, so it is a real path with real tests
+	 * on it. The previous version waited only when there were no cards at all, which meant
+	 * every save after the first raced whatever the test did next and held by timing luck.
+	 *
+	 * Polling the store covers both: a new month's row appears, an edited month's row
+	 * changes. Contacts and supervision hours are the signature because they are what the
+	 * callers vary.
+	 */
+	await expect
+		.poll(() => storedMonth(page, opts.month), { timeout: 15_000 })
+		.toEqual({ contacts: opts.contacts ?? 0, supervisionHours: opts.supervision ?? 0 });
 }
 
 test('a month below the monthly floor credits nothing, and says so', async ({ page }) => {
@@ -272,4 +346,163 @@ test('the whole record exports as four files a supervisor could audit', async ({
 	for (const csv of [period, months, totals, requirements]) {
 		expect(csv).not.toMatch(/client name|date of birth/i);
 	}
+});
+
+test('each month records who supervised it, so a change of supervisor survives', async ({
+	page
+}) => {
+	/*
+	 * The defect this covers. One supervisor code lived on the fieldwork period, and the
+	 * exported record stamped it on every month — so a trainee who changed supervisors
+	 * produced a record attributing years of earlier months to whoever was current. The
+	 * monthly verification form is completed per supervisor, so the code belongs on the
+	 * month.
+	 */
+	await open(page);
+	await startPeriod(page);
+
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+	await logMonth(page, {
+		month: '2026-03',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4,
+		supervisor: 'S-02'
+	});
+
+	const feb = page.locator('.month').filter({ hasText: 'February' });
+	const mar = page.locator('.month').filter({ hasText: 'March' });
+	// February kept the supervisor it was logged under rather than following the change.
+	await expect(feb).toContainText('S-01');
+	await expect(mar).toContainText('S-02');
+	// And the run names both rather than only the current one.
+	await expect(page.locator('.progress')).toContainText('S-01, S-02');
+});
+
+test('the month form remembers the supervisor rather than asking every time', async ({
+	page
+}) => {
+	// Most months have the same supervisor as the month before, so typing it every time is
+	// a tax on the common case — but it stays a visible field, because the month it changes
+	// is the month somebody has to notice.
+	await open(page);
+	await startPeriod(page);
+	await expect(page.getByLabel('Supervisor this month')).toHaveValue('S-01');
+});
+
+test('a supervisor typed as a name is refused, like everywhere else', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await page.getByLabel('Supervisor this month').fill('Dr Alvarez');
+	await expect(page.getByRole('button', { name: 'Save month' })).toBeDisabled();
+});
+
+test('an unsigned month is chased without being called short', async ({ page }) => {
+	/*
+	 * The distinction the feature rests on: the rules decide whether a month's hours count,
+	 * and a signature decides whether they can be shown to anybody. A faultless month with
+	 * no form yet is not a short month, and reporting it as one would send somebody to redo
+	 * work that was fine.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4,
+		signed: false
+	});
+
+	const month = page.locator('.month').first();
+	await expect(month).toContainText('Counts in full');
+	await expect(month).toContainText('form not signed yet');
+	await expect(page.locator('.progress')).toContainText('no signed verification form yet');
+	// Short is about hours, and these hours are fine.
+	await expect(page.locator('.progress')).toContainText('Months short');
+	await expect(page.locator('.stats')).toContainText('0');
+});
+
+test('a signed month records when it was signed', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4,
+		signed: true
+	});
+	await page.getByLabel('Signed on').fill('2026-03-02');
+	await page.getByRole('button', { name: 'Save month' }).click();
+
+	await expect(page.locator('.month').first()).toContainText('form signed 2026-03-02');
+	await expect(page.locator('.progress')).not.toContainText('no signed verification form yet');
+});
+
+test('the printed record carries the rules it judged the months against', async ({ page }) => {
+	/*
+	 * The flaw the exported spreadsheet has avoided since it was written, and the printout
+	 * had: a verdict saying "Short" with no statement of the threshold, and no page to
+	 * check it on, asks the reader to trust an app they have never seen.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4,
+		signed: true
+	});
+
+	await page.emulateMedia({ media: 'print' });
+
+	const rules = page.locator('.rules');
+	await expect(rules).toBeVisible();
+	await expect(rules).toContainText('Hour Requirements, p. 15');
+	await expect(rules).toContainText('Documentation of Fieldwork, p. 15');
+	// The thresholds themselves, not just their page numbers.
+	await expect(rules).toContainText('20 to 130');
+
+	// Somewhere for both parties to sign, and a plain statement of what this is not.
+	const attest = page.locator('.attest');
+	await expect(attest).toBeVisible();
+	await expect(attest).toContainText('It is not that form');
+	await expect(attest.getByText('Supervisor', { exact: true })).toBeVisible();
+	await expect(attest.getByText('Trainee', { exact: true })).toBeVisible();
+
+	// And the form that produced it is not on the paper.
+	await expect(page.getByRole('heading', { name: 'Log a month' })).toBeHidden();
+	await expect(page.locator('.month').first()).toBeVisible();
+});
+
+test('the fieldwork record is accessible with months on it', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4,
+		signed: true
+	});
+	await expectNoA11yViolations(page);
 });

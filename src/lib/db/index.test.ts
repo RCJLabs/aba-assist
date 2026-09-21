@@ -41,7 +41,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(8);
+		expect(DB_VERSION).toBe(9);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -145,6 +145,66 @@ describe('local database', () => {
 			hours: 30
 		});
 		expect(await getAll('superviseeMonths')).toHaveLength(1);
+	});
+
+	it('gives an existing month of fieldwork its supervisor and an unsigned form', async () => {
+		/*
+		 * v9 is the first rung that rewrites rows rather than adding a store, so it is the
+		 * first one that can quietly do nothing and still leave a database that opens.
+		 *
+		 * Before it, one supervisor code sat on the fieldwork period and the exported record
+		 * stamped it on every month — so a trainee who changed supervisors got a record
+		 * attributing years of earlier months to whoever was current. The code belongs on the
+		 * month; this proves the months that already exist get it rather than being left with
+		 * nothing, which would read as "not recorded" across somebody's whole history.
+		 */
+		const { openDB } = await import('idb');
+		const v8 = await openDB('aba-assist', 8, {
+			upgrade(db) {
+				db.createObjectStore('fieldworkPeriods', { keyPath: 'id' });
+				db.createObjectStore('fieldworkMonths', { keyPath: 'id' }).createIndex(
+					'by-period',
+					'periodId'
+				);
+			}
+		});
+		await v8.put('fieldworkPeriods', {
+			id: 'p1',
+			startDate: '2026-01-01',
+			ruleset: 'current',
+			supervisorCode: 'S-07',
+			createdAt: T0
+		});
+		await v8.put('fieldworkMonths', {
+			id: 'p1:2026-02',
+			periodId: 'p1',
+			month: '2026-02',
+			type: 'supervised',
+			totalHours: 100,
+			unrestrictedHours: 70,
+			supervisionHours: 5,
+			individualSupervisionHours: 3,
+			contacts: 4,
+			observedWithClient: true,
+			observationMinutes: 0,
+			note: ''
+		});
+		v8.close();
+		resetDbHandle();
+
+		const months = await getAll('fieldworkMonths');
+		expect(months).toHaveLength(1);
+		// Backfilled from the period, which is the best available answer and, for anybody who
+		// never changed supervisors, the right one.
+		expect(months[0]!.supervisorCode).toBe('S-07');
+		// And false rather than true: nothing in the old data says a form was signed, and
+		// inventing that claim on somebody's behalf is what a compliance record must not do.
+		expect(months[0]!.verificationSigned).toBe(false);
+		expect(months[0]!.signedOn).toBeNull();
+		// The hours are untouched — a migration that rewrites rows is also a migration that
+		// can lose them.
+		expect(months[0]!.totalHours).toBe(100);
+		expect(months[0]!.contacts).toBe(4);
 	});
 
 	it('a repeat visit in the same sitting updates the row rather than adding one', async () => {
