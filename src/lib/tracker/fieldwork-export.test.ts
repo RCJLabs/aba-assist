@@ -66,6 +66,7 @@ const period: FieldworkPeriod = {
 	startDate: '2026-01-01',
 	ruleset: 'current',
 	supervisorCode: 'S-01',
+	finalFormSignedOn: null,
 	createdAt: 0
 };
 
@@ -81,6 +82,7 @@ const month = (over: Partial<FieldworkMonth> = {}): FieldworkMonth => ({
 	contacts: 4,
 	observedWithClient: true,
 	observationMinutes: 0,
+	maxGroupSize: 0,
 	supervisorCode: 'S-01',
 	verificationSigned: true,
 	signedOn: '2026-03-01',

@@ -313,6 +313,17 @@ export interface FieldworkMonth {
 	/** Cumulative minutes, for the ruleset that counts them rather than asking yes or no. */
 	observationMinutes: number;
 	/**
+	 * The largest group supervision meeting this month, counting trainees present. 0 when
+	 * there was no group supervision.
+	 *
+	 * Recorded rather than judged. The handbook caps the size of a group, but this app has
+	 * not verified the figure against the document, and a threshold it invented would be
+	 * worse than none — so the number is kept and reported, and the verdict is withheld
+	 * until somebody reads the handbook. Keeping it now is the point: it is trivial to note
+	 * at the time and impossible to reconstruct two years later.
+	 */
+	maxGroupSize: number;
+	/**
 	 * Who supervised this month. A code like "S-01", never a name — the same rule as a
 	 * supervisee.
 	 *
@@ -377,6 +388,14 @@ export interface FieldworkPeriod {
 	 * authoritative answer to "who signed for these hours" is on the month.
 	 */
 	supervisorCode: string;
+	/**
+	 * When the final verification form was signed, or null.
+	 *
+	 * The monthly forms are tracked on each month; this is the one at the end, which is a
+	 * separate document and the last thing standing between a finished run and a submitted
+	 * one.
+	 */
+	finalFormSignedOn: string | null;
 	createdAt: number;
 }
 
@@ -610,6 +629,27 @@ const MIGRATIONS: Migration[] = [
 	(db) => {
 		const checks = db.createObjectStore('fieldworkSupervisors', { keyPath: 'id' });
 		checks.createIndex('by-period', 'periodId');
+	},
+
+	/*
+	 * v11 — the final verification form, and the size of the largest group meeting.
+	 *
+	 * Both default rather than being inferred. An existing run has not told us its final
+	 * form is signed, and an existing month has not told us whether any of its supervision
+	 * was in a group — 0 reads as "no group supervision", which is the common case and the
+	 * one that raises nothing, rather than a number the app made up.
+	 */
+	(_db, tx) => {
+		const periods = tx.objectStore('fieldworkPeriods');
+		const months = tx.objectStore('fieldworkMonths');
+		void (async () => {
+			for (const p of await periods.getAll()) {
+				await periods.put({ ...p, finalFormSignedOn: p.finalFormSignedOn ?? null });
+			}
+			for (const m of await months.getAll()) {
+				await months.put({ ...m, maxGroupSize: m.maxGroupSize ?? 0 });
+			}
+		})();
 	}
 ];
 

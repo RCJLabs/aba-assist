@@ -164,6 +164,8 @@ export interface FieldworkMonthInput {
 	observedWithClient: boolean;
 	/** Cumulative observation minutes, for the ruleset that counts them. */
 	observationMinutes: number;
+	/** Largest group supervision meeting this month, counting trainees. 0 for none. */
+	maxGroupSize: number;
 }
 
 /** A figure the app reports without deciding, because the rule's scope is unverified. */
@@ -398,6 +400,35 @@ export function summariseFieldworkMonth(
 	 * their supervisor over nothing; the reverse would let a real problem pass. Neither is
 	 * a guess worth making.
 	 */
+	/*
+	 * The largest group meeting, reported and not judged.
+	 *
+	 * The handbook caps how many trainees a group supervision meeting may hold, and this
+	 * app has not read that figure at source. Inventing a threshold would be worse than
+	 * having none — a compliance tool that fails a month against a number it made up is
+	 * exactly the failure this whole corpus is built against — so the number is kept and
+	 * shown, and the verdict waits for somebody to read the handbook. The same posture as
+	 * the ratios whose scope is unverified, for the same reason.
+	 *
+	 * Recording it now is the point. It costs a moment at the time and cannot be
+	 * reconstructed two years later, and if the limit turns out to have been exceeded, the
+	 * month it happened in is the thing nobody will remember.
+	 */
+	const groupFigure: Figure[] =
+		m.supervisionHours > m.individualSupervisionHours + EPSILON
+			? [
+					{
+						id: 'group-size',
+						label: 'Largest group',
+						detail:
+							m.maxGroupSize > 0
+								? `${m.maxGroupSize} trainees in the largest group meeting.`
+								: 'Group supervision was logged but no group size was recorded.',
+						note: 'The handbook limits how many trainees a group may hold. This app has not verified that figure against the document, so it keeps the number and leaves the judgement to you and your supervisor.'
+					}
+				]
+			: [];
+
 	const figures: Figure[] = req.ratios
 		.filter((ratio) => !(ratio.scopeVerified && ratio.scope === 'month'))
 		.map((ratio) => {
@@ -414,6 +445,8 @@ export function summariseFieldworkMonth(
 					: `At least ${ratio.percent}% is required across the whole experience, not this month, so a light month here is not a lost one.`
 			};
 		});
+
+	figures.push(...groupFigure);
 
 	const eligible = eligibleHours(m, rules, {
 		concentrated,

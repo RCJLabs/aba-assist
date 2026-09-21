@@ -549,6 +549,7 @@ class Tracker {
 			startDate,
 			ruleset,
 			supervisorCode: supervisorCode.trim().toUpperCase(),
+			finalFormSignedOn: null,
 			createdAt: Date.now()
 		};
 		await put('fieldworkPeriods', p);
@@ -654,6 +655,15 @@ class Tracker {
 		];
 		storage.hasData = true;
 		void storage.requestPersist();
+	}
+
+	/** The form at the end of the run, which is a separate document from the monthly ones. */
+	async setFinalFormSigned(periodId: string, signedOn: string | null): Promise<void> {
+		const existing = this.fieldworkPeriods.find((p) => p.id === periodId);
+		if (!existing) return;
+		const row = { ...$state.snapshot(existing), finalFormSignedOn: signedOn };
+		await put('fieldworkPeriods', row);
+		this.fieldworkPeriods = this.fieldworkPeriods.map((p) => (p.id === row.id ? row : p));
 	}
 
 	async deleteFieldworkMonth(monthId: string): Promise<void> {

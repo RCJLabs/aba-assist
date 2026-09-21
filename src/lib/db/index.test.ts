@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe('local database', () => {
 	it('has a version equal to the length of the migration ladder', () => {
-		expect(DB_VERSION).toBe(10);
+		expect(DB_VERSION).toBe(11);
 	});
 
 	it('records, lists and clears review decisions', async () => {
@@ -218,6 +218,12 @@ describe('local database', () => {
 			note: ''
 		});
 		expect(await getAll('fieldworkSupervisors')).toHaveLength(1);
+
+		// v11: the period gained a final-form date and the month a group size, and both
+		// arrived on rows written long before either field existed.
+		const periods = await getAll('fieldworkPeriods');
+		expect(periods[0]!.finalFormSignedOn).toBeNull();
+		expect((await getAll('fieldworkMonths'))[0]!.maxGroupSize).toBe(0);
 	});
 
 	it('takes the supervisor confirmations with the fieldwork period', async () => {
@@ -231,6 +237,7 @@ describe('local database', () => {
 			startDate: '2026-01-01',
 			ruleset: 'current',
 			supervisorCode: 'S-01',
+			finalFormSignedOn: null,
 			createdAt: T0
 		});
 		await put('fieldworkSupervisors', {

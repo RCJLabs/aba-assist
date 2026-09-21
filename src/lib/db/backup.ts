@@ -408,6 +408,7 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 				startDate: r.startDate,
 				ruleset: oneOf(['current', '2027'] as const, r.ruleset) ? r.ruleset : 'current',
 				supervisorCode: code,
+				finalFormSignedOn: day(r.finalFormSignedOn) ? r.finalFormSignedOn : null,
 				createdAt: num(r.createdAt) ? r.createdAt : Date.now()
 			};
 		},
@@ -442,6 +443,7 @@ export function validateBackup(raw: unknown, currentVersion: number): ValidateRe
 				contacts: num(r.contacts) ? r.contacts : 0,
 				observedWithClient: bool(r.observedWithClient) ? r.observedWithClient : false,
 				observationMinutes: num(r.observationMinutes) ? r.observationMinutes : 0,
+				maxGroupSize: num(r.maxGroupSize) ? r.maxGroupSize : 0,
 				/*
 				 * The same PHI rule as everywhere else, and the same remedy as the period's
 				 * code above: a supervisor named rather than coded is dropped to empty rather

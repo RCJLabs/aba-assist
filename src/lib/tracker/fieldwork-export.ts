@@ -68,7 +68,8 @@ function toInput(m: FieldworkMonth): FieldworkMonthInput {
 		individualSupervisionHours: m.individualSupervisionHours,
 		contacts: m.contacts,
 		observedWithClient: m.observedWithClient,
-		observationMinutes: m.observationMinutes
+		observationMinutes: m.observationMinutes,
+		maxGroupSize: m.maxGroupSize
 	};
 }
 
@@ -99,6 +100,10 @@ function periodFile(
 		 */
 		['Supervisor the run started with', period?.supervisorCode ?? 'not recorded'],
 		['Fieldwork started', period?.startDate ?? 'not recorded'],
+		[
+			'Final verification form signed',
+			period?.finalFormSignedOn ?? 'not yet — the monthly forms are in the months file'
+		],
 		['Must be completed within', `${req.windowYears} years`],
 		['Credited hours required', req.totalHours],
 		[
@@ -141,6 +146,7 @@ function monthsFile(
 				m.contacts,
 				yesNo(m.observedWithClient),
 				m.observationMinutes,
+				m.maxGroupSize || '',
 				s.creditedHours,
 				s.standing,
 				failed.join('; '),
@@ -169,6 +175,7 @@ function monthsFile(
 				'Supervision contacts',
 				'Observed with a client',
 				'Observation minutes',
+				'Largest group',
 				'Credited hours',
 				'Month standing',
 				'Requirements not met',

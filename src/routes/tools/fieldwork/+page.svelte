@@ -31,6 +31,7 @@
 	let contacts = $state(0);
 	let observedWithClient = $state(false);
 	let observationMinutes = $state(0);
+	let maxGroupSize = $state(0);
 	let monthSupervisor = $state('');
 	let verificationSigned = $state(false);
 	let signedOn = $state('');
@@ -128,6 +129,7 @@
 		contacts = m.contacts;
 		observedWithClient = m.observedWithClient;
 		observationMinutes = m.observationMinutes;
+		maxGroupSize = m.maxGroupSize;
 		monthSupervisor = m.supervisorCode;
 		verificationSigned = m.verificationSigned;
 		signedOn = m.signedOn ?? '';
@@ -147,6 +149,7 @@
 			contacts,
 			observedWithClient,
 			observationMinutes,
+			maxGroupSize,
 			supervisorCode: monthSupervisor.trim().toUpperCase(),
 			verificationSigned,
 			// A signature with no date is half a record, so an unsigned month carries null
@@ -444,6 +447,26 @@
 						<input id="{uid}-contacts" type="number" min="0" max="60" bind:value={contacts} />
 					</div>
 					<div class="field">
+						<label for="{uid}-group">Largest group meeting</label>
+						<input
+							id="{uid}-group"
+							type="number"
+							min="0"
+							max="60"
+							bind:value={maxGroupSize}
+							aria-describedby="{uid}-group-help"
+						/>
+						<!--
+							Kept, not judged. The handbook caps group size and this app has not read
+							that figure at source; a threshold it invented would be worse than none.
+							The number costs a moment now and cannot be reconstructed in two years.
+						-->
+						<p class="hint" id="{uid}-group-help">
+							How many trainees were in the biggest group supervision meeting. Leave at 0 if
+							none of your supervision was in a group.
+						</p>
+					</div>
+					<div class="field">
 						<label for="{uid}-msup">Supervisor this month</label>
 						<input
 							id="{uid}-msup"
@@ -500,7 +523,7 @@
 				</label>
 				{#if verificationSigned}
 					<div class="field narrow">
-						<label for="{uid}-signed">Signed on</label>
+						<label for="{uid}-signed">Monthly form signed on</label>
 						<input id="{uid}-signed" type="date" bind:value={signedOn} max={todayIso()} />
 					</div>
 				{/if}
@@ -788,6 +811,37 @@
 					</tr>
 				</tbody>
 			</table>
+		</section>
+
+		<!--
+			The form at the end. A separate document from the monthly ones, and the last
+			thing standing between a finished run and a submitted one — so it belongs on the
+			record rather than being remembered.
+		-->
+		<section class="record final-form">
+			<h2 class="section-head">The final verification form</h2>
+			{#if period.finalFormSignedOn}
+				<p>Signed {period.finalFormSignedOn}.</p>
+			{:else}
+				<p class="hint">
+					Not signed yet. This is the form covering the whole experience, not the monthly ones
+					— those are tracked against each month above.
+					{#if progress && progress.remaining > 0}
+						{progress.remaining} credited hours still to go.
+					{/if}
+				</p>
+			{/if}
+			<div class="field narrow no-print">
+				<label for="{uid}-final">Final form signed on</label>
+				<input
+					id="{uid}-final"
+					type="date"
+					max={todayIso()}
+					value={period.finalFormSignedOn ?? ''}
+					onchange={(e) =>
+						tracker.setFinalFormSigned(period.id, e.currentTarget.value || null)}
+				/>
+			</div>
 		</section>
 
 		<!--

@@ -629,6 +629,36 @@ into a number. `verificationSigned` starts false on every backfilled month: noth
 old data says a form was signed, and inventing that claim on somebody's behalf is the one
 thing a compliance record must not do.
 
+### The form at the end, and a number nobody can reconstruct later
+
+Two smaller gaps closed alongside the supervisor checklist.
+
+**The final verification form** is a separate document from the monthly ones and the last
+thing standing between a finished run and a submitted one. The monthly forms have been
+tracked since the signature work; this one had nowhere to live. It sits on the period,
+prints with the record, and appears in the export's first file.
+
+**The largest group supervision meeting** is now recorded per month — and deliberately
+reported rather than judged. The handbook caps how many trainees a group may hold, and
+this app has not read that figure at source. A compliance tool that fails a month against
+a threshold it invented is the exact failure this whole corpus is built against, so the
+number is kept, shown, and handed to the reader with the limit named as something to check
+with their supervisor. The same posture as the ratios whose scope the handbook does not
+settle, for the same reason.
+
+Recording it now is the entire point. It costs a moment at the time and cannot be
+reconstructed two years later, and if the limit turns out to have been exceeded, the month
+it happened in is precisely what nobody will remember. The figure only appears when there
+were group hours at all — asking about the size of a group that did not happen is noise —
+and it says so when group hours were logged with no size against them.
+
+One accessibility fix fell out of this. Adding the final form put two date fields labelled
+"Signed on" on the same page, which is unambiguous visually and useless to anybody
+navigating by form field: a screen reader announces the same name twice with nothing to
+tell them apart. They are "Monthly form signed on" and "Final form signed on" now. The
+end-to-end suite caught it as a strict-mode violation, which is the accessibility problem
+stated in the test runner's own terms.
+
 ### What the printout was missing
 
 The exported spreadsheet has shipped a requirements file since it was written, for a

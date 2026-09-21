@@ -87,6 +87,7 @@ function month(over: Partial<FieldworkMonthInput> = {}): FieldworkMonthInput {
 	return {
 		month: '2026-09',
 		type: 'supervised',
+		maxGroupSize: 0,
 		totalHours: 100,
 		unrestrictedHours: 70,
 		supervisionHours: 6,
@@ -487,5 +488,50 @@ describe('where a supervisor stands', () => {
 			locator: 'x'
 		});
 		expect(s.outstanding.map((i) => i.id)).toEqual(['only-one']);
+	});
+});
+
+describe('the group meeting size', () => {
+	it('is reported, never judged', () => {
+		/*
+		 * The handbook caps how many trainees a group supervision meeting may hold, and this
+		 * app has not read that figure at source. A compliance tool that fails a month
+		 * against a number it invented is the exact failure this corpus is built against, so
+		 * the number is kept and shown and the verdict waits for somebody to read the
+		 * handbook — the same posture as the ratios whose scope is unverified.
+		 */
+		const s = summariseFieldworkMonth(
+			month({ supervisionHours: 6, individualSupervisionHours: 3, maxGroupSize: 14 }),
+			REQ,
+			CURRENT
+		);
+		expect(s.checks.map((c) => c.id)).not.toContain('group-size');
+		const figure = s.figures.find((f) => f.id === 'group-size')!;
+		expect(figure.detail).toContain('14');
+		expect(figure.note).toContain('has not verified');
+		// A figure is not a failure: fourteen in a group does not make the month short.
+		expect(s.standing).toBe('met');
+	});
+
+	it('says nothing when no supervision was in a group', () => {
+		// One-to-one throughout: there is no group, so asking about its size is noise.
+		const s = summariseFieldworkMonth(
+			month({ supervisionHours: 6, individualSupervisionHours: 6, maxGroupSize: 0 }),
+			REQ,
+			CURRENT
+		);
+		expect(s.figures.find((f) => f.id === 'group-size')).toBeUndefined();
+	});
+
+	it('notices group hours logged with no size recorded', () => {
+		// The number cannot be reconstructed in two years, so the gap is worth naming now.
+		const s = summariseFieldworkMonth(
+			month({ supervisionHours: 6, individualSupervisionHours: 3, maxGroupSize: 0 }),
+			REQ,
+			CURRENT
+		);
+		expect(s.figures.find((f) => f.id === 'group-size')!.detail).toContain(
+			'no group size was recorded'
+		);
 	});
 });

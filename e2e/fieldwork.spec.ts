@@ -90,6 +90,7 @@ async function logMonth(
 		concentrated?: boolean;
 		supervisor?: string;
 		signed?: boolean;
+		groupSize?: number;
 	}
 ): Promise<void> {
 	await page.getByLabel('Month', { exact: true }).fill(opts.month);
@@ -101,6 +102,7 @@ async function logMonth(
 	await page.getByLabel('Supervision hours').fill(String(opts.supervision ?? 0));
 	await page.getByLabel('Of that, one-to-one').fill(String(opts.individual ?? 0));
 	await page.getByLabel('Supervisor contacts').fill(String(opts.contacts ?? 0));
+	await page.getByLabel('Largest group meeting').fill(String(opts.groupSize ?? 0));
 	// Left alone unless a test cares: the field prefills from the month before, falling
 	// back to the supervisor the run started with, so the common case needs no typing.
 	if (opts.supervisor !== undefined) {
@@ -446,7 +448,7 @@ test('a signed month records when it was signed', async ({ page }) => {
 		contacts: 4,
 		signed: true
 	});
-	await page.getByLabel('Signed on').fill('2026-03-02');
+	await page.getByLabel('Monthly form signed on').fill('2026-03-02');
 	await page.getByRole('button', { name: 'Save month' }).click();
 
 	await expect(page.locator('.month').first()).toContainText('form signed 2026-03-02');
@@ -629,4 +631,73 @@ test('the supervisors survive onto the printed record', async ({ page }) => {
 	await expect(section).toContainText('Supervisor qualifications, p. 13');
 	// The controls are not on the paper.
 	await expect(page.getByRole('button', { name: 'Check S-01' })).toBeHidden();
+});
+
+test('keeps the group size without pretending to judge it', async ({ page }) => {
+	/*
+	 * The handbook caps group supervision size and this app has not read that figure at
+	 * source. Failing a month against a number it invented would be the exact failure the
+	 * whole corpus is built against — so it keeps the number, shows it, and says who has to
+	 * make the call. Recording it is the point: trivial now, impossible in two years.
+	 */
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 3,
+		contacts: 4,
+		groupSize: 14
+	});
+
+	const month = page.locator('.month').first();
+	await expect(month).toContainText('14 trainees in the largest group');
+	await expect(month).toContainText('has not verified');
+	// Reported, not failed.
+	await expect(month).toHaveAttribute('data-standing', 'met');
+});
+
+test('does not ask about a group that did not happen', async ({ page }) => {
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 6,
+		contacts: 4
+	});
+	await expect(page.locator('.month').first()).not.toContainText('largest group');
+});
+
+test('tracks the final verification form apart from the monthly ones', async ({ page }) => {
+	// A separate document, and the last thing standing between a finished run and a
+	// submitted one.
+	await open(page);
+	await startPeriod(page);
+	await logMonth(page, {
+		month: '2026-02',
+		total: 100,
+		unrestricted: 70,
+		supervision: 6,
+		individual: 4,
+		contacts: 4
+	});
+
+	const section = page.locator('.final-form');
+	await expect(section).toContainText('Not signed yet');
+	await expect(section).toContainText('not the monthly ones');
+
+	await section.getByLabel('Final form signed on').fill('2026-06-30');
+	await expect(section).toContainText('Signed 2026-06-30');
+
+	// And it survives a reload, which is the whole point of storing it.
+	await page.reload();
+	await expect(page.locator('[data-tracker-status="ready"]')).toBeAttached({
+		timeout: 30_000
+	});
+	await expect(page.locator('.final-form')).toContainText('Signed 2026-06-30');
 });

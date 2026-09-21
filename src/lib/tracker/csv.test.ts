@@ -117,6 +117,7 @@ describe('fieldworkCsv', () => {
 					contacts: 6,
 					observedWithClient: true,
 					observationMinutes: 95,
+					maxGroupSize: 0,
 					supervisorCode: 'S-01',
 					verificationSigned: false,
 					signedOn: null,
@@ -128,6 +129,7 @@ describe('fieldworkCsv', () => {
 				startDate: '2026-01-01',
 				ruleset: 'current',
 				supervisorCode: 'S-01',
+				finalFormSignedOn: null,
 				createdAt: 0
 			}
 		);
@@ -153,6 +155,7 @@ describe('fieldworkCsv', () => {
 					contacts: 4,
 					observedWithClient: false,
 					observationMinutes: 0,
+					maxGroupSize: 0,
 					supervisorCode: 'S-01',
 					verificationSigned: false,
 					signedOn: null,
